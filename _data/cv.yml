@@ -2,46 +2,37 @@
   type: map
   contents:
     - name: Full Name
-      value: Martin Bulla
+      value: Yichao Cai
     - name: Date of Birth
-      value: 31st August 1981
+      value: 04th November 1994
     - name: Languages
-      value: English, German, Czech <em>native</em>, Slovak, Russian <em>basic</em>
+      value: Chinese (Mandarin), English
 
 - title: Experience
   type: time_table
   contents:
-    - title: Postdoc
-      institution: Max Planck Institute for Biological Intelligence, Germany
+    - title: PhD Student
+      institution: Australian Institute for Machine Learning (AIML)
       year: 2023 - present
-    - title: Postdoc
-      institution: Czech University of Life Sciences Prague, Czechia
-      year: 2017 - present  
-    - title: Postdoc
-      institution: Max Planck Institute for Ornithology, Germany
-      year: 2019 - 2022
-    - title: Postdoc
-      institution: NIOZ Royal Netherlands Institute for Sea Research, the Netherlands
-      year: 2016 - 2019
+    - title: Algorithm Engineer
+      institution: Autocity (Shenzhen) Autonomous Driving Co., Ltd., China 
+      year: 2023 - 2023  
+    - title: Algorithm Engineer
+      institution: Tellhow Sci-Tech Co., Ltd., China
+      year: 2020 - 2022
+    - title: Software Engineer
+      institution: Huawei, China
+      year: 2019 - 2020
 
 - title: Education
   type: time_table
   contents:
     - title: PhD
-      institution: Max Planck Institute for Ornithology, Seewiesen
-      year: 2017
-    - title: MSc
-      institution: Uni. of Natural Resources & Applied Life Sciences, Vienna
-      year: 2010
-    - title: Mgr
-      institution: Charles University, Prague
-      year: 2006
-    - title: BSc
-      institution: State University of New York, Prague
-      year: 2004
-    - title: Graduation
-      institution: Gymnasium Arabska, Prague
-      year: 2000  
-    - title: Graduation
-      institution: Kendall Senior High School, United States
-      year: 1999  
+      institution: The University of Adelaide, Australia
+      year: 2023 - PRESENT
+    - title: M.S. in Engineering
+      institution: Wuhan University of Technology, China
+      year: 2016 - 2019
+    - title: B.Eng.
+      institution: Wuhan University of Technology, China
+      year: 2012 - 2016
