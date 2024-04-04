@@ -68,8 +68,8 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 
 github_username: YichaoCai1 # your GitHub user name
 gitlab_username: # your GitLab user name
-twitter_username: # your Twitter handle
-linkedin_username: # your LinkedIn user name
+twitter_username: YichaoCai # your Twitter handle
+linkedin_username: yichao-cai-12a3b9292 # your LinkedIn user name
 scholar_userid: nNp0nL4AAAAJ # your Google Scholar ID
 semanticscholar_id: # your Semantic Scholar ID
 orcid_id: 0000-0003-1607-8948 # your ORCID ID
@@ -85,7 +85,7 @@ dblp_url: # your DBLP profile url
 stackoverflow_id: # your stackoverflow id 6318684 
 kaggle_id: # your kaggle id
 lastfm_id: # your lastfm id
-spotify_id: YichaoCai # your spotify id
+spotify_id: # your spotify id
 pinterest_id: # your pinterest id
 unsplash_id: # your unsplash id
 instagram_id: # your instagram id
@@ -125,8 +125,8 @@ disqus_shortname: yichaocai # put your disqus shortname
 # If you have blog posts published on medium.com or other exteranl sources,
 # you can display them in your blog by adding a link to the RSS feed.
 external_sources:
-  - name: medium.com
-    rss_url: https://medium.com/@al-folio/feed
+  # - name: medium.com
+  #   rss_url: https://medium.com/@al-folio/feed
 
 # -----------------------------------------------------------------------------
 # Collections

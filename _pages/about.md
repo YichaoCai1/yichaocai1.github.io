@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle:  <a href='https://www.nature.com/articles/nature20563'>Biorhythms</a>, <a href='https://onlinelibrary.wiley.com/doi/full/10.1111/ele.13662'>macroecology & evolution</a>, <a href='https://osf.io/profile/'>open science</a>, <a href='https://www.youtube.com/channel/UCP8ITIDaFZHW68z7KaTyDew'>shorebirds</a>.
+subtitle:  *A good half of the art of living is resilience.* — <a href='https://www.alaindebotton.com/'> Alain de Botton </a>
 profile:
   align: right
   image: me_&_kohout_bw_kohout-pop_grey.jpg
@@ -14,15 +14,8 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: false  # includes social icons at the bottom of the page
 ---
 
-I strive to understand the World within and around me. 
+I am a first-year PhD student in Computer Science at the <a href='https://www.adelaide.edu.au/aiml'>  Australian Institute for Machine Learning (AIML)</a>, <a href='https://www.adelaide.edu.au/'> University of Adelaide </a>, supervised by <a href='https://cs.adelaide.edu.au/~javen/'> Prof. Javen Qinfeng Shi, <a href='https://zzhang.org/'> Dr. Zhen Zhang</a> and <a href='https://sites.google.com/view/yuhangliu/homepage'> Dr. Yuhang Liu</a>. My research primarily delves into the intersection of causality and machine learning, with a focus on causal representation learning, domain-adaptive models, and causal generative modeling.
 
-As a **scientist**, I use birds, mainly shorebirds, to explore 
-- <a href='https://www.nature.com/articles/s41598-019-41223-z'>rhythms of parental care</a> and <a href='https://doi.org/10.3389/fevo.2019.00093'>how such rhythms emerge</a>, 
--  <a href='https://www.nature.com/articles/nature20563'>within- and between-species differences in rhythmicities</a> and what may drive such differences, as well as
-- <a href='https://onlinelibrary.wiley.com/doi/full/10.1111/ele.13662'>distribution and evolution of traits across the globe</a>
+Before commencing my PhD, I accumulated four years of industry experience at <a href='https://www.huawei.com/en/corporate-information'>Huawei</a>, <a href='https://www.tellhow.com/en/index.html'>TellHow</a>, and <a href='https://www.chengshizhiguang.com/'>Autocity (Shenzhen)</a>, with a primary focus on computer vision applications. Prior to this, I obtained my M.S. in Engineering and B.Eng. degrees from <a href='http://english.whut.edu.cn/'>Wuhan University of Technology</a>. During my Master's program, I spent half a year as a visiting student at California PATH, UC Berkeley, focusing on perception research in autonomous driving.
 
-**Currently**, I am investigating global differences in uniparental incubation of shorebirds, sperm trait differences in three genetically distinct morphs in the ruff, biorhythms of red knots and drivers of global variation in the song of songbirds.  
-
-I am a **postdoc** at the [Max Planck Institute for Biological Intelligence](https://www.bi.mpg.de/en) and [Czech University of Life Sciences Prague](https://www.czu.cz/en) and **collaborate** with [scientists and institutions across the globe](https://doi.org/10.1126/science.aaw8529). 
-
-I am a regular contributor to <a href='https://www.inaturalist.org/people/1583651'>iNaturalist</a>. 
+I am a proactive and dedicated researcher, committed to applying my expertise gained from both academic training and practical industrial experience to advance technology for the greater good of society.
