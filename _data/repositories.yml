@@ -1,10 +1,5 @@
 github_users:
-  - martinbulla
+  - YichaoCai1
 
 github_repos:
-  - martinbulla/ruff_sperm_v2
-  - martinbulla/avian_FID_covid
-  - martinbulla/Exchange_behaviour_incubating_SESA
-  - martinbulla/RWLE_predation_timing
-  - martinbulla/Still_no_evidence
-  - martinbulla/many_analysts
+  - YichaoCai1/torch_backbones
