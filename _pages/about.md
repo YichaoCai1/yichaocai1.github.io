@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle:  *A good half of the art of living is resilience.* — <a href='https://www.alaindebotton.com/'> Alain de Botton </a>
+subtitle: A good half of the art of living is resilience. — <a href='https://www.alaindebotton.com/'> Alain de Botton </a>
 profile:
   align: right
   image: me_&_kohout_bw_kohout-pop_grey.jpg
