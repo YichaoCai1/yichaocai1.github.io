@@ -5,7 +5,7 @@ permalink: /
 subtitle: 
 profile:
   align: right
-  image: me_&_kohout_bw_kohout-pop_grey.jpg
+  image: me.jpg
   image_circular: false # crops the image to make it circular
   address: >
 
