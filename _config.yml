@@ -3,10 +3,10 @@
 # -----------------------------------------------------------------------------
 
 title: blank # the website title (if blank, full name will be used instead)
-first_name: Martin
+first_name: Yichao
 middle_name: 
-last_name: Bulla
-email: bulla.mar@gmail.com
+last_name: Cai
+email: yichao.cai@adelaide.edu.au
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 footer_text: >
@@ -66,7 +66,7 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 # Social integration
 # -----------------------------------------------------------------------------
 
-github_username: MartinBulla # your GitHub user name
+github_username: YichaoCai1 # your GitHub user name
 gitlab_username: # your GitLab user name
 twitter_username: # your Twitter handle
 linkedin_username: # your LinkedIn user name
@@ -118,7 +118,7 @@ pagination:
   enabled: true
 
 # Comments
-disqus_shortname: martinbulla # put your disqus shortname
+disqus_shortname: yichaocai # put your disqus shortname
 # https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
 # External sources.
