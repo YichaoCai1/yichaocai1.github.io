@@ -1,13 +1,13 @@
 ---
-layout: page
-permalink: /bulla lab/
-title: bulla lab
-description: It is amazing what you can accomplish if you do not care who gets the credit. - Harry Truman
+layout: post # page
+permalink: /blog/ # /bulla lab/
+title: blog
+description: # It is amazing what you can accomplish if you do not care who gets the credit. - Harry Truman
 nav: true
 nav_order: 6
 ---
 
----
+<!-- ---
 
 ### general info
 
@@ -19,4 +19,4 @@ Our lab will have a flat hierarchical structure with uninimous decession making,
 
 ### teaching and mentoring approach
 
-**Student oriented course design** - We start by asking the students what and how they want to learn and fluidly design/change the course according to students needs.
+**Student oriented course design** - We start by asking the students what and how they want to learn and fluidly design/change the course according to students needs. -->
