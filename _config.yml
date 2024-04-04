@@ -40,7 +40,7 @@ repo_theme_dark: dark           # https://github.com/anuraghazra/github-readme-s
 # will use title and url fields
 # Take a look to https://github.com/jekyll/jekyll-feed for more customization
 
-rss_icon: true
+rss_icon: false
 
 # -----------------------------------------------------------------------------
 # Layout
@@ -85,7 +85,7 @@ dblp_url: # your DBLP profile url
 stackoverflow_id: # your stackoverflow id 6318684 
 kaggle_id: # your kaggle id
 lastfm_id: # your lastfm id
-spotify_id: # your spotify id
+spotify_id: 31qknkkrwvlripfn3kwgjshhwq3u # your spotify id
 pinterest_id: # your pinterest id
 unsplash_id: # your unsplash id
 instagram_id: # your instagram id
@@ -108,9 +108,9 @@ bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: random thoughts # blog_name will be displayed in your blog page
+blog_name: Thoughts & Wanderings # blog_name will be displayed in your blog page
 blog_nav_title: # your blog must have a title for it to be displayed in the nav bar
-blog_description: on science and beyond
+blog_description: on tech and beyond
 permalink: /blog/:year/:title/
 
 # Pagination
