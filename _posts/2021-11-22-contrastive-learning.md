@@ -1,17 +1,16 @@
 ---
 layout: post
-title: Reading Report of Causal Inference
-date: 2021-11-22 13:40:00
+title: Thoughts on Contrastive Representation Learning
+date: 2024-01-16 19:31:00
 description: Reflections after reading papers on contrastive learning theory.
 tags: study
 categories: thoughts
 ---
 
-> This passage initiates by addressing the question depicted in Fig.1. Despite reviewing the referenced papers -- \citealp{wang2020understanding, zimmermann2021contrastive, von2021self, xiao2020should, daunhawer2022identifiability, eastwood2023self}, I acknowledge lingering uncertainties regarding the nuances of contrastive representation learning. In an effort to clarify my understanding, I have composed this report based on my current knowledge and seek your valuable critical comments and feedback.
-
+> This passage initiates by addressing the question depicted in Fig.1. Despite reviewing the referenced papers [1-6], I acknowledge lingering uncertainties regarding the nuances of contrastive representation learning. Therefore, I draft this for later review and reflections.
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/posts/image1.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+        {% include figure.html path="assets/img/posts/image1.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
 </div>
 <div class="caption">
