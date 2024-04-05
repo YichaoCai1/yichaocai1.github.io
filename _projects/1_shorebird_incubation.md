@@ -4,7 +4,7 @@ title: shorebird incubation
 description: Comparing incubation rhythms across shorebirds.
 img: assets/img/sesa_inc.jpg
 importance: 1
-category: # science
+category:  # science
 ---
 
 I am leading a comparative project bringing together shorebirdologists from various parts of the Globe to explore the diversity of shorebird incubation rhythms.

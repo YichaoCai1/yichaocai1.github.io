@@ -5,7 +5,7 @@ permalink: /projects/
 description:
 nav: true
 nav_order: 5     
-display_categories: [science, other fun]
+display_categories: [sci-tech, other fun]
 horizontal: false
 ---
 
