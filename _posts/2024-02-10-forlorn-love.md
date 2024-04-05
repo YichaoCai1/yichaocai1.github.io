@@ -5,6 +5,7 @@ date: 2024-02-10 23:00:00
 description: Written after viewing Chiharu Shiota's red string art, "Absence Embodied", at the SA Art Gallery.
 tags: random
 ---
+[(PDF)](/assets/pdf/forlorn_love.pdf)
 
 <center>It seems fate err’d with a red string’s tie,</center> 
 <center> Meant for others, yet you and I did align.</center> 
@@ -21,4 +22,3 @@ tags: random
 <center> This love, in my heart, must hidden stay,</center> 
 <center> Leaving warmth missed, and joy unspilled.</center> 
 
-[(PDF version)](/assets/pdf/forlorn_love.pdf)
