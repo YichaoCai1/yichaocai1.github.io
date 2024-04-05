@@ -10,7 +10,7 @@ categories: thoughts
 > This passage initiates by addressing the question depicted in <span style="color:purple">fig.1 text</span>.  Despite reviewing the referenced papers <span style="color:purple">[1-6]</span>, I acknowledge lingering uncertainties regarding the nuances of contrastive representation learning. Therefore, I draft this for later review and reflections.
 <div class="row mt-3">
     <div class="col-8 mt-3 mt-md-0 d-flex justify-content-center">
-        {% include figure.html path="assets/img/posts/cl_question.png" class="img-fluid rounded z-depth-1" %}
+        <img src="assets/img/posts/cl_question.png" class="img-fluid rounded z-depth-1 mx-auto" />
     </div>
 </div>
 <div class="caption">
