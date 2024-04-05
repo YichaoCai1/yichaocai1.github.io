@@ -10,12 +10,12 @@ tags: random
 <center> Meant for others, yet you and I did align.</center> 
 <center> Destined paths not to cross, we sail by,</center> 
 <center> Yet why do I drift towards your sign?</center> 
-<center>   ~ </center> 
+<br /> 
 <center> A sudden affection quietly blooms,</center> 
 <center> And I, merely a passerby in stride,</center> 
 <center> From afar, your faint fragrance looms,</center> 
 <center> Yet dare not approach you to confide.</center> 
-<center>   ~  </center> 
+<br />
 <center> Perhaps, such is the visage of life’s way,</center> 
 <center> My own harbor, long destined, beckons still.</center> 
 <center> This love, in my heart, must hidden stay,</center> 
