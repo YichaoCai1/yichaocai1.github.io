@@ -4,7 +4,7 @@ title: projects
 permalink: /projects/
 description:
 nav: true
-nav_order:      # disable projects pages
+nav_order: 5     
 display_categories: [science, other fun]
 horizontal: false
 ---
@@ -34,7 +34,6 @@ horizontal: false
   </div>
   {%- endif -%}
   {% endfor %}
-
 {%- else -%}
 <!-- Display projects without categories -->
   {%- assign sorted_projects = site.projects | sort: "importance" -%}
