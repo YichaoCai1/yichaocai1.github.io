@@ -228,8 +228,8 @@ display_tags: ['formatting', 'images', 'links', 'math', 'code'] # this tags will
 
 scholar:
 
-  last_name: Bulla
-  first_name: [Martin, M., M]
+  last_name: Cai
+  first_name: [Yichao, Y., Y]
 
   style: apa
   locale: en
