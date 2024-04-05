@@ -3,8 +3,8 @@ layout: post
 title: Reading Report of Causal Inference
 date: 2021-11-22 13:40:00
 description: A reading report of "Elements of causal inference" by J. Peters et al.
-tags: learning notes
-categories: study
+tags: study
+categories: reading
 ---
 
 > "Correlation does not imply causation."
@@ -145,6 +145,6 @@ which means the extent to which the hiring rate has increased among the enrolled
 
 [2] Judea Pearl, Madelyn Glymour, and Nicholas P. Jewell. Counterfactuals and Their Applications. In Causal Inference in Statistics: A Primer. John Wiley & Sons, Ltd, 2016.
 
-[3] d-separation: How to determine which variables are independent in a Bayes net. Available online: http://web.mit.edu/jmn/www/6.034/d-separation.pdf (accessed on Nov. 3, 2021).
+[3] d-separation: How to determine which variables are independent in a Bayes net. [Available online](http://web.mit.edu/jmn/www/6.034/d-separation.pdf), (accessed on Nov. 3, 2021).
 
-[4] Peter Spirtes and Kun Zhang. Causal discovery and inference: concepts and recent methodological advances. Appl Inform 3, 3 (2016). https://doi.org/10.1186/s40535-016-0018-x
+[4] Peter Spirtes and Kun Zhang. [Causal discovery and inference: concepts and recent methodological advances.](https://doi.org/10.1186/s40535-016-0018-x) Appl Inform 3, 3 (2016). 
