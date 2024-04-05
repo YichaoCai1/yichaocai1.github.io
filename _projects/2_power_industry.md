@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  Power industry
+title:  Power Industry
 description: Applying computer vision in the power industry.
 img: assets/img/projects/power.png
 importance: 2

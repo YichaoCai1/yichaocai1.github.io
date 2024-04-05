@@ -2,7 +2,7 @@
 layout: page
 title:  Classic CNNs
 description: Implementation of classic CNN backbones for deep learning practice.
-img: assets/img/projects/machinevision_cover.png
+img: assets/img/projects/cnns_cover.png
 importance: 1
 category:  other fun
 ---
