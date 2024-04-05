@@ -8,20 +8,66 @@
 	abstract = {Contrastive vision-language models, such as CLIP, have garnered considerable attention for various dowmsteam tasks, mainly due to the remarkable ability of the learned features for generalization. However, the features they learned often blend content and style information, which somewhat limits their generalization capabilities under distribution shifts. To address this limitation, we adopt a causal generative perspective for multimodal data and propose contrastive learning with data augmentation to disentangle content features from the original representations. To achieve this, we begins with exploring image augmentation techniques and develop a method to seamlessly integrate them into pre-trained CLIP-like models to extract pure content features. Taking a step further, recognizing the inherent semantic richness and logical structure of text data, we explore the use of text augmentation to isolate latent content from style features. This enables CLIP-like model's encoders to concentrate on latent content information, refining the learned representations by pre-trained CLIP-like models. Our extensive experiments across diverse datasets demonstrate significant improvements in zero-shot and few-shot classification tasks, alongside enhanced robustness to various perturbations. These results underscore the effectiveness of our proposed methods in refining vision-language representations and advancing the state-of-the-art in multimodal learning.},
 	preprint = {https://arxiv.org/pdf/2311.16445.pdf},
 	selected = {true},
+   bibtex_show={true},
    preview={clap_preview.png},
    type = {Journal Article}
 }
 
+@inproceedings{cai2023robust,
+  abbr = {ICUS 2023},
+  title={Robust Real-Time Curb Detection for Autonomous Sanitation Vehicles},
+  author={Cai, Yichao and Ou, Kejun and Li, Dachuan and Zhang, Yuanfang and Zhou, Xiao and Mou, Xingang},
+  booktitle={2023 IEEE International Conference on Unmanned Systems (ICUS)},
+  pages={475--481},
+  year={2023},
+  abstract = {Curb detection is a key enabling functionality for the precise curb-following sanitation control of autonomous sanitation vehicles. The robust and efficient curb detection in complex environments is still a challenging issue. In this paper, we propose a novel semantic segmentation-based framework for curb detection using monocular bird's eye-view images. We employ a lightweight segmentation network based on HRNet to extract the drivable area. A zero-shot post-processing approach is proposed to extract a candidate point set from the segmented image for robust curve fitting. In addition, we propose a modified RANSAC fitting approach that accounts for outlier points to achieve dynamic order curve fitting and curb representation. Experimental results in complex sanitation scenarios demonstrate the efficiency, accuracy, and robustness of the proposed approach.},
+  bibtex_show={true},
+  preview={curb_preview.png},
+  organization={IEEE}
+}
+
+@inproceedings{cai2019head,
+  abbr = {ICMV 2018},
+  title={Head pose estimation with neural networks from surveillant images},
+  author={Cai, Yichao and Zhou, Xiao and Li, Dachuan and Ming, Yifei and Mou, Xingang},
+  booktitle={Eleventh International Conference on Machine Vision (ICMV 2018)},
+  volume={11041},
+  pages={267--274},
+  year={2019},
+  abstract={Estimating head pose of pedestrians is a crucial task in autonomous driving system. It plays a significant role in many research fields, such as pedestrian intention judgment and human-vehicle interaction, etc. While most of the current studies focus on driver’s-view images, we reckon that surveillant images are also worthy of attention since more global information can be obtained from them than driver’s-view images. In this paper, we propose a method for head pose estimation from surveillant images. This approach consists of two stages, head detection and pose estimation. Since the head of pedestrian takes up a very small number of pixels in a surveillant image, a two-step strategy is used to improve the performance in head detection. Firstly, we train a model to extract body region from the source image. Secondly, a head detector is trained to locate head position from the extracted body regions. We use YOLOv3 as our detection network for both body and head detection. For head pose estimation, we treat it as classification task of 10 categories. We use ResNet-50 as the backbone of the classifier, of which the input is the result of head detection. A serial of experiments demonstrate the good performance of our proposed method.},
+  preview={headpose.png},
+  organization={SPIE}
+}
+
+@article{cai2018robust,
+  abbr = {Sensors},
+  title={Robust drivable road region detection for fixed-route autonomous vehicles using map-fusion images},
+  author={Cai, Yichao and Li, Dachuan and Zhou, Xiao and Mou, Xingang},
+  journal={Sensors},
+  volume={18},
+  number={12},
+  pages={4158},
+  year={2018},
+  abstract = {Environment perception is one of the major issues in autonomous driving systems. In particular, effective and robust drivable road region detection still remains a challenge to be addressed for autonomous vehicles in multi-lane roads, intersections and unstructured road environments. In this paper, a computer vision and neural networks-based drivable road region detection approach is proposed for fixed-route autonomous vehicles (e.g., shuttles, buses and other vehicles operating on fixed routes), using a vehicle-mounted camera, route map and real-time vehicle location. The key idea of the proposed approach is to fuse an image with its corresponding local route map to obtain the map-fusion image (MFI) where the information of the image and route map act as complementary to each other. The information of the image can be utilized in road regions with rich features, while local route map acts as critical heuristics that enable robust drivable road region detection in areas without clear lane marking or borders. A neural network model constructed upon the Convolutional Neural Networks (CNNs), namely FCN-VGG16, is utilized to extract the drivable road region from the fused MFI. The proposed approach is validated using real-world driving scenario videos captured by an industrial camera mounted on a testing vehicle. Experiments demonstrate that the proposed approach outperforms the conventional approach which uses non-fused images in terms of detection accuracy and robustness, and it achieves desirable robustness against undesirable illumination conditions and pavement appearance, as well as projection and map-fusion errors.},
+  selected = {true},
+  bibtex_show={true},
+  preview={autonomousdriving_cover.png},
+  publisher={MDPI}
+}
 
 @inproceedings{mou2018state,
   abbr = {ICIVC 2018},
-  title={State recognition of electric control cabinet switches based on cnns},
+  title={State Recognition of Electric Control Cabinet Switches Based on CNNs},
   author={Mou, Xingang and Leng, Conglin and Zhou, Xiao and Cai, Yichao},
   booktitle={2018 IEEE 3rd International Conference on Image, Vision and Computing (ICIVC)},
   pages={183--187},
   year={2018},
+  abstract = {When using the CNNs for image processing, it is more easy to learn the invariant features of the image without too much preprocessing. This is important for the task of image classification and recognition which need to extract deep features of the object. This paper proposes a switch state recognition algorithm which combines digital image processing technique and CNNs for the electrical control cabinet switches in substations. Firstly, use perspective transformation method to rectify the original image which is positioned and segmented using the projections of horizontal and vertical gradient. Then label the segmented images to get sample sets for training CNNs later. After that, design the architecture of CNNs with image processing knowledge and use the designed CNNs to extract the key features of switch state, build and train the CNNs model using labeled "disconnected" and "closed" switches. Finally, the state of the switch is recognized by the trained model and showed in the image. The experimental results show that the algorithm has the characteristics of high recognition accuracy, good robustness and fast recognition speed.},
+  pdf={https://doi.org/10.1109/ICIVC.2018.8492853},
+  preview={switchstate.png},
   organization={IEEE}
 }
+
 
 @article{RN7179,
    author = {Bulla, Martin and Valcu, Mihai and Kempenaers, Bart},
