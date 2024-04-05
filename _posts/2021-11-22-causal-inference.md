@@ -9,7 +9,7 @@ categories: study
 
 > "Correlation does not imply causation."
 
-Given an input variable $X$, an outcome variable $Y$ and observations $ {(x_i, y_i)}$, probabilistic models can find a correlation between these variables $X$ and $Y$, as well as can give a prediction of $Y$ after observing $X = x$. One critical hypothesis of probabilistic models is observations ${(x_i, y_i)}$ are realizations of random variables ${(X_i, Y_i)}$ that are independently and identically distributed (i.i.d.) with joint distribution $P_{X,Y}$. However, such postulation can be violated and statistically observed correlations are not always reliable, thus we need to build a generic relationship between an effect and the cause that gives rise to it, namely causality.
+Given an input variable $X$, an outcome variable $Y$ and observations $${(x_i, y_i)}$$, probabilistic models can find a correlation between these variables $$X$$ and $$Y$$, as well as can give a prediction of $Y$ after observing $$X = x$$. One critical hypothesis of probabilistic models is observations $${(x_i, y_i)}$$ are realizations of random variables $${(X_i, Y_i)}$$ that are independently and identically distributed (i.i.d.) with joint distribution $$P_{X,Y}$$. However, such postulation can be violated and statistically observed correlations are not always reliable, thus we need to build a generic relationship between an effect and the cause that gives rise to it, namely causality.
 
 **Structural causal model**
 To this end, the structural causal model (SCM) is a methodology to well describe causality, which not only entails a joint distribution over all observables (like purely probabilistic descriptions), but also incorporates structural assignments about how $P_{X,Y}$ come about (directional relationships between variables) and the effect of interventions on variables. We can use an SCM modeling a system in an observational state and under perturbations at the same time. It is even possible to regard SCMs as models for counterfactual statements.
@@ -18,8 +18,80 @@ Before introducing SCMs, it is worth mentioning the principle of independent cau
 
 Formally, an bivariate SCM with graph $C\rightarrow E$ consists of two assignments: 
 
-\begin{equation}
-\label{eq:bivar-SCM}
-C:=N_C \tag 1 \\ E:=f_E(C, N_E), where~~ N_E \perp\!\!\!\perp N_C 
-\end{equation}
+$$
+C:=N_C, ~~E:=f_E(C, N_E),~~ where~~ N_E \perp\!\!\!\perp N_C.  \tag{1}
+$$
 
+In this model, random variable $C$ is the cause and $E$ the effect.  The "$:=$" symbol is so-called a structural assignment which implies a directional causal effect besides the assignment function. More generally, a multivariate SCM $\boldsymbol{\zeta}$ consists of a collection $\mathbf{S}$ of $d$ structural assignments:
+$$
+ X_j := f_j(PA_j, N_j), ~~~~ j=1, ~..., ~d, \tag 2 
+$$
+
+where $d$ is the number of variables; $PA_j$ are the parents of $X_j$, also known as direct causes; and the noises $N_j (j = 1, 2, ..., d)$ are required to be jointly independent (coinciding with "independence of noises"). An SCM $\boldsymbol{\zeta}$ entails a unique distribution over the variables $\mathbf{X}$ which is called entailed distribution$P_\mathbf{X}^{\boldsymbol{\zeta}}$. Structural assignments are a set of assignments or functions that tell us how certain variables determine others. Each SCM has a corresponding directional acyclic graph (DAG), where vertices represent the variables and edges the causal direction between two variables. 
+
+Now that we are talking about DAGs, Markov property is a non-negligible term. Assume a distribution is Markovian: The global Markov property says one can determine $\mathbf{A}$ is independent to $\mathbf{B}$ given $\mathbf{C}$ if the path between vertices set $\mathbf{A}$ and $\mathbf{B}$ are d-separated by the vertices set $\mathbf{C}$, which is equivalent to the local Markov property such that each variable is independent of its non-descendants given its parents. Based on the Markov property, one can say $X$ and $Y$ are observational dependent if there is any unblocked path (the path can not contain a collider) between these two variables. 
+
+Although having graphs and Markov condition, SCMs are primarily worked with for causal inference because they contain their corresponding DAGs and imply Markov property (that is, $P_\mathbf{X}$ entailed by an SCM is Markovian with respect to the corresponding DAG $\mathfrak{g}$). Maybe more significantly, restricting the function class in SCMs can lead to identifiability of the causal structure. 
+
+**Identifiability**
+Identifiability means the causal relationship between variables, or the causal structure of a multivariate model. We do structural identification to identify true causal directions, that is, to determine a reasonable SCM from statistical observations. However, the joint distribution $P_{X,Y}$ does not tell us whether it has been induced by the SCM from $X$ to $Y$ or the other one from $Y$ to $X$. Since the same observational distribution can be generated by different SCMs, the causal structure is not identifiable from only the joint distribution. Generally speaking, the causal direction between just two observed variables cannot be inferred from passive observations alone, which means the hypothetical causal direction $X\rightarrow Y$ can not be determined if we do not impose any constraint on the function $ \mathbf{f}: \mathcal{X\rightarrow Y}$. Thus, we have to render certain constraints on the function so that the independence of cause holds for only one direction, that is, the identifiability of the causal direction. There are several appropriately defined model classes and the identifiability of their causal directions. 
+
+Let us first go from a bivariate linear model: Assume a linear model admitted by $P_{X,Y}$, 
+$$
+Y = \alpha X + N_Y, ~N_Y \perp\!\!\!\perp X. \tag{3}
+$$
+
+There exists β ∈ R and a random variable $N_X$ validate a backward model such that 
+$$
+ X = \beta Y + N_X, ~N_X \perp\!\!\!\perp Y, \tag{4}
+$$
+
+if and only if $N_Y$ and $X$ are all Gaussian (due to the symmetricity of Gaussian distribution). In other words, one can rigorously say that the causal direction of a linear model is identifiable if at most one of $X$ and $N_Y$ is Gaussian distributed, which is also known as a Linear non-Gaussian acyclic model (LiNGAM). Nonlinear additive noise models (ANMs) are a more generic model class than LiNGAMs, because nonlinear transformation is often involved in practice. An ANM is defined as 
+$$
+Y = f_Y(X) + N_Y, ~~N_Y \perp\!\!\!\perp X, \tag{5}
+$$
+
+where $f_Y$ is a measurable function (Lebesgue integrable). It has shown that the set of densities $p_X$ for which the obtained joint distribution $P_{X,Y}$ admits a backward ANM of $Y \rightarrow X$ is contained in a 3-dimensional affine space. Since the space of all possible $P_X$ is infinite dimensional, the three-dimensional sub-space is rather a complicated condition (To linear model, one can think the condition is that $N_Y$ and $X$ are all Gaussian). Therefore, we could roughly think, in the "generic" case, the causal direction of an ANM model is identifiable. Moreover, there is another model class so-called post-nonlinear models of which the causal direction has been shown identifiable except for some rare non-generic cases. 
+
+In terms of multivariate SCMs, more generally, the Markov equivalence class of $\mathfrak{g}^0$ is identifiable from $P_\mathbf{X}$ under satisfying the Markov condition and faithfulness simultaneously such that 
+$$
+\mathbf{A} \perp\!\!\!\perp_{\mathfrak{g}^0} \mathbf{B} ~| ~\mathbf{C} \Rightarrow  \mathbf{A} \perp\!\!\!\perp \mathbf{B} ~| ~\mathbf{C}  ~~~ and ~~~ \mathbf{A} \perp\!\!\!\perp_{\mathfrak{g}^0} \mathbf{B} ~| ~\mathbf{C} \Leftarrow  \mathbf{A} \perp\!\!\!\perp \mathbf{B} ~| ~\mathbf{C} \tag{6}
+$$
+
+for all disjoint vertices sets $\mathbf{A, B}$ and $\mathbf{C}$. Furthermore, each graph in $\mathrm{CPGAD}( \mathfrak{g}^0)$ entails the same joint distribution $P_\mathbf{X}$; for any graph $\mathfrak{g}$ which is not in the Markov equivalence class of $\mathfrak{g}^0$, the entailed joint distribution $P_\mathbf{X}^\mathfrak{g}$ is not simultaneously Markovian and faithful. The structural identifiability spontaneously implies causal minimality since faithfulness is more rigorous than causal minimality. For ANMs, structural identifiability means each function $f_j$ for node $j$ is not constant in any of its arguments. Specifically, we further have linear Gaussian models with equal error variances, LiNGAMs and nonlinear Gaussian ANMs are structurally identifiable. Without having a priori knowledge of the mechanism, it is more appropriate to assume the SCM to be general (but not too flexible to loose the identifiability) since too restrictive and idealized assumptions may lead to misunderstanding of the true causality. 
+
+There are mainly two strategies for structure identification, namely independence-based methods and score-based methods. Most independece-based methods contain two stages: (1) estimate the undirected edges, or say the skeleton; (2) orient as many edges as possible afterward (for ANMs, one can test the independence of residuals or use a maximum-likelihood approach). On the other hand, the score-based strategy is to assign a score to each possible graph and search over the space of DAGs to find the graph with the highest score. For example, there are supervised learning methods to consider causal inference as a classification task in machine learning. It is recommended in the book that these methods can make efficient use of known identifiability properties or combinations of them to become more useful in practice.
+
+**Intervention**
+Roughly speaking, an intervention is to set a variable (or several variables) in an SCM to an invariant or specific distribution without changing other mechanisms (coinciding with the principle of independent mechanisms), and it is a powerful tool to reason out causal relationships. Different from passively observing a variable $X = x$, an intervention is to set $X := x$. After an intervention, a variable is no more influenced by its parents in the original SCM. For example, if we replace the assignment in Formula (1) by $E := 4$, this intervention is denoted by $do(E:=4)$. Taxonomically, to set a variable to a fixed value is called hard intervention (the DAG is correspondingly modified by removing all incoming arrows to the intervened variable), while a soft intervention is to alter the noise distribution of $E$ and keep a functional dependence on $C$. 
+
+In a bivariate SCM $C \rightarrow E$, **(i)** an intervention on the cause $C$ will change the distribution of the cause $E$, but **(ii)** no matter how strongly we intervene on the effect, the distribution of the cause remains what it was before; and importantly, **(iii)** the conditional distribution of $C$ given $E=e$ is different from the distribution of $C$ after setting $do(E:=e)$. For example, suppose an SCM 
+$$
+C:=N_C, ~~E := 4\cdot C + N_E, ~~ where ~ N_C, ~~N_E \mathop{\sim}^{iid} \mathcal{N}(0,1), \tag{7}
+$$
+
+$P_E = \mathcal{N}(0,17)$ is not equal to $P_E^{do(C:=1)} = \mathcal{N}(0,17)$ nor $P_E^{do(C:=4)} = \mathcal{N}(16,1)$, which numerically attests to statement **(i)**; $P_C =  P^{do(E:=4)}_C = P^{do(E:=2.2)}_C = \mathcal{N}(0, 1)$, which illustrates statement **(ii)**; $P^{do(E:=2)}_C$ is not equal to $P_{C|E = 2}$, which illustrates statement **(iii)**.
+
+More generally, for a multivariate SCM $\boldsymbol{\zeta}$, an intervention means to replace one of the structural assignments to obtain a new SCM $\tilde{\boldsymbol{\zeta}}$. Thus, the entailed distribution $P_\mathbf{X}^{\boldsymbol{\zeta}}$ is changed to a new distribution, namely the intervention distribution. If the structural assignment $X_k$ is intervened on by 
+$$
+X_k := \tilde{f}(\tilde{\bf PA}_k, \tilde{N}_k), \tag{8}
+$$
+
+then the corresponding intervention distribution is 
+$$
+P_{\bf X} ^{\tilde{\boldsymbol{\zeta}}} =: P_{\bf X} ^{{\boldsymbol{\zeta}};~do(X_k:=\tilde{f}(\tilde{\bf PA}_k, \tilde{N_k}))}. \tag {9} 
+$$
+
+
+Intervention distributions differ from the observation distribution. So, how to estimate intervention distributions? For any SCMs, one can compute an intervention distribution from observational quantities such that
+$$
+p^{\tilde{\boldsymbol{\zeta}}; do({X_k := \tilde N_k)}}(x_1, ..., x_d) = \tilde p(\tilde N_k)\prod\nolimits_{j\not=k} p^{\boldsymbol{\zeta}} (x_j|x_{pa(j)}). \tag {10} 
+$$
+for any SCM $\tilde{\boldsymbol{\zeta}}$ that is constructed from $\boldsymbol{\zeta}$ by intervening on $X_k$ but not on $X_j$ (or some variables excluding $X_j$). 
+
+One can also compute an interventional distribution $p^{\boldsymbol{\zeta};do(X:=x)}(y)$, when there is a valid adjustment set $\bf Z$ of ${X, Y}$ (through "parent adjustment", "backdoor criterion", "toward necessity") such that 
+$$
+p^{{\tilde ζ}; do({X := x})}(y) = \sum\nolimits_{\bf z}p^{\boldsymbol{\zeta}}(y|x, {\bf z})p^{\boldsymbol{\zeta}}({\bf z}). \tag {12} 
+$$
+
+Sometimes, if the value of $X$ does not depend on $\bf Z$ directly but only through a propensity score $L := L({\bf Z})$, which means $X$ and $\bf Z$ are independent given $L({\bf Z})$, one can also compute $p^{\boldsymbol{\zeta};do(X:=x)}(y)$ analogously to eq. (12) by replacing $Z$ to $L({\bf Z})$. It is said in the text book that the later method may lead to a better estimation of an interventional distribution: Although one needs to estimate the function $L$, the result conditional $ p^{\boldsymbol{\zeta}}(y|l, x)$ is potentially lower dimensional than $p^ζ(y|z, x)$.
