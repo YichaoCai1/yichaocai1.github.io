@@ -6,3 +6,18 @@ description: Written after viewing Chiharu Shiota's red string art, "Absence Emb
 redirect: /assets/pdf/forlorn_love.pdf
 tags: random
 ---
+
+It seems fate err’d with a red string’s tie,
+Meant for others, yet you and I did align.
+Destined paths not to cross, we sail by,
+Yet why do I drift towards your sign?
+
+A sudden affection quietly blooms,
+And I, merely a passerby in stride,
+From afar, your faint fragrance looms,
+Yet dare not approach you to confide.
+
+Perhaps, such is the visage of life’s way,
+My own harbor, long destined, beckons still.
+This love, in my heart, must hidden stay,
+Leaving warmth missed, and joy unspilled.
