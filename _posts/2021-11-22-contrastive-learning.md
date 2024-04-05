@@ -9,8 +9,8 @@ categories: thoughts
 
 > This passage initiates by addressing the question depicted in <span style="color:purple">fig.1 text</span>.  Despite reviewing the referenced papers <span style="color:purple">[1-6]</span>, I acknowledge lingering uncertainties regarding the nuances of contrastive representation learning. Therefore, I draft this for later review and reflections.
 <div class="row mt-3">
-    <div class="col-8 mt-3 mt-md-0 d-flex justify-content-center">
-        <img src="assets/img/posts/cl_question.png" class="img-fluid rounded z-depth-1 mx-auto" />
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/posts/cl_pair1.png" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -49,8 +49,8 @@ To clarify the goal of disentangled representation learning, it becomes imperati
 - Contrastive language-image training (e.g., CLIP) uses Image-text pairs, where the both parts of a image-text pair can be considered two different views of one sample, if the caption of the image is detailed, e.g. in <span style="color:purple">fig. 3</span>. However, using only image-text pairs may not be capable for disentangling the intrinsic content, as text data lacks the informativeness needed to precisely constrain the sample identity in its imagery counterpart. For instance, even if one adds numerous attributive adjectives to an object in the textual modality (e.g. "dog"), the text cannot be constrained to represent only the exact same dog as shown in the image.
 
 <div class="row mt-3">
-    <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/posts/oldman.png" class="img-fluid rounded z-depth-1" %}
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/posts/oldman1.png" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
