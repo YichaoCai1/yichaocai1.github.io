@@ -91,7 +91,7 @@ for any SCM $\tilde{\boldsymbol{\zeta}}$ that is constructed from $\boldsymbol{\
 
 One can also compute an interventional distribution $p^{\boldsymbol{\zeta};do(X:=x)}(y)$, when there is a valid adjustment set $\bf Z$ of ${X, Y}$ (through "parent adjustment", "backdoor criterion", "toward necessity") such that 
 $$
-p^{{\tilde ζ}; do({X := x})}(y) = \sum\nolimits_{\bf z}p^{\boldsymbol{\zeta}}(y|x, {\bf z})p^{\boldsymbol{\zeta}}({\bf z}). \tag {12} 
+p^{{\tilde{\boldsymbol{\zeta}}}; do({X := x})}(y) = \sum\nolimits_{\bf z}p^{\boldsymbol{\zeta}}(y|x, {\bf z})p^{\boldsymbol{\zeta}}({\bf z}). \tag {12} 
 $$
 
-Sometimes, if the value of $X$ does not depend on $\bf Z$ directly but only through a propensity score $L := L({\bf Z})$, which means $X$ and $\bf Z$ are independent given $L({\bf Z})$, one can also compute $p^{\boldsymbol{\zeta};do(X:=x)}(y)$ analogously to eq. (12) by replacing $Z$ to $L({\bf Z})$. It is said in the text book that the later method may lead to a better estimation of an interventional distribution: Although one needs to estimate the function $L$, the result conditional $ p^{\boldsymbol{\zeta}}(y|l, x)$ is potentially lower dimensional than $p^ζ(y|z, x)$.
+Sometimes, if the value of $X$ does not depend on $\bf Z$ directly but only through a propensity score $L := L({\bf Z})$, which means $X$ and $\bf Z$ are independent given $L({\bf Z})$, one can also compute $p^{\boldsymbol{\zeta};do(X:=x)}(y)$ analogously to eq. (12) by replacing $Z$ to $L({\bf Z})$. It is said in the text book that the later method may lead to a better estimation of an interventional distribution: Although one needs to estimate the function $L$, the result conditional $ p^{\boldsymbol{\zeta}}(y|l, x)$ is potentially lower dimensional than $p^{\boldsymbol{\zeta}}(y|z, x)$.
