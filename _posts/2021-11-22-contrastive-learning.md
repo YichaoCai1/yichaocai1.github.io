@@ -9,12 +9,12 @@ categories: thoughts
 
 > This passage initiates by addressing the question depicted in <span style="color:purple">fig.1 text</span>.  Despite reviewing the referenced papers <span style="color:purple">[1-6]</span>, I acknowledge lingering uncertainties regarding the nuances of contrastive representation learning. Therefore, I draft this for later review and reflections.
 <div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/posts/image1.png" class="img-fluid rounded z-depth-1" %}
+    <div class="col-sm-6 mt-3 mt-md-0">
+        {% include figure.html path="assets/img/posts/cl_question.png" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    Figure 1. Are these two samples (either in text-modality and image-modality) are appropriate to be considered a positive pair as the learning objective for disentangling the true content variable? *(Images generated with SDv2.1)*
+    Figure 1. Are these two samples (either in text-modality and image-modality) are appropriate to be considered a positive pair as the learning objective for disentangling the true content variable (Images generated with SDv2.1)
 </div>
 
 Recent approaches utilize data augmentations as weak supervision to distinguish retained information, termed ”content”, from discarded information, termed "style" <span style="color:purple">[2]</span>. However, the agreement on real-world data generation process, particularly the identifiability of true causal relations in data generative mechanisms, currently lacks consensus.This lack of agreement introduces uncertainty around terminologies like ”content” and ”style”, and their distinct definitions hinge on how we conceptualize them and how we set the learning objective. Nevertheless, this issue seems to be primarily a matter of nomenclature. The resolution of this uncertainty is anticipated to come with consensus on the identifiability of true mechanisms of data generative process.
@@ -49,12 +49,12 @@ To clarify the goal of disentangled representation learning, it becomes imperati
 - Contrastive language-image training (e.g., CLIP) uses Image-text pairs, where the both parts of a image-text pair can be considered two different views of one sample, if the caption of the image is detailed, e.g. in <span style="color:purple">fig. 3</span>. However, using only image-text pairs may not be capable for disentangling the intrinsic content, as text data lacks the informativeness needed to precisely constrain the sample identity in its imagery counterpart. For instance, even if one adds numerous attributive adjectives to an object in the textual modality (e.g. "dog"), the text cannot be constrained to represent only the exact same dog as shown in the image.
 
 <div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col-sm-6 mt-3 mt-md-0">
         {% include figure.html path="assets/img/posts/oldman.png" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    Figure 3. An old American person stand in front of a house with white wall, with his black dog by his side. *(Images generated with SDv2.1)*
+    Figure 3. An old American person stand in front of a house with white wall, with his black dog by his side. (Images generated with SDv2.1)
 </div>
 
 Therefore, there might be a need to develop a method that combines the logic and semantic nature of textual modality with the informative nature of image modality. Text data is inherently more recaptitulative (in a property-wise manner) than image data, while image data is more precise than text data in describing "the exact same object(s)/event(s)" due to its greater informativeness than text data (per image vs.per text prompt, not per memory byte).
