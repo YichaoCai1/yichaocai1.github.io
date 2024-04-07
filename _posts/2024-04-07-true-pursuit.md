@@ -13,7 +13,7 @@ tags: random
 <center> Wishing my name will shine, in the hall of fame;</center> 
 <center> In eyes that see my worth, my spirit’s esteemed.</center> 
 <br /> 
-<center> But if fate whispers, leading me to you,</center> 
+<center> But if fate whispers, leading my way to you,</center> 
 <center> To a quiet town, where sunrise paints the hue.</center> 
 <center> I’d choose a simple life, in morning’s dew,</center> 
 <center> In a humble home, where love grows true.</center> 
