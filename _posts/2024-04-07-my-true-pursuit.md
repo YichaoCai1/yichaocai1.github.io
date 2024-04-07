@@ -1,10 +1,11 @@
 ---
 layout: post
 title: My True Pursuit
-date: 2024-04-07 17:46:00
+date: 2024-04-07 13:26:00
 description: A four-stanza poem on the theme of love and life.
 tags: random
 ---
+
 [(PDF)](/assets/pdf/my_true_pursuit.pdf)
 
 <center> In the rush of life, I chase dreams yet to gleam:</center> 
