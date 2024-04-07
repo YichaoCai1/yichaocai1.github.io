@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Thoughts on Contrastive Representation Learning
-date: 2024-01-16 19:30:00
+date: 2024-01-16 19:30:00 -0930
 description: Reflections after reading papers on contrastive learning theory.
 tags: study
 categories: thoughts

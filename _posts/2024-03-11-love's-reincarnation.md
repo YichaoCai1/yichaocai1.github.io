@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Love's Reincarnation
-date: 2024-03-11 21:43:00
+date: 2024-03-11 21:43:00 -0930
 description: Written on a whim.
 tags: random
 ---
