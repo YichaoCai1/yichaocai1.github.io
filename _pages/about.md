@@ -14,7 +14,7 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: false  # includes social icons at the bottom of the page
 ---
 
-*("A good half of the art of living is resilience." — by <a href='https://www.alaindebotton.com/'> Alain de Botton </a>)*
+*("A good half of the art of living is resilience." — by Alain de Botton)*
 
 
 I am a first-year PhD student in Computer Science at the <a href='https://www.adelaide.edu.au/aiml'>  Australian Institute for Machine Learning (AIML)</a>, <a href='https://www.adelaide.edu.au/'> University of Adelaide </a>, supervised by <a href='https://cs.adelaide.edu.au/~javen/'> Prof. Javen Qinfeng Shi, <a href='https://zzhang.org/'> Dr. Zhen Zhang</a> and <a href='https://sites.google.com/view/yuhangliu/homepage'> Dr. Yuhang Liu</a>. My research primarily delves into the intersection of causality and machine learning, with a focus on causal representation learning, domain-adaptive models, and causal generative modeling.
