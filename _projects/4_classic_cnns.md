@@ -3,8 +3,8 @@ layout: page
 title:  Classic CNNs
 description: Implementation of classic CNN backbones for deep learning practice.
 img: assets/img/projects/cnns_cover.png
-importance: 1
-category:  other fun
+importance: 3
+category:  sci-tech
 ---
 
 This project involved the implementation of various classic CNN backbones, aimed at self-learning and practice. It includes code for basic classification tasks, enhanced with features such as early stopping, inference acceleration, and training monitoring. The project's code repository has received over a hundred stars, indicating its usefulness to others, especially those new to the field of deep learning. I am pleased that it serves as a resource for those beginning their journey in deep learning.
