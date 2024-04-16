@@ -1,7 +1,7 @@
 ---
 layout: post
 title: My True Pursuit
-date: 2024-04-07 9:32:00 -0000
+date: 2024-04-07 9:32:00 -0930
 description: A four-stanza poem on the theme of love and life.
 tags: random
 ---
