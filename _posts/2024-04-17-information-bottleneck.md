@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How Information Bottleneck Helps Representation Learning
-date: 2024-04-17 05:37:00 -0930
+date: 2024-04-16 20:30:00 -0000
 description: From the Rate Distortion Theory to β−VAE
 tags: study
 categories: reading
