@@ -21,4 +21,4 @@ I am a first-year PhD student in Computer Science at the <a href='https://www.ad
 
 Before commencing my PhD, I accumulated four years of industry experience, specifically at <a href='https://www.huawei.com/en/corporate-information'>Huawei</a>, <a href='https://www.tellhow.com/en/index.html'>TellHow</a>, and <a href='https://www.chengshizhiguang.com/'>Autocity (Shenzhen)</a>, with a specialization in computer vision applications. Prior to this, I obtained my M.S. in Engineering and B.Eng. degrees from <a href='http://english.whut.edu.cn/'>Wuhan University of Technology</a>. 
 
-I am a proactive and dedicated researcher, committed to applying my expertise gained from both academic training and practical industrial experience to advance technology for the greater good of society.
+
