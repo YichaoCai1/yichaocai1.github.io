@@ -3,8 +3,8 @@
   contents:
     - name: Full Name
       value: Yichao Cai
-    - name: Date of Birth
-      value: 04th November 1994
+    # - name: Date of Birth
+    #   value: 04th November 1994
     - name: Languages
       value: Chinese (Mandarin), English
 
@@ -23,6 +23,9 @@
     - title: Software Engineer
       institution: Huawei Technologies Co., Ltd, China
       year: 2019 - 2020
+    - title: Visting Student
+      institution: California PATH, UC Berkeley
+      year: May - OCT., 2018
 
 - title: Education
   type: time_table
