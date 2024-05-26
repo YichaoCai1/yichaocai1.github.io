@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Three Weekly Self-Introspections
+title: Three Weekly Self\-Introspections
 date: 2024-05-25 9:00:00 -0930
 description: To help maintain focus and progress in my research.
 tags: study
