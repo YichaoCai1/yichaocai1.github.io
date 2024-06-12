@@ -3,8 +3,8 @@ layout: page
 title: projects
 permalink: /projects/
 description:
-nav: true
-nav_order: 2     
+nav: false
+nav_order: 4     
 display_categories: [sci-tech, other fun]
 horizontal: false
 ---
