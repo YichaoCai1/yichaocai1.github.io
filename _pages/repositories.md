@@ -4,7 +4,7 @@ permalink: /repos/
 title: repos
 description: selected
 nav: true
-nav_order: 2
+nav_order: 1
 ---
 
 ### GitHub users
