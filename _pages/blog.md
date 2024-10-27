@@ -3,8 +3,8 @@ layout: post # page
 permalink: /blog/ # /bulla lab/
 title: blog
 description: # It is amazing what you can accomplish if you do not care who gets the credit. - Harry Truman
-nav: false
-nav_order: 3
+nav: true
+nav_order: 2
 ---
 
 <!-- ---
