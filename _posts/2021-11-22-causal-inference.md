@@ -2,7 +2,7 @@
 layout: post
 title: Reading Report of Causal Inference
 date: 2021-11-22 13:40:00 -0930
-description: A reading report of "Elements of causal inference" by J. Peters et al.
+description: Itell
 tags: study
 categories: reading
 ---
