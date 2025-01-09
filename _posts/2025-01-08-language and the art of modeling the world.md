@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Reading Report of Causal Inference
+title: Language and the Art of Modeling the World
 date: 2025-01-08 00:00:00 -0930
-description: Language and the Art of Modeling the World
+description: Random thoughts on modeling.
 tags: random
 categories: thoughts
 ---

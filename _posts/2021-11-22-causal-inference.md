@@ -2,7 +2,7 @@
 layout: post
 title: Reading Report of Causal Inference
 date: 2021-11-22 13:40:00 -0930
-description: Itell
+description: Some basic concepts in causality.
 tags: study
 categories: reading
 ---
