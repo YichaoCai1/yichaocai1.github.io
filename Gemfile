@@ -21,3 +21,8 @@ group :other_plugins do
     gem 'httparty'
     gem 'feedjira'
 end
+
+
+if Gem::Specification.find_by_name('uri').version < Gem::Version.new('1.0.2')
+    gem 'uri', '~> 1.0.2'
+  end

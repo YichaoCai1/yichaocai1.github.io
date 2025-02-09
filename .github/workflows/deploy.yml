@@ -26,8 +26,9 @@ jobs:
     - name: Install Dependencies
       run: |
         gem install bundler
+        bundle config set path 'vendor/bundle'
         bundle install
-        bundle update uri
+        bundle update uri # Ensure the correct version of `uri` is installed
 
     - name: Setup deploy options
       id: setup
