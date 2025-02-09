@@ -21,3 +21,6 @@ group :other_plugins do
     gem 'httparty'
     gem 'feedjira'
 end
+
+# Explicitly specify the required version of 'uri'
+gem 'uri', '~> 1.0.2'
