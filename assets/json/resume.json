@@ -208,6 +208,14 @@
         "Philosophical finction",
         "Poetry"
       ]
+    },
+    {
+      "name": "Outdoor activities",
+      "icon": "fa-solid fa-tag",
+      "keywords": [
+        "Hiking",
+        "Nighttime strolls"
+      ]
     }
   ],
   "references": [
