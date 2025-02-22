@@ -20,8 +20,6 @@ group :jekyll_plugins do
   gem 'unicode_utils'
   gem 'webrick'
 
-  # Fix sass-embedded issue
-  gem 'jekyll-sass-converter', '~> 2.0'
 end
 
 group :other_plugins do
