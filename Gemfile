@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'github-pages', group: :jekyll_plugins
+
 group :jekyll_plugins do
   gem 'jekyll'
   gem 'jekyll-archives'
@@ -17,6 +19,9 @@ group :jekyll_plugins do
   gem 'mini_racer'
   gem 'unicode_utils'
   gem 'webrick'
+
+  # Fix sass-embedded issue
+  gem 'jekyll-sass-converter', '~> 2.0'
 end
 
 group :other_plugins do
