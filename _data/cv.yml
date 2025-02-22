@@ -8,6 +8,19 @@
     - name: Languages
       value: Chinese (Mandarin), English
 
+- title: Education
+  type: time_table
+  contents:
+    - title: PhD
+      institution: The University of Adelaide, Australia
+      year: 2023 - PRESENT
+    - title: M.S. in Engineering
+      institution: Wuhan University of Technology, China
+      year: 2016 - 2019
+    - title: B.Eng.
+      institution: Wuhan University of Technology, China
+      year: 2012 - 2016
+
 - title: Experience
   type: time_table
   contents:
@@ -27,15 +40,4 @@
       institution: California PATH, UC Berkeley
       year: May - OCT., 2018
 
-- title: Education
-  type: time_table
-  contents:
-    - title: PhD
-      institution: The University of Adelaide, Australia
-      year: 2023 - PRESENT
-    - title: M.S. in Engineering
-      institution: Wuhan University of Technology, China
-      year: 2016 - 2019
-    - title: B.Eng.
-      institution: Wuhan University of Technology, China
-      year: 2012 - 2016
+

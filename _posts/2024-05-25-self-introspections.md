@@ -4,6 +4,7 @@ title: Three Weekly Self-Introspections
 date: 2024-05-25 9:00:00 -0930
 description: To help maintain focus and progress in my research.
 tags: study
+featured: true
 ---
 
 If possible, every *Monday evening*, ask myself these questions, reflect, and think before moving on to next week's work:

@@ -5,6 +5,7 @@ date: 2025-01-08 00:00:00 -0930
 description: Random thoughts on modeling.
 tags: random
 categories: thoughts
+giscus_comments: true
 ---
 
 **The Symbolic Nature of Language**
@@ -34,5 +35,3 @@ In contrast, LLMs are remarkable tools for decoding and mimicking human language
 True intelligence, then, might lie at the intersection of language and sensory experience. A system capable of grounding linguistic symbols in real-world phenomena—of connecting words to sights, sounds, and actions—would move closer to genuine understanding. This is why efforts in multimodal AI, which integrate textual, visual, and auditory data, represent an exciting frontier. By anchoring symbols in sensory input, such systems could achieve a more holistic grasp of the world.
 
 For now, human intelligence remains the mediator of meaning. We interpret, contextualize, and assign value to the outputs of language models, just as we do with any symbolic system. In this interplay, LLMs reveal their true purpose: not as independent agents of understanding, but as extensions of our own capacity to model and make sense of the world. 
-
-> This blog post was thoughtfully polished with the assistance of ChatGPT to refine its ideas and language.

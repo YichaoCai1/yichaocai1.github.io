@@ -5,6 +5,8 @@ date: 2025-02-22 18:00:00 -0930
 description: Some random thoughts about (artificial) intelligence.
 tags: random
 categories: thoughts
+giscus_comments: true
+citation: true
 ---
 
 > "Virtue is the golden mean between two extremes." — Aristotle, Nicomachean Ethics

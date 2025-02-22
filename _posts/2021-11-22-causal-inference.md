@@ -5,6 +5,7 @@ date: 2021-11-22 13:40:00 -0930
 description: Some basic concepts in causality.
 tags: study
 categories: reading
+giscus_comments: true
 ---
 
 > "Correlation does not imply causation."

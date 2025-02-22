@@ -5,6 +5,7 @@ date: 2024-01-16 19:30:00 -0930
 description: Reflections after reading papers on contrastive learning theory.
 tags: study
 categories: thoughts
+giscus_comments: true
 ---
 
 > This passage initiates by addressing the question depicted in <span style="color:purple">fig.1 text</span>.  Despite reviewing the referenced papers <span style="color:purple">[1-6]</span>, I acknowledge lingering uncertainties regarding the nuances of contrastive representation learning. Therefore, I draft this for later review and reflections.
