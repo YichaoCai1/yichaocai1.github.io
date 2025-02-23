@@ -23,11 +23,9 @@ announcements:
 latest_posts:
   enabled: true
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 2 # leave blank to include all the blog posts
+  limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a second-year PhD candidate at [AIML](https://www.adelaide.edu.au/aiml), [The University of Adelaide](https://www.adelaide.edu.au/), under the supervision of [Prof. Javen Qinfeng Shi](https://cs.adelaide.edu.au/~javen/), [Dr. Zhen Zhang](https://zzhang.org/), and [Dr. Yuhang Liu](https://sites.google.com/view/yuhangliu/homepage). My research lies at the intersection of causality and machine learning, focusing on (multimodal) representation learning, and generative modeling. By exploring identifiability, I aim to bridge empirical success with theoretical rigor, creating machine learning models that are both reliable and controllable.
+I am a second-year PhD candidate at [AIML](https://www.adelaide.edu.au/aiml), [The University of Adelaide](https://www.adelaide.edu.au), under the supervision of [Prof. Javen Qinfeng Shi](https://cs.adelaide.edu.au/~javen), [Dr. Zhen Zhang](https://zzhang.org), and [Dr. Yuhang Liu](https://sites.google.com/view/yuhangliu/homepage). My research lies at the intersection of causality and machine learning, focusing on (multimodal) representation learning, and generative modeling. By exploring identifiability, I aim to bridge empirical success with theoretical rigor, creating machine learning models that are both reliable and controllable.
 
 Looking ahead, I envision advanced AI systems that deeply understand human conceptual frameworks while remaining inherently interpretable, fostering trust and meaningful collaboration between humans and machines.
-
-Outside of research, I find peace in reading, hiking, and taking nighttime strolls.
