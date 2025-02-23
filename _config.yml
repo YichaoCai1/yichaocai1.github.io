@@ -4,7 +4,7 @@
 
 title: blank # the website title (if blank, full name will be used instead)
 first_name: Yichao
-middle_name: 
+middle_name:
 last_name: Cai
 email: yichao.cai@adelaide.edu.au
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
@@ -14,13 +14,13 @@ footer_text: >
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
 keywords: ""
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: logo.png   # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: logo.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 # repository: "YichaoCai1/yichaocai1.github.io"
 url: https://yichaocai1.github.io # the base hostname & protocol for your site
-baseurl: ""  # Leave blank for GitHub User Pages
+baseurl: "" # Leave blank for GitHub User Pages
 last_updated: false # set to true if you want to display last updated in the footer
-impressum_path:  # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
+impressum_path: # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
 back_to_top: true # set to false to disable the back to top button
 
 # -----------------------------------------------------------------------------
@@ -79,14 +79,14 @@ semanticscholar_id: # your Semantic Scholar ID
 orcid_id: # 0000-0003-1607-8948 # your ORCID ID
 medium_username: # your Medium username
 quora_username: # your Quora username
-publons_id: # your ID on Publons F-2946-2011 
+publons_id: # your ID on Publons F-2946-2011
 research_gate_profile: # your profile on ResearchGate
 blogger_url: # your blogger URL
 work_url: # work page URL
 keybase_username: # your keybase user name
 wikidata_id: # your wikidata id
 dblp_url: # your DBLP profile url
-stackoverflow_id: # your stackoverflow id 6318684 
+stackoverflow_id: # your stackoverflow id 6318684
 kaggle_id: # your kaggle id
 lastfm_id: # your lastfm id
 spotify_id: # 31qknkkrwvlripfn3kwgjshhwq3u # your spotify id
@@ -102,15 +102,14 @@ contact_note: > #You can even add a little note about which of these is the best
 # Analytics and search engine verification
 # -----------------------------------------------------------------------------
 
-google_analytics:  # your Goole Analytics measurement ID (format: G-XXXXXXXXXX)
-panelbear_analytics:  # panelbear analytics site ID (format: XXXXXXXXX)
+google_analytics: # your Goole Analytics measurement ID (format: G-XXXXXXXXXX)
+panelbear_analytics: # panelbear analytics site ID (format: XXXXXXXXX)
 pirsch_analytics: # your Pirsch analytics site ID (length 32 characters)
 openpanel_analytics: # your Openpanel analytics client ID (format: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX)
 
 # For Google Search Console, see https://support.google.com/webmasters/answer/9008080?hl=en#meta_tag_verification&zippy=%2Chtml-tag
 google_site_verification: # your google-site-verification ID (Google Search Console)
 bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
-
 
 # -----------------------------------------------------------------------------
 # Blog
@@ -156,7 +155,6 @@ external_sources:
   # - name: medium.com
   #   rss_url: https://medium.com/@al-folio/feed
 
-
 # -----------------------------------------------------------------------------
 # Newsletter
 # -----------------------------------------------------------------------------
@@ -165,7 +163,6 @@ newsletter:
   enabled: false
   endpoint: # your loops endpoint (e.g., https://app.loops.so/api/newsletter-form/YOUR-ENDPOINT)
   # https://loops.so/docs/forms/custom-form
-
 
 # -----------------------------------------------------------------------------
 # Collections
@@ -288,7 +285,7 @@ jekyll-archives:
     tag: "/blog/tag/:name/"
     category: "/blog/category/:name/"
 
-display_tags: ['study', 'random'] # this tags will be dispalyed on the front page of your blog
+display_tags: ["study", "random"] # this tags will be dispalyed on the front page of your blog
 display_categories: ["thoughts"]
 
 # -----------------------------------------------------------------------------
@@ -296,7 +293,6 @@ display_categories: ["thoughts"]
 # -----------------------------------------------------------------------------
 
 scholar:
-
   last_name: Cai
   first_name: [Yichao, Y., Y]
 

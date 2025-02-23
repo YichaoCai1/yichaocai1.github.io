@@ -196,26 +196,17 @@
     {
       "name": "Guitar",
       "icon": "fa-solid fa-tag",
-      "keywords": [
-        "Finger-style"
-      ]
+      "keywords": ["Finger-style"]
     },
     {
       "name": "Reading",
       "icon": "fa-solid fa-tag",
-      "keywords": [
-        "Literature",
-        "Philosophical finction",
-        "Poetry"
-      ]
+      "keywords": ["Literature", "Philosophical finction", "Poetry"]
     },
     {
       "name": "Outdoor activities",
       "icon": "fa-solid fa-tag",
-      "keywords": [
-        "Hiking",
-        "Nighttime strolls"
-      ]
+      "keywords": ["Hiking", "Nighttime strolls"]
     }
   ],
   "references": [

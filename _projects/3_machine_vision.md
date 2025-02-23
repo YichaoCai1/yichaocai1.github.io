@@ -1,10 +1,10 @@
 ---
 layout: page
-title:  Machine Vision
+title: Machine Vision
 description: Design and implementation of machine vision systems.
 img: assets/img/projects/machinevision_cover.png
 importance: 3
-category:  # sci-tech
+category: # sci-tech
 ---
 
 Distinct to computer vision applications, machine vision systems emphasize precision, robustness, and time efficiency, rather than generalization capabilities. In algorithm design for these systems, traditional pattern recognition methods are frequently utilized, with controlled illumination serving to mitigate algorithmic complexity. With recent advancements in model acceleration techniques, the incorporation of deep neural networks in the architecture of machine vision systems has gained prominence. Nevertheless, it is imperative to optimize the system's design to minimize indeterminacy and complexity in algorithms, ensuring the effective modeling of machine vision tasks. This approach is crucial for maintaining the high standards of accuracy and efficiency required in automated processes and industrial applications.
@@ -30,7 +30,6 @@ This project introduces an online machine vision system specifically designed fo
 <div class="caption">
     Tailored algorithms for yarn cone defect detection.
 </div>
-
 
 **Machine Vision System for Rail Welding Alignment Measurement**
 

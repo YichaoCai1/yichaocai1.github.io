@@ -1,10 +1,10 @@
 ---
 layout: page
-title:  Power Industry
+title: Power Industry
 description: Applying computer vision in the power industry.
 img: assets/img/projects/power.png
 importance: 2
-category:  sci-tech
+category: sci-tech
 ---
 
 **Status Recognition and Defect Detection for Power System Equipment**

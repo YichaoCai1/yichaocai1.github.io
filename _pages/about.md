@@ -26,8 +26,8 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a second-year PhD candidate at Australian Institute for Machine Learning (AIML), University of Adelaide, under the supervision of Prof. Javen Qinfeng Shi, Dr. Zhen Zhang, and Dr. Yuhang Liu. 
+I am a second-year PhD candidate at Australian Institute for Machine Learning (AIML), University of Adelaide, under the supervision of Prof. Javen Qinfeng Shi, Dr. Zhen Zhang, and Dr. Yuhang Liu.
 
-My research lies at the intersection of causality and machine learning, focusing on (multimodal) representation learning, and generative modeling. By exploring identifiability, I aim to bridge empirical success with theoretical rigor, creating machine learning models that are both reliable and controllable. 
+My research lies at the intersection of causality and machine learning, focusing on (multimodal) representation learning, and generative modeling. By exploring identifiability, I aim to bridge empirical success with theoretical rigor, creating machine learning models that are both reliable and controllable.
 
 Looking ahead, I envision advanced AI systems that deeply understand human conceptual frameworks while remaining inherently interpretable, fostering trust and meaningful collaboration between humans and machines.
