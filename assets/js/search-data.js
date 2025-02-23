@@ -37,35 +37,7 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "nav-projects",
-          title: "projects",
-          description: "A growing collection of your cool projects.",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/projects/";
-          },
-        },{id: "dropdown-publications",
-              title: "publications",
-              description: "",
-              section: "Dropdown",
-              handler: () => {
-                window.location.href = "";
-              },
-            },{id: "dropdown-projects",
-              title: "projects",
-              description: "",
-              section: "Dropdown",
-              handler: () => {
-                window.location.href = "";
-              },
-            },{id: "dropdown-blog",
-              title: "blog",
-              description: "",
-              section: "Dropdown",
-              handler: () => {
-                window.location.href = "/blog/";
-              },
-            },{id: "post-the-generalization-specialization-dilemma",
+        },{id: "post-the-generalization-specialization-dilemma",
       
         title: "The Generalization–Specialization Dilemma",
       
@@ -134,32 +106,7 @@ ninja.data = [{
     },{id: "news-our-work-clap-isolating-content-from-style-through-contrastive-learning-with-augmented-prompts-is-accepted-to-appear-at-eccv-2024",
           title: 'Our work, CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts,...',
           description: "",
-          section: "News",},{id: "projects-transportation-amp-self-driving",
-          title: 'Transportation &amp;amp; Self-Driving',
-          description: "Perception projects in transportation and autonomous driving.",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/1_transportation_av/";
-            },},{id: "projects-power-industry",
-          title: 'Power Industry',
-          description: "Applying computer vision in the power industry.",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/2_power_industry/";
-            },},{id: "projects-ruff-sperm",
-          title: 'ruff sperm',
-          description: "Describing ruff sperm motility and morphology and comparing these traits across morphs.",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/2_ruff_sperm/";
-            },},{id: "projects-machine-vision",
-          title: 'Machine Vision',
-          description: "Design and implementation of machine vision systems.",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/3_machine_vision/";
-            },},{id: "projects-classic-cnns",
-          title: 'Classic CNNs',
-          description: "Implementation of classic CNN backbones for deep learning practice.",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/4_classic_cnns/";
-            },},{
+          section: "News",},{
         id: 'social-discord',
         title: 'Discord',
         section: 'Socials',
@@ -207,13 +154,6 @@ ninja.data = [{
         section: 'Socials',
         handler: () => {
           window.open("https://twitter.com/YichaoCai", "_blank");
-        },
-      },{
-        id: 'social-custom_social',
-        title: 'Custom_social',
-        section: 'Socials',
-        handler: () => {
-          window.open("https://www.zhihu.com/people/YichaoCai", "_blank");
         },
       },{
       id: 'light-theme',
