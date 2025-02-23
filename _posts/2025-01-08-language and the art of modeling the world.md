@@ -5,7 +5,6 @@ date: 2025-01-08 00:00:00 -0930
 description: Random thoughts on modeling.
 tags: random
 categories: thoughts
-giscus_comments: true
 ---
 
 **The Symbolic Nature of Language**

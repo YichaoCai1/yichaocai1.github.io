@@ -5,14 +5,13 @@ date: 2024-01-16 19:30:00 -0930
 description: Reflections after reading papers on contrastive learning theory.
 tags: study
 categories: thoughts
-giscus_comments: true
 ---
 
 > This passage initiates by addressing the question depicted in <span style="color:purple">fig.1 text</span>. Despite reviewing the referenced papers <span style="color:purple">[1-6]</span>, I acknowledge lingering uncertainties regarding the nuances of contrastive representation learning. Therefore, I draft this for later review and reflections.
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="assets/img/posts/cl_pair1.png" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/posts/cl_pair1.png" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -25,10 +24,10 @@ Although current researches demonstrates that the content variable causes the st
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="assets/img/posts/image_3.png" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/posts/image_3.png" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="assets/img/posts/image_2.png" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/posts/image_2.png" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -52,7 +51,7 @@ To clarify the goal of disentangled representation learning, it becomes imperati
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="assets/img/posts/oldman1.png" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/posts/oldman1.png" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">

@@ -5,8 +5,8 @@ date: 2025-02-22 18:00:00 -0930
 description: Some random thoughts about (artificial) intelligence.
 tags: random
 categories: thoughts
-giscus_comments: true
 citation: true
+thumbnail: assets/img/posts/tradeoff.png
 ---
 
 > "Virtue is the golden mean between two extremes." — Aristotle, Nicomachean Ethics
@@ -17,7 +17,7 @@ Intelligence, whether artificial or biological, faces a fundamental dilemma: the
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="assets/img/posts/tradeoff.png" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/posts/tradeoff.png" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
