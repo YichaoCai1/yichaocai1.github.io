@@ -15,7 +15,7 @@ This project introduces an online machine vision system specifically designed fo
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/projects/machinevision_cover.png" title="cor" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="assets/img/projects/machinevision_cover.png" title="cor" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -24,7 +24,7 @@ This project introduces an online machine vision system specifically designed fo
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/projects/yarn_defect.png" title="cor" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="assets/img/projects/yarn_defect.png" title="cor" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -37,7 +37,7 @@ This project introduces a machine vision system designed for assessing the align
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/projects/railalign.png" title="cor" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="assets/img/projects/railalign.png" title="cor" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">

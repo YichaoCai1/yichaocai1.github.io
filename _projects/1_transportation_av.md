@@ -13,7 +13,7 @@ This project presents a novel framework for precise curb detection in autonomous
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/projects/curb.png" title="cor" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="assets/img/projects/curb.png" title="cor" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -26,7 +26,7 @@ This project proposes a drivable road region detection approach for fixed-route 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/projects/autonomousdriving_cover.png" title="cor" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="assets/img/projects/autonomousdriving_cover.png" title="cor" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -39,7 +39,7 @@ A video driving simulation software has been developed for evaluating traffic si
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/projects/drivingsimulation.png" title="cor" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="assets/img/projects/drivingsimulation.png" title="cor" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -52,7 +52,7 @@ This project contributes to human-vehicle interaction research in autonomous dri
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/projects/headpose.png" title="cor" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="assets/img/projects/headpose.png" title="cor" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">

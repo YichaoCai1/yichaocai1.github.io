@@ -11,13 +11,13 @@ Ruff _Calidris pugnax_ is a Palearctic lekking shorebird with three strikingly d
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/02_ruff_i.png" title="independent" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="assets/img/02_ruff_i.png" title="independent" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/02_ruff_s.png" title="sattelite" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="assets/img/02_ruff_s.png" title="sattelite" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/02_ruff_f.png" title="faeder" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="assets/img/02_ruff_f.png" title="faeder" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
