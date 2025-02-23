@@ -8,8 +8,7 @@ profile:
   image: me.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>"A good half of the art of living</p>
-    <p> is resilience." — Alain de Botton</p>
+    <p>"A good half of the art of living is resilience." — Alain de Botton</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
