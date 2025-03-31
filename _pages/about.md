@@ -11,7 +11,7 @@ profile:
     <p style="font-style: italic; font-size: 0.9em;">"A good half of the art of living is resilience." — Alain de Botton</p>
     <style>
       img[src$="me.jpg"] {
-        max-height: 320px;
+        max-height: 280px !important;
         object-fit: cover;
         border-radius: 12px;
       }

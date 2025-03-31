@@ -401,23 +401,23 @@ ul.task-list input[type="checkbox"] {
   text-align: center;
 
   .contact-icons {
-    font-size: 4rem;
+    font-size: 1.2rem; // scale icon fonts (like Font Awesome)
 
     a {
       img {
-        width: 3.2rem;
-        height: 3.2rem;
-        margin-bottom: 1rem;
-      }
-
-      svg {
-        width: 3.5rem;
-        height: 4rem;
+        width: 1.6rem;
+        height: 1.6rem;
         margin-bottom: 0.5rem;
-
+      }
+  
+      svg {
+        width: 1.8rem;
+        height: 1.8rem;
+        margin-bottom: 0.3rem;
+  
         image {
-          width: 3.5rem;
-          height: 3.5rem;
+          width: 1.8rem;
+          height: 1.8rem;
         }
       }
 
@@ -502,6 +502,11 @@ footer.sticky-bottom {
   .container {
     text-align: center;
   }
+}
+
+footer.fixed-bottom,
+footer.sticky-bottom {
+  display: none !important;
 }
 
 // CV
