@@ -1,30 +1,37 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
 subtitle: 蔡逸超
 profile:
   align: right
   image: me.jpg
-  image_circular: false # crops the image to make it circular
+  image_circular: false
   more_info: >
-    <p>"A good half of the art of living is resilience." — Alain de Botton</p>
+    <p style="font-style: italic; font-size: 0.9em;">"A good half of the art of living is resilience." — Alain de Botton</p>
+    <style>
+      img[src$="me.jpg"] {
+        max-height: 320px;
+        object-fit: cover;
+        border-radius: 12px;
+      }
+    </style>
 
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+selected_papers: true
+social: true
 
 announcements:
-  enabled: true # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
+  enabled: true
+  scrollable: true
+  limit: 5
 
 latest_posts:
   enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
+  scrollable: true
+  limit: 3
 ---
 
-I am a second-year PhD candidate at the Australian Institute for Machine Learning (AIML), University of Adelaide, under the supervision of Prof. Javen Qinfeng Shi, Dr. Zhen Zhang, and Dr. Yuhang Liu. I received my M.S. and B.Eng. degrees in Instrument Science from Wuhan University of Technology.
+I am a second-year PhD candidate at the <a href="https://www.adelaide.edu.au/aiml" target="_blank">Australian Institute for Machine Learning</a> (AIML), <a href="https://www.adelaide.edu.au/" target="_blank">University of Adelaide</a>, under the supervision of <a href="https://cs.adelaide.edu.au/~javen/" target="_blank">Prof. Javen Qinfeng Shi</a>, <a href="https://zzhang.org/" target="_blank">Dr. Zhen Zhang</a>, and <a href="https://sites.google.com/view/yuhangliu/homepage" target="_blank">Dr. Yuhang Liu</a>. I received my M.S. and B.Eng. degrees in Instrument Science from Wuhan University of Technology.
 
 My research sits at the intersection of causality and machine learning, with a focus on (multimodal) representation learning and generative modeling. By exploring identifiability, I aim to bridge empirical success with theoretical rigor, developing machine learning models that are both reliable and controllable.
 
