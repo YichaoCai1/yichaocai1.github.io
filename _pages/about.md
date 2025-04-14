@@ -35,6 +35,6 @@ I am a second-year PhD candidate at the <a href="https://www.adelaide.edu.au/aim
 
 My research lies at the intersection of <strong>representation learning</strong>, <strong>multimodal modeling</strong>, and <strong>causality</strong>. I aim to develop principled machine learning systems that can faithfully capture semantic structure—even in the presence of noise, bias, or missing supervision.
 
-At the core of my work is a simple question: <em>What makes a representation meaningful, controllable, and aligned with how humans understand the world?</em> I believe that building reliable and interpretable AI requires more than scale—it demands a deeper engagement with human conceptual frameworks. 
+At the core of my work is a simple question: <em>What makes a representation meaningful, controllable, and aligned with how humans understand the world?</em> I believe that building reliable and interpretable AI requires more than scale—it demands a deeper engagement with human conceptual frameworks.
 
 Looking ahead, I envision machine learning systems that reason with structure, respect uncertainty, and remain accountable to the values we encode in data.
