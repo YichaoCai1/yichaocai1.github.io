@@ -33,6 +33,8 @@ latest_posts:
 
 I am a second-year PhD candidate at the <a href="https://www.adelaide.edu.au/aiml" target="_blank">Australian Institute for Machine Learning</a> (AIML), <a href="https://www.adelaide.edu.au/" target="_blank">University of Adelaide</a>, under the supervision of <a href="https://cs.adelaide.edu.au/~javen/" target="_blank">Prof. Javen Qinfeng Shi</a>, <a href="https://zzhang.org/" target="_blank">Dr. Zhen Zhang</a>, and <a href="https://sites.google.com/view/yuhangliu/homepage" target="_blank">Dr. Yuhang Liu</a>. I received my M.S. and B.Eng. degrees in Instrument Science from Wuhan University of Technology.
 
-My research sits at the intersection of causality and machine learning, with a focus on (multimodal) representation learning and generative modeling. By exploring identifiability, I aim to bridge empirical success with theoretical rigor, developing machine learning models that are both reliable and controllable.
+My research lies at the intersection of <strong>representation learning</strong>, <strong>multimodal modeling</strong>, and <strong>causality</strong>. I aim to develop principled machine learning systems that can faithfully capture semantic structure—even in the presence of noise, bias, or missing supervision.
 
-Looking ahead, I envision AI systems that deeply grasp human conceptual frameworks while remaining inherently interpretable, fostering trust and meaningful collaboration between humans and machines.
+At the core of my work is a simple question: <em>What makes a representation meaningful, controllable, and aligned with how humans understand the world?</em> I believe that building reliable and interpretable AI requires more than scale—it demands a deeper engagement with human conceptual frameworks. 
+
+Looking ahead, I envision machine learning systems that reason with structure, respect uncertainty, and remain accountable to the values we encode in data.
