@@ -37,4 +37,4 @@ My research lies at the intersection of <strong>representation learning</strong>
 
 At the core of my work is a simple question: <em>What makes a representation meaningful, controllable, and aligned with how humans understand the world?</em> I believe that building reliable and interpretable AI requires more than scale—it demands a deeper engagement with human conceptual frameworks.
 
-Looking ahead, I envision machine learning systems that reason with structure, respect uncertainty, and remain accountable to the values we encode in data.
+Looking ahead, I envision machine learning systems that reason with structure, embrace changes, and remain accountable to the values we encode in data.
