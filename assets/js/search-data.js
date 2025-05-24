@@ -106,8 +106,8 @@ ninja.data = [{
     },{id: "news-our-work-clap-isolating-content-from-style-through-contrastive-learning-with-augmented-prompts-is-accepted-to-appear-at-eccv-2024",
           title: 'Our work, CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts,...',
           description: "",
-          section: "News",},{id: "news-check-out-our-new-preprint-negate-or-embrace-on-how-misalignment-shapes-multimodal-representation-learning",
-          title: 'Check out our new preprint—Negate or Embrace: On How Misalignment Shapes Multimodal Representation...',
+          section: "News",},{id: "news-check-out-our-new-preprint-on-the-value-of-cross-modal-misalignment-in-multimodal-representation-learning",
+          title: 'Check out our new preprint—On the Value of Cross-Modal Misalignment in Multimodal Representation...',
           description: "",
           section: "News",},{
         id: 'social-discord',
