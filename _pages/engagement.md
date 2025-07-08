@@ -1,16 +1,10 @@
 ---
 layout: page
 permalink: /engagement/
-title: engagement
-description: Teaching, mentoring, and academic involvement
+title: academic engagement
+description: Teaching and scholarly community contributions.
 nav: true
 nav_order: 2
----
-
-## Academic Engagement
-
-Teaching and scholarly community contributions.
-
 ---
 
 ### Teaching
