@@ -22,6 +22,6 @@ Teaching and scholarly community contributions.
 
 ### Community Contributions
 
--  I am actively seeking opportunities to contribute as a reviewer for academic venues.
+- I am actively seeking opportunities to contribute as a reviewer for academic venues.
 
 ---
