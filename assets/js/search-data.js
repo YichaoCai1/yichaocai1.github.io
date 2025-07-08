@@ -16,9 +16,9 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "nav-engagement",
-          title: "engagement",
-          description: "Teaching, mentoring, and academic involvement",
+        },{id: "nav-academic-engagement",
+          title: "academic engagement",
+          description: "Teaching and scholarly community contributions.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/engagement/";
