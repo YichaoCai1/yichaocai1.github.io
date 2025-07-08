@@ -10,7 +10,7 @@ nav_order: 2
 ### Teaching
 
 - **Concepts in Artificial Intelligence and Machine Learning (COMP_SCI_7327)** – Teaching Assistant, Trimester 1, 2025)
-- **Using Machine Learning Tools (COMP_SCI_7317)** – Teaching Assistant, Trimester 2, 2023)
+- **Using Machine Learning Tools (COMP_SCI_7317)** – Teaching Assistant, Trimester 2, 2025)
 
 ---
 
