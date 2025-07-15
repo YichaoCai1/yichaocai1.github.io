@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css?family=Sanchez');
 @import url('https://fonts.googleapis.com/css?family=Exo:200');
 
+
 /* Body */
 body {
   margin: 0;
@@ -86,12 +87,14 @@ hr {
 
 /* Link */
 a, a:visited, a:link, a:active {
+  color: #1F77B4;       
   text-decoration: none;
   font-family: 'Roboto Slab', serif;
+  transition: color 0.15s;
 }
-a:visited {
+/* a:visited {
   color: inherit;
-}
+} */
 .nonwhite {
   color: white;
 }
