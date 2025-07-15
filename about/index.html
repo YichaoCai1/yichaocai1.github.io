@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>About Me</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="author" content="Yichao Cai">
+        <meta property="og:url" content="website">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
+        <link rel="stylesheet" type="text/css" href="../css/card.css">
+        <link rel="icon" type="image/png" href="/images/favicon-brain.png"
+        sizes="32x32">
+        <style type="text/css">
+            @import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+            @import url('https://fonts.googleapis.com/css?family=Ubuntu');
+            @import url('https://fonts.googleapis.com/css?family=Righteous|Ubuntu');
+            @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+            .navbar {
+                -webkit-border-radius: 0;
+                -moz-border-radius: 0;
+                border-radius: 0;
+                margin-bottom: 0;
+                border-bottom-color: #E3E4E4;
+                color: #1F77B4;
+            }
+            .navbar-brand {
+                font-family: 'Quicksand', cursive;
+                font-weight: 600;
+            }
+            .navbar li {
+                font-family: 'Quicksand', sans-serif;
+                font-weight: 600;
+            }
+            .icon-bar {
+                background: #000;
+            }
+            #title {
+                /* background-color: #0E2F44;*/
+                background-color: #FFF;
+                color: #000;
+                text-align: center;
+                font-family: 'Quicksand', sans-serif;
+                margin-top: 100px;
+                /*justify-content: center;*/
+            }
+            #about {
+                margin-top: 100px;
+            }
+            #about h3 {
+                font-family: 'Quicksand', sans-serif;
+            }
+            #about h5 {
+                font-family: 'Quicksand', sans-serif;
+            }
+            #about p {
+                font-family: 'Quicksand', sans-serif;
+            }
+            #profile_photo {
+                height: 60%;
+                width: 60%;
+                border-radius: 15px;
+            }
+            @media (max-width: 768px) {
+                #profile_photo {
+                    height: 45%;
+                    width: 45%;
+                }
+                #intro_column {
+                    margin-top: 30px;
+                }
+            }
+            #intro_column a:link, a:visited {
+                color: #1F77B4;
+                text-decoration: none;
+            }
+            #intro_column a:hover {
+                color: #1F77B4;
+                text-decoration: underline;
+            }
+            #footer {
+                font-family: 'Quicksand', sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Top Navigation Bar -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <!-- Navigation Bar Header -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">y.cai</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/publications">Publications</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/service">Teaching & Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row" style="border:none; background:white" id="about">
+                <div class="col-lg-1 col-md-1 col-sm-3">
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12" id="img_column">
+                    <!-- img-responsive pull-right -->
+                    <img class="img-responsive center-block" src="../images/photo.jpg" id="profile_photo"/>
+                </div>
+                <div class="col-sm-3">
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" id="intro_column">
+                    <h3 style="text-align:center"><strong>Yichao Cai</strong> [蔡逸超]</h3>
+                    <h5 style="text-align:center">yichao.cai@adelaide.edu.au</h5>
+                    <hr>
+                        <p>
+                            I'm a 2nd-year Ph.D. student at the 
+                            <a href="https://www.adelaide.edu.au/aiml/" target="_blank">Australian Institute for Machine Learning (AIML)</a>, 
+                            <a href="https://www.adelaide.edu.au/" target="_blank">University of Adelaide</a>. 
+                            I'm fortunate to be advised by Prof. 
+                            <a href="https://www.cs.cmu.edu/~pradeepr/" target="_blank">Javen Qinfeng Shi</a> 
+                            and Dr 
+                            <a href="https://zzhang.org/" target="_blank">Zhen Zhang</a>. 
+                            I also work closely with Dr 
+                            <a href="https://sites.google.com/view/yuhangliu/homepage" target="_blank">Yuhang Liu</a>.
+                            
+                            <br><br>
+                            My research focuses on representation learning, multimodal modeling, and latent variable modeling. 
+                            I aim to develop principled AI models that can robustly infer and represent underlying semantic structures.
+                            
+                            <br><br>
+                            Prior to my Ph.D., I spent four years in industry. 
+                            I received my M.S. from 
+                            <a href="http://english.whut.edu.cn/" target="_blank">Wuhan University of Technology (WHUT)</a>, 
+                            where I was advised by Prof. Xiao Zhou. 
+                            During this time, I was also a visiting student researcher at 
+                            <a href="https://deepdrive.berkeley.edu/" target="_blank">Berkeley DeepDrive, UC Berkeley</a>, 
+                            advised by Dr 
+                            <a href="https://its.berkeley.edu/people/ching-yao-chan" target="_blank">Ching-Yao Chan</a>. 
+                            I earned my B.E. from WHUT as well.
+                        </p>
+                </div>
+                <div class="col-lg-2">
+                </div>
+            </div>
+        </div>
+        <footer class="page-footer font-small black pt-4" id="footer">
+            <div class="container-fluid text-center text-md-left" style="margin-top: 100px">
+                <p>yichaocai.com | PhD Student @ Causal AI Group, AIML, UoA</p>
+            </div>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="/js/main_beta.js" type="text/javascript"></script>
+    </body>
+</html>

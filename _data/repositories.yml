@@ -1,9 +1,0 @@
-github_users:
-  - YichaoCai1
-
-repo_description_lines_max: 2
-
-github_repos:
-  - YichaoCai1/CLAP
-  - YichaoCai1/torch_backbones
-  - YichaoCai1/crossmodal_mislaignment
