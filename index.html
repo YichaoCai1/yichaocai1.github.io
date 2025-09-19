@@ -1,320 +1,214 @@
 <!DOCTYPE html>
-<!--
-    Plain-Academic by Vasilios Mavroudis
-    Released under the Simplified BSD License/FreeBSD (2-clause) License.
-    https://github.com/mavroudisv/plain-academic
--->
-
 <html lang="en">
 <head>
-  <title>Yichao Cai's Personal Homepage</title>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" type="text/css">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yichao Cai's Personal Page</title>
+  <meta name="description" content="Academic homepage of Yichao Cai: research, publications, teaching, contact." />
   <style>
-    ul#links li {
-      display:inline;
-      padding: 10px;
+    :root {
+      --bg: #ffffff;
+      --fg: #111111;
+      --muted: #666666;
+      --link: #0a58ca;
+      --border: #e5e5e5;
+      --accent: #0a58ca20;
     }
-    a.tlk:link, a.tlk:visited, .tlk {
-      background-color: #3bc987;
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0b0c;
+        --fg: #f2f2f2;
+        --muted: #b3b3b3;
+        --link: #84b6ff;
+        --border: #222;
+        --accent: #84b6ff26;
+      }
     }
-    .footer {
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      background-color: gray;
-      color: white;
-      text-align: center;
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--fg);
+      background: var(--bg);
     }
-    .rounded {
-      width: 350px;
-      border-radius: 15px;
-      object-fit: cover;
-      display: block;
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    :focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+    .wrap { display: grid; grid-template-columns: 1fr; min-height: 100svh; }
+    nav { position: sticky; top: 0; z-index: 1; border-bottom: 1px solid var(--border); background: var(--bg); }
+    nav .inner { display: flex; gap: 1rem; align-items: center; justify-content: space-between; max-width: 1000px; margin: 0 auto; padding: .75rem 1rem; }
+    .brand { font-weight: 600; letter-spacing: .2px; }
+    .links { display: flex; gap: .75rem; flex-wrap: wrap; }
+    .links a { padding: .25rem .5rem; border-radius: .5rem; }
+    .links a:hover { background: var(--accent); text-decoration: none; }
+    main {
+      max-width: 800px;   /* narrower column improves line alignment & readability */
+      margin: 0 auto;     /* keeps it centered */
+      padding: 2rem 1rem; /* balanced vertical and horizontal padding */
+      text-align: justify;       /* aligns text to both edges */
+      text-justify: inter-word;  /* distributes spacing between words */
+      hyphens: auto;             /* allows hyphenation for smoother justification */
     }
-
-    /* Site-wide link color */
-    :root { --link-color: #0056b3; }
-    a:link, a:visited { color: var(--link-color); }
+    section { padding: 2rem 0; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: 0; }
+    h1, h2 { line-height: 1.2; margin: 0 0 .5rem; }
+    h1 { font-size: clamp(1.4rem, 1.2rem + 1.2vw, 2rem); }
+    h2 { font-size: 1.15rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; margin-bottom: 1rem; }
+    p { margin: .75rem 0; }
+    @media (min-width: 880px) {
+      .wrap { grid-template-columns: 240px 1fr; }
+      nav { position: sticky; top: 0; align-self: start; height: 100svh; border-right: 1px solid var(--border); border-bottom: none; }
+      nav .inner { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.5rem 1rem; }
+      .brand { font-size: 1.05rem; }
+      .links { flex-direction: column; gap: .25rem; width: 100%; }
+      .links a { padding: .35rem .5rem; border-radius: .4rem; display: block; width: 100%; }
+      main { padding: 2rem; }
+    }
+    .muted { color: var(--muted); }
+    .meta { font-size: .95rem; }
+    .list { padding-left: 1.1rem; }
+    .news-list { list-style: none; padding: 0; margin: 0; max-height: 20rem; overflow: auto; border: 1px solid var(--border); border-radius: .5rem; }
+    .news-item { display: flex; gap: .75rem; align-items: flex-start; padding: .6rem .9rem; border-bottom: 1px solid var(--border); }
+    .news-item:last-child { border-bottom: 0; }
+    .news-item time { flex: 0 0 6.2rem; color: var(--muted); font-size: .9rem; }
+    .news-item a { text-decoration: none; }
+    .news-item a:hover { text-decoration: underline; }
+    /* Subtle scrollbar */
+    .news-list::-webkit-scrollbar { width: 8px; }
+    .news-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; }
+    .news-list:hover::-webkit-scrollbar-thumb { background: #c9c9c9; }
+    .avatar { float: left; width: 112px; margin: 0 1rem .5rem 0; }
+    @media (max-width: 520px) { .avatar { float: none; display: block; margin: 0 auto 1rem; } }
+    section { scroll-margin-top: 64px; }
+    @media (min-width: 880px) { section { scroll-margin-top: 16px; } }
   </style>
 </head>
-
 <body>
-  <!-- Navigation -->
-  <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
+  <a class="skip" href="#about" style="position:absolute;left:-9999px;">Skip to content</a>
+  <div class="wrap">
+    <nav aria-label="Section navigation">
+      <div class="inner">
+        <div class="brand">Yichao Cai&nbsp;蔡逸超<br><span class="muted meta">AIML · University of Adelaide</span></div>
+        <div class="links" role="list">
+          <a href="#about">About</a>
+          <a href="#news">News</a>
+          <a href="#publications">Publications</a>
+          <a href="#teaching">Teaching</a>
+          <!-- <a href="#service">Service</a> -->
+          <a href="#contact">Contact</a>
+        </div>
       </div>
-
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li><span>..</span></li>
-          <li>
-            <div style="font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 32px; color: whitesmoke;"><b>Yichao Cai</b></div>
-          </li>
-          <li><span>..</span></li>
-          <li><a href="#about">about</a></li>
-          <li><a href="#teaching">teaching</a></li>
-          <li><a href="#publications">publications</a></li>
-          <li><a href="blogs.html">blog</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Page Content -->
-  <div class="container">
-    <div class="row">
-      <!-- Sidebar -->
-      <div class="col-md-3">
-        <img class="img-responsive" src="files/photo.jpg" style="max-width:78%; height:auto;" alt=""><br>
-        <ul id="links">
-          <li>
-            <a href="https://scholar.google.com/citations?user=nNp0nL4AAAAJ&hl" aria-label="Google Scholar">
-              <i class="fas fa-graduation-cap" style="color:black; font-size:1.5em;"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/YichaoCai1" aria-label="GitHub">
-              <i class="fab fa-github" style="color:black; font-size:1.5em;"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/yichao-cai-12a3b9292" aria-label="LinkedIn">
-              <i class="fab fa-linkedin" style="color:black; font-size:1.5em;"></i>
-            </a>
-          </li>
-          <li>
-            <a href="blogs.html" aria-label="Blog">
-              <i class="fa fa-blog" aria-hidden="true" style="color:black; font-size:1.5em;"></i>
-            </a>
-          </li>
-        </ul>
+    </nav>
+    <main id="content">
+      <section id="about">
+        <h1>About</h1>
+        <img src="files/photo.jpg" alt="Your profile picture" class="avatar">
         <p>
-          <b>
-          E: yichao<i class="fa fa-circle" aria-hidden="true" style="font-size:2px;"></i>cai<i class="fa fa-at" style="font-size:0.8em;"></i>adelaide<i class="fa fa-circle" aria-hidden="true" style="font-size:2px;"></i>edu<i class="fa fa-circle" aria-hidden="true" style="font-size:2px;"></i>au<br>
-          </b>
-          AIML, University of Adelaide <br>
-          LG.25.04, AIML Building <br> 
-          Cnr North Tce & Frome Rd <br>
-          Adelaide SA 5000, Australia <br>
-          <dd><a href="https://researchers.adelaide.edu.au/profile/yichao.cai">Researcher profile</a></dd>
-          <div itemscope itemtype="https://schema.org/Person">
-            <a itemprop="sameAs" content="https://orcid.org/0000-0003-1607-8948" href="https://orcid.org/0000-0003-1607-8948" target="orcid.widget" rel="me noopener noreferrer" style="vertical-align:top;">
-              <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">0000-0003-1607-8948
-            </a>
-          </div>
+          Yichao Cai is a third-year Ph.D. student at the
+          <a href="https://www.adelaide.edu.au/aiml/" target="_blank" rel="noopener noreferrer">Australian Institute for Machine Learning (AIML)</a>,
+          <a href="https://www.adelaide.edu.au/" target="_blank" rel="noopener noreferrer">University of Adelaide</a>, advised by Prof.
+          <a href="https://cs.adelaide.edu.au/~javen/" target="_blank" rel="noopener noreferrer">Javen Qinfeng Shi</a>, Dr
+          <a href="https://zzhang.org/" target="_blank" rel="noopener noreferrer">Zhen Zhang</a>, and Dr
+          <a href="https://sites.google.com/view/yuhangliu/homepage" target="_blank" rel="noopener noreferrer">Yuhang Liu</a>.
+          Before beginning his Ph.D., he spent four years in industry. He received his M.S. from
+          <a href="http://english.whut.edu.cn/" target="_blank" rel="noopener noreferrer">Wuhan University of Technology (WUT)</a>, advised by Prof. Xiao Zhou, and earned his B.E. from WUT as well. During his master's studies, he was a visiting student researcher at
+          <a href="https://deepdrive.berkeley.edu/" target="_blank" rel="noopener noreferrer">Berkeley DeepDrive, UC Berkeley</a>, advised by Dr
+          <a href="https://its.berkeley.edu/people/ching-yao-chan" target="_blank" rel="noopener noreferrer">Ching-Yao Chan</a>.
+          <br/><br/>
+          His research centers on multimodal representation learning and principled approaches to disentanglement,
+          with current endeavors focusing on identifiable modeling, causal reasoning, and leveraging language as an inductive signal.
+          Looking ahead, he aims to develop explainable AI systems capable of reliably uncovering and representing
+          the semantic structures underlying complex data.
         </p>
-      </div>
+        <p class="meta">
+          [&nbsp;<a href="https://scholar.google.com/citations?user=nNp0nL4AAAAJ&hl" rel="noopener noreferrer">Google Scholar</a>&nbsp;] · 
+          [&nbsp;<a href="https://github.com/YichaoCai1" rel="noopener noreferrer">GitHub</a>&nbsp;] · 
+          [&nbsp;<a href="https://www.linkedin.com/in/yichao-cai-12a3b9292" rel="noopener noreferrer">LinkedIn</a>&nbsp;] · 
+          [&nbsp;<a href="blogs.html">Blog</a>&nbsp;]
+        </p>
+      </section>
+      <section id="news" aria-label="Recent news">
+        <h2>News</h2>
+        <ul class="news-list" aria-live="polite">
+          <li class="news-item">
+            <time datetime="2025-04-14">2025-04-14</time>
+            <div> Check out our new preprint: <a href="https://arxiv.org/abs/2504.10143" target="_blank" rel="noopener noreferrer">"On the Value of Cross-Modal Misalignment in Multimodal Representation Learning"</a>.</div>
+          </li>
+          <li class="news-item">
+            <time datetime="2024-07-02">2024-07-02</time>
+            <div>Our work,<a href="https://yichaocai.com/clap_paper.github.io/" target="_blank" rel="noopener noreferrer">"CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts"</a>, is accepted to appear at <strong>ECCV 2024</strong>.</div>
+          </li>
+          <!-- Add more items; the box stays scrollable and shows ~5 per screen -->
+        </ul>
+      </section>
+      <section id="publications">
+        <h2>Publications & Preprints</h2>
+        <span style="font-size:0.75rem;color:#6b7280;">(* Equal Contributions)</span>
+        <ul class="list">
+          <li>
+            Yichao Cai*, Yuhang Liu*, Erdun Gao, Tianjiao Jiang, Zhen Zhang, Anton van den Hengel, and Javen Qinfeng Shi.&nbsp;
+            <strong>“On the Value of Cross-Modal Misalignment in Multimodal Representation Learning”</strong>.&nbsp;
+            Preprint (2025), under review.&nbsp;
+            [&nbsp;<a href="https://arxiv.org/abs/2504.10143" target="_top" rel="noopener noreferrer">abs</a>&nbsp;] ·
+            [&nbsp;<a href="https://arxiv.org/pdf/2504.10143" target="_top" rel="noopener noreferrer">pdf</a>&nbsp;] ·
+            [&nbsp;<a href="https://yichaocai.com/misalignment.github.io/" target="_top" rel="noopener noreferrer">project page</a>&nbsp;]
+          </li>
 
-      <!-- Main Content -->
-      <div class="col-md-9">
-        <!-- About -->
-        <div class="row" id="about">
-          <div style="font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px;"><b>About</b></div>
-          <p>
-            Yichao Cai is a third-year Ph.D. student at the
-            <a href="https://www.adelaide.edu.au/aiml/" target="_blank">Australian Institute for Machine Learning (AIML)</a>,
-            <a href="https://www.adelaide.edu.au/" target="_blank">University of Adelaide</a>, advised by Prof.
-            <a href="https://cs.adelaide.edu.au/~javen/" target="_blank">Javen Qinfeng Shi</a>, Dr
-            <a href="https://zzhang.org/" target="_blank">Zhen Zhang</a>, and Dr
-            <a href="https://sites.google.com/view/yuhangliu/homepage" target="_blank">Yuhang Liu</a>.
-            Before beginning his Ph.D., he spent four years in industry. He received his M.S. from
-            <a href="http://english.whut.edu.cn/" target="_blank">Wuhan University of Technology (WUT)</a>, advised by Prof. Xiao Zhou, and earned his B.E. from WUT as well. During his master's studies, he was a visiting student researcher at
-            <a href="https://deepdrive.berkeley.edu/" target="_blank">Berkeley DeepDrive, UC Berkeley</a>, advised by Dr
-            <a href="https://its.berkeley.edu/people/ching-yao-chan" target="_blank">Ching-Yao Chan</a>.
-            <br><br>
-            His current research centers on multimodal representation learning and principled approaches to disentanglement, with a particular emphasis on identifiability analysis, causal modeling, and leveraging language as an inductive signal. Looking ahead, he aims to develop principled AI systems capable of reliably uncovering and representing the semantic structures underlying complex data.
-          </p>
-        </div>
+          <li>
+            Yuhang Liu, Dong Gong, Yichao Cai, Erdun Gao, Zhen Zhang, Biwei Huang, Mingming Gong, Anton van den Hengel, and Javen Qinfeng Shi.&nbsp;
+            <strong>“I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?”</strong>.&nbsp;
+            Preprint (2025), under review.&nbsp;
+            [&nbsp;<a href="https://arxiv.org/abs/2503.08980" target="_top" rel="noopener noreferrer">abs</a>&nbsp;] ·
+            [&nbsp;<a href="https://arxiv.org/pdf/2503.08980" target="_top" rel="noopener noreferrer">pdf</a>&nbsp;]
+            <!-- [&nbsp;<a href="#publications" target="_top" rel="noopener noreferrer">project page</a>&nbsp;] -->
+          </li>
 
-        <!-- News -->
-        <div class="row" style="margin-bottom:1cm;">
-          <br>
-          <div style="font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px;"><b>News</b></div>
-          <div style="
-              max-height: 12em;
-              overflow-y: auto;
-              padding: 10px;
-              padding-right: 15px;
-              background-color: #f5f5f5;
-              border-radius: 6px;">
-            <ul style="margin: 0; padding-left: 26px;">
-              <li><strong>14 Apr 2025:</strong> Check out our new preprint—<a href="https://arxiv.org/abs/2504.10143" target="_blank">"On the Value of Cross-Modal Misalignment in Multimodal Representation Learning"</a>.</li>
-              <li><strong>02 Jul 2024:</strong> Our work,<a href="https://yichaocai.com/clap_paper.github.io/" target="_blank">"CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts"</a>, is accepted to appear at <strong>ECCV 2024</strong>.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Teaching -->
-        <div class="row">
-          <div style="font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px;" id="teaching"><b>Teaching</b></div>
-          <ul>
-            <li><b>Semester 2, 2025</b>, Head Tutor — <i>Statistical Machine Learning</i> @ University of Adelaide</li>
-            <li><b>Trimester 2, 2025</b>, Teaching Assistant — <i>Using Machine Learning Tools</i> @ University of Adelaide</li>
-            <li><b>Trimester 1, 2025</b>, Teaching Assistant — <i>Concepts in Artificial Intelligence and Machine Learning</i> @ University of Adelaide</li>
-          </ul>
-        </div>
-
-        <br>
-
-        <!-- Publications Layer -->
-        <div class="row" style="margin-bottom:1cm;">
-          <div style="font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 24px;" id="publications">
-            <b>Publications</b>
-          </div>
-
-          <!-- Peer Reviewed -->
-          <div style="font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 20px; margin-top:10px; padding-left:20px;">
-            <b>Peer Reviewed</b>
-          </div>
-          <div style="
-              max-height: 900px;
-              overflow-y: auto;
-              padding: 10px;
-              padding-right: 15px;
-              border-radius: 6px;">
-            <ul style="margin:0; padding-left:20px; list-style-type:none;">
-              <li>
-                [1] Yichao Cai, Yuhang Liu, Zhen Zhang, and Javen Qinfeng Shi.
-                <b>CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts.</b>
-                In <em>Computer Vision – ECCV 2024: 18th European Conference, Milan, Italy, September</em>.
-                [&nbsp;
-                <a href="https://link.springer.com/chapter/10.1007/978-3-031-72664-4_8" target="_top">abs</a>&nbsp;|
-                <a href="https://arxiv.org/pdf/2311.16445" target="_top">pdf</a>&nbsp;|
-                <a href="https://yichaocai.com/clap_paper.github.io/" target="_top">project page</a>
-                &nbsp;]
-              </li>
-            </ul>
-          </div>
-
-          <!-- Preprints -->
-          <div style="font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 20px; margin-top:10px; padding-left:20px;">
-            <b>Preprints</b>
-          </div>
-          <div style="
-              max-height: 900px;
-              overflow-y: auto;
-              padding: 10px;
-              padding-right: 15px;
-              border-radius: 6px;">
-            <ul style="margin:0; padding-left:20px; list-style-type:none;">
-              <li>
-                [2] Yuhang Liu, Dong Gong, Yichao Cai, Erdun Gao, Zhen Zhang, Biwei Huang,
-                Mingming Gong, Anton van den Hengel, and Javen Qinfeng Shi.
-                <b>I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?</b>
-                <em>Preprint. Under review.</em>
-                [&nbsp;
-                <a href="https://arxiv.org/abs/2503.08980" target="_top">abs</a>&nbsp;|
-                <a href="https://arxiv.org/pdf/2503.08980" target="_top">pdf</a>&nbsp;]
-              </li>
-              <br>
-              <li>
-                [1] Yichao Cai*, Yuhang Liu*, Erdun Gao, Tianjiao Jiang, Zhen Zhang,
-                Anton van hen Hengel, and Javen Qinfeng Shi (* Equal Contributions).
-                <b>On the Value of Cross-Modal Misalignment in Multimodal Representation Learning.</b>
-                <em>Preprint. Under review.</em>
-                [&nbsp;
-                <a href="https://arxiv.org/abs/2504.10143" target="_top">abs</a>&nbsp;|
-                <a href="https://arxiv.org/pdf/2504.10143" target="_top">pdf</a>&nbsp;|
-                <a href="https://yichaocai.com/misalignment.github.io/" target="_top">project page</a>
-                &nbsp;]
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Interests -->
-        <div class="row">
-          <div style="font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 24px;"><b>Beyond Research</b></div>
-          <ul>
+          <li>
+            Yichao Cai, Yuhang Liu, Zhen Zhang, and Javen Qinfeng Shi.&nbsp;
+            <strong>“CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts”</strong>.&nbsp;
+            ECCV 2024.&nbsp;
+            [&nbsp;<a href="https://link.springer.com/chapter/10.1007/978-3-031-72664-4_8" target="_top" rel="noopener noreferrer">abs</a>&nbsp;] · 
+            [&nbsp;<a href="https://arxiv.org/pdf/2311.16445" target="_top" rel="noopener noreferrer">pdf</a>&nbsp;] ·
+            [&nbsp;<a href="https://yichaocai.com/clap_paper.github.io/" target="_top" rel="noopener noreferrer">project page</a>&nbsp;]
+          </li>
+        </ul>
+      </section>
+      <section id="teaching">
+        <h2>Teaching</h2>
+        <ul class="list">
+            <li>Semester 2, 2025, Head Tutor—<i>Statistical Machine Learning</i> @ University of Adelaide</li>
+            <li>Trimester 2, 2025, Teaching Assistant—<i>Using Machine Learning Tools</i> @ University of Adelaide</li>
+            <li>Trimester 1, 2025, Teaching Assistant—<i>Concepts in Artificial Intelligence and Machine Learning</i> @ University of Adelaide</li>
+        </ul>
+      </section>
+      <!-- <section id="service">
+        <h2>Service</h2>
+        <ul class="list">
+          <li>Reviewer: NeurIPS, ICLR, CVPR</li>
+        </ul>
+      </section> -->
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>
+          Email: <a href="#contact">yichao (dot) cai (at) adelaide (dot) edu (dot) au</a>
+          <br/>LG.25.04, AIML Building, Lot Fourteen, Corner of North Terrace & Frome Road, Adelaide SA 5000, Australia
+        </p>
+      </section>
+      <section id="miscellaneous">
+        <h2>Miscellaneous</h2>
+        <ul class="list">
             <li>
-              Outside of research, I share ideas on 
-              <a href="https://www.zhihu.com/people/YichaoCai" target="_blank" rel="noopener">Zhihu</a> 
-              and on my <a href="blogs.html">blog</a>.
+              Outside of research, I share thoughts on <a href="https://www.zhihu.com/people/YichaoCai" target="_top" rel="noopener noreferrer">Zhihu</a> (in Chinese) and on my <a href="blogs.html" target="_top" rel="noopener noreferrer">blog</a>.
             </li>
             <li>
-              I enjoy nighttime strolls and reading. I log some of the books I read 
-              <a href="books.html">here</a>.
+              I enjoy peaceful nighttime strolls; when in Adelaide, the <a href="https://en.wikipedia.org/wiki/River_Torrens" target="_top" rel="noopener noreferrer">River Torrens</a> is perfect for them. I also enjoy reading, and a record of books I’ve logged can be found <a href="books.html">here</a>.
             </li>
             <li>
-              I'm a self-taught guitar hobbyist who enjoys fingerstyle playing.
-              Tommy Emmanuel and Kotaro Oshio are my favorite guitar artists.
+              I'm a self-taught guitar hobbyist who enjoys fingerstyle playing. Tommy Emmanuel and Kotaro Oshio are my favorite guitar artists.
             </li>
-          </ul>
-        </div>
-
-        <br>
-
-      <div class="footer">
-        This template is made with <a style="color:#ebeff3;font-size:0.8em;" href="https://github.com/mavroudisv/plain-academic">Plain Academic</a>
-      </div>
-    </div>
+        </ul>
+      </section>
+    </main>
   </div>
-
-  <!-- Dynamic iframe sizing -->
-  <script>
-    function sizeListFrame(frame, {
-      itemSelector = 'td.bibtexitem',
-      minHeight = 180,
-      maxHeight = 900,
-      baseFontSize = '14px'
-    } = {}) {
-      if (!frame || !frame.contentDocument) return;
-
-      const doc = frame.contentDocument;
-      const body = doc.body;
-
-      const style = doc.createElement('style');
-      style.textContent = `
-        html, body { margin: 0; padding: 8px 10px; font-size: ${baseFontSize}; line-height: 1.5; }
-        a:link, a:visited { color: ${getComputedStyle(document.documentElement).getPropertyValue('--link-color') || '#222'}; }
-        .bibtexnumber { white-space: nowrap; }
-      `;
-      doc.head.appendChild(style);
-
-      let items = doc.querySelectorAll(itemSelector).length;
-      if (!items) items = doc.querySelectorAll('tr, li, .row').length;
-
-      const contentHeight = Math.max(body.scrollHeight, body.offsetHeight);
-      let desired = contentHeight;
-
-      if (items >= 12 && contentHeight > maxHeight) {
-        desired = maxHeight;
-        frame.style.overflow = 'auto';
-      } else {
-        desired = Math.max(minHeight, Math.min(contentHeight, maxHeight));
-        frame.style.overflow = 'hidden';
-      }
-      frame.style.height = desired + 'px';
-    }
-
-    function wireFrame(frameId, opts) {
-      const frame = document.getElementById(frameId);
-      if (!frame) return;
-      const onLoad = () => sizeListFrame(frame, opts);
-      frame.addEventListener('load', onLoad);
-      window.addEventListener('resize', () => sizeListFrame(frame, opts));
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      wireFrame('pubsFrame', { itemSelector: 'td.bibtexitem', maxHeight: 900, minHeight: 160, baseFontSize: '14px' });
-      wireFrame('preprintsFrame', { itemSelector: 'td.bibtexitem', maxHeight: 900, minHeight: 160, baseFontSize: '14px' });
-    });
-  </script>
 </body>
 </html>

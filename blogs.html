@@ -1,158 +1,185 @@
 <!DOCTYPE html>
-<!--
-  Blog page adapted to match the user's main homepage style.
-  Minimal design, same Bootstrap 3.3.6 stack, fonts, icons, link color, and sticky footer.
--->
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blog — Yichao Cai</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yichao Cai's Blog</title>
+  <meta name="description" content="Essays and notes by Yichao Cai on machine learning, representation learning, and more." />
 
-  <!-- Same CSS/JS stack as the main page -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" type="text/css">
+  <!-- Open Graph / Twitter (optional but nice) -->
+  <meta property="og:title" content="Yichao Cai's Blog">
+  <meta property="og:description" content="Essays and notes on ML, representation learning, and more.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="files/photo.jpg">
+  <meta name="twitter:card" content="summary_large_image">
 
   <style>
-    /* Reuse the site's link color */
-    :root { --link-color: #0056b3; }
-    a:link, a:visited { color: var(--link-color); }
+    :root {
+      --bg: #ffffff;
+      --fg: #111111;
+      --muted: #666666;
+      --link: #0a58ca;
+      --border: #e5e5e5;
+      --accent: #0a58ca20;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0b0c;
+        --fg: #f2f2f2;
+        --muted: #b3b3b3;
+        --link: #84b6ff;
+        --border: #222;
+        --accent: #84b6ff26;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--fg);
+      background: var(--bg);
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    :focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
 
-    /* Headings (kept consistent with index.html) */
-    .page-title { font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 32px; color: whitesmoke; }
-    .section-title { font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; }
+    /* Layout mirrors homepage content column */
+    header {
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .header-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 1.25rem;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(1.4rem, 1.2rem + 1.2vw, 2rem);
+      line-height: 1.2;
+    }
+    .subtitle {
+      margin-top: .35rem;
+      color: var(--muted);
+      font-size: .95rem;
+    }
 
-    /* Post list (very light styling) */
-    .post-card { border: 1px solid #eee; border-radius: 6px; padding: 14px; margin: 0 0 12px; background: #fff; }
-    .post-title { font-size: 18px; margin: 0; font-weight: bold; }
-    .post-meta { font-size: 12px; color: #666; margin: 2px 0 8px; }
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    /* Post list */
+    .post-list { list-style: none; padding: 0; margin: 0; }
+    .post {
+      border: 1px solid var(--border);
+      border-radius: .5rem;
+      padding: .9rem 1rem;
+      margin: 0 0 1rem 0;
+      background: var(--bg);
+      transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
+    }
+    .post:hover { background: var(--accent); }
+    .post-title {
+      margin: 0 0 .35rem 0;
+      font-weight: 600;
+      font-size: 1.05rem;
+      line-height: 1.35;
+    }
+    .post-title a { text-decoration: none; }
+    .post-meta {
+      font-size: .9rem;
+      color: var(--muted);
+      margin-bottom: .35rem;
+      display: block;
+    }
     .post-desc { margin: 0; }
 
-    /* Sidebar icons */
-    ul#links li { display:inline; padding: 10px; }
-
-    /* Sticky footer matching index */
-    .footer { position: fixed; left: 0; bottom: 0; width: 100%; background-color: gray; color: white; text-align: center; }
+    /* Skip link a11y */
+    .skip { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip:focus {
+      left:1rem; top:1rem; width:auto; height:auto;
+      padding:.5rem .75rem; background:var(--bg);
+      border:1px solid var(--border); border-radius:.5rem; z-index:999;
+    }
   </style>
 </head>
 <body>
-  <!-- Navigation (mirrors main page) -->
-  <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li><span>..</span></li>
-          <li><div class="page-title"><b>Yichao Cai</b></div></li>
-          <li><span>..</span></li>
-          <li><a href="index.html#about">about</a></li>
-          <li><a href="index.html#teaching">teaching</a></li>
-          <li><a href="index.html#publications">publications</a></li>
-          <li><a href="blogs.html">blog</a></li>
-        </ul>
-      </div>
+  <a class="skip" href="#content">Skip to content</a>
+
+  <header>
+    <div class="header-inner">
+      <h1>Yichao Cai’s Blog</h1>
+      <div class="subtitle">Essays and notes on machine learning, representation learning, causality, and occasional reflections.</div>
     </div>
-  </nav>
+  </header>
 
-  <!-- Page Content -->
-  <div class="container">
-    <div class="row">
-      <!-- Sidebar (mirrors main page left column) -->
-      <div class="col-md-3">
-        <img class="img-responsive" src="files/photo.jpg" style="max-width:78%; height:auto;" alt=""><br>
-        <ul id="links">
-          <li>
-            <a href="https://scholar.google.com/citations?user=nNp0nL4AAAAJ&hl" aria-label="Google Scholar">
-              <i class="fas fa-graduation-cap" style="color:black; font-size:1.5em;"></i>
+  <main id="content">
+    <section aria-label="Blog posts">
+      <ul class="post-list">
+        <!-- Feb 2025 -->
+        <li class="post">
+          <h2 class="post-title">
+            <a href="./posts/the_generalization_specialization_dilemma.pdf" target="_blank" rel="noopener noreferrer">
+              The Generalization–Specialization Dilemma
             </a>
-          </li>
-          <li>
-            <a href="https://github.com/YichaoCai1" aria-label="GitHub">
-              <i class="fab fa-github" style="color:black; font-size:1.5em;"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/yichao-cai-12a3b9292" aria-label="LinkedIn">
-              <i class="fab fa-linkedin" style="color:black; font-size:1.5em;"></i>
-            </a>
-          </li>
-          <li>
-            <a href="blogs.html" aria-label="Blog">
-              <i class="fa fa-blog" aria-hidden="true" style="color:black; font-size:1.5em;"></i>
-            </a>
-          </li>
-        </ul>
-        <p>
-          <b>
-          E: yichao<i class="fa fa-circle" aria-hidden="true" style="font-size:2px;"></i>cai<i class="fa fa-at" style="font-size:0.8em;"></i>adelaide<i class="fa fa-circle" aria-hidden="true" style="font-size:2px;"></i>edu<i class="fa fa-circle" aria-hidden="true" style="font-size:2px;"></i>au<br>
-          </b>
-          AIML, University of Adelaide <br>
-          LG.25.04, AIML Building <br> 
-          Cnr North Tce & Frome Rd <br>
-          Adelaide SA 5000, Australia <br>
-          <dd><a href="https://researchers.adelaide.edu.au/profile/yichao.cai">Researchr profile</a></dd>
-          <div itemscope itemtype="https://schema.org/Person">
-            <a itemprop="sameAs" content="https://orcid.org/0000-0003-1607-8948" href="https://orcid.org/0000-0003-1607-8948" target="orcid.widget" rel="me noopener noreferrer" style="vertical-align:top;">
-              <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">0000-0003-1607-8948
-            </a>
-          </div>
-        </p>
-      </div>
+          </h2>
+          <time class="post-meta" datetime="2025-02-01">Feb 2025</time>
+          <p class="post-desc">On the tension between flexibility and precision in biological and artificial systems.</p>
+        </li>
 
-      <!-- Main column -->
-      <div class="col-md-9">
-        <div class="row" id="blog">
-          <div class="section-title"><b>Blog</b></div>
-          <ul class="list-unstyled" style="margin-top:10px;">
-            <!-- Feb 2025 -->
-            <li class="post-card">
-              <div class="post-title"><a href="./posts/the_generalization_specialization_dilemma.pdf">The Generalization–Specialization Dilemma</a></div>
-              <div class="post-meta">Feb 2025</div>
-              <p class="post-desc">On the tension between flexibility and precision in biological and artificial systems.</p>
-            </li>
-            <!-- Jan 2025 -->
-            <li class="post-card">
-              <div class="post-title"><a href="./posts/language_modeling_world.html">Language and the Art of Modeling the World</a></div>
-              <div class="post-meta">Jan 2025</div>
-              <p class="post-desc">Thoughts on the grounding of language, LLMs, and symbolic understanding.</p>
-            </li>
-            <!-- May 2024 -->
-            <li class="post-card">
-              <div class="post-title"><a href="./posts/weekly_self_introspections.html">Three Weekly Self-Introspections</a></div>
-              <div class="post-meta">May 2024</div>
-              <p class="post-desc">Personal routine reflections for better research alignment and weekly growth.</p>
-            </li>
-            <!-- Apr 2024 -->
-            <li class="post-card">
-              <div class="post-title"><a href="./posts/information-bottleneck.pdf">How Information Bottleneck Helps Representation Learning</a></div>
-              <div class="post-meta">Apr 2024</div>
-              <p class="post-desc">An overview connecting rate–distortion theory, VIB, and β‑VAE under the IB lens.</p>
-            </li>
-            <!-- Jan 2024 -->
-            <li class="post-card">
-              <div class="post-title"><a href="./posts/contrastive-learning.pdf">Thoughts on Contrastive Representation Learning</a></div>
-              <div class="post-meta">Jan 2024</div>
-              <p class="post-desc">Reflections on disentanglement and causality in contrastive learning frameworks.</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+        <!-- Jan 2025 -->
+        <li class="post">
+          <h2 class="post-title">
+            <a href="./posts/language_modeling_world.html">
+              Language and the Art of Modeling the World
+            </a>
+          </h2>
+          <time class="post-meta" datetime="2025-01-01">Jan 2025</time>
+          <p class="post-desc">Thoughts on the grounding of language, LLMs, and symbolic understanding.</p>
+        </li>
 
-  <!-- Sticky footer -->
-  <div class="footer">
-    This template is made with <a style="color:#ebeff3;font-size:0.8em;" href="https://github.com/mavroudisv/plain-academic">Plain Academic</a>
-  </div>
+        <!-- May 2024 -->
+        <li class="post">
+          <h2 class="post-title">
+            <a href="./posts/weekly_self_introspections.html">
+              Three Weekly Self-Introspections
+            </a>
+          </h2>
+          <time class="post-meta" datetime="2024-05-01">May 2024</time>
+          <p class="post-desc">Personal routine reflections for better research alignment and weekly growth.</p>
+        </li>
+
+        <!-- Apr 2024 -->
+        <li class="post">
+          <h2 class="post-title">
+            <a href="./posts/information-bottleneck.pdf" target="_blank" rel="noopener noreferrer">
+              How Information Bottleneck Helps Representation Learning
+            </a>
+          </h2>
+          <time class="post-meta" datetime="2024-04-01">Apr 2024</time>
+          <p class="post-desc">An overview connecting rate–distortion theory, VIB, and β-VAE under the IB lens.</p>
+        </li>
+
+        <!-- Jan 2024 -->
+        <li class="post">
+          <h2 class="post-title">
+            <a href="./posts/contrastive-learning.pdf" target="_blank" rel="noopener noreferrer">
+              Thoughts on Contrastive Representation Learning
+            </a>
+          </h2>
+          <time class="post-meta" datetime="2024-01-01">Jan 2024</time>
+          <p class="post-desc">Reflections on disentanglement and causality in contrastive learning frameworks.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
 </body>
 </html>
