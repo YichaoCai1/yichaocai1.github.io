@@ -6,12 +6,12 @@
   <title>Yichao Cai's Personal Page</title>
   <meta name="description" content="Academic homepage of Yichao Cai: research, publications, teaching, contact." />
   <style>
-    :root { --bg:#ffffff; --fg:#111111; --muted:#666666; --link:#191970; --border:#e5e5e5; --accent:#0a58ca20;}
+    :root { --bg:#ffffff; --fg:#111111; --muted:#666666; --link:#222288; --border:#e5e5e5; --accent:#0a58ca20;}
     @media (prefers-color-scheme:dark){:root { --bg:#0b0b0c; --fg:#f2f2f2; --muted:#b3b3b3; --link:#84b6ff; --border:#222; --accent:#84b6ff26;}}
     html { scroll-behavior:smooth;}
     body { margin:0; font-family:"Inter","Helvetica Neue",Arial,sans-serif; font-size:17px; line-height:1.5; color:var(--fg); background:var(--bg);}
     a { color:var(--link); text-decoration:none;}
-    a:hover { color:#000080; text-decoration:underline;}
+    a:hover { color:#2a2a9f; text-decoration:underline;}
     :focus-visible { outline:2px solid var(--link); outline-offset:2px;}
     .wrap { display:grid; grid-template-columns:1fr; min-height:100svh;}
     nav { position:sticky; top:0; z-index:1; border-bottom:1px solid var(--border); background:var(--bg);}
@@ -51,6 +51,10 @@
     section { scroll-margin-top:64px;}
     @media (min-width:880px){section { scroll-margin-top:16px;}}
     .pubs { list-style:decimal; padding-left:2rem; margin:0; counter-reset:none;}
+    .pub-note {font-size: 0.85em; display: inline-block; margin-bottom: 1em;}
+    .peer-reviewed {color: #79087d;}
+    .preprint {color: #6b7280;}
+    .pubs li {margin-bottom: 0.8em; line-height: 1.5;}
     footer.counter {
       text-align: center;          /* center text + image */
       font-size: 0.85rem;          /* smaller font */
@@ -134,36 +138,38 @@
       </section>
       <section id="publications">
         <h2>Publications</h2>
-        <span style="font-size:0.85em; display:inline-block; margin-bottom:1em;">
-          ( * Equal Contribution · 
-          <span style="color:#9b2c2c;">Peer Reviewed</span> · 
-          <span style="color:#6b7280;">Preprint</span> )
+        <span class="pub-note">
+          (<b>*</b> Equal Contribution · 
+          <span class="peer-reviewed">Peer Reviewed</span> · 
+          <span class="preprint">Preprint</span>)
         </span>
+
         <ol class="pubs" reversed>
-          <li style="margin-bottom:0.6em;">
-            Yuhang Liu, Dong Gong, Yichao Cai, Erdun Gao, Zhen Zhang, Biwei Huang, Mingming Gong, Anton van den Hengel, and Javen Qinfeng Shi.&nbsp;
-            <strong>I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?</strong>.&nbsp;
-            <span style="color:#475569;">Preprint (2025), under review</span>.&nbsp;
-            [&nbsp;<a href="https://arxiv.org/abs/2503.08980" target="_top" rel="noopener noreferrer">abs</a>&nbsp;] ·
-            [&nbsp;<a href="https://arxiv.org/pdf/2503.08980" target="_top" rel="noopener noreferrer">pdf</a>&nbsp;]
-          </li>
-          
-          <li style="margin-bottom:0.6em;">
-            Yichao Cai*, Yuhang Liu*, Erdun Gao, Tianjiao Jiang, Zhen Zhang, Anton van den Hengel, and Javen Qinfeng Shi.&nbsp;
-            <strong>On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</strong>.&nbsp; 
-            <span style="color:#9b2c2c;">NeurIPS 2025 (Spotlight)</span>.&nbsp;
-            [&nbsp;<a href="https://arxiv.org/abs/2504.10143" target="_top" rel="noopener noreferrer">abs</a>&nbsp;] ·
-            [&nbsp;<a href="https://arxiv.org/pdf/2504.10143" target="_top" rel="noopener noreferrer">pdf</a>&nbsp;] ·
-            [&nbsp;<a href="https://yichaocai.com/misalignment.github.io/" target="_top" rel="noopener noreferrer">project page</a>&nbsp;]
+          <li>
+            Yuhang Liu, Dong Gong, <strong>Yichao Cai</strong>, Erdun Gao, Zhen Zhang, Biwei Huang,
+            Mingming Gong, Anton van den Hengel, and Javen Qinfeng Shi. 
+            <strong>I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?</strong> 
+            <span class="preprint">Preprint (2025), under review</span>. 
+            [<a href="https://arxiv.org/abs/2503.08980" target="_blank" rel="noopener noreferrer">abstract</a>] · 
+            [<a href="https://arxiv.org/pdf/2503.08980" target="_blank" rel="noopener noreferrer">PDF</a>]
           </li>
 
-          <li style="margin-bottom:0.6em;">
-            Yichao Cai, Yuhang Liu, Zhen Zhang, and Javen Qinfeng Shi.&nbsp;
-            <strong>CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts</strong>.&nbsp;
-            <span style="color:#9b2c2c;">ECCV 2024</span>.&nbsp;
-            [&nbsp;<a href="https://link.springer.com/chapter/10.1007/978-3-031-72664-4_8" target="_top" rel="noopener noreferrer">abs</a>&nbsp;] · 
-            [&nbsp;<a href="https://arxiv.org/pdf/2311.16445" target="_top" rel="noopener noreferrer">pdf</a>&nbsp;] ·
-            [&nbsp;<a href="https://yichaocai.com/clap_paper.github.io/" target="_top" rel="noopener noreferrer">project page</a>&nbsp;]
+          <li>
+            <strong>Yichao Cai*</strong>, Yuhang Liu*, Erdun Gao, Tianjiao Jiang, Zhen Zhang, Anton van den Hengel, and Javen Qinfeng Shi. 
+            <strong>On the Value of Cross-Modal Misalignment in Multimodal Representation Learning.</strong>
+            <span class="peer-reviewed">NeurIPS 2025 (Spotlight)</span>. 
+            [<a href="https://arxiv.org/abs/2504.10143" target="_blank" rel="noopener noreferrer">abstract</a>] · 
+            [<a href="https://arxiv.org/pdf/2504.10143" target="_blank" rel="noopener noreferrer">PDF</a>] · 
+            [<a href="https://yichaocai.com/misalignment.github.io/" target="_blank" rel="noopener noreferrer">project page</a>]
+          </li>
+
+          <li>
+            <strong>Yichao Cai</strong>, Yuhang Liu, Zhen Zhang, and Javen Qinfeng Shi. 
+            <strong>CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts.</strong> 
+            <span class="peer-reviewed">ECCV 2024</span>. 
+            [<a href="https://link.springer.com/chapter/10.1007/978-3-031-72664-4_8" target="_blank" rel="noopener noreferrer">abstract</a>] · 
+            [<a href="https://arxiv.org/pdf/2311.16445" target="_blank" rel="noopener noreferrer">PDF</a>] · 
+            [<a href="https://yichaocai.com/clap_paper.github.io/" target="_blank" rel="noopener noreferrer">project page</a>]
           </li>
         </ol>
       </section>
