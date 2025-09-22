@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>When the Internal Map Gets Warped: Why Identifiable Representations Are Crucial for Responsible AI</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <style>
+    /* ------------------------------
+       Minimal, IDE-friendly CSS
+       - Centralizes tokens as CSS variables
+       - Keeps rules short & readable
+       ------------------------------ */
+    :root {
+      --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --max-w: 800px;
+      --fg: #222;
+      --muted: #555;
+      --border: #ccc;
+      --accent: #4169e1;
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 1rem;
+      --space-4: 1.5rem;
+      --space-6: 2rem;
+      --radius: 4px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --fg: #e8e8e8;
+        --muted: #bbb;
+        --border: #444;
+        --accent: #8ab4f8;
+      }
+      body { background: #111; }
+    }
+
+    /* Layout */
+    body {
+      font-family: var(--font-sans);
+      color: var(--fg);
+      margin: 0;
+    }
+    .container {
+      max-width: var(--max-w);
+      margin: var(--space-6) auto;
+      padding: var(--space-3);
+      line-height: 1.6;
+    }
+
+    /* Typography */
+    h1, h2, h3 { scroll-margin-top: 80px; }
+    h1 {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: var(--space-1);
+      margin-bottom: var(--space-3);
+    }
+    hr { margin: var(--space-6) 0; border: 0; border-top: 1px solid var(--border); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    blockquote {
+      font-style: italic;
+      color: var(--muted);
+      border-left: 3px solid var(--border);
+      margin: var(--space-3) 0;
+      padding-left: var(--space-3);
+    }
+
+    /* Header meta */
+    .meta { color: var(--muted); }
+
+    /* TOC */
+    nav.toc {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--space-3);
+      margin: var(--space-4) 0;
+    }
+    nav.toc ul { margin: 0; padding-left: 1.25rem; }
+
+    /* Heading anchors */
+    .heading {
+      position: relative;
+    }
+    .heading .anchor {
+      opacity: 0;
+      margin-left: var(--space-2);
+      font-size: 0.9em;
+    }
+    .heading:hover .anchor { opacity: 1; }
+
+    /* Utility */
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0);
+      white-space: nowrap; border: 0;
+    }
+
+    .fig-wide {
+      margin: 2rem auto;
+      max-width: 960px;     /* tune for your layout */
+      text-align: center;
+    }
+    .fig-wide img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid #e6e6e6;
+      border-radius: 8px;
+    }
+    .fig-wide figcaption {
+      margin-top: .6rem;
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+    .bibtex-card {
+      max-width: var(--max-w); /* same width as main content */
+      margin: 2rem auto;       /* center horizontally with top/bottom spacing */
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(0,0,0,0.02); /* subtle background tint for contrast */
+      overflow-x: auto;             /* allows horizontal scroll if code is long */
+    }
+    .bibtex-card pre {
+      margin: 0;
+      white-space: pre-wrap;  /* wrap long lines if needed */
+      word-break: break-word;
+    }
+    .bibtex-card .copy-btn {
+      float: right;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.85rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+    .bibtex-card .copy-btn:hover {
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <!-- ==============================
+         Header
+         ============================== -->
+    <header>
+      <h1 class="heading" id="title"><i>When the Internal Map Gets Warped:</i><br/> Why Identifiable Representations Are Crucial for Responsible AI <a class="anchor" href="#title" aria-label="Link to this heading">#</a></h1>
+      <p class="meta"><em>Yichao Cai</em>, <time datetime="2025-09-23">23-09-2025</time></p>
+    </header>
+
+    <hr />
+
+    For ML researchers and engineers, this post underscores why identifiability is foundational to fairness, robustness, and responsible AI systems, and introduces our recent work through a narrative lens as part of that endeavor.
+    <hr />
+
+    <!-- ==============================
+         Table of Contents (editable)
+         ============================== -->
+    <nav class="toc" aria-label="Table of contents">
+      <strong>On this blog</strong>
+      <ul>
+        <li><a href="#rethinking">The Underexplored in Representation Learning</a></li>
+        <li><a href="#identifiability">Identifiable Representation Learning as Desiderata</a></li>
+        <li><a href="#language">Our Route: Language as an Inductive Cue</a></li>
+        <li><a href="#endeavors">Our Endeavors So Far</a>
+          <ul>
+            <li><a href="#motivation">Motivation</a></li>
+            <li><a href="#theory">Theory Claims</a></li>
+            <li><a href="#insights">Key Insights for Practice</a></li>
+            <li><a href="#evidence">Experiments &amp; Evidence</a></li>
+          </ul>
+        </li>
+        <li><a href="#closing">Closing Call to Action</a></li>
+      </ul>
+    </nav>
+
+    <hr />
+
+    <!-- ==============================
+         Body
+         ============================== -->
+    <article>
+      <!-- Rethinking -->
+      <section id="rethinking">
+        <h2 class="heading">The Underexplored in Representation Learning: Why We Need to Rethink It <a class="anchor" href="#rethinking" aria-label="Link to this heading">#</a></h2>
+        <p>Modern AI models are rightly celebrated for astonishing successes, but their <strong>“almost right”</strong> failures tell another story: a captioning model dogmatically names a non-existent object; a classifier swaps “wolf” for “husky” whenever snow appears; a vision-language model hallucinates relationships. These errors rarely break benchmarks, yet they reveal <strong>warped internal maps</strong>, features that fail to reflect the factual world.</p>
+        <p>Scaling data and compute alone does not guarantee <strong>faithful representations</strong>. When features silently entangle or omit critical semantic information, interpretability, fairness, and robustness all suffer. To build responsible, resource-efficient AI, we need <strong>identifiable representations</strong>: latent features that correspond uniquely and stably to real-world factors.</p>
+      </section>
+
+      <figure class="fig-wide" role="group" aria-labelledby="fig1-caption">
+        <img
+          src="internal_map.svg"
+          alt="Two side-by-side maps. Left: a faithful internal map with straight grid, correctly placed landmarks, and a short direct path from House to Fountain. Right: a warped internal map with distorted grid, landmarks displaced from their true ghost positions, arrows indicating mismatch, and a longer, confused path with a warning marker."
+          loading="lazy"
+          decoding="async"
+          width="1600" height="770"
+        />
+        <figcaption id="fig1-caption">
+          <strong>Figure 1: When the internal map gets warped.</strong>
+          Faithful maps (left) preserve distances and relations. Warped maps (right) misplace landmarks and paths—an analogy for hallucinations and fragile reasoning in AI.
+        </figcaption>
+      </figure>
+
+
+      <hr />
+
+      <!-- Identifiability -->
+      <section id="identifiability">
+        <h2 class="heading">Identifiable Representation Learning: What It Means and Why It Matters <a class="anchor" href="#identifiability" aria-label="Link to this heading">#</a></h2>
+        <p>By <em>identifiability</em> we mean: <strong>given enough data and reasonable assumptions (i.e., a belief about how data are generated from latent factors of variation), the learned features recover the true latent factors, such as identity, shape, color, pose, up to at most trivial ambiguities.</strong></p>
+        <p>Why this matters:</p>
+        <ul>
+          <li><strong>Interpretability &amp; Fairness:</strong> Stable embedding coordinates (or neurons) let researchers and auditors see what is encoded and surface biases to be challenged.</li>
+          <li><strong>Robustness:</strong> Features do not drift when style, lighting, or domains shift.</li>
+          <li><strong>Resource Savings:</strong> Stable, semantic features reduce expensive retraining and data collection.</li>
+        </ul>
+        <p>Because identifiable features don't drift, teams spend less on re-training/data; audits are simpler (fairness); and feature meanings remain stable (interpretability).</p>
+      </section>
+
+      <hr />
+
+      <!-- Language cue -->
+      <section id="language">
+        <h2 class="heading">Our Route: Language as an Inductive Cue and Its Challenges <a class="anchor" href="#language" aria-label="Link to this heading">#</a></h2>
+        <p>Achieving identifiability comes with caveats. There are many ways to compress data; pretext tasks, learning objectives, model capacity, optimization dynamics, and dataset properties all shape the optimization landscape and thus the learned representations. Different research threads emphasize different levers; <strong>we focus on the data</strong>. We center our attention on data because, regardless of the algorithm, knowledge originates there. </p>
+        <p>In particular, we value <strong>language</strong> as an inductive cue for learning representations from unstructured modalities such as images. <strong>Natural language</strong>, invented by humans and carrying our culture and concepts, provides a practical semantic scaffold. Using text as guidance is compelling, witness the strong organization of visual features in CLIP-style models. Yet <strong>CLIP-based features have well-documented issues</strong>: hallucinations and vulnerability to spurious cues. Moreover, many modern vision-language systems (e.g., LLaVA-style VLMs, MLLMs, and text-to-image generators) build upon CLIP encoders and can inherit these weaknesses.</p></p>
+      </section>
+
+      <hr />
+
+      <!-- Endeavors -->
+      <section id="endeavors">
+        <h2 class="heading">Our Endeavors So Far: Modeling Caption Noise in Training Data and Its Consequences <a class="anchor" href="#endeavors" aria-label="Link to this heading">#</a></h2>
+
+        <section id="motivation">
+          <h3 class="heading">Motivation <a class="anchor" href="#motivation" aria-label="Link to this heading">#</a></h3>
+          <p>Large-scale multimodal learning (with language as an auxiliary modality) often relies on web-scale image-caption corpora. These data are <strong>noisy</strong>: captions omit details or misdescribe them. In <a href="https://yichaocai.com/misalignment.github.io">our NeurIPS 2025 paper</a>, we asked: <strong>Can we model these noise patterns formally?</strong> And: <strong>When are such misalignments harmful, and when can they be harnessed for robustness?</strong></p>
+        </section>
+
+        <section id="theory">
+          <h3 class="heading">Theory Claims <a class="anchor" href="#theory" aria-label="Link to this heading">#</a></h3>
+          <p>We formalize image-text generation with shared semantic factors plus modality-specific noise. Two biases characterize text-caption misalignment: <strong>selection bias</strong> (captions omit factors) and <strong>perturbation bias</strong> (captions randomly misdescribe factors).</p>
+          <figure class="fig-wide" role="group" aria-labelledby="fig2-caption">
+            <img
+              src="misalignment_illustration.png"
+              alt="Illustration of selection and perturbation bias in multimodal contrastive learning."
+              loading="lazy"
+              decoding="async"
+              width="1600" height="770"
+            />
+            <figcaption id="fig2-caption">
+              <strong>Figure 2: Illustration of selection and perturbation bias in multimodal contrastive learning.</strong>
+              Left: Shared semantics are partially selected (blue) or perturbed (red), creating mismatched supervision.
+              Right: Example with a black cat—omitting or misdescribing details warps representations.
+               (For full formal definitions and derivations, please refer to <a href="https://arxiv.org/abs/2504.10143">our paper</a>.)
+            </figcaption>
+          </figure>
+          <p><strong>Theorem 4.1 (informal):</strong> Contrastive multimodal learning identifies only the unbiased semantic subset shared across modalities; omitted or corrupted factors are excluded under appropriately constrained representation dimensionality, and modality-specific noise is discarded, <em>regardless of latent causal dependencies</em>.</p>
+          <p>Intuitively, contrastive models can only align what <strong>both views consistently share</strong>. Missing or stochastically perturbed details are not learned, even when they matter in the world. Furthermore, if dimensionality is over-generous and effective sparsity is absent, the extra capacity may inadvertently encode non-identifiable, noisy information.</p>
+        </section>
+
+        <section id="insights">
+          <h3 class="heading">Key Insights for Practice <a class="anchor" href="#insights" aria-label="Link to this heading">#</a></h3>
+          <p>This yields two practical insights:</p>
+          <ul>
+            <li><strong>Faithful captions for coverage:</strong> In <strong>large-scale pretraining</strong>, hallucinations arise when models infer semantics that captions omit or distort; key semantics may be missing. Faithful captions are essential because foundation models prioritize generalization and reuse. With sufficiently broad coverage, test cases remain largely in-distribution; otherwise the model embeds non-factual or noisy signals, causing non-identifiability and downstream hallucinations. <i>In large-scale contrastive pretraining, missing/perturbed semantics ⇒ non-identifiability (the non-faithfully captioned component semantics) ⇒ hallucination risk; targeted omissions of nuisance factors.</i></li>
+            <li><strong>Controlled misalignment for robustness:</strong> Deliberately altering vulnerable components (e.g., style cues) can teach the model to ignore nuisance factors, signals we do not want the model to rely on due to spurious correlations or insufficient environmental diversity. (See <a href="https://yichaocai.com/clap_paper.github.io">our ECCV 2024 paper</a> for a concrete demonstration of this strategy.)</li>
+          </ul>
+          <figure class="fig-wide" role="group" aria-labelledby="fig3-caption">
+            <img
+              src="flowchart.svg"
+              alt="Two side-by-side maps. Left: a faithful internal map with straight grid, correctly placed landmarks, and a short direct path from House to Fountain. Right: a warped internal map with distorted grid, landmarks displaced from their true ghost positions, arrows indicating mismatch, and a longer, confused path with a warning marker."
+              loading="lazy"
+              decoding="async"
+              width="1600" height="770"
+            />
+            <figcaption id="fig3-caption">
+              <strong>Figure 3: Caption quality shapes the representation space.</strong>
+              Faithful captions embed true semantics (robust features). Noisy captions warp axes (fragile features). Controlled perturbations suppress nuisances and improve invariance.
+            </figcaption>
+          </figure>
+        </section>
+
+        <section id="evidence">
+          <h3 class="heading">Experiments &amp; Evidence <a class="anchor" href="#evidence" aria-label="Link to this heading">#</a></h3>
+          <ul>
+            <li><strong>Simulations:</strong> Perfect recovery of unbiased semantics; omitted or perturbed factors are unrecoverable.</li>
+            <li><strong>Controlled image-text data:</strong> Empirical confirmation of block identifiability even with dependencies among factors.</li>
+            <li><strong>OpenCLIP case study:</strong> Concepts rarely mentioned in captions, indicative of selection bias, are poorly represented; headline accuracy can hide warped semantics. Mild misalignments keep top-line performance stable while distorting the latent map; our model predicts these effects.</li>
+          </ul>
+          <figure class="fig-wide" role="group" aria-labelledby="fig4-caption">
+            <img
+              src="OpenCLIP_case_study.png"
+              alt="A case study on OpenCLIP model pretrained on large dataset."
+              loading="lazy"
+              decoding="async"
+              width="1600" height="770"
+            />
+            <figcaption id="fig4-caption">
+              <strong>Figure 4: Zero-shot evaluation of OpenCLIP pretrained on LAION-400M.</strong>
+                Top: Caption coverage across 146 concepts in 15 aspects. Bottom: Macro F1 scores drop sharply for under-represented aspects, revealing misalignment (semantics omitted by selection bias) vulnerability.
+                (For additional experimental results, please refer to our paper</a>.)
+            </figcaption>
+          </figure>
+        </section>
+      </section>
+
+      <hr />
+
+      <!-- Closing -->
+      <section id="closing">
+        <h2 class="heading">Closing Call to Action <a class="anchor" href="#closing" aria-label="Link to this heading">#</a></h2>
+        <p>Identifiability is not optional; it is the bedrock of reliable and interpretable AI systems. Our NeurIPS&nbsp;2025 work, alongside related efforts in this area, aims to provide a compass for researchers and practitioners. Audit your data for biases, use language guidance thoughtfully, and explore controlled misalignment for robustness. Cite, extend, or challenge our results, help keep the internal maps of future AI systems true to the world they navigate.</p>
+      </section>
+
+      <div class="bibtex-card">
+          <span class="bibtex-label">
+            📚:
+            <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('bibtex-code').innerText);this.innerText='Copied!';setTimeout(()=>this.innerText='Copy',1300);">Copy</button>
+          </span>
+          <pre class="bibtex-pre"><code id="bibtex-code">@inproceedings{cai2025misalignment,
+            title     = {On the Value of Cross-Modal Misalignment in Multimodal Representation Learning},
+            author    = {Cai, Yichao and Liu, Yuhang and Gao, Erdun and Jiang, Tianjiao and Zhang, Zhen and van den Hengel, Anton and Shi, Javen Qinfeng},
+            booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+            year      = {2025}
+          }</code></pre>
+      </div>
+    </article>
+
+    <footer class="meta" style="text-align:center; margin-top:3rem; font-size:0.9rem; color:var(--muted);">
+      Edited and refined with the assistance of <strong>ChatGPT-5</strong>.
+    </footer>
+  </main>
+</body>
+</html>
