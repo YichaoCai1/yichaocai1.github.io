@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Yichao Cai's Homepage</title>
   <meta name="description" content="Academic homepage of Yichao Cai: research, publications, teaching, contact." />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap" rel="stylesheet">
   <style>
     /* ---------------------------
        Design goals
@@ -18,11 +22,11 @@
       --bg: #ffffff;
       --fg: #131313;
       --muted: #666666;
-      --link: #2b50a1;
+      --link: #4338ca;
       --border: #e8e8e8;
       --accent: #2b50a10f;
       --shadow: 0 1px 2px rgba(0,0,0,.04), 0 6px 24px rgba(0,0,0,.06);
-      --measure: 110ch; 
+      --measure: 75ch; 
       --step--2: clamp(.7rem, .7rem + .15vw, .82rem);
       --step--1: clamp(.85rem, .8rem + .3vw, .98rem);
       --step-0: clamp(.94rem, .9rem + .5vw, 1.05rem); /* base text size smaller */
@@ -35,7 +39,7 @@
         --bg: #0b0b0c;
         --fg: #efefef;
         --muted: #acacac;
-        --link: #86b1ff;
+        --link: #818cf8;
         --border: #222;
         --accent: #86b1ff1f;
         --shadow: 0 1px 2px rgba(0,0,0,.5), 0 6px 24px rgba(0,0,0,.35);
@@ -45,7 +49,7 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      font-family: "IBM Plex Sans", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
       font-size: var(--step-0);
       line-height: 1.65;
       color: var(--fg);
@@ -87,8 +91,8 @@
     section { padding: 2rem 0; border-bottom: 1px solid var(--border); scroll-margin-top: 72px; }
     section:last-of-type { border-bottom: 0; }
 
-    h1 { font-size: var(--step-3); line-height: 1.2; margin: 0 0 .5rem; }
-    h2 { font-size: var(--step-1); font-weight: 650; margin: 0 0 .75rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
+    h1 {font-family: "IBM Plex Sans", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif; font-size: var(--step-3); line-height: 1.2; margin: 0 0 .5rem;}
+    h2 {font-family: "IBM Plex Sans", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif; font-size: var(--step-1); font-weight: 650; margin: 0 0 .75rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border);}
     p { margin: .75rem 0; }
     .muted, .meta { color: var(--muted); }
     .meta { font-size: var(--step--1); }
@@ -106,7 +110,7 @@
 
     /* Avatar */
     .avatar {
-      float: left; width: 120px; height: auto; border-radius: 14px; margin: 1rem 1rem 0.5rem 0;
+      float: left; width: 120px; height: auto; border-radius: 14px; margin: 0rem 1rem 0.5rem 0;
       box-shadow: var(--shadow);
     }
     @media (max-width: 560px) {
@@ -117,31 +121,80 @@
     .news-list { list-style: none; padding: 0; margin: 0; max-height: 14rem; overflow: auto; }
     .news-item { display: grid; grid-template-columns: 7.5rem 1fr; gap: .8rem; padding: .5rem .6rem; border-radius: 10px; }
     .news-item:hover { background: var(--accent); }
-    .news-item time { color: var(--link); font-weight: 600; font-size: var(--step--1); }
+    .news-item time {font-weight: 500; font-size: var(--step--1); }
 
     .news-list::-webkit-scrollbar { width: 8px; }
     .news-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; }
     .news-list:hover::-webkit-scrollbar-thumb { background: #c9c9c9; }
 
-    /* Publications: hanging numbers, compact spacing */
-    .pub-note { font-size: var(--step--2); display: inline-block; margin-bottom: .75rem; }
-    .peer-reviewed { color: #B03060; }
-    .preprint { color: #6b7280; }
+    /* Publications note */
+    .pub-note {
+      font-size: var(--step--2);
+      display: inline-block;
+      margin-bottom: .75rem;
+    }
 
-    .pubs { list-style: none; padding: 0; margin: 0; }
+    /* 列表整体 */
+    .pubs {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* 每条 publication */
     .pubs li {
-    margin: 0 0 1rem;
-    padding-left: 1.75rem;
-    position: relative;
+      margin: 0 0 1.5rem;
+      padding: 0 0 0 1rem;
+      border-left: 3px solid var(--border);  /* 左侧竖线 */
     }
-    .pubs li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    top: .25rem;
-    font-size: 1.2em;
-    color: var(--link);
+
+    /* 标题 */
+    .pubs .title {
+      font-weight: 600;
+      font-size: var(--step-0);
+      line-height: 1.45;
+      display: block;
+      margin-bottom: 0.3rem;
     }
+
+    /* 作者 */
+    .pubs .author {
+      font-size: var(--step--1);
+      color: var(--muted);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    /* venue 标签 */
+    .pubs .venue {
+      font-size: var(--step--2);
+      font-weight: 600;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      margin-right: 0.5rem;
+    }
+
+    /* venue 分类颜色 */
+    .pubs .venue.peer-reviewed {
+      background: #e8eef7;  /* 浅蓝灰背景 */
+      color: #2b50a1;       /* 深蓝灰文字 */
+    }
+
+    .venue.peer-reviewed strong {
+      color: #b22222;   /* 红色强调 */
+    }
+
+    .pubs .venue.preprint {
+      background: #f3f4f6;
+      color: #374151;
+    }
+
+    /* 链接组 */
+    .pubs a {
+      font-size: var(--step--1);
+      margin-left: 0.25rem;
+    }
+
 
     /* Contact card */
     .contact-block {
@@ -170,29 +223,29 @@
   <div class="wrap">
     <nav aria-label="Section navigation">
       <div class="inner">
-        <div class="brand">Y.CAI</span></div>
+        <!-- <div class="brand">Y.CAI</span></div> -->
         <div class="links" role="list">
-          <a href="#about">About</a>
-          <a href="#publications">Publications</a>
-          <a href="#teaching">Teaching</a>
-          <a href="#contact">Contact</a>
+          <a href="#about">about</a>
+          <a href="#publications">publications</a>
+          <a href="#teaching">teaching</a>
+          <a href="#contact">contact</a>
         </div>
       </div>
     </nav>
 
     <main id="content" class="prose">
       <section id="about">
-        <h1>Yichao Cai <span class="muted">(蔡逸超)</span></h1>
-        <img src="files/photo.jpg" alt="Profile picture of Yichao Cai" class="avatar" />
+        <h2>About</h2>
+        <!-- <img src="files/photo.jpg" alt="Profile picture of Yichao Cai" class="avatar" /> -->
         <p>
-          I am a third-year Ph.D. student at the
-          <a href="https://www.adelaide.edu.au/aiml/" target="_blank" rel="noopener noreferrer">Australian Institute for Machine Learning (AIML)</a>,
-          <a href="https://www.adelaide.edu.au/" target="_blank" rel="noopener noreferrer">University of Adelaide</a>, advised by
-          Prof. <a href="https://cs.adelaide.edu.au/~javen/" target="_blank" rel="noopener noreferrer">Javen Qinfeng Shi</a>,
-          Dr <a href="https://zzhang.org/" target="_blank" rel="noopener noreferrer">Zhen Zhang</a>, and
-          Dr <a href="https://sites.google.com/view/yuhangliu/homepage" target="_blank" rel="noopener noreferrer">Yuhang Liu</a>.
-          Before starting my Ph.D., I spent four years working in industry. I earned both my B.E. and M.S. degrees from
-          <a href="http://english.whut.edu.cn/" target="_blank" rel="noopener noreferrer">Wuhan University of Technology (WUT)</a>,
+          Hello, I am <strong>Yichao Cai</strong> (Chinese: 蔡逸超), a third-year Ph.D. student at the
+          <a href="https://www.adelaide.edu.au/aiml/" target="_blank" rel="noopener noreferrer">Australian Institute for Machine Learning</a>,
+          <a href="https://www.adelaide.edu.au/" target="_blank" rel="noopener noreferrer">University of Adelaide</a>, 
+          advised by Prof. <a href="https://cs.adelaide.edu.au/~javen/" target="_blank" rel="noopener noreferrer">Javen Qinfeng Shi</a>, 
+          Dr. <a href="https://zzhang.org/" target="_blank" rel="noopener noreferrer">Zhen Zhang</a>, 
+          and Dr. <a href="https://sites.google.com/view/yuhangliu/homepage" target="_blank" rel="noopener noreferrer">Yuhang Liu</a>.
+          Previously, I earned both my B.E. and M.S. degrees from
+          <a href="http://english.whut.edu.cn/" target="_blank" rel="noopener noreferrer">Wuhan University of Technology</a>,
           where I was advised by Prof. Xiao Zhou.
         </p>
         <p>
@@ -219,7 +272,7 @@
               <a href="https://yichaocai.com/misalignment.github.io/" target="_blank" rel="noopener noreferrer">
                 cross-modal misalignment in multimodal representation learning
               </a>
-              was selected as a <strong>spotlight (top 3.2%)</strong> at
+              was selected as a <strong>Spotlight</strong> (top 3.2%) at
               <strong>NeurIPS 2025</strong>!
             </div>
           </li>
@@ -235,34 +288,51 @@
       </section>
 
       <section id="publications">
-        <h2>Publications</h2>
+        <h2>Selected publications</h2>
         <span class="pub-note">
-          (<b>*</b> Equal Contribution · <span class="peer-reviewed">Peer Reviewed</span> · <span class="preprint">Preprint</span>)
+          (<b>*</b> Equal contribution)
         </span>
         <ol class="pubs">
           <li>
-            Yuhang Liu, Dong Gong, <strong>Yichao Cai</strong>, Erdun Gao, Zhen Zhang, Biwei Huang,
-            Mingming Gong, Anton van den Hengel, and Javen Qinfeng Shi.
-            <strong>I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?</strong>
-            <span class="preprint">Preprint (2025), under review</span>.
-            [<a href="https://arxiv.org/abs/2503.08980" target="_blank" rel="noopener noreferrer">abstract</a>] ·
-            [<a href="https://arxiv.org/pdf/2503.08980" target="_blank" rel="noopener noreferrer">PDF</a>]
+            <span class="title">
+              I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?
+            </span>
+            <span class="author">
+              Yuhang Liu, Dong Gong, <strong>Yichao Cai</strong>, Erdun Gao, Zhen Zhang,
+              Biwei Huang, Mingming Gong, Anton van den Hengel, and Javen Qinfeng Shi
+            </span>
+            <span class="venue preprint">PREPRINT 2025</span>
+            <a href="https://arxiv.org/abs/2503.08980" target="_blank">[Abs]</a> ·
+            <a href="https://arxiv.org/pdf/2503.08980" target="_blank">[File]</a>
           </li>
+
           <li>
-            <strong>Yichao Cai*</strong>, Yuhang Liu*, Erdun Gao, Tianjiao Jiang, Zhen Zhang, Anton van den Hengel, and Javen Qinfeng Shi.
-            <strong>On the Value of Cross-Modal Misalignment in Multimodal Representation Learning.</strong>
-            <span class="peer-reviewed">NeurIPS 2025 (Spotlight)</span>.
-            [<a href="https://arxiv.org/abs/2504.10143" target="_blank" rel="noopener noreferrer">abstract</a>] ·
-            [<a href="https://arxiv.org/pdf/2504.10143" target="_blank" rel="noopener noreferrer">PDF</a>] ·
-            [<a href="https://yichaocai.com/misalignment.github.io/" target="_blank" rel="noopener noreferrer">project page</a>]
+            <span class="title">
+              On the Value of Cross-Modal Misalignment in Multimodal Representation Learning
+            </span>
+            <span class="author">
+              <strong>Yichao Cai*</strong>, Yuhang Liu*, Erdun Gao, Tianjiao Jiang, Zhen Zhang, Anton van den Hengel, and Javen Qinfeng Shi
+            </span>
+            <span class="venue peer-reviewed">NeurIPS 2025 (Spotlight)</span>
+            <a href="https://arxiv.org/abs/2504.10143" target="_blank" rel="noopener noreferrer">[Abs]</a> ·
+            <a href="https://arxiv.org/pdf/2504.10143" target="_blank" rel="noopener noreferrer">[File]</a> ·
+            <a href="https://yichaocai.com/misalignment.github.io/" target="_blank" rel="noopener noreferrer">[Project page]</a> ·
+            <a href="https://github.com/YichaoCai1/crossmodal_misalignment" target="_blank" rel="noopener noreferrer">[Code]</a> ·
+            <a href="https://yichaocai.com/posts/identifiable_representation_learning.html" target="_blank" rel="noopener noreferrer">[Post]</a>
           </li>
+
           <li>
-            <strong>Yichao Cai</strong>, Yuhang Liu, Zhen Zhang, and Javen Qinfeng Shi.
-            <strong>CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts.</strong>
-            <span class="peer-reviewed">ECCV 2024</span>.
-            [<a href="https://link.springer.com/chapter/10.1007/978-3-031-72664-4_8" target="_blank" rel="noopener noreferrer">abstract</a>] ·
-            [<a href="https://arxiv.org/pdf/2311.16445" target="_blank" rel="noopener noreferrer">PDF</a>] ·
-            [<a href="https://yichaocai.com/clap_paper.github.io/" target="_blank" rel="noopener noreferrer">project page</a>]
+            <span class="title">
+              CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts
+            </span>
+            <span class="author">
+              <strong>Yichao Cai</strong>, Yuhang Liu, Zhen Zhang, and Javen Qinfeng Shi
+            </span>
+            <span class="venue peer-reviewed">ECCV 2024</span>
+            <a href="https://link.springer.com/chapter/10.1007/978-3-031-72664-4_8" target="_blank" rel="noopener noreferrer">[Abs]</a> ·
+            <a href="https://arxiv.org/pdf/2311.16445" target="_blank" rel="noopener noreferrer">[File]</a> ·
+            <a href="https://yichaocai.com/clap_paper.github.io/" target="_blank" rel="noopener noreferrer">[Project page]</a> ·
+            <a href="https://github.com/YichaoCai1/CLAP" target="_blank" rel="noopener noreferrer">[Code]</a>
           </li>
         </ol>
       </section>
@@ -281,7 +351,7 @@
         <div class="contact-block">
           <p>
             Email: <a href="#contact">yichao (dot) cai (at) adelaide (dot) edu (dot) au</a><br />
-            LG.25.04, AIML Building, Lot Fourteen, Corner of North Terrace & Frome Road, Adelaide SA 5000, Australia
+            LG.25.04, AIML Building, Lot Fourteen <br/> Corner of North Terrace & Frome Road <br/> Adelaide, South Australia 5000, Australia
           </p>
         </div>
       </section>
@@ -289,27 +359,18 @@
       <section id="miscellaneous">
         <h2>Miscellaneous</h2>
         <ul class="pubs">
-          <li>
-            Outside of research, I share thoughts on <a href="https://www.zhihu.com/people/YichaoCai" target="_top" rel="noopener noreferrer">Zhihu</a> (in Chinese) and on my <a href="blogs.html" target="_top" rel="noopener noreferrer">blog</a>.
-          </li>
-          <li>
-            I enjoy peaceful nighttime strolls; when in Adelaide, the <a href="https://en.wikipedia.org/wiki/River_Torrens" target="_top" rel="noopener noreferrer">River Torrens</a> is perfect for them. I also enjoy reading, and a record of books I’ve logged can be found <a href="books.html">here</a>.
-          </li>
-          <li>
-            I'm a self-taught guitar hobbyist who enjoys fingerstyle playing. Tommy Emmanuel and Kotaro Oshio are my favorite guitar artists.
-          </li>
+          <p> Outside research, I share thoughts on <a href="https://www.zhihu.com/people/YichaoCai" target="_top" rel="noopener noreferrer">Zhihu</a> (Chinese) and my <a href="blogs.html" target="_top" rel="noopener noreferrer">blog</a>. I enjoy peaceful strolls (the <a href="https://en.wikipedia.org/wiki/River_Torrens" target="_top" rel="noopener noreferrer">River Torrens</a> is perfpect for them when in Adelaide), reading (see my book list <a href="books.html">here</a>), and playing fingerstyle guitar.
+          </p>
         </ul>
       </section>
 
       <footer class="counter">
-        <p>
-          You are visitor number&nbsp;
-          <a href="https://www.hitwebcounter.com" target="_blank" style="text-decoration: none;">
-            <img src="https://hitwebcounter.com/counter/counter.php?page=21164154&style=0038&nbdigits=5&type=ip&initCount=0"
-              title="Visitor Counter" alt="Visit counter" style="vertical-align: middle; border: none;" />
-          </a>
-          &nbsp;since July 15, 2025.
-        </p>
+        You are visitor number&nbsp;
+        <a href="https://www.hitwebcounter.com" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+          <img src="https://hitwebcounter.com/counter/counter.php?page=21164154&style=0038&nbdigits=5&type=ip&initCount=0"
+              title="Visitor Counter" alt="Visitor counter" style="vertical-align: middle; border: none;" />
+        </a>
+        &nbsp;since July 15, 2025.  &nbsp;  Last updated: Sep 23, 2025. <br/>
       </footer>
     </main>
   </div>
