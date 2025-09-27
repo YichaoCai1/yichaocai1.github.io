@@ -3,26 +3,113 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Yichao Cai - Personal Reading List</title>
+  <title>Yichao Cai – Personal Reading List</title>
+  <style>
+    :root {
+      --text: #222;        /* main body text */
+      --bg: #fdfdfb;       /* light paper-like background */
+      --border: #ddd;      /* subtle table borders */
+      --accent: #4b0082;   /* your main link color */
+      --heading: #1b1b1b;  /* darker heading */
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #ddd;
+        --bg: #121212;
+        --border: #444;
+        --accent: #b48cf2;  /* indigo-lavender accent in dark mode */
+        --heading: #fff;
+      }
+    }
+
+    html {
+      font-size: 16px;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 860px;
+      padding: 2rem 1.2rem;
+      font-family: "Iowan Old Style", "Georgia", "Times New Roman", serif;
+      line-height: 1.65;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    h1, h2, h3 {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-weight: 600;
+      color: var(--heading);
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.3rem;
+    }
+
+    p em {
+      color: #666;
+      font-size: 0.95rem;
+    }
+    @media (prefers-color-scheme: dark) {
+      p em { color: #aaa; }
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+    }
+    th, td {
+      padding: 0.6rem 0.4rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    thead th {
+      font-weight: 600;
+      color: var(--heading);
+      border-bottom: 2px solid var(--border);
+    }
+    tbody tr:hover {
+      background-color: rgba(0,0,0,0.03);
+    }
+    @media (prefers-color-scheme: dark) {
+      tbody tr:hover {
+        background-color: rgba(255,255,255,0.05);
+      }
+    }
+
+    em { font-style: italic; }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover, a:focus {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
-  <section aria-labelledby="reading-list-title">
-    <h2 id="reading-list-title">Some personal readings (where I remember)</h2>
-    <p>
-      <em>Approximately in a recent-to-early order.</em><br>
-      <em>Mostly in Chinese translation for western pieces, since my mother language is Chinese.</em>
-    </p>
+<section aria-labelledby="reading-list-title">
+  <h2 id="reading-list-title">Some personal readings (where I remember)</h2>
+  <p>
+    <em>Approximately in a recent-to-early order.</em><br>
+    <em>Mostly in Chinese translation for western pieces, since my mother language is Chinese.</em>
+  </p>
 
-    <table>
-      <thead>
-        <tr>
-          <th scope="col">中文名</th>
-          <th scope="col">English Title</th>
-          <th scope="col">作者 (Author)</th>
-        </tr>
-      </thead>
-      <tbody>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">中文名</th>
+        <th scope="col">English Title</th>
+        <th scope="col">作者 (Author)</th>
+      </tr>
+    </thead>
+    <tbody>
         <tr><td>雪落香杉树</td><td>Snow Falling on Cedars</td><td>戴维.伽特森 (David Guterson)</td></tr>
         <tr><td>反与正</td><td>The Wrong Side and the Right Side</td><td>阿尔贝·加缪 (Albert Camus)</td></tr>
         <tr><td>西西弗神话</td><td>The Myth of Sisyphus</td><td>阿尔贝·加缪 (Albert Camus)</td></tr>
@@ -49,7 +136,7 @@
         <tr><td>无比美妙的痛苦</td><td>The Fault in Our Stars</td><td>约翰·格林 (John Green)</td></tr>
         <tr><td>飘</td><td>Gone with the Wind</td><td>玛格丽特·米切尔 (Margaret Mitchell)</td></tr>
         <tr><td>傲慢与偏见</td><td>Pride and Prejudice</td><td>简·奥斯汀 (Jane Austen)</td></tr>
-        <tr><td>苏菲的世界</td><td>Sophie’s World</td><td>乔斯坦·贾德 (Jostein Gaarder)</td></tr>
+        <tr><td>苏菲的世界</td><td>Sophie's World</td><td>乔斯坦·贾德 (Jostein Gaarder)</td></tr>
         <tr><td>飞鸟集</td><td>Stray Birds</td><td>泰戈尔 (Rabindranath Tagore)</td></tr>
         <tr><td>茶花女</td><td>The Lady of the Camellias</td><td>小仲马 (Alexandre Dumas fils)</td></tr>
         <tr><td>悲惨世界</td><td>Les Misérables</td><td>维克多·雨果 (Victor Hugo)</td></tr>
@@ -71,10 +158,10 @@
         <tr><td>边城</td><td>Border Town</td><td>沈从文 (Shen Congwen)</td></tr>
         <tr><td>钢铁是怎样炼成的</td><td>How the Steel Was Tempered</td><td>尼古拉·奥斯特洛夫斯基 (Nikolai Ostrovsky)</td></tr>
         <tr><td>水浒传</td><td>Water Margin <em>(Outlaws of the Marsh)</em></td><td>施耐庵 (Shi Nai'an)</td></tr>
-        <tr><td>汤姆叔叔的小屋</td><td>Uncle Tom’s Cabin</td><td>哈丽雅特·比彻·斯托 (Harriet Beecher Stowe)</td></tr>
-      </tbody>
-    </table>
-  </section>
+        <tr><td>汤姆叔叔的小屋</td><td>Uncle Tom's Cabin</td><td>哈丽雅特·比彻·斯托 (Harriet Beecher Stowe)</td></tr>
+    </tbody>
+  </table>
+</section>
 
 </body>
 </html>

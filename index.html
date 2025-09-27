@@ -42,20 +42,20 @@
 
   <style>
     :root {
-      --bg: #ffffff;
-      --fg: #131313;
-      --muted: #555;
-      --link: #4b0082;
-      --border: #e8e8e8;
-      --accent: #2b50a10f;
+      --bg: #f9fafc;           /* soft foggy background */
+      --fg: #1c1f25;           /* deep charcoal for text */
+      --muted: #5c6370;        /* soft gray-blue for secondary text */
+      --link: #3b5b92;         /* reserved desaturated blue link */
+      --border: #dfe3ea;       /* pale cool border */
+      --accent: #3b5b9212;     /* faint blue highlight */
 
-      /* badge colors (light mode) */
-      --badge-bg: #faf9f6;    
-      --badge-bo: rgba(85,85,85,0.25);
-      --badge-fg: #131313;    
-      --badge-hi-fg: #8B0000; /* your red for spotlight */
+      /* badges */
+      --badge-bg: #eef3f8;
+      --badge-bo: rgba(60,80,130,0.18);
+      --badge-fg: #2b3e5c;
+      --badge-hi-fg: #7A1C1C;  /* keep your deep red for spotlight */
 
-      --shadow: 0 1px 2px rgba(0,0,0,.05), 0 6px 24px rgba(0,0,0,.08);
+      --shadow: 0 1px 2px rgba(0,0,0,.04), 0 6px 20px rgba(0,0,0,.06);
       --measure: 75ch;
       --step--2: clamp(.72rem, .7rem + .12vw, .82rem);
       --step--1: clamp(.88rem, .84rem + .24vw, .98rem);
@@ -70,18 +70,17 @@
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #0b0b0c;
-        --fg: #f0f0f0;
-        --muted: #b6b6b6;
-        --link: #a366ff;  /* soft purple links for dark bg */
-        --border: #1e1e1e;
-        --accent: #86b1ff1f;
+        --bg: #0e1218;         /* midnight blue-gray */
+        --fg: #e5eaf3;         /* soft silver text */
+        --muted: #9aa4b2;      /* misty muted blue-gray */
+        --link: #9bb8e8;       /* cool steel blue link */
+        --border: #1c2330;     /* subtle divider */
+        --accent: #9bb8e81a;   /* gentle cool glow */
 
-        /* badges (dark mode) */
-        --badge-bg: #1b1b1b;   
-        --badge-bo: rgba(200,200,200,0.15);
-        --badge-fg: #f0f0f0;   
-        --badge-hi-fg: #FF4C4C;/* red for spotlight */
+        --badge-bg: #1a2330;
+        --badge-bo: rgba(180,200,240,.14);
+        --badge-fg: #d0d8e8;
+        --badge-hi-fg: #F09797; /* keep warm red pop for spotlight */
 
         --shadow: 0 1px 2px rgba(0,0,0,.5), 0 6px 24px rgba(0,0,0,.35);
       }
@@ -349,9 +348,10 @@
             <p>My research focuses on multimodal representation learning and principled disentanglement. I study identifiability, causal reasoning, and language as an inductive signal to build explainable systems that uncover the semantic structure underlying complex visual–language data.</p>
             <div class="cta">
               <a class="btn" href="https://scholar.google.com/citations?user=nNp0nL4AAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-              <a class="btn" href="https://researchers.adelaide.edu.au/profile/yichao.cai" target="_blank" rel="noopener noreferrer">Research Profile</a>
+              <!-- <a class="btn" href="https://researchers.adelaide.edu.au/profile/yichao.cai" target="_blank" rel="noopener noreferrer">Research Profile</a> -->
               <a class="btn" href="https://github.com/YichaoCai1" target="_blank" rel="noopener noreferrer">GitHub</a>
               <a class="btn" href="https://www.linkedin.com/in/yichao-cai-12a3b9292" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a class="btn" href="blogs.html" target="_blank" rel="noopener noreferrer">Blog</a>
               <a class="btn" href="https://www.zhihu.com/people/YichaoCai" target="_blank" rel="noopener noreferrer">知乎</a>
             </div>
           </div>
