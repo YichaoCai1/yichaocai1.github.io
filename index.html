@@ -4,44 +4,74 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Yichao Cai's Homepage</title>
-  <meta name="description" content="Academic homepage of Yichao Cai: research, publications, teaching, contact." />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    /* ---------------------------
-       Design goals
-       - Calm, readable typography
-       - Tight but airy spacing rhythm
-       - Subtle color, strong contrast
-       - Works beautifully in light/dark
-    ----------------------------*/
+  <meta name="description" content="Yichao Cai — Ph.D. candidate at the Australian Institute for Machine Learning (University of Adelaide). Research: multimodal representation learning, identifiability, causal modeling." />
 
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Yichao Cai's Homepage" />
+  <meta property="og:description" content="Multimodal representation learning • Identifiability • Causal modeling" />
+  <meta property="og:image" content="files/photo.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- JSON-LD: Person schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yichao Cai",
+    "jobTitle": "Ph.D. Candidate",
+    "affiliation": {
+      "@type": "CollegeOrUniversity",
+      "name": "University of Adelaide"
+    },
+    "url": "https://yichaocai.com/",
+    "image": "files/photo.jpg",
+    "sameAs": [
+      "https://scholar.google.com/citations?user=nNp0nL4AAAAJ",
+      "https://github.com/YichaoCai1",
+      "https://www.linkedin.com/in/yichao-cai-12a3b9292"
+    ]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
     :root {
       --bg: #ffffff;
       --fg: #131313;
-      --muted: #666666;
+      --muted: #555;
       --link: #4338ca;
       --border: #e8e8e8;
       --accent: #2b50a10f;
-      --shadow: 0 1px 2px rgba(0,0,0,.04), 0 6px 24px rgba(0,0,0,.06);
-      --measure: 75ch; 
-      --step--2: clamp(.7rem, .7rem + .15vw, .82rem);
-      --step--1: clamp(.85rem, .8rem + .3vw, .98rem);
-      --step-0: clamp(.94rem, .9rem + .5vw, 1.05rem); /* base text size smaller */
-      --step-1: clamp(1.15rem, 1.05rem + 1vw, 1.28rem);
-      --step-2: clamp(1.35rem, 1.18rem + 1.4vw, 1.55rem);
-      --step-3: clamp(1.7rem, 1.45rem + 2vw, 2rem);
+      --badge: #f3f4f6;     /* new background, e.g., light gray */
+      --badge-fg: #1f2937;  /* new text color, e.g., dark slate */
+      --badge-hi: #dc2626;  /* special highlight red */
+      --shadow: 0 1px 2px rgba(0,0,0,.05), 0 6px 24px rgba(0,0,0,.08);
+      --measure: 75ch;
+      --step--2: clamp(.72rem, .7rem + .12vw, .82rem);
+      --step--1: clamp(.88rem, .84rem + .24vw, .98rem);
+      --step-0: clamp(1rem, .95rem + .4vw, 1.08rem);
+      --step-1: clamp(1.22rem, 1.05rem + .8vw, 1.32rem);
+      --step-2: clamp(1.44rem, 1.22rem + 1.2vw, 1.6rem);
+      --step-3: clamp(1.9rem, 1.6rem + 1.8vw, 2.2rem);
+      --radius: 12px;
+      --radius-lg: 16px;
+      --gutter: 1rem;
     }
     @media (prefers-color-scheme: dark) {
       :root {
         --bg: #0b0b0c;
-        --fg: #efefef;
-        --muted: #acacac;
+        --fg: #f0f0f0;
+        --muted: #b6b6b6;
         --link: #818cf8;
-        --border: #222;
+        --border: #1e1e1e;
         --accent: #86b1ff1f;
+        --badge: #1f2937;    /* dark badge background */
+        --badge-fg: #f3f4f6; /* light text */
+        --badge-hi: #f87171; /* red highlight */
         --shadow: 0 1px 2px rgba(0,0,0,.5), 0 6px 24px rgba(0,0,0,.35);
       }
     }
@@ -49,53 +79,40 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: "IBM Plex Sans", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-family: "IBM Plex Sans", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
       font-size: var(--step-0);
       line-height: 1.65;
       color: var(--fg);
       background: var(--bg);
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
-      font-feature-settings: "liga" 1, "kern" 1, "cv02", "cv03", "cv04";
     }
-
     a { color: var(--link); text-decoration: none; text-underline-offset: 3px; }
-    a:hover,
-    a:focus {
-      text-decoration: underline; /* optional: show underline on hover for clarity */
-      text-underline-offset: 3px;
-    }
+    a:hover, a:focus { text-decoration: underline; }
 
     /* Layout */
     .wrap { display: grid; grid-template-columns: 1fr; min-height: 100svh; }
-
     nav {
       position: sticky; top: 0; z-index: 10; background: var(--bg);
       border-bottom: 1px solid var(--border);
     }
     nav .inner {
       max-width: 1120px; margin: 0 auto; padding: .8rem 1rem;
-      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      display: flex; align-items: center; justify-content: space-between; gap: .5rem;
     }
-    .brand { font-weight: 650; letter-spacing: .2px; font-size: var(--step--1); }
-
+    .brand { font-weight: 700; letter-spacing: .2px; font-size: var(--step--1); }
     .links { display: flex; flex-wrap: wrap; gap: .25rem; }
-    .links a {
-      border-radius: 8px; text-decoration: none; padding: .4rem .6rem; color: inherit;
-    }
-    .links a:hover { background: var(--accent); }
+    .links a { border-radius: 8px; padding: .4rem .6rem; color: inherit; }
+    .links a[aria-current="page"], .links a:hover { background: var(--accent); }
 
-    main { max-width: 860px; margin: 0 auto; padding: 2rem 1rem; }
-    .prose { max-width: var(--measure); }
-
+    main { max-width: 920px; margin: 0 auto; padding: 2rem 1rem; }
     section { padding: 2rem 0; border-bottom: 1px solid var(--border); scroll-margin-top: 72px; }
     section:last-of-type { border-bottom: 0; }
 
-    h1 {font-family: "IBM Plex Sans", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif; font-size: var(--step-3); line-height: 1.2; margin: 0 0 .5rem;}
-    h2 {font-family: "IBM Plex Sans", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif; font-size: var(--step-1); font-weight: 650; margin: 0 0 .75rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border);}
+    h1 { font-size: var(--step-3); line-height: 1.15; margin: 0 0 .5rem; }
+    h2 { font-size: var(--step-1); font-weight: 650; margin: 0 0 1rem; padding-bottom: .6rem; border-bottom: 1px solid var(--border); }
     p { margin: .75rem 0; }
-    .muted, .meta { color: var(--muted); }
-    .meta { font-size: var(--step--1); }
+    .muted { color: var(--muted); }
 
     /* Sidebar on wide screens */
     @media (min-width: 980px) {
@@ -103,118 +120,86 @@
       nav { height: 100svh; border-right: 1px solid var(--border); border-bottom: none; position: sticky; top: 0; }
       nav .inner { flex-direction: column; align-items: flex-start; gap: .75rem; padding: 1.5rem 1rem; }
       .links { flex-direction: column; gap: .1rem; width: 100%; }
-      .links a { display: block; width: 100%; padding: .5rem .6rem; border-radius: 8px; }
+      .links a { display: block; width: 100%; }
       main { padding: 2.25rem 2rem; }
       section { scroll-margin-top: 16px; }
     }
 
-    /* Avatar */
+    /* Hero */
+    .hero { display:grid; grid-template-columns: 150px 1fr; gap:1rem; align-items:center; }
     .avatar {
-      float: left; width: 120px; height: auto; border-radius: 14px; margin: 0rem 1rem 0.5rem 0;
-      box-shadow: var(--shadow);
+      width: 140px;
+      border-radius: 1%;     
+      object-fit: cover;
+      margin-top: 10px;
+      /* soft shadow */
+      box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.15),
+        0 0 20px rgba(255, 240, 220, 0.4); /* warm glow */
+
+      /* dreamy Monet-like filter */
+      filter: saturate(1.2) brightness(1.05) contrast(0.9) blur(0.2px);
+
+      /* pastel border to hint at an art frame */
+      border: 3px solid rgba(255, 230, 200, 0.5);
     }
+    .tagline { font-size: var(--step--1); color: var(--muted); }
+    .cta { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .5rem; }
+    .btn {
+      display: inline-block;
+      padding:0rem 0.4rem;
+      font-size: 0.85rem;
+      color: var(--link, #0066cc);
+      border: 1px solid var(--link, #0066cc);
+      border-radius: 3px;
+      background: none;
+      text-decoration: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .btn:hover {
+      background-color: var(--link, #0066cc);
+      color: #fff;
+      text-decoration: none;
+    }
+
     @media (max-width: 560px) {
-      .avatar { float: none; display: block; margin: 0 auto 1rem; }
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .avatar { margin: 0 auto; }
     }
 
     /* News */
-    .news-list { list-style: none; padding: 0; margin: 0; max-height: 14rem; overflow: auto; }
-    .news-item { display: grid; grid-template-columns: 7.5rem 1fr; gap: .8rem; padding: .5rem .6rem; border-radius: 10px; }
+    .news-list { list-style: none; padding: 0; margin: 0; }
+    .news-item { display: grid; grid-template-columns: 7.5rem 1fr; gap: .8rem; padding: .55rem .6rem; border-radius: 10px; }
     .news-item:hover { background: var(--accent); }
-    .news-item time {font-weight: 500; font-size: var(--step--1); }
+    .news-item time { font-weight: 600; font-size: var(--step--1); }
+    details.news-more { margin-top: .5rem; }
 
-    .news-list::-webkit-scrollbar { width: 8px; }
-    .news-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; }
-    .news-list:hover::-webkit-scrollbar-thumb { background: #c9c9c9; }
+    /* Publications */
+    .pub-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+    @media (min-width: 720px) { .pub-grid { grid-template-columns: 1fr; } }
+    @media (min-width: 1120px) { .pub-grid { grid-template-columns: 1fr; } }
 
-    /* Publications note */
-    .pub-note {
-      font-size: var(--step--2);
-      display: inline-block;
-      margin-bottom: .75rem;
-    }
+    .pub { display: grid; grid-template-columns: 128px 1fr; gap: .9rem; padding: .75rem .25rem .75rem 0; border: none; border-bottom: 1px dashed var(--border); border-radius: 0; box-shadow: none; background: transparent; }
+    .pub:first-child { border-top: 1px dashed var(--border); }
+    .pub img { width: 128px; height: 96px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #f3f3f3; }
+    .pub .title { font-weight: 600; line-height: 1.35; }
+    .pub .authors { font-size: var(--step--2); color: var(--muted); margin: .25rem 0 .35rem; }
+    .badges { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .35rem; }
+    .badge { font-size: var(--step--2); font-weight: 550; padding: 0.12rem .4rem; border-radius: 4px; background: var(--badge); color: var(--badge-fg); }
+    .badge strong { color: var(--badge-hi); }
 
-    /* 列表整体 */
-    .pubs {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+    /* CV-style list for teaching */
+    .pubs { list-style: none; padding: 0; margin: 0; }
+    .pubs li { margin: 0 0 1.2rem; padding: 0 0 0 1rem; border-left: 3px solid var(--border); }
 
-    /* 每条 publication */
-    .pubs li {
-      margin: 0 0 1.5rem;
-      padding: 0 0 0 1rem;
-      border-left: 3px solid var(--border);  /* 左侧竖线 */
-    }
+    /* Contact */
+    .contact-block { background: linear-gradient(0deg, var(--accent), transparent 35%); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; box-shadow: var(--shadow); }
 
-    /* 标题 */
-    .pubs .title {
-      font-weight: 600;
-      font-size: var(--step-0);
-      line-height: 1.45;
-      display: block;
-      margin-bottom: 0.3rem;
-    }
+    /* Personal note */
+    .personal-note { font-size: var(--step--2); color: var(--muted); margin-top: .75rem; font-style: italic; text-align: right; }
+    @media (min-width: 980px) { .personal-note { max-width: 50%; margin-left: auto; } }
 
-    /* 作者 */
-    .pubs .author {
-      font-size: var(--step--1);
-      color: var(--muted);
-      display: block;
-      margin-bottom: 0.3rem;
-    }
-
-    /* venue 标签 */
-    .pubs .venue {
-      font-size: var(--step--2);
-      font-weight: 600;
-      padding: 0.1rem 0.4rem;
-      border-radius: 4px;
-      margin-right: 0.5rem;
-    }
-
-    /* venue 分类颜色 */
-    .pubs .venue.peer-reviewed {
-      background: #e8eef7;  /* 浅蓝灰背景 */
-      color: #2b50a1;       /* 深蓝灰文字 */
-    }
-
-    .venue.peer-reviewed strong {
-      color: #b22222;   /* 红色强调 */
-    }
-
-    .pubs .venue.preprint {
-      background: #f3f4f6;
-      color: #374151;
-    }
-
-    /* 链接组 */
-    .pubs a {
-      font-size: var(--step--1);
-      margin-left: 0.25rem;
-    }
-
-
-    /* Contact card */
-    .contact-block {
-      background: linear-gradient(0deg, var(--accent), transparent 35%);
-      border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 1rem; box-shadow: var(--shadow);
-    }
-
-    /* Footer */
-    footer.counter {
-      text-align: center; font-size: var(--step--2); color: var(--muted);
-      max-width: 860px; margin: 2rem auto 0; border-top: 1px solid var(--border);
-      padding: 1rem 1rem 2rem;
-    }
-
-    /* Motion preferences */
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      * { animation: none !important; transition: none !important; }
-    }
+    footer.counter { text-align: center; font-size: var(--step--2); color: var(--muted); max-width: 920px; margin: 2rem auto 0; border-top: 1px solid var(--border); padding: 1rem 1rem 2rem; }
   </style>
 </head>
 <body>
@@ -223,54 +208,44 @@
   <div class="wrap">
     <nav aria-label="Section navigation">
       <div class="inner">
-        <!-- <div class="brand">Y.CAI</span></div> -->
+        <!-- <div class="brand">Yichao Cai</div> -->
         <div class="links" role="list">
-          <a href="#about">about</a>
-          <a href="#publications">publications</a>
-          <a href="#teaching">teaching</a>
-          <a href="#contact">contact</a>
+          <a href="#about" aria-current="page">About</a>
+          <a href="#publications">Papers</a>
+          <a href="#teaching">Teaching</a>
+          <a href="#blog">Blog</a>
+          <a href="#contact">Contact</a>
+          <a href="#" title="Download CV">CV</a>
         </div>
       </div>
     </nav>
 
-    <main id="content" class="prose">
+    <main id="content">
+      <!-- HERO / ABOUT -->
       <section id="about">
-        <h2>About</h2>
-        <!-- <img src="files/photo.jpg" alt="Profile picture of Yichao Cai" class="avatar" /> -->
-        <p>
-          Hello, I am <strong>Yichao Cai</strong> (Chinese: 蔡逸超), a third-year Ph.D. student at the
-          <a href="https://www.adelaide.edu.au/aiml/" target="_blank" rel="noopener noreferrer">Australian Institute for Machine Learning</a>,
-          <a href="https://www.adelaide.edu.au/" target="_blank" rel="noopener noreferrer">University of Adelaide</a>, 
-          advised by Prof. <a href="https://cs.adelaide.edu.au/~javen/" target="_blank" rel="noopener noreferrer">Javen Qinfeng Shi</a>, 
-          Dr. <a href="https://zzhang.org/" target="_blank" rel="noopener noreferrer">Zhen Zhang</a>, 
-          and Dr. <a href="https://sites.google.com/view/yuhangliu/homepage" target="_blank" rel="noopener noreferrer">Yuhang Liu</a>.
-          Previously, I earned both my B.E. and M.S. degrees from
-          <a href="http://english.whut.edu.cn/" target="_blank" rel="noopener noreferrer">Wuhan University of Technology</a>,
-          where I was advised by Prof. Xiao Zhou.
-        </p>
-        <p>
-          My research focuses on multimodal representation learning and principled approaches to disentanglement.
-          I am currently exploring identifiable modeling, causal reasoning, and the use of language as an inductive signal.
-          Looking ahead, I aim to develop explainable AI systems that can reliably uncover and represent
-          the semantic structures underlying complex data.
-        </p>
-        <p class="meta">
-          [&nbsp;<a href="https://scholar.google.com/citations?user=nNp0nL4AAAAJ&hl" rel="noopener noreferrer">Google Scholar</a>&nbsp;] ·
-          [&nbsp;<a href="https://github.com/YichaoCai1" rel="noopener noreferrer">GitHub</a>&nbsp;] ·
-          [&nbsp;<a href="https://www.linkedin.com/in/yichao-cai-12a3b9292" rel="noopener noreferrer">LinkedIn</a>&nbsp;] ·
-          [&nbsp;<a href="blogs.html">Blog</a>&nbsp;]
-        </p>
+        <div class="hero">
+          <img src="files/photo_monet.jpg" alt="Portrait of Yichao Cai" class="avatar" />
+          <div>
+            <h1>Yichao Cai</h1>
+            <div class="tagline">Ph.D. Candidate · Australian Institute for Machine Learning, University of Adelaide</div>
+            <p>Hello, I am a third-year Ph.D. candidate at the <a href="https://www.adelaide.edu.au/aiml/" target="_blank" rel="noopener noreferrer">Australian Institute for Machine Learning</a>, <a href="https://www.adelaide.edu.au/" target="_blank" rel="noopener noreferrer">University of Adelaide</a>, advised by Prof. <a href="https://cs.adelaide.edu.au/~javen/" target="_blank" rel="noopener noreferrer">Javen Qinfeng Shi</a>, Dr. <a href="https://zzhang.org/" target="_blank" rel="noopener noreferrer">Zhen Zhang</a>, and Dr. <a href="https://sites.google.com/view/yuhangliu/homepage" target="_blank" rel="noopener noreferrer">Yuhang Liu</a>. Previously, I received my B.Eng. and M.Sc. from <a href="http://english.whut.edu.cn/" target="_blank" rel="noopener noreferrer">Wuhan University of Technology</a>, where I was advised by Prof. Xiao Zhou.</p>
+            <p>My research focuses on multimodal representation learning and principled disentanglement. I study identifiability, causal reasoning, and language as an inductive signal to build explainable systems that uncover the semantic structure underlying complex visual–language data.</p>
+            <div class="cta">
+              <a class="btn" href="https://scholar.google.com/citations?user=nNp0nL4AAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+              <a class="btn" href="https://github.com/YichaoCai1" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a class="btn" href="https://www.linkedin.com/in/yichao-cai-12a3b9292" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+          </div>
+        </div>
       </section>
 
+      <!-- NEWS -->
       <section id="news" aria-label="Recent news">
         <h2>News</h2>
         <ul class="news-list" aria-live="polite">
-          <li class="news-item">
-            <time datetime="2025-09-19">2025-09-19</time>
-            <div>
-              Excited to share that our work on
-              <a href="https://yichaocai.com/misalignment.github.io/" target="_blank" rel="noopener noreferrer">
-                cross-modal misalignment in multimodal representation learning
+          <li class="news-item"><time datetime="2025-09-19">2025-09-19</time>
+            <div>              
+              Excited to share that our work on <strong>cross-modal misalignment</strong>
               </a>
               was selected as a <strong>Spotlight</strong> (top 3.2%) at
               <strong>NeurIPS 2025</strong>!
@@ -278,99 +253,111 @@
           </li>
           <li class="news-item">
             <time datetime="2025-04-14">2025-04-14</time>
-            <div> Check out our new preprint: <a href="https://arxiv.org/abs/2504.10143" target="_blank" rel="noopener noreferrer">"On the Value of Cross-Modal Misalignment in Multimodal Representation Learning"</a>.</div>
+            <div> Check out our <a href="https://arxiv.org/abs/2504.10143" target="_blank" rel="noopener noreferrer">new preprint</a>: "On the Value of Cross-Modal Misalignment in Multimodal Representation Learning".</div>
           </li>
           <li class="news-item">
             <time datetime="2024-07-02">2024-07-02</time>
             <div>Our work, <a href="https://yichaocai.com/clap_paper.github.io/" target="_blank" rel="noopener noreferrer">"CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts"</a>, is accepted to appear at <strong>ECCV 2024</strong>.</div>
           </li>
         </ul>
+        <details class="news-more"><summary>Show more</summary>
+          <ul class="news-list">
+            <!-- Future/older items here -->
+          </ul>
+        </details>
       </section>
 
+      <!-- PUBLICATIONS -->
       <section id="publications">
-        <h2>Selected publications</h2>
-        <span class="pub-note">
-          (<b>*</b> Equal contribution)
-        </span>
-        <ol class="pubs">
-          <li>
-            <span class="title">
-              I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?
-            </span>
-            <span class="author">
-              Yuhang Liu, Dong Gong, <strong>Yichao Cai</strong>, Erdun Gao, Zhen Zhang,
-              Biwei Huang, Mingming Gong, Anton van den Hengel, and Javen Qinfeng Shi
-            </span>
-            <span class="venue preprint">PREPRINT 2025</span>
-            <a href="https://arxiv.org/abs/2503.08980" target="_blank">[Abs]</a> ·
-            <a href="https://arxiv.org/pdf/2503.08980" target="_blank">[File]</a>
-          </li>
+        <h2>Selected Publications</h2>
+        <div class="pub-grid">
+          <!-- Pub 1 -->
+          <article class="pub">
+            <img src="/files/thumbs/ntp-concepts.png" alt="Thumbnail for NTP concepts paper" width="128" height="96" loading="lazy" decoding="async" />
+            <div>
+              <div class="title">I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?</div>
+              <div class="authors">Yuhang Liu, Dong Gong, <strong>Yichao Cai</strong>, Erdun Gao, Zhen Zhang, Biwei Huang, Mingming Gong, Anton van den Hengel, and Javen Q. Shi</div>
+              <div class="badges"><span class="badge">Preprint · 2025</span></div>
+              <div class="cta">
+                <a class="btn" href="https://arxiv.org/abs/2503.08980" target="_blank" rel="noopener">Abs</a>
+                <a class="btn" href="https://arxiv.org/pdf/2503.08980" target="_blank" rel="noopener">PDF</a>
+              </div>
+            </div>
+          </article>
 
-          <li>
-            <span class="title">
-              On the Value of Cross-Modal Misalignment in Multimodal Representation Learning
-            </span>
-            <span class="author">
-              <strong>Yichao Cai*</strong>, Yuhang Liu*, Erdun Gao, Tianjiao Jiang, Zhen Zhang, Anton van den Hengel, and Javen Qinfeng Shi
-            </span>
-            <span class="venue peer-reviewed">NeurIPS 2025 (Spotlight)</span>
-            <a href="https://arxiv.org/abs/2504.10143" target="_blank" rel="noopener noreferrer">[Abs]</a> ·
-            <a href="https://arxiv.org/pdf/2504.10143" target="_blank" rel="noopener noreferrer">[File]</a> ·
-            <a href="https://yichaocai.com/misalignment.github.io/" target="_blank" rel="noopener noreferrer">[Project page]</a> ·
-            <a href="https://github.com/YichaoCai1/crossmodal_misalignment" target="_blank" rel="noopener noreferrer">[Code]</a> ·
-            <a href="https://yichaocai.com/posts/identifiable_representation_learning.html" target="_blank" rel="noopener noreferrer">[Post]</a>
-          </li>
+          <!-- Pub 2 -->
+          <article class="pub">
+            <img src="/files/thumbs/misalignment.png" alt="Thumbnail for cross-modal misalignment paper" width="128" height="96" loading="lazy" decoding="async" />
+            <div>
+              <div class="title">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</div>
+              <div class="authors"><strong>Yichao Cai*</strong>, Yuhang Liu*, Erdun Gao, Tianjiao Jiang, Zhen Zhang, Anton van den Hengel, and Javen Q. Shi</div>
+              <div class="badges"><span class="badge">NeurIPS 2025</span> <span class="badge">Spotlight</span></div>
+              <div class="cta">
+                <a class="btn" href="https://arxiv.org/abs/2504.10143" target="_blank" rel="noopener">Abs</a>
+                <a class="btn" href="https://arxiv.org/pdf/2504.10143" target="_blank" rel="noopener">PDF</a>
+                <a class="btn" href="https://yichaocai.com/misalignment.github.io/" target="_blank" rel="noopener">Project</a>
+                <a class="btn" href="https://github.com/YichaoCai1/crossmodal_misalignment" target="_blank" rel="noopener">Code</a>
+                <a class="btn" href="https://yichaocai.com/posts/identifiable_representation_learning.html" target="_blank" rel="noopener">Post</a>
+              </div>
+            </div>
+          </article>
 
-          <li>
-            <span class="title">
-              CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts
-            </span>
-            <span class="author">
-              <strong>Yichao Cai</strong>, Yuhang Liu, Zhen Zhang, and Javen Qinfeng Shi
-            </span>
-            <span class="venue peer-reviewed">ECCV 2024</span>
-            <a href="https://link.springer.com/chapter/10.1007/978-3-031-72664-4_8" target="_blank" rel="noopener noreferrer">[Abs]</a> ·
-            <a href="https://arxiv.org/pdf/2311.16445" target="_blank" rel="noopener noreferrer">[File]</a> ·
-            <a href="https://yichaocai.com/clap_paper.github.io/" target="_blank" rel="noopener noreferrer">[Project page]</a> ·
-            <a href="https://github.com/YichaoCai1/CLAP" target="_blank" rel="noopener noreferrer">[Code]</a>
-          </li>
-        </ol>
-      </section>
-
-      <section id="teaching">
-        <h2>Teaching</h2>
-        <ul class="pubs">
-          <li>Semester 2, 2025, Head Tutor, Statistical Machine Learning @ University of Adelaide</li>
-          <li>Trimester 2, 2025, Teaching Assistant, Using Machine Learning Tools @ University of Adelaide</li>
-          <li>Trimester 1, 2025, Teaching Assistant, Concepts in Artificial Intelligence and Machine Learning @ University of Adelaide</li>
-        </ul>
-      </section>
-
-      <section id="contact">
-        <h2>Contact</h2>
-        <div class="contact-block">
-          <p>
-            Email: <a href="#contact">yichao (dot) cai (at) adelaide (dot) edu (dot) au</a><br />
-            LG.25.04, AIML Building, Lot Fourteen <br/> Corner of North Terrace & Frome Road <br/> Adelaide, South Australia 5000, Australia
-          </p>
+          <!-- Pub 3 -->
+          <article class="pub">
+            <img src="/files/thumbs/clap.png" alt="Thumbnail for CLAP paper" width="128" height="96" loading="lazy" decoding="async" />
+            <div>
+              <div class="title">CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts</div>
+              <div class="authors"><strong>Yichao Cai</strong>, Yuhang Liu, Zhen Zhang, and Javen Q. Shi</div>
+              <div class="badges"><span class="badge">ECCV 2024</span></div>
+              <div class="cta">
+                <a class="btn" href="https://link.springer.com/chapter/10.1007/978-3-031-72664-4_8" target="_blank" rel="noopener">Abs</a>
+                <a class="btn" href="https://arxiv.org/pdf/2311.16445" target="_blank" rel="noopener">PDF</a>
+                <a class="btn" href="https://yichaocai.com/clap_paper.github.io/" target="_blank" rel="noopener">Project</a>
+                <a class="btn" href="https://github.com/YichaoCai1/CLAP" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section id="miscellaneous">
-        <h2>Miscellaneous</h2>
+      <!-- TEACHING -->
+      <section id="teaching">
+        <h2>Teaching</h2>
         <ul class="pubs">
-          <p> Outside research, I share thoughts on <a href="https://www.zhihu.com/people/YichaoCai" target="_top" rel="noopener noreferrer">Zhihu</a> (Chinese) and my <a href="blogs.html" target="_top" rel="noopener noreferrer">blog</a>. I enjoy peaceful strolls (the <a href="https://en.wikipedia.org/wiki/River_Torrens" target="_top" rel="noopener noreferrer">River Torrens</a> is perfpect for them when in Adelaide), reading (see my book list <a href="books.html">here</a>), and playing fingerstyle guitar.
-          </p>
+          <li>Head Tutor, Statistical Machine Learning (Semester 2, 2025) @ The University of Adelaide</li>
+          <li>Teaching Assistant, Using Machine Learning Tools (Trimester 2, 2025) @ The University of Adelaide</li>
+          <li>Teaching Assistant, Concepts in AI and ML (Trimester 1, 2025) @ The University of Adelaide</li>
         </ul>
       </section>
 
+      <!-- BLOG PREVIEW -->
+      <section id="blog">
+        <h2>From the blog</h2>
+        <p class="muted">Short notes and essays on multimodal & causal representation learning.</p>
+        <ul class="list">
+          <li><a href="blogs.html">Browse posts →</a></li>
+        </ul>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact-block">
+          <p>Email: <a href="mailto:yichao.cai@adelaide.edu.au">yichao.cai@adelaide.edu.au</a></p>
+          <p>Office: LG.25.04, AIML Building, Lot Fourteen, Corner of North Terrace & Frome Road, Adelaide SA 5000, Australia</p>
+        </div>
+      </section>
+
       <footer class="counter">
-        You are visitor number&nbsp;
+        Last updated: Sep 27, 2025
+        &nbsp; · &nbsp;
+        You are visitor number 
         <a href="https://www.hitwebcounter.com" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
           <img src="https://hitwebcounter.com/counter/counter.php?page=21164154&style=0038&nbdigits=5&type=ip&initCount=0"
               title="Visitor Counter" alt="Visitor counter" style="vertical-align: middle; border: none;" />
         </a>
-        &nbsp;since July 15, 2025.  &nbsp;  Last updated: Sep 23, 2025. <br/>
+        &nbsp; · &nbsp;
+        Poetry, Strolls & <a href="books.html">Reading</a>
       </footer>
     </main>
   </div>
