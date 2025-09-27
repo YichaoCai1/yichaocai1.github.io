@@ -6,6 +6,8 @@
   <title>Yichao Cai's Homepage</title>
   <meta name="description" content="Yichao Cai — Ph.D. candidate at the Australian Institute for Machine Learning (University of Adelaide). Research: multimodal representation learning, identifiability, causal modeling." />
 
+  <link rel="icon" type="image/jpg" href="files/AG1p230.jpg" />
+
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Yichao Cai's Homepage" />
@@ -43,12 +45,16 @@
       --bg: #ffffff;
       --fg: #131313;
       --muted: #555;
-      --link: #4338ca;
+      --link: #4b0082;
       --border: #e8e8e8;
       --accent: #2b50a10f;
-      --badge: #f3f4f6;     /* new background, e.g., light gray */
-      --badge-fg: #1f2937;  /* new text color, e.g., dark slate */
-      --badge-hi: #dc2626;  /* special highlight red */
+
+      /* badge colors (light mode) */
+      --badge-bg: #faf9f6;    
+      --badge-bo: rgba(85,85,85,0.25);
+      --badge-fg: #131313;    
+      --badge-hi-fg: #8B0000; /* your red for spotlight */
+
       --shadow: 0 1px 2px rgba(0,0,0,.05), 0 6px 24px rgba(0,0,0,.08);
       --measure: 75ch;
       --step--2: clamp(.72rem, .7rem + .12vw, .82rem);
@@ -61,17 +67,22 @@
       --radius-lg: 16px;
       --gutter: 1rem;
     }
+
     @media (prefers-color-scheme: dark) {
       :root {
         --bg: #0b0b0c;
         --fg: #f0f0f0;
         --muted: #b6b6b6;
-        --link: #818cf8;
+        --link: #a366ff;  /* soft purple links for dark bg */
         --border: #1e1e1e;
         --accent: #86b1ff1f;
-        --badge: #1f2937;    /* dark badge background */
-        --badge-fg: #f3f4f6; /* light text */
-        --badge-hi: #f87171; /* red highlight */
+
+        /* badges (dark mode) */
+        --badge-bg: #1b1b1b;   
+        --badge-bo: rgba(200,200,200,0.15);
+        --badge-fg: #f0f0f0;   
+        --badge-hi-fg: #FF4C4C;/* red for spotlight */
+
         --shadow: 0 1px 2px rgba(0,0,0,.5), 0 6px 24px rgba(0,0,0,.35);
       }
     }
@@ -103,7 +114,7 @@
     .brand { font-weight: 700; letter-spacing: .2px; font-size: var(--step--1); }
     .links { display: flex; flex-wrap: wrap; gap: .25rem; }
     .links a { border-radius: 8px; padding: .4rem .6rem; color: inherit; }
-    .links a[aria-current="page"], .links a:hover { background: var(--accent); }
+    .links a:hover { background: var(--accent); }
 
     main { max-width: 920px; margin: 0 auto; padding: 2rem 1rem; }
     section { padding: 2rem 0; border-bottom: 1px solid var(--border); scroll-margin-top: 72px; }
@@ -114,16 +125,87 @@
     p { margin: .75rem 0; }
     .muted { color: var(--muted); }
 
-    /* Sidebar on wide screens */
+
+    /* === Sidebar (wide screens) — neutral gray style === */
     @media (min-width: 980px) {
-      .wrap { grid-template-columns: 260px 1fr; }
-      nav { height: 100svh; border-right: 1px solid var(--border); border-bottom: none; position: sticky; top: 0; }
-      nav .inner { flex-direction: column; align-items: flex-start; gap: .75rem; padding: 1.5rem 1rem; }
-      .links { flex-direction: column; gap: .1rem; width: 100%; }
-      .links a { display: block; width: 100%; }
-      main { padding: 2.25rem 2rem; }
-      section { scroll-margin-top: 16px; }
+      .wrap {
+        grid-template-columns: 260px 1fr;
+      }
+
+      nav {
+        height: 100svh;
+        position: sticky;
+        top: 0;
+        border-right: 1px solid var(--border);
+
+        /* ✅ modern neutral gray background */
+        background: linear-gradient(
+          180deg,
+          #f7f7f8 0%,
+          #ececef 100%
+        );
+      }
+
+      @media (prefers-color-scheme: dark) {
+        nav {
+          background: linear-gradient(
+            180deg,
+            #1a1a1c 0%,
+            #222225 100%
+          );
+        }
+      }
+
+      nav .inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: .75rem;
+        padding: 1.5rem 1rem;
+      }
+
+      .brand {
+        font-weight: 700;
+        letter-spacing: .2px;
+        font-size: var(--step--1);
+        color: var(--link);      /* uses your link color */
+        padding: .35rem .6rem;
+        border-radius: 8px;
+      }
+
+      .links {
+        flex-direction: column;
+        gap: .2rem;
+        width: 100%;
+      }
+
+      .links a {
+        display: block;
+        width: 100%;
+        padding: .48rem .7rem;
+        border-radius: 8px;
+        color: var(--link);
+        font-weight: 500;
+        text-decoration: none;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .brand {
+          background: rgba(255, 255, 255, 0.05);
+        }
+        .links a {
+          background: rgba(255, 255, 255, 0.04);
+        }
+      }
+
+      main {
+        padding: 2.25rem 2rem;
+      }
+
+      section {
+        scroll-margin-top: 16px;
+      }
     }
+
 
     /* Hero */
     .hero { display:grid; grid-template-columns: 150px 1fr; gap:1rem; align-items:center; }
@@ -131,7 +213,7 @@
       width: 140px;
       border-radius: 1%;     
       object-fit: cover;
-      margin-top: 10px;
+      margin-top: 40px;
       /* soft shadow */
       box-shadow:
         0 4px 10px rgba(0, 0, 0, 0.15),
@@ -184,9 +266,44 @@
     .pub img { width: 128px; height: 96px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #f3f3f3; }
     .pub .title { font-weight: 600; line-height: 1.35; }
     .pub .authors { font-size: var(--step--2); color: var(--muted); margin: .25rem 0 .35rem; }
-    .badges { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .35rem; }
-    .badge { font-size: var(--step--2); font-weight: 550; padding: 0.12rem .4rem; border-radius: 4px; background: var(--badge); color: var(--badge-fg); }
-    .badge strong { color: var(--badge-hi); }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      line-height: 1.3;
+      background: var(--badge-bg);
+      color: var(--badge-fg);
+      border: 1px solid var(--badge-bo);
+    }
+
+    .badge-hi {
+      background: var(--badge-bg);
+      color: var(--badge-hi-fg);
+    }
+
+    .thumb {
+      width: 128px;
+      height: 96px;
+      object-fit: cover;
+      border-radius: 1%;
+      /* --- Soft shadow (depth + warm glow) --- */
+      box-shadow:
+        0 1px 2.2px rgba(0, 0, 0, 0.15),       /* subtle depth */
+        0 0 10px rgba(255, 240, 220, 0.2);    /* warm ambient glow */
+
+      /* --- Dreamy Monet-like filter (color & mood) --- */
+      filter:
+        saturate(1.2)       /* richer colors */
+        brightness(1.05)    /* slight lift */
+        contrast(0.9)       /* softer contrast */
+        blur(0.2px);        /* very slight blur */
+
+      /* --- Pastel border (art-frame hint) --- */
+      border: 1px solid rgba(255, 230, 200, 0.5);
+    }
 
     /* CV-style list for teaching */
     .pubs { list-style: none; padding: 0; margin: 0; }
@@ -208,14 +325,14 @@
   <div class="wrap">
     <nav aria-label="Section navigation">
       <div class="inner">
-        <!-- <div class="brand">Yichao Cai</div> -->
+        <div class="brand">Y.C.</div>
         <div class="links" role="list">
           <a href="#about" aria-current="page">About</a>
           <a href="#publications">Papers</a>
           <a href="#teaching">Teaching</a>
           <a href="#blog">Blog</a>
           <a href="#contact">Contact</a>
-          <a href="#" title="Download CV">CV</a>
+          <a href="files/yichaocai_cv.pdf" title="Download CV">CV</a>
         </div>
       </div>
     </nav>
@@ -232,8 +349,10 @@
             <p>My research focuses on multimodal representation learning and principled disentanglement. I study identifiability, causal reasoning, and language as an inductive signal to build explainable systems that uncover the semantic structure underlying complex visual–language data.</p>
             <div class="cta">
               <a class="btn" href="https://scholar.google.com/citations?user=nNp0nL4AAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+              <a class="btn" href="https://researchers.adelaide.edu.au/profile/yichao.cai" target="_blank" rel="noopener noreferrer">Research Profile</a>
               <a class="btn" href="https://github.com/YichaoCai1" target="_blank" rel="noopener noreferrer">GitHub</a>
               <a class="btn" href="https://www.linkedin.com/in/yichao-cai-12a3b9292" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a class="btn" href="https://www.zhihu.com/people/YichaoCai" target="_blank" rel="noopener noreferrer">知乎</a>
             </div>
           </div>
         </div>
@@ -245,7 +364,7 @@
         <ul class="news-list" aria-live="polite">
           <li class="news-item"><time datetime="2025-09-19">2025-09-19</time>
             <div>              
-              Excited to share that our work on <strong>cross-modal misalignment</strong>
+              Excited to share that our work on cross-modal misalignment
               </a>
               was selected as a <strong>Spotlight</strong> (top 3.2%) at
               <strong>NeurIPS 2025</strong>!
@@ -273,11 +392,11 @@
         <div class="pub-grid">
           <!-- Pub 1 -->
           <article class="pub">
-            <img src="/files/thumbs/ntp-concepts.png" alt="Thumbnail for NTP concepts paper" width="128" height="96" loading="lazy" decoding="async" />
+            <img src="files/thumbs/ntp_concept.png" alt="Thumbnail for NTP concepts paper" width="128" height="96" loading="lazy" decoding="async" class="thumb" />
             <div>
               <div class="title">I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?</div>
               <div class="authors">Yuhang Liu, Dong Gong, <strong>Yichao Cai</strong>, Erdun Gao, Zhen Zhang, Biwei Huang, Mingming Gong, Anton van den Hengel, and Javen Q. Shi</div>
-              <div class="badges"><span class="badge">Preprint · 2025</span></div>
+              <div class="badge">Preprint, 2025</div>
               <div class="cta">
                 <a class="btn" href="https://arxiv.org/abs/2503.08980" target="_blank" rel="noopener">Abs</a>
                 <a class="btn" href="https://arxiv.org/pdf/2503.08980" target="_blank" rel="noopener">PDF</a>
@@ -287,11 +406,11 @@
 
           <!-- Pub 2 -->
           <article class="pub">
-            <img src="/files/thumbs/misalignment.png" alt="Thumbnail for cross-modal misalignment paper" width="128" height="96" loading="lazy" decoding="async" />
+            <img src="files/thumbs/misalignment.png" alt="Thumbnail for cross-modal misalignment paper" width="128" height="96" loading="lazy" decoding="async" class="thumb" />
             <div>
               <div class="title">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</div>
               <div class="authors"><strong>Yichao Cai*</strong>, Yuhang Liu*, Erdun Gao, Tianjiao Jiang, Zhen Zhang, Anton van den Hengel, and Javen Q. Shi</div>
-              <div class="badges"><span class="badge">NeurIPS 2025</span> <span class="badge">Spotlight</span></div>
+              <span class="badge">NeurIPS 2025</span> <span class="badge badge-hi">Spotlight</span> 
               <div class="cta">
                 <a class="btn" href="https://arxiv.org/abs/2504.10143" target="_blank" rel="noopener">Abs</a>
                 <a class="btn" href="https://arxiv.org/pdf/2504.10143" target="_blank" rel="noopener">PDF</a>
@@ -304,11 +423,11 @@
 
           <!-- Pub 3 -->
           <article class="pub">
-            <img src="/files/thumbs/clap.png" alt="Thumbnail for CLAP paper" width="128" height="96" loading="lazy" decoding="async" />
+            <img src="files/thumbs/CLAP.png" alt="Thumbnail for CLAP paper" width="128" height="96" loading="lazy" decoding="async" class="thumb" />
             <div>
               <div class="title">CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts</div>
               <div class="authors"><strong>Yichao Cai</strong>, Yuhang Liu, Zhen Zhang, and Javen Q. Shi</div>
-              <div class="badges"><span class="badge">ECCV 2024</span></div>
+              <span class="badge">ECCV 2024</span>
               <div class="cta">
                 <a class="btn" href="https://link.springer.com/chapter/10.1007/978-3-031-72664-4_8" target="_blank" rel="noopener">Abs</a>
                 <a class="btn" href="https://arxiv.org/pdf/2311.16445" target="_blank" rel="noopener">PDF</a>
@@ -332,10 +451,10 @@
 
       <!-- BLOG PREVIEW -->
       <section id="blog">
-        <h2>From the blog</h2>
-        <p class="muted">Short notes and essays on multimodal & causal representation learning.</p>
+        <h2>Blog</h2>
+        <p class="muted">Some notes and thoughts on machine learning and representation learning.</p>
         <ul class="list">
-          <li><a href="blogs.html">Browse posts →</a></li>
+          <li><a href="blogs.html">✦ Browse posts ✦ </a></li>
         </ul>
       </section>
 
@@ -350,13 +469,13 @@
 
       <footer class="counter">
         Last updated: Sep 27, 2025
-        &nbsp; · &nbsp;
+        &nbsp; <a>✦</a> &nbsp;
         You are visitor number 
         <a href="https://www.hitwebcounter.com" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-          <img src="https://hitwebcounter.com/counter/counter.php?page=21164154&style=0038&nbdigits=5&type=ip&initCount=0"
+          <img src="https://hitwebcounter.com/counter/counter.php?page=21164154&style=0007&nbdigits=5&type=ip&initCount=0"
               title="Visitor Counter" alt="Visitor counter" style="vertical-align: middle; border: none;" />
         </a>
-        &nbsp; · &nbsp;
+        &nbsp; <a>✦</a> &nbsp;
         Poetry, Strolls & <a href="books.html">Reading</a>
       </footer>
     </main>
