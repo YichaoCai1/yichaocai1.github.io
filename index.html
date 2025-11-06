@@ -254,6 +254,14 @@
     .news-item:hover { background: var(--accent); }
     .news-item time { font-weight: 600; font-size: var(--step--1); }
     details.news-more { margin-top: .5rem; }
+    details.news-more summary {
+      color: var(--link);
+      cursor: pointer;
+      font-weight: 500;
+    }
+    details.news-more summary:hover {
+      text-decoration: underline;
+    }
 
     /* Publications */
     .pub-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
@@ -375,13 +383,13 @@
               <strong>NeurIPS 2025</strong>!
             </div>
           </li>
-          <li class="news-item">
-            <time datetime="2025-04-14">2025-04-14</time>
-            <div> Check out our <a href="https://arxiv.org/abs/2504.10143" target="_blank" rel="noopener noreferrer">new preprint</a>: "On the Value of Cross-Modal Misalignment in Multimodal Representation Learning".</div>
-          </li>
         </ul>
-        <details class="news-more"><summary>Show more</summary>
+        <details class="news-more"><summary>View older news</summary>
           <ul class="news-list">
+            <li class="news-item">
+              <time datetime="2025-04-14">2025-04-14</time>
+              <div> Check out our <a href="https://arxiv.org/abs/2504.10143" target="_blank" rel="noopener noreferrer">new preprint</a>: "On the Value of Cross-Modal Misalignment in Multimodal Representation Learning".</div>
+            </li>
             <li class="news-item">
               <time datetime="2024-07-02">2024-07-02</time>
               <div>Our work, <a href="https://yichaocai.com/clap_paper.github.io/" target="_blank" rel="noopener noreferrer">"CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts"</a>, is accepted to appear at <strong>ECCV 2024</strong>.</div>
