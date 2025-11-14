@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>The New Locus of Representation? A Researcher's Reflection</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <style>
+    /* ------------------------------
+       Minimal, IDE-friendly CSS
+       - Centralizes tokens as CSS variables
+       - Keeps rules short & readable
+       ------------------------------ */
+    :root {
+      --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --max-w: 800px;
+      --fg: #222;
+      --muted: #555;
+      --border: #ccc;
+      --accent: #4338ca;
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 1rem;
+      --space-4: 1.5rem;
+      --space-6: 2rem;
+      --radius: 4px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --fg: #e8e8e8;
+        --muted: #bbb;
+        --border: #444;
+        --accent: #8ab4f8;
+        --link: #4338ca;
+      }
+      body { background: #111; }
+    }
+
+    /* Layout */
+    body {
+      font-family: var(--font-sans);
+      color: var(--fg);
+      margin: 0;
+    }
+    .container {
+      max-width: var(--max-w);
+      margin: var(--space-6) auto;
+      padding: var(--space-3);
+      line-height: 1.6;
+    }
+
+    /* Typography */
+    h1, h2, h3 { scroll-margin-top: 80px; }
+    h1 {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: var(--space-1);
+      margin-bottom: var(--space-3);
+    }
+    hr { margin: var(--space-6) 0; border: 0; border-top: 1px solid var(--border); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    blockquote {
+      font-style: italic;
+      color: var(--muted);
+      border-left: 3px solid var(--border);
+      margin: var(--space-3) 0;
+      padding-left: var(--space-3);
+    }
+
+    /* Header meta */
+    .meta { color: var(--muted); }
+
+    /* TOC */
+    nav.toc {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--space-3);
+      margin: var(--space-4) 0;
+    }
+    nav.toc ul { margin: 0; padding-left: 1.25rem; }
+
+    /* Heading anchors */
+    .heading {
+      position: relative;
+    }
+    .heading .anchor {
+      opacity: 0;
+      margin-left: var(--space-2);
+      font-size: 0.9em;
+    }
+    .heading:hover .anchor { opacity: 1; }
+
+    /* Utility */
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0);
+      white-space: nowrap; border: 0;
+    }
+
+    .fig-wide {
+      margin: 2rem auto;
+      max-width: 960px;     /* tune for your layout */
+      text-align: center;
+    }
+    .fig-wide img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid #e6e6e6;
+      border-radius: 8px;
+    }
+    .fig-wide figcaption {
+      margin-top: .6rem;
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+    .bibtex-card {
+      max-width: var(--max-w); /* same width as main content */
+      margin: 2rem auto;       /* center horizontally with top/bottom spacing */
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(0,0,0,0.02); /* subtle background tint for contrast */
+      overflow-x: auto;             /* allows horizontal scroll if code is long */
+    }
+    .bibtex-card pre {
+      margin: 0;
+      white-space: pre-wrap;  /* wrap long lines if needed */
+      word-break: break-word;
+    }
+    .bibtex-card .copy-btn {
+      float: right;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.85rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+    .bibtex-card .copy-btn:hover {
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <!-- ==============================
+         Header
+         ============================== -->
+    <header>
+      <h1 class="heading" id="title"><i>The New Locus of Representation? </i><br/> A Researcher’s Perspective on the Large-Model Era with Limited Compute <a class="anchor" href="#title" aria-label="Link to this heading">#</a></h1>
+      <p class="meta"><em>Yichao Cai</em>, <time datetime="2025-09-23">14-11-2025</time></p>
+    </header>
+
+    <hr />
+    <p>
+    The familiar “CUDA: Out of Memory” message flashed on my screen again last week. Somehow this tiny red error felt symbolic. For those of us working in representation learning without frontier-scale infrastructure, the last few years have felt like a quiet crisis. 
+    A once-dominant paradigm—learning vector embeddings for downstream tasks—now finds itself overshadowed by a disarmingly simple alternative:
+    <blockquote>
+        <strong>Just tokenize your input and ask a big model.</strong> 
+    </blockquote>
+    </p>
+    
+    <p>
+    This new multimodal pipeline is seductively straightforward: tokenize an image (or audio, or anything else), feed the tokens to a giant next-token predictor alongside a text prompt, and receive a natural-language answer. 
+    Everything, e.g., classification, detection, and planning, collapses into instruction–response. Language becomes the universal interface.
+    </p>
+
+    <p>
+    And this raises a question that feels both intellectual and personal:
+    <blockquote>
+        <strong>If all useful (or human-valued) tasks can be cast as QA (or, instruction–response), what is left for the representation learning researcher?</strong>
+    </blockquote>
+    Some argue that representation is no longer the primary bottleneck—that the real levers are data curation, scaling, and better text–vision tokenization.
+    There is truth to this view, but it is incomplete. Representation learning has not disappeared. It has simply <b>moved</b>. It lives now in the interfaces, the bottlenecks, and the geometry that allow these giant models to see, reason, and align.
+    </p>
+    <hr />
+
+    <!-- ==============================
+         Table of Contents
+         ============================== -->
+    <nav class="toc" aria-label="Table of contents">
+      <strong>On this blog</strong>
+      <ul>
+        <li><a href="#locus">The New Locus of Representation</a></li>
+        <ul>
+            <li><a href="#first_locus"> First: It hides in the tokenizer</a></li>
+            <li><a href="#second_locus"> Second: Representation hides in “alignment”</a></li>
+        </ul>
+        <li><a href="#rep_law">Scaling Laws vs Representation Laws</a></li>
+        <li><a href="#ai_tool_successor">AI as Tools vs. Successors: What Are We Actually Building?</a></li>
+        <li><a href="#limit_hope">A Hopeful View from Limited Compute</a></li>
+    </nav>
+
+    <hr />
+
+    <!-- ==============================
+         Body
+         ============================== -->
+    <article>
+      <section id="locus">
+        <h2 class="heading">The New Locus of Representation<a class="anchor" href="#locus" aria-label="Link to this heading">#</a></h2>
+        <p>
+            The "old" paradigm was architecturally simple:
+            <!-- <pre> -->
+            <code>
+                [Image (unstructured data)] → [Encoder (trained with pretext objective)] → [Vector z (representation)] → [Classifier/Regressor/Detector,etc]
+            </code>.
+            <!-- </pre> -->
+            The new one looks different:
+            <code>
+                ([Image] → [Tokenizer] → [Tokens]) + [Text Prompt] → [Large Model] → [Answer]
+            </code>.
+            But representation is still central. It is merely relocated into subtler places.
+        </p>
+
+        <section id="first_locus">
+          <h3 class="heading">First: It hides in the tokenizer<a class="anchor" href="#first_locus" aria-label="Link to this heading">#</a></h3>
+          <p>
+            The visual encoder has become a visual tokenizer—tasked not with producing a single vector, but with compressing the visual world into a symbolic sequence interpretable by a language model. 
+            At its core, this reflects the classic Rate–Distortion (RD) principle, recontextualized for the era of large-scale models.
+          </p>
+
+          <p>
+            A visual tokenizer must compress aggressively while still retaining just enough structure for the LLM to reason.
+            This is representation learning, simply expressed through a new interface. Today, the visual tokenizer plays the same conceptual role, but the downstream consumer is no longer a small MLP but a massive world model. <a href="https://arxiv.org/pdf/2103.00020">CLIP (Radfold et al., 2021)</a> and <a href="https://arxiv.org/pdf/2508.10104">DINOv3 (Siméoni et al., 2025)</a> pioneered this style of self/semi-supervised compression.
+          </p>
+        </section>
+        <section id="second_locus">
+            <h3 class="heading">Second: Representation hides in “alignment” <a class="anchor" href="#second_locus" aria-label="Link to this heading">#</a></h3>
+            <p>
+                “Alignment” has become an overloaded term, encompassing multiple meanings in today’s discourse. But both of its essential meanings are fundamentally representational.
+            </p>
+
+            <p>
+                The first sense concerns how modalities understand each other. Radford et al., 2021 taught us how to map vision and language into a shared intersection of semantics. But the new multimodal reasoning paradigm demands more than intersection. 
+                It requires synergy, a space where fine-grained perceptual detail meets abstract linguistic structure, where modality-specific insights can be shared at the right moment, and where reasoning remains stable even when one modality is missing.
+                This is a representation problem: it asks how concepts (and the relations between them) ought to be organized.
+            </p>
+
+            <p>
+                The second sense concerns alignment with reality, and this is where misconceptions proliferate. Many attribute hallucination to non-factual data and advocate for “purely factual” corpora. My view is the opposite: removing imaginative, metaphorical, or synthetic compositions <b>weakens</b> compositional generalization. 
+                If experience always bundles factors—if aspects of the world never vary independently—can any agent truly learn to represent them separately? With enough factual data we can disentangle concepts the world naturally varies, but when the world never separates them, observation alone cannot undo their fusion. 
+                Counterfactual data enhances efficiency when latent structure exists and may even uncover higher-level regularities not evident in natural distributions. In both language and vision, meaning emerges only where structure aligns with learned priors; where structure is absent, interpretation collapses.
+            </p>
+            <figure class="fig-wide" role="group" aria-labelledby="fig1-caption">
+                <img
+                src="nonfactual_words.png"
+                alt="Two non-factual words."
+                loading="lazy"
+                decoding="async"
+                width="1600" height="770"
+                />
+                <figcaption id="fig1-caption">
+                Although both “neuroction” and “bnlahmd” are fictitious words, only the former is interpretable due to its alignment with familiar morphological structures (e.g., “neuro-” + “-ction”). In contrast, “bnlahmd,” while composed of recognizable letters, lacks internal compositional structure. Despite concealing a simple transformation (e.g., minus 1 to each ASCII code), it appears semantically meaningless. This illustrates the principle that human interpretation relies on latent structure, not surface symbols.
+                </figcaption>
+            </figure>
+
+            <p>
+                The real issue is not the presence of non-factual data, but the absence of grounding after pretraining. We should pretrain on rich, heterogeneous mixtures (including the impossible), then use factual datasets, or preference algorithms like <a href="https://arxiv.org/pdf/2305.18290">DPO (Rafailov et al., 2023)</a>, to anchor the model’s concept space back to reality (or what are preferable to human).
+            </p>
+        </section>
+      </section>
+
+      <section id="rep_law">
+        <h2 class="heading">Scaling Laws vs Representation Laws<a class="anchor" href="#rep_law" aria-label="Link to this heading">#</a></h2>
+        <p>
+            In recent years, our field has been mesmerized by scaling laws—the clean power-law curves that predict how performance improves with more parameters, more compute, and more data. 
+            These laws offer empirical regularities predicting how performance scales with model size, data volume, and compute. They are beautiful, empirical regularities, and they have guided the rise of modern LLMs.
+            But scaling laws <b>alone</b> don't tell the <b>whole story</b> about the internal structure that makes models intelligent.
+            What we lack, and what the <b>entire research community</b>, from large-scale labs to individual theorists, must help discover, are representation laws: predictable rules governing how latent spaces form, compress, align, and factorize as models grow.
+        </p>
+        <p>
+            Representation laws would answer questions that scaling laws may ignore, such as:
+            <ul>
+                <li><b>Factorization & disentanglement: </b>Under what conditions does a model begin to separate content from style? How much counterfactual variation is necessary for attribute disentanglement?</li>
+                <li><b>Compression geometry: </b> When and how does visual detail vanish as token budgets shrink? Why do large models often converge toward sparse, modular subspaces?</li>
+                <li><b>Modality competition: </b> Why does hallucination arise when textual priors overpower weak visual evidence? When does data misalignment between modalities help rather than hurt?</li>
+            </ul>
+            These are the structural invariants underlying high-dimensional learning systems. Scaling laws reveal how much compute we need.
+            <blockquote>
+                <b>Representation laws would reveal how intelligence organizes itself.</b>
+            </blockquote>
+            And these laws cannot be discovered by brute-force scaling. They emerge from theory, from careful probing, from limited-compute experimentation—the kinds of work that individuals and small labs may excel at.
+        </p>
+      </section>
+      
+      <section id="ai_tool_successor">
+        <h2 class="heading">AI as Tools vs. Successors: What Are We Actually Building?<a class="anchor" href="#ai_tool_successor" aria-label="Link to this heading">#</a></h2>
+        <p>
+        This question about our ultimate goal—what are we building?—reveals a useful spectrum of motivations in our field.
+        <ul>
+         <li>On the  one hand, there is the vital work of building powerful <strong>AI tools</strong>: systems that augment human capability, often by mastering language, our most polished interface for knowledge.</li>
+         <li>On the other hand, there is the pursuit of <strong>AI successors</strong>: foundational systems capable of perceiving and learning directly from the world, potentially surpassing human-conceived boundaries. 
+            This vision often prioritizes perception-first learning (like Yann LeCun's <a href="https://arxiv.org/pdf/2301.08243">JEPA</a>) and sees language as a powerful, but not exclusive, component of understanding reality.</li>
+         </ul>
+        </p>
+        <p>
+         In practice, these two visions feed each other: scaled tool models expose phenomena that successor-style research tries to explain, while successor architectures inspire methods that improve the tools.
+        </p>
+        <p>
+         The core question for us as researchers is where we place our focus. Representation learning sits at the heart of this interplay, determining whether we are optimizing a system to "talk about" the world as we see it, or to "see" the world in its own way.
+        </p>
+      </section>
+      
+      <section id="limit_hope">
+        <h2 class="heading">A Hopeful View from Limited Compute<a class="anchor" href="#limit_hope" aria-label="Link to this heading">#</a></h2>
+            <p>And so the original question returns: What is left for representation learning researchers who cannot train <b>XX</b>B-parameter models?</p>
+
+            <p>The answer, I believe, is <b>a vital and foundational role to play.</b></p>
+
+            <p>
+                Scaling is vital—it is like building a more powerful telescope that reveals new phenomena. But revelation alone is only the first step. 
+                What needs focused insight alongside scaling includes: 
+                <ul>
+                    <li>designing better tokenizers,</li>
+                    <li>studying how concepts form inside models,</li>
+                    <li>crafting datasets with rich counterfactual structure,</li>
+                    <li>engineering grounding mechanisms that reduce hallucination without suppressing imagination,</li>
+                    <li>and developing the theoretical foundations of representation laws.</li>
+                </ul>
+                Limited computational resources foster clarity, encouraging early attention to questions of structure and efficiency. It is in these structural questions—the geometry, information flow, and factorization of concepts—where the next breakthroughs may emerge.
+                And for those of us working with a different set of constraints, this is not a disadvantage, but a powerful focus.
+                It forces us to confront the structures that can be difficult to isolate at massive scale: how concepts factorize, how modalities align, how grounding stabilizes reasoning, how counterfactuals shape abstraction. 
+                These questions require a partnership between massive compute and focused theoretical insight.
+                They require insight, patience, theory, and careful experiments, which can then be validated and tested at scale.
+            </p>
+
+            <p>
+                Representation learning has not vanished.
+                It has expanded.
+                It has moved into the bottlenecks, interfaces, and latent geometry of large multimodal systems.
+                
+                <blockquote>
+                    <b>Scaling laws built the engines.</b>
+                    <br/>
+                    <b>Representation laws will explain them.</b>
+                </blockquote>
+            </p>
+      </section>
+    <hr/>
+    <footer class="meta" style="text-align:center; margin-top:3rem; font-size:0.9rem; color:var(--muted);">
+      Edited and refined with the assistance of ChatGPT-5. It serves as a fitting example of this post's theme: a powerful "tool" AI, born from the scaling-laws paradigm, being guided by human-driven, structural insight to hopefully achieve a clearer result.
+    </footer>
+  </main>
+</body>
+</html>
