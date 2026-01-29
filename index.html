@@ -348,7 +348,7 @@
       <!-- HERO / ABOUT -->
       <section id="about">
         <div class="hero">
-          <img src="files/photo_monet.jpg" alt="Portrait of Yichao Cai" class="avatar" />
+          <img src="files/photo.jpg" alt="Portrait of Yichao Cai" class="avatar" />
           <div>
             <h1>Yichao Cai</h1>
             <div class="tagline">Ph.D. Candidate · AIML, Adelaide University</div>
@@ -376,6 +376,11 @@
       <section id="news" aria-label="Recent news">
         <h2>News</h2>
         <ul class="news-list" aria-live="polite">
+            <li class="news-item"><time datetime="2025-01-29">2025-01-29</time>
+            <div>  
+              Check out our new preprint: <a href="https://arxiv.org/abs/2601.19597" target="_blank" rel="noopener noreferrer">"The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic Dispersion, and Cross-Modal Divergence"</a>.
+            </div>
+          </li>
           <li class="news-item"><time datetime="2025-01-27">2025-01-27</time>
             <div>  
               Happy to share that I’ll be attending <a href="https://www.mlss-melbourne.com/" target="_blank" rel="noopener noreferrer">MLSS Melbourne 2026</a> for two weeks (Feb 2–13, 2026). Looking forward to learning from world-class speakers and connecting with the community.
@@ -418,13 +423,25 @@
       <section id="publications">
         <h2>Selected Publications</h2>
         <div class="pub-grid">
-          <!-- Pub 1 -->
+          <article class="pub">
+            <img src="files/thumbs/InfoNCE_geometry.png" alt="Thumbnail for InfoNCE geometry paper" width="128" height="96" loading="lazy" decoding="async" class="thumb" />
+            <div>
+              <div class="title">The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic Dispersion, and Cross-Modal Divergence</div>
+              <div class="authors"><strong>Yichao Cai</strong>, Zhen Zhang, Yuhang Liu, and Javen Q. Shi</div>
+              <div class="badge">Preprint 2026</div>
+              <div class="cta">
+                <a class="btn" href="https://arxiv.org/abs/2601.19597" target="_blank" rel="noopener">Paper</a>
+                <a class="btn" href="https://github.com/YichaoCai1/InfoNCE_Geometry" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </article>
+
           <article class="pub">
             <img src="files/thumbs/ntp_concept.png" alt="Thumbnail for NTP concepts paper" width="128" height="96" loading="lazy" decoding="async" class="thumb" />
             <div>
               <div class="title">I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?</div>
               <div class="authors">Yuhang Liu, Dong Gong, <strong>Yichao Cai</strong>, Erdun Gao, Zhen Zhang, Biwei Huang, Mingming Gong, Anton van den Hengel, and Javen Q. Shi</div>
-              <div class="badge">ICLR, 2026</div>
+              <div class="badge">ICLR 2026</div>
               <div class="cta">
                 <!-- <a class="btn" href="https://arxiv.org/abs/2503.08980" target="_blank" rel="noopener">Abs</a> -->
                 <a class="btn" href="https://arxiv.org/pdf/2503.08980" target="_blank" rel="noopener">Paper</a>
@@ -433,7 +450,6 @@
             </div>
           </article>
 
-          <!-- Pub 2 -->
           <article class="pub">
             <img src="files/thumbs/misalignment.png" alt="Thumbnail for cross-modal misalignment paper" width="128" height="96" loading="lazy" decoding="async" class="thumb" />
             <div>
@@ -450,7 +466,6 @@
             </div>
           </article>
 
-          <!-- Pub 3 -->
           <article class="pub">
             <img src="files/thumbs/CLAP.png" alt="Thumbnail for CLAP paper" width="128" height="96" loading="lazy" decoding="async" class="thumb" />
             <div>
@@ -468,6 +483,14 @@
         </div>
       </section>
 
+      <!-- Services -->
+      <section id="services">
+        <h2>Academic Services</h2>
+        <ul class="pubs">
+          <li><strong>Reviewing</strong> - TMLR, ICLR (2026), ICML (2026).</li>
+        </ul>
+      </section>
+
       <!-- TEACHING -->
       <section id="teaching">
         <h2>Teaching</h2>
@@ -478,18 +501,10 @@
         </ul>
       </section>
 
-      <!-- Services -->
-      <section id="services">
-        <h2>Academic Services</h2>
-        <ul class="pubs">
-          <li><strong>Reviewer</strong> - TMLR, ICLR (2026).</li>
-        </ul>
-      </section>
-
       <!-- BLOG PREVIEW -->
       <section id="blog">
         <h2>Blog</h2>
-        <p class="muted">Some notes and thoughts on machine learning and representation learning: <a href="blogs.html">✦ Browse posts ✦ </a></p>
+        <p class="muted"> Some notes and thoughts on machine learning and representation learning: <a href="blogs.html">✦ Browse posts ✦ </a></p>
         <ul class="pubs">
           <li></li>
         </ul>
@@ -499,7 +514,7 @@
       <section id="">
         <h2>Honors & Awards</h2>
         <ul class="pubs">
-          NeurIPS 2025 Scholar Award, 2025; University of Adelaide Research Scholarships, 2023; Award for Outstanding Graduates, Wuhan University of Technology, 2019
+          NeurIPS 2025 Scholar Award, 2025 &nbsp; <a>✦</a> &nbsp; University of Adelaide Research Scholarships, 2023 &nbsp; <a>✦</a> &nbsp; Award for Outstanding Graduates, Wuhan University of Technology, 2019
           <!-- <li>NeurIPS 2025 Scholar Award, 2025</li>
           <li>University of Adelaide Research Scholarships, 2023</li>
           <li>Award for Outstanding Graduates, Wuhan University of Technology, 2019</li>
