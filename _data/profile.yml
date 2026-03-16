@@ -1,0 +1,81 @@
+primary_name: "Yichao Cai"
+secondary_name: ""
+navbar_name: "Yichao Cai"
+
+positions:
+- name: Ph.D. Candidate
+- name: Australian Institute for Machine Learning
+- name: University of Adelaide
+  logo: /assets/images/badges/uoa_logo.jpeg
+
+location: Adelaide, Australia
+email: "yichao.cai@adelaide.edu.au"
+cv_link: /files/yichaocai_cv.pdf
+gscholar: nNp0nL4AAAAJ
+github: YichaoCai1
+linkedin: yichao-cai-12a3b9292
+
+short_bio_text_justify: true
+short_bio: >-
+  <p>
+    I am a third-year Ph.D. student in Computer Science at the
+    <a href="https://www.adelaide.edu.au/aiml/" target="_blank">Australian Institute for Machine Learning (AIML)</a>,
+    <a href="https://www.adelaide.edu.au/" target="_blank">University of Adelaide</a>,
+    advised by Prof.
+    <a href="https://cs.adelaide.edu.au/~javen/" target="_blank">Javen Qinfeng Shi</a>.
+    My research studies multimodal representation learning, with a particular focus on contrastive learning theory,
+    cross-modal alignment, and identifiable causal representations.
+  </p>
+  <p>
+    More broadly, I am interested in how language supervision shapes semantic structure in vision-language models,
+    and how this perspective can support interpretable, reliable, and human-aligned AI systems.
+    My work combines theoretical analysis with empirical study to better understand representation formation in modern multimodal models.
+  </p>
+  <p>
+    <strong>Research interests:</strong> multimodal learning, contrastive learning theory, identifiability,
+    causal representation learning, and vision-language models.
+  </p>
+
+portrait_url: /files/photo_1.png
+portrait_caption: >-
+  Official portrait.
+
+education:
+- name: University of Adelaide
+  logo: /assets/images/badges/uoa_logo.jpeg
+  position: >-
+    Ph.D. in Computer Science <br/>
+    Advisor: Prof. Javen Qinfeng Shi
+  date: Sep 2023 - Present
+- name: Wuhan University of Technology
+  logo: /assets/images/badges/whut-logo.svg
+  position: >-
+    M.Sc. in Instrument Science and Technology, Sep 2016 - Jun 2019 <br/>
+    Advisor: Prof. Xiao Zhou <br/>
+    B.Eng. in Measurement and Control Engineering, Sep 2012 - Jun 2016
+  date: Sep 2012 - Jun 2019
+
+experience:
+- name: University of Adelaide
+  logo: /assets/images/badges/uoa_logo.jpeg
+  position: >-
+    Guest Lecturer and Head Tutor, Statistical Machine Learning <br/>
+    Teaching Assistant, Using Machine Learning Tools <br/>
+    Teaching Assistant, Concepts in AI and ML
+  date: 2025 - present
+- name: California PATH, UC Berkeley
+  logo: /assets/images/badges/Seal_of_University_of_California,_Berkeley.svg
+  position: Visiting Student Researcher
+  date: May 2018 - Oct 2018
+
+service:
+- name: Reviewer for TMLR, ICLR 2026, and ICML 2026
+  date: 2025 - 2026
+
+awards:
+- name: NeurIPS Scholar Award
+  date: 2025
+- name: University of Adelaide Research Scholarships
+  date: 2023
+- name: Award for Outstanding Graduates, Wuhan University of Technology
+  date: 2019

@@ -1,221 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Yichao Cai's Blog</title>
-  <meta name="description" content="Essays and notes by Yichao Cai on machine learning, representation learning, and more." />
-
-  <!-- Open Graph / Twitter (optional but nice) -->
-  <meta property="og:title" content="Yichao Cai's Blog">
-  <meta property="og:description" content="Essays and notes on ML, representation learning, and more.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="files/photo.jpg">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Blog | Yichao Cai</title>
+  <meta name="description" content="Essays and notes by Yichao Cai on machine learning, representation learning, and adjacent ideas.">
+  <link rel="icon" type="image/jpeg" href="files/AG1p230.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg: #f9fafc;           /* soft foggy background */
-      --fg: #1c1f25;           /* deep charcoal for text */
-      --muted: #5c6370;        /* soft gray-blue for secondary text */
-      --link: #3b5b92;         /* reserved desaturated blue link */
-      --border: #dfe3ea;       /* pale cool border */
-      --accent: #3b5b9212;     /* faint blue highlight */
+    html, body {
+      background-color: #f9fbf8;
     }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0e1218;         /* midnight blue-gray */
-        --fg: #e5eaf3;         /* soft silver text */
-        --muted: #9aa4b2;      /* misty muted blue-gray */
-        --link: #9bb8e8;       /* cool steel blue link */
-        --border: #1c2330;     /* subtle divider */
-        --accent: #9bb8e81a;   /* gentle cool glow */
-      }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-    }
-    html { scroll-behavior: smooth; }
+
     body {
-      margin: 0;
-      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--fg);
-      background: var(--bg);
-    }
-    a { color: var(--link); text-decoration: none; }
-    a:hover,
-    a:focus {
-      text-decoration: underline; /* optional: show underline on hover for clarity */
-      text-underline-offset: 3px;
+      font-family: "Lato", sans-serif;
+      font-weight: 400;
+      padding-top: 5rem;
     }
 
-    /* Layout mirrors homepage content column */
-    header {
-      border-bottom: 1px solid var(--border);
-      background: var(--bg);
-    }
-    .header-inner {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 1.5rem 1rem 1.25rem;
-    }
-    h1 {
-      margin: 0;
-      font-size: clamp(1.4rem, 1.2rem + 1.2vw, 2rem);
-      line-height: 1.2;
-    }
-    .subtitle {
-      margin-top: .35rem;
-      color: var(--muted);
-      font-size: .95rem;
+    a {
+      color: #6096B4;
+      text-decoration: none;
     }
 
-    main {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-      text-align: justify;
-      text-justify: inter-word;
-      hyphens: auto;
+    a:hover {
+      color: #4a7a94;
+      text-decoration: none;
     }
 
-    /* Post list */
-    .post-list { list-style: none; padding: 0; margin: 0; }
-    .post {
-      border: 1px solid var(--border);
-      border-radius: .5rem;
-      padding: .9rem 1rem;
-      margin: 0 0 1rem 0;
-      background: var(--bg);
-      transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
+    .navbar {
+      opacity: 0.95;
     }
-    .post:hover { background: var(--accent); }
-    .post-title {
-      margin: 0 0 .35rem 0;
-      font-weight: 600;
-      font-size: 1.05rem;
-      line-height: 1.35;
+
+    .terminal-text {
+      color: #40A578;
+      margin-right: 1.5rem;
+      padding-left: 0;
+      display: inline-flex;
+      align-items: center;
     }
-    .post-title a { text-decoration: none; }
+
+    .terminal-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background-color: #FFAAAA;
+      margin-left: 2px;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      from, to { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .navbar .nav-item.active .nav-link {
+      color: #40A578;
+      font-weight: 500;
+    }
+
+    .custom-radius {
+      border-radius: 15px;
+    }
+
+    .section-card {
+      border: 0;
+      box-shadow: 0 .125rem .5rem rgba(0, 0, 0, 0.08);
+      background: #ffffff;
+    }
+
+    .page-title {
+      font-weight: 700;
+    }
+
+    .page-subtitle,
     .post-meta {
-      font-size: .9rem;
-      color: var(--muted);
-      margin-bottom: .35rem;
-      display: block;
+      color: #6c757d;
     }
-    .post-desc { margin: 0; }
 
-    /* Skip link a11y */
-    .skip { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
-    .skip:focus {
-      left:1rem; top:1rem; width:auto; height:auto;
-      padding:.5rem .75rem; background:var(--bg);
-      border:1px solid var(--border); border-radius:.5rem; z-index:999;
+    .post-card + .post-card {
+      margin-top: 1rem;
+    }
+
+    .post-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .footer {
+      font-size: 0.78rem;
     }
   </style>
 </head>
 <body>
-  <a class="skip" href="#content">Skip to content</a>
+  <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm">
+    <div class="container-lg">
+      <span class="nav-link terminal-text">YichaoCai<span style="color: #FFAAAA">@AIML</span><span style="color: black">:</span><span style="color: #6096B4">~</span><span style="color: black">$</span> Hi there!<span class="terminal-cursor"></span></span>
+      <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#blogNav" aria-controls="blogNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-map"></i> Menu
+      </button>
 
-  <header>
-    <div class="header-inner">
-      <h1>Yichao Cai’s Blog</h1>
-      <div class="subtitle">Essays and notes on machine learning, representation learning, causality, and occasional reflections.</div>
+      <div class="collapse navbar-collapse" id="blogNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="./">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="./publications.html">Publications</a></li>
+          <li class="nav-item active"><a class="nav-link" href="./blogs.html">Blog</a></li>
+        </ul>
+      </div>
     </div>
-  </header>
+  </nav>
 
-  <main id="content">
-    <section aria-label="Blog posts">
-      <ul class="post-list">
-        <!-- Nov 2025 -->
-        <li class="post">
-          <h2 class="post-title">
-            <a href="./posts/the_new_locus_of_representation.html" target="_blank" rel="noopener noreferrer">
-              The New Locus of Representation? A Researcher’s Perspective on the Large-Model Era with Limited Compute
-            </a>
-          </h2>
-          <time class="post-meta" datetime="2025-11-14">Nov 2025</time>
-          <p class="post-desc">A short take on where representation learning lives in the era of large multimodal models and limited compute.</p>
-        </li>
+  <main class="container-lg">
+    <div class="row">
+      <div class="col-12 col-lg-9 ml-auto">
+        <div class="card section-card custom-radius">
+          <div class="card-body p-4 p-lg-5">
+            <h1 class="page-title h2 mb-2">Blog</h1>
+            <p class="page-subtitle mb-0">Essays and notes on machine learning, representation learning, causality, and occasional reflections.</p>
+          </div>
+        </div>
 
-        <!-- Oct 2025 -->
-        <li class="post">
-          <h2 class="post-title">
-            <a href="./posts/monologue.html" target="_blank" rel="noopener noreferrer">
-              The Shimmering Gap
-            </a>
-          </h2>
-          <time class="post-meta" datetime="2025-09-23">Sep 2025</time>
-          <p class="post-desc">Reflections on minds, intelligence, and knowing</p>
-        </li>
+        <div class="card section-card custom-radius mt-3 post-card">
+          <div class="card-body p-4">
+            <div class="post-title"><a href="./posts/the_new_locus_of_representation.html" target="_blank" rel="noopener noreferrer">The New Locus of Representation? A Researcher's Perspective on the Large-Model Era with Limited Compute</a></div>
+            <div class="post-meta mb-2">Nov 2025</div>
+            <p class="mb-0">A short take on where representation learning lives in the era of large multimodal models and limited compute.</p>
+          </div>
+        </div>
 
-        <!-- Sep 2025 -->
-        <li class="post">
-          <h2 class="post-title">
-            <a href="./posts/identifiable_representation_learning.html" target="_blank" rel="noopener noreferrer">
-              When the Internal Map Gets Warped
-            </a>
-          </h2>
-          <time class="post-meta" datetime="2025-09-23">Sep 2025</time>
-          <p class="post-desc">Why Identifiable Representations Are Crucial for Responsible AI?</p>
-        </li>
+        <div class="card section-card custom-radius post-card">
+          <div class="card-body p-4">
+            <div class="post-title"><a href="./posts/monologue.html" target="_blank" rel="noopener noreferrer">The Shimmering Gap</a></div>
+            <div class="post-meta mb-2">Sep 2025</div>
+            <p class="mb-0">Reflections on minds, intelligence, and knowing.</p>
+          </div>
+        </div>
 
-        <!-- Feb 2025 -->
-        <li class="post">
-          <h2 class="post-title">
-            <a href="./posts/the_generalization_specialization_dilemma.pdf" target="_blank" rel="noopener noreferrer">
-              The Generalization–Specialization Dilemma
-            </a>
-          </h2>
-          <time class="post-meta" datetime="2025-02-01">Feb 2025</time>
-          <p class="post-desc">On the tension between flexibility and precision in biological and artificial systems.</p>
-        </li>
+        <div class="card section-card custom-radius post-card">
+          <div class="card-body p-4">
+            <div class="post-title"><a href="./posts/identifiable_representation_learning.html" target="_blank" rel="noopener noreferrer">When the Internal Map Gets Warped</a></div>
+            <div class="post-meta mb-2">Sep 2025</div>
+            <p class="mb-0">Why identifiable representations are crucial for responsible AI.</p>
+          </div>
+        </div>
 
-        <!-- Jan 2025 -->
-        <li class="post">
-          <h2 class="post-title">
-            <a href="./posts/language_modeling_world.html">
-              Language and the Art of Modeling the World
-            </a>
-          </h2>
-          <time class="post-meta" datetime="2025-01-01">Jan 2025</time>
-          <p class="post-desc">Thoughts on the grounding of language, LLMs, and symbolic understanding.</p>
-        </li>
+        <div class="card section-card custom-radius post-card">
+          <div class="card-body p-4">
+            <div class="post-title"><a href="./posts/the_generalization_specialization_dilemma.pdf" target="_blank" rel="noopener noreferrer">The Generalization-Specialization Dilemma</a></div>
+            <div class="post-meta mb-2">Feb 2025</div>
+            <p class="mb-0">On the tension between flexibility and precision in biological and artificial systems.</p>
+          </div>
+        </div>
 
-        <!-- May 2024 -->
-        <li class="post">
-          <h2 class="post-title">
-            <a href="./posts/weekly_self_introspections.html">
-              Three Weekly Self-Introspections
-            </a>
-          </h2>
-          <time class="post-meta" datetime="2024-05-01">May 2024</time>
-          <p class="post-desc">Personal routine reflections for better research alignment and weekly growth.</p>
-        </li>
+        <div class="card section-card custom-radius post-card">
+          <div class="card-body p-4">
+            <div class="post-title"><a href="./posts/language_modeling_world.html" target="_blank" rel="noopener noreferrer">Language and the Art of Modeling the World</a></div>
+            <div class="post-meta mb-2">Jan 2025</div>
+            <p class="mb-0">Thoughts on the grounding of language, LLMs, and symbolic understanding.</p>
+          </div>
+        </div>
 
-        <!-- Apr 2024 -->
-        <li class="post">
-          <h2 class="post-title">
-            <a href="./posts/information-bottleneck.pdf" target="_blank" rel="noopener noreferrer">
-              How Information Bottleneck Helps Representation Learning
-            </a>
-          </h2>
-          <time class="post-meta" datetime="2024-04-01">Apr 2024</time>
-          <p class="post-desc">An overview connecting rate–distortion theory, VIB, and β-VAE under the IB lens.</p>
-        </li>
+        <div class="card section-card custom-radius post-card">
+          <div class="card-body p-4">
+            <div class="post-title"><a href="./posts/weekly_self_introspections.html" target="_blank" rel="noopener noreferrer">Three Weekly Self-Introspections</a></div>
+            <div class="post-meta mb-2">May 2024</div>
+            <p class="mb-0">Personal routine reflections for better research alignment and weekly growth.</p>
+          </div>
+        </div>
 
-        <!-- Jan 2024 -->
-        <li class="post">
-          <h2 class="post-title">
-            <a href="./posts/contrastive-learning.pdf" target="_blank" rel="noopener noreferrer">
-              Thoughts on Contrastive Representation Learning
-            </a>
-          </h2>
-          <time class="post-meta" datetime="2024-01-01">Jan 2024</time>
-          <p class="post-desc">Reflections on disentanglement and causality in contrastive learning frameworks.</p>
-        </li>
-      </ul>
-    </section>
+        <div class="card section-card custom-radius post-card">
+          <div class="card-body p-4">
+            <div class="post-title"><a href="./posts/information-bottleneck.pdf" target="_blank" rel="noopener noreferrer">How Information Bottleneck Helps Representation Learning</a></div>
+            <div class="post-meta mb-2">Apr 2024</div>
+            <p class="mb-0">An overview connecting rate-distortion theory, VIB, and beta-VAE under the information bottleneck lens.</p>
+          </div>
+        </div>
+
+        <div class="card section-card custom-radius post-card">
+          <div class="card-body p-4">
+            <div class="post-title"><a href="./posts/contrastive-learning.pdf" target="_blank" rel="noopener noreferrer">Thoughts on Contrastive Representation Learning</a></div>
+            <div class="post-meta mb-2">Jan 2024</div>
+            <p class="mb-0">Reflections on disentanglement and causality in contrastive learning frameworks.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
+
+  <footer class="footer">
+    <div class="container-lg">
+      <div class="row my-3">
+        <div class="col-12 col-lg-9 ml-auto">
+          <div class="d-flex justify-content-between text-muted">
+            <div><i>Last updated: Mar 2026</i> &middot; <a href="./books.html">Reading list</a></div>
+            <div>based on <a href="https://github.com/oneThousand1000/oneThousand1000.github.io" target="_blank" rel="noopener noreferrer">oneThousand1000.github.io</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
 </body>
 </html>

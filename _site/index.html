@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Template: https://github.com/luost26/academic-homepage -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Homepage Yichao Cai</title>
+    <link rel="icon" type="image/jpeg" href="/files/AG1p230.jpg">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body >
+    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm">
+    <div class="container-lg">
+        <span class="nav-link terminal-text">YichaoCai<span style="color: #FFAAAA">@AIML</span><span style="color: black">:</span><span style="color: #6096B4">~</span><span style="color: black">$</span> Hi there!<span class="terminal-cursor"></span></span>
+        <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-map"></i> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/publications">Publications</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blogs.html">Blog</a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <div class="container-lg">
+        <div class="row">
+    <div class="col-lg-3 col-md-4">
+        <style>
+  a.follow_href {
+  color: #6096B4;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a.follow_href:hover {
+  color: #4a7a94;
+  text-decoration: none;
+}
+
+a.location_href {
+  color: #6096B4;
+  text-decoration: none; 
+}
+
+.custom-radius {
+    border-radius: 15px;
+}
+
+.profile-portrait-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* New: responsive square avatar container to avoid image stretching */
+.avatar-container {
+    width: 100%;
+    max-width: 258px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    background: #ffffff;
+}
+
+.avatar-container .avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+    transform: scale(0.88);
+    display: block;
+}
+
+.profile-portrait-container .profile-portrait.hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+/* 
+.profile-portrait-container:hover .profile-portrait.hover {
+    opacity: 1;
+}
+
+.profile-portrait-container:hover .profile-portrait:not(.hover) {
+    opacity: 0;
+}
+
+.profile-portrait-container .profile-portrait:not(.hover) {
+    transition: opacity 0.3s ease-in-out;
+} */
+</style>
+
+<div class="row sticky-top" style="top: 80px">
+    <div class="col">
+        <div class="card border-0 shadow-sm bg-white custom-radius">
+            <div class="card-body px-2 pt-2 pb-3">
+                <div class="row">
+                    <div class="col text-center">
+                        
+                        <!-- Portrait image for both mobile and desktop -->
+                        <div class="figure">
+                            <div class="profile-portrait-container avatar-container">
+                                <img 
+                                    src="/files/photo_1.png" 
+                                    class="figure-img img-fluid img-thumbnail rounded-circle shadow-sm profile-portrait avatar-img" 
+                                    data-toggle="tooltip" 
+                                    data-placement="top" 
+                                    title="Official portrait.">
+                                <!--  -->
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center h4">
+                        Yichao Cai
+                    </div>
+                </div>
+
+                <div class="row small">
+                    <div class="col text-center">
+                        
+                        Ph.D. Candidate
+                        
+                        <br/>
+                        
+                        Australian Institute for Machine Learning
+                        
+                        <br/>
+                        
+                        University of Adelaide
+                        <img src="/assets/images/badges/uoa_logo.jpeg" alt="Logo" class="inline-badge" style="max-height: 1.2em; vertical-align: middle; margin-left: 5px;"/>
+                        <br/>
+                        
+                    </div>
+                </div>
+
+                <div class="row small">
+                    <div class="col text-center">
+                        <a class="email-text follow_href" href="mailto:%79%69%63%68%61%6F.%63%61%69@%61%64%65%6C%61%69%64%65.%65%64%75.%61%75">
+                            yichao.cai(at)adelaide.edu.au
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row pt-2">
+                    <div class="col text-center h4">
+                        <a class="px-1 no-break follow_href" target="_blank" href="https://scholar.google.com/citations?user=nNp0nL4AAAAJ">
+                            <i class="fab fa-google-scholar"></i>
+                        </a>
+                        
+                        
+                        
+                        <a class="px-1 no-break follow_href" target="_blank" href="https://github.com/YichaoCai1">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        
+
+                        
+
+                        
+
+                        
+                        <a class="px-1 no-break follow_href" target="_blank" href="https://www.linkedin.com/in/yichao-cai-12a3b9292">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    </div>
+    <div class="col-lg-9 col-md-8">
+
+        <style>
+  a.follow_href {
+  color: #6096B4;
+}
+
+a.location_href {
+  color: #6096B4;
+  text-decoration: none; 
+}
+
+.custom-radius {
+    border-radius: 15px;
+}
+
+.text-profile-bio a {
+  color: #6096B4;
+}
+
+.text-profile-bio a:hover {
+  color: #4a7a94;
+  text-decoration: none;
+}
+</style>
+
+<div class="mt-3 d-md-none"></div>
+<div class="row">
+    <div class="col">
+        <div class="card border-0 shadow-sm bg-white custom-radius">
+            <div class="card-body p-4">
+                <div class="row px-3 pt-3">
+                    <div class="col h3 d-flex align-items-center">About Me</div>
+                </div>
+                <div class="row p-3">
+                    <div class="col">
+                        <div class="text-profile-bio mt-0" style="text-align: justify;">
+                            <p>
+  I am a third-year Ph.D. student in Computer Science at the
+  <a href="https://www.adelaide.edu.au/aiml/" target="_blank">Australian Institute for Machine Learning (AIML)</a>,
+  <a href="https://www.adelaide.edu.au/" target="_blank">University of Adelaide</a>,
+  advised by Prof.
+  <a href="https://cs.adelaide.edu.au/~javen/" target="_blank">Javen Qinfeng Shi</a>.
+  My research studies multimodal representation learning, with a particular focus on contrastive learning theory,
+  cross-modal alignment, and identifiable causal representations.
+</p> <p>
+  More broadly, I am interested in how language supervision shapes semantic structure in vision-language models,
+  and how this perspective can support interpretable, reliable, and human-aligned AI systems.
+  My work combines theoretical analysis with empirical study to better understand representation formation in modern multimodal models.
+</p> <p>
+  <strong>Research interests:</strong> multimodal learning, contrastive learning theory, identifiability,
+  causal representation learning, and vision-language models.
+</p>
+                        </div>
+                        
+                            <a class="follow_href" target="_blank" href="/files/yichaocai_cv.pdf"><i class="fas fa-file-alt"></i> Curriculum Vitae</a> <br/>
+                        
+                    </div>
+        
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>
+
+
+        
+        
+        
+        <style>
+ 
+  .custom-radius {
+      border-radius: 15px;
+  }
+
+  .news-body,
+  .news-body .media-body,
+  .news-body .media-body div {
+      font-size: 0.92rem;
+      line-height: 1.45;
+  }
+
+  .news-body a {
+      color: #6096B4;
+  }
+
+  .news-body a:hover {
+      color: #4a7a94;
+      text-decoration: none;
+  }
+  </style>
+<div class="my-3 bg-white shadow-sm custom-radius">
+    <h6 class="p-3 mb-0 border-bottom border-gray"><i class="fas fa-rss"></i> News</h6>
+    <div class="px-3 pb-1 news-body">
+        
+        <div class="media py-1 ">
+            
+            <div class="mr-3 text-muted my-1">2026</div>
+            <div class="media-body">
+                
+                <div class="my-1 d-flex">
+                    <div>Check out our new preprint: <a href="https://arxiv.org/abs/2601.19597" target="_blank">The Geometric Mechanics of Contrastive Learning: Alignment Potentials, Entropic Dispersion, and Modality Gap</a>.</div>
+                    <div class="ml-auto mt-auto text-muted no-break"><i>Jan 29</i></div>
+                </div>
+                
+                <div class="my-1 d-flex">
+                    <div>I attended <a href="https://www.mlss-melbourne.com/" target="_blank">MLSS Melbourne 2026</a> and enjoyed learning from world-class speakers and connecting with the community.</div>
+                    <div class="ml-auto mt-auto text-muted no-break"><i>Jan 27</i></div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="media py-1 border-top border-gray">
+            
+            <div class="mr-3 text-muted my-1">2025</div>
+            <div class="media-body">
+                
+                <div class="my-1 d-flex">
+                    <div>I served as a guest lecturer in Statistical Machine Learning and presented recent advances in vision-language modeling. <a href="/files/Lec%2010%20Vision-Language%20Modeling.pdf" target="_blank">Slides</a>.</div>
+                    <div class="ml-auto mt-auto text-muted no-break"><i>Oct 16</i></div>
+                </div>
+                
+                <div class="my-1 d-flex">
+                    <div>Our work <a href="https://arxiv.org/abs/2504.10143" target="_blank">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</a> was selected as a <strong>Spotlight</strong> at <strong>NeurIPS 2025</strong>.</div>
+                    <div class="ml-auto mt-auto text-muted no-break"><i>Sep 19</i></div>
+                </div>
+                
+                <div class="my-1 d-flex">
+                    <div>We released the preprint <a href="https://arxiv.org/abs/2504.10143" target="_blank">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</a>.</div>
+                    <div class="ml-auto mt-auto text-muted no-break"><i>Apr 14</i></div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="media py-1 border-top border-gray">
+            
+            <div class="mr-3 text-muted my-1">2024</div>
+            <div class="media-body">
+                
+                <div class="my-1 d-flex">
+                    <div>Our work <a href="https://yichaocai.com/clap_paper.github.io/" target="_blank">CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts</a> was accepted at <strong>ECCV 2024</strong>.</div>
+                    <div class="ml-auto mt-auto text-muted no-break"><i>Jul 02</i></div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+        
+        
+
+        
+            <style>
+    .custom-radius {
+        border-radius: 15px;
+    }
+
+    .institution-name {
+        color: #6096B4;
+        font-weight: bold;
+    }
+
+    .timeline {
+        position: relative;
+        margin: 0;
+        --timeline-date-width: 8rem;
+        --timeline-date-gap: 0.6rem;
+        --timeline-content-gap: 1.4rem;
+        --timeline-axis-x: calc(var(--timeline-date-width) + (var(--timeline-date-gap) / 2));
+    }
+
+    .timeline::before {
+        content: "";
+        position: absolute;
+        left: var(--timeline-axis-x);
+        top: 0.4rem;
+        bottom: 0.4rem;
+        width: 2px;
+        background: #e9ecef;
+    }
+
+    .timeline-item {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: calc(var(--timeline-axis-x) - 0.3rem);
+        top: 0.45rem;
+        width: 0.6rem;
+        height: 0.6rem;
+        border-radius: 50%;
+        background: #6096B4;
+        border: 2px solid #ffffff;
+        box-shadow: 0 0 0 2px #6096B4;
+    }
+
+    .timeline-date {
+        width: var(--timeline-date-width);
+        padding-right: var(--timeline-date-gap);
+        display: flex;
+        justify-content: flex-end;
+        text-align: right;
+        color: #6c757d;
+        font-size: 0.7rem;
+        white-space: nowrap;
+    }
+
+    .timeline-content {
+        flex: 1;
+        padding-left: var(--timeline-content-gap);
+    }
+
+    @media (max-width: 576px) {
+        .timeline {
+            --timeline-date-width: 0;
+            --timeline-date-gap: 0;
+            --timeline-content-gap: 0.9rem;
+        }
+
+        .timeline::before {
+            left: 0.3rem;
+        }
+
+        .timeline-item {
+            flex-direction: column;
+            padding-left: 0.9rem;
+        }
+
+        .timeline-item::before {
+            left: 0;
+            top: 0.35rem;
+        }
+
+        .timeline-date {
+            width: auto;
+            padding-right: 0;
+            justify-content: flex-start;
+            text-align: left;
+            font-size: 0.65rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-content {
+            padding-left: 0;
+        }
+
+        .timeline-content img {
+            height: 20px;
+        }
+
+        .timeline-content .ml-2.d-flex {
+            flex-wrap: wrap;
+            gap: 0.2rem;
+            margin-left: 0.4rem;
+        }
+    }
+</style>
+
+
+<div class="row mt-3">
+    <div class="col">
+        <div class="card border-0 shadow-sm bg-white custom-radius">
+            <div class="card-body p-4">
+                <div class="mx-2 my-1">
+                    <h5>Education</h5>
+                    <ul class="list-unstyled mb-1 timeline">
+                        
+                        <li class="media mb-2 timeline-item">
+                            <div class="timeline-date"><em>Sep 2023 - Present</em></div>
+                            <div class="media-body timeline-content">
+                                <div class="d-flex align-items-center">
+                                    <div class="institution-name">University of Adelaide</div>
+                                    
+                                    <div class="ml-2 d-flex align-items-center">
+                                        
+                                        <img src="/assets/images/badges/uoa_logo.jpeg" alt="University of Adelaide" style="height: 24px;" class="mr-1">
+                                        
+                                        
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="small d-flex">
+                                    <div>Ph.D. in Computer Science <br/> Advisor: Prof. Javen Qinfeng Shi</div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li class="media mb-2 timeline-item">
+                            <div class="timeline-date"><em>Sep 2012 - Jun 2019</em></div>
+                            <div class="media-body timeline-content">
+                                <div class="d-flex align-items-center">
+                                    <div class="institution-name">Wuhan University of Technology</div>
+                                    
+                                    <div class="ml-2 d-flex align-items-center">
+                                        
+                                        <img src="/assets/images/badges/whut-logo.svg" alt="Wuhan University of Technology" style="height: 24px;" class="mr-1">
+                                        
+                                        
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="small d-flex">
+                                    <div>M.Sc. in Instrument Science and Technology, Sep 2016 - Jun 2019 <br/> Advisor: Prof. Xiao Zhou <br/> B.Eng. in Measurement and Control Engineering, Sep 2012 - Jun 2016</div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+            <style>
+    .custom-radius {
+        border-radius: 15px;
+    }
+
+    .institution-name {
+        color: #6096B4;
+        font-weight: bold;
+    }
+
+    .timeline {
+        position: relative;
+        margin: 0;
+        --timeline-date-width: 8rem;
+        --timeline-date-gap: 0.6rem;
+        --timeline-content-gap: 1.4rem;
+        --timeline-axis-x: calc(var(--timeline-date-width) + (var(--timeline-date-gap) / 2));
+    }
+
+    .timeline::before {
+        content: "";
+        position: absolute;
+        left: var(--timeline-axis-x);
+        top: 0.4rem;
+        bottom: 0.4rem;
+        width: 2px;
+        background: #e9ecef;
+    }
+
+    .timeline-item {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: calc(var(--timeline-axis-x) - 0.3rem);
+        top: 0.45rem;
+        width: 0.6rem;
+        height: 0.6rem;
+        border-radius: 50%;
+        background: #6096B4;
+        border: 2px solid #ffffff;
+        box-shadow: 0 0 0 2px #6096B4;
+    }
+
+    .timeline-date {
+        width: var(--timeline-date-width);
+        padding-right: var(--timeline-date-gap);
+        display: flex;
+        justify-content: flex-end;
+        text-align: right;
+        color: #6c757d;
+        font-size: 0.7rem;
+        white-space: nowrap;
+    }
+
+    .timeline-content {
+        flex: 1;
+        padding-left: var(--timeline-content-gap);
+    }
+
+    @media (max-width: 576px) {
+        .timeline {
+            --timeline-date-width: 0;
+            --timeline-date-gap: 0;
+            --timeline-content-gap: 0.9rem;
+        }
+
+        .timeline::before {
+            left: 0.3rem;
+        }
+
+        .timeline-item {
+            flex-direction: column;
+            padding-left: 0.9rem;
+        }
+
+        .timeline-item::before {
+            left: 0;
+            top: 0.35rem;
+        }
+
+        .timeline-date {
+            width: auto;
+            padding-right: 0;
+            justify-content: flex-start;
+            text-align: left;
+            font-size: 0.65rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-content {
+            padding-left: 0;
+        }
+
+        .timeline-content img {
+            height: 20px;
+        }
+
+        .timeline-content .ml-2.d-flex {
+            flex-wrap: wrap;
+            gap: 0.2rem;
+            margin-left: 0.4rem;
+        }
+    }
+</style>
+
+
+<div class="row mt-3">
+    <div class="col">
+        <div class="card border-0 shadow-sm bg-white custom-radius">
+            <div class="card-body p-4">
+                <div class="mx-2 my-1">
+                    <h5>Experience</h5>
+                    <ul class="list-unstyled mb-1 timeline">
+                        
+                        <li class="media mb-2 timeline-item">
+                            <div class="timeline-date"><em>2025 - present</em></div>
+                            <div class="media-body timeline-content">
+                                <div class="d-flex align-items-center">
+                                    <div class="institution-name">University of Adelaide</div>
+                                    
+                                    <div class="ml-2 d-flex align-items-center">
+                                        
+                                        <img src="/assets/images/badges/uoa_logo.jpeg" alt="University of Adelaide" style="height: 24px;" class="mr-1">
+                                        
+                                        
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="small d-flex">
+                                    <div>Guest Lecturer and Head Tutor, Statistical Machine Learning <br/> Teaching Assistant, Using Machine Learning Tools <br/> Teaching Assistant, Concepts in AI and ML</div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li class="media mb-2 timeline-item">
+                            <div class="timeline-date"><em>May 2018 - Oct 2018</em></div>
+                            <div class="media-body timeline-content">
+                                <div class="d-flex align-items-center">
+                                    <div class="institution-name">California PATH, UC Berkeley</div>
+                                    
+                                    <div class="ml-2 d-flex align-items-center">
+                                        
+                                        <img src="/assets/images/badges/Seal_of_University_of_California,_Berkeley.svg" alt="California PATH, UC Berkeley" style="height: 24px;" class="mr-1">
+                                        
+                                        
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="small d-flex">
+                                    <div>Visiting Student Researcher</div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+        
+        <style>
+.pub-link {
+    color: #98A8F8;
+}
+
+.view-all-link {
+    color: #98A8F8;
+}
+
+.custom-radius {
+    border-radius: 15px;
+}
+</style>
+
+
+
+<div class="my-3 p-0 bg-white shadow-sm custom-radius">
+    <h5 class="border-bottom border-gray p-3 mb-0">
+        Selected Publications 
+        <a href="/publications" class="pub-link">(view all <i class="fas fa-angle-double-right"></i>)</a>
+    </h5>
+    
+        
+
+
+<style>
+    a.item_link {
+    color: #748E63;
+  }
+  
+  .publication-cover {
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 200px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .selected-publication {
+    background-color: #D2E9E9;
+  }
+  
+  .pub-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: #78B9B5;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.7em;
+    font-weight: bold;
+    z-index: 10;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  .publication-container {
+    position: relative;
+  }
+  
+</style>
+
+
+<div class="d-none d-md-block">
+    <div class="row no-gutters border-bottom border-gray ">
+        <div class="col-md-4 col-xl-3 mb-md-0 p-md-3 d-flex align-items-start publication-container"><img data-src="/files/thumbs/InfoNCE_geometry.png" alt="The Geometric Mechanics of Contrastive Learning: Alignment Potentials, Entropic Dispersion, and Modality Gap" class="lazy publication-cover rounded-sm" src="/assets/images/empty_300x200.png"><div class="pub-badge">arXiv</div></div>
+        <div class="col-md-8 col-xl-9 p-3 pl-md-0">
+            <h5 class="mt-0 mb-0 font-weight-normal" style="color: #808D7C;">
+              
+                <a href="https://yichaocai.com/nce_geo.github.io/" class="item_link" target="_blank">The Geometric Mechanics of Contrastive Learning: Alignment Potentials, Entropic Dispersion, and Modality Gap</a>
+              
+            </h5>
+            <p class="mt-0 mb-0 small"><span class="text-body" >
+            <strong>Yichao Cai</strong>; </span><a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu</a>; <a class="text-body" target="_blank" href="https://cs.adelaide.edu.au/~javen/">Javen Q. Shi</a>.</p>
+            <p class="mt-0 mb-0 small "><i><b>arXiv preprint</b></i> 2026 </p>
+            <p class="mt-0 mb-0 small text-muted">A theoretical study of contrastive learning geometry, alignment forces, dispersion, and the emergence of modality gap.</p>
+            
+            <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
+                
+                
+                <a target="_blank" href="https://arxiv.org/abs/2601.19597" class="item_link">[Paper]</a>
+                
+                
+                
+                <a target="_blank" href="https://yichaocai.com/nce_geo.github.io/" class="item_link">[Project]</a>
+                
+                
+                
+                <a target="_blank" href="https://github.com/YichaoCai1/InfoNCE_Geometry" class="item_link">[Code]</a>
+                
+                
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<div class="row no-gutters d-md-none border-bottom border-gray   lazy " data-src="/files/thumbs/InfoNCE_geometry.png">
+    <div class="w-100" style="background-color: rgba(255,255,255,0.9);">
+        <div class="d-flex align-items-start flex-column py-3 px-4 publication-container">
+            <div class="mb-auto"></div>
+            <div>
+                <h5 class="mt-0 mb-0 font-weight-normal" style="color: #808D7C;">
+                  
+                    <a href="https://yichaocai.com/nce_geo.github.io/" class="item_link" target="_blank">The Geometric Mechanics of Contrastive Learning: Alignment Potentials, Entropic Dispersion, and Modality Gap</a>
+                  
+                </h5>
+                <p class="mt-0 mb-0 small"><span class="text-body" >
+            <strong>Yichao Cai</strong>; </span><a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu</a>; <a class="text-body" target="_blank" href="https://cs.adelaide.edu.au/~javen/">Javen Q. Shi</a>.</p>
+                <p class="mt-0 mb-0 small><i>arXiv preprint</i> 2026 </p>
+                <p class="mt-0 mb-0 small text-muted">A theoretical study of contrastive learning geometry, alignment forces, dispersion, and the emergence of modality gap.</p>
+                
+                <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
+                    
+                    
+                    <a target="_blank" href="https://arxiv.org/abs/2601.19597" class="item_link">[Paper]</a>
+                    
+                    
+                    
+                    <a target="_blank" href="https://yichaocai.com/nce_geo.github.io/" class="item_link">[Project]</a>
+                    
+                    
+                    
+                    <a target="_blank" href="https://github.com/YichaoCai1/InfoNCE_Geometry" class="item_link">[Code]</a>
+                    
+                    
+                </p>
+            </div><div class="pub-badge">arXiv</div></div>
+    </div>
+
+</div>
+    
+    
+        
+
+
+<style>
+    a.item_link {
+    color: #748E63;
+  }
+  
+  .publication-cover {
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 200px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .selected-publication {
+    background-color: #D2E9E9;
+  }
+  
+  .pub-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: #78B9B5;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.7em;
+    font-weight: bold;
+    z-index: 10;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  .publication-container {
+    position: relative;
+  }
+  
+</style>
+
+
+<div class="d-none d-md-block">
+    <div class="row no-gutters border-bottom border-gray ">
+        <div class="col-md-4 col-xl-3 mb-md-0 p-md-3 d-flex align-items-start publication-container"><img data-src="/files/thumbs/ntp_concept.png" alt="I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?" class="lazy publication-cover rounded-sm" src="/assets/images/empty_300x200.png"><div class="pub-badge">ICLR</div></div>
+        <div class="col-md-8 col-xl-9 p-3 pl-md-0">
+            <h5 class="mt-0 mb-0 font-weight-normal" style="color: #808D7C;">
+              
+                <a href="https://sites.google.com/view/yuhangliu/projects/ntp" class="item_link" target="_blank">I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?</a>
+              
+            </h5>
+            <p class="mt-0 mb-0 small"><a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu</a>; <a class="text-body" target="_blank" href="https://donggong1.github.io/">Dong Gong</a>; <span class="text-body" >
+            <strong>Yichao Cai</strong>; </span><a class="text-body" target="_blank" href="https://erdungao.github.io/">Erdun Gao</a>; <a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://biweihuang.com/">Biwei Huang</a>; <a class="text-body" target="_blank" href="https://mingming-gong.github.io/">Mingming Gong</a>; <a class="text-body" target="_blank" href="https://scholar.google.com/citations?user=nMGZ2ZQAAAAJ&hl=zh-CN&oi=ao">Anton van den Hengel</a>; <a class="text-body" target="_blank" href="https://cs.adelaide.edu.au/~javen/">Javen Q. Shi</a>.</p>
+            <p class="mt-0 mb-0 small "><i><b>International Conference on Learning Representations (ICLR)</b></i> 2026 </p>
+            <p class="mt-0 mb-0 small text-muted">An investigation of whether next-token prediction alone is sufficient for learning human-interpretable concepts from data.</p>
+            
+            <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
+                
+                
+                <a target="_blank" href="https://arxiv.org/pdf/2503.08980" class="item_link">[Paper]</a>
+                
+                
+                
+                <a target="_blank" href="https://sites.google.com/view/yuhangliu/projects/ntp" class="item_link">[Project]</a>
+                
+                
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<div class="row no-gutters d-md-none border-bottom border-gray   lazy " data-src="/files/thumbs/ntp_concept.png">
+    <div class="w-100" style="background-color: rgba(255,255,255,0.9);">
+        <div class="d-flex align-items-start flex-column py-3 px-4 publication-container">
+            <div class="mb-auto"></div>
+            <div>
+                <h5 class="mt-0 mb-0 font-weight-normal" style="color: #808D7C;">
+                  
+                    <a href="https://sites.google.com/view/yuhangliu/projects/ntp" class="item_link" target="_blank">I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?</a>
+                  
+                </h5>
+                <p class="mt-0 mb-0 small"><a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu</a>; <a class="text-body" target="_blank" href="https://donggong1.github.io/">Dong Gong</a>; <span class="text-body" >
+            <strong>Yichao Cai</strong>; </span><a class="text-body" target="_blank" href="https://erdungao.github.io/">Erdun Gao</a>; <a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://biweihuang.com/">Biwei Huang</a>; <a class="text-body" target="_blank" href="https://mingming-gong.github.io/">Mingming Gong</a>; <a class="text-body" target="_blank" href="https://scholar.google.com/citations?user=nMGZ2ZQAAAAJ&hl=zh-CN&oi=ao">Anton van den Hengel</a>; <a class="text-body" target="_blank" href="https://cs.adelaide.edu.au/~javen/">Javen Q. Shi</a>.</p>
+                <p class="mt-0 mb-0 small><i>International Conference on Learning Representations (ICLR)</i> 2026 </p>
+                <p class="mt-0 mb-0 small text-muted">An investigation of whether next-token prediction alone is sufficient for learning human-interpretable concepts from data.</p>
+                
+                <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
+                    
+                    
+                    <a target="_blank" href="https://arxiv.org/pdf/2503.08980" class="item_link">[Paper]</a>
+                    
+                    
+                    
+                    <a target="_blank" href="https://sites.google.com/view/yuhangliu/projects/ntp" class="item_link">[Project]</a>
+                    
+                    
+                </p>
+            </div><div class="pub-badge">ICLR</div></div>
+    </div>
+
+</div>
+    
+    
+        
+
+
+<style>
+    a.item_link {
+    color: #748E63;
+  }
+  
+  .publication-cover {
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 200px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .selected-publication {
+    background-color: #D2E9E9;
+  }
+  
+  .pub-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: #78B9B5;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.7em;
+    font-weight: bold;
+    z-index: 10;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  .publication-container {
+    position: relative;
+  }
+  
+</style>
+
+
+<div class="d-none d-md-block">
+    <div class="row no-gutters border-bottom border-gray ">
+        <div class="col-md-4 col-xl-3 mb-md-0 p-md-3 d-flex align-items-start publication-container"><img data-src="/files/thumbs/misalignment.png" alt="On the Value of Cross-Modal Misalignment in Multimodal Representation Learning" class="lazy publication-cover rounded-sm" src="/assets/images/empty_300x200.png"><div class="pub-badge">NeurIPS</div></div>
+        <div class="col-md-8 col-xl-9 p-3 pl-md-0">
+            <h5 class="mt-0 mb-0 font-weight-normal" style="color: #808D7C;">
+              
+                <a href="https://yichaocai.com/misalignment.github.io/" class="item_link" target="_blank">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</a>
+              
+            </h5>
+            <p class="mt-0 mb-0 small"><span class="text-body" >
+            <strong>Yichao Cai*</strong>; </span><a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu*</a>; <a class="text-body" target="_blank" href="https://erdungao.github.io/">Erdun Gao</a>; <a class="text-body" target="_blank" href="https://github.com/tianjiao-j">Tianjiao Jiang</a>; <a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://scholar.google.com/citations?user=nMGZ2ZQAAAAJ&hl=zh-CN&oi=ao">Anton van den Hengel</a>; <a class="text-body" target="_blank" href="https://cs.adelaide.edu.au/~javen/">Javen Q. Shi</a>.
+<mark>(* <i> equal contribution</i>)</mark></p>
+            <p class="mt-0 mb-0 small "><i><b>Advances in Neural Information Processing Systems (NeurIPS)</b></i> 2025  <span class="badge badge-pill badge-publication badge-success">Spotlight</span></p>
+            <p class="mt-0 mb-0 small text-muted">Studies when controlled cross-modal misalignment can improve multimodal representation learning instead of only harming it.</p>
+            
+            <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
+                
+                
+                <a target="_blank" href="https://arxiv.org/pdf/2504.10143" class="item_link">[Paper]</a>
+                
+                
+                
+                <a target="_blank" href="https://yichaocai.com/misalignment.github.io/" class="item_link">[Project]</a>
+                
+                
+                
+                <a target="_blank" href="https://github.com/YichaoCai1/crossmodal_misalignment" class="item_link">[Code]</a>
+                
+                
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<div class="row no-gutters d-md-none border-bottom border-gray   lazy " data-src="/files/thumbs/misalignment.png">
+    <div class="w-100" style="background-color: rgba(255,255,255,0.9);">
+        <div class="d-flex align-items-start flex-column py-3 px-4 publication-container">
+            <div class="mb-auto"></div>
+            <div>
+                <h5 class="mt-0 mb-0 font-weight-normal" style="color: #808D7C;">
+                  
+                    <a href="https://yichaocai.com/misalignment.github.io/" class="item_link" target="_blank">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</a>
+                  
+                </h5>
+                <p class="mt-0 mb-0 small"><span class="text-body" >
+            <strong>Yichao Cai*</strong>; </span><a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu*</a>; <a class="text-body" target="_blank" href="https://erdungao.github.io/">Erdun Gao</a>; <a class="text-body" target="_blank" href="https://github.com/tianjiao-j">Tianjiao Jiang</a>; <a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://scholar.google.com/citations?user=nMGZ2ZQAAAAJ&hl=zh-CN&oi=ao">Anton van den Hengel</a>; <a class="text-body" target="_blank" href="https://cs.adelaide.edu.au/~javen/">Javen Q. Shi</a>.
+<mark>(* <i> equal contribution</i>)</mark></p>
+                <p class="mt-0 mb-0 small><i>Advances in Neural Information Processing Systems (NeurIPS)</i> 2025  <span class="badge badge-pill badge-publication badge-success">Spotlight</span></p>
+                <p class="mt-0 mb-0 small text-muted">Studies when controlled cross-modal misalignment can improve multimodal representation learning instead of only harming it.</p>
+                
+                <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
+                    
+                    
+                    <a target="_blank" href="https://arxiv.org/pdf/2504.10143" class="item_link">[Paper]</a>
+                    
+                    
+                    
+                    <a target="_blank" href="https://yichaocai.com/misalignment.github.io/" class="item_link">[Project]</a>
+                    
+                    
+                    
+                    <a target="_blank" href="https://github.com/YichaoCai1/crossmodal_misalignment" class="item_link">[Code]</a>
+                    
+                    
+                </p>
+            </div><div class="pub-badge">NeurIPS</div></div>
+    </div>
+
+</div>
+    
+    
+        
+
+
+<style>
+    a.item_link {
+    color: #748E63;
+  }
+  
+  .publication-cover {
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 200px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .selected-publication {
+    background-color: #D2E9E9;
+  }
+  
+  .pub-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: #78B9B5;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.7em;
+    font-weight: bold;
+    z-index: 10;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  .publication-container {
+    position: relative;
+  }
+  
+</style>
+
+
+<div class="d-none d-md-block">
+    <div class="row no-gutters border-bottom border-gray ">
+        <div class="col-md-4 col-xl-3 mb-md-0 p-md-3 d-flex align-items-start publication-container"><img data-src="/files/thumbs/CLAP.png" alt="CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts" class="lazy publication-cover rounded-sm" src="/assets/images/empty_300x200.png"><div class="pub-badge">ECCV</div></div>
+        <div class="col-md-8 col-xl-9 p-3 pl-md-0">
+            <h5 class="mt-0 mb-0 font-weight-normal" style="color: #808D7C;">
+              
+                <a href="https://yichaocai.com/clap_paper.github.io/" class="item_link" target="_blank">CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts</a>
+              
+            </h5>
+            <p class="mt-0 mb-0 small"><span class="text-body" >
+            <strong>Yichao Cai</strong>; </span><a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu</a>; <a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://cs.adelaide.edu.au/~javen/">Javen Q. Shi</a>.</p>
+            <p class="mt-0 mb-0 small "><i><b>European Conference on Computer Vision (ECCV)</b></i> 2024 </p>
+            <p class="mt-0 mb-0 small text-muted">Explores language-guided disentanglement of style and content through contrastive learning with augmented prompts.</p>
+            
+            <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
+                
+                
+                <a target="_blank" href="https://arxiv.org/pdf/2311.16445" class="item_link">[Paper]</a>
+                
+                
+                
+                <a target="_blank" href="https://yichaocai.com/clap_paper.github.io/" class="item_link">[Project]</a>
+                
+                
+                
+                <a target="_blank" href="https://github.com/YichaoCai1/CLAP" class="item_link">[Code]</a>
+                
+                
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<div class="row no-gutters d-md-none border-bottom border-gray   lazy " data-src="/files/thumbs/CLAP.png">
+    <div class="w-100" style="background-color: rgba(255,255,255,0.9);">
+        <div class="d-flex align-items-start flex-column py-3 px-4 publication-container">
+            <div class="mb-auto"></div>
+            <div>
+                <h5 class="mt-0 mb-0 font-weight-normal" style="color: #808D7C;">
+                  
+                    <a href="https://yichaocai.com/clap_paper.github.io/" class="item_link" target="_blank">CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts</a>
+                  
+                </h5>
+                <p class="mt-0 mb-0 small"><span class="text-body" >
+            <strong>Yichao Cai</strong>; </span><a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu</a>; <a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://cs.adelaide.edu.au/~javen/">Javen Q. Shi</a>.</p>
+                <p class="mt-0 mb-0 small><i>European Conference on Computer Vision (ECCV)</i> 2024 </p>
+                <p class="mt-0 mb-0 small text-muted">Explores language-guided disentanglement of style and content through contrastive learning with augmented prompts.</p>
+                
+                <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
+                    
+                    
+                    <a target="_blank" href="https://arxiv.org/pdf/2311.16445" class="item_link">[Paper]</a>
+                    
+                    
+                    
+                    <a target="_blank" href="https://yichaocai.com/clap_paper.github.io/" class="item_link">[Project]</a>
+                    
+                    
+                    
+                    <a target="_blank" href="https://github.com/YichaoCai1/CLAP" class="item_link">[Code]</a>
+                    
+                    
+                </p>
+            </div><div class="pub-badge">ECCV</div></div>
+    </div>
+
+</div>
+    
+    
+    <h6 class="d-block p-3 mt-0 text-right">
+        <a href="/publications" class="pub-link">All publications <i class="fas fa-angle-double-right"></i></a>
+    </h6>
+</div>
+
+
+        
+
+        
+            <style>
+    .custom-radius {
+        border-radius: 15px;
+    }
+
+    .award-name {
+        font-weight: 400;
+    }
+</style>
+
+
+<div class="row mt-3">
+    <div class="col">
+        <div class="card border-0 shadow-sm bg-white custom-radius">
+            <div class="card-body p-4">
+                <div class="mx-2 my-1">
+                    <h5>Honors &amp; Awards</h5>
+                    <ul class="list small pl-3 mb-1">
+                        
+                        <li class="mb-2">
+                            <div class="d-flex">
+                                <div class="award-name">NeurIPS Scholar Award</div>
+                                <div class="ml-auto mt-auto no-break"><em>2025</em></div>
+                            </div>
+                        </li>
+                        
+                        <li class="mb-2">
+                            <div class="d-flex">
+                                <div class="award-name">University of Adelaide Research Scholarships</div>
+                                <div class="ml-auto mt-auto no-break"><em>2023</em></div>
+                            </div>
+                        </li>
+                        
+                        <li class="mb-2">
+                            <div class="d-flex">
+                                <div class="award-name">Award for Outstanding Graduates, Wuhan University of Technology</div>
+                                <div class="ml-auto mt-auto no-break"><em>2019</em></div>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+            <style>
+    .custom-radius {
+        border-radius: 15px;
+    }
+
+    .service-name {
+        font-weight: 400;
+    }
+</style>
+
+<div class="row mt-3">
+    <div class="col">
+        <div class="card border-0 shadow-sm bg-white custom-radius">
+            <div class="card-body p-4">
+                <div class="mx-2 my-1">
+                    <h5>Academic Service</h5>
+                    <ul class="list small pl-3 mb-1">
+                        
+                        <li class="mb-2">
+                            <div class="d-flex">
+                                <div class="service-name">Reviewer for TMLR, ICLR 2026, and ICML 2026</div>
+                                <div class="ml-auto mt-auto no-break"><em>2025 - 2026</em></div>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+    </div>
+</div>
+
+    </div>
+    <footer class="footer" style="font-size: 0.78rem;">
+    <div class="container-lg">
+        <div class="row my-3">
+            <div class="col-12 col-lg-9 ml-auto">
+                <div class="row align-items-end">
+                    <div class="col">
+                        <div class="text-muted">
+                            <i>Last updated: Mar 2026</i>
+                            &nbsp;&middot;&nbsp;
+                            <a href="/books.html" target="_self">Reading list</a>
+                        </div>
+                    </div>
+                    <div class="col-auto ml-auto">
+                        <div class="text-right text-muted">
+                            based on <a href="https://github.com/oneThousand1000/oneThousand1000.github.io" target="_blank">oneThousand1000.github.io</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/github-buttons/2.14.2/buttons.min.js" integrity="sha512-OYwZx04hKFeFNYrWxIyo3atgGpb+cxU0ENWBZs72X7T9U+NoHPM1ftUn/Mfw7dRDXrqWA6M1wBg6z6fGE32aeA==" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+              delimiters: [
+                  {left: '$$', right: '$$', display: true},
+                  {left: '$', right: '$', display: false}
+              ],
+              throwOnError : false
+            });
+        });
+    </script>
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/bubble_visual_hash.js"></script>
+</body>
+</html>
