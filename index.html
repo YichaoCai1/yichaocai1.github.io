@@ -27,6 +27,14 @@ navbar_title: Home
             {% include widgets/experience_card.html %}
         {% endif %}
 
+        {% if site.data.profile.awards %}
+            {% include widgets/awards_card.html %}
+        {% endif %}
+
+        {% if site.data.profile.service %}
+            {% include widgets/service_card.html %}
+        {% endif %}
+
         {% if site.data.display.homepage.show_selected_publications %}
         {% assign pubs = site.publications | sort: "date" | reverse | where: "selected", true %}
         {%
@@ -34,14 +42,6 @@ navbar_title: Home
         publications=pubs
         title='Selected Publications'
         %}
-        {% endif %}
-
-        {% if site.data.profile.awards %}
-            {% include widgets/awards_card.html %}
-        {% endif %}
-
-        {% if site.data.profile.service %}
-            {% include widgets/service_card.html %}
         {% endif %}
     </div>
 </div>
