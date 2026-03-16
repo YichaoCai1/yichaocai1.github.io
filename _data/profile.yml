@@ -59,13 +59,15 @@ experience:
 - name: University of Adelaide
   logo: /assets/images/badges/uoa_logo.jpeg
   position: >-
-    Guest Lecturer and Head Tutor, Statistical Machine Learning <br/>
-    Teaching Assistant, Using Machine Learning Tools <br/>
-    Teaching Assistant, Concepts in AI and ML
+    Teaching Assistant - Neural Networks and Deep Learning (ARTI X300), Semester 1 2026 <br/>
+    Guest Lecturer and Head Tutor - Statistical Machine Learning (COMP SCI 3314), Semester 2 2025 <br/>
+    Teaching Assistant - Using Machine Learning Tools (COMP SCI 7317), Trimester 2 2025 <br/>
+    Teaching Assistant - Concepts in AI and ML (COMP SCI 7327), Semester 1 2025 <br/>
+    
   date: 2025 - present
 - name: California PATH, UC Berkeley
   logo: /assets/images/badges/Seal_of_University_of_California,_Berkeley.svg
-  position: Visiting Student Researcher
+  position: Visiting Student Researcher, under Dr. Ching-Yao Chan
   date: May 2018 - Oct 2018
 
 service:
