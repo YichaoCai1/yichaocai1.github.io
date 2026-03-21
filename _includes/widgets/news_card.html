@@ -1,6 +1,28 @@
-{% assign news_by_year = site.news | sort: "date" | reverse | slice: 0, include.limit | group_by_exp: "item", "item.date | date: '%Y'" -%}
+{% assign news_by_year = site.news | sort: "date" | reverse | group_by_exp: "item", "item.date | date: '%Y'" -%}
+{% assign current_year = site.time | date: '%Y' -%}
+{% assign visible_year = current_year -%}
+{% assign has_current_year_news = false -%}
+
+{% for year in news_by_year %}
+  {% if year.name == current_year %}
+    {% assign has_current_year_news = true %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% unless has_current_year_news %}
+  {% assign visible_year = news_by_year.first.name %}
+{% endunless %}
+
+{% assign has_archived_news = false -%}
+{% for year in news_by_year %}
+  {% unless year.name == visible_year %}
+    {% assign has_archived_news = true %}
+    {% break %}
+  {% endunless %}
+{% endfor %}
+
 <style>
- 
   .custom-radius {
       border-radius: 15px;
   }
@@ -20,23 +42,83 @@
       color: #4a7a94;
       text-decoration: none;
   }
-  </style>
+
+  .news-toggle-link {
+      color: #98A8F8;
+  }
+
+  .news-toggle-link .news-toggle-label-expanded {
+      display: none;
+  }
+
+  .news-toggle-link:not(.collapsed) .news-toggle-label-collapsed {
+      display: none;
+  }
+
+  .news-toggle-link:not(.collapsed) .news-toggle-label-expanded {
+      display: inline;
+  }
+
+  .news-toggle-link i {
+      transition: transform 0.2s ease;
+  }
+
+  .news-toggle-link:not(.collapsed) i {
+      transform: rotate(90deg);
+  }
+</style>
+
 <div class="my-3 bg-white shadow-sm custom-radius">
     <h6 class="p-3 mb-0 border-bottom border-gray"><i class="fas fa-rss"></i> News</h6>
     <div class="px-3 pb-1 news-body">
         {% for year in news_by_year %}
-        <div class="media py-1 {% if not_first -%}border-top border-gray{%- endif %}">
-            {% assign not_first = true %}
-            <div class="mr-3 text-muted my-1">{{ year.name }}</div>
-            <div class="media-body">
-                {% for item in year.items %}
-                <div class="my-1 d-flex">
-                    <div>{{ item.title }}</div>
-                    <div class="ml-auto mt-auto text-muted no-break"><i>{{ item.date | date: "%b %d" }}</i></div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
+          {% if year.name == visible_year %}
+          <div class="media py-1">
+              <div class="mr-3 text-muted my-1">{{ year.name }}</div>
+              <div class="media-body">
+                  {% for item in year.items %}
+                  <div class="my-1 d-flex">
+                      <div>{{ item.title }}</div>
+                      <div class="ml-auto mt-auto text-muted no-break"><i>{{ item.date | date: "%b %d" }}</i></div>
+                  </div>
+                  {% endfor %}
+              </div>
+          </div>
+          {% endif %}
         {% endfor %}
+
+        {% if has_archived_news %}
+        <div class="collapse" id="newsArchive">
+            {% for year in news_by_year %}
+              {% unless year.name == visible_year %}
+              <div class="media py-1 border-top border-gray">
+                  <div class="mr-3 text-muted my-1">{{ year.name }}</div>
+                  <div class="media-body">
+                      {% for item in year.items %}
+                      <div class="my-1 d-flex">
+                          <div>{{ item.title }}</div>
+                          <div class="ml-auto mt-auto text-muted no-break"><i>{{ item.date | date: "%b %d" }}</i></div>
+                      </div>
+                      {% endfor %}
+                  </div>
+              </div>
+              {% endunless %}
+            {% endfor %}
+        </div>
+
+        <h6 class="d-block p-3 mt-0 text-right">
+            <a
+                class="news-toggle-link collapsed"
+                data-toggle="collapse"
+                href="#newsArchive"
+                role="button"
+                aria-expanded="false"
+                aria-controls="newsArchive">
+                <span class="news-toggle-label-collapsed">Previous news</span>
+                <span class="news-toggle-label-expanded">Hide previous news</span>
+                <i class="fas fa-angle-double-right"></i>
+            </a>
+        </h6>
+        {% endif %}
     </div>
 </div>

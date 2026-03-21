@@ -272,8 +272,21 @@ a.location_href {
         
         
         
-        <style>
- 
+        
+  
+    
+    
+
+
+
+
+  
+
+  
+    
+    
+
+<style>
   .custom-radius {
       border-radius: 15px;
   }
@@ -293,64 +306,118 @@ a.location_href {
       color: #4a7a94;
       text-decoration: none;
   }
-  </style>
+
+  .news-toggle-link {
+      color: #98A8F8;
+  }
+
+  .news-toggle-link .news-toggle-label-expanded {
+      display: none;
+  }
+
+  .news-toggle-link:not(.collapsed) .news-toggle-label-collapsed {
+      display: none;
+  }
+
+  .news-toggle-link:not(.collapsed) .news-toggle-label-expanded {
+      display: inline;
+  }
+
+  .news-toggle-link i {
+      transition: transform 0.2s ease;
+  }
+
+  .news-toggle-link:not(.collapsed) i {
+      transform: rotate(90deg);
+  }
+</style>
+
 <div class="my-3 bg-white shadow-sm custom-radius">
     <h6 class="p-3 mb-0 border-bottom border-gray"><i class="fas fa-rss"></i> News</h6>
     <div class="px-3 pb-1 news-body">
         
-        <div class="media py-1 ">
-            
-            <div class="mr-3 text-muted my-1">2026</div>
-            <div class="media-body">
-                
-                <div class="my-1 d-flex">
-                    <div>Check out our new preprint: <a href="https://arxiv.org/abs/2601.19597" target="_blank">The Geometric Mechanics of Contrastive Learning: Alignment Potentials, Entropic Dispersion, and Modality Gap</a>.</div>
-                    <div class="ml-auto mt-auto text-muted no-break"><i>Jan 29</i></div>
-                </div>
-                
-                <div class="my-1 d-flex">
-                    <div>I attended <a href="https://www.mlss-melbourne.com/" target="_blank">MLSS Melbourne 2026</a> and enjoyed learning from world-class speakers and connecting with the community.</div>
-                    <div class="ml-auto mt-auto text-muted no-break"><i>Jan 27</i></div>
-                </div>
-                
-            </div>
-        </div>
+          
+          <div class="media py-1">
+              <div class="mr-3 text-muted my-1">2026</div>
+              <div class="media-body">
+                  
+                  <div class="my-1 d-flex">
+                      <div>Check out our new preprint: <a href="https://arxiv.org/abs/2601.19597" target="_blank">The Geometric Mechanics of Contrastive Learning: Alignment Potentials, Entropic Dispersion, and Modality Gap</a>.</div>
+                      <div class="ml-auto mt-auto text-muted no-break"><i>Jan 29</i></div>
+                  </div>
+                  
+                  <div class="my-1 d-flex">
+                      <div>I attended <a href="https://www.mlss-melbourne.com/" target="_blank">MLSS Melbourne 2026</a> and enjoyed learning from world-class speakers and connecting with the community.</div>
+                      <div class="ml-auto mt-auto text-muted no-break"><i>Jan 27</i></div>
+                  </div>
+                  
+              </div>
+          </div>
+          
         
-        <div class="media py-1 border-top border-gray">
-            
-            <div class="mr-3 text-muted my-1">2025</div>
-            <div class="media-body">
-                
-                <div class="my-1 d-flex">
-                    <div>I served as a guest lecturer in Statistical Machine Learning and presented recent advances in vision-language modeling. <a href="/files/Lec%2010%20Vision-Language%20Modeling.pdf" target="_blank">Slides</a>.</div>
-                    <div class="ml-auto mt-auto text-muted no-break"><i>Oct 16</i></div>
-                </div>
-                
-                <div class="my-1 d-flex">
-                    <div>Our work <a href="https://arxiv.org/abs/2504.10143" target="_blank">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</a> was selected as a <strong>Spotlight</strong> at <strong>NeurIPS 2025</strong>.</div>
-                    <div class="ml-auto mt-auto text-muted no-break"><i>Sep 19</i></div>
-                </div>
-                
-                <div class="my-1 d-flex">
-                    <div>We released the preprint <a href="https://arxiv.org/abs/2504.10143" target="_blank">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</a>.</div>
-                    <div class="ml-auto mt-auto text-muted no-break"><i>Apr 14</i></div>
-                </div>
-                
-            </div>
-        </div>
+          
         
-        <div class="media py-1 border-top border-gray">
+          
+        
+
+        
+        <div class="collapse" id="newsArchive">
             
-            <div class="mr-3 text-muted my-1">2024</div>
-            <div class="media-body">
-                
-                <div class="my-1 d-flex">
-                    <div>Our work <a href="https://yichaocai.com/clap_paper.github.io/" target="_blank">CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts</a> was accepted at <strong>ECCV 2024</strong>.</div>
-                    <div class="ml-auto mt-auto text-muted no-break"><i>Jul 02</i></div>
-                </div>
-                
-            </div>
+              
+            
+              
+              <div class="media py-1 border-top border-gray">
+                  <div class="mr-3 text-muted my-1">2025</div>
+                  <div class="media-body">
+                      
+                      <div class="my-1 d-flex">
+                          <div>I served as a guest lecturer in Statistical Machine Learning and presented recent advances in vision-language modeling. <a href="/files/Lec%2010%20Vision-Language%20Modeling.pdf" target="_blank">Slides</a>.</div>
+                          <div class="ml-auto mt-auto text-muted no-break"><i>Oct 16</i></div>
+                      </div>
+                      
+                      <div class="my-1 d-flex">
+                          <div>Our work <a href="https://arxiv.org/abs/2504.10143" target="_blank">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</a> was selected as a <strong>Spotlight</strong> at <strong>NeurIPS 2025</strong>.</div>
+                          <div class="ml-auto mt-auto text-muted no-break"><i>Sep 19</i></div>
+                      </div>
+                      
+                      <div class="my-1 d-flex">
+                          <div>We released the preprint <a href="https://arxiv.org/abs/2504.10143" target="_blank">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</a>.</div>
+                          <div class="ml-auto mt-auto text-muted no-break"><i>Apr 14</i></div>
+                      </div>
+                      
+                  </div>
+              </div>
+              
+            
+              
+              <div class="media py-1 border-top border-gray">
+                  <div class="mr-3 text-muted my-1">2024</div>
+                  <div class="media-body">
+                      
+                      <div class="my-1 d-flex">
+                          <div>Our work <a href="https://yichaocai.com/clap_paper.github.io/" target="_blank">CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts</a> was accepted at <strong>ECCV 2024</strong>.</div>
+                          <div class="ml-auto mt-auto text-muted no-break"><i>Jul 02</i></div>
+                      </div>
+                      
+                  </div>
+              </div>
+              
+            
         </div>
+
+        <h6 class="d-block p-3 mt-0 text-right">
+            <a
+                class="news-toggle-link collapsed"
+                data-toggle="collapse"
+                href="#newsArchive"
+                role="button"
+                aria-expanded="false"
+                aria-controls="newsArchive">
+                <span class="news-toggle-label-collapsed">Previous news</span>
+                <span class="news-toggle-label-expanded">Hide previous news</span>
+                <i class="fas fa-angle-double-right"></i>
+            </a>
+        </h6>
         
     </div>
 </div>
