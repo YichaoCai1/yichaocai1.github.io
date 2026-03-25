@@ -1,6 +1,6 @@
 @charset "utf-8";
 html, body {
-    background-color: #f9fbf8;
+    background-color: #F6F8FC;
 }
 
 body {
@@ -72,16 +72,16 @@ div.lazy {
 }
 
 a.profile_href {
-  color: #40A578;
+  color: #4A7A94;
 }
 
 .navbar .nav-item.active .nav-link {
-  color: #40A578;
+  color: #4A7A94;
   font-weight: 500;
 }
 
 .terminal-text { 
-  color: #40A578;
+  color: #4A7A94;
   margin-right: 1.5rem;
   padding-left: 0;
   display: inline-flex;

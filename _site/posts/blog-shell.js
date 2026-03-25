@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
   nav.className = "navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm";
   nav.innerHTML = `
     <div class="container-lg">
-      <span class="nav-link terminal-text">YichaoCai<span style="color: #FFAAAA">@AIML</span><span style="color: black">:</span><span style="color: #6096B4">~</span><span style="color: black">$</span> Hi there!<span class="terminal-cursor"></span></span>
+      <span class="nav-link terminal-text">YichaoCai<span style="color: #C97B63">@AIML</span><span style="color: black">:</span><span style="color: #6096B4">~</span><span style="color: black">$</span> Hi there<span style="color: #C97B63">!</span><span class="terminal-cursor"></span></span>
       <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#blogPostNav" aria-controls="blogPostNav" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-map"></i> Menu
       </button>

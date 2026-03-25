@@ -1,26 +1,15 @@
-{% assign news_by_year = site.news | sort: "date" | reverse | group_by_exp: "item", "item.date | date: '%Y'" -%}
-{% assign current_year = site.time | date: '%Y' -%}
-{% assign visible_year = current_year -%}
-{% assign has_current_year_news = false -%}
-
-{% for year in news_by_year %}
-  {% if year.name == current_year %}
-    {% assign has_current_year_news = true %}
-    {% break %}
-  {% endif %}
-{% endfor %}
-
-{% unless has_current_year_news %}
-  {% assign visible_year = news_by_year.first.name %}
-{% endunless %}
-
+{% assign sorted_news = site.news | sort: "date" | reverse -%}
+{% assign visible_limit = include.limit | default: 4 -%}
+{% assign visible_news = sorted_news | slice: 0, visible_limit -%}
+{% assign visible_news_by_year = visible_news | group_by_exp: "item", "item.date | date: '%Y'" -%}
 {% assign has_archived_news = false -%}
-{% for year in news_by_year %}
-  {% unless year.name == visible_year %}
-    {% assign has_archived_news = true %}
-    {% break %}
-  {% endunless %}
-{% endfor %}
+
+{% if sorted_news.size > visible_limit %}
+  {% assign has_archived_news = true -%}
+  {% assign archived_count = sorted_news.size | minus: visible_limit -%}
+  {% assign archived_news = sorted_news | slice: visible_limit, archived_count -%}
+  {% assign archived_news_by_year = archived_news | group_by_exp: "item", "item.date | date: '%Y'" -%}
+{% endif %}
 
 <style>
   .custom-radius {
@@ -43,8 +32,24 @@
       text-decoration: none;
   }
 
-  .news-toggle-link {
+  .news-item + .news-item {
+      margin-top: 0.35rem;
+      padding-top: 0.35rem;
+      border-top: 1px solid rgba(96, 150, 180, 0.12);
+  }
+
+  .news-body a.news-toggle-link {
       color: #98A8F8;
+  }
+
+  .news-body a.news-toggle-link:visited {
+      color: #98A8F8;
+  }
+
+  .news-body a.news-toggle-link:hover,
+  .news-body a.news-toggle-link:focus {
+      color: #98A8F8;
+      text-decoration: none;
   }
 
   .news-toggle-link .news-toggle-label-expanded {
@@ -71,38 +76,34 @@
 <div class="my-3 bg-white shadow-sm custom-radius">
     <h6 class="p-3 mb-0 border-bottom border-gray"><i class="fas fa-rss"></i> News</h6>
     <div class="px-3 pb-1 news-body">
-        {% for year in news_by_year %}
-          {% if year.name == visible_year %}
-          <div class="media py-1">
-              <div class="mr-3 text-muted my-1">{{ year.name }}</div>
-              <div class="media-body">
-                  {% for item in year.items %}
-                  <div class="my-1 d-flex">
-                      <div>{{ item.title }}</div>
-                      <div class="ml-auto mt-auto text-muted no-break"><i>{{ item.date | date: "%b %d" }}</i></div>
-                  </div>
-                  {% endfor %}
-              </div>
-          </div>
-          {% endif %}
+        {% for year in visible_news_by_year %}
+        <div class="media py-1{% unless forloop.first %} border-top border-gray{% endunless %}">
+            <div class="mr-3 text-muted my-1">{{ year.name }}</div>
+            <div class="media-body">
+                {% for item in year.items %}
+                <div class="news-item my-1 d-flex">
+                    <div>{{ item.title }}</div>
+                    <div class="ml-auto mt-auto text-muted no-break"><i>{{ item.date | date: "%b %d" }}</i></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
         {% endfor %}
 
         {% if has_archived_news %}
         <div class="collapse" id="newsArchive">
-            {% for year in news_by_year %}
-              {% unless year.name == visible_year %}
-              <div class="media py-1 border-top border-gray">
-                  <div class="mr-3 text-muted my-1">{{ year.name }}</div>
-                  <div class="media-body">
-                      {% for item in year.items %}
-                      <div class="my-1 d-flex">
-                          <div>{{ item.title }}</div>
-                          <div class="ml-auto mt-auto text-muted no-break"><i>{{ item.date | date: "%b %d" }}</i></div>
-                      </div>
-                      {% endfor %}
-                  </div>
-              </div>
-              {% endunless %}
+            {% for year in archived_news_by_year %}
+            <div class="media py-1 border-top border-gray">
+                <div class="mr-3 text-muted my-1">{{ year.name }}</div>
+                <div class="media-body">
+                    {% for item in year.items %}
+                    <div class="news-item my-1 d-flex">
+                        <div>{{ item.title }}</div>
+                        <div class="ml-auto mt-auto text-muted no-break"><i>{{ item.date | date: "%b %d" }}</i></div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
             {% endfor %}
         </div>
 

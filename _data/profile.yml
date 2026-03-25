@@ -64,8 +64,8 @@ experience:
   date: May 2018 - Oct 2018
 
 service:
-- name: Reviewer for TMLR, ICLR 2026, and ICML 2026
-  date: 2025 - 2026
+- name: Reviewer for TMLR, ICLR 2026, ICML 2026, and NeurIPS 2026
+  # date: 2025 - 2026
 
 awards:
 - name: NeurIPS Scholar Award

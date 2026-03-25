@@ -7,7 +7,7 @@
 {% endfor %}
 <style>
     a.item_link {
-    color: #748E63;
+    color: #4F7A98;
   }
   
   .publication-cover {
@@ -17,14 +17,14 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   .selected-publication {
-    background-color: #D2E9E9;
+    background-color: #EAF2FB;
   }
   
   .pub-badge {
     position: absolute;
     top: 8px;
     left: 8px;
-    background-color: #78B9B5;
+    background-color: #5C84AE;
     color: white;
     padding: 2px 8px;
     border-radius: 12px;
@@ -54,7 +54,7 @@
             {%- endif -%}
         </div>
         <div class="col-md-8 col-xl-9 p-3 pl-md-0">
-            <h5 class="mt-0 mb-0 font-weight-normal" style="color: #808D7C;">
+            <h5 class="mt-0 mb-0 font-weight-normal" style="color: #5F6F82;">
               {% if project_link %}
                 <a href="{{ project_link }}" class="item_link" target="_blank">{{ item.title }}</a>
               {% else %}
@@ -84,7 +84,7 @@
         <div class="d-flex align-items-start flex-column py-3 px-4 publication-container">
             <div class="mb-auto"></div>
             <div>
-                <h5 class="mt-0 mb-0 font-weight-normal" style="color: #808D7C;">
+                <h5 class="mt-0 mb-0 font-weight-normal" style="color: #5F6F82;">
                   {% if project_link %}
                     <a href="{{ project_link }}" class="item_link" target="_blank">{{ item.title }}</a>
                   {% else %}

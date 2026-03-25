@@ -3,10 +3,6 @@
     color: #98A8F8;
 }
 
-.view-all-link {
-    color: #98A8F8;
-}
-
 .custom-radius {
     border-radius: 15px;
 }
@@ -22,8 +18,5 @@
     {% for item in publications limit:include.limit %}
         {% include widgets/publication_item.html item=item first=false last=false %}    
     {% endfor %}
-    <h6 class="d-block p-3 mt-0 text-right">
-        <a href="{{ 'publications' | relative_url }}" class="pub-link">All publications <i class="fas fa-angle-double-right"></i></a>
-    </h6>
 </div>
 
