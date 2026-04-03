@@ -1,3 +1,15 @@
+:root {
+  --theme-accent: #4C367E;
+  --theme-accent-strong: #36255B;
+  --theme-accent-soft: #7C68A6;
+  --theme-support: #9F84C8;
+  --theme-cursor: #C8B4E6;
+  --theme-highlight-bg: rgba(76, 54, 126, 0.12);
+  --theme-border-soft: rgba(76, 54, 126, 0.2);
+  --theme-surface-soft: rgba(76, 54, 126, 0.05);
+  --theme-section-title: #3F2D6A;
+}
+
 html, body {
   background-color: #F6F8FC;
 }
@@ -15,12 +27,12 @@ body {
 }
 
 a {
-  color: #6096B4;
+  color: var(--theme-accent);
   text-decoration: none;
 }
 
 a:hover {
-  color: #4a7a94;
+  color: var(--theme-accent-strong);
   text-decoration: none;
 }
 
@@ -29,7 +41,7 @@ a:hover {
 }
 
 .terminal-text {
-  color: #4A7A94;
+  color: var(--theme-accent);
   margin-right: 1.5rem;
   padding-left: 0;
   display: inline-flex;
@@ -40,9 +52,20 @@ a:hover {
   display: inline-block;
   width: 2px;
   height: 1em;
-  background-color: #FFAAAA;
+  background-color: var(--theme-cursor);
   margin-left: 2px;
   animation: blink 1s step-end infinite;
+}
+
+.blog-footer a {
+  color: var(--theme-accent-soft);
+  text-decoration: none;
+}
+
+.blog-footer a:hover,
+.blog-footer a:focus {
+  color: var(--theme-accent-strong);
+  text-decoration: none;
 }
 
 @keyframes blink {
@@ -51,7 +74,7 @@ a:hover {
 }
 
 .navbar .nav-item.active .nav-link {
-  color: #4A7A94;
+  color: var(--theme-accent-strong);
   font-weight: 500;
 }
 
@@ -95,7 +118,7 @@ a:hover {
   margin-bottom: 1rem;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #808D7C;
+  color: var(--theme-section-title);
 }
 
 .blog-post-card h3 {
@@ -103,7 +126,7 @@ a:hover {
   margin-bottom: 0.75rem;
   font-size: 1.2rem;
   font-weight: 700;
-  color: #808D7C;
+  color: var(--theme-section-title);
 }
 
 .blog-post-card hr {
@@ -115,7 +138,7 @@ a:hover {
 .blog-post-card blockquote {
   font-style: italic;
   color: #6c757d;
-  border-left: 3px solid #d9e3d3;
+  border-left: 3px solid var(--theme-border-soft);
   margin: 1rem 0;
   padding-left: 1rem;
 }
@@ -134,11 +157,11 @@ a:hover {
 }
 
 .blog-post-card nav.toc {
-  border: 1px solid #dfe7db;
+  border: 1px solid var(--theme-border-soft);
   border-radius: 10px;
   padding: 1rem 1.1rem;
   margin: 1.5rem 0;
-  background: #fbfdf9;
+  background: var(--theme-surface-soft);
 }
 
 .blog-post-card nav.toc ul {
@@ -187,7 +210,7 @@ a:hover {
   float: right;
   padding: 0.2rem 0.5rem;
   font-size: 0.85rem;
-  background: #6096B4;
+  background: var(--theme-accent-strong);
   color: white;
   border: none;
   border-radius: 4px;

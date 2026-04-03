@@ -66,16 +66,14 @@ createBubbleInfo = function (hashGroup, n, w, h) {
     var radius = function (v) { var min = 10; var max = wh / 2; return min + ((v / 16) * (max - min)); };
     var color = function (i) {
         var c = [
-            "#1f77b4", "#aec7e8",  // blue
-            "#ff7f0e", "#ffbb78",  // orange
-            "#2ca02c", "#98df8a",  // green
-            "#d62728", "#ff9896",  // red
-            "#9467bd", "#c5b0d5",  // purple
-            "#8c564b", "#c49c94",  // brown
-            // "#e377c2", "#f7b6d2",  // pink
-            // "#7f7f7f", "#c7c7c7",  // gray
-            "#bcbd22", "#dbdb8d",  // yellow
-            "#17becf", "#9edae5",  // cyan
+            "#4C367E", "#7C68A6",
+            "#36255B", "#9F84C8",
+            "#5E468F", "#C8B4E6",
+            "#6D539B", "#DCCFF2",
+            "#7B5AA5", "#B8A6D8",
+            "#8B6AB2", "#CEC0E8",
+            "#5B4177", "#A98BCB",
+            "#755B98", "#E4DBF4",
         ];
         return c[i % c.length];
     };

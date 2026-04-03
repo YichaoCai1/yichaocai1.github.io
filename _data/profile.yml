@@ -4,8 +4,7 @@ navbar_name: "Yichao Cai"
 
 positions:
 - name: Ph.D. Candidate
-- name: Australian Institute for Machine Learning
-- name: University of Adelaide
+- name: AIML, University of Adelaide
   logo: /assets/images/badges/uoa_logo.jpeg
 
 location: Adelaide, Australia

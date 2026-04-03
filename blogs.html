@@ -13,6 +13,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --theme-accent: #4C367E;
+      --theme-accent-strong: #36255B;
+      --theme-accent-soft: #7C68A6;
+      --theme-support: #9F84C8;
+      --theme-cursor: #C8B4E6;
+    }
+
     html, body {
       background-color: #F6F8FC;
     }
@@ -24,12 +32,12 @@
     }
 
     a {
-      color: #6096B4;
+      color: var(--theme-accent);
       text-decoration: none;
     }
 
     a:hover {
-      color: #4a7a94;
+      color: var(--theme-accent-strong);
       text-decoration: none;
     }
 
@@ -38,7 +46,7 @@
     }
 
     .terminal-text {
-      color: #4A7A94;
+      color: var(--theme-accent);
       margin-right: 1.5rem;
       padding-left: 0;
       display: inline-flex;
@@ -49,7 +57,7 @@
       display: inline-block;
       width: 2px;
       height: 1em;
-      background-color: #FFAAAA;
+      background-color: var(--theme-cursor);
       margin-left: 2px;
       animation: blink 1s step-end infinite;
     }
@@ -60,7 +68,7 @@
     }
 
     .navbar .nav-item.active .nav-link {
-      color: #4A7A94;
+      color: var(--theme-accent-strong);
       font-weight: 500;
     }
 
@@ -96,12 +104,23 @@
     .footer {
       font-size: 0.78rem;
     }
+
+    .footer a {
+      color: var(--theme-accent-soft);
+      text-decoration: none;
+    }
+
+    .footer a:hover,
+    .footer a:focus {
+      color: var(--theme-accent-strong);
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm">
     <div class="container-lg">
-      <span class="nav-link terminal-text">YichaoCai<span style="color: #C97B63">@AIML</span><span style="color: black">:</span><span style="color: #6096B4">~</span><span style="color: black">$</span> Hi there<span style="color: #C97B63">!</span><span class="terminal-cursor"></span></span>
+      <span class="nav-link terminal-text">YichaoCai<span style="color: var(--theme-support)">@AIML</span><span style="color: black">:</span><span style="color: var(--theme-accent-soft)">~</span><span style="color: black">$</span> Hi there<span style="color: var(--theme-support)">!</span><span class="terminal-cursor"></span></span>
       <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#blogNav" aria-controls="blogNav" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-map"></i> Menu
       </button>

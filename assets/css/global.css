@@ -1,4 +1,14 @@
 @charset "utf-8";
+:root {
+    --theme-accent: #4C367E;
+    --theme-accent-strong: #36255B;
+    --theme-accent-soft: #7C68A6;
+    --theme-support: #9F84C8;
+    --theme-cursor: #C8B4E6;
+    --theme-highlight-bg: rgba(76, 54, 126, 0.12);
+    --theme-border-soft: rgba(76, 54, 126, 0.2);
+}
+
 html, body {
     background-color: #F6F8FC;
 }
@@ -72,16 +82,16 @@ div.lazy {
 }
 
 a.profile_href {
-  color: #4A7A94;
+  color: var(--theme-accent);
 }
 
 .navbar .nav-item.active .nav-link {
-  color: #4A7A94;
+  color: var(--theme-accent-strong);
   font-weight: 500;
 }
 
 .terminal-text { 
-  color: #4A7A94;
+  color: var(--theme-accent);
   margin-right: 1.5rem;
   padding-left: 0;
   display: inline-flex;
@@ -92,9 +102,20 @@ a.profile_href {
   display: inline-block;
   width: 2px;
   height: 1em;
-  background-color: #FFAAAA;
+  background-color: var(--theme-cursor);
   margin-left: 2px;
   animation: blink 1s step-end infinite;
+}
+
+.footer a {
+  color: var(--theme-accent-soft);
+  text-decoration: none;
+}
+
+.footer a:hover,
+.footer a:focus {
+  color: var(--theme-accent-strong);
+  text-decoration: none;
 }
 
 @keyframes blink {
