@@ -4,6 +4,7 @@ title : Publications
 navbar_title: Publications
 body_attr: >-
   data-spy="scroll" data-target="#navbar-year" data-offset="100"
+container_class: container-xl
 ---
 
 <style>
@@ -25,8 +26,8 @@ body_attr: >-
 
 {% assign pubs_by_year = site.publications | sort: "date" | reverse | group_by_exp: "item", "item.date | date: '%Y'" %}
 
-<div class="row">
-    <div class="col-12 col-lg-3 d-none d-lg-block">
+<div class="row wide-content-row">
+    <div class="col-12 d-none d-lg-block wide-content-sidebar">
         <div class="sticky-top" style="top: 80px">
             <div class="card border-0 shadow-sm bg-white custom-radius">
                 <div class="card-body p-4">
@@ -40,7 +41,7 @@ body_attr: >-
         </div>
     </div>
 
-    <div class="col-12 col-lg-9">
+    <div class="col-12 wide-content-main">
         <div class="row">
             <div class="col">
                 <div class="card border-0 shadow-sm bg-white custom-radius">

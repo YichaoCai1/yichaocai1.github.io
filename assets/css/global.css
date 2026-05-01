@@ -126,4 +126,21 @@ a.profile_href {
     opacity: 0;
   }
 }
+
+@media (min-width: 992px) {
+  .wide-content-row {
+    flex-wrap: nowrap;
+  }
+
+  .wide-content-sidebar {
+    flex: 0 0 20.833333%;
+    max-width: 20.833333%;
+  }
+
+  .wide-content-main {
+    flex: 1 1 auto;
+    max-width: none;
+    min-width: 0;
+  }
+}
  
