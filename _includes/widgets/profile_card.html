@@ -29,11 +29,8 @@
                             </div>
                             {% endif %}
                         </div>
-                        <div class="text-profile-position">
+                        <div class="text-profile-position" style="font-size: 0.95rem; line-height: 1.4;">
                             {% for position in site.data.profile.positions %}
-                            {% if position.logo -%}
-                            <img src="{{ position.logo | relative_url }}" alt="Logo" class="inline-badge"/>
-                            {%- endif %}
                             {{ position.name }}<br/>
                             {% endfor %}
                         </div>

@@ -19,21 +19,9 @@ navbar_title: Home
         {% endif %}
         {% endif %}
 
-        {% if site.data.profile.education %}
-            {% include widgets/education_card.html %}
-        {% endif %}
+        {% include widgets/career_card.html %}
 
-        {% if site.data.display.homepage.show_experience %}
-            {% include widgets/experience_card.html %}
-        {% endif %}
-
-        {% if site.data.profile.awards %}
-            {% include widgets/awards_card.html %}
-        {% endif %}
-
-        {% if site.data.profile.service %}
-            {% include widgets/service_card.html %}
-        {% endif %}
+        {% include widgets/summary_card.html %}
 
         {% if site.data.display.homepage.show_selected_publications %}
         {% assign pubs = site.publications | sort: "date" | reverse | where: "selected", true %}

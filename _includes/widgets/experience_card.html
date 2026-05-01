@@ -6,6 +6,8 @@
     .institution-name {
         color: var(--theme-accent);
         font-weight: bold;
+        font-size: 0.94rem;
+        line-height: 1.25;
     }
 
     .timeline {
@@ -120,24 +122,12 @@
                         <li class="media mb-2 timeline-item">
                             <div class="timeline-date">{% if item.date and item.date != "" %}<em>{{ item.date }}</em>{% endif %}</div>
                             <div class="media-body timeline-content">
-                                <div class="d-flex align-items-center">
-                                    <div class="institution-name">{{ item.name }}</div>
-                                    {% if item.logo or item.logo2 %}
-                                    <div class="ml-2 d-flex align-items-center">
-                                        {% if item.logo %}
-                                        <img src="{{ item.logo | relative_url }}" alt="{{ item.name }}" style="height: 24px;" class="mr-1">
-                                        {% endif %}
-                                        {% if item.logo2 %}
-                                        <img src="{{ item.logo2 | relative_url }}" alt="{{ item.name }} 2" style="height: 24px;">
-                                        {% endif %}
-                                    </div>
-                                    {% endif %}
-                                </div>
+                                <div class="institution-name">{{ item.name }}</div>
                                 {% if item.dept %}
                                 <div class="small">{{ item.dept }}</div>
                                 {% endif %}
                                 <div class="small d-flex">
-                                    <div>{{ item.position }}</div>
+                                    <div>{{ item.homepage_position | default: item.position }}</div>
                                 </div>
                             </div>
                         </li>

@@ -68,6 +68,11 @@ a.location_href {
     border-radius: 15px;
 }
 
+.profile-position-lines {
+    font-size: 0.84rem;
+    line-height: 1.35;
+}
+
 .profile-portrait-container {
     position: relative;
     display: inline-block;
@@ -143,29 +148,23 @@ a.location_href {
                 </div>
 
                 <div class="row small">
-                    <div class="col text-center">
+                    <div class="col text-center profile-position-lines">
                         
                         Ph.D. Candidate
-                        
                         <br/>
                         
-                        AIML, University of Adelaide
-                        <img src="/assets/images/badges/uoa_logo.jpeg" alt="Logo" class="inline-badge" style="max-height: 1.2em; vertical-align: middle; margin-left: 5px;"/>
+                        AIML, Adelaide University
                         <br/>
                         
-                    </div>
-                </div>
-
-                <div class="row small">
-                    <div class="col text-center">
-                        <a class="email-text follow_href" href="mailto:%79%69%63%68%61%6F.%63%61%69@%61%64%65%6C%61%69%64%65.%65%64%75.%61%75">
-                            yichao.cai(at)adelaide.edu.au
-                        </a>
                     </div>
                 </div>
 
                 <div class="row pt-2">
                     <div class="col text-center h4">
+                        <a class="px-1 no-break follow_href" href="mailto:%79%69%63%68%61%6F.%63%61%69@%61%64%65%6C%61%69%64%65.%65%64%75.%61%75">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+
                         <a class="px-1 no-break follow_href" target="_blank" href="https://scholar.google.com/citations?user=nNp0nL4AAAAJ">
                             <i class="fab fa-google-scholar"></i>
                         </a>
@@ -238,8 +237,8 @@ a.location_href {
                         <div class="text-profile-bio mt-0" style="text-align: justify;">
                             <p>
   I am a third-year Ph.D. student in Computer Science at the
-  <a href="https://www.adelaide.edu.au/aiml/" target="_blank">AIML</a>,
-  <a href="https://www.adelaide.edu.au/" target="_blank">University of Adelaide</a>,
+  <a href="https://www.adelaide.edu.au/aiml/" target="_blank">Australian Institute for Machine Learning (AIML)</a>,
+  <a href="https://www.adelaide.edu.au/" target="_blank">Adelaide University (formerly The University of Adelaide)</a>,
   advised by Prof.
   <a href="https://cs.adelaide.edu.au/~javen/" target="_blank">Javen Qinfeng Shi</a>.
   I study representation learning, asking how natural language supervision determines which semantic structure is captured, preserved, or lost in vision-language models
@@ -335,7 +334,12 @@ a.location_href {
             <div class="media-body">
                 
                 <div class="news-item my-1 d-flex">
-                    <div>Check out our new preprint: <a href="https://arxiv.org/abs/2601.19597" target="_blank">The Geometric Mechanics of Contrastive Learning: Alignment Potentials, Entropic Dispersion, and Modality Gap</a>.</div>
+                    <div>We had three papers on representation learning accepted to <strong>ICML 2026</strong>: one first-author paper on contrastive learning geometry and two co-authored papers on AI4Science and graphical modeling, respectively.</div>
+                    <div class="ml-auto mt-auto text-muted no-break"><i>May 01</i></div>
+                </div>
+                
+                <div class="news-item my-1 d-flex">
+                    <div>Check out our new preprint: <a href="https://arxiv.org/abs/2601.19597" target="_blank">The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic Dispersion, and Cross-Modal Divergence</a>.</div>
                     <div class="ml-auto mt-auto text-muted no-break"><i>Jan 29</i></div>
                 </div>
                 
@@ -356,11 +360,6 @@ a.location_href {
                     <div class="ml-auto mt-auto text-muted no-break"><i>Oct 16</i></div>
                 </div>
                 
-                <div class="news-item my-1 d-flex">
-                    <div>Our work <a href="https://arxiv.org/abs/2504.10143" target="_blank">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</a> was selected as a <strong>Spotlight</strong> at <strong>NeurIPS 2025</strong>.</div>
-                    <div class="ml-auto mt-auto text-muted no-break"><i>Sep 19</i></div>
-                </div>
-                
             </div>
         </div>
         
@@ -371,6 +370,11 @@ a.location_href {
             <div class="media py-1 border-top border-gray">
                 <div class="mr-3 text-muted my-1">2025</div>
                 <div class="media-body">
+                    
+                    <div class="news-item my-1 d-flex">
+                        <div>Our work <a href="https://arxiv.org/abs/2504.10143" target="_blank">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</a> was selected as a <strong>Spotlight</strong> at <strong>NeurIPS 2025</strong>.</div>
+                        <div class="ml-auto mt-auto text-muted no-break"><i>Sep 19</i></div>
+                    </div>
                     
                     <div class="news-item my-1 d-flex">
                         <div>We released the preprint <a href="https://arxiv.org/abs/2504.10143" target="_blank">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</a>.</div>
@@ -414,15 +418,22 @@ a.location_href {
         
         
 
-        
-            <style>
+        <style>
     .custom-radius {
         border-radius: 15px;
     }
 
-    .institution-name {
+    .entry-title {
         color: var(--theme-accent);
-        font-weight: bold;
+        font-weight: 400;
+        font-size: 0.92rem;
+        line-height: 1.45;
+    }
+
+    .combined-card-section + .combined-card-section {
+        margin-top: 1.5rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid #eef2f6;
     }
 
     .timeline {
@@ -530,7 +541,8 @@ a.location_href {
     <div class="col">
         <div class="card border-0 shadow-sm bg-white custom-radius">
             <div class="card-body p-4">
-                <div class="mx-2 my-1">
+                
+                <div class="mx-2 my-1 combined-card-section">
                     <h5>Education</h5>
                     <ul class="list-unstyled mb-1 timeline">
                         
@@ -538,28 +550,27 @@ a.location_href {
                             <div class="timeline-date"><em>Sep 2023 - Present</em></div>
                             <div class="media-body timeline-content">
                                 <div class="d-flex align-items-center">
-                                    <div class="institution-name">University of Adelaide</div>
+                                    <div class="entry-title">Ph.D. in Computer Science, Adelaide University</div>
                                     
                                     <div class="ml-2 d-flex align-items-center">
                                         
-                                        <img src="/assets/images/badges/uoa_logo.jpeg" alt="University of Adelaide" style="height: 24px;" class="mr-1">
+                                        <img src="/assets/images/badges/Adelaide-University-Logo-New.png" alt="Adelaide University" style="height: 24px;" class="mr-1">
                                         
                                         
                                     </div>
                                     
                                 </div>
                                 
-                                <div class="small d-flex">
-                                    <div>Ph.D. in Computer Science <br/> Advisor: Prof. Javen Qinfeng Shi</div>
-                                </div>
+                                <div class="small">Advisor: Prof. Javen Qinfeng Shi</div>
+                                
                             </div>
                         </li>
                         
                         <li class="media mb-2 timeline-item">
-                            <div class="timeline-date"><em>Sep 2012 - Jun 2019</em></div>
+                            <div class="timeline-date"><em>Sep 2016 - Jun 2019</em></div>
                             <div class="media-body timeline-content">
                                 <div class="d-flex align-items-center">
-                                    <div class="institution-name">Wuhan University of Technology</div>
+                                    <div class="entry-title">M.Sc. in Instrument Science and Technology, Wuhan University of Technology</div>
                                     
                                     <div class="ml-2 d-flex align-items-center">
                                         
@@ -570,202 +581,93 @@ a.location_href {
                                     
                                 </div>
                                 
-                                <div class="small d-flex">
-                                    <div>M.Sc. in Instrument Science and Technology, Sep 2016 - Jun 2019 <br/> Advisor: Prof. Xiao Zhou <br/> B.Eng. in Measurement and Control Engineering, Sep 2012 - Jun 2016</div>
-                                </div>
+                                <div class="small">Advisor: Prof. Xiao Zhou</div>
+                                
                             </div>
                         </li>
                         
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-        
-
-        
-            <style>
-    .custom-radius {
-        border-radius: 15px;
-    }
-
-    .institution-name {
-        color: var(--theme-accent);
-        font-weight: bold;
-    }
-
-    .timeline {
-        position: relative;
-        margin: 0;
-        --timeline-date-width: 8rem;
-        --timeline-date-gap: 0.6rem;
-        --timeline-content-gap: 1.4rem;
-        --timeline-axis-x: calc(var(--timeline-date-width) + (var(--timeline-date-gap) / 2));
-    }
-
-    .timeline::before {
-        content: "";
-        position: absolute;
-        left: var(--timeline-axis-x);
-        top: 0.4rem;
-        bottom: 0.4rem;
-        width: 2px;
-        background: #e9ecef;
-    }
-
-    .timeline-item {
-        position: relative;
-        display: flex;
-        align-items: flex-start;
-    }
-
-    .timeline-item::before {
-        content: "";
-        position: absolute;
-        left: calc(var(--timeline-axis-x) - 0.3rem);
-        top: 0.45rem;
-        width: 0.6rem;
-        height: 0.6rem;
-        border-radius: 50%;
-        background: var(--theme-accent);
-        border: 2px solid #ffffff;
-        box-shadow: 0 0 0 2px var(--theme-accent);
-    }
-
-    .timeline-date {
-        width: var(--timeline-date-width);
-        padding-right: var(--timeline-date-gap);
-        display: flex;
-        justify-content: flex-end;
-        text-align: right;
-        color: #6c757d;
-        font-size: 0.7rem;
-        white-space: nowrap;
-    }
-
-    .timeline-content {
-        flex: 1;
-        padding-left: var(--timeline-content-gap);
-    }
-
-    @media (max-width: 576px) {
-        .timeline {
-            --timeline-date-width: 0;
-            --timeline-date-gap: 0;
-            --timeline-content-gap: 0.9rem;
-        }
-
-        .timeline::before {
-            left: 0.3rem;
-        }
-
-        .timeline-item {
-            flex-direction: column;
-            padding-left: 0.9rem;
-        }
-
-        .timeline-item::before {
-            left: 0;
-            top: 0.35rem;
-        }
-
-        .timeline-date {
-            width: auto;
-            padding-right: 0;
-            justify-content: flex-start;
-            text-align: left;
-            font-size: 0.65rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .timeline-content {
-            padding-left: 0;
-        }
-
-        .timeline-content img {
-            height: 20px;
-        }
-
-        .timeline-content .ml-2.d-flex {
-            flex-wrap: wrap;
-            gap: 0.2rem;
-            margin-left: 0.4rem;
-        }
-    }
-</style>
-
-
-<div class="row mt-3">
-    <div class="col">
-        <div class="card border-0 shadow-sm bg-white custom-radius">
-            <div class="card-body p-4">
-                <div class="mx-2 my-1">
-                    <h5>Experience</h5>
-                    <ul class="list-unstyled mb-1 timeline">
-                        
                         <li class="media mb-2 timeline-item">
-                            <div class="timeline-date"><em>2025 - present</em></div>
+                            <div class="timeline-date"><em>Sep 2012 - Jun 2016</em></div>
                             <div class="media-body timeline-content">
                                 <div class="d-flex align-items-center">
-                                    <div class="institution-name">University of Adelaide</div>
+                                    <div class="entry-title">B.Eng. in Measurement and Control Engineering, Wuhan University of Technology</div>
                                     
                                     <div class="ml-2 d-flex align-items-center">
                                         
-                                        <img src="/assets/images/badges/uoa_logo.jpeg" alt="University of Adelaide" style="height: 24px;" class="mr-1">
+                                        <img src="/assets/images/badges/whut-logo.svg" alt="Wuhan University of Technology" style="height: 24px;" class="mr-1">
                                         
                                         
                                     </div>
                                     
                                 </div>
                                 
-                                <div class="small d-flex">
-                                    <div>Teaching Assistant - Neural Networks and Deep Learning (ARTI X300), Semester 1 2026 <br/> Guest Lecturer and Head Tutor - Statistical Machine Learning (COMP SCI 3314), Semester 2 2025 <br/> Teaching Assistant - Using Machine Learning Tools (COMP SCI 7317), Trimester 2 2025 <br/> Teaching Assistant - Concepts in AI and ML (COMP SCI 7327), Semester 1 2025 <br/></div>
-                                </div>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+                
+
+                
+                <div class="mx-2 my-1 combined-card-section">
+                    <h5>Experience</h5>
+                    <ul class="list-unstyled mb-1 timeline">
+                        
+                        <li class="media mb-2 timeline-item">
+                            <div class="timeline-date"><em>Sep 2023 - Present</em></div>
+                            <div class="media-body timeline-content">
+                                <div class="entry-title">PhD Student Researcher, AIML, Adelaide University</div>
+                                
+                            </div>
+                        </li>
+                        
+                        <li class="media mb-2 timeline-item">
+                            <div class="timeline-date"><em>Jun 2020 - Aug 2022</em></div>
+                            <div class="media-body timeline-content">
+                                <div class="entry-title">AI Engineer, Tellhow Software</div>
+                                
+                            </div>
+                        </li>
+                        
+                        <li class="media mb-2 timeline-item">
+                            <div class="timeline-date"><em>Jul 2019 - Apr 2020</em></div>
+                            <div class="media-body timeline-content">
+                                <div class="entry-title">Software Engineer, Huawei Technologies</div>
+                                
                             </div>
                         </li>
                         
                         <li class="media mb-2 timeline-item">
                             <div class="timeline-date"><em>May 2018 - Oct 2018</em></div>
                             <div class="media-body timeline-content">
-                                <div class="d-flex align-items-center">
-                                    <div class="institution-name">California PATH, UC Berkeley</div>
-                                    
-                                    <div class="ml-2 d-flex align-items-center">
-                                        
-                                        <img src="/assets/images/badges/Seal_of_University_of_California,_Berkeley.svg" alt="California PATH, UC Berkeley" style="height: 24px;" class="mr-1">
-                                        
-                                        
-                                    </div>
-                                    
-                                </div>
+                                <div class="entry-title">Visiting Student Researcher, California PATH, UC Berkeley</div>
                                 
-                                <div class="small d-flex">
-                                    <div>Visiting Student Researcher, under Dr. Ching-Yao Chan</div>
-                                </div>
                             </div>
                         </li>
                         
                     </ul>
                 </div>
+                
             </div>
         </div>
     </div>
 </div>
 
 
-        
 
-        
-            <style>
+        <style>
     .custom-radius {
         border-radius: 15px;
     }
 
-    .award-name {
+    .summary-name {
         font-weight: 400;
+    }
+
+    .combined-card-section + .combined-card-section {
+        margin-top: 1.5rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid #eef2f6;
     }
 </style>
 
@@ -774,75 +676,94 @@ a.location_href {
     <div class="col">
         <div class="card border-0 shadow-sm bg-white custom-radius">
             <div class="card-body p-4">
-                <div class="mx-2 my-1">
+                
+                <div class="mx-2 my-1 combined-card-section">
+                    <h5>Teaching</h5>
+                    <ul class="list small pl-3 mb-1">
+                        
+                        <li class="mb-2">
+                            <div class="d-flex">
+                                <div class="summary-name">Teaching Assistant - Neural Networks and Deep Learning (ARTI X300), Adelaide University</div>
+                                <div class="ml-auto mt-auto no-break"><em>Semester 1 2026</em></div>
+                            </div>
+                        </li>
+                        
+                        <li class="mb-2">
+                            <div class="d-flex">
+                                <div class="summary-name">Guest Lecturer and Head Tutor - Statistical Machine Learning (COMP SCI 3314), Adelaide University</div>
+                                <div class="ml-auto mt-auto no-break"><em>Semester 2 2025</em></div>
+                            </div>
+                        </li>
+                        
+                        <li class="mb-2">
+                            <div class="d-flex">
+                                <div class="summary-name">Teaching Assistant - Using Machine Learning Tools (COMP SCI 7317), Adelaide University</div>
+                                <div class="ml-auto mt-auto no-break"><em>Trimester 2 2025</em></div>
+                            </div>
+                        </li>
+                        
+                        <li class="mb-2">
+                            <div class="d-flex">
+                                <div class="summary-name">Teaching Assistant - Concepts in AI and ML (COMP SCI 7327), Adelaide University</div>
+                                <div class="ml-auto mt-auto no-break"><em>Semester 1 2025</em></div>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+                
+
+                
+                <div class="mx-2 my-1 combined-card-section">
                     <h5>Honors &amp; Awards</h5>
                     <ul class="list small pl-3 mb-1">
                         
                         <li class="mb-2">
                             <div class="d-flex">
-                                <div class="award-name">NeurIPS Scholar Award</div>
+                                <div class="summary-name">NeurIPS Scholar Award</div>
                                 <div class="ml-auto mt-auto no-break"><em>2025</em></div>
                             </div>
                         </li>
                         
                         <li class="mb-2">
                             <div class="d-flex">
-                                <div class="award-name">University of Adelaide Research Scholarships</div>
+                                <div class="summary-name">Adelaide University Research Scholarships</div>
                                 <div class="ml-auto mt-auto no-break"><em>2023</em></div>
                             </div>
                         </li>
                         
                         <li class="mb-2">
                             <div class="d-flex">
-                                <div class="award-name">Award for Outstanding Graduates, Wuhan University of Technology</div>
+                                <div class="summary-name">Award for Outstanding Graduates, Wuhan University of Technology</div>
                                 <div class="ml-auto mt-auto no-break"><em>2019</em></div>
                             </div>
                         </li>
                         
                     </ul>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+                
 
-
-        
-
-        
-            <style>
-    .custom-radius {
-        border-radius: 15px;
-    }
-
-    .service-name {
-        font-weight: 400;
-    }
-</style>
-
-<div class="row mt-3">
-    <div class="col">
-        <div class="card border-0 shadow-sm bg-white custom-radius">
-            <div class="card-body p-4">
-                <div class="mx-2 my-1">
+                
+                <div class="mx-2 my-1 combined-card-section">
                     <h5>Academic Service</h5>
                     <ul class="list small pl-3 mb-1">
                         
                         <li class="mb-2">
                             <div class="d-flex">
-                                <div class="service-name">Reviewer for TMLR, ICLR 2026, ICML 2026, and NeurIPS 2026</div>
-                                <div class="ml-auto mt-auto no-break"><em></em></div>
+                                <div class="summary-name">Reviewer for TMLR, ICLR 2026, ICML 2026, and NeurIPS 2026</div>
+                                
                             </div>
                         </li>
                         
                     </ul>
                 </div>
+                
             </div>
         </div>
     </div>
 </div>
 
-        
+
 
         
         
@@ -905,11 +826,11 @@ a.location_href {
 
 <div class="d-none d-md-block">
     <div class="row no-gutters border-bottom border-gray ">
-        <div class="col-md-4 col-xl-3 mb-md-0 p-md-3 d-flex align-items-start publication-container"><img data-src="/files/thumbs/InfoNCE_geometry.png" alt="The Geometric Mechanics of Contrastive Learning: Alignment Potentials, Entropic Dispersion, and Modality Gap" class="lazy publication-cover rounded-sm" src="/assets/images/empty_300x200.png"><div class="pub-badge">arXiv</div></div>
+        <div class="col-md-4 col-xl-3 mb-md-0 p-md-3 d-flex align-items-start publication-container"><img data-src="/files/thumbs/InfoNCE_geometry.png" alt="The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic Dispersion, and Cross-Modal Divergence" class="lazy publication-cover rounded-sm" src="/assets/images/empty_300x200.png"><div class="pub-badge">arXiv</div></div>
         <div class="col-md-8 col-xl-9 p-3 pl-md-0">
             <h5 class="mt-0 mb-0 font-weight-normal" style="color: #5F6F82;">
               
-                <a href="https://yichaocai.com/nce_geo.github.io/" class="item_link" target="_blank">The Geometric Mechanics of Contrastive Learning: Alignment Potentials, Entropic Dispersion, and Modality Gap</a>
+                <a href="https://yichaocai.com/nce_geo.github.io/" class="item_link" target="_blank">The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic Dispersion, and Cross-Modal Divergence</a>
               
             </h5>
             <p class="mt-0 mb-0 small"><span class="text-body" >
@@ -944,7 +865,7 @@ a.location_href {
             <div>
                 <h5 class="mt-0 mb-0 font-weight-normal" style="color: #5F6F82;">
                   
-                    <a href="https://yichaocai.com/nce_geo.github.io/" class="item_link" target="_blank">The Geometric Mechanics of Contrastive Learning: Alignment Potentials, Entropic Dispersion, and Modality Gap</a>
+                    <a href="https://yichaocai.com/nce_geo.github.io/" class="item_link" target="_blank">The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic Dispersion, and Cross-Modal Divergence</a>
                   
                 </h5>
                 <p class="mt-0 mb-0 small"><span class="text-body" >
@@ -1309,7 +1230,7 @@ a.location_href {
                 <div class="row align-items-end">
                     <div class="col">
                         <div class="text-muted">
-                            <i>Last updated: Apr 2026</i>
+                            <i>Last updated: May 2026</i>
                             &nbsp;&middot;&nbsp;
                             <a href="/books.html" target="_self">Reading list</a>
                         </div>

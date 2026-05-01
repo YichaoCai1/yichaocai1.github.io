@@ -1,0 +1,75 @@
+<style>
+    .custom-radius {
+        border-radius: 15px;
+    }
+
+    .summary-name {
+        font-weight: 400;
+    }
+
+    .combined-card-section + .combined-card-section {
+        margin-top: 1.5rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid #eef2f6;
+    }
+</style>
+
+{% if site.data.profile.teaching or site.data.profile.awards or site.data.profile.service %}
+<div class="row mt-3">
+    <div class="col">
+        <div class="card border-0 shadow-sm bg-white custom-radius">
+            <div class="card-body p-4">
+                {% if site.data.profile.teaching %}
+                <div class="mx-2 my-1 combined-card-section">
+                    <h5>Teaching</h5>
+                    <ul class="list small pl-3 mb-1">
+                        {% for item in site.data.profile.teaching %}
+                        <li class="mb-2">
+                            <div class="d-flex">
+                                <div class="summary-name">{{ item.homepage_position | default: item.position }}, {{ item.name }}</div>
+                                <div class="ml-auto mt-auto no-break"><em>{{ item.date }}</em></div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% if site.data.profile.awards %}
+                <div class="mx-2 my-1 combined-card-section">
+                    <h5>Honors &amp; Awards</h5>
+                    <ul class="list small pl-3 mb-1">
+                        {% for item in site.data.profile.awards %}
+                        <li class="mb-2">
+                            <div class="d-flex">
+                                <div class="summary-name">{{ item.name }}</div>
+                                <div class="ml-auto mt-auto no-break"><em>{{ item.date }}</em></div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% if site.data.profile.service %}
+                <div class="mx-2 my-1 combined-card-section">
+                    <h5>Academic Service</h5>
+                    <ul class="list small pl-3 mb-1">
+                        {% for item in site.data.profile.service %}
+                        <li class="mb-2">
+                            <div class="d-flex">
+                                <div class="summary-name">{{ item.name }}</div>
+                                {% if item.date %}
+                                <div class="ml-auto mt-auto no-break"><em>{{ item.date }}</em></div>
+                                {% endif %}
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

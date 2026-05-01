@@ -19,6 +19,11 @@ a.location_href {
     border-radius: 15px;
 }
 
+.profile-position-lines {
+    font-size: 0.84rem;
+    line-height: 1.35;
+}
+
 .profile-portrait-container {
     position: relative;
     display: inline-block;
@@ -102,27 +107,20 @@ a.location_href {
                 </div>
 
                 <div class="row small">
-                    <div class="col text-center">
+                    <div class="col text-center profile-position-lines">
                         {% for position in site.data.profile.positions %}
                         {{ position.name }}
-                        {% if position.logo -%}
-                        <img src="{{ position.logo | relative_url }}" alt="Logo" class="inline-badge" style="max-height: 1.2em; vertical-align: middle; margin-left: 5px;"/>
-                        {%- endif %}
                         <br/>
                         {% endfor %}
                     </div>
                 </div>
 
-                <div class="row small">
-                    <div class="col text-center">
-                        <a class="email-text follow_href" href="mailto:{{ site.data.profile.email | encode_email }}">
-                            {{ site.data.profile.email | replace: "@", "(at)" }}
-                        </a>
-                    </div>
-                </div>
-
                 <div class="row pt-2">
                     <div class="col text-center h4">
+                        <a class="px-1 no-break follow_href" href="mailto:{{ site.data.profile.email | encode_email }}">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+
                         {% if site.data.profile.gscholar %}
                         {%- if site.data.profile.gscholar contains 'scholar.google' -%}
                         {%- assign gscholar_url = site.data.profile.gscholar -%}

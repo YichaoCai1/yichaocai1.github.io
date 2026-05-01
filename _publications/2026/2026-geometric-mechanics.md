@@ -1,5 +1,5 @@
 ---
-title: "The Geometric Mechanics of Contrastive Learning: Alignment Potentials, Entropic Dispersion, and Modality Gap"
+title: "The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic Dispersion, and Cross-Modal Divergence"
 date: 2026-01-29 00:00:00 +1030
 selected: true
 pub: "arXiv preprint"
