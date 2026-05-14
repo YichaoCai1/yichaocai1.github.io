@@ -50,7 +50,7 @@ body.minimal-light-home {
     gap: 1rem;
 }
 
-.site-top-nav-brand {
+.minimal-light-home .site-top-nav-brand {
     color: var(--ml-heading);
     font-size: 1.02rem;
     font-weight: 700;
@@ -64,13 +64,15 @@ body.minimal-light-home {
     font-size: 0.95rem;
 }
 
-.site-top-nav-links a {
-    color: var(--ml-muted);
+.minimal-light-home .site-top-nav-links a {
+    color: var(--ml-heading);
 }
 
-.site-top-nav-links a.active,
-.site-top-nav-links a:hover,
-.site-top-nav-links a:focus {
+.minimal-light-home .site-top-nav-brand:hover,
+.minimal-light-home .site-top-nav-brand:focus,
+.minimal-light-home .site-top-nav-links a.active,
+.minimal-light-home .site-top-nav-links a:hover,
+.minimal-light-home .site-top-nav-links a:focus {
     color: var(--ml-heading);
 }
 
