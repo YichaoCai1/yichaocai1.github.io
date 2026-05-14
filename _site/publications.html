@@ -16,30 +16,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/global.css">
 </head>
-<body data-spy="scroll" data-target="#navbar-year" data-offset="100">
-    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm">
-    <div class="container-xl">
-        <span class="nav-link terminal-text">YichaoCai<span style="color: var(--theme-support)">@AIML</span><span style="color: black">:</span><span style="color: var(--theme-accent-soft)">~</span><span style="color: black">$</span> Hi there<span style="color: var(--theme-support)">!</span><span class="terminal-cursor"></span></span>
-        <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-map"></i> Menu
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                
-                <li class="nav-item ">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                
-                <li class="nav-item active">
-                    <a class="nav-link" href="/publications">Publications</a>
-                </li>
-                
-                <li class="nav-item ">
-                    <a class="nav-link" href="/blogs.html">Blog</a>
-                </li>
-                
-            </ul>
+<body class="site-default-page" data-spy="scroll" data-target="#navbar-year" data-offset="100">
+    <nav class="site-top-nav" aria-label="Site navigation">
+    <div class="container-xl site-top-nav-inner">
+        <a class="site-top-nav-brand" href="/">Yichao Cai</a>
+        <div class="site-top-nav-links">
+            
+            <a class="" href="/">Home</a>
+            
+            <a class="active" href="/publications">Publications</a>
+            
+            <a class="" href="/blogs.html">Blog</a>
+            
+            <a class="" href="/books.html">Readings</a>
+            
         </div>
     </div>
 </nav>
@@ -58,7 +48,7 @@
     color: white;
 }
 .custom-radius {
-    border-radius: 15px;
+    border-radius: 0.35rem;
 }
 </style>
 
@@ -107,119 +97,223 @@
         <div class="row">
             <div class="col">
                 <div class="card border-0 shadow-sm bg-white custom-radius">
-                    <div class="card-body p-0">
-                        
-                        
+                    <div class="card-body p-4">
                         
                             
 
 
-<style>
-    a.item_link {
-    color: var(--theme-accent-strong);
-  }
-  
-  .publication-cover {
-    object-fit: contain;
-    max-width: 100%;
-    max-height: 200px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  .selected-publication {
-    background-color: var(--theme-highlight-bg);
-  }
-  
-  .pub-badge {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    background-color: var(--theme-accent-strong);
-    color: white;
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 0.7em;
-    font-weight: bold;
-    z-index: 10;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  }
-  
-  .publication-container {
-    position: relative;
-  }
-  
-</style>
 
 
-<div class="d-none d-md-block">
-    <div class="row no-gutters  border-gray selected-publication">
-        <div class="col-md-4 col-xl-3 mb-md-0 p-md-3 d-flex align-items-start publication-container"><img data-src="/files/thumbs/InfoNCE_geometry.png" alt="The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic Dispersion, and Cross-Modal Divergence" class="lazy publication-cover rounded-sm" src="/assets/images/empty_300x200.png"><div class="pub-badge">ICML</div></div>
-        <div class="col-md-8 col-xl-9 p-3 pl-md-0">
-            <h5 class="mt-0 mb-0 font-weight-normal" style="color: #5F6F82;">
-              
-                <a href="https://yichaocai.com/nce_geo.github.io/" class="item_link" target="_blank">The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic Dispersion, and Cross-Modal Divergence</a>
-              
-            </h5>
-            <p class="mt-0 mb-0 small"><span class="text-body" >
-            <strong>Yichao Cai</strong>; </span><a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu</a>; <a class="text-body" target="_blank" href="https://cs.adelaide.edu.au/~javen/">Javen Q. Shi</a>.</p>
-            <p class="mt-0 mb-0 small "><i><b>International Conference on Machine Learning (ICML)</b></i> 2026 </p>
-            <p class="mt-0 mb-0 small text-muted">A theoretical study of representation geometry in unimodal and multimodal contrastive learning, revealing a geometric bifurcation and identifying object-level causes of the modality gap.</p>
+
+
+<article class="home-publication">
+    
+    <div class="home-publication-thumb">
+        <img src="/files/thumbs/gnn.png" alt="Boundary Embedding Shaping with Adaptive Contrastive Learning for Graph Structural Disentanglement">
+        
+        <span class="home-publication-badge">ICML</span>
+        
+    </div>
+    
+    <div class="home-publication-body">
+        <div class="home-publication-highlight">
+            <h3 class="home-publication-title">
             
-            <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
-                
-                
-                <a target="_blank" href="https://arxiv.org/abs/2601.19597" class="item_link">[Paper]</a>
-                
-                
-                
-                <a target="_blank" href="https://yichaocai.com/nce_geo.github.io/" class="item_link">[Project]</a>
-                
-                
-                
-                <a target="_blank" href="https://github.com/YichaoCai1/InfoNCE_Geometry" class="item_link">[Code]</a>
-                
-                
+                Boundary Embedding Shaping with Adaptive Contrastive Learning for Graph Structural Disentanglement
+            
+            </h3>
+            <p class="home-publication-authors"><a class="text-body" target="_blank" href="https://openreview.net/profile?id=~Jiaqing_Chen2">Jiaqing Chen</a>; <a class="text-body" target="_blank" href="https://openreview.net/profile?id=~Zidu_Yin1">Zidu Yin</a>; <span class="text-body" >
+            <strong>Yichao Cai</strong>; </span><a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu</a>; <a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://donggong1.github.io/">Dong Gong</a>; <a class="text-body" target="_blank" href="https://cs.adelaide.edu.au/~javen/">Javen Qinfeng Shi</a>.</p>
+            <p class="home-publication-venue">
+                <em><strong>International Conference on Machine Learning (ICML), 2026</strong></em>
             </p>
-
+            
+            <p class="home-publication-abstract">A plug-in GNN module that uses boundary-focused adaptive contrastive learning to reduce structural noise in boundary node embeddings and improve graph prediction performance.</p>
+            
         </div>
+        
     </div>
-</div>
-
-<div class="row no-gutters d-md-none  border-gray rounded-top rounded-bottom lazy selected-publication" data-src="/files/thumbs/InfoNCE_geometry.png">
-    <div class="w-100" style="background-color: rgba(255,255,255,0.9);">
-        <div class="d-flex align-items-start flex-column py-3 px-4 publication-container">
-            <div class="mb-auto"></div>
-            <div>
-                <h5 class="mt-0 mb-0 font-weight-normal" style="color: #5F6F82;">
-                  
-                    <a href="https://yichaocai.com/nce_geo.github.io/" class="item_link" target="_blank">The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic Dispersion, and Cross-Modal Divergence</a>
-                  
-                </h5>
-                <p class="mt-0 mb-0 small"><span class="text-body" >
-            <strong>Yichao Cai</strong>; </span><a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu</a>; <a class="text-body" target="_blank" href="https://cs.adelaide.edu.au/~javen/">Javen Q. Shi</a>.</p>
-                <p class="mt-0 mb-0 small><i>International Conference on Machine Learning (ICML)</i> 2026 </p>
-                <p class="mt-0 mb-0 small text-muted">A theoretical study of representation geometry in unimodal and multimodal contrastive learning, revealing a geometric bifurcation and identifying object-level causes of the modality gap.</p>
-                
-                <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
-                    
-                    
-                    <a target="_blank" href="https://arxiv.org/abs/2601.19597" class="item_link">[Paper]</a>
-                    
-                    
-                    
-                    <a target="_blank" href="https://yichaocai.com/nce_geo.github.io/" class="item_link">[Project]</a>
-                    
-                    
-                    
-                    <a target="_blank" href="https://github.com/YichaoCai1/InfoNCE_Geometry" class="item_link">[Code]</a>
-                    
-                    
-                </p>
-            </div><div class="pub-badge">ICML</div></div>
-    </div>
-
-</div>
+</article>
 
                         
+                            
+
+
+
+
+
+
+<article class="home-publication">
+    
+    <div class="home-publication-thumb">
+        <img src="/files/thumbs/single_cell.png" alt="What Makes a Good Representation for Single-Cell Perturbation Prediction?">
+        
+        <span class="home-publication-badge">ICML</span>
+        
+    </div>
+    
+    <div class="home-publication-body">
+        <div class="home-publication-highlight">
+            <h3 class="home-publication-title">
+            
+                What Makes a Good Representation for Single-Cell Perturbation Prediction?
+            
+            </h3>
+            <p class="home-publication-authors"><a class="text-body" target="_blank" href="https://scholar.google.com/citations?user=w7SwQKsAAAAJ&hl=en">Wenkang Jiang</a>; <a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu</a>; <span class="text-body" >
+            <strong>Yichao Cai</strong>; </span><a class="text-body" target="_blank" href="https://erdungao.github.io/">Erdun Gao</a>; <a class="text-body" target="_blank" href="https://scholar.google.com/citations?user=sHKtbzcAAAAJ&hl=en">Jiayi Dong</a>; <a class="text-body" target="_blank" href="https://ehsanabb.github.io/Home.html">Ehsan Abbasnejad</a>; <a class="text-body" target="_blank" href="https://www.linayao.com/">Lina Yao</a>; <a class="text-body" target="_blank" href="https://cs.adelaide.edu.au/~javen/">Javen Qinfeng Shi</a>.</p>
+            <p class="home-publication-venue">
+                <em><strong>International Conference on Machine Learning (ICML), 2026</strong></em>
+            </p>
+            
+            <p class="home-publication-abstract">An investigation of whether perturbation-aware causal representations can recover sparse intervention-specific signals from single-cell data dominated by invariant cellular background variation.</p>
+            
+        </div>
+        
+    </div>
+</article>
+
+                        
+                            
+
+
+
+
+
+
+<article class="home-publication selected-publication">
+    
+    <div class="home-publication-thumb">
+        <img src="/files/thumbs/InfoNCE_geometry.png" alt="The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic Dispersion, and Cross-Modal Divergence">
+        
+        <span class="home-publication-badge">ICML</span>
+        
+    </div>
+    
+    <div class="home-publication-body">
+        <div class="home-publication-highlight selected-publication-highlight">
+            <h3 class="home-publication-title">
+            
+                <a href="https://yichaocai.com/nce_geo.github.io/" target="_blank" rel="noopener">The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic Dispersion, and Cross-Modal Divergence</a>
+            
+            </h3>
+            <p class="home-publication-authors"><span class="text-body" >
+            <strong>Yichao Cai</strong>; </span><a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu</a>; <span class="text-body" >
+            Javen Q. Shi</span>.</p>
+            <p class="home-publication-venue">
+                <em><strong>International Conference on Machine Learning (ICML), 2026</strong></em>
+            </p>
+            
+            <p class="home-publication-abstract">A theoretical study of representation geometry in unimodal and multimodal contrastive learning, revealing a geometric bifurcation and identifying object-level causes of the modality gap.</p>
+            
+        </div>
+        
+        <p class="home-publication-links">
+            
+
+
+    
+    
+    
+    
+    
+    <a href="https://arxiv.org/abs/2601.19597" target="_blank" rel="noopener">[Paper]</a>
+    
+
+    
+    
+    
+    
+    
+    <a href="https://yichaocai.com/nce_geo.github.io/" target="_blank" rel="noopener">[Project]</a>
+    
+
+    
+    
+    
+    
+    
+    <a href="https://github.com/YichaoCai1/InfoNCE_Geometry" target="_blank" rel="noopener">[Code]</a>
+    
+
+
+
+            
+        </p>
+        
+    </div>
+</article>
+
+                        
+                            
+
+
+
+
+
+
+<article class="home-publication selected-publication">
+    
+    <div class="home-publication-thumb">
+        <img src="/files/thumbs/ntp_concept.png" alt="I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?">
+        
+        <span class="home-publication-badge">ICLR</span>
+        
+    </div>
+    
+    <div class="home-publication-body">
+        <div class="home-publication-highlight selected-publication-highlight">
+            <h3 class="home-publication-title">
+            
+                <a href="https://sites.google.com/view/yuhangliu/projects/ntp" target="_blank" rel="noopener">I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?</a>
+            
+            </h3>
+            <p class="home-publication-authors"><a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu</a>; <a class="text-body" target="_blank" href="https://donggong1.github.io/">Dong Gong</a>; <span class="text-body" >
+            <strong>Yichao Cai</strong>; </span><a class="text-body" target="_blank" href="https://erdungao.github.io/">Erdun Gao</a>; <a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://biweihuang.com/">Biwei Huang</a>; <a class="text-body" target="_blank" href="https://mingming-gong.github.io/">Mingming Gong</a>; <a class="text-body" target="_blank" href="https://scholar.google.com/citations?user=nMGZ2ZQAAAAJ&hl=zh-CN&oi=ao">Anton van den Hengel</a>; <span class="text-body" >
+            Javen Q. Shi</span>.</p>
+            <p class="home-publication-venue">
+                <em><strong>International Conference on Learning Representations (ICLR), 2026</strong></em>
+            </p>
+            
+            <p class="home-publication-abstract">An investigation of whether next-token prediction alone is sufficient for learning human-interpretable concepts from data.</p>
+            
+        </div>
+        
+        <p class="home-publication-links">
+            
+
+
+    
+    
+    
+    
+    
+    <a href="https://arxiv.org/pdf/2503.08980" target="_blank" rel="noopener">[Paper]</a>
+    
+
+    
+    
+    
+    
+    
+    <a href="https://sites.google.com/view/yuhangliu/projects/ntp" target="_blank" rel="noopener">[Project]</a>
+    
+
+    
+    
+    
+    
+    
+    <a href="https://github.com/yuhangliu01/I-Predict-Therefore-I-Am" target="_blank" rel="noopener">[Code]</a>
+    
+
+
+
+            
+        </p>
+        
+    </div>
+</article>
+
                         
                     </div>
                 </div>
@@ -237,222 +331,81 @@
         <div class="row">
             <div class="col">
                 <div class="card border-0 shadow-sm bg-white custom-radius">
-                    <div class="card-body p-0">
-                        
-                        
+                    <div class="card-body p-4">
                         
                             
 
 
-<style>
-    a.item_link {
-    color: var(--theme-accent-strong);
-  }
-  
-  .publication-cover {
-    object-fit: contain;
-    max-width: 100%;
-    max-height: 200px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  .selected-publication {
-    background-color: var(--theme-highlight-bg);
-  }
-  
-  .pub-badge {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    background-color: var(--theme-accent-strong);
-    color: white;
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 0.7em;
-    font-weight: bold;
-    z-index: 10;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  }
-  
-  .publication-container {
-    position: relative;
-  }
-  
-</style>
 
 
-<div class="d-none d-md-block">
-    <div class="row no-gutters border-bottom border-gray selected-publication">
-        <div class="col-md-4 col-xl-3 mb-md-0 p-md-3 d-flex align-items-start publication-container"><img data-src="/files/thumbs/ntp_concept.png" alt="I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?" class="lazy publication-cover rounded-sm" src="/assets/images/empty_300x200.png"><div class="pub-badge">ICLR</div></div>
-        <div class="col-md-8 col-xl-9 p-3 pl-md-0">
-            <h5 class="mt-0 mb-0 font-weight-normal" style="color: #5F6F82;">
-              
-                <a href="https://sites.google.com/view/yuhangliu/projects/ntp" class="item_link" target="_blank">I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?</a>
-              
-            </h5>
-            <p class="mt-0 mb-0 small"><a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu</a>; <a class="text-body" target="_blank" href="https://donggong1.github.io/">Dong Gong</a>; <span class="text-body" >
-            <strong>Yichao Cai</strong>; </span><a class="text-body" target="_blank" href="https://erdungao.github.io/">Erdun Gao</a>; <a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://biweihuang.com/">Biwei Huang</a>; <a class="text-body" target="_blank" href="https://mingming-gong.github.io/">Mingming Gong</a>; <a class="text-body" target="_blank" href="https://scholar.google.com/citations?user=nMGZ2ZQAAAAJ&hl=zh-CN&oi=ao">Anton van den Hengel</a>; <a class="text-body" target="_blank" href="https://cs.adelaide.edu.au/~javen/">Javen Q. Shi</a>.</p>
-            <p class="mt-0 mb-0 small "><i><b>International Conference on Learning Representations (ICLR)</b></i> 2026 </p>
-            <p class="mt-0 mb-0 small text-muted">An investigation of whether next-token prediction alone is sufficient for learning human-interpretable concepts from data.</p>
+
+
+<article class="home-publication selected-publication">
+    
+    <div class="home-publication-thumb">
+        <img src="/files/thumbs/misalignment.png" alt="On the Value of Cross-Modal Misalignment in Multimodal Representation Learning">
+        
+        <span class="home-publication-badge">NeurIPS</span>
+        
+    </div>
+    
+    <div class="home-publication-body">
+        <div class="home-publication-highlight selected-publication-highlight">
+            <h3 class="home-publication-title">
             
-            <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
-                
-                
-                <a target="_blank" href="https://arxiv.org/pdf/2503.08980" class="item_link">[Paper]</a>
-                
-                
-                
-                <a target="_blank" href="https://sites.google.com/view/yuhangliu/projects/ntp" class="item_link">[Project]</a>
-                
-                
-            </p>
-
-        </div>
-    </div>
-</div>
-
-<div class="row no-gutters d-md-none border-bottom border-gray rounded-top  lazy selected-publication" data-src="/files/thumbs/ntp_concept.png">
-    <div class="w-100" style="background-color: rgba(255,255,255,0.9);">
-        <div class="d-flex align-items-start flex-column py-3 px-4 publication-container">
-            <div class="mb-auto"></div>
-            <div>
-                <h5 class="mt-0 mb-0 font-weight-normal" style="color: #5F6F82;">
-                  
-                    <a href="https://sites.google.com/view/yuhangliu/projects/ntp" class="item_link" target="_blank">I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?</a>
-                  
-                </h5>
-                <p class="mt-0 mb-0 small"><a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu</a>; <a class="text-body" target="_blank" href="https://donggong1.github.io/">Dong Gong</a>; <span class="text-body" >
-            <strong>Yichao Cai</strong>; </span><a class="text-body" target="_blank" href="https://erdungao.github.io/">Erdun Gao</a>; <a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://biweihuang.com/">Biwei Huang</a>; <a class="text-body" target="_blank" href="https://mingming-gong.github.io/">Mingming Gong</a>; <a class="text-body" target="_blank" href="https://scholar.google.com/citations?user=nMGZ2ZQAAAAJ&hl=zh-CN&oi=ao">Anton van den Hengel</a>; <a class="text-body" target="_blank" href="https://cs.adelaide.edu.au/~javen/">Javen Q. Shi</a>.</p>
-                <p class="mt-0 mb-0 small><i>International Conference on Learning Representations (ICLR)</i> 2026 </p>
-                <p class="mt-0 mb-0 small text-muted">An investigation of whether next-token prediction alone is sufficient for learning human-interpretable concepts from data.</p>
-                
-                <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
-                    
-                    
-                    <a target="_blank" href="https://arxiv.org/pdf/2503.08980" class="item_link">[Paper]</a>
-                    
-                    
-                    
-                    <a target="_blank" href="https://sites.google.com/view/yuhangliu/projects/ntp" class="item_link">[Project]</a>
-                    
-                    
-                </p>
-            </div><div class="pub-badge">ICLR</div></div>
-    </div>
-
-</div>
-
-                        
-                            
-
-
-<style>
-    a.item_link {
-    color: var(--theme-accent-strong);
-  }
-  
-  .publication-cover {
-    object-fit: contain;
-    max-width: 100%;
-    max-height: 200px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  .selected-publication {
-    background-color: var(--theme-highlight-bg);
-  }
-  
-  .pub-badge {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    background-color: var(--theme-accent-strong);
-    color: white;
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 0.7em;
-    font-weight: bold;
-    z-index: 10;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  }
-  
-  .publication-container {
-    position: relative;
-  }
-  
-</style>
-
-
-<div class="d-none d-md-block">
-    <div class="row no-gutters  border-gray selected-publication">
-        <div class="col-md-4 col-xl-3 mb-md-0 p-md-3 d-flex align-items-start publication-container"><img data-src="/files/thumbs/misalignment.png" alt="On the Value of Cross-Modal Misalignment in Multimodal Representation Learning" class="lazy publication-cover rounded-sm" src="/assets/images/empty_300x200.png"><div class="pub-badge">NeurIPS</div></div>
-        <div class="col-md-8 col-xl-9 p-3 pl-md-0">
-            <h5 class="mt-0 mb-0 font-weight-normal" style="color: #5F6F82;">
-              
-                <a href="https://yichaocai.com/misalignment.github.io/" class="item_link" target="_blank">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</a>
-              
-            </h5>
-            <p class="mt-0 mb-0 small"><span class="text-body" >
-            <strong>Yichao Cai*</strong>; </span><a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu*</a>; <a class="text-body" target="_blank" href="https://erdungao.github.io/">Erdun Gao</a>; <a class="text-body" target="_blank" href="https://github.com/tianjiao-j">Tianjiao Jiang</a>; <a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://scholar.google.com/citations?user=nMGZ2ZQAAAAJ&hl=zh-CN&oi=ao">Anton van den Hengel</a>; <a class="text-body" target="_blank" href="https://cs.adelaide.edu.au/~javen/">Javen Q. Shi</a>.
-<mark>(* <i> equal contribution</i>)</mark></p>
-            <p class="mt-0 mb-0 small "><i><b>Advances in Neural Information Processing Systems (NeurIPS)</b></i> 2025  <span class="badge badge-pill badge-publication badge-success">Spotlight</span></p>
-            <p class="mt-0 mb-0 small text-muted">Studies when controlled cross-modal misalignment can improve multimodal representation learning instead of only harming it.</p>
+                <a href="https://yichaocai.com/misalignment.github.io/" target="_blank" rel="noopener">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</a>
             
-            <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
-                
-                
-                <a target="_blank" href="https://arxiv.org/pdf/2504.10143" class="item_link">[Paper]</a>
-                
-                
-                
-                <a target="_blank" href="https://yichaocai.com/misalignment.github.io/" class="item_link">[Project]</a>
-                
-                
-                
-                <a target="_blank" href="https://github.com/YichaoCai1/crossmodal_misalignment" class="item_link">[Code]</a>
-                
-                
-            </p>
-
-        </div>
-    </div>
-</div>
-
-<div class="row no-gutters d-md-none  border-gray  rounded-bottom lazy selected-publication" data-src="/files/thumbs/misalignment.png">
-    <div class="w-100" style="background-color: rgba(255,255,255,0.9);">
-        <div class="d-flex align-items-start flex-column py-3 px-4 publication-container">
-            <div class="mb-auto"></div>
-            <div>
-                <h5 class="mt-0 mb-0 font-weight-normal" style="color: #5F6F82;">
-                  
-                    <a href="https://yichaocai.com/misalignment.github.io/" class="item_link" target="_blank">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</a>
-                  
-                </h5>
-                <p class="mt-0 mb-0 small"><span class="text-body" >
-            <strong>Yichao Cai*</strong>; </span><a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu*</a>; <a class="text-body" target="_blank" href="https://erdungao.github.io/">Erdun Gao</a>; <a class="text-body" target="_blank" href="https://github.com/tianjiao-j">Tianjiao Jiang</a>; <a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://scholar.google.com/citations?user=nMGZ2ZQAAAAJ&hl=zh-CN&oi=ao">Anton van den Hengel</a>; <a class="text-body" target="_blank" href="https://cs.adelaide.edu.au/~javen/">Javen Q. Shi</a>.
+            </h3>
+            <p class="home-publication-authors"><span class="text-body" >
+            <strong>Yichao Cai*</strong>; </span><a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu*</a>; <a class="text-body" target="_blank" href="https://erdungao.github.io/">Erdun Gao</a>; <a class="text-body" target="_blank" href="https://github.com/tianjiao-j">Tianjiao Jiang</a>; <a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://scholar.google.com/citations?user=nMGZ2ZQAAAAJ&hl=zh-CN&oi=ao">Anton van den Hengel</a>; <span class="text-body" >
+            Javen Q. Shi</span>.
 <mark>(* <i> equal contribution</i>)</mark></p>
-                <p class="mt-0 mb-0 small><i>Advances in Neural Information Processing Systems (NeurIPS)</i> 2025  <span class="badge badge-pill badge-publication badge-success">Spotlight</span></p>
-                <p class="mt-0 mb-0 small text-muted">Studies when controlled cross-modal misalignment can improve multimodal representation learning instead of only harming it.</p>
-                
-                <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
-                    
-                    
-                    <a target="_blank" href="https://arxiv.org/pdf/2504.10143" class="item_link">[Paper]</a>
-                    
-                    
-                    
-                    <a target="_blank" href="https://yichaocai.com/misalignment.github.io/" class="item_link">[Project]</a>
-                    
-                    
-                    
-                    <a target="_blank" href="https://github.com/YichaoCai1/crossmodal_misalignment" class="item_link">[Code]</a>
-                    
-                    
-                </p>
-            </div><div class="pub-badge">NeurIPS</div></div>
+            <p class="home-publication-venue">
+                <em><strong>Advances in Neural Information Processing Systems (NeurIPS), 2025</strong></em>
+            </p>
+            
+            <p class="home-publication-abstract">Studies when controlled cross-modal misalignment can improve multimodal representation learning instead of only harming it.</p>
+            
+        </div>
+        
+        <p class="home-publication-links">
+            
+
+
+    
+    
+    
+    
+    
+    <a href="https://arxiv.org/pdf/2504.10143" target="_blank" rel="noopener">[Paper]</a>
+    
+
+    
+    
+    
+    
+    
+    <a href="https://yichaocai.com/misalignment.github.io/" target="_blank" rel="noopener">[Project]</a>
+    
+
+    
+    
+    
+    
+    
+    <a href="https://github.com/YichaoCai1/crossmodal_misalignment" target="_blank" rel="noopener">[Code]</a>
+    
+
+
+
+            
+            <span class="home-publication-note"> <span class="badge badge-pill badge-publication badge-success">Spotlight</span></span>
+            
+        </p>
+        
     </div>
+</article>
 
-</div>
-
-                        
                         
                     </div>
                 </div>
@@ -470,119 +423,78 @@
         <div class="row">
             <div class="col">
                 <div class="card border-0 shadow-sm bg-white custom-radius">
-                    <div class="card-body p-0">
-                        
-                        
+                    <div class="card-body p-4">
                         
                             
 
 
-<style>
-    a.item_link {
-    color: var(--theme-accent-strong);
-  }
-  
-  .publication-cover {
-    object-fit: contain;
-    max-width: 100%;
-    max-height: 200px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  .selected-publication {
-    background-color: var(--theme-highlight-bg);
-  }
-  
-  .pub-badge {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    background-color: var(--theme-accent-strong);
-    color: white;
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 0.7em;
-    font-weight: bold;
-    z-index: 10;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  }
-  
-  .publication-container {
-    position: relative;
-  }
-  
-</style>
 
 
-<div class="d-none d-md-block">
-    <div class="row no-gutters  border-gray selected-publication">
-        <div class="col-md-4 col-xl-3 mb-md-0 p-md-3 d-flex align-items-start publication-container"><img data-src="/files/thumbs/CLAP.png" alt="CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts" class="lazy publication-cover rounded-sm" src="/assets/images/empty_300x200.png"><div class="pub-badge">ECCV</div></div>
-        <div class="col-md-8 col-xl-9 p-3 pl-md-0">
-            <h5 class="mt-0 mb-0 font-weight-normal" style="color: #5F6F82;">
-              
-                <a href="https://yichaocai.com/clap_paper.github.io/" class="item_link" target="_blank">CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts</a>
-              
-            </h5>
-            <p class="mt-0 mb-0 small"><span class="text-body" >
-            <strong>Yichao Cai</strong>; </span><a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu</a>; <a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://cs.adelaide.edu.au/~javen/">Javen Q. Shi</a>.</p>
-            <p class="mt-0 mb-0 small "><i><b>European Conference on Computer Vision (ECCV)</b></i> 2024 </p>
-            <p class="mt-0 mb-0 small text-muted">Explores language-guided disentanglement of style and content through contrastive learning with augmented prompts.</p>
+
+
+<article class="home-publication selected-publication">
+    
+    <div class="home-publication-thumb">
+        <img src="/files/thumbs/CLAP.png" alt="CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts">
+        
+        <span class="home-publication-badge">ECCV</span>
+        
+    </div>
+    
+    <div class="home-publication-body">
+        <div class="home-publication-highlight selected-publication-highlight">
+            <h3 class="home-publication-title">
             
-            <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
-                
-                
-                <a target="_blank" href="https://arxiv.org/pdf/2311.16445" class="item_link">[Paper]</a>
-                
-                
-                
-                <a target="_blank" href="https://yichaocai.com/clap_paper.github.io/" class="item_link">[Project]</a>
-                
-                
-                
-                <a target="_blank" href="https://github.com/YichaoCai1/CLAP" class="item_link">[Code]</a>
-                
-                
+                <a href="https://yichaocai.com/clap_paper.github.io/" target="_blank" rel="noopener">CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts</a>
+            
+            </h3>
+            <p class="home-publication-authors"><span class="text-body" >
+            <strong>Yichao Cai</strong>; </span><a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu</a>; <a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <span class="text-body" >
+            Javen Q. Shi</span>.</p>
+            <p class="home-publication-venue">
+                <em><strong>European Conference on Computer Vision (ECCV), 2024</strong></em>
             </p>
-
+            
+            <p class="home-publication-abstract">Explores language-guided disentanglement of style and content through contrastive learning with augmented prompts.</p>
+            
         </div>
+        
+        <p class="home-publication-links">
+            
+
+
+    
+    
+    
+    
+    
+    <a href="https://arxiv.org/pdf/2311.16445" target="_blank" rel="noopener">[Paper]</a>
+    
+
+    
+    
+    
+    
+    
+    <a href="https://yichaocai.com/clap_paper.github.io/" target="_blank" rel="noopener">[Project]</a>
+    
+
+    
+    
+    
+    
+    
+    <a href="https://github.com/YichaoCai1/CLAP" target="_blank" rel="noopener">[Code]</a>
+    
+
+
+
+            
+        </p>
+        
     </div>
-</div>
+</article>
 
-<div class="row no-gutters d-md-none  border-gray rounded-top rounded-bottom lazy selected-publication" data-src="/files/thumbs/CLAP.png">
-    <div class="w-100" style="background-color: rgba(255,255,255,0.9);">
-        <div class="d-flex align-items-start flex-column py-3 px-4 publication-container">
-            <div class="mb-auto"></div>
-            <div>
-                <h5 class="mt-0 mb-0 font-weight-normal" style="color: #5F6F82;">
-                  
-                    <a href="https://yichaocai.com/clap_paper.github.io/" class="item_link" target="_blank">CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts</a>
-                  
-                </h5>
-                <p class="mt-0 mb-0 small"><span class="text-body" >
-            <strong>Yichao Cai</strong>; </span><a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu</a>; <a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://cs.adelaide.edu.au/~javen/">Javen Q. Shi</a>.</p>
-                <p class="mt-0 mb-0 small><i>European Conference on Computer Vision (ECCV)</i> 2024 </p>
-                <p class="mt-0 mb-0 small text-muted">Explores language-guided disentanglement of style and content through contrastive learning with augmented prompts.</p>
-                
-                <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
-                    
-                    
-                    <a target="_blank" href="https://arxiv.org/pdf/2311.16445" class="item_link">[Paper]</a>
-                    
-                    
-                    
-                    <a target="_blank" href="https://yichaocai.com/clap_paper.github.io/" class="item_link">[Project]</a>
-                    
-                    
-                    
-                    <a target="_blank" href="https://github.com/YichaoCai1/CLAP" class="item_link">[Code]</a>
-                    
-                    
-                </p>
-            </div><div class="pub-badge">ECCV</div></div>
-    </div>
-
-</div>
-
-                        
                         
                     </div>
                 </div>
@@ -593,24 +505,15 @@
 </div>
 
     </div>
-    <footer class="footer" style="font-size: 0.78rem;">
+    <footer class="footer site-footnote">
     <div class="container-xl">
-        <div class="row my-3">
-            <div class="col-12 col-lg-10 ml-auto">
-                <div class="row align-items-end">
-                    <div class="col">
-                        <div class="text-muted">
-                            <i>Last updated: May 2026</i>
-                            &nbsp;&middot;&nbsp;
-                            <a href="/books.html" target="_self">Reading list</a>
-                        </div>
-                    </div>
-                    <div class="col-auto ml-auto">
-                        <div class="text-right text-muted">
-                            based on <a href="https://github.com/oneThousand1000/oneThousand1000.github.io" target="_blank">oneThousand1000.github.io</a>
-                        </div>
-                    </div>
-                </div>
+        <div class="row wide-content-row">
+            <div class="col-12 d-none d-lg-block wide-content-sidebar"></div>
+            <div class="col-12 wide-content-main">
+                <p>
+                    Last updated: May 2026.
+                    Inspired by <a href="https://github.com/yaoyao-liu/minimal-light" target="_blank" rel="noopener">Minimal Light</a>.
+                </p>
             </div>
         </div>
     </div>

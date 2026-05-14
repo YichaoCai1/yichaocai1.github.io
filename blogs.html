@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,21 +16,31 @@
 
   <style>
     :root {
-      --theme-accent: #4C367E;
-      --theme-accent-strong: #36255B;
-      --theme-accent-soft: #7C68A6;
-      --theme-support: #9F84C8;
-      --theme-cursor: #C8B4E6;
+      --theme-accent: #2d7fa3;
+      --theme-accent-strong: #043361;
+      --theme-accent-soft: #65717f;
+      --theme-support: #2d7fa3;
+      --theme-cursor: #2d7fa3;
+      --theme-page-bg: #ffffff;
+      --theme-text: #2d333b;
+      --theme-muted: #65717f;
+      --theme-border: #e6ebf0;
+      --theme-soft-bg: #f6f8fa;
+      --site-frame-width: 960px;
+      --site-sidebar-width: 232px;
+      --site-column-gap: 72px;
+      --site-tablet-width: 700px;
     }
 
     html, body {
-      background-color: #F6F8FC;
+      background-color: var(--theme-page-bg);
     }
 
     body {
       font-family: "Lato", sans-serif;
       font-weight: 400;
-      padding-top: 5rem;
+      padding-top: 0;
+      color: var(--theme-text);
     }
 
     a {
@@ -41,35 +53,50 @@
       text-decoration: none;
     }
 
-    .navbar {
-      opacity: 0.95;
+    .site-top-nav {
+      border-bottom: 1px solid var(--theme-border);
+      background: var(--theme-page-bg);
     }
 
-    .terminal-text {
-      color: var(--theme-accent);
-      margin-right: 1.5rem;
+    .site-top-nav-inner {
+      width: var(--site-frame-width);
+      max-width: calc(100% - 48px);
+      margin: 0 auto;
+      padding-top: 1.05rem;
+      padding-bottom: 1.05rem;
       padding-left: 0;
-      display: inline-flex;
+      padding-right: 0;
+      display: flex;
       align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
     }
 
-    .terminal-cursor {
-      display: inline-block;
-      width: 2px;
-      height: 1em;
-      background-color: var(--theme-cursor);
-      margin-left: 2px;
-      animation: blink 1s step-end infinite;
+    .site-top-nav-brand {
+      color: #043361;
+      font-size: 1.02rem;
+      font-weight: 700;
     }
 
-    @keyframes blink {
-      from, to { opacity: 1; }
-      50% { opacity: 0; }
+    .site-top-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.4rem 1rem;
+      font-size: 0.95rem;
     }
 
-    .navbar .nav-item.active .nav-link {
+    .site-top-nav-links a {
+      color: var(--theme-muted);
+    }
+
+    .site-top-nav-links a.active,
+    .site-top-nav-links a:hover,
+    .site-top-nav-links a:focus,
+    .site-top-nav-brand:hover,
+    .site-top-nav-brand:focus {
       color: var(--theme-accent-strong);
-      font-weight: 500;
+      text-decoration: none;
     }
 
     .nav-pills .nav-link {
@@ -86,30 +113,79 @@
       color: white;
     }
 
-    @media (min-width: 992px) {
+    .container-xl {
+      width: var(--site-frame-width);
+      max-width: calc(100% - 48px);
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    @media (min-width: 961px) {
       .wide-content-row {
-        flex-wrap: nowrap;
+        display: grid;
+        grid-template-columns: var(--site-sidebar-width) minmax(0, 1fr);
+        column-gap: var(--site-column-gap);
+        align-items: stretch;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .wide-content-row > [class*="col-"] {
+        width: auto;
+        max-width: none;
+        padding-left: 0;
+        padding-right: 0;
+        flex: none;
       }
 
       .wide-content-sidebar {
-        flex: 0 0 20.833333%;
-        max-width: 20.833333%;
+        display: block !important;
+      }
+
+      .wide-content-sidebar .sticky-top {
+        top: 1.5rem !important;
       }
 
       .wide-content-main {
-        flex: 1 1 auto;
         max-width: none;
         min-width: 0;
+        padding-bottom: 35vh;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .site-top-nav-inner,
+      .container-xl {
+        width: var(--site-tablet-width);
+        max-width: calc(100% - 30px);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .site-top-nav-inner {
+        display: block;
+      }
+
+      .site-top-nav-links {
+        justify-content: flex-start;
+        margin-top: 0.45rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site-top-nav-inner,
+      .container-xl {
+        max-width: calc(100% - 24px);
       }
     }
 
     .custom-radius {
-      border-radius: 15px;
+      border-radius: 0.35rem;
     }
 
     .section-card {
-      border: 0;
-      box-shadow: 0 .125rem .5rem rgba(0, 0, 0, 0.08);
+      border: 1px solid var(--theme-border);
+      box-shadow: none;
       background: #ffffff;
     }
 
@@ -119,7 +195,7 @@
 
     .page-subtitle,
     .post-meta {
-      color: #6c757d;
+      color: var(--theme-muted);
     }
 
     .post-title {
@@ -129,7 +205,12 @@
     }
 
     .footer {
+      color: var(--theme-muted);
       font-size: 0.78rem;
+    }
+
+    .footer p {
+      margin: 2.4rem 0 1.5rem;
     }
 
     .footer a {
@@ -145,24 +226,19 @@
   </style>
 </head>
 <body data-spy="scroll" data-target="#navbar-year" data-offset="100">
-  <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm">
-    <div class="container-xl">
-      <span class="nav-link terminal-text">YichaoCai<span style="color: var(--theme-support)">@AIML</span><span style="color: black">:</span><span style="color: var(--theme-accent-soft)">~</span><span style="color: black">$</span> Hi there<span style="color: var(--theme-support)">!</span><span class="terminal-cursor"></span></span>
-      <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#blogNav" aria-controls="blogNav" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-map"></i> Menu
-      </button>
-
-      <div class="collapse navbar-collapse" id="blogNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a class="nav-link" href="./">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="./publications.html">Publications</a></li>
-          <li class="nav-item active"><a class="nav-link" href="./blogs.html">Blog</a></li>
-        </ul>
+  <nav class="site-top-nav" aria-label="Site navigation">
+    <div class="container-xl site-top-nav-inner">
+      <a class="site-top-nav-brand" href="./">Yichao Cai</a>
+      <div class="site-top-nav-links">
+        <a href="./">Home</a>
+        <a href="./publications">Publications</a>
+        <a class="active" href="./blogs.html">Blog</a>
+        <a href="./books.html">Readings</a>
       </div>
     </div>
   </nav>
 
-  <main class="container-xl">
+  <main class="container-xl pt-5">
     <div class="row wide-content-row">
       <div class="col-12 d-none d-lg-block wide-content-sidebar">
         <div class="sticky-top" style="top: 80px">
@@ -256,12 +332,13 @@
 
   <footer class="footer">
     <div class="container-xl">
-      <div class="row my-3">
-        <div class="col-12 col-lg-10 ml-auto">
-          <div class="d-flex justify-content-between text-muted">
-            <div><i>Last updated: Mar 2026</i> &middot; <a href="./books.html">Reading list</a></div>
-            <div>based on <a href="https://github.com/oneThousand1000/oneThousand1000.github.io" target="_blank" rel="noopener noreferrer">oneThousand1000.github.io</a></div>
-          </div>
+      <div class="row wide-content-row">
+        <div class="col-12 d-none d-lg-block wide-content-sidebar"></div>
+        <div class="col-12 wide-content-main">
+          <p>
+            Last updated: {{ "now" | date: "%b %Y" }}.
+            Inspired by <a href="https://github.com/yaoyao-liu/minimal-light" target="_blank" rel="noopener">Minimal Light</a>.
+          </p>
         </div>
       </div>
     </div>
@@ -270,5 +347,21 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <script>
+    document.querySelectorAll('#navbar-year a[href^="#"]').forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        var target = document.querySelector(link.getAttribute('href'));
+        if (!target) {
+          return;
+        }
+
+        event.preventDefault();
+        var offset = 24;
+        var targetTop = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+        history.replaceState(null, '', link.getAttribute('href'));
+      });
+    });
+  </script>
 </body>
 </html>

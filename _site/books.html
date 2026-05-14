@@ -3,22 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Yichao Cai – Personal Reading List</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <title>Readings | Yichao Cai</title>
   <style>
     :root {
-      --text: #222;        /* main body text */
-      --bg: #fdfdfb;       /* light paper-like background */
-      --border: #ddd;      /* subtle table borders */
-      --accent: #4C367E;   /* main link color */
-      --heading: #1b1b1b;  /* darker heading */
+      --text: #2d333b;
+      --bg: #ffffff;
+      --border: #e6ebf0;
+      --accent: #2d7fa3;
+      --accent-strong: #043361;
+      --muted: #65717f;
+      --heading: #043361;
+      --site-frame-width: 960px;
+      --site-tablet-width: 700px;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --text: #ddd;
-        --bg: #121212;
-        --border: #444;
-        --accent: #d2c7eb;  /* lighter violet accent in dark mode */
-        --heading: #fff;
+        --text: #dadbdf;
+        --bg: #20212b;
+        --border: #3a3d49;
+        --accent: #59c6f5;
+        --accent-strong: #3eb7f0;
+        --muted: #aeb6c2;
+        --heading: #3eb7f0;
       }
     }
 
@@ -26,17 +35,58 @@
       font-size: 16px;
     }
     body {
+      width: var(--site-frame-width);
+      max-width: calc(100% - 48px);
       margin: 0 auto;
-      max-width: 860px;
-      padding: 2rem 1.2rem;
-      font-family: "Iowan Old Style", "Georgia", "Times New Roman", serif;
-      line-height: 1.65;
+      padding: 0 0 2rem;
+      font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.58;
       background: var(--bg);
       color: var(--text);
     }
 
+    .site-top-nav {
+      margin: 0 0 2.5rem;
+      padding-top: 1.05rem;
+      padding-bottom: 1.05rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .site-top-nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .site-top-nav-brand {
+      color: #043361;
+      font-size: 1.02rem;
+      font-weight: 700;
+    }
+
+    .site-top-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.4rem 1rem;
+      font-size: 0.95rem;
+    }
+
+    .site-top-nav-links a {
+      color: var(--muted);
+    }
+
+    .site-top-nav-links a.active,
+    .site-top-nav-links a:hover,
+    .site-top-nav-links a:focus,
+    .site-top-nav-brand:hover,
+    .site-top-nav-brand:focus {
+      color: var(--accent-strong);
+      text-decoration: none;
+    }
+
     h1, h2, h3 {
-      font-family: "Georgia", "Times New Roman", serif;
       font-weight: 600;
       color: var(--heading);
     }
@@ -49,11 +99,11 @@
     }
 
     p em {
-      color: #666;
+      color: var(--muted);
       font-size: 0.95rem;
     }
     @media (prefers-color-scheme: dark) {
-      p em { color: #aaa; }
+      p em { color: var(--muted); }
     }
 
     table {
@@ -90,9 +140,43 @@
     a:hover, a:focus {
       text-decoration: underline;
     }
+
+    @media (max-width: 960px) {
+      body {
+        width: var(--site-tablet-width);
+        max-width: calc(100% - 30px);
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        max-width: calc(100% - 24px);
+      }
+
+      .site-top-nav-inner {
+        display: block;
+      }
+
+      .site-top-nav-links {
+        justify-content: flex-start;
+        margin-top: 0.45rem;
+      }
+    }
   </style>
 </head>
 <body>
+
+<nav class="site-top-nav" aria-label="Site navigation">
+  <div class="site-top-nav-inner">
+    <a class="site-top-nav-brand" href="./">Yichao Cai</a>
+    <div class="site-top-nav-links">
+      <a href="./">Home</a>
+      <a href="./publications">Publications</a>
+      <a href="./blogs.html">Blog</a>
+      <a class="active" href="./books.html">Readings</a>
+    </div>
+  </div>
+</nav>
 
 <section aria-labelledby="reading-list-title">
   <h2 id="reading-list-title">Some personal readings (where I remember)</h2>

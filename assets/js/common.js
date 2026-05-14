@@ -38,4 +38,17 @@ $(function () {
     $(".lazy").on("load", function () {
         $grid.masonry('layout');
     });
+
+    $('#navbar-year a[href^="#"]').on('click', function (event) {
+        var target = document.querySelector(this.getAttribute('href'));
+        if (!target) {
+            return;
+        }
+
+        event.preventDefault();
+        var offset = 24;
+        var targetTop = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+        history.replaceState(null, '', this.getAttribute('href'));
+    });
 })

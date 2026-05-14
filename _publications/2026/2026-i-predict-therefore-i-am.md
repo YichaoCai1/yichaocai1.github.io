@@ -21,4 +21,5 @@ authors:
 links:
   Paper: https://arxiv.org/pdf/2503.08980
   Project: https://sites.google.com/view/yuhangliu/projects/ntp
+  Code: https://github.com/yuhangliu01/I-Predict-Therefore-I-Am
 ---

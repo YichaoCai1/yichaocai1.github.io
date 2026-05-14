@@ -18,9 +18,10 @@
         padding: 0 15px;
     }
 </style>
-<body class="d-flex flex-column h-100">
+<body class="site-default-page d-flex flex-column h-100">
+    {% include navbar.html %}
     <main role="main" class="flex-shrink-0">
-        <div class="container">
+        <div class="container pt-5">
             {{ content }}
         </div>
     </main>

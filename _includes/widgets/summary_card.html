@@ -51,20 +51,20 @@
                 </div>
                 {% endif %}
 
-                {% if site.data.profile.service %}
+                {% if site.data.profile.service.conference_reviewers or site.data.profile.service.journal_reviewers %}
                 <div class="mx-2 my-1 combined-card-section">
                     <h5>Academic Service</h5>
                     <ul class="list small pl-3 mb-1">
-                        {% for item in site.data.profile.service %}
+                        {% if site.data.profile.service.conference_reviewers %}
                         <li class="mb-2">
-                            <div class="d-flex">
-                                <div class="summary-name">{{ item.name }}</div>
-                                {% if item.date %}
-                                <div class="ml-auto mt-auto no-break"><em>{{ item.date }}</em></div>
-                                {% endif %}
-                            </div>
+                            <div class="summary-name">Conference reviewers: {{ site.data.profile.service.conference_reviewers | join: "; " }}</div>
                         </li>
-                        {% endfor %}
+                        {% endif %}
+                        {% if site.data.profile.service.journal_reviewers %}
+                        <li class="mb-2">
+                            <div class="summary-name">Journal reviewers: {{ site.data.profile.service.journal_reviewers | join: "; " }}</div>
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
                 {% endif %}

@@ -15,19 +15,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const scriptNodes = Array.from(body.querySelectorAll(":scope > script"));
 
   const nav = document.createElement("nav");
-  nav.className = "navbar navbar-expand-sm navbar-light bg-light fixed-top mb-5 shadow-sm";
+  nav.className = "site-top-nav";
+  nav.setAttribute("aria-label", "Site navigation");
   nav.innerHTML = `
-    <div class="container-lg">
-      <span class="nav-link terminal-text">YichaoCai<span style="color: var(--theme-support)">@AIML</span><span style="color: black">:</span><span style="color: var(--theme-accent-soft)">~</span><span style="color: black">$</span> Hi there<span style="color: var(--theme-support)">!</span><span class="terminal-cursor"></span></span>
-      <button class="navbar-toggler" style="font-size: 1em; padding: 0.5em;" type="button" data-toggle="collapse" data-target="#blogPostNav" aria-controls="blogPostNav" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-map"></i> Menu
-      </button>
-      <div class="collapse navbar-collapse" id="blogPostNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a class="nav-link" href="../">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="../publications.html">Publications</a></li>
-          <li class="nav-item active"><a class="nav-link" href="../blogs.html">Blog</a></li>
-        </ul>
+    <div class="container-lg site-top-nav-inner">
+      <a class="site-top-nav-brand" href="../">Yichao Cai</a>
+      <div class="site-top-nav-links">
+        <a href="../">Home</a>
+        <a href="../publications">Publications</a>
+        <a class="active" href="../blogs.html">Blog</a>
+        <a href="../books.html">Readings</a>
       </div>
     </div>
   `;
@@ -39,19 +36,15 @@ document.addEventListener("DOMContentLoaded", function () {
   card.className = "blog-post-card";
 
   const cardBody = document.createElement("div");
-  cardBody.className = "card-body p-4 p-lg-5";
+  cardBody.className = "blog-post-body";
 
   const footer = document.createElement("footer");
   footer.className = "blog-footer";
   footer.innerHTML = `
     <div class="container-lg">
-      <div class="row my-3">
-        <div class="col-12 col-lg-9 ml-auto">
-          <div class="d-flex justify-content-between text-muted">
-            <div><a href="../blogs.html">Back to Blog</a></div>
-            <div>based on <a href="https://github.com/oneThousand1000/oneThousand1000.github.io" target="_blank" rel="noopener noreferrer">oneThousand1000.github.io</a></div>
-          </div>
-        </div>
+      <div class="blog-footer-inner">
+        <div><a href="../blogs.html">Back to Blog</a></div>
+        <div>Inspired by <a href="https://github.com/yaoyao-liu/minimal-light" target="_blank" rel="noopener noreferrer">Minimal Light</a></div>
       </div>
     </div>
   `;

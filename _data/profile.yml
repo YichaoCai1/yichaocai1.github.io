@@ -21,11 +21,17 @@ short_bio: >-
     <a href="https://www.adelaide.edu.au/" target="_blank">Adelaide University (formerly The University of Adelaide)</a>,
     advised by Prof.
     <a href="https://cs.adelaide.edu.au/~javen/" target="_blank">Javen Qinfeng Shi</a>.
-    I study representation learning, asking how natural language supervision determines which semantic structure is captured, preserved, or lost in vision-language models
+    Before my Ph.D., I received my M.Sc. and B.Eng. degrees from Wuhan University of Technology.
   </p>
   <p>
-    My work combines theoretical analysis with controlled empirical study to understand contrastive learning, cross-modal alignment, and identifiability in representation learning, with the long-term goal of building more interpretable and reliable multimodal AI systems.
+    I study representation learning, with a focus on how natural-language supervision shapes the semantic structure captured, preserved, or lost in vision-language models.
+    My research integrates theoretical analysis with disciplined empirical studies to advance foundation-centric multimodal AI, ultimately aiming to build systems that are deeply interpretable and inherently reliable.
   </p>
+
+research_interests:
+- "<strong>Representation learning:</strong> learning objectives and training paradigms; identifiability theory; semantic structure in learned representations."
+- "<strong>Vision-language modeling:</strong> multimodal alignment; multimodal large language models; supervision design and data curation for multimodal learning."
+- "<strong>Explainable machine learning:</strong> mechanistic interpretability; representation geometry; latent-structure characterization."
 
 portrait_url: /files/photo_1.png
 portrait_caption: >-
@@ -72,7 +78,7 @@ teaching:
   position: Teaching Assistant - Neural Networks and Deep Learning (ARTI X300)
   date: Semester 1 2026
 - name: Adelaide University
-  position: Guest Lecturer and Head Tutor - Statistical Machine Learning (COMP SCI 3314)
+  position: Guest Lecturer, Head Tutor - Statistical Machine Learning (COMP SCI 3314)
   date: Semester 2 2025
 - name: Adelaide University
   position: Teaching Assistant - Using Machine Learning Tools (COMP SCI 7317)
@@ -82,13 +88,19 @@ teaching:
   date: Semester 1 2025
 
 service:
-- name: Reviewer for TMLR, ICLR 2026, ICML 2026, and NeurIPS 2026
-  # date: 2025 - 2026
+  conference_reviewers:
+  - International Conference on Learning Representations (ICLR) 2026
+  - International Conference on Machine Learning (ICML) 2026, Silver Reviewer Award
+  - Conference on Neural Information Processing Systems (NeurIPS) 2026
+  journal_reviewers:
+  - Transactions on Machine Learning Research (TMLR)
 
 awards:
 - name: NeurIPS Scholar Award
-  date: 2025
+  date: Oct 2025
 - name: Adelaide University Research Scholarships
-  date: 2023
+  date: Sep 2023
 - name: Award for Outstanding Graduates, Wuhan University of Technology
-  date: 2019
+  date: Jun 2019
+- name: First-Class Scholarships, Wuhan University of Technology
+  date: 2016 - 2018

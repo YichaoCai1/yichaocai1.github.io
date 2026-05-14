@@ -20,7 +20,7 @@ container_class: container-xl
     color: white;
 }
 .custom-radius {
-    border-radius: 15px;
+    border-radius: 0.35rem;
 }
 </style>
 
@@ -65,13 +65,8 @@ container_class: container-xl
         <div class="row">
             <div class="col">
                 <div class="card border-0 shadow-sm bg-white custom-radius">
-                    <div class="card-body p-0">
-                        {% assign selected_items = year.items | where: "selected", true %}
-                        {% assign non_selected_items = year.items | where: "selected", false %}
-                        {% for item in selected_items %}
-                            {% include widgets/publication_item.html item=item hide_bottom_border=forloop.last first=forloop.first last=forloop.last %}
-                        {% endfor %}
-                        {% for item in non_selected_items %}
+                    <div class="card-body p-4">
+                        {% for item in year.items %}
                             {% include widgets/publication_item.html item=item hide_bottom_border=forloop.last first=forloop.first last=forloop.last %}
                         {% endfor %}
                     </div>
