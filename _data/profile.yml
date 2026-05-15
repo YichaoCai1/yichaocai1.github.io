@@ -24,8 +24,7 @@ short_bio: >-
     Before my Ph.D., I received my M.Sc. and B.Eng. degrees from Wuhan University of Technology.
   </p>
   <p>
-    I study representation learning, with a focus on how natural-language supervision shapes the semantic structure captured, preserved, or lost in vision-language models.
-    My research integrates theoretical analysis with disciplined empirical studies to advance foundation-centric multimodal AI, ultimately aiming to build systems that are deeply interpretable and inherently reliable.
+    I study how language supervision shapes the semantics, geometry, and identifiability of multimodal representations. My long-term goal is to develop principled foundations for language-guided representation learning, with the aim of building multimodal systems that acquire structured, interpretable, and reliable representations of the world.
   </p>
 
 research_interests:
@@ -102,5 +101,3 @@ awards:
   date: Sep 2023
 - name: Award for Outstanding Graduates, Wuhan University of Technology
   date: Jun 2019
-- name: First-Class Scholarships, Wuhan University of Technology
-  date: 2016 - 2018

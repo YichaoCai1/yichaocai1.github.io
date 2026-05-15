@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
         <a href="../">Home</a>
         <a href="../publications">Publications</a>
         <a class="active" href="../blogs.html">Blog</a>
-        <a href="../books.html">Readings</a>
       </div>
     </div>
   `;
