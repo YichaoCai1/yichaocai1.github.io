@@ -1,0 +1,8 @@
+# Social media links / usernames. Displayed in the order defined here.
+# Powered by the jekyll-socials plugin: https://github.com/george-gca/jekyll-socials
+email: yichao.cai@adelaide.edu.au # your email address
+scholar_userid: nNp0nL4AAAAJ # Google Scholar ID
+github_username: YichaoCai1 # GitHub username
+linkedin_username: yichao-cai-12a3b9292 # LinkedIn username
+cv_pdf: /assets/pdf/yichaocai_cv.pdf # CV PDF download (shown as a CV button, replacing X/Twitter)
+# rss_icon: true # uncomment to show the RSS icon

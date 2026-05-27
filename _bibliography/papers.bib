@@ -1,0 +1,95 @@
+---
+---
+
+@inproceedings{cai2026geometric,
+  abbr={ICML'26},
+  bibtex_show={true},
+  selected={true},
+  title={The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic Dispersion, and Cross-Modal Divergence},
+  author={Cai, Yichao and Zhang, Zhen and Liu, Yuhang and Shi, Javen Q.},
+  booktitle={International Conference on Machine Learning (ICML)},
+  year={2026},
+  abstract={While InfoNCE underlies modern contrastive learning, its geometric mechanisms remain under-characterized beyond the canonical alignment--uniformity decomposition. We develop a measure-theoretic framework in which representation measures evolve on a fixed embedding manifold. In the large-batch limit, we prove value and gradient consistency, linking the stochastic objective to explicit deterministic energy landscapes and revealing a geometric bifurcation between unimodal and symmetric multimodal regimes. In the unimodal case, the intrinsic energy is strictly convex and admits a unique Gibbs equilibrium, showing that entropy acts as a tie-breaker within the aligned basin. In the multimodal case, the intrinsic geometry becomes cross-coupled and contains a persistent negative symmetric divergence term: each modality's marginal reshapes the effective landscape of the other, allowing strong pairwise alignment to coexist with a persistent modality gap. Controlled synthetic experiments and analyses of pretrained CLIP representations support these predictions. Overall, our results shift the analytical lens from pointwise discrimination to population geometry, showing that pairwise alignment alone is insufficient to control cross-modal marginal structure.},
+  preview={InfoNCE_geometry.png},
+  pdf={https://arxiv.org/pdf/2601.19597},
+  arxiv={2601.19597},
+  website={https://yichaocai.com/nce_geo.github.io/},
+  code={https://github.com/YichaoCai1/InfoNCE_Geometry}
+}
+
+@inproceedings{jiang2026singlecell,
+  abbr={ICML'26},
+  bibtex_show={true},
+  title={What Makes a Representation Good for Single-Cell Perturbation Prediction?},
+  author={Jiang, Wenkang and Liu, Yuhang and Cai, Yichao and Gao, Erdun and Dong, Jiayi and Abbasnejad, Ehsan and Yao, Lina and Shi, Javen Qinfeng},
+  booktitle={International Conference on Machine Learning (ICML)},
+  year={2026},
+  abstract={Single-cell perturbation modeling is fundamental for understanding and predicting cellular responses to genetic perturbations. However, existing approaches, from causal representation learning to foundation models, often struggle with an overlooked challenge: gene expression is dominated by perturbation-invariant information, while perturbation-specific signals are intrinsically sparse. As a result, learned representations either entangle invariant and perturbation-specific information, leading to spurious and non-generalizable predictors, or suppress perturbation-specific signals altogether, rendering them ineffective for prediction. To address this, we propose PerturbedVAE, a general framework designed to resolve this signal imbalance. The framework explicitly separates perturbation-specific information from dominant invariant structure and recovers causal representations to effectively utilize such information for prediction. We further provide an identifiability analysis that characterizes the conditions under which sparse perturbation effects can be reliably recovered, thereby clarifying how the framework can be concretely specified under such conditions. Empirically, PerturbedVAE achieves state-of-the-art performance on a widely used benchmark across multiple evaluation settings, yielding significant gains on out-of-distribution combinatorial predictions and uncovering interpretable perturbation-response programs.},
+  preview={single_cell.png},
+  pdf={https://arxiv.org/abs/2605.19343},
+  arxiv={2605.19343},
+  website={https://icml.cc/virtual/2026/poster/66228}
+}
+
+@inproceedings{chen2026boundary,
+  abbr={ICML'26},
+  bibtex_show={true},
+  title={Boundary Embedding Shaping with Adaptive Contrastive Learning for Graph Structural Disentanglement},
+  author={Chen, Jiaqing and Yin, Zidu and Cai, Yichao and Liu, Yuhang and Zhang, Zhen and Gong, Dong and Shi, Javen Qinfeng},
+  booktitle={International Conference on Machine Learning (ICML)},
+  year={2026},
+  abstract={Graph neural networks (GNNs) excel at aggregating neighbor information for classification, yet their performance is hindered by graph structural entanglement, where spurious correlations from semantically irrelevant neighbors contaminate node embeddings. This challenge is most acute for nodes near class boundaries in the embedding space, where amplified structural noise blurs decision boundaries and destabilizes predictions. Existing robust GNN methods largely treat all nodes uniformly, ignoring boundary vulnerabilities. In this paper, to improve classification performance, we tackle graph structural disentanglement by identifying boundary-region entanglement as the primary bottleneck and propose Boundary Embedding Shaping (BES), an adaptive contrastive learning GNN plug-in module that selectively suppresses spurious structural noise at decision boundaries with minimal model parameter perturbation. Extensive experiments demonstrate that BES consistently improves boundary discrimination and outperforms existing leading methods. Notably, BES boosts GCN performance by an average of 3.3% in node classification (up to 5.0% on WikiCS) and achieves superior accuracy in link prediction with gains most pronounced for boundary nodes.},
+  preview={gnn.png},
+  website={https://icml.cc/virtual/2026/poster/63688} 
+}
+
+@inproceedings{liu2026predict,
+  abbr={ICLR'26},
+  bibtex_show={true},
+  selected={true},
+  title={I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?},
+  author={Liu, Yuhang and Gong, Dong and Cai, Yichao and Gao, Erdun and Zhang, Zhen and Huang, Biwei and Gong, Mingming and van den Hengel, Anton and Shi, Javen Q.},
+  booktitle={International Conference on Learning Representations (ICLR)},
+  year={2026},
+  abstract={Recent empirical evidence shows that LLM representations encode human-interpretable concepts. Nevertheless, the mechanisms by which these representations emerge remain largely unexplored. To shed further light on this, we introduce a novel generative model that generates tokens on the basis of such concepts formulated as latent discrete variables. Under mild conditions, even when the mapping from the latent space to the observed space is non-invertible, we establish rigorous identifiability result: the representations learned by LLMs through next-token prediction can be approximately modeled as the logarithm of the posterior probabilities of these latent discrete concepts given input context, up to an linear transformation. This theoretical finding: 1) provides evidence that LLMs capture essential underlying generative factors, 2) offers a unified and principled perspective for understanding the linear representation hypothesis, and 3) motivates a theoretically grounded approach for evaluating sparse autoencoders. Empirically, we validate our theoretical results through evaluations on both simulation data and the Pythia, Llama, and DeepSeek model families.},
+  preview={ntp_concept.png},
+  pdf={https://arxiv.org/pdf/2503.08980},
+  arxiv={2503.08980},
+  website={https://sites.google.com/view/yuhangliu/projects/ntp},
+  code={https://github.com/yuhangliu01/I-Predict-Therefore-I-Am}
+}
+
+@inproceedings{cai2025misalignment,
+  abbr={NeurIPS'25},
+  bibtex_show={true},
+  selected={true},
+  title={On the Value of Cross-Modal Misalignment in Multimodal Representation Learning},
+  author={Cai, Yichao and Liu, Yuhang and Gao, Erdun and Jiang, Tianjiao and Zhang, Zhen and van den Hengel, Anton and Shi, Javen Q.},
+  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
+  highlight={Spotlight},
+  year={2025},
+  abstract={Multimodal representation learning, exemplified by multimodal contrastive learning (MMCL) using image-text pairs, aims to learn powerful representations by aligning cues across modalities. This approach relies on the core assumption that the exemplar image-text pairs constitute two representations of an identical concept. However, recent research has revealed that real-world datasets often exhibit cross-modal misalignment. There are two distinct viewpoints on how to address this issue: one suggests mitigating the misalignment, and the other leveraging it. We seek here to reconcile these seemingly opposing perspectives, and to provide a practical guide for practitioners. Using latent variable models we thus formalize cross-modal misalignment by introducing two specific mechanisms: Selection bias, where some semantic variables are absent in the text, and perturbation bias, where semantic variables are altered -- both leading to misalignment in data pairs. Our theoretical analysis demonstrates that, under mild assumptions, the representations learned by MMCL capture exactly the information related to the subset of the semantic variables invariant to selection and perturbation biases. This provides a unified perspective for understanding misalignment. Based on this, we further offer actionable insights into how misalignment should inform the design of real-world ML systems. We validate our theoretical findings via extensive empirical studies on both synthetic data and real image-text datasets, shedding light on the nuanced impact of cross-modal misalignment on multimodal representation learning.},
+  preview={misalignment.png},
+  pdf={https://arxiv.org/pdf/2504.10143},
+  arxiv={2504.10143},
+  website={https://yichaocai.com/misalignment.github.io/},
+  code={https://github.com/YichaoCai1/crossmodal_misalignment},
+  annotation={* Yichao Cai and Yuhang Liu contributed equally.}
+}
+
+@inproceedings{cai2024clap,
+  abbr={ECCV'24},
+  bibtex_show={true},
+  selected={true},
+  title={CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts},
+  author={Cai, Yichao and Liu, Yuhang and Zhang, Zhen and Shi, Javen Q.},
+  booktitle={European Conference on Computer Vision (ECCV)},
+  year={2024},
+  abstract={Contrastive vision-language models, such as CLIP, have garnered considerable attention for various downstream tasks, mainly due to the remarkable ability of the learned features for generalization. However, the features they learned often blend content and style information, which somewhat limits their generalization capabilities under distribution shifts. To address this limitation, we adopt a causal generative perspective for multimodal data and propose contrastive learning with data augmentation to disentangle content features from the original representations. To achieve this, we begin with exploring image augmentation techniques and develop a method to seamlessly integrate them into pre-trained CLIP-like models to extract pure content features. Taking a step further, recognizing the inherent semantic richness and logical structure of text data, we explore the use of text augmentation to isolate latent content from style features. This enables CLIP-like model's encoders to concentrate on latent content information, refining the learned representations by pre-trained CLIP-like models. Our extensive experiments across diverse datasets demonstrate significant improvements in zero-shot and few-shot classification tasks, alongside enhanced robustness to various perturbations. These results underscore the effectiveness of our proposed methods in refining vision-language representations and advancing the state-of-the-art in multimodal learning.},
+  preview={CLAP.png},
+  pdf={https://arxiv.org/pdf/2311.16445},
+  arxiv={2311.16445},
+  website={https://yichaocai.com/clap_paper.github.io/},
+  code={https://github.com/YichaoCai1/CLAP}
+}
+

@@ -1,601 +1,1127 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
-    <meta name="description" content="  I am a third-year Ph.D. student in Computer Science at the  Australian Institute for Machine Learning (AIML),  Adelaide University (formerly The University...">
-    <title>Homepage | Yichao Cai</title>
-    <link rel="icon" type="image/jpeg" href="/files/AG1p230.jpg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/minimal-light-home.css">
-</head>
-<body class="minimal-light-home">
-    <nav class="site-top-nav" aria-label="Site navigation">
-    <div class="container-lg site-top-nav-inner">
-        <a class="site-top-nav-brand" href="/">Yichao Cai</a>
-        <div class="site-top-nav-links">
+    <!-- Metadata, OpenGraph and Schema.org -->
+
+
+
+
+<!-- Standard metadata -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
+  
+  
+    Yichao Cai
+  
+</title>
+<meta name="author" content="Yichao Cai">
+<meta name="description" content="Academic homepage of Yichao Cai — Ph.D. Candidate at AIML, Adelaide University, working on language-guided multimodal representation learning.
+">
+
+  <meta name="keywords" content="Yichao Cai, representation learning, vision-language, multimodal, identifiability, contrastive learning, AIML, Adelaide">
+
+
+
+
+
+
+
+
+
+
+<!-- Bootstrap & MDB -->
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css?v=b05f9a0b7405d7c8c89c7465593dea81">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+
+
+<!-- Fonts & Icons -->
+<link defer rel="stylesheet" href="/assets/css/academicons.min.css?v=dadeb9c5d1fd12bc8d37475657446863">
+<link defer rel="stylesheet" href="/assets/css/scholar-icons.css?v=1fefb6021bf36010f25ea1cef24af84e">
+<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap">
+
+<!-- Code Syntax Highlighting -->
+<link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=53a094b51ed1d1e025731eb00d240058" media="" id="highlight_theme_light">
+
+
+
+<!-- Styles -->
+
+
+
+
+  <link rel="shortcut icon" href="/assets/img/AG1p230.svg?v=540d70fe690050cfda1d55e32b2a84e7">
+
+<link rel="stylesheet" href="/assets/css/main.css?v=d41d8cd98f00b204e9800998ecf8427e">
+<link rel="canonical" href="http://localhost:4000/">
+
+
+  <!-- Dark Mode -->
+  <script src="/assets/js/theme.js?v=31ce3c01be373ca1f5536030ad2a710a"></script>
+  <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=46af317e693b09921dcb92261d123fbc" media="none" id="highlight_theme_dark">
+  <script>
+    initTheme();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav ">
+    <!-- Header -->
+    <header>
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+    <div class="container">
+      <!-- Social icons on the left of the nav bar (shown on all pages) -->
+      <div class="navbar-brand social">
+<a href="mailto:yichao.cai@adelaide.edu.au" title="Email"><i class="fa-solid fa-envelope"></i></a> <a href="https://scholar.google.com/citations?user=nNp0nL4AAAAJ" title="Scholar userid" rel="external nofollow noopener" target="_blank"><i class="ai ai-google-scholar"></i></a> <a href="https://github.com/YichaoCai1" title="Github username" rel="external nofollow noopener" target="_blank"><i class="fa-brands fa-github"></i></a> <a href="https://www.linkedin.com/in/yichao-cai-12a3b9292" title="Linkedin username" rel="external nofollow noopener" target="_blank"><i class="fa-brands fa-linkedin"></i></a> <a href="/assets/pdf/yichaocai_cv.pdf" title="Cv pdf"><i class="ai ai-cv"></i></a>
+</div>
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          
+
+          <!-- About -->
+          <li class="nav-item active">
+            <a class="nav-link" href="/">About
+              
+                <span class="sr-only">(current)</span>
+              
+            </a>
+          </li>
+
+          <!-- Other pages -->
+          
+          
             
-            <a class="active" href="/">Home</a>
+          
             
-            <a class="" href="/publications">Publications</a>
+          
             
-            <a class="" href="/blogs.html">Blog</a>
+          
             
-        </div>
-    </div>
-</nav>
-
-    <div class="ml-wrapper">
-        <header class="ml-sidebar">
-            <div class="ml-profile">
-                
-                <a class="ml-avatar" href="/files/photo_1.png">
-                    <img src="/files/photo_1.png" alt="Yichao Cai">
-                </a>
-                
-
-                <h1>Yichao Cai</h1>
-
-                
-                <div class="ml-positions">
-                    
-                    <div>Ph.D. Candidate</div>
-                    
-                    <div>AIML, Adelaide University</div>
-                    
-                </div>
-                
-
-                
-                <div class="ml-email">
-                    <a href="mailto:yichao.cai@adelaide.edu.au">yichao.cai@adelaide.edu.au</a>
-                </div>
-                
-
-                <div class="ml-social-icons" aria-label="Profile links">
-                    <a href="https://scholar.google.com/citations?user=nNp0nL4AAAAJ" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-                    
-                    
-                    <a href="/files/yichaocai_cv.pdf" target="_blank" rel="noopener" aria-label="Curriculum Vitae" title="Curriculum Vitae"><i class="fas fa-file-lines"></i></a>
-                    
-                    
-                    <a href="https://github.com/YichaoCai1" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    
-                    
-                    <a href="https://www.linkedin.com/in/yichao-cai-12a3b9292" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    
-                    
-                </div>
-
-            </div>
-        </header>
-
-        <main class="ml-content">
-            <section class="home-section home-about" id="about">
-    <h2>About Me</h2>
-    <p>
-  I am a third-year Ph.D. student in Computer Science at the
-  <a href="https://www.adelaide.edu.au/aiml/" target="_blank">Australian Institute for Machine Learning (AIML)</a>,
-  <a href="https://www.adelaide.edu.au/" target="_blank">Adelaide University (formerly The University of Adelaide)</a>,
-  advised by Prof.
-  <a href="https://cs.adelaide.edu.au/~javen/" target="_blank">Javen Qinfeng Shi</a>.
-  Before my Ph.D., I received my M.Sc. and B.Eng. degrees from Wuhan University of Technology.
-</p> <p>
-  I study how language supervision shapes the semantics, geometry, and identifiability of multimodal representations. My long-term goal is to develop principled foundations for language-guided representation learning, with the aim of building multimodal systems that acquire structured, interpretable, and reliable representations of the world.
-</p>
-</section>
-
-
-<section class="home-section" id="research-interests">
-    <h2>Research Interests</h2>
-    <ul class="home-list">
-        
-        <li><strong>Representation learning:</strong> learning objectives and training paradigms; identifiability theory; semantic structure in learned representations.</li>
-        
-        <li><strong>Vision-language modeling:</strong> multimodal alignment; multimodal large language models; supervision design and data curation for multimodal learning.</li>
-        
-        <li><strong>Explainable machine learning:</strong> mechanistic interpretability; representation geometry; latent-structure characterization.</li>
-        
-    </ul>
-</section>
-
-
-
-
-
-
-
-
-<section class="home-section" id="news">
-    <h2>News</h2>
-    <ul class="home-news-list">
-        
-        <li>
-            <span class="home-news-date">May 01, 2026</span>
-            <span>We had three papers on representation learning accepted to <strong>ICML 2026</strong>: one first-author paper on contrastive learning geometry and two co-authored papers on AI4Science and graphical modeling, respectively.</span>
-        </li>
-        
-        <li>
-            <span class="home-news-date">Jan 29, 2026</span>
-            <span>Check out our new preprint: <a href="https://arxiv.org/abs/2601.19597" target="_blank">The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic Dispersion, and Cross-Modal Divergence</a>.</span>
-        </li>
-        
-        <li>
-            <span class="home-news-date">Jan 27, 2026</span>
-            <span>I attended <a href="https://www.mlss-melbourne.com/" target="_blank">MLSS Melbourne 2026</a> and enjoyed learning from world-class speakers and connecting with the community.</span>
-        </li>
-        
-        <li>
-            <span class="home-news-date">Oct 16, 2025</span>
-            <span>I served as a guest lecturer in Statistical Machine Learning and presented recent advances in vision-language modeling. <a href="/files/Lec%2010%20Vision-Language%20Modeling.pdf" target="_blank">Slides</a>.</span>
-        </li>
-        
-        <li>
-            <span class="home-news-date">Sep 19, 2025</span>
-            <span>Our work <a href="https://arxiv.org/abs/2504.10143" target="_blank">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</a> was selected as a <strong>Spotlight</strong> at <strong>NeurIPS 2025</strong>.</span>
-        </li>
-        
-    </ul>
-    
-    
-    
-    <details class="home-news-archive">
-        <summary>View all news</summary>
-        <ul class="home-news-list home-news-list-archived">
+          
             
-            <li>
-                <span class="home-news-date">Apr 14, 2025</span>
-                <span>We released the preprint <a href="https://arxiv.org/abs/2504.10143" target="_blank">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</a>.</span>
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/blog/">Blog
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/publications/">Publications
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/teaching/">Teaching &amp; Service
+                    
+                  </a>
+                </li>
+              
+            
+          
+          
+            <!-- Search -->
+            <li class="nav-item">
+              <button id="search-toggle" title="Search" onclick="openSearchModal()">
+                <span class="nav-link">ctrl k <i class="ti ti-search"></i></span>
+              </button>
             </li>
-            
-            <li>
-                <span class="home-news-date">Jul 02, 2024</span>
-                <span>Our work <a href="https://yichaocai.com/clap_paper.github.io/" target="_blank">CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts</a> was accepted at <strong>ECCV 2024</strong>.</span>
+          
+          
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="ti ti-sun-moon" id="light-toggle-system"></i>
+                <i class="ti ti-moon-filled" id="light-toggle-dark"></i>
+                <i class="ti ti-sun-filled" id="light-toggle-light"></i>
+              </button>
             </li>
-            
+          
         </ul>
-    </details>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
+  
+</header>
+
+
+    <!-- Content -->
+    <div class="container mt-5" role="main">
+      
+        <div class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+        <span class="font-weight-bold">Yichao</span> 
+        Cai
+      
+    </h1>
+    <p class="desc">Towards bridging language and world representations</p>
+  </header>
+
+  <article>
     
-</section>
-
-
-
-
-<section class="home-section" id="experience">
-    <h2>Experience</h2>
-    <ul class="home-entry-list">
+      <div class="profile float-right">
         
-        <li>
-            <span class="home-entry-date">Sep 2023 - Present</span>
-            <span>
-                <strong>PhD Student Researcher</strong>, AIML, Adelaide University
-                
-            </span>
-        </li>
-        
-        <li>
-            <span class="home-entry-date">Jun 2020 - Aug 2022</span>
-            <span>
-                <strong>AI Engineer</strong>, Tellhow Software
-                
-            </span>
-        </li>
-        
-        <li>
-            <span class="home-entry-date">Jul 2019 - Apr 2020</span>
-            <span>
-                <strong>Software Engineer</strong>, Huawei Technologies
-                
-            </span>
-        </li>
-        
-        <li>
-            <span class="home-entry-date">May 2018 - Oct 2018</span>
-            <span>
-                <strong>Visiting Student Researcher</strong>, California PATH, UC Berkeley
-                
-            </span>
-        </li>
-        
-    </ul>
-</section>
+          
+          
+          
+          
 
 
 
-
-
-<section class="home-section" id="selected-publications">
-    <h2>Selected Publications</h2>
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
     
+    <img src="/assets/img/prof_pic.png?v=4b75fe1eede2636bf5719343185ba8f7" class="img-fluid z-depth-1 rounded-circle" width="100%" height="auto" alt="prof_pic.png" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+        
+        
+          <div class="more-info">
+<p>Adelaide, Australia</p> <p>yichao.cai@adelaide.edu.au</p>
+</div>
+        
+      </div>
     
 
+    <div class="clearfix">
+<p>I am a third-year Ph.D. student in Computer Science at the <a href="https://www.adelaide.edu.au/aiml/" rel="external nofollow noopener" target="_blank">Australian Institute for Machine Learning (AIML)</a>, <a href="https://www.adelaide.edu.au/" rel="external nofollow noopener" target="_blank">Adelaide University (formerly The University of Adelaide)</a>, advised by Prof. <a href="http://javenshi.org/" rel="external nofollow noopener" target="_blank">Javen Qinfeng Shi</a>. Before my Ph.D., I received my M.Sc. and B.Eng. degrees from Wuhan University of Technology. During my M.Sc., I spent five months as a visiting student researcher at California PATH, UC Berkeley.</p>
 
+<p>I study how language supervision shapes the semantics, geometry, and identifiability of multimodal representations. My current research interests span:</p>
+<ul>
+  <li>
+<strong>representation learning</strong> (learning objectives and training paradigms, identifiability theory, semantic structure in learned representations);</li>
+  <li>
+<strong>vision-language modeling</strong> (multimodal alignment, multimodal LLMs, supervision design and data curation);</li>
+  <li>
+<strong>explainable machine learning</strong> (mechanistic interpretability, representation geometry, latent-structure characterization).</li>
+</ul>
+</div>
 
-
-
-
-<article class="home-publication">
+    <!-- News -->
     
-    <div class="home-publication-thumb">
-        <img src="/files/thumbs/InfoNCE_geometry.png" alt="The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic Dispersion, and Cross-Modal Divergence">
+      <h2>
+        <a href="/news/" style="color: inherit">news</a>
+      </h2>
+      <div class="news">
+  
+    
+    <div class="table-responsive" style="max-height: 60vw">
+      <table class="table table-sm table-borderless">
         
-        <span class="home-publication-badge">ICML</span>
         
+        
+          <tr>
+            <th scope="row" style="width: 20%">May 01, 2026</th>
+            <td>
+              
+                We had 3 papers on representation learning (contrastive learning theory, AI4Science, and graphical modeling) accepted to <strong>ICML 2026</strong>.
+
+              
+            </td>
+          </tr>
+        
+          <tr>
+            <th scope="row" style="width: 20%">Feb 11, 2026</th>
+            <td>
+              
+                I attended <a href="https://www.mlss-melbourne.com/" rel="external nofollow noopener" target="_blank">MLSS Melbourne 2026</a> and enjoyed learning from world-class speakers and connecting with the community.
+
+              
+            </td>
+          </tr>
+        
+          <tr>
+            <th scope="row" style="width: 20%">Jan 29, 2026</th>
+            <td>
+              
+                Check out our new preprint: <a href="https://arxiv.org/abs/2601.19597" rel="external nofollow noopener" target="_blank">The Geometric Mechanics of Contrastive Representation Learning</a>.
+
+              
+            </td>
+          </tr>
+        
+          <tr>
+            <th scope="row" style="width: 20%">Oct 16, 2025</th>
+            <td>
+              
+                I served as a guest lecturer in Statistical Machine Learning and presented recent advances in vision-language modeling. <a href="/assets/pdf/vision-language-modeling-lecture.pdf">Slides</a>.
+
+              
+            </td>
+          </tr>
+        
+          <tr>
+            <th scope="row" style="width: 20%">Sep 19, 2025</th>
+            <td>
+              
+                Our work <a href="https://arxiv.org/abs/2504.10143" rel="external nofollow noopener" target="_blank">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</a> was selected as a <strong>Spotlight</strong> at <strong>NeurIPS 2025</strong>.
+
+              
+            </td>
+          </tr>
+        
+      </table>
+    </div>
+  
+</div>
+
+    
+
+    <!-- Latest posts -->
+    
+
+    <!-- Selected papers -->
+    
+      <h2>
+        <a href="/publications/" style="color: inherit">Selected Publications</a>
+      </h2>
+      <p><a href="/publications/">View full publications →</a></p>
+      <div class="publications">
+  <ol class="bibliography">
+<li>
+<div class="row">
+  
+    <div class="col col-sm-2 abbr">
+          <abbr class="badge rounded w-100">ICML’26</abbr>
+        
+      
+      
+        
+          
+          
+
+
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+    <img src="/assets/img/publication_preview/InfoNCE_geometry.png" class="preview z-depth-1 rounded" width="100%" height="auto" alt="InfoNCE_geometry.png" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+        
+      
+    </div>
+  
+
+  <!-- Entry bib key -->
+  <div id="cai2026geometric" class="col-sm-8">
+    <!-- Title -->
+    <div class="title">The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic Dispersion, and Cross-Modal Divergence</div>
+    <!-- Author -->
+    <div class="author">
+      
+
+      
+      <em>Yichao
+            Cai</em>, Zhen
+            Zhang, Yuhang
+            Liu, and
+        <span class="more-authors" title="click to view 1 more author" onclick="
+              var element = $(this);
+              element.attr('title', '');
+              var more_authors_text = element.text() == '1 more author' ? 'Javen Q. Shi' : '1 more author';
+              var cursorPosition = 0;
+              var textAdder = setInterval(function(){
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
+                if (++cursorPosition == more_authors_text.length){
+                  clearInterval(textAdder);
+                }
+            }, '10');
+          ">1 more author</span>
+      
+      
+    </div>
+
+    <!-- Journal/Book title and date -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="periodical">
+      <em>In International Conference on Machine Learning (ICML)</em>,  2026
+    </div>
+    <div class="periodical">
+      
+    </div>
+
+    <!-- Links/Buttons -->
+    <div class="links">
+      
+      
+        <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+      
+      
+      
+        <a href="http://arxiv.org/abs/2601.19597" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a>
+      
+      
+      
+        <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>
+      
+      
+      
+        
+          <a href="https://arxiv.org/pdf/2601.19597" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
+        
+      
+      
+      
+      
+      
+        <a href="https://github.com/YichaoCai1/InfoNCE_Geometry" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Code</a>
+      
+      
+      
+      
+        <a href="https://yichaocai.com/nce_geo.github.io/" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Website</a>
+      
     </div>
     
-    <div class="home-publication-body">
-        <div class="home-publication-highlight">
-            <h3 class="home-publication-title">
-            
-                <a href="https://yichaocai.com/nce_geo.github.io/" target="_blank" rel="noopener">The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic Dispersion, and Cross-Modal Divergence</a>
-            
-            </h3>
-            <p class="home-publication-authors"><span class="text-body" >
-            <strong>Yichao Cai</strong>; </span><a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu</a>; <span class="text-body" >
-            Javen Q. Shi</span>.</p>
-            <p class="home-publication-venue">
-                <em><strong>International Conference on Machine Learning (ICML), 2026</strong></em>
-            </p>
-            
-            <p class="home-publication-abstract">A theoretical study of representation geometry in unimodal and multimodal contrastive learning, revealing a geometric bifurcation and identifying object-level causes of the modality gap.</p>
-            
-        </div>
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+    
+
+    
+
+    
+      <!-- Hidden abstract block -->
+      <div class="abstract hidden">
+        <p>While InfoNCE underlies modern contrastive learning, its geometric mechanisms remain under-characterized beyond the canonical alignment–uniformity decomposition. We develop a measure-theoretic framework in which representation measures evolve on a fixed embedding manifold. In the large-batch limit, we prove value and gradient consistency, linking the stochastic objective to explicit deterministic energy landscapes and revealing a geometric bifurcation between unimodal and symmetric multimodal regimes. In the unimodal case, the intrinsic energy is strictly convex and admits a unique Gibbs equilibrium, showing that entropy acts as a tie-breaker within the aligned basin. In the multimodal case, the intrinsic geometry becomes cross-coupled and contains a persistent negative symmetric divergence term: each modality’s marginal reshapes the effective landscape of the other, allowing strong pairwise alignment to coexist with a persistent modality gap. Controlled synthetic experiments and analyses of pretrained CLIP representations support these predictions. Overall, our results shift the analytical lens from pointwise discrimination to population geometry, showing that pairwise alignment alone is insufficient to control cross-modal marginal structure.</p>
+      </div>
+    
+
+    
+      <!-- Hidden bibtex block -->
+      <div class="bibtex hidden">
+        <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@inproceedings</span><span class="p">{</span><span class="nl">cai2026geometric</span><span class="p">,</span>
+  <span class="na">title</span> <span class="p">=</span> <span class="s">{The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic Dispersion, and Cross-Modal Divergence}</span><span class="p">,</span>
+  <span class="na">author</span> <span class="p">=</span> <span class="s">{Cai, Yichao and Zhang, Zhen and Liu, Yuhang and Shi, Javen Q.}</span><span class="p">,</span>
+  <span class="na">booktitle</span> <span class="p">=</span> <span class="s">{International Conference on Machine Learning (ICML)}</span><span class="p">,</span>
+  <span class="na">year</span> <span class="p">=</span> <span class="s">{2026}</span><span class="p">,</span>
+<span class="p">}</span></code></pre></figure>
+      </div>
+    
+
+    
+  </div>
+</div>
+</li>
+<li>
+<div class="row">
+  
+    <div class="col col-sm-2 abbr">
+          <abbr class="badge rounded w-100">ICLR’26</abbr>
         
-        <p class="home-publication-links">
-            
-
-
-    
-    
-    
-    
-    
-    <a href="https://arxiv.org/abs/2601.19597" target="_blank" rel="noopener">[Paper]</a>
-    
-
-    
-    
-    
-    
-    
-    <a href="https://yichaocai.com/nce_geo.github.io/" target="_blank" rel="noopener">[Project]</a>
-    
-
-    
-    
-    
-    
-    
-    <a href="https://github.com/YichaoCai1/InfoNCE_Geometry" target="_blank" rel="noopener">[Code]</a>
-    
-
-
-
-            
-        </p>
+      
+      
         
+          
+          
+
+
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+    <img src="/assets/img/publication_preview/ntp_concept.png" class="preview z-depth-1 rounded" width="100%" height="auto" alt="ntp_concept.png" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+        
+      
     </div>
-</article>
+  
 
-    
-    
+  <!-- Entry bib key -->
+  <div id="liu2026predict" class="col-sm-8">
+    <!-- Title -->
+    <div class="title">I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?</div>
+    <!-- Author -->
+    <div class="author">
+      
 
-
-
-
-
-
-<article class="home-publication">
-    
-    <div class="home-publication-thumb">
-        <img src="/files/thumbs/ntp_concept.png" alt="I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?">
-        
-        <span class="home-publication-badge">ICLR</span>
-        
+      
+      Yuhang
+            Liu, Dong
+            Gong, <em>Yichao
+            Cai</em>, and
+        <span class="more-authors" title="click to view 6 more authors" onclick="
+              var element = $(this);
+              element.attr('title', '');
+              var more_authors_text = element.text() == '6 more authors' ? 'Erdun Gao, Zhen Zhang, Biwei Huang, Mingming Gong, Anton Hengel, Javen Q. Shi' : '6 more authors';
+              var cursorPosition = 0;
+              var textAdder = setInterval(function(){
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
+                if (++cursorPosition == more_authors_text.length){
+                  clearInterval(textAdder);
+                }
+            }, '10');
+          ">6 more authors</span>
+      
+      
     </div>
-    
-    <div class="home-publication-body">
-        <div class="home-publication-highlight">
-            <h3 class="home-publication-title">
-            
-                <a href="https://sites.google.com/view/yuhangliu/projects/ntp" target="_blank" rel="noopener">I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?</a>
-            
-            </h3>
-            <p class="home-publication-authors"><a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu</a>; <a class="text-body" target="_blank" href="https://donggong1.github.io/">Dong Gong</a>; <span class="text-body" >
-            <strong>Yichao Cai</strong>; </span><a class="text-body" target="_blank" href="https://erdungao.github.io/">Erdun Gao</a>; <a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://biweihuang.com/">Biwei Huang</a>; <a class="text-body" target="_blank" href="https://mingming-gong.github.io/">Mingming Gong</a>; <a class="text-body" target="_blank" href="https://scholar.google.com/citations?user=nMGZ2ZQAAAAJ&hl=zh-CN&oi=ao">Anton van den Hengel</a>; <span class="text-body" >
-            Javen Q. Shi</span>.</p>
-            <p class="home-publication-venue">
-                <em><strong>International Conference on Learning Representations (ICLR), 2026</strong></em>
-            </p>
-            
-            <p class="home-publication-abstract">An investigation of whether next-token prediction alone is sufficient for learning human-interpretable concepts from data.</p>
-            
-        </div>
-        
-        <p class="home-publication-links">
-            
 
-
+    <!-- Journal/Book title and date -->
     
     
     
     
     
-    <a href="https://arxiv.org/pdf/2503.08980" target="_blank" rel="noopener">[Paper]</a>
-    
-
     
     
     
     
     
-    <a href="https://sites.google.com/view/yuhangliu/projects/ntp" target="_blank" rel="noopener">[Project]</a>
-    
-
     
     
-    
-    
-    
-    <a href="https://github.com/yuhangliu01/I-Predict-Therefore-I-Am" target="_blank" rel="noopener">[Code]</a>
-    
-
-
-
-            
-        </p>
-        
+    <div class="periodical">
+      <em>In International Conference on Learning Representations (ICLR)</em>,  2026
     </div>
-</article>
-
-    
-    
-
-
-
-
-
-
-<article class="home-publication">
-    
-    <div class="home-publication-thumb">
-        <img src="/files/thumbs/misalignment.png" alt="On the Value of Cross-Modal Misalignment in Multimodal Representation Learning">
-        
-        <span class="home-publication-badge">NeurIPS</span>
-        
+    <div class="periodical">
+      
     </div>
-    
-    <div class="home-publication-body">
-        <div class="home-publication-highlight">
-            <h3 class="home-publication-title">
-            
-                <a href="https://yichaocai.com/misalignment.github.io/" target="_blank" rel="noopener">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</a>
-            
-            </h3>
-            <p class="home-publication-authors"><span class="text-body" >
-            <strong>Yichao Cai*</strong>; </span><a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu*</a>; <a class="text-body" target="_blank" href="https://erdungao.github.io/">Erdun Gao</a>; <a class="text-body" target="_blank" href="https://github.com/tianjiao-j">Tianjiao Jiang</a>; <a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <a class="text-body" target="_blank" href="https://scholar.google.com/citations?user=nMGZ2ZQAAAAJ&hl=zh-CN&oi=ao">Anton van den Hengel</a>; <span class="text-body" >
-            Javen Q. Shi</span>.
-<mark>(* <i> equal contribution</i>)</mark></p>
-            <p class="home-publication-venue">
-                <em><strong>Advances in Neural Information Processing Systems (NeurIPS), 2025</strong></em>
-            </p>
-            
-            <p class="home-publication-abstract">Studies when controlled cross-modal misalignment can improve multimodal representation learning instead of only harming it.</p>
-            
-        </div>
+
+    <!-- Links/Buttons -->
+    <div class="links">
+      
+      
+        <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+      
+      
+      
+        <a href="http://arxiv.org/abs/2503.08980" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a>
+      
+      
+      
+        <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>
+      
+      
+      
         
-        <p class="home-publication-links">
-            
-
-
-    
-    
-    
-    
-    
-    <a href="https://arxiv.org/pdf/2504.10143" target="_blank" rel="noopener">[Paper]</a>
-    
-
-    
-    
-    
-    
-    
-    <a href="https://yichaocai.com/misalignment.github.io/" target="_blank" rel="noopener">[Project]</a>
-    
-
-    
-    
-    
-    
-    
-    <a href="https://github.com/YichaoCai1/crossmodal_misalignment" target="_blank" rel="noopener">[Code]</a>
-    
-
-
-
-            
-            <span class="home-publication-note"> <span class="badge badge-pill badge-publication badge-success">Spotlight</span></span>
-            
-        </p>
+          <a href="https://arxiv.org/pdf/2503.08980" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
         
-    </div>
-</article>
-
-    
-    
-
-
-
-
-
-
-<article class="home-publication">
-    
-    <div class="home-publication-thumb">
-        <img src="/files/thumbs/CLAP.png" alt="CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts">
-        
-        <span class="home-publication-badge">ECCV</span>
-        
+      
+      
+      
+      
+      
+        <a href="https://github.com/yuhangliu01/I-Predict-Therefore-I-Am" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Code</a>
+      
+      
+      
+      
+        <a href="https://sites.google.com/view/yuhangliu/projects/ntp" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Website</a>
+      
     </div>
     
-    <div class="home-publication-body">
-        <div class="home-publication-highlight">
-            <h3 class="home-publication-title">
-            
-                <a href="https://yichaocai.com/clap_paper.github.io/" target="_blank" rel="noopener">CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts</a>
-            
-            </h3>
-            <p class="home-publication-authors"><span class="text-body" >
-            <strong>Yichao Cai</strong>; </span><a class="text-body" target="_blank" href="https://sites.google.com/view/yuhangliu/homepage">Yuhang Liu</a>; <a class="text-body" target="_blank" href="https://zzhang.org/">Zhen Zhang</a>; <span class="text-body" >
-            Javen Q. Shi</span>.</p>
-            <p class="home-publication-venue">
-                <em><strong>European Conference on Computer Vision (ECCV), 2024</strong></em>
-            </p>
-            
-            <p class="home-publication-abstract">Explores language-guided disentanglement of style and content through contrastive learning with augmented prompts.</p>
-            
-        </div>
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+    
+
+    
+
+    
+      <!-- Hidden abstract block -->
+      <div class="abstract hidden">
+        <p>Recent empirical evidence shows that LLM representations encode human-interpretable concepts. Nevertheless, the mechanisms by which these representations emerge remain largely unexplored. To shed further light on this, we introduce a novel generative model that generates tokens on the basis of such concepts formulated as latent discrete variables. Under mild conditions, even when the mapping from the latent space to the observed space is non-invertible, we establish rigorous identifiability result: the representations learned by LLMs through next-token prediction can be approximately modeled as the logarithm of the posterior probabilities of these latent discrete concepts given input context, up to an linear transformation. This theoretical finding: 1) provides evidence that LLMs capture essential underlying generative factors, 2) offers a unified and principled perspective for understanding the linear representation hypothesis, and 3) motivates a theoretically grounded approach for evaluating sparse autoencoders. Empirically, we validate our theoretical results through evaluations on both simulation data and the Pythia, Llama, and DeepSeek model families.</p>
+      </div>
+    
+
+    
+      <!-- Hidden bibtex block -->
+      <div class="bibtex hidden">
+        <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@inproceedings</span><span class="p">{</span><span class="nl">liu2026predict</span><span class="p">,</span>
+  <span class="na">title</span> <span class="p">=</span> <span class="s">{I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?}</span><span class="p">,</span>
+  <span class="na">author</span> <span class="p">=</span> <span class="s">{Liu, Yuhang and Gong, Dong and Cai, Yichao and Gao, Erdun and Zhang, Zhen and Huang, Biwei and Gong, Mingming and van den Hengel, Anton and Shi, Javen Q.}</span><span class="p">,</span>
+  <span class="na">booktitle</span> <span class="p">=</span> <span class="s">{International Conference on Learning Representations (ICLR)}</span><span class="p">,</span>
+  <span class="na">year</span> <span class="p">=</span> <span class="s">{2026}</span><span class="p">,</span>
+<span class="p">}</span></code></pre></figure>
+      </div>
+    
+
+    
+  </div>
+</div>
+</li>
+<li>
+<div class="row">
+  
+    <div class="col col-sm-2 abbr">
+          <abbr class="badge rounded w-100">NeurIPS’25</abbr>
         
-        <p class="home-publication-links">
-            
-
-
-    
-    
-    
-    
-    
-    <a href="https://arxiv.org/pdf/2311.16445" target="_blank" rel="noopener">[Paper]</a>
-    
-
-    
-    
-    
-    
-    
-    <a href="https://yichaocai.com/clap_paper.github.io/" target="_blank" rel="noopener">[Project]</a>
-    
-
-    
-    
-    
-    
-    
-    <a href="https://github.com/YichaoCai1/CLAP" target="_blank" rel="noopener">[Code]</a>
-    
-
-
-
-            
-        </p>
+      
+      
         
+          
+          
+
+
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+    <img src="/assets/img/publication_preview/misalignment.png" class="preview z-depth-1 rounded" width="100%" height="auto" alt="misalignment.png" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+        
+      
     </div>
-</article>
+  
 
+  <!-- Entry bib key -->
+  <div id="cai2025misalignment" class="col-sm-8">
+    <!-- Title -->
+    <div class="title">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</div>
+    <!-- Author -->
+    <div class="author">
+      
+
+      
+      <em>Yichao
+            Cai</em>, Yuhang
+            Liu, Erdun
+            Gao, and
+        <span class="more-authors" title="click to view 4 more authors" onclick="
+              var element = $(this);
+              element.attr('title', '');
+              var more_authors_text = element.text() == '4 more authors' ? 'Tianjiao Jiang, Zhen Zhang, Anton Hengel, Javen Q. Shi' : '4 more authors';
+              var cursorPosition = 0;
+              var textAdder = setInterval(function(){
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
+                if (++cursorPosition == more_authors_text.length){
+                  clearInterval(textAdder);
+                }
+            }, '10');
+          ">4 more authors</span>
+      
+      
+        <i class="fa-solid fa-circle-info ml-1" data-toggle="popover" data-placement="top" data-html="true" data-content="* Yichao Cai and Yuhang Liu contributed equally.">
+        </i>
+      
+    </div>
+
+    <!-- Journal/Book title and date -->
     
-    <p class="home-cv-link">
-        <a href="/publications">View all publications</a>
-    </p>
-</section>
-
-
-
-
-<section class="home-section" id="teaching">
-    <h2>Teaching</h2>
-    <ul class="home-entry-list">
-        
-        <li>
-            <span class="home-entry-date">Semester 1 2026</span>
-            <span>Teaching Assistant - Neural Networks and Deep Learning (ARTI X300), Adelaide University</span>
-        </li>
-        
-        <li>
-            <span class="home-entry-date">Semester 2 2025</span>
-            <span>Guest Lecturer, Head Tutor - Statistical Machine Learning (COMP SCI 3314), Adelaide University</span>
-        </li>
-        
-        <li>
-            <span class="home-entry-date">Trimester 2 2025</span>
-            <span>Teaching Assistant - Using Machine Learning Tools (COMP SCI 7317), Adelaide University</span>
-        </li>
-        
-        <li>
-            <span class="home-entry-date">Semester 1 2025</span>
-            <span>Teaching Assistant - Concepts in AI and ML (COMP SCI 7327), Adelaide University</span>
-        </li>
-        
-    </ul>
-</section>
-
-
-
-<section class="home-section" id="awards">
-    <h2>Honors &amp; Awards</h2>
-    <ul class="home-entry-list">
-        
-        <li>
-            <span class="home-entry-date">Oct 2025</span>
-            <span>NeurIPS Scholar Award</span>
-        </li>
-        
-        <li>
-            <span class="home-entry-date">Sep 2023</span>
-            <span>Adelaide University Research Scholarships</span>
-        </li>
-        
-        <li>
-            <span class="home-entry-date">Jun 2019</span>
-            <span>Award for Outstanding Graduates, Wuhan University of Technology</span>
-        </li>
-        
-    </ul>
-</section>
-
-
-
-<section class="home-section" id="service">
-    <h2>Academic Service</h2>
     
-    <div class="home-subsection">
-        <h3>Conference Reviewers</h3>
-        <ul class="home-list">
-            
-            <li>International Conference on Learning Representations (ICLR) 2026</li>
-            
-            <li>International Conference on Machine Learning (ICML) 2026, Silver Reviewer Award</li>
-            
-            <li>Conference on Neural Information Processing Systems (NeurIPS) 2026</li>
-            
-        </ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="periodical">
+      <em>In Advances in Neural Information Processing Systems (NeurIPS)</em>,  2025  <strong style="color: var(--global-theme-color);">Spotlight</strong>
+    </div>
+    <div class="periodical">
+      
+    </div>
+
+    <!-- Links/Buttons -->
+    <div class="links">
+      
+      
+        <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+      
+      
+      
+        <a href="http://arxiv.org/abs/2504.10143" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a>
+      
+      
+      
+        <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>
+      
+      
+      
+        
+          <a href="https://arxiv.org/pdf/2504.10143" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
+        
+      
+      
+      
+      
+      
+        <a href="https://github.com/YichaoCai1/crossmodal_misalignment" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Code</a>
+      
+      
+      
+      
+        <a href="https://yichaocai.com/misalignment.github.io/" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Website</a>
+      
     </div>
     
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
     
-    <div class="home-subsection">
-        <h3>Journal Reviewers</h3>
-        <ul class="home-list">
-            
-            <li>Transactions on Machine Learning Research (TMLR)</li>
-            
-        </ul>
-    </div>
+
     
-</section>
+
+    
+      <!-- Hidden abstract block -->
+      <div class="abstract hidden">
+        <p>Multimodal representation learning, exemplified by multimodal contrastive learning (MMCL) using image-text pairs, aims to learn powerful representations by aligning cues across modalities. This approach relies on the core assumption that the exemplar image-text pairs constitute two representations of an identical concept. However, recent research has revealed that real-world datasets often exhibit cross-modal misalignment. There are two distinct viewpoints on how to address this issue: one suggests mitigating the misalignment, and the other leveraging it. We seek here to reconcile these seemingly opposing perspectives, and to provide a practical guide for practitioners. Using latent variable models we thus formalize cross-modal misalignment by introducing two specific mechanisms: Selection bias, where some semantic variables are absent in the text, and perturbation bias, where semantic variables are altered – both leading to misalignment in data pairs. Our theoretical analysis demonstrates that, under mild assumptions, the representations learned by MMCL capture exactly the information related to the subset of the semantic variables invariant to selection and perturbation biases. This provides a unified perspective for understanding misalignment. Based on this, we further offer actionable insights into how misalignment should inform the design of real-world ML systems. We validate our theoretical findings via extensive empirical studies on both synthetic data and real image-text datasets, shedding light on the nuanced impact of cross-modal misalignment on multimodal representation learning.</p>
+      </div>
+    
+
+    
+      <!-- Hidden bibtex block -->
+      <div class="bibtex hidden">
+        <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@inproceedings</span><span class="p">{</span><span class="nl">cai2025misalignment</span><span class="p">,</span>
+  <span class="na">title</span> <span class="p">=</span> <span class="s">{On the Value of Cross-Modal Misalignment in Multimodal Representation Learning}</span><span class="p">,</span>
+  <span class="na">author</span> <span class="p">=</span> <span class="s">{Cai, Yichao and Liu, Yuhang and Gao, Erdun and Jiang, Tianjiao and Zhang, Zhen and van den Hengel, Anton and Shi, Javen Q.}</span><span class="p">,</span>
+  <span class="na">booktitle</span> <span class="p">=</span> <span class="s">{Advances in Neural Information Processing Systems (NeurIPS)}</span><span class="p">,</span>
+  <span class="na">year</span> <span class="p">=</span> <span class="s">{2025}</span><span class="p">,</span>
+<span class="p">}</span></code></pre></figure>
+      </div>
+    
+
+    
+  </div>
+</div>
+</li>
+<li>
+<div class="row">
+  
+    <div class="col col-sm-2 abbr">
+          <abbr class="badge rounded w-100">ECCV’24</abbr>
+        
+      
+      
+        
+          
+          
 
 
-            <p class="ml-footnote">
-                Last updated: May 2026.
-                <a href="/books.html" aria-label="Readings" title="Readings">&middot;</a>
-                Inspired by <a href="https://github.com/yaoyao-liu/minimal-light" target="_blank" rel="noopener">Minimal Light</a>.
-            </p>
-        </main>
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+    <img src="/assets/img/publication_preview/CLAP.png" class="preview z-depth-1 rounded" width="100%" height="auto" alt="CLAP.png" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+        
+      
     </div>
-</body>
+  
+
+  <!-- Entry bib key -->
+  <div id="cai2024clap" class="col-sm-8">
+    <!-- Title -->
+    <div class="title">CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts</div>
+    <!-- Author -->
+    <div class="author">
+      
+
+      
+      <em>Yichao
+            Cai</em>, Yuhang
+            Liu, Zhen
+            Zhang, and
+        <span class="more-authors" title="click to view 1 more author" onclick="
+              var element = $(this);
+              element.attr('title', '');
+              var more_authors_text = element.text() == '1 more author' ? 'Javen Q. Shi' : '1 more author';
+              var cursorPosition = 0;
+              var textAdder = setInterval(function(){
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
+                if (++cursorPosition == more_authors_text.length){
+                  clearInterval(textAdder);
+                }
+            }, '10');
+          ">1 more author</span>
+      
+      
+    </div>
+
+    <!-- Journal/Book title and date -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="periodical">
+      <em>In European Conference on Computer Vision (ECCV)</em>,  2024
+    </div>
+    <div class="periodical">
+      
+    </div>
+
+    <!-- Links/Buttons -->
+    <div class="links">
+      
+      
+        <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+      
+      
+      
+        <a href="http://arxiv.org/abs/2311.16445" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a>
+      
+      
+      
+        <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>
+      
+      
+      
+        
+          <a href="https://arxiv.org/pdf/2311.16445" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
+        
+      
+      
+      
+      
+      
+        <a href="https://github.com/YichaoCai1/CLAP" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Code</a>
+      
+      
+      
+      
+        <a href="https://yichaocai.com/clap_paper.github.io/" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Website</a>
+      
+    </div>
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+    
+
+    
+
+    
+      <!-- Hidden abstract block -->
+      <div class="abstract hidden">
+        <p>Contrastive vision-language models, such as CLIP, have garnered considerable attention for various downstream tasks, mainly due to the remarkable ability of the learned features for generalization. However, the features they learned often blend content and style information, which somewhat limits their generalization capabilities under distribution shifts. To address this limitation, we adopt a causal generative perspective for multimodal data and propose contrastive learning with data augmentation to disentangle content features from the original representations. To achieve this, we begin with exploring image augmentation techniques and develop a method to seamlessly integrate them into pre-trained CLIP-like models to extract pure content features. Taking a step further, recognizing the inherent semantic richness and logical structure of text data, we explore the use of text augmentation to isolate latent content from style features. This enables CLIP-like model’s encoders to concentrate on latent content information, refining the learned representations by pre-trained CLIP-like models. Our extensive experiments across diverse datasets demonstrate significant improvements in zero-shot and few-shot classification tasks, alongside enhanced robustness to various perturbations. These results underscore the effectiveness of our proposed methods in refining vision-language representations and advancing the state-of-the-art in multimodal learning.</p>
+      </div>
+    
+
+    
+      <!-- Hidden bibtex block -->
+      <div class="bibtex hidden">
+        <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@inproceedings</span><span class="p">{</span><span class="nl">cai2024clap</span><span class="p">,</span>
+  <span class="na">title</span> <span class="p">=</span> <span class="s">{CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts}</span><span class="p">,</span>
+  <span class="na">author</span> <span class="p">=</span> <span class="s">{Cai, Yichao and Liu, Yuhang and Zhang, Zhen and Shi, Javen Q.}</span><span class="p">,</span>
+  <span class="na">booktitle</span> <span class="p">=</span> <span class="s">{European Conference on Computer Vision (ECCV)}</span><span class="p">,</span>
+  <span class="na">year</span> <span class="p">=</span> <span class="s">{2024}</span><span class="p">,</span>
+<span class="p">}</span></code></pre></figure>
+      </div>
+    
+
+    
+  </div>
+</div>
+</li>
+</ol>
+</div>
+
+    
+
+    <!-- Social -->
+    
+
+    
+  </article>
+</div>
+
+      
+    </div>
+
+    <!-- Footer -->
+    
+
+
+  <footer class="fixed-bottom" role="contentinfo">
+    <div class="container mt-0">
+      
+  © Copyright 2026
+  Yichao
+  
+  Cai. <a href="/assets/essays/books.html" title="Reading list" aria-label="Reading list" style="font-size: 0.85em;">◆</a> Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
+
+  
+  
+
+    </div>
+  </footer>
+
+
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Bootsrap & MDB scripts -->
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+
+  <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/masonry.js?v=c999e8c5281874b7534e3352f835d4c3" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js?v=b977fe0c21b2118ed853308b1b923969"></script>
+
+
+
+
+
+
+<!-- Load Common JS -->
+<script src="/assets/js/no_defer.js?v=699fa7cbe3b29f831db7d5250ba3203a"></script>
+<script defer src="/assets/js/common.js?v=24db18426e9c6c2580b9273bd6b6f64c"></script>
+<script defer src="/assets/js/copy_code.js?v=fff63901a03063094790ffbfd4bc0cb4" type="text/javascript"></script>
+
+<!-- Jupyter Open External Links New Tab -->
+<script defer src="/assets/js/jupyter_new_tab.js?v=25eff8ff4144a010e4ad7b31403102cf"></script>
+
+<!-- Badges -->
+
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+
+
+  <!-- MathJax -->
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
+  
+    <script src="/assets/js/mathjax-setup.js?v=04761245f225e3ad9e5e3f875d4e1074"></script>
+    <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+  <!-- Scrolling Progress Bar -->
+  <script defer src="/assets/js/progress-bar.js?v=b78cb42895d74e4fd6de6f633edcf181" type="text/javascript"></script>
+
+
+
+
+
+
+
+  <!-- Back to Top -->
+  <script src="/assets/js/vanilla-back-to-top.min.js?v=f40d453793ff4f64e238e420181a1d17"></script>
+  <script>
+    addBackToTop();
+  </script>
+
+
+
+  <!-- Search -->
+  <script type="module" src="/assets/js/search/ninja-keys.min.js?v=230637657ac0b42e92d76e2b4c1b4764"></script>
+  <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys>
+  <script src="/assets/js/search-setup.js?v=ade73d6d60912d119f9c9347bc176630"></script>
+  <script src="/assets/js/search-data.js"></script>
+  <script src="/assets/js/shortcut-key.js?v=f74bfa9a88ab862fb9df1c46146b7b7d"></script>
+
+
+
+
+  </body>
 </html>
