@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: Towards bridging language and world representations
+subtitle: Towards bridging language & world representations
 
 profile:
   align: right
