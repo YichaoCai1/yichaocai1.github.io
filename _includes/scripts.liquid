@@ -169,7 +169,10 @@
 {% endif %}
 
 {% if page.toc and page.toc.sidebar %}
-  <!-- Sidebar Table of Contents -->
+  <!-- Table of Contents -->
+  <script defer src="{{ '/assets/js/bootstrap-toc.min.js' | relative_url | bust_file_cache }}"></script>
+{% elsif page.toc and page.toc.beginning %}
+  <!-- Table of Contents -->
   <script defer src="{{ '/assets/js/bootstrap-toc.min.js' | relative_url | bust_file_cache }}"></script>
 {% endif %}
 
