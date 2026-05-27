@@ -29,6 +29,7 @@ latest_posts:
 I am a third-year Ph.D. student in Computer Science at the [Australian Institute for Machine Learning (AIML)](https://www.adelaide.edu.au/aiml/), [Adelaide University (formerly The University of Adelaide)](https://www.adelaide.edu.au/), advised by Prof. [Javen Qinfeng Shi](http://javenshi.org/). Before my Ph.D., I received my M.Sc. and B.Eng. degrees from Wuhan University of Technology. During my M.Sc., I spent five months as a visiting student researcher at California PATH, UC Berkeley.
 
 I study how language supervision shapes the semantics, geometry, and identifiability of multimodal representations. My current research interests span:
-- **representation learning** (learning objectives and training paradigms, identifiability theory, semantic structure in learned representations); 
-- **vision-language modeling** (multimodal alignment, multimodal LLMs, supervision design and data curation); 
+
+- **representation learning** (learning objectives and training paradigms, identifiability theory, semantic structure in learned representations);
+- **vision-language modeling** (multimodal alignment, multimodal LLMs, supervision design and data curation);
 - **explainable machine learning** (mechanistic interpretability, representation geometry, latent-structure characterization).

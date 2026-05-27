@@ -37,7 +37,7 @@ All at Adelaide University (formerly The University of Adelaide).
 **Conference Reviewer**
 
 - International Conference on Learning Representations (ICLR) 2026
-- International Conference on Machine Learning (ICML) 2026 &mdash; *Silver Reviewer Award*
+- International Conference on Machine Learning (ICML) 2026 &mdash; _Silver Reviewer Award_
 - Conference on Neural Information Processing Systems (NeurIPS) 2026
 
 **Journal Reviewer**
