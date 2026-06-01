@@ -206,16 +206,56 @@
       </header>
 
       <hr />
-      Before start, let's imagine a story: a city builds a huge musem including every type of books, where each book is preserved somewhere insde:
-      fictions, textbooks, magazines, dictionares, etc. Yet, you don't know where the books are store, because there is no catalog or public map when
-      the museum is first built. Now, to address this, the manager train a tour guide. The books are too many and there is also no map to train him,
-      so tour guide remember the common lended book types and some times he moves the books him is familiar with to somewhere he can easily find;
-      during training he is getting more and more familiar with route where the comoon books people lended are located. The musem opened to public,
-      and the tour guide is passes a professional test. Well done! 90% book search rate. However, during the operation, the tour guide is upset: (1)
-      he sometimes forget where the asks books are, especially for those uncomoonly lended ones; (2) he somestimes give the vistors wrong books
-      because, during training he learned a shortcut used cover to identity books. It works as well mostly, and he though he was a genuis. (2) a man
-      asked him for a Taushiro disctionary. He knew there is a Taushiro disctionary in the musem, but he can't find it. "Oh gosh, I hope there is a
-      catalog and a map!" the tour guide said.
+      <figure class="fig-wide" role="group" aria-labelledby="fig4-caption">
+        <img src="alignment_illusion_story.png" alt="The museum-libaray without a map." loading="lazy" decoding="async" width="1600" height="770" />
+        <figcaption id="fig4-caption">The museum-libaray without a map.</figcaption>
+      </figure>
+      <p>Before we begin, imagine a city builds an enormous museum-library.</p>
+      <p>
+        Inside it, every kind of book is preserved somewhere: novels, textbooks, magazines, dictionaries, atlases, manuals, rare manuscripts,
+        forgotten poems, and field notes from distant cultures. In principle, nothing is missing. The museum is rich, vast, and almost perfectly
+        preserved.
+      </p>
+      <p>There is only one problem: nobody knows where anything is.</p>
+      <p>There is no catalogue. No shelf index. No public map. The books are all there, but their organization is hidden.</p>
+      <p>To solve this, the manager decides to train a tour guide.</p>
+      <p>
+        The guide is not given a complete map of the museum. Instead, he learns from visitor requests. A visitor asks for a popular novel; he runs
+        around, searches, guesses, and gets rewarded if he brings back the right book. Another visitor asks for a school textbook; he tries again.
+        Over time, he becomes impressively good. He remembers the routes to frequently requested sections. He learns which covers usually correspond
+        to which topics. He develops habits, shortcuts, and clever search strategies.
+      </p>
+      <p>
+        Sometimes, when he sees the same kinds of books again and again, he even moves them closer to places he can easily reach. The museum has not
+        been fully organized, but for common requests, the guide now looks remarkably efficient.
+      </p>
+      <p>Then the museum opens to the public.</p>
+      <p>
+        Most of the time, the guide performs beautifully. Visitors ask for familiar books, common categories, and popular topics, and he brings them
+        back quickly. The city praises him. The manager proudly announces:
+      </p>
+      <blockquote>“Our guide has passed the professional test: 90% book-retrieval accuracy.”</blockquote>
+      <p>Everyone celebrates. Some even begin to say that the museum is now well organized.</p>
+      <p>But this is where the illusion begins.</p>
+      <p>The guide’s success is real. The inferred catalogue is not.</p>
+      <p>
+        For most visitors, the system works. But occasionally, the illusion cracks. Someone asks for an uncommon book, and the guide hesitates. He
+        knows it may exist somewhere inside the museum, but he has never learned a reliable route to it. Someone else asks for a book whose cover
+        resembles a familiar one, and the guide confidently returns the wrong book, because during training that shortcut usually worked.
+      </p>
+      <p>Then one day, a visitor asks for a <strong>Taushiro dictionary</strong>.</p>
+      <p>The guide pauses.</p>
+      <p>
+        He is not stupid. He is not careless. He may even know, in some vague sense, that such a dictionary exists in the museum. But there is no
+        catalogue, no semantic shelf system, no public map connecting the visitor’s words to the museum’s hidden structure.
+      </p>
+      <p>
+        So he wanders. He searches the nearby language section. He follows a route that worked before. He finds a dictionary with a similar cover,
+        from a different rare language, and brings it back.
+      </p>
+      <p>The visitor looks confused.</p>
+      <p>The guide quietly sighs:</p>
+      <blockquote>“I learned the routes. I never had the map.”</blockquote>
       <hr />
 
       <!-- ==============================
@@ -224,19 +264,16 @@
       <nav class="toc" aria-label="Table of contents">
         <strong>On this blog</strong>
         <ul>
-          <li><a href="#rethinking">The Underexplored in Representation Learning</a></li>
-          <li><a href="#identifiability">Identifiable Representation Learning as Desiderata</a></li>
-          <li><a href="#language">Our Route: Language as an Inductive Cue</a></li>
+          <li><a href="#missing-distinction">Usefulness is not alignment</a></li>
           <li>
-            <a href="#endeavors">Our Endeavors So Far</a>
+            <a href="#instruction-tuning">What visual instruction tuning actually rewards</a>
             <ul>
-              <li><a href="#motivation">Motivation</a></li>
-              <li><a href="#theory">Theory Claims</a></li>
-              <li><a href="#insights">Key Insights for Practice</a></li>
-              <li><a href="#evidence">Experiments &amp; Evidence</a></li>
+              <li><a href="#filtered-by-question">The images is fileter by the question</a></li>
+              <li><a href="#hooks">From alignment to "hooks"</a></li>
             </ul>
           </li>
-          <li><a href="#closing">Closing Call to Action</a></li>
+          <li><a href="#mllms-retrieval">Beyond useful tools: why query-conditioned retrieval is not enough</a></li>
+          <li><a href="#open-questions">What should we ask instead?</a></li>
         </ul>
       </nav>
 
@@ -247,67 +284,66 @@
          ============================== -->
       <article>
         <!-- Rethinking -->
-        <section id="rethinking">
+        <section id="missing-distinction">
           <h2 class="heading">
-            The Underexplored in Representation Learning: Why We Need to Rethink It
-            <a class="anchor" href="#rethinking" aria-label="Link to this heading">#</a>
+            Usefulness is not alignment
+            <a class="anchor" href="#missing-distinction" aria-label="Link to this heading">#</a>
           </h2>
           <p>
-            Modern AI models are rightly celebrated for astonishing successes, but their <strong>“almost right”</strong> failures tell another story:
-            a captioning model dogmatically names a non-existent object; a classifier swaps “wolf” for “husky” whenever snow appears; a
-            vision-language model hallucinates relationships. These errors rarely break benchmarks, yet they reveal
-            <strong>warped internal maps</strong>, features that fail to reflect the factual world.
+            This is how I currently think about many multimodal large language models. The museum is the visual world: rich, structured, and far
+            larger than the set of questions we usually ask about it. The visitor requests are the language instructions used during training. The
+            tour guide is the multimodal system: a visual encoder, a projector, and a language model trained to return the right answer when prompted.
+            The professional test is our benchmark culture.
           </p>
+
           <p>
-            Scaling data and compute alone does not guarantee <strong>faithful representations</strong>. When features silently entangle or omit
-            critical semantic information, interpretability, fairness, and robustness all suffer. To build responsible, resource-efficient AI, we need
-            <strong>identifiable representations</strong>: latent features that correspond uniquely and stably to real-world factors.
+            The guide’s success is real. Likewise, the success of current MLLMs is real. They are useful, impressive, and often commercially valuable.
+            I understand why industry is excited by this paradigm: a system that can answer questions about images and follow visual instructions is
+            already a powerful tool.
+          </p>
+
+          <p>
+            But as researchers, we should ask a deeper question. Does the model merely learn useful routes through the museum, or does it learn the
+            map? Does it only retrieve answer-relevant visual information when queried, or does it acquire a representation in which vision and
+            language are genuinely coordinated?
+          </p>
+
+          <p>
+            This distinction matters because usefulness is not the same as alignment. Strong performance shows that a model can use visual information
+            for language generation. It does not, by itself, show that the model has learned a shared representational structure between the visual
+            and linguistic worlds.
+          </p>
+
+          <p>
+            This is the illusion of modality alignment. We see a guide who retrieves books efficiently, and we infer that the museum has been
+            organized. We see a model answer visual questions fluently, and we infer that vision and language have been aligned. In both cases, the
+            inference is tempting. In both cases, it may be wrong.
           </p>
         </section>
-
-        <figure class="fig-wide" role="group" aria-labelledby="fig1-caption">
-          <img
-            src="internal_map.svg"
-            alt="Two side-by-side maps. Left: a faithful internal map with straight grid, correctly placed landmarks, and a short direct path from House to Fountain. Right: a warped internal map with distorted grid, landmarks displaced from their true ghost positions, arrows indicating mismatch, and a longer, confused path with a warning marker."
-            loading="lazy"
-            decoding="async"
-            width="1600"
-            height="770"
-          />
-          <figcaption id="fig1-caption">
-            <strong>Figure 1: When the internal map gets warped.</strong>
-            Faithful maps (left) preserve distances and relations. Warped maps (right) misplace landmarks and paths—an analogy for hallucinations and
-            fragile reasoning in AI.
-          </figcaption>
-        </figure>
-
         <hr />
 
         <!-- Identifiability -->
-        <section id="identifiability">
+        <section id="instruction-tuning">
           <h2 class="heading">
-            Identifiable Representation Learning: What It Means and Why It Matters
-            <a class="anchor" href="#identifiability" aria-label="Link to this heading">#</a>
+            The supervision bottleneck: the loss only sees the answer
+            <a class="anchor" href="#instruction-tuning" aria-label="Link to this heading">#</a>
           </h2>
           <p>
-            By <em>identifiability</em> we mean:
-            <strong
-              >given enough data and reasonable assumptions (i.e., a belief about how data are generated from latent factors of variation), the
-              learned features recover the true latent factors, such as identity, shape, color, pose, up to at most trivial ambiguities.</strong
-            >
+            The issue is not simply that current MLLMs use a visual encoder, a projector, and a language model. The deeper issue is the form of
+            supervision. Visual instruction tuning does not ask the model to reconstruct the visual world, organize it, or align it with language. It
+            asks the model to produce the right answer.
           </p>
-          <p>Why this matters:</p>
-          <ul>
-            <li>
-              <strong>Interpretability &amp; Fairness:</strong> Stable embedding coordinates (or neurons) let researchers and auditors see what is
-              encoded and surface biases to be challenged.
-            </li>
-            <li><strong>Robustness:</strong> Features do not drift when style, lighting, or domains shift.</li>
-            <li><strong>Resource Savings:</strong> Stable, semantic features reduce expensive retraining and data collection.</li>
-          </ul>
+
           <p>
-            Because identifiable features don't drift, teams spend less on re-training/data; audits are simpler (fairness); and feature meanings
-            remain stable (interpretability).
+            This creates a supervision bottleneck. The image may contain a rich visual structure, but the training signal reaches the model only
+            through a narrow channel: a question and an answer. Anything in the image that does not change the answer is invisible to the loss. It may
+            be present in the pixels, and even present in the visual encoder, but if it never affects the answer tokens, the training objective has no
+            reason to preserve it, expose it, or align it.
+          </p>
+          <p>
+            This is why I do not think strong visual question-answering performance is sufficient evidence of modality alignment. The model may have
+            learned the conditional structure needed for answering: given this question, which visual features should be routed into the language
+            model? That is a powerful ability. But it is weaker than learning a shared representational structure between vision and language.
           </p>
         </section>
 

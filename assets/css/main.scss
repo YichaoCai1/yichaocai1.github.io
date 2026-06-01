@@ -30,9 +30,9 @@ $max-content-width: {{ site.max_width }};
  ******************************************************************************/
 
 // Teaching & Service — spaced list (replaces the cramped table)
-// Home-page subtitle: normal font, muted gray, each word's first letter capitalized
+// Home-page subtitle: normal font, muted gray, shown as a normal sentence
 .post-header .desc {
-  text-transform: capitalize;
+  text-transform: none;
   color: var(--global-text-color-light);
 }
 
