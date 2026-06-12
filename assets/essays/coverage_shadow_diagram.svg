@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" role="img"
+     aria-labelledby="cs-title cs-desc" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title id="cs-title">Coverage decides which latent directions become shadows</title>
+  <desc id="cs-desc">Two panels show the same latent space with three directions: shape, color, and an inert
+    residue. The only difference between panels is the query distribution. In panel (a) only shape is asked, so the
+    correlated color direction is retained as a shadow proxy. In panel (b) shape and color are both asked, so color
+    becomes an identified direction. The inert residue is under-determined in both panels.</desc>
+
+  <style>
+    svg{
+      --ink:#222; --muted:#6a6a6a; --line:#cfcfcf; --panel:#fbfbfb; --panelEdge:#dcdcdc;
+      --covered:#356a66; --shadow:#b5654a; --inert:#a2a8a8;
+    }
+    @media (prefers-color-scheme: dark){
+      svg{
+        --ink:#e8e8e8; --muted:#aeaeae; --line:#3a3a3a; --panel:#171717; --panelEdge:#3a3a3a;
+        --covered:#a3ccc7; --shadow:#d98f73; --inert:#7c8281;
+      }
+    }
+    .title{ font-size:20px; font-weight:700; fill:var(--ink,#222); }
+    .subtitle{ font-size:13px; fill:var(--muted,#6a6a6a); }
+    .legend{ font-size:12.5px; fill:var(--ink,#222); }
+    .pill{ font-size:13px; font-weight:700; fill:var(--ink,#222); }
+    .axis{ font-size:14px; font-weight:600; fill:var(--ink,#222); }
+    .tag{ font-size:11.5px; font-style:italic; fill:var(--muted,#6a6a6a); }
+    .note{ font-size:11.5px; fill:var(--muted,#6a6a6a); }
+    .covered{ stroke:var(--covered,#356a66); }
+    .shadow{ stroke:var(--shadow,#b5654a); }
+    .inert{ stroke:var(--inert,#a2a8a8); }
+  </style>
+
+  <defs>
+    <marker id="ah-cov" markerWidth="9" markerHeight="9" refX="6.5" refY="3.2" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L7,3.2 L0,6.4 Z" fill="var(--covered,#356a66)"/>
+    </marker>
+    <marker id="ah-sha" markerWidth="9" markerHeight="9" refX="6.5" refY="3.2" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L7,3.2 L0,6.4 Z" fill="var(--shadow,#b5654a)"/>
+    </marker>
+    <marker id="ah-ine" markerWidth="9" markerHeight="9" refX="6.5" refY="3.2" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L7,3.2 L0,6.4 Z" fill="var(--inert,#a2a8a8)"/>
+    </marker>
+  </defs>
+
+  <!-- Title block -->
+  <text class="title" x="480" y="28" text-anchor="middle">Coverage decides which directions become shadows</text>
+  <text class="subtitle" x="480" y="50" text-anchor="middle">Image and encoder held fixed. Only the query distribution changes between panels.</text>
+
+  <!-- Legend -->
+  <g transform="translate(0,78)">
+    <line class="covered" x1="92"  y1="0" x2="124" y2="0" stroke-width="2.6" stroke-linecap="round"/>
+    <text class="legend" x="132" y="4">covered / identified</text>
+
+    <line class="shadow" x1="308" y1="0" x2="340" y2="0" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="6 4"/>
+    <text class="legend" x="348" y="4">shadow (retained proxy)</text>
+
+    <line class="inert" x1="600" y1="0" x2="632" y2="0" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="2 5"/>
+    <text class="legend" x="640" y="4">under-determined (inert)</text>
+  </g>
+
+  <!-- Panel header pills -->
+  <g>
+    <rect x="150" y="98" width="220" height="26" rx="13" fill="none" stroke="var(--covered,#356a66)" stroke-width="1.2"/>
+    <text class="pill" x="260" y="115" text-anchor="middle">(a)  asked: shape only</text>
+
+    <rect x="590" y="98" width="220" height="26" rx="13" fill="none" stroke="var(--covered,#356a66)" stroke-width="1.2"/>
+    <text class="pill" x="700" y="115" text-anchor="middle">(b)  asked: shape + color</text>
+  </g>
+
+  <!-- ============ PANEL A ============ -->
+  <rect x="70" y="138" width="380" height="290" rx="10" fill="var(--panel,#fbfbfb)" stroke="var(--panelEdge,#dcdcdc)" stroke-width="1"/>
+
+  <!-- origin dot A (155, 360) -->
+  <circle cx="155" cy="360" r="3" fill="var(--ink,#222)"/>
+
+  <!-- inert residue A: angle ~8deg, len 120 -> (274, 343) -->
+  <line class="inert" x1="155" y1="360" x2="274" y2="343" stroke-width="1.8" stroke-linecap="round"
+        stroke-dasharray="2 5" marker-end="url(#ah-ine)"/>
+  <text class="axis" x="282" y="346" fill="var(--inert,#a2a8a8)">residue</text>
+  <text class="tag" x="282" y="361">under-determined</text>
+
+  <!-- color A (shadow): angle ~33deg, len 175 -> (302, 265) -->
+  <line class="shadow" x1="155" y1="360" x2="302" y2="265" stroke-width="2.4" stroke-linecap="round"
+        stroke-dasharray="6 4" marker-end="url(#ah-sha)"/>
+  <text class="axis" x="310" y="262" fill="var(--shadow,#b5654a)">color</text>
+  <text class="tag" x="310" y="277">proxy for shape</text>
+
+  <!-- shape A (covered): angle ~55deg, len 175 -> (255, 217) -->
+  <line class="covered" x1="155" y1="360" x2="255" y2="217" stroke-width="2.6" stroke-linecap="round"
+        marker-end="url(#ah-cov)"/>
+  <text class="axis" x="240" y="208">shape</text>
+
+  <!-- correlation marker A: dotted arc near origin between shape and color -->
+  <path d="M 207,289 A 70 70 0 0 0 214,322" fill="none" stroke="var(--shadow,#b5654a)" stroke-width="1.4"
+        stroke-dasharray="2 4"/>
+  <line x1="232" y1="305" x2="300" y2="305" stroke="var(--shadow,#b5654a)" stroke-width="1.1" stroke-dasharray="2 4"/>
+  <text class="note" x="306" y="308" fill="var(--shadow,#b5654a)">correlated</text>
+
+  <!-- ============ PANEL B ============ -->
+  <rect x="510" y="138" width="380" height="290" rx="10" fill="var(--panel,#fbfbfb)" stroke="var(--panelEdge,#dcdcdc)" stroke-width="1"/>
+
+  <!-- origin dot B (595, 360) -->
+  <circle cx="595" cy="360" r="3" fill="var(--ink,#222)"/>
+
+  <!-- inert residue B (unchanged): -> (714, 343) -->
+  <line class="inert" x1="595" y1="360" x2="714" y2="343" stroke-width="1.8" stroke-linecap="round"
+        stroke-dasharray="2 5" marker-end="url(#ah-ine)"/>
+  <text class="axis" x="722" y="346" fill="var(--inert,#a2a8a8)">residue</text>
+  <text class="tag" x="722" y="361">under-determined</text>
+
+  <!-- color B (now covered): -> (742, 265) -->
+  <line class="covered" x1="595" y1="360" x2="742" y2="265" stroke-width="2.6" stroke-linecap="round"
+        marker-end="url(#ah-cov)"/>
+  <text class="axis" x="750" y="262">color</text>
+  <text class="tag" x="750" y="277">now identified</text>
+
+  <!-- shape B (covered): -> (695, 217) -->
+  <line class="covered" x1="595" y1="360" x2="695" y2="217" stroke-width="2.6" stroke-linecap="round"
+        marker-end="url(#ah-cov)"/>
+  <text class="axis" x="680" y="208">shape</text>
+
+  <!-- note B: color pinned independently -->
+  <text class="note" x="690" y="308" fill="var(--covered,#356a66)">pinned on its own axis</text>
+
+  <!-- Bottom takeaway -->
+  <text class="subtitle" x="480" y="446" text-anchor="middle">
+    The same color direction flips from shadow to identified under a change of queries alone; the inert residue does not move.
+  </text>
+</svg>
