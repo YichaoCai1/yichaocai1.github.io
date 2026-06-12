@@ -4,5 +4,6 @@ title: "When the Internal Map Gets Warped: Why Identifiable Representations Are 
 description: Why identifiable representations are crucial for responsible AI.
 tags: representation-learning
 thumbnail: /assets/essays/internal_map.svg
+read_time: 15
 redirect: /assets/essays/identifiable_representation_learning.html
 ---

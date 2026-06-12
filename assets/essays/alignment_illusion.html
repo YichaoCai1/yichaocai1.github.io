@@ -235,45 +235,42 @@
         <figcaption id="fig4-caption">The museum-library without a map: every book is preserved somewhere, but nothing is indexed.</figcaption>
       </figure>
       <p>
-        Before we begin, imagine a city builds an enormous museum-library. Inside it, every kind of book is preserved somewhere, from popular novels
-        to rare manuscripts, but nobody knows where anything is. There is no catalogue, no shelf index, and no public map. The books are all there,
-        but their organization is hidden.
+        Imagine a city builds an enormous museum-library. Every kind of book is preserved somewhere inside, from popular novels to rare manuscripts,
+        but nobody knows where anything is. No catalogue, no shelf index, no public map. Everything is there; nothing can be easily found.
       </p>
       <p>
-        To solve this, the manager trains a tour guide. She is not given a map; instead, she learns entirely from visitor requests, earning rewards
-        whenever she brings back the right volume. Over time, she becomes impressively good. She memorizes shortcuts to frequently requested sections,
-        learns which covers usually correspond to which topics, and optimizes her routes. The museum remains completely unorganized, but for common
-        requests, she looks remarkably efficient.
+        So the manager trains a tour guide. She is given no map; she learns entirely from visitor requests, rewarded whenever she brings back the
+        right volume. Over time she becomes impressively good. She memorizes shortcuts to popular sections, learns which covers tend to go with which
+        topics, refines her routes. The museum is as disorganized as ever. For common requests, she looks flawless.
       </p>
       <p>
         When the museum opens, the city praises her, and the manager proudly announces: “Our guide has passed the professional test: 90%
-        book-retrieval accuracy.” Some even claim the museum itself is now well organized. But this is where the illusion begins: the guide's success
-        is real, but the inferred catalogue is not. When asked for a book whose cover merely resembles a familiar one, she confidently returns the
-        wrong volume along a shortcut that training had rewarded again and again.
+        book-retrieval accuracy.” Some even claim the museum itself is now well organized. But here the illusion begins: her success is real; the
+        catalogue it implies is not. Ask for a book whose cover resembles a familiar one, and she confidently brings back the wrong volume, down a
+        shortcut training had rewarded again and again.
       </p>
       <p>
-        Then one day, a visitor asks for a <strong>Taushiro dictionary</strong>. The guide pauses. She is neither stupid nor careless, and she senses
-        the book exists somewhere. But without a semantic shelf system connecting the visitor's words to the museum's hidden structure, she defaults
-        to a route that worked before, bringing back a dictionary with a similar cover from an entirely different language. The visitor looks
-        confused. The guide quietly sighs:
+        Then one day a visitor asks for a <strong>Taushiro dictionary</strong>. The guide pauses. She is neither stupid nor careless; she senses the
+        book is there, somewhere. But no index links the visitor’s words to the museum’s hidden structure, so she falls back on a route that has
+        worked before: a dictionary with a similar cover, from an entirely different language. The visitor looks confused. The guide quietly sighs:
       </p>
-      <blockquote>“I only learned the routes. I never had the map.”</blockquote>
+      <blockquote>“I learned the routes. I never had the map.”</blockquote>
       <hr />
 
       <!-- ==============================
          Table of Contents (editable)
          ============================== -->
-      <nav class="toc" aria-label="Table of contents">
-        <strong>On this blog</strong>
-        <ul>
-          <li><a href="#missing-distinction">Usefulness is not modality alignment</a></li>
-          <li><a href="#instruction-tuning">What visual instruction tuning actually rewards</a></li>
-          <li><a href="#ica-reading">A nonlinear-ICA reading of language supervision</a></li>
-          <li><a href="#coverage-lock">The coverage lock: why scaling relocates the boundary</a></li>
-          <li><a href="#open-questions">From the map to the territory: open questions</a></li>
-          <li><a href="#references">References</a></li>
-        </ul>
-      </nav>
+      <!-- <nav class="toc" aria-label="Table of contents">
+      <strong>On this page</strong>
+      <ul>
+        <li><a href="#missing-distinction">Usefulness is not modality coordination</a></li>
+        <li><a href="#instruction-tuning">What visual instruction tuning actually rewards</a></li>
+        <li><a href="#ica-reading">What language supervision can and cannot pin down</a></li>
+        <li><a href="#coverage-lock">The coverage lock: why the boundary always returns</a></li>
+        <li><a href="#open-questions">From the map to the territory: open questions</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </nav> -->
 
       <hr />
 
@@ -284,25 +281,24 @@
         <!-- Rethinking -->
         <section id="missing-distinction">
           <h2 class="heading">
-            Usefulness is not modality alignment
+            Usefulness is not modality coordination
             <a class="anchor" href="#missing-distinction" aria-label="Link to this heading">#</a>
           </h2>
           <p>
-            This is how I have come to think about many multimodal large language models (MLLMs). The museum is the visual world: rich, structured,
+            This is how I have come to think about many multimodal large language models (MLLMs). The museum is the visual world, rich and structured
             and far larger than the set of questions we usually ask about it. The visitor requests are the language instructions used during training.
-            The tour guide is the multimodal system, meaning the visual encoder, the projector, and the language model trained to return the right
-            answer when prompted. The professional test is our benchmark culture.
+            The tour guide is the multimodal system: the visual encoder, the projector, and the language model trained to return the right answer when
+            prompted. The professional test is our benchmark culture.
           </p>
           <p>
-            While the failure of multimodal models on complex visual cases is widely documented, I want to argue something more structural: that
-            next-token prediction inherently restricts a model to a query-dependent "covered subspace", leaving vast dimensions of the visual world
-            fundamentally under-determined regardless of scale.
+            That multimodal models stumble on complex visual cases is widely documented; what I want to argue is more structural. Next-token
+            prediction confines a model to a query-dependent "covered subspace", and it leaves the rest of the visual world under-determined no matter
+            how far we scale. Not the encoder, not the data. The questions we train on.
           </p>
-
           <p>
-            The guide's success is real, and so is the success of current MLLMs. They are useful, impressive, and often commercially valuable. I
-            understand why industry is excited, since a system that answers questions about images and follows visual instructions is already a
-            powerful tool. But as researchers we are obliged to ask a sharper question, keeping two things apart that the benchmark numbers quietly
+            The guide's success is real, and so is the success of current MLLMs. They are useful, impressive, often commercially valuable, and I
+            understand why industry is excited, because a system that answers questions about images and follows visual instructions is already a
+            powerful tool. But as researchers we are obliged to ask a sharper question, one that keeps apart two things the benchmark numbers quietly
             fuse together:
           </p>
           <blockquote>
@@ -311,26 +307,27 @@
               information when queried, or does it acquire a representation in which vision and language are genuinely coordinated?
             </strong>
           </blockquote>
-
           <p>
             The distinction matters because question-answering usefulness is not the same as modality alignment. Strong performance shows that a model
-            can <em>route</em> visual information into language generation when prompted. It does not, by itself, show that the model has learned a
-            shared representational structure between the visual and linguistic worlds. The first is a conditional, query-indexed ability where the
-            model asks, <em>given this question, which visual features should I surface?</em> The second is a structural property of the
-            representation itself, independent of any particular query.
+            can <em>route</em> visual information into language generation when prompted; it does not, by itself, show that the model has learned a
+            shared representational structure between the visual and linguistic worlds. The first is a conditional, query-indexed ability, the model
+            asking <em>given this question, which visual features should I surface?</em> The second is a structural property of the representation
+            itself, independent of any particular query.
           </p>
-
           <p>
-            A clarification is worth making here, because the word "gap" is overloaded. There is a well-documented <em>geometric</em> modality gap
-            where image and text embeddings in contrastive models like CLIP sit in separate cones, at arm's length. This is an artifact traceable to
-            initialization and the contrastive objective rather than to any failure of understanding.<sup class="cref"
-              ><a href="#ref-liang"><strong>1</strong></a></sup
+            One clarification, because the word "gap" is overloaded. There is a well-documented <em>geometric</em> modality gap, in which image and
+            text embeddings in contrastive models like CLIP sit in separate cones at arm's length, an artifact traceable to initialization and the
+            contrastive objective rather than to any failure of understanding.<sup class="cref"
+              ><a href="#ref-liang"><strong>1</strong></a
+              >, </sup
+            ><sup class="cref">
+              <a href="#ref-geometry"><strong>2</strong></a></sup
             >
             That gap is real, but it is <em>not</em> what I mean by the illusion of modality alignment. A model can have a small geometric gap and
             still hold no map; conversely, it can have a large one and still answer well. The illusion I am pointing at is not a distance between two
-            point clouds. It is the inferential leap from <em>retrieval works</em> to <em>the collection is organized</em>, shifting from fluent
+            point clouds. It is the inferential leap from <em>retrieval works</em> to <em>the collection is organized</em>, the slide from fluent
             <em>visual question answering</em> to coordinated vision-language representation. In both the museum and the model, that inference is
-            tempting. In both, it may be wrong.
+            tempting, and in both it may be wrong.
           </p>
         </section>
         <hr />
@@ -340,96 +337,122 @@
             What visual instruction tuning actually rewards
             <a class="anchor" href="#instruction-tuning" aria-label="Link to this heading">#</a>
           </h2>
+          <figure class="fig-wide" role="group" aria-labelledby="fig4-caption">
+            <img src="mllm.png" alt="The canonical MLLM paradigm." loading="lazy" decoding="async" width="1600" height="770" />
+            <figcaption id="fig4-caption">
+              The canonical MLLM paradigm. An input image is first processed by a CLIP encoder to extract its foundational visual features (1), which
+              are then translated by a projector into aligned visual tokens (2) so that a large language model can seamlessly interpret them across
+              its layers to generate a final textual answer (3).
+            </figcaption>
+          </figure>
           <p>
-            The issue is not simply that current MLLMs are built from a visual encoder, a projector, and a language model. The deeper issue, I
-            believe, is the form of supervision. Visual instruction tuning does not ask the model to reconstruct the visual world, to organize it, or
-            even to align it with language. It asks the model to produce the right answer tokens given an image and an instruction, and nothing
-            more.<sup class="cref"
-              ><a href="#ref-llava"><strong>2</strong></a></sup
+            The issue is not that current MLLMs are built from a visual encoder, a projector, and a language model. The deeper issue, I believe, is
+            the form of supervision---the instruction-response driven next-token prediction (NTP). Visual instruction tuning does not ask the model to
+            reconstruct the visual world, to organize it, or even to align it with language. It asks the model to produce the right answer tokens
+            given an image and an instruction, and nothing more.<sup class="cref"
+              ><a href="#ref-llava"><strong>3</strong></a></sup
             >
+            Swapping the token-level likelihood for a preference reward changes none of this: the signal is still a score on answers drawn from a
+            query distribution, so everything that follows applies to RLHF-style tuning unchanged.
           </p>
 
           <p>
-            Tellingly, the projector is often treated as little more than a shape adapter for dimensionality compatibility. Even when we take its
-            design seriously by building complex, heavy abstract mappers or structures that preserve local spatial features, the underlying problem
-            remains.<sup class="cref"
-              ><a href="#ref-honeybee"><strong>3</strong></a></sup
+            Tellingly, the projector is often treated as little more than a shape adapter for dimensional compatibility. Even when we take its design
+            seriously and build heavy abstract mappers, or structures that preserve local spatial features, the underlying problem remains.<sup
+              class="cref"
+              ><a href="#ref-honeybee"><strong>4</strong></a></sup
             >
-            The projector is still trained entirely through the final instruction signal. The bridge is shaped exclusively by what is allowed to cross
-            it.
+            The projector is still trained entirely through the final instruction signal, so the bridge is shaped only by what is allowed to cross it.
           </p>
           <p>
             This creates a <strong>supervision bottleneck</strong>. The image may carry rich visual structure, but the training signal reaches the
-            model through a narrow channel consisting of a question and an answer. Anything in the image that does not change the answer is invisible
-            to the loss. It may be present in the pixels, and even present in the visual encoder, but if it never affects the answer tokens, the
-            objective has no reason to faithfully expose it, let alone align it with language. Under a finite capacity and compute budget, the path of
-            least resistance is a shortcut. The model learns whatever correlates with the right answer on the training queries and ignores the rest.
-            That is exactly the regime in which out-of-distribution generalization degrades, counterfactual reasoning becomes brittle, and
-            hallucinations appear.
+            model through a narrow channel: a question and an answer (or a caption as response during projector pretraining). Anything in the image
+            that does not change the answer is invisible to the loss. It may sit in the pixels and even in the visual encoder, but if it never affects
+            the answer tokens, the objective has no reason to expose it faithfully, let alone align it with language. Under a finite capacity and
+            compute budget, the path of least resistance is a shortcut, and the model learns whatever correlates with the right answer on the training
+            queries while ignoring the rest. That is the regime in which out-of-distribution generalization degrades, counterfactual reasoning grows
+            brittle, and hallucinations appear.
           </p>
 
           <p>
-            This is not a hypothetical worry; the symptoms are well-documented. The MMVP benchmark constructs pairs of images that are visually
-            distinct yet encoded almost identically by CLIP. It shows that state-of-the-art MLLMs, including GPT-4V, fail on strikingly simple visual
-            questions about them. They often perform well below chance while confidently hallucinating explanations.<sup class="cref"
-              ><a href="#ref-mmvp"><strong>4</strong></a></sup
+            The symptoms are well-documented. The MMVP benchmark builds pairs of images that are visually distinct yet encoded almost identically by
+            CLIP, and it shows that state-of-the-art MLLMs, GPT-4V among them, fail on strikingly simple questions about those pairs, often scoring
+            below chance while confidently hallucinating explanations.<sup class="cref"
+              ><a href="#ref-mmvp"><strong>5</strong></a></sup
             >
-            Crucially, the failures are <em>systematic</em>. The same visual patterns trip up many different models, which points to a shared cause
-            rather than noise.
+            The failures are <em>systematic</em>: the same visual patterns trip up many different models, which points to a shared cause rather than
+            noise.
           </p>
 
           <p>
-            But is the information simply absent from the encoder, meaning the book was never in the museum, or is it present but unreachable because
-            the book is on a shelf with no route to it? This is the more diagnostic question. Recent work pulls the two apart by training probes
-            directly on features from the visual encoder, from the intermediate projection, and from the language-model output, then comparing them.
-            The finding is sobering. Information that a probe can read off the visual features can nonetheless fail to surface in the model's actual
-            response.<sup class="cref"
-              ><a href="#ref-rws"><strong>5</strong></a></sup
+            But is the information absent from the encoder, so that the book was never in the museum, or present yet unreachable, on a shelf with no
+            route to it? This is the more diagnostic question. Recent work pulls the two apart by training probes directly on features from the visual
+            encoder, from the intermediate projection, and from the language-model output, then comparing what each can recover. The finding is
+            sobering: information a probe can read off the visual features can still fail to surface in the model's response.<sup class="cref">
+              <a href="#ref-rws"><strong>6</strong></a></sup
             >
             The bottleneck, in other words, is often not perception but <em>readout</em>. The book is on a findable shelf, yet a route the training
-            rewarded sends the guide back with the wrong one: the parable's wrong-cover book, a conflation that is learned rather than perceptual, and
-            the case the coverage lock is about.
+            rewarded sends the guide back with the wrong one, the parable's wrong-cover book, a conflation that is learned rather than perceptual.
           </p>
 
           <p>
-            This is why I do not think strong visual question-answering performance is sufficient evidence of modality alignment. The model may have
-            learned the conditional structure needed for answering, routing specific features given a specific question, and that is a genuinely
-            powerful ability. But it is strictly weaker than learning a shared representational structure between vision and language.
+            This dissociation is what the covered-subspace picture predicts. The deployed pipeline carries two covered subspaces, not one: the
+            encoder's, shaped by the caption distribution of contrastive pretraining, and the readout's, shaped by the instruction distribution of
+            tuning. A probe reads the first; the model's answer exposes only the second; and a direction has to fall inside both to make it from
+            pixels to words. Information recoverable by probes yet missing from responses is just what a caption-covered, instruction-uncovered
+            direction should look like. Read this way, the two benchmarks are not the same symptom at all: CLIP-blind pairs are failures of the first
+            coverage, probe-readable but unsaid information of the second. This also answers a fair objection, that the encoder is not NTP-trained at
+            all. True, and its coverage is caption-shaped rather than query-shaped; but the lock governs what the language model can be brought to
+            say, and the argument needs only the readout half to bind.
+          </p>
+
+          <p>
+            This is why I do not think strong visual question-answering performance is sufficient evidence of modality coordination. The model may
+            have learned the conditional structure needed for answering, routing specific features given a specific question, and that is a powerful
+            ability. But it is strictly weaker than learning a shared representational structure between vision and language.
           </p>
         </section>
         <hr />
 
         <section id="ica-reading">
           <h2 class="heading">
-            A nonlinear-ICA reading of language supervision
+            What language supervision can and cannot pin down
             <a class="anchor" href="#ica-reading" aria-label="Link to this heading">#</a>
           </h2>
           <p>
-            A natural objection is that this is merely a data-scaling problem, and that the next-token-prediction (NTP) paradigm itself is not to
-            blame. It is a fair objection, and it is the field's default route. The assumption is that with more diverse data and broader query
-            coverage, we can push the edge outward. Many results do show that scale improves performance, but it does so passively, as a by-product,
-            rather than as something the objective is actively steering toward. To see why the edge never disappears, it helps to read language
-            supervision through the lens of nonlinear independent component analysis (ICA).
+            A natural objection is that this is merely a data-scaling problem, and that the NTP paradigm itself is not to blame. It is a fair
+            objection, and it is the field's default route: the assumption that with more diverse data and broader query coverage we can push the edge
+            outward. Many results do show that scale improves performance, but it does so passively, as a by-product, rather than as something the
+            objective is steering toward. To see why the edge never disappears, it helps to read language supervision through the lens of nonlinear
+            independent component analysis (ICA).
           </p>
 
           <p>
-            Suppose the visual world is generated by nonlinearly mixing a set of latent factors of variation, such as objects, relations, events, and
-            the causal structure among them. An intelligent agent's goal is to recover those latent factors so that it can reason over the recovered
-            states rather than over raw pixels. Under the common belief that the mixing is highly nonlinear, there is a foundational obstacle. Without
-            auxiliary structure, the latent factors are <em>not identifiable</em>. An infinity of equally valid solutions exists, and no amount of
+            Suppose the visual world is generated by nonlinearly mixing a set of latent factors of variation: objects, relations, events, and the
+            causal structure among them. An intelligent agent's goal is to recover those factors, so that it can reason over the recovered states
+            rather than over raw pixels. Here there is a foundational obstacle. Under the common assumption that the mixing is highly nonlinear, the
+            latent factors are <em>not identifiable</em> without auxiliary structure: an infinity of equally valid solutions exists, and no amount of
             unsupervised data singles out the true one.<sup class="cref"
-              ><a href="#ref-hp99"><strong>6</strong></a></sup
+              ><a href="#ref-hp99"><strong>7</strong></a></sup
             >
           </p>
 
+          <figure class="fig-wide" role="group" aria-labelledby="fig4-caption">
+            <img src="cover_lvm.png" alt="The boundary." loading="lazy" decoding="async" width="1600" height="770" />
+            <figcaption id="fig4-caption">
+              The boundary. Left: the structural model over scene, image, query, answer. Right: the query mechanism partitions latent directions; NTP
+              supervises exactly the covered quotient $Z_Q$, and exerts no target-directed force on the complement.
+            </figcaption>
+          </figure>
+
           <p>
-            Now the good news. Language is a highly abstract, disciplined auxiliary signal, and modern identifiability results are precisely about
-            auxiliary variables. If an additional observed variable induces enough variation in the latent distribution, the true factors become
-            recoverable up to simple, benign transformations.<sup class="cref"
-              ><a href="#ref-gcl"><strong>7</strong></a
+            Now the good news. Language is an abstract, disciplined auxiliary signal, and modern identifiability results are precisely about auxiliary
+            variables. If an additional observed variable induces enough variation in the latent distribution, the true factors become recoverable up
+            to simple, benign transformations.<sup class="cref">
+              <a href="#ref-gcl"><strong>8</strong></a
               >,</sup
-            ><sup class="cref"
-              ><a href="#ref-ivae"><strong>8</strong></a></sup
+            ><sup class="cref">
+              <a href="#ref-ivae"><strong>9</strong></a></sup
             >
             By forcing learning to follow language instructions, we push visual representations toward the way we describe and use the visual world.
             It is tempting to conclude that if we gather enough images and ask enough descriptive questions with human-preferred answers, we will
@@ -437,21 +460,19 @@
           </p>
 
           <p>
-            One thing is worth being explicit about first. The identifiability theorems it leans on are proved for a particular object: a
-            latent-variable model with a factorized prior conditioned on the auxiliary, fit by maximum likelihood. A next-token-trained
-            vision-language model is not quite that object; it is a discriminative map from an image and a query to answer tokens. So I am using these
-            results as a <em>lens</em>
-            rather than a theorem; a way of seeing what language supervision can and cannot pin down. Whether the autoregressive objective inherits
-            the same coverage-indexed identifiability is, to my knowledge, genuinely open. Taken as a lens, though, it has a sharp consequence, and
-            that consequence turns on one condition.
+            The identifiability theorems this leans on are proved for a particular object: a latent-variable model with a factorized prior conditioned
+            on the auxiliary, fit by maximum likelihood. A next-token-trained vision-language model is not quite that object; it is a discriminative
+            map from an image and a query to answer tokens. So I am using these results as a <em>lens</em> rather than a theorem, a way of seeing what
+            language supervision can and cannot pin down. Whether the autoregressive objective inherits the same coverage-indexed identifiability is,
+            to my knowledge, open. Taken as a lens, though, it has a sharp consequence, and that consequence turns on one condition.
           </p>
 
           <p>
-            The condition is structural rather than incidental: the identifiability guarantee holds only under what is called a
-            <em>variability condition</em>. The auxiliary signal must induce sufficiently rich, independent variation across every latent direction it
-            is meant to pin down. Language supervision satisfies that condition only over the subspace its queries actually exercise. Call this the
-            <strong>covered subspace</strong>. The shape of the covered subspace is set by the distribution of training queries, not by the richness
-            of the images, and not by the capacity of the encoder.
+            The condition is structural rather than incidental. The identifiability guarantee holds only under what is called a
+            <em>variability condition</em>: the auxiliary signal must induce rich, independent variation across every latent direction it is meant to
+            pin down. Language supervision satisfies that condition only over the subspace its queries actually exercise. Call this the
+            <strong>covered subspace</strong>, the part of the museum the guide has been given routes to. Its shape is set by the distribution of
+            training queries, not by the richness of the images, when supposing the encoder fixed.
           </p>
 
           <p>
@@ -461,61 +482,65 @@
             are <em>under-determined</em>. To see why, notice what the loss can actually feel. It scores the model only on the answer tokens assigned
             to a query, so it depends on a visual direction only insofar as that direction changes the answer distribution on the queries we ask. Take
             a direction that leaves every supported answer unchanged: moving along it moves no prediction, so the loss is not merely insensitive to
-            it—it is flat along it. The gradient is identically zero, not small; there is nothing to vanish, and nothing for more data to sharpen.
-            Scaling steepens a slope where a slope already exists; it cannot manufacture one where the loss is constant by construction.
+            it, it is flat along it. That flatness should be read in the right space. As a statement about the representation it is exact, since the
+            objective supplies no goal-directed gradient along the direction, nothing to vanish and nothing for more data to sharpen. The parameters
+            carrying the direction are another matter; shared weights, regularization, and finite-sample noise all move them. But they move under
+            everything except the task, which is the sense in which the direction is <em>under-determined</em> rather than blank: its fate is decided
+            by forces the queries never see. Scaling steepens a slope where a slope already exists; it cannot manufacture one where the loss is
+            constant by construction.
           </p>
 
           <p>
             The single exception is the hinge of the whole argument. If such a direction happens to correlate with something the queries reward, the
-            loss is no longer flat—but the slope it acquires points toward using the direction as a cheap proxy, not toward recovering it faithfully,
-            and it disappears exactly on the counterfactuals where the correlation breaks. This compounds with the simplicity bias of neural networks: among
-            predictive features the network commits to the simplest sufficient one and leaves the rest under-learned
-            <sup class="cref"
-              ><a href="#ref-sim-bias1"><strong>9</strong></a></sup
-            >, and once the cheap feature suffices the gradient for the alternatives is starved
-            <sup class="cref"
-              ><a href="#ref-sim-bias2"><strong>10</strong></a></sup
-            >. The correlated residual is not pruned as irrelevant; it is retained as a distribution-specific shadow. A genuinely uncorrelated
-            residual has nothing to proxy for; it stays arbitrary, and a competent readout simply ignores it. The harm is therefore specific: it lives
-            on directions that coverage leaves under-determined and that the training distribution happens to make correlated.
+            loss is no longer flat, but the slope it acquires points toward using the direction as a cheap proxy rather than recovering it faithfully,
+            and that slope vanishes on the counterfactuals where the correlation breaks. This compounds with the simplicity bias of neural networks:
+            among predictive features the network commits to the simplest sufficient one and leaves the rest under-learned,<sup class="cref">
+              <a href="#ref-sim-bias1"><strong>10</strong></a></sup
+            >
+            and once the cheap feature suffices, the gradient for the alternatives is starved.<sup class="cref"
+              ><a href="#ref-sim-bias2"><strong>11</strong></a></sup
+            >
+            The correlated residual is not pruned as irrelevant; it is retained as a distribution-specific shadow. An uncorrelated residual has
+            nothing to proxy for, so it stays arbitrary and a competent readout learns to ignore it, though not quite for free, since at finite width
+            unconstrained directions still interfere with constrained ones. But that is a capacity tax, not a learned mistake. The harm is specific:
+            it lives on the directions that coverage leaves under-determined and that the training distribution happens to make correlated.
           </p>
 
           <p>
-            None of this competes with simplicity bias; rather, it sits one level upstream. Simplicity bias takes a correlated feature as a given and
-            predicts that the network will prefer it. Coverage, however, determines which directions are left unconstrained and correlated for that
-            bias to act upon. The defining lever here is the query distribution, not the images. While the traditional spurious-correlation literature
-            locates the culprit within the visual data, the coverage reading shows that you can hold the images and encoder fixed, vary only the
-            questions asked, and watch a direction shift from an identified signal into an exploitable shadow. The fact that a direction's fate hinges
-            entirely on the queries is precisely what makes coverage a structural cause and not a mere co-traveler of simplicity bias.
+            None of this competes with simplicity bias; it sits one level upstream. Simplicity bias takes a correlated feature as given and predicts
+            that the network will prefer it. Coverage decides which directions are left unconstrained and correlated for that preference to act on.
+            The defining lever is the query distribution, not the images. Where the spurious-correlation literature locates the culprit in the visual
+            data, the coverage reading lets you hold the images and the encoder fixed, vary only the questions asked, and watch a direction shift from
+            an identified signal into an exploitable shadow. That a direction's fate hinges on the queries alone is what makes coverage a structural
+            cause rather than a co-traveler of simplicity bias.
           </p>
 
           <p>
-            A small example makes it concrete. Imagine a world with two latent factors, <em>shape</em> and <em>color</em>, correlated in training:
-            round things are red, square things are blue. Now ask only about shape. A model can drive its loss to zero by reading shape; or equally by
-            reading color, which predicts shape perfectly here. Nothing decouples the two, so nothing in the objective prefers the honest solution;
-            color is simply the cheaper route. The tangle surfaces only off-distribution: show a blue <em>round</em> object, ask its shape, and a
-            model that latched onto color answers "square". Color was not pruned as irrelevant; it was <em>retained</em> as a spurious proxy, and it
-            misleads the moment the correlation breaks: a learned mistake waiting for a distribution shift, not a blank to be filled in later.
+            Take a world with two latent factors, <em>shape</em> and <em>color</em>, correlated in training: round things are red, square things are
+            blue. Now ask only about shape. A model can drive its loss to zero by reading shape, or equally by reading color, which predicts shape
+            perfectly here. Nothing decouples the two, so nothing in the objective prefers the honest solution; color is simply the cheaper route. The
+            tangle surfaces only off-distribution: show a blue <em>round</em> object, ask its shape, and a model that latched onto color answers
+            "square". Color was not pruned as irrelevant; it was <em>retained</em> as a spurious proxy, and it misleads the moment the correlation
+            breaks, a learned mistake waiting for a distribution shift rather than a blank to be filled in later.
           </p>
           <figure class="fig-wide" role="group" aria-labelledby="fig-flip-caption">
             <img
               src="coverage_shadow_diagram.svg"
-              alt="Two panels of the same latent space under two query
-            distributions; the color direction is a shadow when only shape is queried and becomes identified when both
-            are queried, while an inert residue is unchanged."
+              alt="Two panels of the same latent space under two query distributions; the
+            color direction is a shadow when only shape is queried and becomes identified when both are queried, while an
+            inert residue is unchanged."
               loading="lazy"
               decoding="async"
               width="960"
               height="460"
             />
             <figcaption id="fig-flip-caption">
-              A conceptual view of the coverage flip. The latent space, image, and encoder are identical in both panels;
-            only the query distribution changes. When only shape is queried (a), color correlates with shape and is
-            retained as a shadow the model leans on, while a direction correlated with nothing stays under-determined
-            and inert. When both are queried (b), color becomes identified; the inert residue does not move. The same
-            direction passes between identified and shadow under a change of queries alone, which is the sense in which
-            coverage is the cause. This is a prediction, not a measurement: the flip is
-            what an intervention probe should reveal if the mechanism is real.
+              A conceptual view of the coverage flip. The latent space, image, and encoder are identical in both panels; only the query distribution
+              changes. When only shape is queried (a), color correlates with shape and is retained as a shadow the model leans on, while a direction
+              correlated with nothing stays under-determined and inert. When both are queried (b), color becomes identified, and the inert residue
+              does not move. The same direction passes between identified and shadow under a change of queries alone, which is the sense in which
+              coverage is the cause. This is a prediction, not a measurement: the flip is what an intervention probe should reveal if the mechanism is
+              real.
             </figcaption>
           </figure>
         </section>
@@ -523,21 +548,21 @@
 
         <section id="coverage-lock">
           <h2 class="heading">
-            The coverage lock: why scaling relocates the boundary
+            The coverage lock: relocated, never removed
             <a class="anchor" href="#coverage-lock" aria-label="Link to this heading">#</a>
           </h2>
           <p>
             A direction can be harmless and still be uncovered. The damage, we saw, lives on the correlated residuals; an uncovered direction that
-            correlates with nothing costs nothing today. But coverage was never a claim about today's accuracy. It is a claim about reach: which
-            directions the queries pin down at all, and what shape the covered subspace takes. An unexercised salience gap is a real loss of coverage
-            even on a day it produces no error, because the question is what the model could be brought to represent, not what it happens to get
-            wrong.
+            correlates with nothing produces no wrong answers today. But coverage was never a claim about today's accuracy. It is a claim about reach:
+            which directions the queries pin down at all, and what shape the covered subspace takes. An unexercised salience gap is a real loss of
+            coverage even on a day it produces no error, because the question is what the model could be brought to represent, not what it happens to
+            get wrong.
           </p>
 
           <p>
-            So why can scaling not simply close this? It can move the boundary, but it cannot remove it. Two forces hold the boundary in place, and
-            both are problems of <em>coverage</em> where the auxiliary signal is too sparse or too biased, meaning they are, in principle, movable by
-            better data:
+            So why can scaling not close this? It can move the boundary, but it cannot remove it. Two forces hold the boundary in place, and both are
+            problems of <em>coverage</em>, where the auxiliary signal is too sparse or too biased, and so both are in principle movable by better
+            data:
           </p>
           <ul class="caveats">
             <li>
@@ -545,29 +570,33 @@
               and therefore silently ignore. The signal is missing not because it is unimportant, but because no one thought to annotate it.
             </li>
             <li>
-              <strong>(M2) Counterfactual scarcity.</strong> There is very little what-if-style annotation in natural corpora. The data documents the
-              world as it is, rarely as it could have been, yet counterfactual structure is exactly what distinguishes a causal factor from a mere
-              correlate.
+              <strong>(M2) Counterfactual scarcity.</strong> There is little what-if annotation in natural corpora. The data documents the world as it
+              is, rarely as it could have been, yet counterfactual structure is what distinguishes a causal factor from a mere correlate.
             </li>
           </ul>
           <p>
-            The field has, to its credit, already noticed some of the limitations. M1 invites ever more careful data curation, cleaning, and
-            annotation. M2 invites synthetic data and augmentation tools that convert observed scenes into new what-if variants, though one might ask
-            whether genuinely <em>intrinsic</em> counterfactuals can be manufactured this way at all.
+            The field has, to its credit, noticed some of this. M1 invites ever more careful data curation, cleaning, and annotation. M2 invites
+            synthetic data and augmentation tools that turn observed scenes into new what-if variants, though one might ask whether genuinely
+            <em>intrinsic</em> counterfactuals can be manufactured this way at all.
           </p>
 
           <p>
-            Notice what the two coverage forces above have in common: both are, in principle, movable by better data, and yet the lock holds anyway.
-            This is what I mean by the <strong>coverage lock</strong>. Two claims meet here, and they live in different likelihoods. The load-bearing
-            one is about the model's own objective: next-token prediction, the conditional likelihood of answer tokens given an image and a query,
-            supplies no goal-directed gradient along answer-irrelevant directions, and that silence is what leaves the residual directions
-            under-determined. The lens adds the second: read through nonlinear ICA, those directions are non-identified latent factors, pinned down
-            only up to a coarsening at fixed query coverage. The harm and the prescription rest on the first; the lens only supplies the name, and
-            whether the autoregressive objective formally inherits its identifiability is, as flagged above, open. So the burden on anyone who wants
-            out of the lock holds whether or not the lens transfers: if the objective is silent along the residual directions, no amount of data
-            spoken in that objective's language will steer them. Change the objective, not just the data.
+            Notice what the two forces have in common: both are, in principle, movable by better data, and yet the lock holds anyway. This is what I
+            mean by the <strong>coverage lock</strong>. Two claims meet here, and they live in different likelihoods. The load-bearing one is about
+            the model's own objective: next-token prediction, the conditional likelihood of answer tokens given an image and a query, supplies no
+            goal-directed gradient along answer-irrelevant directions, and that silence is what leaves the residual directions under-determined. The
+            lens adds the second: read through nonlinear ICA, those directions are non-identified latent factors, pinned down only up to a coarsening
+            at fixed query coverage. The harm and the prescription rest on the first; the lens only supplies the name, and whether the autoregressive
+            objective formally inherits its identifiability is, as flagged above, open. So the burden on anyone who wants out of the lock holds
+            whether or not the lens transfers. At fixed query support the objective is silent along the residual directions, and data spoken in that
+            objective's language helps only by changing the support, by writing queries that exercise a direction nothing previously asked about. That
+            route is open, and M1 and M2 say precisely that it is. But it is a treadmill, and a blind one: by M1 you would already need the map to
+            know which queries are missing, so every expressible gap must be closed by hand, one annotation campaign at a time, with no signal from
+            the objective about where the next gap lies. The lock is not that data cannot move the boundary. It is that the objective cannot tell you
+            where the boundary is, and will not pay you to move it. Change the objective, not just the data.
           </p>
         </section>
+        <hr />
 
         <section id="open-questions">
           <h2 class="heading">
@@ -575,59 +604,77 @@
             <a class="anchor" href="#open-questions" aria-label="Link to this heading">#</a>
           </h2>
           <p>
-            If usefulness is not modality alignment, then the constructive task is to stop reading retrieval as organization. We need to start
-            measuring, and eventually building, the map itself. I do not have these answers, but I think they are some of the more tractable open
-            problems hiding inside the philosophy above. Here is where I would ask:
+            If usefulness is not faithful modality coordination, then the constructive task is to stop reading retrieval as organization, and to start
+            measuring, and eventually building, the map itself. I do not have these answers, but I think they are among the more tractable problems
+            hiding inside the philosophy above. Here is where I would ask.
           </p>
-          <ol class="questions">
+          <ul class="questions">
             <li>
-              <strong>How do we read the geometry inside the LLM?</strong> The thesis of this post is geometric in spirit, framing a covered subspace
-              and an under-determined residue, but I have stated it abstractly. There is now a concrete vocabulary for the internal geometry of
-              language models. Under the linear representation hypothesis, concepts appear as linear directions, categorical concepts as simplices and
-              polytopes, and hierarchical relations as orthogonality between directions.<sup class="cref"
-                ><a href="#ref-geom"><strong>11</strong></a></sup
+              <strong>Q1. How do we read the geometry inside the LLM?</strong> The thesis of this post is geometric in spirit, framing a covered
+              subspace and an under-determined residue, but I have stated it abstractly. There is now a concrete vocabulary for the internal geometry
+              of language models: under the linear representation hypothesis, concepts appear as linear directions, categorical concepts as simplices
+              and polytopes, and hierarchical relations as orthogonality between directions.<sup class="cref"
+                ><a href="#ref-geom"><strong>12</strong></a></sup
               >
               The open question is whether the covered subspace is visible as a geometric object in this internal space, and whether the coverage
-              boundary has a signature, for example, as directions along which no consistent linear readout exists. If modality alignment has a
+              boundary has a signature, for instance as directions along which no consistent linear readout exists. If modality alignment has a
               geometry, we should be able to point to it.
             </li>
+            <br />
             <li>
-              <strong>Can we measure coverage directly?</strong> The idea of a supervised coverage gap should not stay a metaphor. For a given query
-              distribution, can we estimate which visual latent directions are exercised and which are left under-determined? This would turn coverage
-              into a quantity we can compute, compare across datasets, and use to predict where a model will fail before it actually does.
+              <strong>Q2. Can we measure coverage directly?</strong> The idea of a supervised coverage gap should not stay a metaphor. For a given
+              query distribution, can we estimate which visual latent directions are exercised and which are left under-determined? This would turn
+              coverage into a quantity we can compute, compare across datasets, and use to predict where a model will fail before it does. It would
+              also discharge the argument's main empirical debt. The flatness argument above is true largely by construction; the claim that does the
+              real work, and the one I have not shown, is that the residual subspace is non-trivial, high-dimensional enough to matter. That is the
+              assumption everything else leans on, and the measurement proposed here is exactly its test.
             </li>
+            <br />
             <li>
-              <strong>Can we catch spurious retention in the act?</strong> If covered-but-correlated residual directions are retained as
-              distribution-specific shadows, they should betray themselves under intervention. Concretely: take counterfactual image-text pairs that
-              differ only along one such direction and check whether the model's answer changes when it should not, or fails to change when it should.
-              That non-invariance is the fingerprint of a retained shadow. Crucially, this is a diagnostic rather than a training regime, which
-              sidesteps the (M2) worry above: even synthetic edits that are not genuinely <em>intrinsic</em> counterfactuals are enough to expose
-              non-invariance, and gathering data at diagnostic scale costs a fraction of what training-scale coverage would.<sup class="cref">
-                <a href="#ref-dataset"><strong>12</strong></a></sup
+              <strong>Q3. Can we catch spurious retention in the act?</strong> Correlated residuals are directions outside coverage that the training
+              distribution nonetheless ties to covered ones. If these are retained as distribution-specific shadows, they should betray themselves
+              under intervention. Concretely, take counterfactual image-text pairs that differ only along one such direction and check whether the
+              model's answer changes when it should not, or fails to change when it should. That non-invariance is the fingerprint of a retained
+              shadow. This is a diagnostic rather than a training regime, which sidesteps the (M2) worry above: even synthetic edits that are not
+              genuinely <em>intrinsic</em> counterfactuals are enough to expose non-invariance, and gathering data at diagnostic scale costs a
+              fraction of what training-scale coverage would.<sup class="cref">
+                <a href="#ref-dataset"><strong>13</strong></a></sup
               >
               A positive result would convert a theoretical mechanism into a clean, efficient probe without paying the data-scaling bill.
             </li>
+            <br />
             <li>
-              <strong>What lies beyond likelihood?</strong> If NTP supplies no pressure along residual directions, the question is which auxiliary
-              objectives would do so in a principled rather than ad hoc way. Candidates include genuinely interventional, what-if data, reconstruction
+              <strong>Q4. What lies beyond likelihood?</strong> If NTP supplies no pressure along residual directions, the question is which auxiliary
+              objectives would, in a principled rather than ad hoc way. Candidates include genuinely interventional what-if data, reconstruction
               objectives that reward exposing answer-irrelevant structure, and multi-view or contrastive signals that constrain the representation
-              from a second angle. The goal is to expand the covered subspace by design, not just by accumulating more annotation.
+              from a second angle. The goal is to expand the covered subspace by design, not just by accumulating more annotation. One honesty
+              requirement for this program: none of the candidates is coverage-free. Reconstruction is silent about whatever the decoder need not
+              render to score well; multi-view signals constrain only the directions the views actually vary; contrastive pairing inherits the
+              coverage, and the selection biases<sup class="cref">
+                <a href="#ref-selection-bias"><strong>14</strong></a></sup
+              >, of however the pairs were gathered. Coverage is a property of any objective-and-data pair, so the claim here is comparative rather
+              than absolute: NTP's covered subspace is uniquely query-shaped and blind to its own boundary, not that some rival sees everything. The
+              realistic engineering question is composition, which objectives have complementary covered subspaces, so that the union grows exactly
+              where each alone is silent.
             </li>
+            <br />
             <li>
-              <strong>Where is the expressibility frontier, and does it matter?</strong> This is the honest open problem, and it needs stating
+              <strong>Q5. Where is the expressibility frontier, and does it matter?</strong> This is the honest open problem, and it needs stating
               carefully now that harm has been localized. An inexpressible distinction that still correlates with some expressible query is just the
               simplicity-bias hazard above in new dress; one that correlates with nothing is the harmless, arbitrary case. The genuine frontier is the
-              narrower residue that is both unsayable <em>and</em> uncorrelated with anything sayable, and whether that residue is even non-empty is
-              the controversial part. It shades into a philosophical question:
+              narrower residue that is both unsayable
+              <em>and</em>
+              uncorrelated with anything sayable, and whether that residue is even non-empty is the controversial part. It shades into a philosophical
+              question:
               <em>if some information is inexpressible in natural language, is it even useful to a human, or to a human-aligned agent?</em> I lean
-              toward yes. If our ambition is real visual understanding and not merely a strong tool, then the inexpressible residue is exactly where
-              the most interesting structure may hide, which is also why I do not think the question is rhetorical.
+              toward yes. If our ambition is real visual understanding and not merely a strong tool, then the inexpressible residue is where the most
+              interesting structure may hide, which is also why I do not think the question is rhetorical.
             </li>
-          </ol>
+          </ul>
           <p>
-            The tour guide can be excellent for a lifetime and still never hold a map. A strong MLLM can be excellent on every benchmark we have built
-            and still leave vision and language merely <em>routed</em> rather than <em>coordinated</em>. Recognizing the difference is the first step.
-            Measuring it, and then closing it on purpose rather than by accident is, I believe, the real work.
+            The tour guide can be excellent for a lifetime and still never hold a map. A strong MLLM can top every benchmark we have built and still
+            leave vision and language merely <em>routed</em> rather than <em>coordinated</em>. Recognizing the difference is the first step. Measuring
+            it, and then closing it on purpose rather than by accident, is the real work.
           </p>
         </section>
         <hr />
@@ -643,12 +690,18 @@
               Representation Learning. <em>NeurIPS</em>, 2022.
               <a href="https://arxiv.org/abs/2203.02053">arXiv:2203.02053</a>
             </li>
+            <li id="ref-geometry">
+              Y. Cai, Z. Zhang, Y. Liu, and J. Q. Shi. The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic
+              Dispersion, and Cross-modal Divergence. <em>ICML</em>, 2026.
+              <a href="https://arxiv.org/abs/2601.19597">arXiv:2601.19597</a>
+            </li>
             <li id="ref-llava">
               H. Liu, C. Li, Q. Wu, and Y. J. Lee. Visual Instruction Tuning. <em>NeurIPS</em>, 2023.
               <a href="https://arxiv.org/abs/2304.08485">arXiv:2304.08485</a>
             </li>
             <li id="ref-honeybee">
-              J. Cha, W. Kang, J. Mun, and B. Roh. Honeybee: Locality-enhanced Projector for Multimodal LLM. <em>CVPR</em>, 2024.
+              J. Cha, W. Kang, J. Mun, and B. Roh. Honeybee: Locality-enhanced Projector for Multimodal LLM.
+              <em>CVPR</em>, 2024.
               <a href="https://arxiv.org/abs/2312.06742">arXiv:2312.06742</a>
             </li>
             <li id="ref-mmvp">
@@ -693,6 +746,11 @@
             <li id="ref-dataset">
               T. Le, V. Lal, and P. Howard. COCO-Counterfactuals: Automatically Constructed Counterfactual Examples for Image-Text Pairs.
               <em>NeurIPS</em>, 2023. <a href="https://arxiv.org/abs/2309.14356">arXiv:2309.14356</a>
+            </li>
+            <li id="ref-selection-bias">
+              Y. Cai, Y. Liu, E. Gao, T. Jiang, Z. Zhang, A. van den Hengel, and J. Q. Shi. On the Value of Cross-Modal Misalignment in Multimodal
+              Representation Learning.
+              <em>NeurIPS</em>, 2025. <a href="https://arxiv.org/abs/2504.10143">arXiv:2504.10143</a>
             </li>
           </ol>
         </section>
