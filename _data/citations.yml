@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-06-01'
+  last_updated: '2026-06-17'
 papers:
   nNp0nL4AAAAJ:KlAtU1dfN6UC:
     citations: 7
@@ -14,7 +14,7 @@ papers:
     title: What Makes a Representation Good for Single-Cell Perturbation Prediction?
     year: '2026'
   nNp0nL4AAAAJ:hqOjcs7Dif8C:
-    citations: 19
+    citations: 20
     title: 'CLAP: Isolating Content from Style Through Contrastive Learning with Augmented Prompts'
     year: '2024'
   nNp0nL4AAAAJ:qxL8FJ1GzNcC:
