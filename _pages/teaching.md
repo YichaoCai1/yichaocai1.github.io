@@ -14,19 +14,19 @@ All at Adelaide University (formerly The University of Adelaide).
 <ul class="cv-list">
   <li>
     <span class="cv-date">Semester 1, 2026</span>
-    <span class="cv-detail"><strong>Teaching Assistant</strong> &mdash; Neural Networks and Deep Learning (ARTI&nbsp;X300)</span>
+    <span class="cv-detail"><strong>Teaching Assistant</strong>, Neural Networks and Deep Learning (ARTI&nbsp;X300)</span>
   </li>
   <li>
     <span class="cv-date">Semester 2, 2025</span>
-    <span class="cv-detail"><strong>Guest Lecturer &amp; Head Tutor</strong> &mdash; Statistical Machine Learning (COMP&nbsp;SCI&nbsp;3314). <a href="{{ '/assets/pdf/vision-language-modeling-lecture.pdf' | relative_url }}">Guest lecture slides</a>.</span>
+    <span class="cv-detail"><strong>Guest Lecturer &amp; Head Tutor</strong>, Statistical Machine Learning (COMP&nbsp;SCI&nbsp;3314). <a href="{{ '/assets/pdf/vision-language-modeling-lecture.pdf' | relative_url }}">Guest lecture slides</a>.</span>
   </li>
   <li>
     <span class="cv-date">Trimester 2, 2025</span>
-    <span class="cv-detail"><strong>Teaching Assistant</strong> &mdash; Using Machine Learning Tools (COMP&nbsp;SCI&nbsp;7317)</span>
+    <span class="cv-detail"><strong>Teaching Assistant</strong>, Using Machine Learning Tools (COMP&nbsp;SCI&nbsp;7317)</span>
   </li>
   <li>
     <span class="cv-date">Semester 1, 2025</span>
-    <span class="cv-detail"><strong>Teaching Assistant</strong> &mdash; Concepts in AI and ML (COMP&nbsp;SCI&nbsp;7327)</span>
+    <span class="cv-detail"><strong>Teaching Assistant</strong>, Concepts in AI and ML (COMP&nbsp;SCI&nbsp;7327)</span>
   </li>
 </ul>
 
@@ -37,7 +37,7 @@ All at Adelaide University (formerly The University of Adelaide).
 **Conference Reviewer**
 
 - International Conference on Learning Representations (ICLR) 2026
-- International Conference on Machine Learning (ICML) 2026 &mdash; _Silver Reviewer Award_
+- International Conference on Machine Learning (ICML) 2026, _Silver Reviewer Award_
 - Conference on Neural Information Processing Systems (NeurIPS) 2026
 
 **Journal Reviewer**

@@ -7,7 +7,7 @@ subtitle: Understanding the structure and identifiability of learned representat
 profile:
   align: right
   image: prof_pic.png
-  image_circular: true # crops the image to make it circular
+  image_circular: false # use a rounded-square profile frame
   more_info: >
     <p>yichao.cai@adelaide.edu.au</p>
 
@@ -27,7 +27,7 @@ latest_posts:
 
 I am a PhD student in Computer Science at the [Australian Institute for Machine Learning (AIML)](https://www.adelaide.edu.au/aiml/), [Adelaide University](https://www.adelaide.edu.au/), advised by Prof. [Javen Qinfeng Shi](http://javenshi.org/).
 
-My research examines how supervision—particularly language supervision—shapes learned representations and under what conditions the resulting representations identify latent structure. In particular, I investigate the equivalence classes of representations induced by learning objectives, how cross-modal supervision shapes the geometry of vision-language models, and how learned representations relate to human-interpretable concepts.
+My research examines how supervision, particularly language supervision, shapes learned representations and under what conditions the resulting representations identify latent structure. In particular, I investigate the equivalence classes of representations induced by learning objectives, how cross-modal supervision shapes the geometry of vision-language models, and how learned representations relate to human-interpretable concepts.
 
 <!-- Using tools from identifiability theory, latent-variable modeling, and representation geometry, I study whether modern learning objectives recover meaningful structure beyond what is required for predictive performance. -->
 
