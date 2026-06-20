@@ -9,10 +9,9 @@ profile:
   image: prof_pic.png
   image_circular: true # crops the image to make it circular
   more_info: >
-    <p>Adelaide, Australia</p>
     <p>yichao.cai@adelaide.edu.au</p>
 
-selected_papers: true # includes a list of papers marked as "selected={true}"
+research: true # includes all publications; selected entries are highlighted
 social: false # social icons are in the top nav bar instead
 
 announcements:
@@ -26,10 +25,10 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a third-year Ph.D. student in Computer Science at the [Australian Institute for Machine Learning (AIML)](https://www.adelaide.edu.au/aiml/), [Adelaide University](https://www.adelaide.edu.au/), advised by Prof. [Javen Qinfeng Shi](http://javenshi.org/).
+I am a PhD student in Computer Science at the [Australian Institute for Machine Learning (AIML)](https://www.adelaide.edu.au/aiml/), [Adelaide University](https://www.adelaide.edu.au/), advised by Prof. [Javen Qinfeng Shi](http://javenshi.org/).
 
-My research studies what representations learn from supervision—particularly language supervision—and when such learning leads to identifiable latent structure.
+My research examines how supervision—particularly language supervision—shapes learned representations and under what conditions the resulting representations identify latent structure. In particular, I investigate the equivalence classes of representations induced by learning objectives, how cross-modal supervision shapes the geometry of vision-language models, and how learned representations relate to human-interpretable concepts.
 
-I work on understanding when modern learning objectives recover latent structure beyond predictive performance, using tools from identifiability theory, latent-variable modeling, and representation geometry. In particular, I study the equivalence classes of representations induced by learning objectives, and how cross-modal supervision shapes the geometry of vision-language models. I am also interested in how these learned representations relate to human-interpretable concepts.
+<!-- Using tools from identifiability theory, latent-variable modeling, and representation geometry, I study whether modern learning objectives recover meaningful structure beyond what is required for predictive performance. -->
 
-I received my M.Sc. and B.Eng. degrees from Wuhan University of Technology, and spent five months as a visiting student researcher at California PATH, UC Berkeley.
+I received my M.Sc. and B.Eng. degrees from Wuhan University of Technology and spent five months as a visiting student researcher at California PATH, UC Berkeley.

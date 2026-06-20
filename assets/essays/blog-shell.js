@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <div class="site-top-nav-links">
         <a href="/">Home</a>
         <a class="active" href="/blog/">Blog</a>
-        <a href="/publications/">Publications</a> <a href="/teaching/">Teaching &amp; Service</a>
+        <a href="/#research">Research</a> <a href="/teaching/">Teaching &amp; Service</a>
       </div>
     </div>
   `;
