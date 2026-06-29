@@ -1,8 +1,12 @@
 metadata:
-  last_updated: '2026-06-17'
+  last_updated: '2026-06-29'
 papers:
+  nNp0nL4AAAAJ:9ZlFYXVOiuMC:
+    citations: 0
+    title: Boundary Embedding Shaping with Adaptive Contrastive Learning for Graph Structural Disentanglement
+    year: '2026'
   nNp0nL4AAAAJ:KlAtU1dfN6UC:
-    citations: 7
+    citations: 9
     title: On the Value of Cross-Modal Misalignment in Multimodal Representation Learning
     year: '2025'
   nNp0nL4AAAAJ:ULOm3_A8WrAC:
