@@ -1,9 +1,48 @@
 <header>
+  {% assign current_lang = page.lang | default: site.lang | default: 'en' %}
+  {% assign current_is_zh = false %}
+  {% if current_lang == 'zh' or current_lang == 'zh-CN' or current_lang == 'cn' %}
+    {% assign current_is_zh = true %}
+  {% endif %}
+  {% assign cv_pdf = site.data.socials.cv_pdf | default: '/assets/pdf/yichaocai_cv.pdf' %}
+  {% if current_is_zh %}
+    {% assign cv_pdf = '/assets/pdf/yichaocai_cv_chinese.pdf' %}
+  {% endif %}
   <!-- Nav Bar -->
   <nav id="navbar" class="navbar navbar-light navbar-expand-sm {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}" role="navigation">
     <div class="container">
       <!-- Social icons on the left of the nav bar (shown on all pages) -->
-      <div class="navbar-brand social">{% social_links %}</div>
+      <div class="navbar-brand social">
+        {% if site.data.socials.email %}
+          <a href="mailto:{{ site.data.socials.email | encode_email }}" title="Email"><i class="fa-solid fa-envelope"></i></a>
+        {% endif %}
+        {% if site.data.socials.scholar_userid %}
+          <a
+            href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}"
+            title="Google Scholar"
+            rel="external nofollow noopener"
+            target="_blank"
+            ><i class="ai ai-google-scholar"></i
+          ></a>
+        {% endif %}
+        {% if site.data.socials.github_username %}
+          <a href="https://github.com/{{ site.data.socials.github_username }}" title="GitHub" rel="external nofollow noopener" target="_blank"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+        {% endif %}
+        {% if site.data.socials.linkedin_username %}
+          <a
+            href="https://www.linkedin.com/in/{{ site.data.socials.linkedin_username }}"
+            title="LinkedIn"
+            rel="external nofollow noopener"
+            target="_blank"
+            ><i class="fa-brands fa-linkedin"></i
+          ></a>
+        {% endif %}
+        {% if cv_pdf %}
+          <a href="{{ cv_pdf | relative_url }}" title="{% if current_is_zh %}中文简历{% else %}CV{% endif %}"><i class="ai ai-cv"></i></a>
+        {% endif %}
+      </div>
       <!-- Navbar Toggle -->
       <button
         class="navbar-toggler collapsed ml-auto"
@@ -22,15 +61,25 @@
 
       <div class="collapse navbar-collapse text-right" id="navbarNav">
         <ul class="navbar-nav ml-auto flex-nowrap">
-          {% for page in site.pages %}
-            {% if page.permalink == '/' %} {% assign about_title = page.title %} {% endif %}
+          {% for candidate_page in site.pages %}
+            {% if candidate_page.permalink == '/' %} {% assign about_title = candidate_page.title %} {% endif %}
           {% endfor %}
+          {% assign about_label = about_title %}
+          {% assign about_url = '/' %}
+          {% if current_is_zh %}
+            {% assign about_label = '关于' %}
+            {% assign about_url = '/zh/' %}
+          {% endif %}
+          {% assign about_active = false %}
+          {% if page.permalink == '/' or page.permalink == '/zh/' %}
+            {% assign about_active = true %}
+          {% endif %}
 
           <!-- About -->
-          <li class="nav-item {% if page.permalink == '/' %}active{% endif %}">
-            <a class="nav-link" href="{{ '/' | relative_url }}">
-              {{- about_title }}
-              {% if page.permalink == '/' %}
+          <li class="nav-item {% if about_active %}active{% endif %}">
+            <a class="nav-link" href="{{ about_url | relative_url }}">
+              {{- about_label }}
+              {% if about_active %}
                 <span class="sr-only">(current)</span>
               {% endif %}
             </a>
@@ -79,17 +128,29 @@
                 </li>
               {% else %}
                 {% assign parent_link = p.permalink | remove: 'index.html' %}
-                <li class="nav-item {% if page.url contains parent_link %}active{% endif %}">
-                  {%- if p.permalink contains '://' -%}
-                    {%- assign url = p.permalink -%}
-                  {%- elsif p.permalink contains '/blog/' -%}
-                    {%- assign url = '/blog/' -%}
-                  {%- else -%}
-                    {%- assign url = p.url -%}
-                  {%- endif %}
+                {% assign nav_title = p.title %}
+                {% assign nav_item_active = false %}
+                {% if page.url contains parent_link %}
+                  {% assign nav_item_active = true %}
+                {% endif %}
+                {%- if p.permalink contains '://' -%}
+                  {%- assign url = p.permalink -%}
+                {%- elsif p.permalink contains '/blog/' -%}
+                  {%- assign url = '/blog/' -%}
+                {%- else -%}
+                  {%- assign url = p.url -%}
+                {%- endif %}
+                {% if current_is_zh and p.title == 'Blog' %}
+                  {% assign nav_title = '博客' %}
+                  {% assign url = '/zh/blog/' %}
+                  {% if page.url contains '/zh/blog/' %}
+                    {% assign nav_item_active = true %}
+                  {% endif %}
+                {% endif %}
+                <li class="nav-item {% if nav_item_active %}active{% endif %}">
                   <a class="nav-link" href="{{ url | relative_url }}">
-                    {{- p.title }}
-                    {% if page.url contains p.url %}
+                    {{- nav_title }}
+                    {% if nav_item_active %}
                       <span class="sr-only">(current)</span>
                     {% endif %}
                   </a>
@@ -97,6 +158,27 @@
               {% endif %}
             {% endif %}
           {% endfor %}
+          {% assign lang_en_url = page.lang_en_url | default: '/' %}
+          {% assign lang_zh_url = page.lang_zh_url | default: '/zh/' %}
+          {% if current_is_zh %}
+            {% assign lang_switch_url = lang_en_url %}
+            {% assign lang_switch_label = 'EN' %}
+            {% assign lang_switch_title = 'Switch to English' %}
+          {% else %}
+            {% assign lang_switch_url = lang_zh_url %}
+            {% assign lang_switch_label = '中' %}
+            {% assign lang_switch_title = '切换到中文' %}
+          {% endif %}
+          <li class="nav-item language-switcher {% if current_is_zh %}is-zh{% else %}is-en{% endif %}">
+            <a
+              class="nav-link language-switch-button"
+              href="{{ lang_switch_url | relative_url }}"
+              title="{{ lang_switch_title }}"
+              aria-label="{{ lang_switch_title }}"
+            >
+              <span>{{ lang_switch_label }}</span>
+            </a>
+          </li>
           {% if site.search_enabled %}
             <!-- Search -->
             <li class="nav-item">

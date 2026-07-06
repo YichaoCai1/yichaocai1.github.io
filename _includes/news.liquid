@@ -1,5 +1,10 @@
 <div class="news">
   {% if site.news != blank %}
+    {% assign current_lang = page.lang | default: site.lang | default: 'en' %}
+    {% assign current_is_zh = false %}
+    {% if current_lang == 'zh' or current_lang == 'zh-CN' or current_lang == 'cn' %}
+      {% assign current_is_zh = true %}
+    {% endif %}
     {% assign news_size = site.news | size %}
     <div
       class="table-responsive"
@@ -16,12 +21,26 @@
         {% endif %}
         {% for item in news limit: news_limit %}
           <tr>
-            <th scope="row" style="width: 20%">{{ item.date | date: '%b %d, %Y' }}</th>
+            <th scope="row" style="width: 20%">
+              {% if current_is_zh %}
+                {{ item.date | date: '%Y年%m月%d日' }}
+              {% else %}
+                {{ item.date | date: '%b %d, %Y' }}
+              {% endif %}
+            </th>
             <td>
               {% if item.inline %}
-                {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
+                {% if current_is_zh and item.content_zh %}
+                  {{ item.content_zh | markdownify | remove: '<p>' | remove: '</p>' | emojify }}
+                {% else %}
+                  {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
+                {% endif %}
               {% else %}
-                <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+                {% assign news_title = item.title %}
+                {% if current_is_zh and item.title_zh %}
+                  {% assign news_title = item.title_zh %}
+                {% endif %}
+                <a class="news-title" href="{{ item.url | relative_url }}">{{ news_title }}</a>
               {% endif %}
             </td>
           </tr>

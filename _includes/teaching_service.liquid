@@ -1,37 +1,81 @@
-<h2 id="teaching">Teaching</h2>
+{% assign current_lang = page.lang | default: site.lang | default: 'en' %}
+{% assign current_is_zh = false %}
+{% if current_lang == 'zh' or current_lang == 'zh-CN' or current_lang == 'cn' %}
+  {% assign current_is_zh = true %}
+{% endif %}
 
-<p>At Adelaide University (formerly The University of Adelaide):</p>
+<h2 id="teaching">
+  {% if current_is_zh %}教学{% else %}Teaching{% endif %}
+</h2>
+
+<p>
+  {% if current_is_zh %}
+    在阿德莱德大学（前身为 The University of Adelaide）：
+  {% else %}
+    At Adelaide University (formerly The University of Adelaide):
+  {% endif %}
+</p>
 
 <ul class="cv-list">
   <li>
     <span class="cv-date">Semester 1, 2026</span>
-    <span class="cv-detail">Teaching Assistant, Neural Networks and Deep Learning (ARTI&nbsp;X300)</span>
+    <span class="cv-detail">
+      {% if current_is_zh %}
+        助教，Neural Networks and Deep Learning (ARTI&nbsp;X300)
+      {% else %}
+        Teaching Assistant, Neural Networks and Deep Learning (ARTI&nbsp;X300)
+      {% endif %}
+    </span>
   </li>
   <li>
     <span class="cv-date">Semester 2, 2025</span>
-    <span class="cv-detail">Guest Lecturer &amp; Head Tutor, Statistical Machine Learning (COMP&nbsp;SCI&nbsp;3314).</span>
+    <span class="cv-detail">
+      {% if current_is_zh %}
+        特邀讲师与课程主助教，Statistical Machine Learning (COMP&nbsp;SCI&nbsp;3314)
+      {% else %}
+        Guest Lecturer &amp; Head Tutor, Statistical Machine Learning (COMP&nbsp;SCI&nbsp;3314).
+      {% endif %}
+    </span>
   </li>
   <li>
     <span class="cv-date">Trimester 2, 2025</span>
-    <span class="cv-detail">Teaching Assistant, Using Machine Learning Tools (COMP&nbsp;SCI&nbsp;7317)</span>
+    <span class="cv-detail">
+      {% if current_is_zh %}
+        助教，Using Machine Learning Tools (COMP&nbsp;SCI&nbsp;7317)
+      {% else %}
+        Teaching Assistant, Using Machine Learning Tools (COMP&nbsp;SCI&nbsp;7317)
+      {% endif %}
+    </span>
   </li>
   <li>
     <span class="cv-date">Semester 1, 2025</span>
-    <span class="cv-detail">Teaching Assistant, Concepts in AI and ML (COMP&nbsp;SCI&nbsp;7327)</span>
+    <span class="cv-detail">
+      {% if current_is_zh %}
+        助教，Concepts in AI and ML (COMP&nbsp;SCI&nbsp;7327)
+      {% else %}
+        Teaching Assistant, Concepts in AI and ML (COMP&nbsp;SCI&nbsp;7327)
+      {% endif %}
+    </span>
   </li>
 </ul>
 
-<h2 id="academic-service">Academic Service</h2>
+<h2 id="academic-service">
+  {% if current_is_zh %}学术服务{% else %}Academic Service{% endif %}
+</h2>
 
 <div class="service-block">
-  <p>Conference Reviewer:</p>
+  <p>
+    {% if current_is_zh %}会议审稿人：{% else %}Conference Reviewer:{% endif %}
+  </p>
   <ul>
     <li>International Conference on Learning Representations (ICLR) 2026</li>
     <li>International Conference on Machine Learning (ICML) 2026, <em>Silver Reviewer Award</em></li>
     <li>Conference on Neural Information Processing Systems (NeurIPS) 2026</li>
   </ul>
 
-  <p>Journal Reviewer:</p>
+  <p>
+    {% if current_is_zh %}期刊审稿人：{% else %}Journal Reviewer:{% endif %}
+  </p>
   <ul>
     <li>Transactions on Machine Learning Research (TMLR)</li>
   </ul>

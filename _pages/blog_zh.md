@@ -1,12 +1,11 @@
 ---
 layout: default
-permalink: /blog/
-title: Blog
-lang: en
+permalink: /zh/blog/
+title: 博客
+lang: zh
 lang_en_url: /blog/
 lang_zh_url: /zh/blog/
-nav: true
-nav_order: 1
+nav: false
 pagination:
   enabled: true
   collection: posts
@@ -17,18 +16,22 @@ pagination:
   trail:
     before: 1 # The number of links before the current page
     after: 3 # The number of links after the current page
+blog_name: 博客
+blog_description: Essays and notes on machine learning, representation learning, and adjacent ideas.
 ---
 
 <div class="post">
 
-{% assign blog_name_size = site.blog_name | size %}
-{% assign blog_description_size = site.blog_description | size %}
+{% assign blog_name = page.blog_name | default: site.blog_name %}
+{% assign blog_description = page.blog_description | default: site.blog_description %}
+{% assign blog_name_size = blog_name | size %}
+{% assign blog_description_size = blog_description | size %}
 
 {% if blog_name_size > 0 or blog_description_size > 0 %}
 
   <div class="header-bar">
-    <h1>{{ site.blog_name }}</h1>
-    <h2>{{ site.blog_description }}</h2>
+    <h1>{{ blog_name }}</h1>
+    <h2>{{ blog_description }}</h2>
   </div>
   {% endif %}
 

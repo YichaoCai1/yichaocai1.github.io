@@ -2,6 +2,9 @@
 layout: about
 title: About
 permalink: /
+lang: en
+lang_en_url: /
+lang_zh_url: /zh/
 subtitle: Understanding the structure and identifiability of learned representations.
 
 profile:
@@ -26,8 +29,8 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a PhD student in Computer Science at the [Australian Institute for Machine Learning (AIML)](https://www.adelaide.edu.au/aiml/), [Adelaide University](https://www.adelaide.edu.au/), advised by Prof. [Javen Qinfeng Shi](http://javenshi.org/).
+I am a PhD student in Computer Science at the [Australian Institute for Machine Learning (AIML)](https://www.adelaide.edu.au/aiml/), [Adelaide University](https://www.adelaide.edu.au/), advised by Prof. [Javen Qinfeng Shi](http://javenshi.org/). I received my M.Sc. and B.Eng. degrees from Wuhan University of Technology and spent five months as a visiting student researcher at California PATH, UC Berkeley.
 
-My research studies how learning objectives and supervision signals shape learned representations. I am particularly interested in when representations can identify latent structure, how different objectives define equivalence classes of representations, and how predictive learning and cross-modal supervision organize representation geometry. More broadly, I aim to understand how learned representations relate to human-interpretable concepts.
+My research studies how modern learning objectives and supervision signals shape learned representations. I am particularly interested in when objectives such as contrastive learning, masked prediction, and next-token prediction identify latent structure, and when they instead discard, conflate, or leave such structure underdetermined. Understanding these questions helps characterize the theoretical limits of foundation-model objectives, and distinguish which capabilities may emerge through scaling from which limitations require new objectives, supervision forms, or data interventions.
 
-I received my M.Sc. and B.Eng. degrees from Wuhan University of Technology and spent five months as a visiting student researcher at California PATH, UC Berkeley.
+Methodologically, I use tools from identifiability theory, latent-variable modeling, population-objective analysis, and representation geometry. My broader goal is to develop a theory of representation learning that explains the capabilities and structural limits of multimodal foundation models, vision-language models, and predictive world models.

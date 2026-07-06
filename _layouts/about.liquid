@@ -1,10 +1,18 @@
 ---
 layout: default
 ---
+{% capture default_publication_note %}Selected publications are <span class="publication-note-highlight">highlighted</span>.{% endcapture %}
+{% assign news_heading = page.news_heading | default: 'News' %}
+{% assign latest_posts_heading = page.latest_posts_heading | default: 'latest posts' %}
+{% assign research_heading = page.research_heading | default: 'Research' %}
+{% assign publication_note = page.publication_note | default: default_publication_note %}
+{% assign display_name = page.display_name %}
 <div class="post">
   <header class="post-header">
     <h1 class="post-title">
-      {% if site.title == 'blank' %}
+      {% if display_name %}
+        {{ display_name }}
+      {% elsif site.title == 'blank' %}
         <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
         {{ site.last_name }}
       {% else %}
@@ -42,22 +50,22 @@ layout: default
 
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
-      <h2>News</h2>
+      <h2>{{ news_heading }}</h2>
       {% include news.liquid limit=true %}
     {% endif %}
 
     <!-- Latest posts -->
     {% if page.latest_posts and page.latest_posts.enabled %}
       <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
+        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">{{ latest_posts_heading }}</a>
       </h2>
       {% include latest_posts.liquid %}
     {% endif %}
 
     <!-- Research -->
     {% if page.research %}
-      <h2 id="research" class="research-heading">Research</h2>
-      <p class="publication-note">Selected publications are <span class="publication-note-highlight">highlighted</span>.</p>
+      <h2 id="research" class="research-heading">{{ research_heading }}</h2>
+      <p class="publication-note">{{ publication_note }}</p>
       {% include research_publications.liquid %}
     {% endif %}
 
