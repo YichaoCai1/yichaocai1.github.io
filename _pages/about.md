@@ -12,6 +12,7 @@ profile:
     <p>yichao.cai@adelaide.edu.au</p>
 
 research: true # includes all publications; selected entries are highlighted
+teaching_service: true # adds teaching and academic service below publications
 social: false # social icons are in the top nav bar instead
 
 announcements:
@@ -27,8 +28,6 @@ latest_posts:
 
 I am a PhD student in Computer Science at the [Australian Institute for Machine Learning (AIML)](https://www.adelaide.edu.au/aiml/), [Adelaide University](https://www.adelaide.edu.au/), advised by Prof. [Javen Qinfeng Shi](http://javenshi.org/).
 
-My research examines how supervision, particularly language supervision, shapes learned representations and under what conditions the resulting representations identify latent structure. In particular, I investigate the equivalence classes of representations induced by learning objectives, how cross-modal supervision shapes the geometry of vision-language models, and how learned representations relate to human-interpretable concepts.
-
-<!-- Using tools from identifiability theory, latent-variable modeling, and representation geometry, I study whether modern learning objectives recover meaningful structure beyond what is required for predictive performance. -->
+My research studies how learning objectives and supervision signals shape learned representations. I am particularly interested in when representations can identify latent structure, how different objectives define equivalence classes of representations, and how predictive learning and cross-modal supervision organize representation geometry. More broadly, I aim to understand how learned representations relate to human-interpretable concepts.
 
 I received my M.Sc. and B.Eng. degrees from Wuhan University of Technology and spent five months as a visiting student researcher at California PATH, UC Berkeley.
