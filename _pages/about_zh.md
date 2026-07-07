@@ -14,7 +14,6 @@ profile:
   image_circular: false # use a rounded-square profile frame
   more_info: >
     <p>yichao.cai@adelaide.edu.au</p>
-    <p><a href="/assets/pdf/yichaocai_cv_chinese.pdf">中文简历</a></p>
 
 research: true # includes all publications; selected entries are highlighted
 teaching_service: true # adds teaching and academic service below publications

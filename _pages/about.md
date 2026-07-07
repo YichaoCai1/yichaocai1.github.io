@@ -5,7 +5,7 @@ permalink: /
 lang: en
 lang_en_url: /
 lang_zh_url: /zh/
-subtitle: Understanding how learning objectives shape representations.
+subtitle: Understanding how learning objectives shapes the representations.
 
 profile:
   align: right
