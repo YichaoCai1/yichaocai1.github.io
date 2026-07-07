@@ -5,7 +5,7 @@ permalink: /
 lang: en
 lang_en_url: /
 lang_zh_url: /zh/
-subtitle: Understanding the structure and identifiability of learned representations.
+subtitle: Understanding how learning objectives shape representations.
 
 profile:
   align: right
