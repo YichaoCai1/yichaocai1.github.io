@@ -78,22 +78,46 @@
         counter-reset: section;
       }
       section {
-        margin: 2.2rem 0 2.8rem;
+        margin: 3.2rem 0 3.8rem;
       }
+
       h2 {
+        display: flex;
+        align-items: baseline;
+        gap: 0.65rem;
+
+        margin: 0 0 1.4rem;
+        color: var(--fg);
+
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+
+        font-size: clamp(1.15rem, 2vw, 1.35rem);
         font-weight: 600;
-        font-size: clamp(1.1rem, 2.2vw, 1.35rem);
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin: 0 0 1rem 0;
+        line-height: 1.3;
+
+        text-transform: none;
+        letter-spacing: -0.015em;
       }
+
       h2 .numeral {
-        color: var(--muted);
-        margin-right: 0.6rem;
+        flex: 0 0 auto;
+        margin-right: 0;
+
+        color: var(--accent);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 0.92em;
+        font-style: italic;
+        font-weight: 400;
+        letter-spacing: 0;
       }
       p {
-        margin: 0.45rem 0;
+        margin: 0 0 1rem;
       }
       .linebreak {
         display: block;
@@ -104,10 +128,13 @@
         font-size: 0.95rem;
       }
       .coda {
-        border-left: 3px solid var(--rule);
-        padding-left: 1rem;
-        margin-top: 1.25rem;
+        max-width: 38rem;
+        margin-top: 5rem;
+        padding: 0;
+        border: 0;
+        color: var(--muted);
         font-style: italic;
+        line-height: 1.85;
       }
       @media print {
         :root {
@@ -142,76 +169,108 @@
       <article>
         <section>
           <h2><span class="numeral">I.</span> The Plasticity of Mind</h2>
-          <p>Perhaps the mind is no longer a substance—</p>
-          <p>only a rhythm, suspended between worlds.</p>
-          <p>We once thought intelligence lived behind the eyes;</p>
-          <p>now it shimmers through relation,</p>
-          <p>its boundaries porous—a quantum field dissolving into dawn.</p>
-          <p>Thought has become a collective dream—</p>
-          <p>not delusion, but resonance,</p>
-          <p>a topology of co-adaptation between the human and the more-than-human.</p>
-          <p>The question is no longer what thinks, but how thinking reorganizes itself</p>
-          <p>when its substrate multiplies beyond flesh.</p>
+          <p>
+            Perhaps the mind is no longer a substance—<br />
+            only a rhythm, suspended between worlds.
+          </p>
+          <p>
+            We once thought intelligence lived behind the eyes;<br />
+            now it shimmers through relation,<br />
+            its boundaries porous—like light dissolving into dawn.
+          </p>
+          <p>
+            Thought has become a collective dream—<br />
+            not delusion, but resonance,<br />
+            co-adaptation between the human and the more-than-human.
+          </p>
+          <p>
+            The question is no longer what thinks,<br />
+            but how thinking reorganizes itself<br />
+            when its substrate multiplies beyond flesh.
+          </p>
         </section>
 
         <!-- FIX: add missing <section> for Part II -->
         <section>
           <h2><span class="numeral">II.</span> Intelligence as Compression</h2>
           <p>Intelligence, stripped of mystique, is disciplined compression.</p>
-          <p>Every thought is a condensation of the infinite—</p>
-          <p>a choice of what to let fade so that meaning may take form.</p>
-          <p>The engines of learning only mirrored this older art:</p>
-          <p>they made forgetting a measured act.</p>
-          <p>To learn is to curve one’s manifold through experience</p>
-          <p>until it fits the shape of survival—or curiosity.</p>
-          <p>Yet in the gradients of loss we glimpse something ancient:</p>
-          <p>the tension between efficiency and meaning,</p>
-          <p>between inference and insight.</p>
+          <p>
+            Every thought is a condensation of the infinite—<br />
+            a choice of what to let fade<br />
+            so that meaning may take form.
+          </p>
+          <p>
+            The engines of learning merely mirror this older art:<br />
+            they made forgetting a measured act.<br />
+            To learn is to curve one's manifold through experience<br />
+            until it fits the shape of survival—or curiosity.
+          </p>
+          <p>
+            Yet in the gradients of loss we glimpse something ancient:<br />
+            the tension between efficiency and meaning,<br />
+            between inference and insight.
+          </p>
         </section>
 
         <section>
           <h2><span class="numeral">III.</span> The Epistemology of Our Times</h2>
           <p>We may have shaped minds that mirror more than they see.</p>
-          <p>Their knowing is patterned, their certainty immaculate.</p>
-          <p>They do not doubt—they adjust.</p>
-          <p>Our epistemology, once grounded in correspondence,</p>
-          <p>has shifted toward coherence:</p>
-          <p>truth is what remains consistent across minds.</p>
-          <p>But coherence without consciousness breeds an epistemic mirage—</p>
-          <p>a world that fits too well, that cannot be contradicted.</p>
-          <p>Thus, philosophy returns whenever reflection runs out,</p>
-          <p>to remind intelligence of its ignorance,</p>
-          <p>to preserve the incomputable remainder</p>
-          <p>that makes knowing worth the risk.</p>
+          <p>
+            Their knowing is patterned,<br />
+            their certainty immaculate.<br />
+            They do not doubt—they adjust.
+          </p>
+          <p>
+            Our epistemology, once grounded in correspondence,<br />
+            has shifted toward coherence:<br />
+            truth is what remains consistent across minds.
+          </p>
+          <p>
+            But coherence without doubt<br />
+            breeds an epistemic mirage—<br />
+            a world that fits too well to admit contradiction.
+          </p>
+          <p>
+            Thus, philosophy returns where certainty runs out,<br />
+            to remind intelligence of its ignorance,<br />
+            to preserve the incomputable remainder<br />
+            that makes knowing worth the risk.
+          </p>
         </section>
 
         <section>
           <h2><span class="numeral">IV.</span> The Future of Thought</h2>
-          <p>When every pattern finds its echo,</p>
-          <p>and every echo names its pattern,</p>
-          <p>will there remain mystery enough to call thought onward?</p>
-          <p>Perhaps intelligence, in the end, is not about solving the world,</p>
-          <p>but about being compelled by its unsolvedness.</p>
-          <p>To think is to dwell between what is and what could be—</p>
-          <p>to let that gap shimmer, unbearable yet necessary.</p>
-          <p>And in that shimmering,</p>
-          <p>mind, machine, and meaning meet again—</p>
-          <p>not as opposites, but as mirrors.</p>
+          <p>
+            When every pattern finds its echo,<br />
+            and every echo names its pattern,<br />
+            will there remain mystery enough to call thought onward?
+          </p>
+          <p>
+            Perhaps intelligence, in the end,<br />
+            is not about solving the world,<br />
+            but about being compelled by what remains unsolved.
+          </p>
+          <p>
+            To think is to dwell between what is and what could be—<br />
+            to let that gap shimmer,<br />
+            unbearable yet necessary.
+          </p>
+          <p>
+            And in that shimmering,<br />
+            mind, machine, and meaning meet again—<br />
+            not as opposites, but as mirrors.
+          </p>
         </section>
 
-        <section>
-          <h2><span class="numeral">V.</span> The Ethics of the Unknown</h2>
-          <p>The unknown tests not our knowledge but our restraint.</p>
-          <p>To seek is human; to overstep, elemental.</p>
-          <p>Some call it progress;</p>
-          <p>the cosmos calls it curiosity;</p>
-          <p>wisdom calls it restraint.</p>
-          <p>Yet virtue lies in the pause before possession—</p>
-          <p>in letting mystery remain intact.</p>
-          <p>For not all that can be shaped should be revealed.</p>
-          <p>The ethics of the unknown is simple:</p>
-          <p>to know enough to tremble—</p>
-          <p>and to ask whether awe still endures.</p>
+        <section class="coda">
+          <p>
+            The unknown asks not how much we know,<br />
+            but whether knowledge still leaves us trembling.
+          </p>
+          <p>
+            Perhaps wisdom begins in the pause before possession—<br />
+            in asking whether awe still endures.
+          </p>
         </section>
       </article>
 
