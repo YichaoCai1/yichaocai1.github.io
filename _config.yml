@@ -192,6 +192,10 @@ exclude:
   - package.json
   - package-lock.json
   - _pages/about_einstein.md
+  - _pages/academic_service.en.md
+  - _pages/academic_service.zh.md
+  - _pages/teaching.en.md
+  - _pages/teaching.zh.md
   - purgecss.config.js
   - README.md
   - readme_preview/

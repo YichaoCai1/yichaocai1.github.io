@@ -299,9 +299,9 @@
     <div class="clearfix">
 <p>I am a PhD student in Computer Science at the <a href="https://www.adelaide.edu.au/aiml/" rel="external nofollow noopener" target="_blank">Australian Institute for Machine Learning (AIML)</a>, <a href="https://www.adelaide.edu.au/" rel="external nofollow noopener" target="_blank">Adelaide University</a>, advised by Prof. <a href="http://javenshi.org/" rel="external nofollow noopener" target="_blank">Javen Qinfeng Shi</a>. I received my M.Sc. and B.Eng. degrees from Wuhan University of Technology and spent five months as a visiting student researcher at California PATH, UC Berkeley.</p>
 
-<p>My research studies how modern learning objectives and supervision signals shape learned representations. I am particularly interested in when learning objectives identify causal and generalizable latent structure, and when they instead discard, conflate, or leave such structure underdetermined. Understanding these questions helps characterize the theoretical limits of foundation model objectives and distinguishes which capabilities emerge through scaling from those requiring new objectives, supervision forms, or data interventions.</p>
+<p>My research studies how modern learning objectives and supervision signals shape learned representations. I am particularly interested in when these objectives identify causal and generalizable latent structure, and when they instead discard, conflate, or leave it underdetermined. This perspective helps characterize the limits of foundation model objectives and distinguish capabilities that emerge through scaling from those requiring new objectives, supervision, or data interventions.</p>
 
-<p>Methodologically, I use tools from identifiability theory, latent-variable modeling, population-objective analysis, and representation geometry. My broader goal is to develop a theory of representation learning that explains the capabilities and structural limits of modern representation models.</p>
+<p>Methodologically, I use tools from identifiability theory, latent-variable modeling, population-objective analysis, and representation geometry. My broader goal is to develop a theory of representation learning that explains the capabilities and structural limits of modern learning systems.</p>
 </div>
 
     <!-- News -->
@@ -317,6 +317,22 @@
       <table class="table table-sm table-borderless">
         
         
+        
+          <tr>
+            <th scope="row" style="width: 20%">
+              
+                Aug 04, 2026
+              
+            </th>
+            <td>
+              
+                
+                  We released a new preprint on arXiv: <a href="https://arxiv.org/abs/2608.01383" rel="external nofollow noopener" target="_blank">On the Identifiability of Masked Prediction: Mode Blindness and Mask Schedules</a>.
+
+                
+              
+            </td>
+          </tr>
         
           <tr>
             <th scope="row" style="width: 20%">
@@ -466,6 +482,138 @@
 <div class="row publication-entry selected-publication">
   
     <div class="col col-sm-2 abbr">
+          <abbr class="badge rounded w-100">Preprint’26</abbr>
+        
+      
+      
+        
+          
+          
+
+
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+    <img src="/assets/img/publication_preview/masked_prediction.png" class="preview z-depth-1 rounded" width="100%" height="auto" alt="masked_prediction.png" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+        
+      
+    </div>
+  
+
+  <!-- Entry bib key -->
+  <div id="author2026keyword" class="col-sm-10 publication-content">
+    <div class="publication-highlight-body">
+      <!-- Title -->
+      <div class="title">On the Identifiability of Masked Prediction: Mode Blindness and Mask Schedules</div>
+      <!-- Author -->
+      <div class="author">
+        
+
+        
+        <em>Yichao Cai</em>  and Javen Q. Shi
+        
+      </div>
+
+      <!-- Journal/Book title and date -->
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="periodical">
+        <em>arXiv preprint arXiv:2608.01383</em>,  2026
+      </div>
+      <div class="periodical">
+        
+      </div>
+    </div>
+
+    <!-- Links/Buttons -->
+    <div class="links">
+      
+      
+        <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+      
+      
+      
+        <a href="http://arxiv.org/abs/2608.01383" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a>
+      
+      
+      
+        <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+    
+
+    
+
+    
+      <!-- Hidden abstract block -->
+      <div class="abstract hidden">
+        <p>Masked prediction learns representations by fitting a schedule-weighted family of conditional laws, but it remains unclear when near-optimal conditional prediction pins down the underlying joint law. We study this question for data with two well-separated global modes, outside the reach of rapid-mixing recovery guarantees, and show that the answer is decided by the mask schedule alone. Under large-context mode pinning, reweighting the two modes can move the joint law by a constant in total variation while perturbing the masked objective exponentially little in the visible-context size: mask schedules dominated by large contexts are provably blind to the global mode weights. To quantify this, we introduce an ε-identifiability modulus, the largest distributional error consistent with a given excess risk, and prove that it remains macroscopic at an excess risk that is exponentially small. An exact information decomposition pinpoints what restores identifiability: mode-weight sensitivity is governed by the residual mode uncertainty given the visible context. Consequently, low-visibility masks recover this sensitivity, and positive full-mask mass anchors the joint law over all admissible models with no assumption on the data law. Empirically, we test our theory at three levels: enumeration on computable laws verifies the predicted rates, gradient training reproduces both the mode blindness and the recovery, and measurements on real corpora place natural text between the two certified regimes.</p>
+      </div>
+    
+
+    
+      <!-- Hidden bibtex block -->
+      <div class="bibtex hidden">
+        <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@article</span><span class="p">{</span><span class="nl">author2026keyword</span><span class="p">,</span>
+  <span class="na">title</span> <span class="p">=</span> <span class="s">{On the Identifiability of Masked Prediction: Mode Blindness and Mask Schedules}</span><span class="p">,</span>
+  <span class="na">author</span> <span class="p">=</span> <span class="s">{Cai, Yichao and Shi, Javen Q.}</span><span class="p">,</span>
+  <span class="na">journal</span> <span class="p">=</span> <span class="s">{arXiv preprint arXiv:2608.01383}</span><span class="p">,</span>
+  <span class="na">year</span> <span class="p">=</span> <span class="s">{2026}</span><span class="p">,</span>
+<span class="p">}</span></code></pre></figure>
+      </div>
+    
+
+    
+  </div>
+</div>
+</li>
+<li>
+<div class="row publication-entry selected-publication">
+  
+    <div class="col col-sm-2 abbr">
           <abbr class="badge rounded w-100">ICML’26</abbr>
         
       
@@ -545,10 +693,6 @@
         <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>
       
       
-      
-        
-          <a href="https://arxiv.org/pdf/2601.19597" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
-        
       
       
       
@@ -685,10 +829,6 @@
         <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>
       
       
-      
-        
-          <a href="https://arxiv.org/pdf/2605.19343" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
-        
       
       
       
@@ -829,10 +969,6 @@
       
       
       
-        
-          <a href="https://arxiv.org/pdf/2606.20283" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
-        
-      
       
       
       
@@ -968,10 +1104,6 @@
         <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>
       
       
-      
-        
-          <a href="https://arxiv.org/pdf/2503.08980" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
-        
       
       
       
@@ -1112,10 +1244,6 @@
       
       
       
-        
-          <a href="https://arxiv.org/pdf/2504.10143" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
-        
-      
       
       
       
@@ -1252,10 +1380,6 @@
       
       
       
-        
-          <a href="https://arxiv.org/pdf/2311.16445" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
-        
-      
       
       
       
@@ -1318,73 +1442,54 @@
 
 
 
-<h2 id="teaching">
-  Teaching
-</h2>
 
-<p>
-  
-    At Adelaide University (formerly The University of Adelaide):
-  
-</p>
 
+<h2 id="teaching">Teaching</h2>
+
+<p>At Adelaide University (formerly The University of Adelaide):</p>
 <ul class="cv-list">
   <li>
-    <span class="cv-date">Semester 1, 2026</span>
-    <span class="cv-detail">
-      
-        Teaching Assistant, Neural Networks and Deep Learning (ARTI X300)
-      
-    </span>
-  </li>
+<span class="cv-date">Semester 2, 2026</span>
+<span class="cv-detail">Teaching Assistant, Programming for Artificial Intelligence (COMP 5004)</span>
+</li>
   <li>
-    <span class="cv-date">Semester 2, 2025</span>
-    <span class="cv-detail">
-      
-        Guest Lecturer &amp; Head Tutor, Statistical Machine Learning (COMP SCI 3314).
-      
-    </span>
-  </li>
+<span class="cv-date">Semester 1, 2026</span>
+<span class="cv-detail">Teaching Assistant, Neural Networks and Deep Learning (ARTI X300)</span>
+</li>
   <li>
-    <span class="cv-date">Trimester 2, 2025</span>
-    <span class="cv-detail">
-      
-        Teaching Assistant, Using Machine Learning Tools (COMP SCI 7317)
-      
-    </span>
-  </li>
+<span class="cv-date">Semester 2, 2025</span>
+<span class="cv-detail">Guest Lecturer &amp; Head Tutor, Statistical Machine Learning (COMP SCI 3314).</span>
+</li>
   <li>
-    <span class="cv-date">Semester 1, 2025</span>
-    <span class="cv-detail">
-      
-        Teaching Assistant, Concepts in AI and ML (COMP SCI 7327)
-      
-    </span>
-  </li>
+<span class="cv-date">Trimester 2, 2025</span>
+<span class="cv-detail">Teaching Assistant, Using Machine Learning Tools (COMP SCI 7317)</span>
+</li>
+  <li>
+<span class="cv-date">Semester 1, 2025</span>
+<span class="cv-detail">Teaching Assistant, Concepts in AI and ML (COMP SCI 7327)</span>
+</li>
 </ul>
 
-<h2 id="academic-service">
-  Academic Service
-</h2>
+<h2 id="academic-service">Academic Service</h2>
 
 <div class="service-block">
-  <p>
-    Conference Reviewer:
-  </p>
+  <p>Conference Reviewer:</p>
+
   <ul>
-    <li>International Conference on Learning Representations (ICLR) 2026</li>
+    <li>AAAI Conference on Artificial Intelligence (AAAI) 2027</li>
+    <li>Conference on Neural Information Processing Systems (NeurIPS) 2026</li>
     <li>International Conference on Machine Learning (ICML) 2026, <em>Silver Reviewer Award</em>
 </li>
-    <li>Conference on Neural Information Processing Systems (NeurIPS) 2026</li>
+    <li>International Conference on Learning Representations (ICLR) 2026</li>
   </ul>
 
-  <p>
-    Journal Reviewer:
-  </p>
+  <p>Journal Reviewer:</p>
+
   <ul>
     <li>Transactions on Machine Learning Research (TMLR)</li>
   </ul>
 </div>
+
 
     
 
