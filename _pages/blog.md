@@ -6,7 +6,7 @@ lang: en
 lang_en_url: /blog/
 lang_zh_url: /zh/blog/
 nav: true
-nav_order: 1
+nav_order: 2
 pagination:
   enabled: true
   collection: posts
@@ -68,7 +68,14 @@ pagination:
 <div class="row row-cols-{% if featured_posts.size <= 2 or is_even == 0 %}2{% else %}3{% endif %}">
 {% for post in featured_posts %}
 <div class="col mb-4">
-<a href="{{ post.url | relative_url }}">
+{% if post.redirect == blank %}
+  {% assign featured_post_url = post.url | relative_url %}
+{% elsif post.redirect contains '://' %}
+  {% assign featured_post_url = post.redirect %}
+{% else %}
+  {% assign featured_post_url = post.redirect | relative_url %}
+{% endif %}
+<a href="{{ featured_post_url }}"{% if post.redirect contains '://' %} target="_blank"{% endif %}>
 <div class="card hoverable">
 <div class="row g-0">
 <div class="col-md-12">

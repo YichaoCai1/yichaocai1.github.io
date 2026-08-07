@@ -1,0 +1,45 @@
+---
+layout: research-agenda
+title: Research Agenda
+description: An interactive map of the objectives, structures, limits, and design principles connecting Yichao Cai's research.
+permalink: /research-agenda/
+lang: en
+lang_en_url: /research-agenda/
+lang_zh_url: /zh/
+nav: true
+nav_order: 1
+---
+
+<main class="research-agenda" id="researchAgenda" role="main">
+  <section class="global-stage" id="globalStage" aria-labelledby="page-title">
+    <div class="global-wrap">
+      <h1 id="page-title"></h1>
+
+      <figure class="diagram-card" aria-label="Research agenda map">
+        <svg class="agenda-diagram" viewBox="0 0 420 300" role="img">
+          <defs id="diagramDefs"></defs>
+          <rect class="diagram-surface" x="0" y="0" width="420" height="300" rx="8"></rect>
+          <path class="inner-loop" id="diagramLoop"></path>
+          <g id="diagramNodes"></g>
+          <text class="diagram-caption" id="diagramCaption" x="210" y="286" text-anchor="middle"></text>
+        </svg>
+      </figure>
+    </div>
+  </section>
+
+  <section class="detail-layer" id="detailLayer" aria-live="polite" hidden>
+    <button class="return-button" type="button" id="returnButton" aria-label="Return to global agenda map">
+      <span aria-hidden="true">&larr;</span>
+      <span>Back to global</span>
+    </button>
+
+    <div class="layer-heading">
+      <p class="eyebrow" id="layerEyebrow"></p>
+      <h2 id="layerTitle"></h2>
+      <p id="layerText"></p>
+    </div>
+
+    <div class="node-layer" id="nodeLayer"></div>
+    <article class="node-detail" id="nodeDetail"></article>
+  </section>
+</main>

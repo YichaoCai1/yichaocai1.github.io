@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang }}">
+  <head>
+    {% include head.liquid %}
+    <link rel="stylesheet" href="{{ '/minimal-agenda/assets/styles.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+  </head>
+
+  <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %} research-agenda-page">
+    {% include header.liquid %}
+
+    {{ content }}
+
+    {% include footer.liquid %}
+    {% include scripts.liquid %}
+    <script type="module" src="{{ '/minimal-agenda/assets/app.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+  </body>
+</html>

@@ -191,6 +191,9 @@ exclude:
   - lighthouse_results/
   - package.json
   - package-lock.json
+  - minimal-agenda/package.json
+  - minimal-agenda/tests/
+  - minimal-agenda/content/README.md
   - _pages/about_einstein.md
   - _pages/academic_service.en.md
   - _pages/academic_service.zh.md

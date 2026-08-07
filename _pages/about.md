@@ -5,7 +5,7 @@ permalink: /
 lang: en
 lang_en_url: /
 lang_zh_url: /zh/
-subtitle: Understanding how learning objectives shapes the representations.
+subtitle: Understanding how learning objectives shape representations.
 
 profile:
   align: right
@@ -31,6 +31,6 @@ latest_posts:
 
 I am a PhD student in Computer Science at the [Australian Institute for Machine Learning (AIML)](https://www.adelaide.edu.au/aiml/), [Adelaide University](https://www.adelaide.edu.au/), advised by Prof. [Javen Qinfeng Shi](http://javenshi.org/). I received my M.Sc. and B.Eng. degrees from Wuhan University of Technology and spent five months as a visiting student researcher at California PATH, UC Berkeley.
 
-My research studies how modern learning objectives and supervision signals shape learned representations. I am particularly interested in when these objectives identify causal and generalizable latent structure, and when they instead discard, conflate, or leave it underdetermined. This perspective helps characterize the limits of foundation model objectives and distinguish capabilities that emerge through scaling from those requiring new objectives, supervision, or data interventions.
+My research asks how learning objectives and supervision shape representations: when they identify causal, generalizable latent structure, and when they discard, conflate, or leave it underdetermined. This perspective clarifies the limits of foundation-model objectives and separates capabilities that may emerge through scaling from those that require new objectives, supervision, or data interventions. Methodologically, I study these questions using identifiability theory, latent-variable modeling, population-objective analysis, and representation geometry, with the broader goal of explaining both the capabilities and structural limits of modern learning systems.
 
-Methodologically, I use tools from identifiability theory, latent-variable modeling, population-objective analysis, and representation geometry. My broader goal is to develop a theory of representation learning that explains the capabilities and structural limits of modern learning systems.
+**Explore how these ideas connect across my work in the [interactive research agenda]({{ '/research-agenda/' | relative_url }}).**

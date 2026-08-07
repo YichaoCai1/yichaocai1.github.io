@@ -144,6 +144,10 @@
                     {% assign nav_item_active = true %}
                   {% endif %}
                 {% endif %}
+                {% if current_is_zh and p.title == 'Research Agenda' %}
+                  {% assign nav_title = '研究议程' %}
+                  {% assign url = '/research-agenda/' %}
+                {% endif %}
                 <li class="nav-item {% if nav_item_active %}active{% endif %}">
                   <a class="nav-link" href="{{ url | relative_url }}">
                     {{- nav_title }}
