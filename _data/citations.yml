@@ -1,16 +1,20 @@
 metadata:
-  last_updated: '2026-08-03'
+  last_updated: '2026-08-12'
 papers:
   nNp0nL4AAAAJ:9ZlFYXVOiuMC:
     citations: 0
     title: Boundary Embedding Shaping with Adaptive Contrastive Learning for Graph Structural Disentanglement
     year: '2026'
   nNp0nL4AAAAJ:KlAtU1dfN6UC:
-    citations: 12
+    citations: 13
     title: On the Value of Cross-Modal Misalignment in Multimodal Representation Learning
     year: '2025'
+  nNp0nL4AAAAJ:L8Ckcad2t8MC:
+    citations: 0
+    title: 'On the Identifiability of Masked Prediction: Mode Blindness and Mask Schedules'
+    year: '2026'
   nNp0nL4AAAAJ:ULOm3_A8WrAC:
-    citations: 14
+    citations: 15
     title: 'I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?'
     year: '2025'
   nNp0nL4AAAAJ:Wp0gIr-vW9MC:
@@ -18,10 +22,10 @@ papers:
     title: What Makes a Representation Good for Single-Cell Perturbation Prediction?
     year: '2026'
   nNp0nL4AAAAJ:hqOjcs7Dif8C:
-    citations: 20
+    citations: 22
     title: 'CLAP: Isolating Content from Style Through Contrastive Learning with Augmented Prompts'
     year: '2024'
   nNp0nL4AAAAJ:qxL8FJ1GzNcC:
-    citations: 1
+    citations: 2
     title: 'The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic Dispersion, and Cross-Modal Divergence'
     year: '2026'
