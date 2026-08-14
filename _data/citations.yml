@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-08-12'
+  last_updated: '2026-08-14'
 papers:
   nNp0nL4AAAAJ:9ZlFYXVOiuMC:
     citations: 0
@@ -18,11 +18,11 @@ papers:
     title: 'I Predict Therefore I Am: Is Next Token Prediction Enough to Learn Human-Interpretable Concepts from Data?'
     year: '2025'
   nNp0nL4AAAAJ:Wp0gIr-vW9MC:
-    citations: 2
+    citations: 3
     title: What Makes a Representation Good for Single-Cell Perturbation Prediction?
     year: '2026'
   nNp0nL4AAAAJ:hqOjcs7Dif8C:
-    citations: 22
+    citations: 23
     title: 'CLAP: Isolating Content from Style Through Contrastive Learning with Augmented Prompts'
     year: '2024'
   nNp0nL4AAAAJ:qxL8FJ1GzNcC:
