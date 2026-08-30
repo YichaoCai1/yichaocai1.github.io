@@ -32,7 +32,7 @@ latest_posts:
 
 I am a PhD student in Computer Science at the [Australian Institute for Machine Learning (AIML)](https://www.adelaide.edu.au/aiml/), [Adelaide University](https://www.adelaide.edu.au/), advised by Prof. [Javen Qinfeng Shi](http://javenshi.org/). I received my M.Sc. and B.Eng. degrees from Wuhan University of Technology and spent five months as a visiting student researcher at California PATH, UC Berkeley.
 
-My research asks how learning objectives and supervision shape representations: when they identify causal, generalizable latent structure, and when they discard, conflate, or leave it underdetermined. This perspective clarifies the limits of foundation-model objectives and separates capabilities that may emerge through scaling from those that require new objectives, supervision, or data interventions. 
+My research asks how learning objectives and supervision shape representations: when they identify causal, generalizable latent structure, and when they discard, conflate, or leave it underdetermined. This perspective clarifies the limits of foundation-model objectives and separates capabilities that may emerge through scaling from those that require new objectives, supervision, or data interventions.
 
 Methodologically, I study these questions using identifiability theory, latent-variable modeling, population-objective analysis, and representation geometry, with the broader goal of explaining both the capabilities and structural limits of modern learning systems.
 
