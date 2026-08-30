@@ -20,7 +20,10 @@ $green-color-light: #ddffdd !default;
 $green-color-bright: #11d68b !default;
 $purple-color: #b509ac !default;
 $light-purple-color: color.adjust($purple-color, $lightness: 25%);
-$indigo-color: #356a66 !default; // site accent color (deep pine teal)
+$indigo-color: #122a82 !default; // Dark Klein: primary site accent
+$indigo-color-dark: #0b1b58 !default;
+$indigo-color-light: #8da6f8 !default;
+$indigo-color-lighter: #b3c2fa !default;
 $pink-color: #f92080 !default;
 $pink-color-light: #ffdddd !default;
 $yellow-color: #efcc00 !default;
@@ -35,8 +38,8 @@ $black-color: #000000 !default;
 
 // Theme colors
 
-$code-bg-color-light: rgba($purple-color, 0.05);
-$code-bg-color-dark: #2c3237 !default;
+$code-bg-color-light: rgba($indigo-color, 0.06);
+$code-bg-color-dark: rgba($indigo-color-light, 0.12) !default;
 
 // Font awesome location
 $fa-font-path: "../webfonts";

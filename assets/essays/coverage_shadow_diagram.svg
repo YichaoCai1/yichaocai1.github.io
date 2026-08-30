@@ -9,12 +9,12 @@
   <style>
     svg{
       --ink:#222; --muted:#6a6a6a; --line:#cfcfcf; --panel:#fbfbfb; --panelEdge:#dcdcdc;
-      --covered:#356a66; --shadow:#b5654a; --inert:#a2a8a8;
+      --covered:#122a82; --shadow:#b5654a; --inert:#a2a8a8;
     }
     @media (prefers-color-scheme: dark){
       svg{
         --ink:#e8e8e8; --muted:#aeaeae; --line:#3a3a3a; --panel:#171717; --panelEdge:#3a3a3a;
-        --covered:#a3ccc7; --shadow:#d98f73; --inert:#7c8281;
+        --covered:#8da6f8; --shadow:#d98f73; --inert:#7c8281;
       }
     }
     .title{ font-size:20px; font-weight:700; fill:var(--ink,#222); }
@@ -24,14 +24,14 @@
     .axis{ font-size:14px; font-weight:600; fill:var(--ink,#222); }
     .tag{ font-size:11.5px; font-style:italic; fill:var(--muted,#6a6a6a); }
     .note{ font-size:11.5px; fill:var(--muted,#6a6a6a); }
-    .covered{ stroke:var(--covered,#356a66); }
+    .covered{ stroke:var(--covered,#122a82); }
     .shadow{ stroke:var(--shadow,#b5654a); }
     .inert{ stroke:var(--inert,#a2a8a8); }
   </style>
 
   <defs>
     <marker id="ah-cov" markerWidth="9" markerHeight="9" refX="6.5" refY="3.2" orient="auto" markerUnits="userSpaceOnUse">
-      <path d="M0,0 L7,3.2 L0,6.4 Z" fill="var(--covered,#356a66)"/>
+      <path d="M0,0 L7,3.2 L0,6.4 Z" fill="var(--covered,#122a82)"/>
     </marker>
     <marker id="ah-sha" markerWidth="9" markerHeight="9" refX="6.5" refY="3.2" orient="auto" markerUnits="userSpaceOnUse">
       <path d="M0,0 L7,3.2 L0,6.4 Z" fill="var(--shadow,#b5654a)"/>
@@ -59,10 +59,10 @@
 
   <!-- Panel header pills -->
   <g>
-    <rect x="150" y="98" width="220" height="26" rx="13" fill="none" stroke="var(--covered,#356a66)" stroke-width="1.2"/>
+    <rect x="150" y="98" width="220" height="26" rx="13" fill="none" stroke="var(--covered,#122a82)" stroke-width="1.2"/>
     <text class="pill" x="260" y="115" text-anchor="middle">(a)  asked: shape only</text>
 
-    <rect x="590" y="98" width="220" height="26" rx="13" fill="none" stroke="var(--covered,#356a66)" stroke-width="1.2"/>
+    <rect x="590" y="98" width="220" height="26" rx="13" fill="none" stroke="var(--covered,#122a82)" stroke-width="1.2"/>
     <text class="pill" x="700" y="115" text-anchor="middle">(b)  asked: shape + color</text>
   </g>
 
@@ -119,7 +119,7 @@
   <text class="axis" x="680" y="208">shape</text>
 
   <!-- note B: color pinned independently -->
-  <text class="note" x="690" y="308" fill="var(--covered,#356a66)">pinned on its own axis</text>
+  <text class="note" x="690" y="308" fill="var(--covered,#122a82)">pinned on its own axis</text>
 
   <!-- Bottom takeaway -->
   <text class="subtitle" x="480" y="446" text-anchor="middle">

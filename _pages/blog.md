@@ -6,7 +6,7 @@ lang: en
 lang_en_url: /blog/
 lang_zh_url: /zh/blog/
 nav: true
-nav_order: 2
+nav_order: 3
 pagination:
   enabled: true
   collection: posts
@@ -135,12 +135,6 @@ pagination:
     {% assign categories = post.categories | join: "" %}
 
     <li>
-
-{% if post.thumbnail %}
-
-<div class="row">
-          <div class="col-sm-9">
-{% endif %}
         <h3>
         {% if post.redirect == blank %}
           <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
@@ -187,16 +181,6 @@ pagination:
               {% endfor %}
           {% endif %}
     </p>
-
-{% if post.thumbnail %}
-
-</div>
-
-  <div class="col-sm-3">
-    <img class="card-img" src="{{ post.thumbnail | relative_url }}" style="object-fit: cover; height: 90%" alt="image">
-  </div>
-</div>
-{% endif %}
     </li>
 
     {% endfor %}

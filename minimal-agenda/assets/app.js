@@ -1,6 +1,4 @@
-import { hexToRgb, loadAgenda, mixColor } from "./content-loader.js";
-
-const rowToneSteps = [{ fill: 0.07, deep: 0.12, accent: 0.78, shadow: 0.08 }];
+import { loadAgenda, mixColor } from "./content-loader.js";
 
 const classicLoopPath = "M88 150 C158 84, 262 84, 332 150 C262 216, 158 216, 88 150";
 
@@ -12,34 +10,34 @@ const sphereRadius = 45;
 
 const gradientPresets = {
   objective: [
-    ["0%", "#f7fbff", "0.98"],
-    ["22%", "#96caed", "0.9"],
-    ["62%", "#3f86bb", "0.86"],
-    ["100%", "#10395d", "0.98"],
+    ["0%", "#ffffff", "1"],
+    ["28%", "#e6ecff", "1"],
+    ["68%", "#b4c1ea", "1"],
+    ["100%", "#7d93d9", "1"],
   ],
   structure: [
-    ["0%", "#f2fffc", "0.98"],
-    ["22%", "#8de1d6", "0.9"],
-    ["62%", "#37a096", "0.86"],
-    ["100%", "#0d504b", "0.98"],
+    ["0%", "#ffffff", "1"],
+    ["28%", "#e2f2ef", "1"],
+    ["68%", "#acd5cf", "1"],
+    ["100%", "#73aca5", "1"],
   ],
   limits: [
-    ["0%", "#fff8f5", "0.98"],
-    ["24%", "#eeb19e", "0.9"],
-    ["64%", "#b96d55", "0.86"],
-    ["100%", "#6d3322", "0.98"],
+    ["0%", "#ffffff", "1"],
+    ["28%", "#f7e8e3", "1"],
+    ["68%", "#e7bdb0", "1"],
+    ["100%", "#cb8f7d", "1"],
   ],
   design: [
-    ["0%", "#fffaf0", "0.98"],
-    ["24%", "#f0cd76", "0.9"],
-    ["64%", "#b8862b", "0.86"],
-    ["100%", "#67460e", "0.98"],
+    ["0%", "#ffffff", "1"],
+    ["28%", "#f8efd9", "1"],
+    ["68%", "#ead29a", "1"],
+    ["100%", "#c9a455", "1"],
   ],
   sage: [
-    ["0%", "#fbfff8", "0.98"],
-    ["24%", "#c8d9b5", "0.9"],
-    ["64%", "#819b68", "0.86"],
-    ["100%", "#3d4f31", "0.98"],
+    ["0%", "#ffffff", "1"],
+    ["28%", "#edf3e8", "1"],
+    ["68%", "#cad8bd", "1"],
+    ["100%", "#9caf8c", "1"],
   ],
 };
 
@@ -90,24 +88,6 @@ function formatText(value) {
   return escapeHtml(value)
     .replace(/\n{2,}/g, "<br><br>")
     .replace(/\n/g, "<br>");
-}
-
-function makeRowTone(baseColor, index) {
-  const step = rowToneSteps[index % rowToneSteps.length];
-  const rgb = hexToRgb(baseColor);
-  const accent = mixColor(baseColor, "#172033", step.accent);
-  const accentRgb = hexToRgb(accent);
-  return {
-    fill: mixColor(baseColor, "#ffffff", step.fill),
-    deep: mixColor(baseColor, "#ffffff", step.deep),
-    accent,
-    accentRgb: `${accentRgb.r}, ${accentRgb.g}, ${accentRgb.b}`,
-    shadow: `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${step.shadow})`,
-  };
-}
-
-function getProjectTone(concept) {
-  return makeRowTone(concept.color, 0);
 }
 
 function setLayerTheme(color, softColor) {
@@ -310,7 +290,6 @@ function round(value) {
 }
 
 function renderConceptNodes(globalNode) {
-  const rowTone = makeRowTone(globalNode.color, 0);
   nodeLayer.innerHTML = globalNode.children
     .map((id) => {
       const node = conceptNodes[id];
@@ -320,7 +299,7 @@ function renderConceptNodes(globalNode) {
         type="button"
         data-concept-node="${escapeHtml(id)}"
         aria-current="${id === activeConcept}"
-        style="--node-color: ${rowTone.accent}; --node-rgb: ${rowTone.accentRgb}; --node-soft: ${rowTone.fill}; --card-deep: ${rowTone.deep}; --card-shadow: ${rowTone.shadow};"
+        style="--node-color: ${globalNode.color};"
       >
         <b>${escapeHtml(node.label)}</b>
         <span>${escapeHtml(node.short)}</span>
@@ -341,7 +320,6 @@ function renderConceptNodes(globalNode) {
 }
 
 function renderProjectNodes(concept) {
-  const rowTone = makeRowTone(concept.color, 0);
   return concept.projects
     .map((id) => {
       const project = projects[id];
@@ -354,7 +332,7 @@ function renderProjectNodes(concept) {
         data-project-node="${escapeHtml(id)}"
         aria-current="${isActive}"
         aria-expanded="${isActive && projectDetailOpen}"
-        style="--project-bg: ${rowTone.fill}; --project-deep: ${rowTone.deep}; --project-accent: ${rowTone.accent}; --project-rgb: ${rowTone.accentRgb}; --project-shadow: ${rowTone.shadow};"
+        style="--project-accent: ${concept.color};"
       >
         <span class="project-meta">${escapeHtml(project.venue)}</span>
         <b>${escapeHtml(project.title)}</b>
@@ -389,9 +367,7 @@ function renderProjectDetail(project, extraClass = "") {
 function renderConceptDetail() {
   const concept = conceptNodes[activeConcept];
   const project = projects[activeProject];
-  const projectTone = getProjectTone(concept);
   setLayerTheme(concept.color, concept.soft);
-  nodeDetail.style.setProperty("--active-project-accent", projectTone.accent);
 
   nodeDetail.classList.remove("is-empty");
   nodeDetail.innerHTML = `

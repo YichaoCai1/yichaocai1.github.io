@@ -4,7 +4,6 @@ title: "The Coverage Lock: What Next-Token Prediction Can and Cannot Teach Multi
 date: 2026-06-11
 description: On why next-token prediction can make multimodal systems useful without fully aligning language with the visual world.
 tags: language-models
-thumbnail: /assets/essays/alignment_illusion_story.png
 read_time: 25
 redirect: /assets/essays/alignment_illusion.html
 ---

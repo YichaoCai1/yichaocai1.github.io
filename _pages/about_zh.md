@@ -15,7 +15,8 @@ profile:
   more_info: >
     <p>yichao.cai@adelaide.edu.au</p>
 
-research: true # includes all publications; selected entries are highlighted
+research: true # includes selected publications on the homepage
+suppress_publication_highlights: true
 teaching_service: true # adds teaching and academic service below publications
 social: false # social icons are in the top nav bar instead
 
@@ -31,8 +32,8 @@ latest_posts:
 
 news_heading: 新闻
 latest_posts_heading: 最新文章
-research_heading: 研究
-publication_note: 代表性论文已<span class="publication-note-highlight">高亮</span>标出。
+research_heading: 代表性研究
+all_publications_label: 全部论文
 ---
 
 我目前是[阿德莱德大学](https://www.adelaide.edu.au/), [澳大利亚机器学习研究所 (AIML)](https://www.adelaide.edu.au/aiml/) 的计算机科学博士生，导师是 [史勤峰](http://javenshi.org/) 教授。我本科和硕士毕业于武汉理工大学，并曾在加州大学伯克利分校，California PATH 做过五个月访问学生研究员。

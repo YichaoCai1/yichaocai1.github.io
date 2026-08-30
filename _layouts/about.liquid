@@ -1,11 +1,10 @@
 ---
 layout: default
 ---
-{% capture default_publication_note %}Selected publications are <span class="publication-note-highlight">highlighted</span>.{% endcapture %}
 {% assign news_heading = page.news_heading | default: 'News' %}
 {% assign latest_posts_heading = page.latest_posts_heading | default: 'latest posts' %}
-{% assign research_heading = page.research_heading | default: 'Research' %}
-{% assign publication_note = page.publication_note | default: default_publication_note %}
+{% assign research_heading = page.research_heading | default: 'Selected Research' %}
+{% assign all_publications_label = page.all_publications_label | default: 'All publications' %}
 {% assign display_name = page.display_name %}
 <div class="post">
   <header class="post-header">
@@ -65,8 +64,11 @@ layout: default
     <!-- Research -->
     {% if page.research %}
       <h2 id="research" class="research-heading">{{ research_heading }}</h2>
-      <p class="publication-note">{{ publication_note }}</p>
-      {% include research_publications.liquid %}
+      <a class="all-publications-link" href="{{ '/publications/' | relative_url }}">
+        <span>{{ all_publications_label }}</span>
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+      {% include research_publications.liquid selected_only=true %}
     {% endif %}
 
     {% if page.teaching_service %}

@@ -11,20 +11,21 @@
   --global-text-color: #{$black-color};
   --global-text-color-light: #{$grey-color};
   --global-theme-color: #{$indigo-color};
-  --global-hover-color: #{$indigo-color};
+  --global-hover-color: #{$indigo-color-dark};
   --global-hover-text-color: #{$white-color};
   --global-footer-bg-color: #{$grey-color-dark};
   --global-footer-text-color: #{$grey-color-light};
   --global-footer-link-color: #{$white-color};
+  --global-footer-hover-color: #{$indigo-color-light};
   --global-distill-app-color: #{$grey-color};
-  --global-divider-color: rgba(0, 0, 0, 0.1);
+  --global-divider-color: #{rgba($indigo-color, 0.12)};
   --global-card-bg-color: #{$white-color};
   --global-highlight-color: #{$red-color-dark};
   --global-back-to-top-bg-color: rgba(
-    #{color.channel($black-color, "red", $space: rgb)},
-    #{color.channel($black-color, "green", $space: rgb)},
-    #{color.channel($black-color, "blue", $space: rgb)},
-    0.4
+    #{color.channel($indigo-color, "red", $space: rgb)},
+    #{color.channel($indigo-color, "green", $space: rgb)},
+    #{color.channel($indigo-color, "blue", $space: rgb)},
+    0.72
   );
   --global-back-to-top-text-color: #{$white-color};
   --global-newsletter-bg-color: #{$white-color};
@@ -82,22 +83,23 @@ html[data-theme="dark"] {
   --global-code-bg-color: #{$code-bg-color-dark};
   --global-text-color: #{$grey-color-light};
   --global-text-color-light: #{$grey-color};
-  --global-theme-color: #{color.adjust($indigo-color, $lightness: 22%)};
-  --global-hover-color: #{color.adjust($indigo-color, $lightness: 22%)};
-  --global-hover-text-color: #{$white-color};
+  --global-theme-color: #{$indigo-color-light};
+  --global-hover-color: #{$indigo-color-lighter};
+  --global-hover-text-color: #{$grey-color-dark};
   --global-footer-bg-color: #{$grey-color-light};
   --global-footer-text-color: #{$grey-color-dark};
   --global-footer-link-color: #{$black-color};
+  --global-footer-hover-color: #{$indigo-color};
   --global-distill-app-color: #{$grey-color-light};
-  --global-divider-color: #424246;
+  --global-divider-color: #{rgba($indigo-color-light, 0.22)};
   --global-card-bg-color: #{$grey-900};
   --global-back-to-top-bg-color: rgba(
-    #{color.channel($white-color, "red", $space: rgb)},
-    #{color.channel($white-color, "green", $space: rgb)},
-    #{color.channel($white-color, "blue", $space: rgb)},
-    0.5
+    #{color.channel($indigo-color-light, "red", $space: rgb)},
+    #{color.channel($indigo-color-light, "green", $space: rgb)},
+    #{color.channel($indigo-color-light, "blue", $space: rgb)},
+    0.78
   );
-  --global-back-to-top-text-color: #{$black-color};
+  --global-back-to-top-text-color: #{$grey-color-dark};
   --global-newsletter-bg-color: #{$grey-color-light};
   --global-newsletter-text-color: #{$grey-color-dark};
 

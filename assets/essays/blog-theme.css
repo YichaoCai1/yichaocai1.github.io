@@ -1,8 +1,8 @@
 :root {
-  --theme-accent: #356a66;
-  --theme-accent-strong: #294f4c;
+  --theme-accent: #122a82;
+  --theme-accent-strong: #0b1b58;
   --theme-accent-soft: #65717f;
-  --theme-highlight-bg: rgba(107, 91, 168, 0.12);
+  --theme-highlight-bg: rgba(18, 42, 130, 0.1);
   --theme-border-soft: #e6ebf0;
   --theme-surface-soft: #f6f8fa;
   --theme-page-bg: #ffffff;
@@ -59,7 +59,7 @@ a:focus {
 }
 
 .site-top-nav-brand {
-  color: #294f4c;
+  color: var(--theme-accent-strong);
   font-size: 1.02rem;
   font-weight: 700;
 }
@@ -325,10 +325,10 @@ a:focus {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --theme-accent: #59c6f5;
-    --theme-accent-strong: #3eb7f0;
+    --theme-accent: #8da6f8;
+    --theme-accent-strong: #b3c2fa;
     --theme-accent-soft: #aeb6c2;
-    --theme-highlight-bg: rgba(89, 198, 245, 0.14);
+    --theme-highlight-bg: rgba(141, 166, 248, 0.16);
     --theme-border-soft: #3a3d49;
     --theme-surface-soft: #2a2c37;
     --theme-page-bg: #20212b;

@@ -148,6 +148,10 @@
                   {% assign nav_title = '研究议程' %}
                   {% assign url = '/research-agenda/' %}
                 {% endif %}
+                {% if current_is_zh and p.title == 'Publications' %}
+                  {% assign nav_title = '论文' %}
+                  {% assign url = '/publications/' %}
+                {% endif %}
                 <li class="nav-item {% if nav_item_active %}active{% endif %}">
                   <a class="nav-link" href="{{ url | relative_url }}">
                     {{- nav_title }}

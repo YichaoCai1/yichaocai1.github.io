@@ -44,7 +44,7 @@ $max-content-width: {{ site.max_width }};
 }
 
 .publication-note-highlight {
-  background-color: rgba(53, 106, 102, 0.08);
+  background-color: rgba(18, 42, 130, 0.08);
   background-color: color-mix(in srgb, var(--global-theme-color) 8%, transparent);
   border-radius: 3px;
   padding: 0.05rem 0.2rem;
@@ -67,7 +67,7 @@ $max-content-width: {{ site.max_width }};
 }
 
 .publications ol.bibliography li .publication-entry.selected-publication .publication-highlight-body::before {
-  background-color: rgba(53, 106, 102, 0.08);
+  background-color: rgba(18, 42, 130, 0.08);
   background-color: color-mix(in srgb, var(--global-theme-color) 8%, transparent);
   border-radius: 6px;
   bottom: 0;
@@ -118,6 +118,42 @@ $max-content-width: {{ site.max_width }};
 
 .service-block ul {
   margin-bottom: 1.25rem;
+}
+
+.all-publications-link {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.35rem;
+  font-size: 0.96rem;
+  font-weight: 500;
+
+  span {
+    color: inherit;
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    span:last-child {
+      transform: translateX(2px);
+    }
+  }
+
+  span:last-child {
+    transition: transform 180ms ease;
+  }
+}
+
+.publications-page {
+  .publication-note {
+    margin-top: 0;
+    margin-bottom: 1.4rem;
+  }
+
+  .publications {
+    margin-top: 0;
+  }
 }
 
 @media (max-width: 576px) {

@@ -1,22 +1,38 @@
 .research-agenda {
   color-scheme: light;
-  --page: #f4f7f8;
+  --page: #f7f8fc;
   --paper: #ffffff;
-  --ink: #182132;
-  --muted: #5f6977;
-  --soft: #8793a1;
-  --line: #d8dee5;
-  --line-strong: #b7c1cc;
+  --ink: #1f2533;
+  --muted: #667085;
+  --soft: #8a94a6;
+  --line: rgba(18, 42, 130, 0.1);
+  --line-strong: rgba(18, 42, 130, 0.18);
   --blue: #226092;
   --teal: #1f7a73;
   --sage: #5f7650;
   --rust: #a45d47;
   --gold: #9a6b20;
   --green: #3f7b4d;
-  --homepage-green: #356a66;
-  --shadow: 0 18px 46px rgba(31, 45, 61, 0.1);
-  --hover-shadow: 0 0 0 4px rgba(255, 255, 255, 0.94), 0 24px 52px rgba(31, 45, 61, 0.2);
+  --homepage-green: #122a82;
+  --shadow-soft: 0 2px 5px rgba(18, 42, 130, 0.08), 0 8px 24px rgba(31, 45, 61, 0.08);
+  --shadow: 0 8px 24px rgba(18, 42, 130, 0.08), 0 18px 48px rgba(31, 45, 61, 0.1);
+  --hover-shadow: 0 8px 17px rgba(18, 42, 130, 0.12), 0 14px 34px rgba(31, 45, 61, 0.13);
   --font-site: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+html[data-theme="dark"] .research-agenda {
+  color-scheme: dark;
+  --page: #1c1c1d;
+  --paper: #24262e;
+  --ink: #f0f2f7;
+  --muted: #aeb5c1;
+  --soft: #858e9e;
+  --line: rgba(141, 166, 248, 0.14);
+  --line-strong: rgba(141, 166, 248, 0.24);
+  --homepage-green: #8da6f8;
+  --shadow-soft: 0 2px 6px rgba(0, 0, 0, 0.2), 0 10px 26px rgba(0, 0, 0, 0.16);
+  --shadow: 0 10px 28px rgba(0, 0, 0, 0.22), 0 22px 54px rgba(0, 0, 0, 0.16);
+  --hover-shadow: 0 10px 24px rgba(0, 0, 0, 0.28), 0 20px 42px rgba(0, 0, 0, 0.2);
 }
 
 .research-agenda,
@@ -25,7 +41,11 @@
 }
 
 body.research-agenda-page {
-  background: linear-gradient(180deg, #fbfcfc 0%, #f4f7f8 54%, #eef3f4 100%);
+  background: radial-gradient(circle at 50% 0, rgba(18, 42, 130, 0.055), transparent 420px), var(--page, #f7f8fc);
+}
+
+html[data-theme="dark"] body.research-agenda-page {
+  background: radial-gradient(circle at 50% 0, rgba(141, 166, 248, 0.06), transparent 420px), var(--page, #1c1c1d);
 }
 
 .research-agenda {
@@ -76,15 +96,32 @@ body.research-agenda-page {
 .global-wrap {
   display: grid;
   width: min(100%, 920px);
-  gap: 24px;
+  gap: 28px;
   justify-items: center;
+}
+
+.global-heading {
+  display: grid;
+  width: min(100%, 760px);
+  gap: 8px;
+  justify-items: center;
+  text-align: center;
+}
+
+.agenda-kicker {
+  margin-bottom: 0;
+  color: var(--homepage-green);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
 }
 
 .research-agenda h1 {
   width: 100%;
   margin-bottom: 0;
   font-size: 2.12rem;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.12;
   text-align: center;
   color: var(--ink);
@@ -95,12 +132,10 @@ body.research-agenda-page {
   position: relative;
   width: 100%;
   overflow: hidden;
-  border: 1px solid rgba(180, 202, 226, 0.34);
-  border-radius: 8px;
-  background: #07111f;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.9) inset,
-    0 28px 76px rgba(31, 45, 61, 0.22);
+  border: 0;
+  border-radius: 12px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
 }
 
 .diagram-card::before,
@@ -114,58 +149,17 @@ body.research-agenda-page {
   inset: 0;
   z-index: 0;
   background:
-    radial-gradient(circle at 22% 18%, rgba(76, 125, 176, 0.22), transparent 28%),
-    radial-gradient(circle at 78% 62%, rgba(172, 102, 76, 0.18), transparent 30%), #07111f;
+    radial-gradient(circle at 18% 12%, color-mix(in srgb, var(--homepage-green) 8%, transparent), transparent 34%),
+    radial-gradient(circle at 82% 78%, rgba(141, 166, 248, 0.08), transparent 36%);
 }
 
 .diagram-card::after {
   inset: 0;
   z-index: 1;
-  opacity: 0.96;
-  background:
-    radial-gradient(circle 1.7px at 3% 9%, rgba(255, 255, 255, 0.88) 60%, transparent 66%),
-    radial-gradient(circle 1.1px at 8% 18%, rgba(178, 205, 232, 0.7) 60%, transparent 68%),
-    radial-gradient(circle 2px at 13% 5%, rgba(255, 255, 255, 0.76) 58%, transparent 66%),
-    radial-gradient(circle 1.3px at 21% 12%, rgba(161, 194, 228, 0.68) 60%, transparent 68%),
-    radial-gradient(circle 1.8px at 31% 7%, rgba(255, 255, 255, 0.82) 58%, transparent 66%),
-    radial-gradient(circle 1.2px at 43% 14%, rgba(185, 211, 236, 0.66) 60%, transparent 68%),
-    radial-gradient(circle 2.1px at 54% 6%, rgba(255, 255, 255, 0.78) 58%, transparent 66%),
-    radial-gradient(circle 1.4px at 67% 11%, rgba(170, 201, 232, 0.7) 60%, transparent 68%),
-    radial-gradient(circle 1.9px at 78% 4%, rgba(255, 255, 255, 0.84) 58%, transparent 66%),
-    radial-gradient(circle 1.2px at 88% 16%, rgba(173, 202, 230, 0.68) 60%, transparent 68%),
-    radial-gradient(circle 1.8px at 96% 9%, rgba(255, 255, 255, 0.82) 58%, transparent 66%),
-    radial-gradient(circle 0.9px at 16% 24%, rgba(205, 226, 246, 0.58) 62%, transparent 70%),
-    radial-gradient(circle 1.2px at 27% 27%, rgba(255, 255, 255, 0.62) 60%, transparent 68%),
-    radial-gradient(circle 0.8px at 39% 22%, rgba(166, 198, 230, 0.56) 62%, transparent 70%),
-    radial-gradient(circle 1.3px at 72% 24%, rgba(255, 255, 255, 0.64) 60%, transparent 68%),
-    radial-gradient(circle 0.9px at 83% 31%, rgba(185, 211, 236, 0.58) 62%, transparent 70%),
-    radial-gradient(circle 1.5px at 5% 34%, rgba(190, 215, 238, 0.74) 60%, transparent 68%),
-    radial-gradient(circle 1px at 2% 55%, rgba(255, 255, 255, 0.7) 60%, transparent 68%),
-    radial-gradient(circle 1.9px at 7% 73%, rgba(176, 205, 234, 0.72) 58%, transparent 66%),
-    radial-gradient(circle 1.4px at 4% 90%, rgba(255, 255, 255, 0.86) 60%, transparent 68%),
-    radial-gradient(circle 1.1px at 14% 58%, rgba(255, 255, 255, 0.58) 60%, transparent 68%),
-    radial-gradient(circle 0.8px at 31% 51%, rgba(180, 207, 234, 0.54) 62%, transparent 70%),
-    radial-gradient(circle 1.4px at 46% 64%, rgba(255, 255, 255, 0.6) 60%, transparent 68%),
-    radial-gradient(circle 0.9px at 58% 55%, rgba(172, 204, 235, 0.55) 62%, transparent 70%),
-    radial-gradient(circle 1.2px at 86% 57%, rgba(255, 255, 255, 0.62) 60%, transparent 68%),
-    radial-gradient(circle 1.6px at 18% 94%, rgba(170, 199, 228, 0.68) 60%, transparent 68%),
-    radial-gradient(circle 2px at 30% 88%, rgba(255, 255, 255, 0.78) 58%, transparent 66%),
-    radial-gradient(circle 1.2px at 42% 96%, rgba(186, 212, 237, 0.72) 60%, transparent 68%),
-    radial-gradient(circle 1.8px at 55% 90%, rgba(255, 255, 255, 0.82) 58%, transparent 66%),
-    radial-gradient(circle 1.1px at 69% 96%, rgba(170, 201, 232, 0.68) 60%, transparent 68%),
-    radial-gradient(circle 2.1px at 82% 89%, rgba(255, 255, 255, 0.8) 58%, transparent 66%),
-    radial-gradient(circle 1.5px at 93% 94%, rgba(176, 205, 234, 0.76) 60%, transparent 68%),
-    radial-gradient(circle 1.7px at 97% 72%, rgba(255, 255, 255, 0.82) 58%, transparent 66%),
-    radial-gradient(circle 1.1px at 94% 48%, rgba(186, 212, 237, 0.7) 60%, transparent 68%),
-    radial-gradient(circle 1.8px at 98% 29%, rgba(255, 255, 255, 0.78) 58%, transparent 66%),
-    radial-gradient(circle 1px at 23% 39%, rgba(162, 195, 229, 0.54) 60%, transparent 68%),
-    radial-gradient(circle 1.4px at 35% 67%, rgba(255, 255, 255, 0.6) 60%, transparent 68%),
-    radial-gradient(circle 1.1px at 50% 46%, rgba(173, 202, 230, 0.52) 60%, transparent 68%),
-    radial-gradient(circle 1.6px at 61% 32%, rgba(255, 255, 255, 0.58) 58%, transparent 66%),
-    radial-gradient(circle 0.8px at 66% 76%, rgba(164, 197, 230, 0.52) 62%, transparent 70%),
-    radial-gradient(circle 1.3px at 78% 43%, rgba(255, 255, 255, 0.56) 60%, transparent 68%),
-    radial-gradient(circle 1.2px at 73% 63%, rgba(180, 207, 234, 0.54) 60%, transparent 68%);
-  filter: drop-shadow(0 0 3px rgba(172, 206, 238, 0.34));
+  opacity: 0.5;
+  background-image: radial-gradient(circle, color-mix(in srgb, var(--homepage-green) 14%, transparent) 0 1px, transparent 1.4px);
+  background-position: 2px 2px;
+  background-size: 24px 24px;
 }
 
 .agenda-diagram {
@@ -178,14 +172,14 @@ body.research-agenda-page {
 }
 
 .diagram-surface {
-  fill: rgba(8, 17, 31, 0.46);
+  fill: transparent;
 }
 
 .inner-loop {
   fill: none;
-  stroke: rgba(228, 140, 108, 0.9);
-  stroke-width: 2;
-  stroke-dasharray: 8 12;
+  stroke: color-mix(in srgb, var(--homepage-green) 38%, transparent);
+  stroke-width: 1.6;
+  stroke-dasharray: 7 11;
   stroke-linecap: round;
 }
 
@@ -207,7 +201,7 @@ body.research-agenda-page {
 
 .node-glow {
   fill: var(--node-color);
-  opacity: 0.11;
+  opacity: 0.08;
   transition:
     opacity 160ms ease,
     transform 160ms ease;
@@ -216,15 +210,15 @@ body.research-agenda-page {
 }
 
 .node-occluder {
-  fill: #081321;
+  fill: var(--paper);
   pointer-events: none;
 }
 
 .node-globe {
   stroke: var(--node-color);
   stroke-width: 1.9;
-  opacity: 0.92;
-  filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.24));
+  opacity: 1;
+  filter: drop-shadow(0 8px 12px rgba(18, 42, 130, 0.16));
   transition:
     stroke-width 160ms ease,
     transform 160ms ease;
@@ -245,24 +239,24 @@ body.research-agenda-page {
 
 .node-grid {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.42);
+  stroke: rgba(18, 42, 130, 0.32);
   stroke-width: 1;
-  opacity: 0.15;
+  opacity: 0.24;
   pointer-events: none;
 }
 
 .diagram-node:hover .node-globe,
 .diagram-node:focus-visible .node-globe,
 .diagram-node.is-active .node-globe {
-  stroke-width: 3;
-  transform: scale(1.04);
+  stroke-width: 2.8;
+  transform: translateY(-2px) scale(1.035);
 }
 
 .diagram-node:hover .node-glow,
 .diagram-node:focus-visible .node-glow,
 .diagram-node.is-active .node-glow {
-  opacity: 0.2;
-  transform: scale(1.08);
+  opacity: 0.14;
+  transform: translateY(-2px) scale(1.08);
 }
 
 .diagram-node:hover .node-shine,
@@ -303,7 +297,7 @@ body.research-agenda-page {
 .node-title {
   fill: #111827;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
   pointer-events: none;
   stroke: none;
 }
@@ -317,20 +311,27 @@ body.research-agenda-page {
 }
 
 .diagram-caption {
-  fill: rgba(225, 233, 242, 0.78);
+  fill: var(--muted);
   font-size: 12px;
   pointer-events: none;
 }
 
 .caption-arrow {
-  fill: #f8fbff;
+  fill: var(--homepage-green);
   font-size: 14px;
   font-weight: 700;
 }
 
 .detail-layer {
+  --active-display: var(--active, var(--homepage-green));
+  width: min(100%, 1060px);
   min-height: calc(100svh - 57px);
-  padding: 28px 0 96px;
+  margin: 0 auto;
+  padding: 32px 0 96px;
+}
+
+html[data-theme="dark"] .detail-layer {
+  --active-display: color-mix(in srgb, var(--active) 58%, #ffffff);
 }
 
 .detail-layer[hidden] {
@@ -341,56 +342,53 @@ body.research-agenda-page {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  min-height: 42px;
-  margin-bottom: 26px;
-  padding: 9px 15px;
-  border: 1px solid #9cb6b2;
-  border-radius: 8px;
-  background: linear-gradient(180deg, #dce8e6 0%, #c7d9d6 56%, #b9ceca 100%);
-  color: #173936;
+  min-height: 38px;
+  margin-bottom: 30px;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--homepage-green);
   font-weight: 500;
   cursor: pointer;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.28);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.66) inset,
-    0 -2px 0 #9eb8b4 inset,
-    0 10px 18px rgba(53, 106, 102, 0.12);
+  box-shadow: var(--shadow-soft);
   transition:
-    border-color 160ms ease,
     box-shadow 160ms ease,
     transform 160ms ease;
 }
 
 .return-button:hover,
 .return-button:focus-visible {
-  border-color: #86aaa5;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.7) inset,
-    0 -2px 0 #9eb8b4 inset,
-    0 0 0 4px rgba(53, 106, 102, 0.1),
-    0 14px 26px rgba(53, 106, 102, 0.16);
+  box-shadow: var(--hover-shadow);
   outline: none;
   transform: translateY(-2px);
 }
 
+.return-button:focus-visible {
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--homepage-green) 18%, transparent),
+    var(--hover-shadow);
+}
+
 .layer-heading {
-  max-width: 980px;
-  margin-bottom: 24px;
+  max-width: 860px;
+  margin-bottom: 30px;
 }
 
 .eyebrow {
   margin-bottom: 8px;
-  color: var(--active, var(--teal));
+  color: var(--active-display, var(--teal));
   font-size: 0.78rem;
   font-weight: 800;
-  letter-spacing: 0;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .layer-heading h2 {
-  margin-bottom: 8px;
-  font-size: 2rem;
-  line-height: 1.1;
+  margin-bottom: 10px;
+  font-size: 2.08rem;
+  font-weight: 500;
+  line-height: 1.15;
 }
 
 .layer-heading p:last-child {
@@ -402,32 +400,32 @@ body.research-agenda-page {
 .node-layer {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  margin-bottom: 18px;
+  gap: 18px;
+  margin-bottom: 24px;
 }
 
 .layer-node {
+  --card-accent: var(--node-color);
   position: relative;
   isolation: isolate;
-  min-height: 96px;
-  padding: 13px 16px 12px 24px;
+  min-height: 106px;
+  padding: 18px 20px;
   overflow: hidden;
-  border: 1px solid var(--line);
-  border: 1px solid color-mix(in srgb, var(--node-color) 78%, #ffffff);
-  border-radius: 8px;
-  background: rgba(var(--node-rgb), 0.34);
-  color: #111827;
+  border: 0;
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--ink);
   text-align: left;
   align-content: center;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.58) inset,
-    0 -3px 0 rgba(10, 18, 28, 0.08) inset,
-    0 14px 28px var(--card-shadow, rgba(31, 45, 61, 0.12));
+  box-shadow: var(--shadow-soft);
   cursor: pointer;
   transition:
-    border-color 160ms ease,
     box-shadow 160ms ease,
     transform 160ms ease;
+}
+
+html[data-theme="dark"] .layer-node {
+  --card-accent: color-mix(in srgb, var(--node-color) 58%, #ffffff);
 }
 
 .layer-node::before {
@@ -436,45 +434,48 @@ body.research-agenda-page {
   inset: 0;
   z-index: 0;
   border-radius: inherit;
-  background: radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.2), transparent 34%), rgba(255, 255, 255, 0.03);
-  opacity: 1;
+  background: radial-gradient(circle at 100% 0, color-mix(in srgb, var(--card-accent) 8%, transparent), transparent 42%);
+  opacity: 0.7;
   pointer-events: none;
 }
 
 .layer-node::after {
   content: "";
   position: absolute;
-  top: 10px;
-  bottom: 10px;
-  left: 10px;
+  top: 16px;
+  right: 16px;
   z-index: 1;
-  width: 5px;
-  border-radius: 999px;
-  background: rgba(17, 24, 39, 0.18);
-  box-shadow: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--card-accent);
+  opacity: 0.3;
   pointer-events: none;
+  transition: opacity 160ms ease;
 }
 
 .layer-node:hover,
 .layer-node:focus-visible {
-  border-color: color-mix(in srgb, var(--node-color) 66%, #ffffff);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.62) inset,
-    0 -3px 0 rgba(10, 18, 28, 0.1) inset,
-    0 0 0 4px color-mix(in srgb, var(--node-color) 14%, transparent),
-    0 22px 42px var(--card-shadow, rgba(31, 45, 61, 0.16));
+  box-shadow: var(--hover-shadow);
   outline: none;
   transform: translateY(-3px);
 }
 
-.layer-node[aria-current="true"] {
-  background: rgba(var(--node-rgb), 0.34);
-  border-color: color-mix(in srgb, var(--node-color) 52%, #ffffff);
+.layer-node:focus-visible {
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.64) inset,
-    0 -3px 0 rgba(10, 18, 28, 0.1) inset,
-    0 0 0 3px color-mix(in srgb, var(--node-color) 16%, transparent),
-    0 18px 34px var(--card-shadow, rgba(31, 45, 61, 0.14));
+    0 0 0 3px color-mix(in srgb, var(--card-accent) 18%, transparent),
+    var(--hover-shadow);
+}
+
+.layer-node[aria-current="true"] {
+  background: var(--paper);
+  box-shadow:
+    inset 0 -3px var(--card-accent),
+    var(--shadow);
+}
+
+.layer-node[aria-current="true"]::after {
+  opacity: 1;
 }
 
 .layer-node b {
@@ -484,20 +485,20 @@ body.research-agenda-page {
   margin-bottom: 6px;
   font-size: 1.08rem;
   line-height: 1.18;
-  color: #111827;
+  color: var(--ink);
 }
 
 .layer-node span {
   position: relative;
   z-index: 2;
   display: block;
-  color: rgba(17, 24, 39, 0.74);
+  color: var(--muted);
   font-size: 0.9rem;
 }
 
 .node-detail {
   display: grid;
-  gap: 16px;
+  gap: 22px;
 }
 
 .node-detail.is-empty {
@@ -508,23 +509,25 @@ body.research-agenda-page {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 0.72fr) minmax(220px, 0.28fr);
-  gap: 18px;
-  padding: 20px;
+  gap: 24px;
+  padding: 24px;
   overflow: hidden;
-  border: 1px solid var(--line);
-  border: 1px solid color-mix(in srgb, var(--active) 18%, var(--line));
-  border-radius: 8px;
-  background: #ffffff;
+  border: 0;
+  border-radius: 10px;
+  background: var(--paper);
   color: var(--ink);
-  box-shadow: 0 1px 2px rgba(31, 45, 61, 0.04);
+  box-shadow: var(--shadow-soft);
 }
 
 .detail-top::before {
   content: "";
   position: absolute;
-  inset: 0 auto 0 0;
-  width: 6px;
-  background: var(--active);
+  top: 0;
+  left: 24px;
+  width: 38px;
+  height: 3px;
+  border-radius: 0 0 999px 999px;
+  background: var(--active-display);
   pointer-events: none;
 }
 
@@ -536,7 +539,8 @@ body.research-agenda-page {
 .detail-top h3 {
   margin-bottom: 8px;
   color: var(--ink);
-  font-size: 1.55rem;
+  font-size: 1.5rem;
+  font-weight: 500;
   line-height: 1.12;
 }
 
@@ -546,28 +550,28 @@ body.research-agenda-page {
 }
 
 .detail-top .eyebrow {
-  color: var(--active);
+  color: var(--active-display);
 }
 
 .memory-chip {
   position: relative;
   align-self: start;
-  padding: 12px 12px 12px 22px;
+  padding: 16px;
   overflow: hidden;
-  border: 1px solid var(--line);
-  border: 1px solid color-mix(in srgb, var(--active) 18%, var(--line));
+  border: 0;
   border-radius: 8px;
-  background: #ffffff;
-  box-shadow: none;
+  background: color-mix(in srgb, var(--active-display) 5%, var(--paper));
 }
 
 .memory-chip::before {
   content: "";
   position: absolute;
-  inset: 10px auto 10px 9px;
-  width: 4px;
-  border-radius: 999px;
-  background: var(--active);
+  top: 16px;
+  right: 16px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--active-display);
   pointer-events: none;
 }
 
@@ -590,30 +594,30 @@ body.research-agenda-page {
 .project-nodes {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: 18px;
 }
 
 .project-node {
+  --card-accent: var(--project-accent, var(--active-display));
   position: relative;
   isolation: isolate;
-  min-height: 136px;
-  padding: 16px 16px 16px 26px;
+  min-height: 148px;
+  padding: 20px;
   overflow: hidden;
-  border: 1px solid var(--line);
-  border: 1px solid color-mix(in srgb, var(--project-accent, var(--active)) 78%, #ffffff);
-  border-radius: 8px;
-  background: rgba(var(--project-rgb), 0.34);
-  color: #111827;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.58) inset,
-    0 -3px 0 rgba(10, 18, 28, 0.08) inset,
-    0 14px 28px var(--project-shadow, rgba(31, 45, 61, 0.12));
+  border: 0;
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow-soft);
   text-align: left;
   cursor: pointer;
   transition:
-    border-color 160ms ease,
     box-shadow 160ms ease,
     transform 160ms ease;
+}
+
+html[data-theme="dark"] .project-node {
+  --card-accent: color-mix(in srgb, var(--project-accent, var(--active)) 58%, #ffffff);
 }
 
 .project-node::before {
@@ -622,45 +626,48 @@ body.research-agenda-page {
   inset: 0;
   z-index: 0;
   border-radius: inherit;
-  background: radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.2), transparent 34%), rgba(255, 255, 255, 0.03);
-  opacity: 1;
+  background: radial-gradient(circle at 100% 0, color-mix(in srgb, var(--card-accent) 8%, transparent), transparent 42%);
+  opacity: 0.7;
   pointer-events: none;
 }
 
 .project-node::after {
   content: "";
   position: absolute;
-  top: 14px;
-  bottom: 14px;
-  left: 10px;
+  top: 18px;
+  right: 18px;
   z-index: 1;
-  width: 5px;
-  border-radius: 999px;
-  background: rgba(17, 24, 39, 0.18);
-  box-shadow: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--card-accent);
+  opacity: 0.3;
   pointer-events: none;
+  transition: opacity 160ms ease;
 }
 
 .project-node:hover,
 .project-node:focus-visible {
-  border-color: color-mix(in srgb, var(--project-accent, var(--active)) 66%, #ffffff);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.62) inset,
-    0 -3px 0 rgba(10, 18, 28, 0.1) inset,
-    0 0 0 4px color-mix(in srgb, var(--project-accent, var(--active)) 13%, transparent),
-    0 22px 42px var(--project-shadow, rgba(31, 45, 61, 0.16));
+  box-shadow: var(--hover-shadow);
   outline: none;
   transform: translateY(-3px);
 }
 
-.project-node[aria-current="true"] {
-  background: rgba(var(--project-rgb), 0.34);
-  border-color: color-mix(in srgb, var(--project-accent, var(--active)) 52%, #ffffff);
+.project-node:focus-visible {
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.64) inset,
-    0 -3px 0 rgba(10, 18, 28, 0.1) inset,
-    0 0 0 3px color-mix(in srgb, var(--project-accent, var(--active)) 16%, transparent),
-    0 18px 34px var(--project-shadow, rgba(31, 45, 61, 0.14));
+    0 0 0 3px color-mix(in srgb, var(--card-accent) 18%, transparent),
+    var(--hover-shadow);
+}
+
+.project-node[aria-current="true"] {
+  background: var(--paper);
+  box-shadow:
+    inset 0 -3px var(--card-accent),
+    var(--shadow);
+}
+
+.project-node[aria-current="true"]::after {
+  opacity: 1;
 }
 
 .project-meta {
@@ -668,7 +675,7 @@ body.research-agenda-page {
   z-index: 2;
   display: block;
   margin-bottom: 10px;
-  color: rgba(17, 24, 39, 0.72);
+  color: var(--card-accent);
   font-size: 0.76rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -681,21 +688,25 @@ body.research-agenda-page {
   margin-bottom: 8px;
   font-size: 1rem;
   line-height: 1.2;
-  color: #111827;
+  color: var(--ink);
 }
 
 .project-node span:last-child {
   position: relative;
   z-index: 2;
   display: block;
-  color: rgba(17, 24, 39, 0.74);
+  color: var(--muted);
   font-size: 0.88rem;
 }
 
 .project-detail {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--paper);
+  box-shadow: var(--shadow-soft);
 }
 
 .inline-project-detail {
@@ -708,40 +719,36 @@ body.research-agenda-page {
 
 .project-detail div {
   position: relative;
-  min-height: 132px;
-  padding: 16px 16px 16px 32px;
+  min-height: 138px;
+  padding: 22px;
   overflow: hidden;
-  border: 1px solid var(--line);
-  border: 1px solid color-mix(in srgb, var(--active-project-accent, var(--active)) 18%, var(--line));
-  border-radius: 8px;
-  background: #ffffff;
-  box-shadow: 0 1px 2px rgba(31, 45, 61, 0.04);
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.project-detail div + div {
+  border-left: 1px solid var(--line);
 }
 
 .project-detail div::before {
   content: "";
   position: absolute;
-  inset: 11px auto 11px 12px;
-  width: 4px;
+  top: 0;
+  left: 22px;
+  width: 30px;
+  height: 3px;
   border-radius: 999px;
-  background: var(--active-project-accent, var(--active));
+  background: var(--active-display);
   pointer-events: none;
-}
-
-.project-detail div:nth-child(2) {
-  background: #ffffff;
-}
-
-.project-detail div:nth-child(3) {
-  background: #ffffff;
 }
 
 .project-detail b {
   position: relative;
   z-index: 1;
   display: block;
-  margin-bottom: 8px;
-  color: var(--active-project-accent, var(--active));
+  margin-bottom: 10px;
+  color: var(--active-display);
   font-size: 0.78rem;
   text-transform: uppercase;
 }
@@ -767,25 +774,26 @@ body.research-agenda-page {
 
   .node-layer {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
+    gap: 10px;
   }
 
   .layer-node {
-    min-height: 58px;
-    padding: 9px 8px 9px 16px;
+    min-height: 66px;
+    padding: 12px 14px;
   }
 
   .layer-node::after {
-    top: 10px;
-    bottom: 10px;
-    left: 7px;
-    width: 4px;
+    top: 11px;
+    right: 11px;
+    width: 6px;
+    height: 6px;
   }
 
   .layer-node b {
     margin-bottom: 0;
     font-size: 0.86rem;
-    text-align: center;
+    padding-right: 8px;
+    text-align: left;
   }
 
   .layer-node span {
@@ -803,6 +811,11 @@ body.research-agenda-page {
   .inline-project-detail {
     display: grid;
     grid-column: 1 / -1;
+  }
+
+  .project-detail div + div {
+    border-top: 1px solid var(--line);
+    border-left: 0;
   }
 }
 
@@ -839,14 +852,14 @@ body.research-agenda-page {
 
   .project-node {
     min-height: auto;
-    padding: 11px 12px 11px 22px;
+    padding: 16px 18px;
   }
 
   .project-node::after {
-    top: 10px;
-    bottom: 10px;
-    left: 8px;
-    width: 4px;
+    top: 14px;
+    right: 14px;
+    width: 6px;
+    height: 6px;
   }
 
   .project-node b {
@@ -865,15 +878,26 @@ body.research-agenda-page {
 
   .detail-top,
   .project-detail div {
-    padding: 12px;
+    padding: 18px;
   }
 
   .project-detail div {
     min-height: auto;
-    padding-left: 30px;
   }
 
+  .detail-top::before,
   .project-detail div::before {
-    left: 11px;
+    left: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .return-button,
+  .layer-node,
+  .project-node,
+  .node-globe,
+  .node-glow,
+  .node-shine {
+    transition: none;
   }
 }
