@@ -1,16 +1,17 @@
 ---
 ---
-@article{author2026keyword,
+@article{cai2026identifiability,
   abbr={Preprint'26},
   bibtex_show={true},
   selected={true},
-  title={On the Identifiability of Masked Prediction: Mode Blindness and Mask Schedules},
+  title={An Identifiability Theory of Masked Prediction: Mode Blindness and Mask Schedules},
   author={Cai, Yichao and Shi, Javen Q.},
   journal={arXiv preprint arXiv:2608.01383},
   year={2026},
-  abstract={Masked prediction learns representations by fitting a schedule-weighted family of conditional laws, but it remains unclear when near-optimal conditional prediction pins down the underlying joint law. We study this question for data with two well-separated global modes, outside the reach of rapid-mixing recovery guarantees, and show that the answer is decided by the mask schedule alone. Under large-context mode pinning, reweighting the two modes can move the joint law by a constant in total variation while perturbing the masked objective exponentially little in the visible-context size: mask schedules dominated by large contexts are provably blind to the global mode weights. To quantify this, we introduce an ε-identifiability modulus, the largest distributional error consistent with a given excess risk, and prove that it remains macroscopic at an excess risk that is exponentially small. An exact information decomposition pinpoints what restores identifiability: mode-weight sensitivity is governed by the residual mode uncertainty given the visible context. Consequently, low-visibility masks recover this sensitivity, and positive full-mask mass anchors the joint law over all admissible models with no assumption on the data law. Empirically, we test our theory at three levels: enumeration on computable laws verifies the predicted rates, gradient training reproduces both the mode blindness and the recovery, and measurements on real corpora place natural text between the two certified regimes.},
+  abstract={Masked prediction learns by inferring missing variables from visible context. This raises a fundamental question: when does near-optimal conditional prediction determine the joint data law? We study this via an ε-identifiability modulus measuring the largest joint-law error compatible with masked-prediction excess risk at most ε. For slow-mixing data laws with separated global modes, we show that a model can assign substantially incorrect probabilities to entire data regimes while incurring exponentially small excess risk. An exact information decomposition reveals why: for a fixed mask, the prediction loss detects only the portion of the mode-weight mismatch that the visible context leaves unresolved. For small mode-weight perturbations, this sensitivity is proportional to residual mode uncertainty. Once averaged over masks, this residual uncertainty governs the objective's sensitivity to global mode frequencies, with low-visibility masks restoring mode-weight sensitivity and positive full-mask mass providing universal joint-law control under the joint conditional objective. We provide computational and empirical evidence for these predictions through exact calculations, controlled optimization experiments, and measurements on natural text. More broadly, our study suggests that a predictive objective can identify global distinctions only insofar as its conditioning structure leaves them unresolved.},
   preview={masked_prediction.png},
-  arxiv={2608.01383}
+  arxiv={2608.01383},
+  code={https://github.com/YichaoCai1/Masked-Prediction-Identifiability}
 }
 
 @inproceedings{cai2026geometric,
