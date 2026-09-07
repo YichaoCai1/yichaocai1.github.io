@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-08-14'
+  last_updated: '2026-09-07'
 papers:
   nNp0nL4AAAAJ:9ZlFYXVOiuMC:
     citations: 0
@@ -10,7 +10,7 @@ papers:
     title: On the Value of Cross-Modal Misalignment in Multimodal Representation Learning
     year: '2025'
   nNp0nL4AAAAJ:L8Ckcad2t8MC:
-    citations: 0
+    citations: 1
     title: 'On the Identifiability of Masked Prediction: Mode Blindness and Mask Schedules'
     year: '2026'
   nNp0nL4AAAAJ:ULOm3_A8WrAC:
@@ -22,7 +22,7 @@ papers:
     title: What Makes a Representation Good for Single-Cell Perturbation Prediction?
     year: '2026'
   nNp0nL4AAAAJ:hqOjcs7Dif8C:
-    citations: 23
+    citations: 25
     title: 'CLAP: Isolating Content from Style Through Contrastive Learning with Augmented Prompts'
     year: '2024'
   nNp0nL4AAAAJ:qxL8FJ1GzNcC:
