@@ -1,11 +1,11 @@
 ---
 layout: about
 title: About
+nav_title: about
 permalink: /
 lang: en
 lang_en_url: /
 lang_zh_url: /zh/
-subtitle: Understanding how learning objectives shape representations.
 
 profile:
   align: right
@@ -14,13 +14,11 @@ profile:
   more_info: >
     <p>yichao.cai@adelaide.edu.au</p>
 
-research: true # includes selected publications on the homepage
-suppress_publication_highlights: true
-teaching_service: true # adds teaching and academic service below publications
+research: true # includes all publications on the homepage
 social: false # social icons are in the top nav bar instead
 
 announcements:
-  enabled: true # includes a list of news items
+  enabled: false
   scrollable: true # adds a vertical scroll bar if there are more than 3 news items
   limit: # leave blank to include all the news in the `_news` folder
 
@@ -28,12 +26,19 @@ latest_posts:
   enabled: false # set true once you publish blog posts in _posts/
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
+
+publications_heading: Publications
+publication_note: 'Selected publications are <span class="publication-note-highlight">highlighted</span>.'
 ---
 
 I am a PhD student in Computer Science at the [Australian Institute for Machine Learning (AIML)](https://www.adelaide.edu.au/aiml/), [Adelaide University](https://www.adelaide.edu.au/), advised by Prof. [Javen Qinfeng Shi](http://javenshi.org/). I received my M.Sc. and B.Eng. degrees from Wuhan University of Technology and spent five months as a visiting student researcher at California PATH, UC Berkeley.
 
-My research asks how learning objectives and supervision shape representations: when they identify causal, generalizable latent structure, and when they discard, conflate, or leave it underdetermined. This perspective clarifies the limits of foundation-model objectives and separates capabilities that may emerge through scaling from those that require new objectives, supervision, or data interventions.
+<h3 class="home-section-heading">Research Interests</h3>
 
-Methodologically, I study these questions using identifiability theory, latent-variable modeling, population-objective analysis, and representation geometry, with the broader goal of explaining both the capabilities and structural limits of modern learning systems.
+My research centers on a foundational question in representation learning: **when does supervision identify causal and generalizable latent structure, and when does it instead discard, conflate, or fail to uniquely determine that structure?**
 
-Explore how these ideas connect across my work in the [interactive research agenda]({{ '/research-agenda/' | relative_url }}).
+I approach this question using identifiability theory, latent-variable modeling, population-level objective analysis, and representation geometry.
+
+Empirically, I study vision-language systems and autoregressive language models, with growing interests in generative modeling and representation learning for complex scientific data.
+
+<a class="agenda-link" href="{{ '/research-agenda/' | relative_url }}">(Explore the interactive research agenda)</a>

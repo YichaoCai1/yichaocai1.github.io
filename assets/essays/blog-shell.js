@@ -101,9 +101,12 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class="container-lg site-top-nav-inner">
       <a class="site-top-nav-brand" href="/">Yichao Cai</a>
       <div class="site-top-nav-links">
-        <a href="/">Home</a>
-        <a class="active" href="/blog/">Blog</a>
-        <a href="/#research">Research</a> <a href="/#teaching">Teaching &amp; Service</a>
+        <a href="/">about</a>
+        <a href="/research-agenda/">agenda</a>
+        <a href="/teaching/">teaching</a>
+        <a href="/service/">service</a>
+        <a class="active" aria-current="page" href="/blog/">blog</a>
+        <a class="site-language-switch" href="/zh/blog/" lang="zh" aria-label="Switch to Chinese">&#20013;</a>
       </div>
     </div>
   `;

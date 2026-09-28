@@ -31,7 +31,7 @@ blog_description: Essays and notes on machine learning, representation learning,
 
   <div class="header-bar">
     <h1>{{ blog_name }}</h1>
-    <h2>{{ blog_description }}</h2>
+    <h2 class="blog-description">{{ blog_description }}</h2>
   </div>
   {% endif %}
 

@@ -1,0 +1,20 @@
+---
+layout: page
+title: 教学
+description: 阿德莱德大学教学经历。
+permalink: /zh/teaching/
+lang: zh
+lang_en_url: /teaching/
+lang_zh_url: /zh/teaching/
+nav: false
+---
+
+在阿德莱德大学：
+
+<ul class="cv-list">
+  <li><span class="cv-date">Semester 2, 2026</span><span class="cv-detail">助教, Programming for Artificial Intelligence (COMP&nbsp;5004)</span></li>
+  <li><span class="cv-date">Semester 1, 2026</span><span class="cv-detail">助教，Neural Networks and Deep Learning (ARTI&nbsp;X300)</span></li>
+  <li><span class="cv-date">Semester 2, 2025</span><span class="cv-detail">特邀讲师与课程主助教，Statistical Machine Learning (COMP&nbsp;SCI&nbsp;3314)</span></li>
+  <li><span class="cv-date">Trimester 2, 2025</span><span class="cv-detail">助教，Using Machine Learning Tools (COMP&nbsp;SCI&nbsp;7317)</span></li>
+  <li><span class="cv-date">Semester 1, 2025</span><span class="cv-detail">助教，Concepts in AI and ML (COMP&nbsp;SCI&nbsp;7327)</span></li>
+</ul>

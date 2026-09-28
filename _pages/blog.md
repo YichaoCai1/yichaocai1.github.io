@@ -2,11 +2,14 @@
 layout: default
 permalink: /blog/
 title: Blog
+nav_title: blog
+nav_title_zh: 博客
+nav_url_zh: /zh/blog/
 lang: en
 lang_en_url: /blog/
 lang_zh_url: /zh/blog/
 nav: true
-nav_order: 3
+nav_order: 4
 pagination:
   enabled: true
   collection: posts
@@ -28,7 +31,7 @@ pagination:
 
   <div class="header-bar">
     <h1>{{ site.blog_name }}</h1>
-    <h2>{{ site.blog_description }}</h2>
+    <h2 class="blog-description">{{ site.blog_description }}</h2>
   </div>
   {% endif %}
 

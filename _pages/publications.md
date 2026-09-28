@@ -1,16 +1,22 @@
 ---
-layout: page
+layout: none
 title: Publications
-description: Research publications on representation learning, identifiability, and multimodal learning.
 permalink: /publications/
-lang: en
-lang_en_url: /publications/
-lang_zh_url: /publications/
-nav: true
-nav_order: 1
+sitemap: false
 ---
 
-<div class="publications-page">
-  <p class="publication-note">Selected publications are <span class="publication-note-highlight">highlighted</span>.</p>
-  {% include research_publications.liquid %}
-</div>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="0; url={{ '/#publications' | relative_url }}">
+    <link rel="canonical" href="{{ '/#publications' | absolute_url }}">
+    <title>Publications | {{ site.title }}</title>
+    <script>
+      window.location.replace("{{ '/#publications' | relative_url }}");
+    </script>
+  </head>
+  <body>
+    <p>Publications have moved to the <a href="{{ '/#publications' | relative_url }}">homepage</a>.</p>
+  </body>
+</html>

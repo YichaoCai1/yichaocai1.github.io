@@ -17,7 +17,7 @@
   --shadow-soft: 0 2px 5px rgba(18, 42, 130, 0.08), 0 8px 24px rgba(31, 45, 61, 0.08);
   --shadow: 0 8px 24px rgba(18, 42, 130, 0.08), 0 18px 48px rgba(31, 45, 61, 0.1);
   --hover-shadow: 0 8px 17px rgba(18, 42, 130, 0.12), 0 14px 34px rgba(31, 45, 61, 0.13);
-  --font-site: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-site: var(--site-font-family);
 }
 
 html[data-theme="dark"] .research-agenda {
@@ -51,6 +51,8 @@ html[data-theme="dark"] body.research-agenda-page {
 .research-agenda {
   color: var(--ink);
   font-family: var(--font-site);
+  font-size: 1rem;
+  font-weight: 350;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-rendering: geometricPrecision;
@@ -112,7 +114,7 @@ html[data-theme="dark"] body.research-agenda-page {
   margin-bottom: 0;
   color: var(--homepage-green);
   font-size: 0.76rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.13em;
   text-transform: uppercase;
 }
@@ -120,11 +122,11 @@ html[data-theme="dark"] body.research-agenda-page {
 .research-agenda h1 {
   width: 100%;
   margin-bottom: 0;
-  font-size: 2.12rem;
-  font-weight: 400;
-  line-height: 1.12;
+  font-size: 1.95rem;
+  font-weight: 700;
+  line-height: 1.18;
   text-align: center;
-  color: var(--ink);
+  color: var(--homepage-green);
   overflow-wrap: break-word;
 }
 
@@ -295,16 +297,16 @@ html[data-theme="dark"] body.research-agenda-page {
 }
 
 .node-title {
-  fill: #111827;
-  font-size: 15px;
-  font-weight: 600;
+  fill: var(--homepage-green);
+  font-size: 0.9375rem;
+  font-weight: 700;
   pointer-events: none;
   stroke: none;
 }
 
 .node-sub {
   fill: #111827;
-  font-size: 11.5px;
+  font-size: 0.71875rem;
   opacity: 0.78;
   pointer-events: none;
   stroke: none;
@@ -312,14 +314,14 @@ html[data-theme="dark"] body.research-agenda-page {
 
 .diagram-caption {
   fill: var(--muted);
-  font-size: 12px;
+  font-size: 0.75rem;
   pointer-events: none;
 }
 
 .caption-arrow {
   fill: var(--homepage-green);
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
 .detail-layer {
@@ -379,16 +381,17 @@ html[data-theme="dark"] .detail-layer {
   margin-bottom: 8px;
   color: var(--active-display, var(--teal));
   font-size: 0.78rem;
-  font-weight: 800;
+  font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .layer-heading h2 {
   margin-bottom: 10px;
-  font-size: 2.08rem;
-  font-weight: 500;
-  line-height: 1.15;
+  color: var(--homepage-green);
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 .layer-heading p:last-child {
@@ -485,7 +488,8 @@ html[data-theme="dark"] .layer-node {
   margin-bottom: 6px;
   font-size: 1.08rem;
   line-height: 1.18;
-  color: var(--ink);
+  color: var(--homepage-green);
+  font-weight: 700;
 }
 
 .layer-node span {
@@ -538,10 +542,10 @@ html[data-theme="dark"] .layer-node {
 
 .detail-top h3 {
   margin-bottom: 8px;
-  color: var(--ink);
-  font-size: 1.5rem;
-  font-weight: 500;
-  line-height: 1.12;
+  color: var(--homepage-green);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 .detail-top p {
@@ -677,7 +681,7 @@ html[data-theme="dark"] .project-node {
   margin-bottom: 10px;
   color: var(--card-accent);
   font-size: 0.76rem;
-  font-weight: 800;
+  font-weight: 500;
   text-transform: uppercase;
 }
 
@@ -688,7 +692,8 @@ html[data-theme="dark"] .project-node {
   margin-bottom: 8px;
   font-size: 1rem;
   line-height: 1.2;
-  color: var(--ink);
+  color: var(--homepage-green);
+  font-weight: 700;
 }
 
 .project-node span:last-child {
@@ -834,7 +839,7 @@ html[data-theme="dark"] .project-node {
   }
 
   .research-agenda h1 {
-    font-size: 1.62rem;
+    font-size: 1.5rem;
     line-height: 1.18;
   }
 
@@ -847,7 +852,7 @@ html[data-theme="dark"] .project-node {
   }
 
   .layer-heading h2 {
-    font-size: 1.55rem;
+    font-size: 1.4rem;
   }
 
   .project-node {

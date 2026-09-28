@@ -29,12 +29,160 @@ $max-content-width: {{ site.max_width }};
  * Site-specific customizations
  ******************************************************************************/
 
-// Teaching & Service — spaced list (replaces the cramped table)
-// Home-page subtitle: normal font, muted gray, shown as a normal sentence
+// Site typography
+:root {
+  --site-font-family: "Nunito Sans", "Noto Sans SC", "Helvetica Neue", Arial, sans-serif;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--site-font-family);
+  font-size: 1rem;
+  font-weight: 350;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--site-font-family);
+  color: var(--global-theme-color);
+  font-weight: 700;
+}
+
+h1 :is(span, em, strong),
+h2 :is(span, em, strong),
+h3 :is(span, em, strong),
+h4 :is(span, em, strong),
+h5 :is(span, em, strong),
+h6 :is(span, em, strong) {
+  color: inherit;
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.45rem;
+  line-height: 1.25;
+}
+
+h3 {
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+.navbar .nav-link {
+  font-family: var(--site-font-family);
+  font-weight: 400;
+}
+
+.navbar.navbar-light .navbar-nav .nav-item.active > .nav-link {
+  font-weight: 500;
+}
+
+.navbar .language-switch-button span {
+  font-weight: 500;
+}
+
+.post-list li a.post-title,
+.card .card-title {
+  color: var(--global-theme-color);
+  font-weight: 700;
+}
+
+.publications ol.bibliography li .title {
+  color: var(--global-text-color);
+  font-weight: 600;
+}
+
+.post-header .home-profile-name {
+  color: var(--global-text-color);
+}
+
+.projects h2.category,
+.publications h2.bibliography {
+  color: var(--global-theme-color);
+}
+
 .post-header .desc {
   text-transform: none;
   color: var(--global-text-color-light);
 }
+
+.home-section-heading {
+  color: var(--global-text-color);
+  font-size: 1.45rem;
+  margin-top: 2.1rem;
+  margin-bottom: 0.75rem;
+}
+
+h3.home-section-heading {
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+.header-bar h1 {
+  font-size: 4.5rem;
+}
+
+.publications h1 {
+  font-size: 1.85rem;
+}
+
+.publications h2 span {
+  font-size: 1.4rem;
+}
+
+.agenda-link {
+  display: inline;
+  color: var(--global-theme-color);
+}
+
+.post-header .font-weight-bold {
+  font-weight: 500 !important;
+}
+
+.agenda-link:hover,
+.agenda-link:focus-visible {
+  color: var(--global-hover-color);
+}
+
+.archive table,
+.archive th,
+.archive td,
+.archive .post-link {
+  font-family: var(--site-font-family);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.archive th {
+  color: var(--global-text-color-light);
+  font-weight: 400;
+}
+
+.archive td,
+.archive .post-link {
+  font-weight: 350;
+}
+
+.header-bar .blog-description {
+  color: var(--global-text-color-light);
+  font-size: 0.9rem;
+  font-weight: 350;
+  line-height: 1.4;
+}
+
+// Home-page publication list and selected-paper treatment
 
 .publication-note {
   color: var(--global-text-color-light);
@@ -48,10 +196,6 @@ $max-content-width: {{ site.max_width }};
   background-color: color-mix(in srgb, var(--global-theme-color) 8%, transparent);
   border-radius: 3px;
   padding: 0.05rem 0.2rem;
-}
-
-.research-heading {
-  margin-top: 2.25rem;
 }
 
 .publications ol.bibliography li .publication-entry {
@@ -89,6 +233,7 @@ $max-content-width: {{ site.max_width }};
   }
 }
 
+// Teaching & Service — spaced list (replaces the cramped table)
 .cv-list {
   list-style: none;
   padding-left: 0;
@@ -97,12 +242,15 @@ $max-content-width: {{ site.max_width }};
   li {
     display: flex;
     gap: 1.25rem;
-    padding: 0.7rem 0;
+    padding: 0 0 0.45rem;
+    margin-bottom: 0.45rem;
     border-bottom: 1px solid var(--global-divider-color);
   }
 
   li:last-child {
     border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 
   .cv-date {
@@ -120,47 +268,32 @@ $max-content-width: {{ site.max_width }};
   margin-bottom: 1.25rem;
 }
 
-.all-publications-link {
-  display: inline-flex;
-  gap: 0.5rem;
-  align-items: center;
-  margin-top: 0.35rem;
-  font-size: 0.96rem;
-  font-weight: 500;
-
-  span {
-    color: inherit;
-  }
-
-  &:hover {
-    text-decoration: none;
-
-    span:last-child {
-      transform: translateX(2px);
-    }
-  }
-
-  span:last-child {
-    transition: transform 180ms ease;
-  }
+.service-block > p {
+  color: var(--global-theme-color);
+  font-weight: 700;
 }
 
-.publications-page {
-  .publication-note {
-    margin-top: 0;
-    margin-bottom: 1.4rem;
-  }
+.service-block ul li {
+  margin-bottom: 0.9rem;
+}
 
-  .publications {
-    margin-top: 0;
-  }
+.service-block ul li:last-child {
+  margin-bottom: 0;
+}
+
+.calendar-toggle-btn {
+  background-color: var(--global-theme-color);
+}
+
+.calendar-toggle-btn:hover {
+  background-color: var(--global-hover-color);
 }
 
 @media (max-width: 576px) {
   // Stack the teaching rows on phones
   .cv-list li {
     flex-direction: column;
-    gap: 0.15rem;
+    gap: 0.25rem;
   }
   .cv-list .cv-date {
     flex-basis: auto;
