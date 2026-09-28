@@ -53,14 +53,14 @@ external_services:
 # -----------------------------------------------------------------------------
 
 navbar_fixed: true
-footer_fixed: true
+footer_fixed: false
 search_enabled: true
 socials_in_search: true
 posts_in_search: true
 bib_search: true
 
 # Dimensions
-max_width: 930px
+max_width: 840px
 
 # TODO: add layout settings (single page vs. multi-page)
 
@@ -188,6 +188,7 @@ exclude:
   - Gemfile.lock
   - INSTALL.md
   - LICENSE
+  - THIRD_PARTY_NOTICES.md
   - lighthouse_results/
   - package.json
   - package-lock.json
@@ -415,7 +416,7 @@ enable_darkmode: true # enables switching between light/dark modes
 enable_navbar_social: false # enables displaying social links in the navbar on the about page
 enable_project_categories: true # enables categorization of projects into multiple categories
 enable_medium_zoom: true # enables image zoom feature (as on medium.com)
-enable_progressbar: true # enables a horizontal progress bar linked to the vertical scroll position
+enable_progressbar: false # enables a horizontal progress bar linked to the vertical scroll position
 enable_video_embedding: false # enables video embedding for bibtex entries. If false, the button opens the video link in a new window.
 
 # -----------------------------------------------------------------------------
@@ -467,7 +468,7 @@ third_party_libraries:
     version: "5.5.0"
   google_fonts:
     url:
-      fonts: "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Nunito+Sans:ital,wght@0,200..1000;1,200..1000&display=swap"
+      fonts: "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
       icons: "https://fonts.googleapis.com/icon?family=Material+Icons"
   highlightjs:
     integrity:

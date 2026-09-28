@@ -1,197 +1,70 @@
-<header>
-  {% assign current_lang = page.lang | default: site.lang | default: 'en' %}
-  {% assign current_is_zh = false %}
-  {% if current_lang == 'zh' or current_lang == 'zh-CN' or current_lang == 'cn' %}
-    {% assign current_is_zh = true %}
-  {% endif %}
-  {% assign cv_pdf = site.data.socials.cv_pdf | default: '/assets/pdf/yichaocai_cv.pdf' %}
-  <!-- Nav Bar -->
-  <nav id="navbar" class="navbar navbar-light navbar-expand-sm {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}" role="navigation">
-    <div class="container">
-      <!-- Social icons on the left of the nav bar (shown on all pages) -->
-      <div class="navbar-brand social">
-        {% if site.data.socials.email %}
-          <a href="mailto:{{ site.data.socials.email | encode_email }}" title="Email"><i class="fa-solid fa-envelope"></i></a>
+{% assign current_lang = page.lang | default: site.lang | default: 'en' %}
+{% assign home_url = '/' %}
+{% assign blog_url = '/blog/' %}
+{% assign nav_labels = 'About,Research,Publications,Teaching,Service' | split: ',' %}
+{% assign agenda_label = 'Agenda' %}
+{% assign blog_label = 'Blog' %}
+{% assign menu_label = 'Menu' %}
+{% if current_lang == 'zh' %}
+  {% assign home_url = '/zh/' %}
+  {% assign blog_url = '/zh/blog/' %}
+  {% assign nav_labels = '关于,研究,论文,教学,服务' | split: ',' %}
+  {% assign agenda_label = '研究议程' %}
+  {% assign blog_label = '博客' %}
+  {% assign menu_label = '菜单' %}
+{% endif %}
+{% assign section_ids = 'about,research,publications,teaching,service' | split: ',' %}
+<header class="academic-header">
+  <a class="skip-link" href="#main-content">
+    {%- if current_lang == 'zh' %}跳至正文{% else %}Skip to content{% endif -%}
+  </a>
+  <nav class="academic-nav" aria-label="{% if current_lang == 'zh' %}网站导航{% else %}Site navigation{% endif %}">
+    <a class="mobile-brand" href="{{ home_url | relative_url }}">Yichao Cai</a>
+    <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="academic-nav-links">
+      {{ menu_label }}
+      <span aria-hidden="true">☰</span>
+    </button>
+    <div class="academic-nav-links" id="academic-nav-links">
+      {% for section_id in section_ids %}
+        <a href="{{ home_url | relative_url }}#{{ section_id }}" data-home-section="{{ section_id }}">{{ nav_labels[forloop.index0] }}</a>
+      {% endfor %}
+      <span class="nav-divider" aria-hidden="true">|</span>
+      <a
+        href="{{ '/research-agenda/' | relative_url }}"
+        {% if page.url contains '/research-agenda/' %}
+          aria-current="page"
         {% endif %}
-        {% if site.data.socials.scholar_userid %}
-          <a
-            href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}"
-            title="Google Scholar"
-            rel="external nofollow noopener"
-            target="_blank"
-            ><i class="ai ai-google-scholar"></i
-          ></a>
-        {% endif %}
-        {% if site.data.socials.github_username %}
-          <a href="https://github.com/{{ site.data.socials.github_username }}" title="GitHub" rel="external nofollow noopener" target="_blank"
-            ><i class="fa-brands fa-github"></i
-          ></a>
-        {% endif %}
-        {% if site.data.socials.linkedin_username %}
-          <a
-            href="https://www.linkedin.com/in/{{ site.data.socials.linkedin_username }}"
-            title="LinkedIn"
-            rel="external nofollow noopener"
-            target="_blank"
-            ><i class="fa-brands fa-linkedin"></i
-          ></a>
-        {% endif %}
-        {% if cv_pdf %}
-          <a href="{{ cv_pdf | relative_url }}" title="CV"><i class="ai ai-cv"></i></a>
-        {% endif %}
-      </div>
-      <!-- Navbar Toggle -->
-      <button
-        class="navbar-toggler collapsed ml-auto"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
       >
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar top-bar"></span>
-        <span class="icon-bar middle-bar"></span>
-        <span class="icon-bar bottom-bar"></span>
-      </button>
-
-      <div class="collapse navbar-collapse text-right" id="navbarNav">
-        <ul class="navbar-nav ml-auto flex-nowrap">
-          {% for candidate_page in site.pages %}
-            {% if candidate_page.permalink == '/' %}
-              {% assign about_title = candidate_page.nav_title | default: candidate_page.title %}
-            {% endif %}
-          {% endfor %}
-          {% assign about_label = about_title %}
-          {% assign about_url = '/' %}
-          {% if current_is_zh %}
-            {% assign about_label = '关于' %}
-            {% assign about_url = '/zh/' %}
-          {% endif %}
-          {% assign about_active = false %}
-          {% if page.permalink == '/' or page.permalink == '/zh/' %}
-            {% assign about_active = true %}
-          {% endif %}
-
-          <!-- About -->
-          <li class="nav-item {% if about_active %}active{% endif %}">
-            <a class="nav-link" href="{{ about_url | relative_url }}">
-              {{- about_label }}
-              {% if about_active %}
-                <span class="sr-only">(current)</span>
-              {% endif %}
-            </a>
-          </li>
-
-          <!-- Primary pages -->
-          {% assign agenda_label = 'agenda' %}
-          {% assign teaching_label = 'teaching' %}
-          {% assign service_label = 'service' %}
-          {% assign blog_label = 'blog' %}
-          {% assign teaching_url = '/teaching/' %}
-          {% assign service_url = '/service/' %}
-          {% assign blog_url = '/blog/' %}
-          {% if current_is_zh %}
-            {% assign agenda_label = '研究议程' %}
-            {% assign teaching_label = '教学' %}
-            {% assign service_label = '学术服务' %}
-            {% assign blog_label = '博客' %}
-            {% assign teaching_url = '/zh/teaching/' %}
-            {% assign service_url = '/zh/service/' %}
-            {% assign blog_url = '/zh/blog/' %}
-          {% endif %}
-
-          {% assign agenda_active = false %}
-          {% assign teaching_active = false %}
-          {% assign service_active = false %}
-          {% assign blog_active = false %}
-          {% if page.url contains '/research-agenda/' %}{% assign agenda_active = true %}{% endif %}
-          {% if page.url contains '/teaching/' %}{% assign teaching_active = true %}{% endif %}
-          {% if page.url contains '/service/' %}{% assign service_active = true %}{% endif %}
-          {% if page.url contains '/blog/' %}{% assign blog_active = true %}{% endif %}
-
-          <li class="nav-item {% if agenda_active %}active{% endif %}">
-            <a class="nav-link" href="{{ '/research-agenda/' | relative_url }}">
-              {{- agenda_label }}
-              {% if agenda_active -%}
-                <span class="sr-only">(current)</span>
-              {%- endif %}
-            </a>
-          </li>
-          <li class="nav-item {% if teaching_active %}active{% endif %}">
-            <a class="nav-link" href="{{ teaching_url | relative_url }}">
-              {{- teaching_label }}
-              {% if teaching_active -%}
-                <span class="sr-only">(current)</span>
-              {%- endif %}
-            </a>
-          </li>
-          <li class="nav-item {% if service_active %}active{% endif %}">
-            <a class="nav-link" href="{{ service_url | relative_url }}">
-              {{- service_label }}
-              {% if service_active -%}
-                <span class="sr-only">(current)</span>
-              {%- endif %}
-            </a>
-          </li>
-          <li class="nav-item {% if blog_active %}active{% endif %}">
-            <a class="nav-link" href="{{ blog_url | relative_url }}">
-              {{- blog_label }}
-              {% if blog_active -%}
-                <span class="sr-only">(current)</span>
-              {%- endif %}
-            </a>
-          </li>
-          {% assign lang_en_url = page.lang_en_url | default: '/' %}
-          {% assign lang_zh_url = page.lang_zh_url | default: '/zh/' %}
-          {% if current_is_zh %}
-            {% assign lang_switch_url = lang_en_url %}
-            {% assign lang_switch_label = 'EN' %}
-            {% assign lang_switch_title = 'Switch to English' %}
-          {% else %}
-            {% assign lang_switch_url = lang_zh_url %}
-            {% assign lang_switch_label = '中' %}
-            {% assign lang_switch_title = '切换到中文' %}
-          {% endif %}
-          <li class="nav-item language-switcher {% if current_is_zh %}is-zh{% else %}is-en{% endif %}">
-            <a
-              class="nav-link language-switch-button"
-              href="{{ lang_switch_url | relative_url }}"
-              title="{{ lang_switch_title }}"
-              aria-label="{{ lang_switch_title }}"
-            >
-              <span>{{ lang_switch_label }}</span>
-            </a>
-          </li>
-          {% if site.search_enabled %}
-            <!-- Search -->
-            <li class="nav-item">
-              <button id="search-toggle" title="Search" onclick="openSearchModal()">
-                <span class="nav-link">ctrl k <i class="ti ti-search"></i></span>
-              </button>
-            </li>
-          {% endif %}
-          {% if site.enable_darkmode %}
-            <!-- Toogle theme mode -->
-            <li class="toggle-container">
-              <button id="light-toggle" title="Change theme">
-                <i class="ti ti-sun-moon" id="light-toggle-system"></i>
-                <i class="ti ti-moon-filled" id="light-toggle-dark"></i>
-                <i class="ti ti-sun-filled" id="light-toggle-light"></i>
-              </button>
-            </li>
-          {% endif %}
-        </ul>
-      </div>
+        {{- agenda_label -}}
+      </a>
+      <a
+        href="{{ blog_url | relative_url }}"
+        {% if page.url contains '/blog/' or page.essay %}
+          aria-current="page"
+        {% endif %}
+      >
+        {{- blog_label -}}
+      </a>
+    </div>
+    <div class="academic-utilities">
+      {% if current_lang == 'zh' %}
+        <a href="{{ page.lang_en_url | default: '/' | relative_url }}" lang="en" aria-label="Switch to English">EN</a>
+      {% else %}
+        <a
+          href="{{ page.lang_zh_url | default: '/zh/' | relative_url }}"
+          lang="zh"
+          aria-label="切换到中文{% if page.essay %}博客列表{% elsif page.url contains '/research-agenda/' %}首页{% endif %}"
+          >中</a
+        >
+      {% endif %}
+      {% if site.search_enabled -%}
+        <button type="button" id="search-toggle" title="Search (Ctrl K)" aria-label="Search" onclick="openSearchModal()">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        </button>
+      {%- endif %}
+      {% if site.enable_darkmode -%}
+        <button type="button" id="light-toggle" title="Change theme" aria-label="Change theme"><span aria-hidden="true">◐</span></button>
+      {%- endif %}
     </div>
   </nav>
-  {% if site.enable_progressbar %}
-    <!-- Scrolling Progress Bar -->
-    <progress id="progress" value="0">
-      <div class="progress-container">
-        <span class="progress-bar"></span>
-      </div>
-    </progress>
-  {% endif %}
 </header>

@@ -1,0 +1,196 @@
+/* The interactive research map shares the site's academic page frame. */
+body.research-agenda-page,
+html[data-theme="dark"] body.research-agenda-page {
+  background: var(--global-bg-color);
+}
+.research-agenda,
+html[data-theme="dark"] .research-agenda {
+  --page: var(--global-bg-color);
+  --paper: var(--global-bg-color);
+  --ink: var(--global-text-color);
+  --muted: var(--global-text-color-light);
+  --soft: var(--global-text-color-light);
+  --line: var(--global-divider-color);
+  --line-strong: var(--global-divider-color);
+  --homepage-green: var(--global-theme-color);
+  --shadow: none;
+  --shadow-soft: none;
+  --hover-shadow: none;
+  width: min(940px, calc(100% - 40px));
+  max-width: none;
+  font-weight: 400;
+  line-height: 1.6;
+}
+.research-agenda .global-stage {
+  min-height: 0;
+  display: block;
+  padding: 44px 0 0;
+}
+.research-agenda .global-wrap {
+  width: 100%;
+  gap: 26px;
+}
+.research-agenda .global-heading {
+  width: min(840px, 100%);
+  max-width: none;
+  justify-items: start;
+  text-align: left;
+}
+.research-agenda .agenda-kicker {
+  color: var(--muted);
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.research-agenda h1 {
+  width: 100%;
+  color: var(--ink);
+  text-align: left;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1.3;
+}
+.research-agenda .diagram-card {
+  width: min(800px, 100%);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  box-shadow: none;
+}
+.research-agenda .diagram-card::before,
+.research-agenda .diagram-card::after,
+.research-agenda .layer-node::before,
+.research-agenda .layer-node::after,
+.research-agenda .project-node::before,
+.research-agenda .project-node::after {
+  display: none;
+}
+.research-agenda .node-globe {
+  fill: var(--paper);
+  filter: none;
+  stroke-width: 1.4;
+}
+.research-agenda .node-glow {
+  opacity: 0.035;
+}
+.research-agenda .node-shine {
+  display: none;
+}
+.research-agenda .node-sub {
+  fill: var(--ink);
+}
+.research-agenda .inner-loop {
+  animation: none;
+  stroke: var(--line);
+}
+.research-agenda .diagram-node:focus-visible {
+  outline: none;
+}
+.research-agenda .diagram-node:focus-visible .node-globe {
+  stroke-width: 3;
+}
+.research-agenda .detail-layer {
+  padding: 38px 0 0;
+}
+.research-agenda .return-button {
+  border: 0;
+  border-radius: 0;
+  padding: 6px 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--homepage-green);
+}
+.research-agenda .return-button:hover {
+  transform: none;
+  color: var(--global-hover-color);
+}
+.research-agenda .layer-heading h2 {
+  color: var(--ink);
+  font-weight: 400;
+}
+.research-agenda .layer-node,
+.research-agenda .project-node,
+.research-agenda .detail-top,
+.research-agenda .project-detail,
+.research-agenda .memory-chip {
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  box-shadow: none;
+  background: var(--paper);
+}
+.research-agenda .layer-node:hover,
+.research-agenda .project-node:hover {
+  transform: none;
+  border-color: var(--card-accent, var(--homepage-green));
+}
+.research-agenda .layer-node:focus-visible,
+.research-agenda .project-node:focus-visible,
+.research-agenda .return-button:focus-visible {
+  outline: 2px solid var(--homepage-green);
+  outline-offset: 3px;
+  box-shadow: none;
+  transform: none;
+}
+.research-agenda .layer-node[aria-current="true"],
+.research-agenda .project-node[aria-current="true"] {
+  box-shadow: inset 0 -2px var(--active-display, var(--homepage-green));
+}
+.research-agenda .layer-node b,
+.research-agenda .project-node b,
+.research-agenda .detail-top h3 {
+  color: var(--ink);
+}
+.research-agenda .eyebrow,
+.research-agenda .project-meta {
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.research-agenda .layer-node span,
+.research-agenda .project-node span:last-child {
+  font-size: 0.875rem;
+}
+@media (max-width: 720px) {
+  .research-agenda .node-layer {
+    grid-template-columns: 1fr;
+  }
+  .research-agenda .layer-node {
+    min-height: auto;
+    padding: 14px 16px;
+  }
+  .research-agenda .layer-node span,
+  .research-agenda .project-node span:last-child {
+    display: block;
+  }
+  .research-agenda .layer-node b {
+    font-size: 1rem;
+  }
+  .research-agenda .detail-top {
+    grid-template-columns: 1fr;
+  }
+  .research-agenda .global-stage {
+    padding-top: 30px;
+  }
+}
+@media (max-width: 560px) {
+  .research-agenda .node-title {
+    font-size: 1.0625rem;
+  }
+  .research-agenda .node-sub {
+    font-size: 0.875rem;
+  }
+  .research-agenda .diagram-caption {
+    font-size: 0.875rem;
+  }
+  .research-agenda h1 {
+    font-size: 1.7rem;
+  }
+  .research-agenda .diagram-card {
+    overflow-x: auto;
+  }
+  .research-agenda .agenda-diagram {
+    min-width: 340px;
+  }
+  .research-agenda .project-node b {
+    font-size: 1rem;
+  }
+}

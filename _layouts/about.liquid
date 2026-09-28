@@ -1,81 +1,60 @@
 ---
 layout: default
 ---
-{% assign latest_posts_heading = page.latest_posts_heading | default: 'latest posts' %}
-{% assign publications_heading = page.publications_heading | default: 'Publications' %}
-{% assign publication_note = page.publication_note
-  | default: 'Selected publications are <span class="publication-note-highlight">highlighted</span>.'
-%}
-{% assign display_name = page.display_name %}
-<div class="post">
-  <header class="post-header">
-    <h1 class="post-title home-profile-name">
-      {% if display_name %}
-        {{ display_name }}
-      {% elsif site.title == 'blank' %}
-        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
-        {{ site.last_name }}
-      {% else %}
-        {{ site.title }}
-      {% endif %}
-    </h1>
-    {% if page.subtitle != blank %}
-      <p class="desc">{{ page.subtitle }}</p>
-    {% endif %}
-  </header>
-
-  <article>
-    {% if page.profile %}
-      <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
-        {% if page.profile.image %}
-          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-          {% if page.profile.image_circular %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
-          {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1
-      rounded' %}
-          {% endif %}
-          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
-      30vw, 95vw"{% endcapture %}
-          {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
-            cache_bust=true
-          %}
-        {% endif %}
-        {% if page.profile.more_info %}
-          <div class="more-info">{{ page.profile.more_info }}</div>
-        {% endif %}
+{% assign home_parts = content | split: '<!-- research-section -->' %}
+<article class="academic-home">
+  <section id="about" class="home-intro" aria-labelledby="profile-name">
+    <div class="home-biography">
+      <h1 id="profile-name">
+        {{ page.display_name | default: site.first_name -}}
+        {%- unless page.display_name %} {{ site.last_name }}{% endunless %}
+      </h1>
+      {{ home_parts[0] }}
+      {% include profile-links.liquid %}
+    </div>
+    {% if page.profile.image %}
+      {% assign profile_path = page.profile.image | prepend: 'assets/img/' %}
+      <div class="home-portrait">
+        {% include figure.liquid loading="eager" path=profile_path class="portrait-image" sizes="(max-width: 600px) 180px, 230px" alt="Portrait of Yichao Cai" cache_bust=true %}
       </div>
     {% endif %}
-
-    <div class="clearfix">{{ content }}</div>
-
-    <!-- Latest posts -->
-    {% if page.latest_posts and page.latest_posts.enabled %}
+  </section>
+  <section id="research" class="home-section" aria-labelledby="research-heading">{{ home_parts[1] }}</section>
+  {% if page.research %}
+    <section id="publications" class="home-section" aria-labelledby="publications-heading">
+      <h2 id="publications-heading">{{ page.publications_heading | default: 'Publications' }}</h2>
+      <p class="publication-note">{{ page.publication_note }}</p>
+      {% include research_publications.liquid %}
+    </section>
+  {% endif %}
+  {% if page.latest_posts.enabled %}
+    <section class="home-section">
       <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">{{ latest_posts_heading }}</a>
+        <a href="{{ '/blog/' | relative_url }}">{{ page.latest_posts_heading | default: 'Latest posts' }}</a>
       </h2>
       {% include latest_posts.liquid %}
+    </section>
+  {% endif %}
+  <section id="teaching" class="home-section" aria-labelledby="teaching-heading">
+    <h2 id="teaching-heading">
+      {% if page.lang == 'zh' %}教学{% else %}Teaching{% endif %}
+    </h2>
+    {% if page.lang == 'zh' %}
+      {% capture teaching_content %}{% include home/teaching_zh.md %}{% endcapture %}
+    {% else %}
+      {% capture teaching_content %}{% include home/teaching.md %}{% endcapture %}
     {% endif %}
-
-    <!-- Publications -->
-    {% if page.research %}
-      <h2 id="publications" class="home-section-heading publications-heading">{{ publications_heading }}</h2>
-      <p class="publication-note">{{ publication_note }}</p>
-      {% include research_publications.liquid %}
+    {{ teaching_content | markdownify }}
+  </section>
+  <section id="service" class="home-section" aria-labelledby="service-heading">
+    <h2 id="service-heading">
+      {% if page.lang == 'zh' %}学术服务{% else %}Academic Service{% endif %}
+    </h2>
+    {% if page.lang == 'zh' %}
+      {% capture service_content %}{% include home/service_zh.md %}{% endcapture %}
+    {% else %}
+      {% capture service_content %}{% include home/service.md %}{% endcapture %}
     {% endif %}
-
-    <!-- Social -->
-    {% if page.social %}
-      <div class="social">
-        <div class="contact-icons">{% social_links %}</div>
-
-        <div class="contact-note">{{ site.contact_note }}</div>
-      </div>
-    {% endif %}
-
-    {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
-      {% include newsletter.liquid center=true %}
-    {% endif %}
-  </article>
-</div>
+    {{ service_content | markdownify }}
+  </section>
+</article>

@@ -1,0 +1,7 @@
+{% assign linked_post = include.post %}
+{% assign post_target = linked_post.redirect | default: linked_post.url %}
+{% unless post_target contains '://' %}{% assign post_target = post_target | relative_url %}{% endunless %}
+<a class="post-title" href="{{ post_target }}">{{ linked_post.title }}</a>
+{%- if post_target contains '.pdf' %}
+  <span class="file-label">PDF</span>
+{%- endif %}

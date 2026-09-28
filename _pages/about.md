@@ -10,12 +10,12 @@ lang_zh_url: /zh/
 profile:
   align: right
   image: prof_pic.png
-  image_circular: false # use a rounded-square profile frame
+  image_circular: true
   more_info: >
     <p>yichao.cai@adelaide.edu.au</p>
 
 research: true # includes all publications on the homepage
-social: false # social icons are in the top nav bar instead
+social: false # text profile links are rendered below the biography
 
 announcements:
   enabled: false
@@ -31,9 +31,11 @@ publications_heading: Publications
 publication_note: 'Selected publications are <span class="publication-note-highlight">highlighted</span>.'
 ---
 
-I am a PhD student in Computer Science at the [Australian Institute for Machine Learning (AIML)](https://www.adelaide.edu.au/aiml/), [Adelaide University](https://www.adelaide.edu.au/), advised by Prof. [Javen Qinfeng Shi](http://javenshi.org/). I received my M.Sc. and B.Eng. degrees from Wuhan University of Technology and spent five months as a visiting student researcher at California PATH, UC Berkeley.
+I am a final-year PhD student in Computer Science at the [Australian Institute for Machine Learning (AIML)](https://www.adelaide.edu.au/aiml/), [Adelaide University](https://www.adelaide.edu.au/), advised by Prof. [Javen Qinfeng Shi](http://javenshi.org/). I received my M.Sc. and B.Eng. degrees from [Wuhan University of Technology](https://www.whut.edu.cn/) and spent five months as a visiting student researcher at California PATH, UC Berkeley.
 
-<h3 class="home-section-heading">Research Interests</h3>
+<!-- research-section -->
+
+<h2 id="research-heading">Research Interests</h2>
 
 My research centers on a foundational question in representation learning: **when does supervision identify causal and generalizable latent structure, and when does it instead discard, conflate, or fail to uniquely determine that structure?**
 
@@ -41,4 +43,4 @@ I approach this question using identifiability theory, latent-variable modeling,
 
 Empirically, I study vision-language systems and autoregressive language models, with growing interests in generative modeling and representation learning for complex scientific data.
 
-<a class="agenda-link" href="{{ '/research-agenda/' | relative_url }}">(Explore the interactive research agenda)</a>
+<a class="agenda-link" href="{{ '/research-agenda/' | relative_url }}">Explore my research agenda &rarr;</a>

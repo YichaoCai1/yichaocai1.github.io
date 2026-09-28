@@ -1,20 +1,24 @@
 $(document).ready(function () {
-  // add toggle functionality to abstract, award and bibtex buttons
-  $("a.abstract").click(function () {
-    $(this).parent().parent().find(".abstract.hidden").toggleClass("open");
-    $(this).parent().parent().find(".award.hidden.open").toggleClass("open");
-    $(this).parent().parent().find(".bibtex.hidden.open").toggleClass("open");
-  });
-  $("a.award").click(function () {
-    $(this).parent().parent().find(".abstract.hidden.open").toggleClass("open");
-    $(this).parent().parent().find(".award.hidden").toggleClass("open");
-    $(this).parent().parent().find(".bibtex.hidden.open").toggleClass("open");
-  });
-  $("a.bibtex").click(function () {
-    $(this).parent().parent().find(".abstract.hidden.open").toggleClass("open");
-    $(this).parent().parent().find(".award.hidden.open").toggleClass("open");
-    $(this).parent().parent().find(".bibtex.hidden").toggleClass("open");
-  });
+  // Disclosures retain keyboard support and expose their expanded state.
+  $("a.abstract, a.award, a.bibtex")
+    .attr("tabindex", "0")
+    .attr("aria-expanded", "false")
+    .on("click", function () {
+      const kind = ["abstract", "award", "bibtex"].find((name) => this.classList.contains(name));
+      const entry = $(this).closest(".publication-content");
+      const panel = entry.find("div." + kind + ".hidden");
+      const opening = !panel.hasClass("open");
+      entry.find("div.hidden.open").removeClass("open");
+      entry.find("a[aria-expanded]").attr("aria-expanded", "false");
+      panel.toggleClass("open", opening);
+      $(this).attr("aria-expanded", String(opening));
+    })
+    .on("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        this.click();
+      }
+    });
   $("a").removeClass("waves-effect waves-light");
 
   // bootstrap-toc

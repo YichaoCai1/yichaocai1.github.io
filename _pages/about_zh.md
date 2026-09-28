@@ -10,12 +10,12 @@ lang_zh_url: /zh/
 profile:
   align: right
   image: prof_pic.png
-  image_circular: false # use a rounded-square profile frame
+  image_circular: true
   more_info: >
     <p>yichao.cai@adelaide.edu.au</p>
 
 research: true # includes all publications on the homepage
-social: false # social icons are in the top nav bar instead
+social: false # text profile links are rendered below the biography
 
 announcements:
   enabled: false
@@ -32,9 +32,11 @@ publications_heading: 论文
 publication_note: '代表性论文以<span class="publication-note-highlight">底色</span>标出。'
 ---
 
-我目前是[阿德莱德大学](https://www.adelaide.edu.au/), [澳大利亚机器学习研究所 (AIML)](https://www.adelaide.edu.au/aiml/) 的计算机科学博士生，导师是 [史勤峰](http://javenshi.org/) 教授。我本科和硕士毕业于武汉理工大学，并曾在加州大学伯克利分校，California PATH 做过五个月访问学生研究员。
+我目前是[阿德莱德大学](https://www.adelaide.edu.au/), [澳大利亚机器学习研究所 (AIML)](https://www.adelaide.edu.au/aiml/) 的计算机科学博士生，导师是 [史勤峰](http://javenshi.org/) 教授。我本科和硕士毕业于[武汉理工大学](https://www.whut.edu.cn/)，并曾在加州大学伯克利分校，California PATH 做过五个月访问学生研究员。
 
-<h3 class="home-section-heading">研究兴趣</h3>
+<!-- research-section -->
+
+<h2 id="research-heading">研究兴趣</h2>
 
 我的研究聚焦于表征学习中的一个基础问题：**监督信号何时能够识别具有因果性和泛化能力的潜在结构，何时又会丢弃、混淆这些结构，或无法对其进行唯一确定？**
 
@@ -42,4 +44,4 @@ publication_note: '代表性论文以<span class="publication-note-highlight">�
 
 在实证研究中，我关注视觉—语言系统与自回归语言模型，并日益关注生成建模以及面向复杂科学数据的表征学习。
 
-<a class="agenda-link" href="{{ '/research-agenda/' | relative_url }}">(浏览交互式研究议程)</a>
+<a class="agenda-link" href="{{ '/research-agenda/' | relative_url }}">浏览交互式研究议程 &rarr;</a>

@@ -29,6 +29,9 @@ layout: default
               {% else %}
                 <a class="post-link" href="{{ document.redirect | relative_url }}">{{ document.title }}</a>
               {% endif %}
+              {% if document.redirect contains '.pdf' -%}
+                <span class="file-label">PDF</span>
+              {%- endif %}
             </td>
           </tr>
         {% endfor %}

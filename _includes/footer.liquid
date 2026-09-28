@@ -1,30 +1,19 @@
-{% capture footer_contents %}
-  &copy; Copyright {{ site.time | date: '%Y' }}
-  {{ site.first_name }}
-  {{ site.middle_name }}
-  {{ site.last_name }}. <a href="{{ '/assets/essays/books.html' | relative_url }}" title="Reading list" aria-label="Reading list" style="font-size: 0.85em;">&#9670;</a> {{ site.footer_text }}
-  {% if site.impressum_path %}
-    <a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>.
-  {% endif %}
-  {% if site.last_updated %}
-    Last updated: {{ 'now' | date: '%B %d, %Y' }}.
-  {% endif %}
-{% endcapture %}
-
-{% if site.footer_fixed %}
-  <footer class="fixed-bottom" role="contentinfo">
-    <div class="container mt-0">
-      {{ footer_contents }}
-    </div>
-  </footer>
-{% else %}
-  <footer class="sticky-bottom mt-5" role="contentinfo">
-    {% if site.newsletter.enabled %}
-      {% include newsletter.liquid %}
-    {% endif %}
-
-    <div class="container">
-      {{ footer_contents }}
-    </div>
-  </footer>
-{% endif %}
+<footer class="academic-footer" role="contentinfo">
+  <p>
+    &copy; {{ site.time | date: '%Y' }}
+    {{ site.first_name }}
+    {{ site.last_name }}
+    <a class="reading-diamond" href="{{ '/assets/essays/books.html' | relative_url }}" title="Reading list" aria-label="Reading list">&#9670;</a>
+    {% if site.last_updated -%}
+      <span>Last updated {{ site.time | date: '%B %Y' }}</span>
+    {%- endif %}
+  </p>
+  <p>
+    Design adapted from <a href="https://github.com/leonidk/leonidk.github.io">Leonid Keselman's template</a>, based on
+    <a href="https://jonbarron.info/">Jon Barron's website</a>.
+  </p>
+  <p>
+    Built with <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/alshedivat/al-folio">al-folio</a> · Hosted on
+    <a href="https://pages.github.com/">GitHub Pages</a>.
+  </p>
+</footer>
