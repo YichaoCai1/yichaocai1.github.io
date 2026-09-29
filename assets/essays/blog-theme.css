@@ -28,7 +28,7 @@ body.essay-page {
   max-width: none;
   margin: 44px auto 0;
   padding: 0;
-  font: 400 1rem/1.75 var(--site-font-family);
+  font: 400 var(--site-body-font-size)/1.75 var(--site-font-family);
   overflow-wrap: break-word;
 }
 .reading-list-page .essay-content {
@@ -79,6 +79,9 @@ body.essay-page {
   line-height: inherit;
   margin: 0 0 18px;
 }
+.essay-content p em {
+  font-size: inherit;
+}
 .essay-content a {
   color: var(--global-theme-color);
 }
@@ -92,10 +95,11 @@ body.essay-page {
   font-size: 0.875rem;
 }
 .essay-content .lead {
-  font-size: 1rem;
+  font-size: var(--site-body-font-size);
   font-weight: 400;
 }
 .essay-content blockquote {
+  font-size: var(--site-body-font-size);
   padding: 2px 0 2px 18px;
   margin: 24px 0;
   border-left: 2px solid var(--border);
@@ -201,12 +205,13 @@ body.essay-page {
 .essay-content table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.9375rem;
+  font-size: var(--site-body-font-size);
   table-layout: fixed;
   background: transparent;
 }
 .essay-content th,
 .essay-content td {
+  font-size: inherit;
   padding: 12px 10px;
   border: 0;
   border-bottom: 1px solid var(--border);

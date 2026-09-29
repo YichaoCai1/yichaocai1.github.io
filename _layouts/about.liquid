@@ -15,14 +15,13 @@ layout: default
     {% if page.profile.image %}
       {% assign profile_path = page.profile.image | prepend: 'assets/img/' %}
       <div class="home-portrait">
-        {% include figure.liquid loading="eager" path=profile_path class="portrait-image" sizes="(max-width: 600px) 180px, 230px" alt="Portrait of Yichao Cai" cache_bust=true %}
+        {% include figure.liquid loading="eager" path=profile_path class="portrait-image" sizes="(max-width: 720px) 160px, 200px" alt="Portrait of Yichao Cai" cache_bust=true %}
       </div>
     {% endif %}
   </section>
   <section id="research" class="home-section" aria-labelledby="research-heading">{{ home_parts[1] }}</section>
   {% if page.research %}
-    <section id="publications" class="home-section" aria-labelledby="publications-heading">
-      <h2 id="publications-heading">{{ page.publications_heading | default: 'Publications' }}</h2>
+    <section id="publications" class="home-section" aria-label="{{ page.publications_heading | default: 'Publications' }}">
       <p class="publication-note">{{ page.publication_note }}</p>
       {% include research_publications.liquid %}
     </section>

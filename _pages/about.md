@@ -31,16 +31,10 @@ publications_heading: Publications
 publication_note: 'Selected publications are <span class="publication-note-highlight">highlighted</span>.'
 ---
 
-I am a final-year PhD student in Computer Science at the [Australian Institute for Machine Learning (AIML)](https://www.adelaide.edu.au/aiml/), [Adelaide University](https://www.adelaide.edu.au/), advised by Prof. [Javen Qinfeng Shi](http://javenshi.org/). I received my M.Sc. and B.Eng. degrees from [Wuhan University of Technology](https://www.whut.edu.cn/) and spent five months as a visiting student researcher at California PATH, UC Berkeley.
+I am a final-year PhD student in Computer Science at the [Australian Institute for Machine Learning (AIML)](https://www.adelaide.edu.au/aiml/), [Adelaide University](https://www.adelaide.edu.au/), advised by Prof. [Javen Qinfeng Shi](http://javenshi.org/). I received my M.Sc. and B.Eng. degrees from [Wuhan University of Technology](https://www.whut.edu.cn/) and spent time as a visiting student researcher at California PATH, UC Berkeley.
 
 <!-- research-section -->
 
-<h2 id="research-heading">Research Interests</h2>
+<h2 id="research-heading">Research</h2>
 
-My research centers on a foundational question in representation learning: **when does supervision identify causal and generalizable latent structure, and when does it instead discard, conflate, or fail to uniquely determine that structure?**
-
-I approach this question using identifiability theory, latent-variable modeling, population-level objective analysis, and representation geometry.
-
-Empirically, I study vision-language systems and autoregressive language models, with growing interests in generative modeling and representation learning for complex scientific data.
-
-<a class="agenda-link" href="{{ '/research-agenda/' | relative_url }}">Explore my research agenda &rarr;</a>
+My research asks when learning objectives provably identify **causal latent structure that supports generalization**, and when they **fail to do so**. I approach this question using identifiability theory, latent-variable modeling, population-level objective analysis, and representation geometry. Empirically, I study **vision-language and autoregressive models**, with growing interests in **generative modeling** and **scientific representation learning**. <a class="agenda-link" href="{{ '/research-agenda/' | relative_url }}">(Explore my research agenda &rarr;)</a>

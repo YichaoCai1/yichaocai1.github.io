@@ -38,4 +38,5 @@ The presentation adapts [Leonid Keselman's Jekyll template](https://github.com/l
 - Teaching and service: `_includes/home/`; former standalone addresses redirect to the homepage anchors.
 - Shared navigation/footer: `_includes/header.liquid` and `_includes/footer.liquid`. The reading-list link intentionally displays only a diamond, with an accessible label.
 - Shared visual rules: `assets/css/academic.css`; agenda refinements: `minimal-agenda/assets/academic-agenda.css`.
+- Normal text uses the template's 14px size through `--site-body-font-size` in `academic.css`, shared by the homepage, blog, essays, reading list, and agenda. Heading sizes are set separately. Publications retain the `#publications` navigation anchor and accessible section label without a visible heading.
 - Original HTML essays and readings retain their URLs under `assets/essays/` and now use Jekyll includes for the shared site frame. `blog-theme.css` controls article typography; `blog-shell.js` adds the compact contents disclosure without replacing content.

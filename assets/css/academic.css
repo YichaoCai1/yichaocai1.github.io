@@ -2,6 +2,7 @@
    Shared by Jekyll pages, the agenda, and the original essay URLs. */
 :root {
   --site-font-family: "Lato", "Noto Sans SC", Verdana, Helvetica, sans-serif;
+  --site-body-font-size: 0.875rem; /* 14px, matching the original template. */
   --global-bg-color: #fff;
   --global-text-color: #202124;
   --global-text-color-light: #62666b;
@@ -36,7 +37,12 @@ body.sticky-bottom-footer {
   max-width: none;
   background: var(--global-bg-color);
   color: var(--global-text-color);
-  font: 400 1rem/1.6 var(--site-font-family);
+  font: 400 var(--site-body-font-size)/1.6 var(--site-font-family);
+}
+table td,
+table th,
+.post-content blockquote {
+  font-size: var(--site-body-font-size);
 }
 /* MDB uses weight 500 for strong; use the loaded Lato bold face. */
 strong,
@@ -181,7 +187,7 @@ button {
 }
 .home-intro {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 230px;
+  grid-template-columns: minmax(0, 1fr) 200px;
   align-items: center;
   gap: 48px;
   padding: 12px 0 6px;
@@ -198,8 +204,8 @@ button {
 }
 .home-portrait img {
   display: block;
-  width: 230px;
-  height: 230px;
+  width: 200px;
+  height: 200px;
   aspect-ratio: 1;
   object-fit: cover;
   border-radius: 50%;
@@ -210,7 +216,7 @@ button {
   flex-wrap: wrap;
   justify-content: center;
   gap: 4px 0;
-  font-size: 0.9375rem;
+  font-size: var(--site-body-font-size);
 }
 .profile-links a + a::before {
   content: "/";
@@ -229,12 +235,15 @@ button {
   margin-bottom: 16px;
 }
 .agenda-link {
-  font-size: 0.9375rem;
+  font-size: var(--site-body-font-size);
+}
+#publications {
+  margin-top: 24px;
 }
 .publication-note {
   color: var(--global-text-color-light);
   font-size: 0.875rem;
-  margin: -8px 0 20px;
+  margin: 0 0 12px;
 }
 .publication-note-highlight {
   background: var(--selected-paper-bg);
@@ -274,7 +283,7 @@ button {
   padding: 0;
   width: auto;
   max-width: none;
-  font-size: 0.9375rem;
+  font-size: var(--site-body-font-size);
   line-height: 1.5;
   min-width: 0;
 }
@@ -355,7 +364,7 @@ button {
 }
 .publications ol.bibliography li .hidden {
   text-align: left;
-  font-size: 0.9375rem;
+  font-size: var(--site-body-font-size);
 }
 .publications ol.bibliography li .hidden.open {
   max-height: none;
@@ -505,7 +514,7 @@ button {
   gap: 12px;
 }
 .pagination .page-item .page-link {
-  font-size: 0.9375rem;
+  font-size: var(--site-body-font-size);
   background: none;
   border: 0;
   border-radius: 0;
@@ -580,12 +589,12 @@ button {
     display: none;
   }
   .home-intro {
-    grid-template-columns: minmax(0, 1fr) 180px;
+    grid-template-columns: minmax(0, 1fr) 160px;
     gap: 26px;
   }
   .home-portrait img {
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
   }
 }
 @media (max-width: 600px) {
