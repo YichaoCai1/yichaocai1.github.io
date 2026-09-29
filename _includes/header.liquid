@@ -1,19 +1,19 @@
 {% assign current_lang = page.lang | default: site.lang | default: 'en' %}
 {% assign home_url = '/' %}
 {% assign blog_url = '/blog/' %}
-{% assign nav_labels = 'About,Research,Publications,Teaching,Service' | split: ',' %}
+{% assign nav_labels = 'About,Teaching' | split: ',' %}
 {% assign agenda_label = 'Agenda' %}
 {% assign blog_label = 'Blog' %}
 {% assign menu_label = 'Menu' %}
 {% if current_lang == 'zh' %}
   {% assign home_url = '/zh/' %}
   {% assign blog_url = '/zh/blog/' %}
-  {% assign nav_labels = '关于,研究,论文,教学,服务' | split: ',' %}
+  {% assign nav_labels = '关于,教学' | split: ',' %}
   {% assign agenda_label = '研究议程' %}
   {% assign blog_label = '博客' %}
   {% assign menu_label = '菜单' %}
 {% endif %}
-{% assign section_ids = 'about,research,publications,teaching,service' | split: ',' %}
+{% assign section_ids = 'about,teaching' | split: ',' %}
 <header class="academic-header">
   <a class="skip-link" href="#main-content">
     {%- if current_lang == 'zh' %}跳至正文{% else %}Skip to content{% endif -%}
