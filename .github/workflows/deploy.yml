@@ -85,6 +85,8 @@ jobs:
         run: |
           npm install -g purgecss
           purgecss -c purgecss.config.js
+      - name: Validate PDF reader assets
+        run: python3 _scripts/validate_pdf_reader.py --site _site
       - name: Upload Pages artifact 📦
         uses: actions/upload-pages-artifact@v5
         with:

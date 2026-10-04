@@ -10,5 +10,9 @@ Gemfile.lock
 assets/libs/
 node_modules/
 vendor
+# Ship the self-hosted PDF reader; other dependency folders remain ignored.
+!/assets/vendor/
+/assets/vendor/*
+!/assets/vendor/pdfjs/
 .idea
 .venv
