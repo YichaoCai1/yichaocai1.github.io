@@ -1,19 +1,12 @@
 <footer class="academic-footer" role="contentinfo">
-  <p>
-    &copy; {{ site.time | date: '%Y' }}
-    {{ site.first_name }}
-    {{ site.last_name }}
-    <a class="reading-diamond" href="{{ '/assets/essays/books.html' | relative_url }}" title="Reading list" aria-label="Reading list">&#9670;</a>
-    {% if site.last_updated -%}
-      <span>Last updated {{ site.time | date: '%B %Y' }}</span>
-    {%- endif %}
-  </p>
-  <p>
-    Design adapted from <a href="https://github.com/leonidk/leonidk.github.io">Leonid Keselman's template</a>, based on
-    <a href="https://jonbarron.info/">Jon Barron's website</a>.
-  </p>
-  <p>
-    Built with <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/alshedivat/al-folio">al-folio</a> · Hosted on
-    <a href="https://pages.github.com/">GitHub Pages</a>.
-  </p>
+  <div class="footer-inner">
+    <p>
+      &copy; {{ site.time | date: '%Y' }}
+      {{ site.first_name }}
+      {{ site.last_name }}
+      <a class="reading-diamond" href="{{ '/assets/essays/books.html' | relative_url }}" title="Reading list" aria-label="Reading list">&#9670;</a>
+    </p>
+    <p>Theme adapted from <a href="https://github.com/bazilinskyy/bazilinskyy.github.io">Pavlo Bazilinskyy</a>.</p>
+    <p>Built with <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/alshedivat/al-folio">al-folio</a>.</p>
+  </div>
 </footer>

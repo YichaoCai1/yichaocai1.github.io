@@ -1,5 +1,5 @@
 ---
-layout: section-redirect
+layout: page
 title: Teaching
 nav_title: teaching
 nav_title_zh: 教学
@@ -11,6 +11,7 @@ lang_en_url: /teaching/
 lang_zh_url: /zh/teaching/
 nav: false
 nav_order: 2
-destination: /#teaching
-sitemap: false
 ---
+
+{% capture section_content %}{% include home/teaching.md %}{% endcapture %}
+{{ section_content | markdownify }}

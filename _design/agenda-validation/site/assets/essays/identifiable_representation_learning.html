@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Metadata, OpenGraph and Schema.org -->
+
+    <!-- Standard metadata -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>When the Internal Map Gets Warped: Why Identifiable Representations Are Crucial for Responsible AI | Yichao Cai</title>
+    <meta name="author" content="Yichao Cai" />
+    <meta
+      name="description"
+      content="Academic homepage of Yichao Cai — Ph.D. Candidate at AIML, Adelaide University, working on language-guided multimodal representation learning.
+"
+    />
+
+    <meta
+      name="keywords"
+      content="Yichao Cai, representation learning, vision-language, multimodal, identifiability, contrastive learning, AIML, Adelaide"
+    />
+
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+
+    <!-- Fonts & Icons -->
+    <link defer rel="stylesheet" href="/assets/css/academicons.min.css?v=dadeb9c5d1fd12bc8d37475657446863" />
+    <link defer rel="stylesheet" href="/assets/css/scholar-icons.css?v=62b2ac103a88034e6882a5be5f3e2772" />
+    <link
+      defer
+      rel="stylesheet"
+      type="text/css"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&amp;family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;display=swap"
+    />
+    <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <!-- Code Syntax Highlighting -->
+    <link
+      defer
+      rel="stylesheet"
+      href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99"
+      media=""
+      id="highlight_theme_light"
+    />
+
+    <!-- One shared presentation layer for all pages. -->
+
+    <link rel="shortcut icon" href="/assets/img/AG1p230.svg?v=92faa2941c5bb71cb6d333d23aed1d71" />
+
+    <link rel="canonical" href="https://yichaocai.com/assets/essays/identifiable_representation_learning.html" />
+
+    <!-- Dark Mode -->
+    <script src="/assets/js/theme.js?v=eb4d1c56a8bfdfd661d8e3a4c85ba2e6"></script>
+    <link
+      defer
+      rel="stylesheet"
+      href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca"
+      media="none"
+      id="highlight_theme_dark"
+    />
+    <script>
+      initTheme();
+    </script>
+
+    <link rel="stylesheet" href="/assets/css/academic.css?v=1791050880" />
+
+    <link rel="stylesheet" href="/assets/essays/blog-theme.css" />
+  </head>
+  <body class="essay-page">
+    <header class="academic-header">
+      <a class="skip-link" href="#main-content">Skip to content</a>
+      <nav class="academic-nav" aria-label="Site navigation">
+        <a class="navbar-brand" href="/">Yichao Cai</a>
+        <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="academic-nav-links" aria-label="Toggle navigation">
+          <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+        </button>
+        <div class="academic-nav-links" id="academic-nav-links">
+          <a href="/">Home</a>
+          <a href="/publications/">Publications</a>
+          <a href="/research-agenda/">Research</a>
+          <a href="/blog/" aria-current="page">Blog</a>
+          <a href="/teaching/">Teaching</a>
+          <a href="/service/">Service</a>
+          <a class="language-switch" href="/zh/blog/" lang="zh" aria-label="切换到中文">中</a>
+
+          <button id="theme-toggle" type="button" aria-label="Toggle light/dark mode">
+            <span id="theme-toggle-icon" aria-hidden="true">☾</span
+            ><span class="label-stack" aria-hidden="true"><span id="label-dark">Dark</span><span id="label-light">Light</span></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content" class="essay-content">
+      <div class="container">
+        <!-- ==============================
+         Header
+         ============================== -->
+        <header>
+          <h1 class="heading" id="title">
+            <i>When the Internal Map Gets Warped:</i><br />
+            Why Identifiable Representations Are Crucial for Responsible AI <a class="anchor" href="#title" aria-label="Link to this heading">#</a>
+          </h1>
+          <p class="meta"><em>Yichao Cai</em>, <time datetime="2025-09-23">23-09-2025</time></p>
+        </header>
+
+        <hr />
+
+        For ML researchers and engineers, this post underscores why identifiability is foundational to fairness, robustness, and responsible AI
+        systems, and introduces our recent work through a narrative lens as part of that endeavor.
+        <hr />
+
+        <!-- ==============================
+         Table of Contents (editable)
+         ============================== -->
+        <nav class="toc" aria-label="Table of contents">
+          <strong>On this blog</strong>
+          <ul>
+            <li><a href="#rethinking">The Underexplored in Representation Learning</a></li>
+            <li><a href="#identifiability">Identifiable Representation Learning as Desiderata</a></li>
+            <li><a href="#language">Our Route: Language as an Inductive Cue</a></li>
+            <li>
+              <a href="#endeavors">Our Endeavors So Far</a>
+              <ul>
+                <li><a href="#motivation">Motivation</a></li>
+                <li><a href="#theory">Theory Claims</a></li>
+                <li><a href="#insights">Key Insights for Practice</a></li>
+                <li><a href="#evidence">Experiments &amp; Evidence</a></li>
+              </ul>
+            </li>
+            <li><a href="#closing">Closing Call to Action</a></li>
+          </ul>
+        </nav>
+
+        <hr />
+
+        <!-- ==============================
+         Body
+         ============================== -->
+        <article>
+          <!-- Rethinking -->
+          <section id="rethinking">
+            <h2 class="heading">
+              The Underexplored in Representation Learning: Why We Need to Rethink It
+              <a class="anchor" href="#rethinking" aria-label="Link to this heading">#</a>
+            </h2>
+            <p>
+              Modern AI models are rightly celebrated for astonishing successes, but their <strong>“almost right”</strong> failures tell another
+              story: a captioning model dogmatically names a non-existent object; a classifier swaps “wolf” for “husky” whenever snow appears; a
+              vision-language model hallucinates relationships. These errors rarely break benchmarks, yet they reveal
+              <strong>warped internal maps</strong>, features that fail to reflect the factual world.
+            </p>
+            <p>
+              Scaling data and compute alone does not guarantee <strong>faithful representations</strong>. When features silently entangle or omit
+              critical semantic information, interpretability, fairness, and robustness all suffer. To build responsible, resource-efficient AI, we
+              need <strong>identifiable representations</strong>: latent features that correspond uniquely and stably to real-world factors.
+            </p>
+          </section>
+
+          <figure class="fig-wide" role="group" aria-labelledby="fig1-caption">
+            <img
+              src="internal_map.svg"
+              alt="Two side-by-side maps. Left: a faithful internal map with straight grid, correctly placed landmarks, and a short direct path from House to Fountain. Right: a warped internal map with distorted grid, landmarks displaced from their true ghost positions, arrows indicating mismatch, and a longer, confused path with a warning marker."
+              loading="lazy"
+              decoding="async"
+              width="1600"
+              height="770"
+            />
+            <figcaption id="fig1-caption">
+              <strong>Figure 1: When the internal map gets warped.</strong>
+              Faithful maps (left) preserve distances and relations. Warped maps (right) misplace landmarks and paths—an analogy for hallucinations
+              and fragile reasoning in AI.
+            </figcaption>
+          </figure>
+
+          <hr />
+
+          <!-- Identifiability -->
+          <section id="identifiability">
+            <h2 class="heading">
+              Identifiable Representation Learning: What It Means and Why It Matters
+              <a class="anchor" href="#identifiability" aria-label="Link to this heading">#</a>
+            </h2>
+            <p>
+              By <em>identifiability</em> we mean:
+              <strong
+                >given enough data and reasonable assumptions (i.e., a belief about how data are generated from latent factors of variation), the
+                learned features recover the true latent factors, such as identity, shape, color, pose, up to at most trivial ambiguities.</strong
+              >
+            </p>
+            <p>Why this matters:</p>
+            <ul>
+              <li>
+                <strong>Interpretability &amp; Fairness:</strong> Stable embedding coordinates (or neurons) let researchers and auditors see what is
+                encoded and surface biases to be challenged.
+              </li>
+              <li><strong>Robustness:</strong> Features do not drift when style, lighting, or domains shift.</li>
+              <li><strong>Resource Savings:</strong> Stable, semantic features reduce expensive retraining and data collection.</li>
+            </ul>
+            <p>
+              Because identifiable features don't drift, teams spend less on re-training/data; audits are simpler (fairness); and feature meanings
+              remain stable (interpretability).
+            </p>
+          </section>
+
+          <hr />
+
+          <!-- Language cue -->
+          <section id="language">
+            <h2 class="heading">
+              Our Route: Language as an Inductive Cue and Its Challenges <a class="anchor" href="#language" aria-label="Link to this heading">#</a>
+            </h2>
+            <p>
+              Achieving identifiability comes with caveats. There are many ways to compress data; pretext tasks, learning objectives, model capacity,
+              optimization dynamics, and dataset properties all shape the optimization landscape and thus the learned representations. Different
+              research threads emphasize different levers; <strong>we focus on the data</strong>. We center our attention on data because, regardless
+              of the algorithm, knowledge originates there.
+            </p>
+            <p>
+              In particular, we value <strong>language</strong> as an inductive cue for learning representations from unstructured modalities such as
+              images. <strong>Natural language</strong>, invented by humans and carrying our culture and concepts, provides a practical semantic
+              scaffold. Using text as guidance is compelling, witness the strong organization of visual features in CLIP-style models. Yet
+              <strong>CLIP-based features have well-documented issues</strong>: hallucinations and vulnerability to spurious cues. Moreover, many
+              modern vision-language systems (e.g., LLaVA-style VLMs, MLLMs, and text-to-image generators) build upon CLIP encoders and can inherit
+              these weaknesses.
+            </p>
+          </section>
+
+          <hr />
+
+          <!-- Endeavors -->
+          <section id="endeavors">
+            <h2 class="heading">
+              Our Endeavors So Far: Modeling Caption Noise in Training Data and Its Consequences
+              <a class="anchor" href="#endeavors" aria-label="Link to this heading">#</a>
+            </h2>
+
+            <section id="motivation">
+              <h3 class="heading">Motivation <a class="anchor" href="#motivation" aria-label="Link to this heading">#</a></h3>
+              <p>
+                Large-scale multimodal learning (with language as an auxiliary modality) often relies on web-scale image-caption corpora. These data
+                are
+                <strong>noisy</strong>: captions omit details or misdescribe them. In
+                <a href="https://yichaocai.com/misalignment.github.io">our NeurIPS 2025 paper</a>, we asked:
+                <strong>Can we model these noise patterns formally?</strong> And:
+                <strong>When are such misalignments harmful, and when can they be harnessed for robustness?</strong>
+              </p>
+            </section>
+
+            <section id="theory">
+              <h3 class="heading">Theory Claims <a class="anchor" href="#theory" aria-label="Link to this heading">#</a></h3>
+              <p>
+                We formalize image-text generation with shared semantic factors plus modality-specific noise. Two biases characterize text-caption
+                misalignment: <strong>selection bias</strong> (captions omit factors) and <strong>perturbation bias</strong> (captions randomly
+                misdescribe factors).
+              </p>
+              <figure class="fig-wide" role="group" aria-labelledby="fig2-caption">
+                <img
+                  src="misalignment_illustration.png"
+                  alt="Illustration of selection and perturbation bias in multimodal contrastive learning."
+                  loading="lazy"
+                  decoding="async"
+                  width="1600"
+                  height="770"
+                />
+                <figcaption id="fig2-caption">
+                  <strong>Figure 2: Illustration of selection and perturbation bias in multimodal contrastive learning.</strong>
+                  Left: Shared semantics are partially selected (blue) or perturbed (red), creating mismatched supervision. Right: Example with a
+                  black cat—omitting or misdescribing details warps representations. (For full formal definitions and derivations, please refer to
+                  <a href="https://arxiv.org/abs/2504.10143" rel="external nofollow noopener" target="_blank">our paper</a>.)
+                </figcaption>
+              </figure>
+              <p>
+                <strong>Theorem 4.1 (informal):</strong> Contrastive multimodal learning identifies only the unbiased semantic subset shared across
+                modalities; omitted or corrupted factors are excluded under appropriately constrained representation dimensionality, and
+                modality-specific noise is discarded, <em>regardless of latent causal dependencies</em>.
+              </p>
+              <p>
+                Intuitively, contrastive models can only align what <strong>both views consistently share</strong>. Missing or stochastically
+                perturbed details are not learned, even when they matter in the world. Furthermore, if dimensionality is over-generous and effective
+                sparsity is absent, the extra capacity may inadvertently encode non-identifiable, noisy information.
+              </p>
+            </section>
+
+            <section id="insights">
+              <h3 class="heading">Key Insights for Practice <a class="anchor" href="#insights" aria-label="Link to this heading">#</a></h3>
+              <p>This yields two practical insights:</p>
+              <ul>
+                <li>
+                  <strong>Faithful captions for coverage:</strong> In <strong>large-scale pretraining</strong>, hallucinations arise when models infer
+                  semantics that captions omit or distort; key semantics may be missing. Faithful captions are essential because foundation models
+                  prioritize generalization and reuse. With sufficiently broad coverage, test cases remain largely in-distribution; otherwise the
+                  model embeds non-factual or noisy signals, causing non-identifiability and downstream hallucinations.
+                  <i
+                    >In large-scale contrastive pretraining, missing/perturbed semantics ⇒ non-identifiability (the non-faithfully captioned component
+                    semantics) ⇒ hallucination risk; targeted omissions of nuisance factors.</i
+                  >
+                </li>
+                <li>
+                  <strong>Controlled misalignment for robustness:</strong> Deliberately altering vulnerable components (e.g., style cues) can teach
+                  the model to ignore nuisance factors, signals we do not want the model to rely on due to spurious correlations or insufficient
+                  environmental diversity. (See <a href="https://yichaocai.com/clap_paper.github.io">our ECCV 2024 paper</a> for a concrete
+                  demonstration of this strategy.)
+                </li>
+              </ul>
+              <figure class="fig-wide" role="group" aria-labelledby="fig3-caption">
+                <img
+                  src="flowchart.svg"
+                  alt="Two side-by-side maps. Left: a faithful internal map with straight grid, correctly placed landmarks, and a short direct path from House to Fountain. Right: a warped internal map with distorted grid, landmarks displaced from their true ghost positions, arrows indicating mismatch, and a longer, confused path with a warning marker."
+                  loading="lazy"
+                  decoding="async"
+                  width="1600"
+                  height="770"
+                />
+                <figcaption id="fig3-caption">
+                  <strong>Figure 3: Caption quality shapes the representation space.</strong>
+                  Faithful captions embed true semantics (robust features). Noisy captions warp axes (fragile features). Controlled perturbations
+                  suppress nuisances and improve invariance.
+                </figcaption>
+              </figure>
+            </section>
+
+            <section id="evidence">
+              <h3 class="heading">Experiments &amp; Evidence <a class="anchor" href="#evidence" aria-label="Link to this heading">#</a></h3>
+              <ul>
+                <li><strong>Simulations:</strong> Perfect recovery of unbiased semantics; omitted or perturbed factors are unrecoverable.</li>
+                <li>
+                  <strong>Controlled image-text data:</strong> Empirical confirmation of block identifiability even with dependencies among factors.
+                </li>
+                <li>
+                  <strong>OpenCLIP case study:</strong> Concepts rarely mentioned in captions, indicative of selection bias, are poorly represented;
+                  headline accuracy can hide warped semantics. Mild misalignments keep top-line performance stable while distorting the latent map;
+                  our model predicts these effects.
+                </li>
+              </ul>
+              <figure class="fig-wide" role="group" aria-labelledby="fig4-caption">
+                <img
+                  src="OpenCLIP_case_study.png"
+                  alt="A case study on OpenCLIP model pretrained on large dataset."
+                  loading="lazy"
+                  decoding="async"
+                  width="1600"
+                  height="770"
+                />
+                <figcaption id="fig4-caption">
+                  <strong>Figure 4: Zero-shot evaluation of OpenCLIP pretrained on LAION-400M.</strong>
+                  Top: Caption coverage across 146 concepts in 15 aspects. Bottom: Macro F1 scores drop sharply for under-represented aspects,
+                  revealing misalignment (semantics omitted by selection bias) vulnerability. (For additional experimental results, please refer to
+                  <a href="https://arxiv.org/abs/2504.10143" rel="external nofollow noopener" target="_blank">our paper</a>.)
+                </figcaption>
+              </figure>
+            </section>
+          </section>
+
+          <hr />
+
+          <!-- Closing -->
+          <section id="closing">
+            <h2 class="heading">Closing Call to Action <a class="anchor" href="#closing" aria-label="Link to this heading">#</a></h2>
+            <p>
+              Identifiability is not optional; it is the bedrock of reliable and interpretable AI systems. Our NeurIPS 2025 work, alongside related
+              efforts in this area, aims to provide a compass for researchers and practitioners. Audit your data for biases, use language guidance
+              thoughtfully, and explore controlled misalignment for robustness. Cite, extend, or challenge our results, help keep the internal maps of
+              future AI systems true to the world they navigate.
+            </p>
+          </section>
+
+          <div class="bibtex-card">
+            <span class="bibtex-label">
+              📚:
+              <button
+                class="copy-btn"
+                onclick="
+                  navigator.clipboard.writeText(document.getElementById('bibtex-code').innerText);
+                  this.innerText = 'Copied!';
+                  setTimeout(() =&gt; (this.innerText = 'Copy'), 1300);
+                "
+              >
+                Copy
+              </button>
+            </span>
+            <pre class="bibtex-pre"><code id="bibtex-code">@inproceedings{cai2025misalignment,
+            title     = {On the Value of Cross-Modal Misalignment in Multimodal Representation Learning},
+            author    = {Cai, Yichao and Liu, Yuhang and Gao, Erdun and Jiang, Tianjiao and Zhang, Zhen and van den Hengel, Anton and Shi, Javen Qinfeng},
+            booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+            year      = {2025}
+          }</code></pre>
+          </div>
+        </article>
+
+        <footer class="meta" style="text-align: center; margin-top: 3rem; font-size: 0.9rem; color: var(--muted)">
+          Edited and refined with the assistance of <strong>ChatGPT-5</strong>.
+        </footer>
+      </div>
+    </main>
+    <footer class="academic-footer" role="contentinfo">
+      <div class="footer-inner">
+        <p>
+          © 2026 Yichao Cai
+          <a class="reading-diamond" href="/assets/essays/books.html" title="Reading list" aria-label="Reading list">◆</a>
+        </p>
+        <p>
+          Theme adapted from
+          <a href="https://github.com/bazilinskyy/bazilinskyy.github.io" rel="external nofollow noopener" target="_blank">Pavlo Bazilinskyy</a>.
+        </p>
+        <p>
+          Built with <a href="https://jekyllrb.com/" rel="external nofollow noopener" target="_blank">Jekyll</a> and
+          <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a>.
+        </p>
+      </div>
+    </footer>
+    <!-- jQuery -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Bootsrap & MDB scripts -->
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js"
+      integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Masonry & imagesLoaded -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+      integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js"
+      integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc="
+      crossorigin="anonymous"
+    ></script>
+    <script defer src="/assets/js/masonry.js?v=a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script>
+
+    <!-- Medium Zoom JS -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"
+      integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc="
+      crossorigin="anonymous"
+    ></script>
+    <script defer src="/assets/js/zoom.js?v=85ddb88934d28b74e78031fd54cf8308"></script>
+
+    <!-- Load Common JS -->
+    <script src="/assets/js/no_defer.js?v=2781658a0a2b13ed609542042a859126"></script>
+    <script defer src="/assets/js/common.js?v=a25cf1d2772911592f56b18400433172"></script>
+    <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script>
+
+    <!-- Jupyter Open External Links New Tab -->
+    <script defer src="/assets/js/jupyter_new_tab.js?v=d9f17b6adc2311cbabd747f4538bb15f"></script>
+
+    <!-- Badges -->
+
+    <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+    <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+    <!-- MathJax -->
+    <script
+      defer
+      type="text/javascript"
+      id="MathJax-script"
+      src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"
+      integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="/assets/js/mathjax-setup.js?v=a5bb4e6a542c546dd929b24b8b236dfd"></script>
+    <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+
+    <!-- Back to Top -->
+    <script src="/assets/js/vanilla-back-to-top.min.js?v=f40d453793ff4f64e238e420181a1d17"></script>
+    <script>
+      addBackToTop();
+    </script>
+
+    <!-- Search -->
+    <script type="module" src="/assets/js/search/ninja-keys.min.js?v=230637657ac0b42e92d76e2b4c1b4764"></script>
+    <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys>
+    <script src="/assets/js/search-setup.js?v=6c304f7b1992d4b60f7a07956e52f04a"></script>
+    <script src="/assets/js/search-data.js"></script>
+    <script src="/assets/js/shortcut-key.js?v=6f508d74becd347268a7f822bca7309d"></script>
+
+    <script defer src="/assets/js/academic.js" data-pdf-reader-url="/pdf/"></script>
+
+    <script defer src="/assets/js/publications.js?v=a08b2ebf12331da8f0c58f233a9cdf16"></script>
+
+    <script defer src="/assets/essays/blog-shell.js"></script>
+  </body>
+</html>

@@ -468,7 +468,7 @@ third_party_libraries:
     version: "5.5.0"
   google_fonts:
     url:
-      fonts: "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      fonts: "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap"
       icons: "https://fonts.googleapis.com/icon?family=Material+Icons"
   highlightjs:
     integrity:

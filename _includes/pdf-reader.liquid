@@ -1,0 +1,27 @@
+<section
+  class="pdf-reader"
+  data-pdf-reader
+  data-pdf-file="{% if include.file %}{{ include.file | relative_url | escape }}{% endif %}"
+  data-pdf-title="{{ include.title | default: 'PDF reader' | escape }}"
+  data-viewer-url="{{ '/assets/vendor/pdfjs/web/viewer.html' | relative_url }}"
+  aria-label="PDF reader"
+>
+  <p class="pdf-reader-actions">
+    <a
+      class="paper-action"
+      data-pdf-download
+      {% if include.file %}
+        href="{{ include.file | relative_url }}"
+      {% else %}
+        hidden
+      {% endif %}
+      download
+    >
+      Download PDF
+    </a>
+  </p>
+  <p data-pdf-status role="status">Loading PDF reader…</p>
+  <iframe class="essay-pdf" data-pdf-frame title="{{ include.title | default: 'Document' | escape }} — PDF" hidden allowfullscreen></iframe>
+  <noscript><p>Enable JavaScript to read the PDF on this page.</p></noscript>
+</section>
+<script type="module" src="{{ '/assets/js/pdf-reader.js' | relative_url }}"></script>

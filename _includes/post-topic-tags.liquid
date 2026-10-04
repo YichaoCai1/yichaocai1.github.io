@@ -1,0 +1,7 @@
+{% if page.tags.size > 0 %}
+  <div class="post-tags" aria-label="Topics">
+    {% for tag in page.tags %}
+      <a class="pub-tag blog-tag" data-tag="{{ tag | escape }}" href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}">{{ tag }}</a>
+    {% endfor %}
+  </div>
+{% endif %}

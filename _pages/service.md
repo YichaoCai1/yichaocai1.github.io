@@ -1,5 +1,5 @@
 ---
-layout: section-redirect
+layout: page
 title: Academic Service
 nav_title: service
 nav_title_zh: 学术服务
@@ -11,6 +11,7 @@ lang_en_url: /service/
 lang_zh_url: /zh/service/
 nav: false
 nav_order: 3
-destination: /#service
-sitemap: false
 ---
+
+{% capture section_content %}{% include home/service.md %}{% endcapture %}
+{{ section_content | markdownify }}

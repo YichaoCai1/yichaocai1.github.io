@@ -1,0 +1,33 @@
+{% assign sidebar_news = site.news | sort: 'date' | reverse %}
+{% if sidebar_news.size > 0 %}
+  <section class="sidebar-news" aria-labelledby="sidebar-news-heading">
+    <h4 id="sidebar-news-heading">
+      {% if page.lang == 'zh' %}最新动态{% else %}News{% endif %}
+    </h4>
+    <div
+      class="news-scroll"
+      tabindex="0"
+      role="region"
+      aria-label="{% if page.lang == 'zh' %}动态，滚动查看较早条目{% else %}News; scroll for older entries{% endif %}"
+    >
+      <ol>
+        {% for item in sidebar_news %}
+          <li class="sidebar-news-item">
+            <time datetime="{{ item.date | date_to_xmlschema }}">{{ item.date | date: '%b %-d, %Y' }}</time>
+            {% if item.inline %}
+              {% if page.lang == 'zh' and item.content_zh %}
+                {{ item.content_zh | markdownify | emojify }}
+              {% else %}
+                {{ item.content | emojify }}
+              {% endif %}
+            {% else %}
+              <a href="{{ item.url | relative_url }}">
+                {%- if page.lang == 'zh' and item.title_zh %}{{ item.title_zh }}{% else %}{{ item.title }}{% endif -%}
+              </a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </section>
+{% endif %}

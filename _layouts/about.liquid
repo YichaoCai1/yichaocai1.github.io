@@ -2,58 +2,86 @@
 layout: default
 ---
 {% assign home_parts = content | split: '<!-- research-section -->' %}
-<article class="academic-home">
-  <section id="about" class="home-intro" aria-labelledby="profile-name">
-    <div class="home-biography">
-      <h1 id="profile-name">
+{% assign publications_url = '/publications/' -%}
+{%- if page.lang == 'zh' %}{% assign publications_url = '/zh/publications/' %}{% endif %}
+<article class="academic-home home-grid">
+  <div class="home-main">
+    <section id="about" aria-labelledby="profile-name">
+      <h1 id="profile-name" class="sr-only">
         {{ page.display_name | default: site.first_name -}}
         {%- unless page.display_name %} {{ site.last_name }}{% endunless %}
       </h1>
       {{ home_parts[0] }}
-      {% include profile-links.liquid %}
-    </div>
-    {% if page.profile.image %}
-      {% assign profile_path = page.profile.image | prepend: 'assets/img/' %}
-      <div class="home-portrait">
-        {% include figure.liquid loading="eager" path=profile_path class="portrait-image" sizes="(max-width: 720px) 160px, 200px" alt="Portrait of Yichao Cai" cache_bust=true %}
+    </section>
+    <section id="research" class="home-section" aria-label="{% if page.lang == 'zh' %}研究{% else %}Research{% endif %}">{{ home_parts[1] }}</section>
+    {% if page.research %}
+      <section id="publications" class="home-section" aria-labelledby="selected-publications-heading">
+        <h2 id="selected-publications-heading">
+          {% if page.lang == 'zh' %}代表性论文{% else %}Selected publications{% endif %}
+        </h2>
+        {% include research_publications.liquid selected_only=true %}
+        <p class="all-publications">
+          <a
+            href="{{ publications_url | relative_url }}"
+            data-publication-keys="{% for record in site.data.publication_tags %}{{ record[0] }}{% unless forloop.last %}|{% endunless %}{% endfor %}"
+          >
+            {%- if page.lang == 'zh' %}全部论文{% else %}All publications{% endif %} &rarr;</a
+          >
+        </p>
+      </section>
+    {% endif %}
+    {% assign newest_post = site.posts | first %}
+    {% if newest_post %}
+      <section id="latest-writing" class="home-section" aria-labelledby="latest-writing-heading">
+        <h2 id="latest-writing-heading">
+          {% if page.lang == 'zh' %}最新文章{% else %}Latest writing{% endif %}
+        </h2>
+        <h3 class="latest-writing-title">{% include post-link.liquid post=newest_post %}</h3>
+        <p class="post-meta">
+          <time datetime="{{ newest_post.date | date_to_xmlschema }}">{{ newest_post.date | date: '%B %-d, %Y' }}</time>
+        </p>
+        {% if newest_post.description %}
+          <p>{{ newest_post.description }}</p>
+        {% endif %}
+      </section>
+    {% endif %}
+  </div>
+  <aside class="home-sidebar" aria-label="{% if page.lang == 'zh' %}个人资料{% else %}Profile{% endif %}">
+    <div class="profile-panel">
+      <div class="sidebar-info">
+        {% if page.profile.image -%}
+          <img
+            class="portrait-image"
+            src="{{ page.profile.image | prepend: '/assets/img/' | relative_url }}"
+            alt="Portrait of Yichao Cai"
+            width="360"
+            height="360"
+          >
+        {%- endif %}
+        <h4>
+          {{ page.display_name | default: site.first_name -}}
+          {%- unless page.display_name %} {{ site.last_name }}{% endunless %}
+        </h4>
+        {% include profile-links.liquid %}
+        <div class="profile-info">
+          <p>
+            {% if page.lang == 'zh' -%}
+              计算机科学博士生<br>
+              <em
+                >澳大利亚机器学习研究所<br>
+                阿德莱德大学</em
+              >
+            {%- else -%}
+              PhD student in Computer Science<br>
+              <em
+                >Australian Institute for Machine Learning<br>
+                Adelaide University</em
+              >
+            {%- endif %}
+          </p>
+        </div>
       </div>
-    {% endif %}
-  </section>
-  <section id="research" class="home-section" aria-labelledby="research-heading">{{ home_parts[1] }}</section>
-  {% if page.research %}
-    <section id="publications" class="home-section" aria-label="{{ page.publications_heading | default: 'Publications' }}">
-      <p class="publication-note">{{ page.publication_note }}</p>
-      {% include research_publications.liquid %}
-    </section>
-  {% endif %}
-  {% if page.latest_posts.enabled %}
-    <section class="home-section">
-      <h2>
-        <a href="{{ '/blog/' | relative_url }}">{{ page.latest_posts_heading | default: 'Latest posts' }}</a>
-      </h2>
-      {% include latest_posts.liquid %}
-    </section>
-  {% endif %}
-  <section id="teaching" class="home-section" aria-labelledby="teaching-heading">
-    <h2 id="teaching-heading">
-      {% if page.lang == 'zh' %}教学{% else %}Teaching{% endif %}
-    </h2>
-    {% if page.lang == 'zh' %}
-      {% capture teaching_content %}{% include home/teaching_zh.md %}{% endcapture %}
-    {% else %}
-      {% capture teaching_content %}{% include home/teaching.md %}{% endcapture %}
-    {% endif %}
-    {{ teaching_content | markdownify }}
-  </section>
-  <section id="service" class="home-section" aria-labelledby="service-heading">
-    <h2 id="service-heading">
-      {% if page.lang == 'zh' %}学术服务{% else %}Academic Service{% endif %}
-    </h2>
-    {% if page.lang == 'zh' %}
-      {% capture service_content %}{% include home/service_zh.md %}{% endcapture %}
-    {% else %}
-      {% capture service_content %}{% include home/service.md %}{% endcapture %}
-    {% endif %}
-    {{ service_content | markdownify }}
-  </section>
+    </div>
+    {% include sidebar-news.liquid %}
+  </aside>
 </article>

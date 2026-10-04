@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang }}">
+  <head>
+    {% include head.liquid %}
+    <link rel="stylesheet" href="{{ '/assets/essays/blog-theme.css' | relative_url }}">
+  </head>
+  <body class="essay-page">
+    {% include header.liquid %}
+    <main id="main-content" class="essay-content">
+      <header>
+        <h1>{{ page.title }}</h1>
+        <p class="meta">
+          {{ page.author | default: site.first_name | escape }}
+          · <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%B %-d, %Y' }}</time>
+          {% if page.read_time %} · {{ page.read_time }} min read{% endif %}
+        </p>
+        {% include post-topic-tags.liquid %}
+      </header>
+      <article>{{ content }}</article>
+    </main>
+    {% include footer.liquid %}
+    {% include scripts.liquid %}
+    <script defer src="{{ '/assets/essays/blog-shell.js' | relative_url }}"></script>
+  </body>
+</html>

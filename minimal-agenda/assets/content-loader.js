@@ -1,48 +1,11 @@
-export const themeColors = {
-  objective: "#226092",
-  structure: "#1f7a73",
-  limits: "#a45d47",
-  design: "#9a6b20",
-  blue: "#226092",
-  teal: "#1f7a73",
-  rust: "#a45d47",
-  gold: "#9a6b20",
-  sage: "#5f7650",
+export const phases = ["objective", "structure", "limits", "design"];
+export const statusLabels = {
+  published: "Published",
+  preprint: "Preprint",
+  ongoing: "Ongoing project",
+  future: "Future direction",
+  "long-term": "Long-term direction",
 };
-
-export const themeSoftColors = {
-  objective: "#eef5fa",
-  structure: "#eef8f6",
-  limits: "#fbf1ee",
-  design: "#fbf5e8",
-  blue: "#eef5fa",
-  teal: "#eef8f6",
-  sage: "#f1f6ed",
-  rust: "#fbf1ee",
-  gold: "#fbf5e8",
-};
-
-const requiredPaperSections = ["claim", "limit", "design_move"];
-
-export function hexToRgb(hex) {
-  const value = hex.replace("#", "");
-  return {
-    r: parseInt(value.slice(0, 2), 16),
-    g: parseInt(value.slice(2, 4), 16),
-    b: parseInt(value.slice(4, 6), 16),
-  };
-}
-
-export function toHex(value) {
-  return value.toString(16).padStart(2, "0");
-}
-
-export function mixColor(color, target, colorWeight) {
-  const source = hexToRgb(color);
-  const destination = hexToRgb(target);
-  const targetWeight = 1 - colorWeight;
-  return `#${toHex(Math.round(source.r * colorWeight + destination.r * targetWeight))}${toHex(Math.round(source.g * colorWeight + destination.g * targetWeight))}${toHex(Math.round(source.b * colorWeight + destination.b * targetWeight))}`;
-}
 
 export function parseMarkdownDocument(markdown, source = "markdown document") {
   const normalized = String(markdown)
@@ -135,121 +98,99 @@ export function normalizeMarkdownText(markdown) {
 
 export async function loadAgenda(options = {}) {
   const contentRoot = options.contentRoot ?? new URL("../content/", import.meta.url);
-  const fetchText = options.fetchText ?? fetchTextFromNetwork;
-  const manifest = await loadMarkdown(contentRoot, "agenda.md", fetchText);
-  const manifestData = manifest.data;
-  const globalOrder = readIdList(manifestData.global_nodes, "agenda.md: global_nodes");
-
-  const globalEntries = await Promise.all(globalOrder.map((id) => loadGlobalNode(contentRoot, id, fetchText)));
-
-  const globalNodes = indexById(globalEntries, "global nodes");
-  const lensIds = uniqueIds(globalEntries.flatMap((node) => node.children));
-  const lensEntries = await Promise.all(lensIds.map((id) => loadLens(contentRoot, id, fetchText)));
-
-  const conceptNodes = indexById(lensEntries, "lenses");
-  const paperIds = uniqueIds(lensEntries.flatMap((lens) => lens.projects));
-  const paperEntries = await Promise.all(paperIds.map((id) => loadPaper(contentRoot, id, fetchText)));
-
-  const projects = indexById(paperEntries, "papers");
-  validateAgenda({ globalNodes, conceptNodes, projects });
-
+  const fetchText =
+    options.fetchText ??
+    (async (url) => {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Could not load " + url + ": " + response.status);
+      return response.text();
+    });
+  const read = async (name) => parseMarkdownDocument(await fetchText(new URL(name, contentRoot)), name);
+  const manifest = await read("agenda.md");
+  const strandOrder = readIds(manifest.data.strands, "agenda.md: strands");
+  const strandEntries = await Promise.all(
+    strandOrder.map(async (id) => {
+      const doc = await read("strands/" + id + ".md");
+      const data = doc.data;
+      if (data.id !== id) throw new Error(doc.source + ": id must match file name");
+      const sections = extractMarkdownSections(doc.body);
+      const papers = readIds(data.papers, doc.source + ": papers");
+      const directions = data.directions === undefined ? [] : readIds(data.directions, doc.source + ": directions");
+      if (papers.some((key) => directions.includes(key))) throw new Error(doc.source + ": an entry cannot be both evidence and a future direction");
+      if (!["blue", "teal", "violet"].includes(data.theme)) throw new Error(doc.source + ": unknown strand theme");
+      return {
+        id,
+        label: required(data.label, doc.source + ": label"),
+        short: required(data.short, doc.source + ": short"),
+        theme: data.theme,
+        question: required(data.question, doc.source + ": question"),
+        summary: required(data.summary, doc.source + ": summary"),
+        phases: phases.map((phase) => ({
+          id: phase,
+          title: required(data[phase + "_title"], doc.source + ": " + phase + "_title"),
+          text: required(sections[phase], doc.source + ": " + phase),
+        })),
+        scope: required(sections.scope, doc.source + ": Scope"),
+        next: required(sections.next, doc.source + ": Next"),
+        papers,
+        directions,
+        evidence: Object.fromEntries(
+          papers.map((key) => [key, required(sections[normalizeSectionKey("Evidence " + key)], doc.source + ": Evidence " + key)])
+        ),
+      };
+    })
+  );
+  const projectIds = [...new Set(strandEntries.flatMap((strand) => [...strand.papers, ...strand.directions]))];
+  const projectEntries = await Promise.all(
+    projectIds.map(async (id) => {
+      const doc = await read("papers/" + id + ".md");
+      const data = doc.data;
+      if (data.id !== id) throw new Error(doc.source + ": id must match file name");
+      if (!Object.hasOwn(statusLabels, data.status)) throw new Error(doc.source + ": unknown publication status");
+      const url = data.paper_url || "";
+      if (url && !/^https?:\/\//.test(url)) throw new Error(doc.source + ": paper_url must be an HTTP(S) URL");
+      return {
+        id,
+        title: required(data.title, doc.source + ": title"),
+        venue: required(data.venue, doc.source + ": venue"),
+        status: data.status,
+        summary: required(data.summary, doc.source + ": summary"),
+        url,
+        question: data.question || "",
+      };
+    })
+  );
+  const projects = Object.fromEntries(projectEntries.map((project) => [project.id, project]));
+  strandEntries.forEach((strand) => {
+    strand.papers.forEach((id) => {
+      if (!["published", "preprint"].includes(projects[id].status) || !projects[id].url)
+        throw new Error(id + ": evidence needs a publication or preprint link");
+    });
+    strand.directions.forEach((id) => {
+      if (["published", "preprint"].includes(projects[id].status) || !projects[id].question)
+        throw new Error(id + ": a direction needs a research question and ongoing/future status");
+    });
+  });
   return {
     site: {
-      browserTitle: readOptionalString(manifestData.browser_title, "Yichao Cai - Research Agenda"),
-      headline: readRequiredString(manifestData.headline, "agenda.md: headline"),
-      captionLeft: readOptionalString(manifestData.caption_left, "objective analysis"),
-      captionRight: readOptionalString(manifestData.caption_right, "objective design"),
-      lensEyebrow: readOptionalString(manifestData.lens_eyebrow, "Local mechanism"),
-      memoryLabel: readOptionalString(manifestData.memory_label, "Mental hook"),
-      claimLabel: readOptionalString(manifestData.claim_label, "Claim"),
-      limitLabel: readOptionalString(manifestData.limit_label, "Limit"),
-      designMoveLabel: readOptionalString(manifestData.design_move_label, "Design move"),
+      browserTitle: manifest.data.browser_title || "Research agenda",
+      headline: required(manifest.data.headline, "agenda.md: headline"),
+      introduction: required(manifest.data.introduction, "agenda.md: introduction"),
+      connection: required(extractMarkdownSections(manifest.body).connection, "agenda.md: Connection"),
     },
-    globalOrder,
-    globalNodes,
-    conceptNodes,
+    strandOrder,
+    strands: Object.fromEntries(strandEntries.map((strand) => [strand.id, strand])),
     projects,
   };
 }
 
-async function fetchTextFromNetwork(url) {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Could not load ${url}: ${response.status} ${response.statusText}`);
+export function resolveStrandHash(hash, strandOrder) {
+  try {
+    const id = decodeURIComponent(hash.replace(/^#/, ""));
+    return strandOrder.includes(id) ? id : strandOrder[0];
+  } catch {
+    return strandOrder[0];
   }
-  return response.text();
-}
-
-async function loadMarkdown(contentRoot, relativePath, fetchText) {
-  const url = new URL(relativePath, contentRoot);
-  const text = await fetchText(url);
-  return parseMarkdownDocument(text, relativePath);
-}
-
-async function loadGlobalNode(contentRoot, id, fetchText) {
-  const document = await loadMarkdown(contentRoot, `global/${id}.md`, fetchText);
-  const data = document.data;
-  const resolvedId = readId(data.id ?? id, document.source);
-  assertMatchingId(id, resolvedId, document.source);
-  const theme = readOptionalString(data.theme ?? data.color, resolvedId);
-  const colors = resolveThemeColors(theme, data.soft);
-
-  return {
-    id: resolvedId,
-    label: readRequiredString(data.label, `${document.source}: label`),
-    subtitle: readOptionalString(data.subtitle, ""),
-    eyebrow: readOptionalString(data.eyebrow, `Global node / ${readOptionalString(data.label, resolvedId)}`),
-    title: readRequiredString(data.title, `${document.source}: title`),
-    text: normalizeMarkdownText(document.body),
-    theme,
-    color: colors.color,
-    soft: colors.soft,
-    x: readOptionalNumber(data.x),
-    y: readOptionalNumber(data.y),
-    children: readIdList(data.lenses ?? data.children, `${document.source}: lenses`),
-  };
-}
-
-async function loadLens(contentRoot, id, fetchText) {
-  const document = await loadMarkdown(contentRoot, `lenses/${id}.md`, fetchText);
-  const data = document.data;
-  const resolvedId = readId(data.id ?? id, document.source);
-  assertMatchingId(id, resolvedId, document.source);
-  const theme = readOptionalString(data.theme ?? data.color, resolvedId);
-  const colors = resolveThemeColors(theme, data.soft);
-
-  return {
-    id: resolvedId,
-    label: readRequiredString(data.label, `${document.source}: label`),
-    short: readOptionalString(data.short, ""),
-    eyebrow: readOptionalString(data.eyebrow, ""),
-    title: readRequiredString(data.title, `${document.source}: title`),
-    text: normalizeMarkdownText(document.body),
-    memory: readOptionalString(data.memory, ""),
-    memoryLabel: readOptionalString(data.memory_label, ""),
-    theme,
-    color: colors.color,
-    soft: colors.soft,
-    projects: readIdList(data.papers ?? data.projects, `${document.source}: papers`),
-  };
-}
-
-async function loadPaper(contentRoot, id, fetchText) {
-  const document = await loadMarkdown(contentRoot, `papers/${id}.md`, fetchText);
-  const data = document.data;
-  const resolvedId = readId(data.id ?? id, document.source);
-  assertMatchingId(id, resolvedId, document.source);
-  const sections = extractMarkdownSections(document.body);
-
-  return {
-    id: resolvedId,
-    title: readRequiredString(data.title, `${document.source}: title`),
-    venue: readRequiredString(data.venue, `${document.source}: venue`),
-    summary: readRequiredString(data.summary, `${document.source}: summary`),
-    claim: readRequiredText(sections.claim ?? data.claim, `${document.source}: Claim`),
-    limit: readRequiredText(sections.limit ?? data.limit, `${document.source}: Limit`),
-    design: readRequiredText(sections.design_move ?? sections.design ?? data.design, `${document.source}: Design move`),
-  };
 }
 
 function parseFrontmatterValue(value) {
@@ -289,117 +230,14 @@ function normalizeSectionKey(value) {
     .replace(/^_+|_+$/g, "");
 }
 
-function resolveThemeColors(themeOrColor, softOverride) {
-  const color = resolveColor(themeOrColor);
-  const soft = softOverride ? resolveSoftColor(softOverride, color) : resolveSoftColor(themeOrColor, color);
-  return { color, soft };
-}
-
-function resolveColor(themeOrColor) {
-  const value = String(themeOrColor).trim();
-  if (isHexColor(value)) {
-    return value.toLowerCase();
-  }
-  if (themeColors[value]) {
-    return themeColors[value];
-  }
-  throw new Error(`Unknown color theme "${value}". Use a theme name or a hex color.`);
-}
-
-function resolveSoftColor(themeOrColor, baseColor) {
-  const value = String(themeOrColor).trim();
-  if (isHexColor(value)) {
-    return value.toLowerCase();
-  }
-  return themeSoftColors[value] ?? mixColor(baseColor, "#ffffff", 0.08);
-}
-
-function isHexColor(value) {
-  return /^#[0-9a-fA-F]{6}$/.test(String(value).trim());
-}
-
-function readId(value, source) {
-  const id = readRequiredString(value, `${source}: id`);
-  if (!/^[A-Za-z0-9_-]+$/.test(id)) {
-    throw new Error(`${source}: id "${id}" can only use letters, numbers, hyphens, and underscores.`);
-  }
-  return id;
-}
-
-function readIdList(value, source) {
-  const list = Array.isArray(value) ? value : [];
-  if (!list.length) {
-    throw new Error(`${source} must list at least one id.`);
-  }
-  return list.map((id) => readId(id, source));
-}
-
-function readRequiredString(value, source) {
-  if (typeof value !== "string" || !value.trim()) {
-    throw new Error(`${source} is required.`);
-  }
+function required(value, source) {
+  if (typeof value !== "string" || !value.trim()) throw new Error(source + " is required");
   return value.trim();
 }
 
-function readRequiredText(value, source) {
-  const text = typeof value === "string" ? normalizeMarkdownText(value) : "";
-  if (!text) {
-    throw new Error(`${source} is required.`);
-  }
-  return text;
-}
-
-function readOptionalString(value, fallback) {
-  return typeof value === "string" && value.trim() ? value.trim() : fallback;
-}
-
-function readOptionalNumber(value) {
-  return typeof value === "number" && Number.isFinite(value) ? value : null;
-}
-
-function assertMatchingId(expected, actual, source) {
-  if (expected !== actual) {
-    throw new Error(`${source}: id "${actual}" does not match file name "${expected}".`);
-  }
-}
-
-function uniqueIds(ids) {
-  return [...new Set(ids)];
-}
-
-function indexById(entries, label) {
-  return entries.reduce((index, entry) => {
-    if (index[entry.id]) {
-      throw new Error(`Duplicate ${label} id "${entry.id}".`);
-    }
-    index[entry.id] = entry;
-    return index;
-  }, {});
-}
-
-function validateAgenda({ globalNodes, conceptNodes, projects }) {
-  Object.values(globalNodes).forEach((node) => {
-    node.children.forEach((id) => {
-      if (!conceptNodes[id]) {
-        throw new Error(`Global node "${node.id}" references missing lens "${id}".`);
-      }
-    });
-  });
-
-  Object.values(conceptNodes).forEach((lens) => {
-    lens.projects.forEach((id) => {
-      if (!projects[id]) {
-        throw new Error(`Lens "${lens.id}" references missing paper "${id}".`);
-      }
-    });
-  });
-
-  Object.values(projects).forEach((paper) => {
-    requiredPaperSections.forEach((field) => {
-      const key = field === "design_move" ? "design" : field;
-      if (!paper[key]) {
-        throw new Error(`Paper "${paper.id}" is missing ${field}.`);
-      }
-    });
-  });
+function readIds(value, source) {
+  if (!Array.isArray(value) || !value.length) throw new Error(source + " must list at least one id");
+  if (value.some((id) => typeof id !== "string" || !/^[A-Za-z0-9_-]+$/.test(id))) throw new Error(source + ": invalid id");
+  if (new Set(value).size !== value.length) throw new Error(source + ": duplicate id");
+  return value;
 }

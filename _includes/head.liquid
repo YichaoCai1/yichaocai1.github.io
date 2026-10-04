@@ -1,14 +1,8 @@
 <!-- Metadata, OpenGraph and Schema.org -->
 {% include metadata.liquid %}
-
-<!-- Bootstrap & MDB -->
-<link rel="stylesheet" href="{{ '/assets/css/bootstrap.min.css' | relative_url | bust_file_cache }}">
-<link
-  rel="stylesheet"
-  href="{{ site.third_party_libraries.mdb.url.css }}"
-  integrity="{{ site.third_party_libraries.mdb.integrity.css }}"
-  crossorigin="anonymous"
->
+<script>
+  document.documentElement.classList.add('js');
+</script>
 
 {% if page.pretty_table %}
   <!-- Bootstrap Table -->
@@ -54,7 +48,7 @@
   <link defer href="{{ '/assets/css/bootstrap-toc.min.css' | relative_url | bust_file_cache }}" rel="stylesheet">
 {% endif %}
 
-<!-- Styles -->
+<!-- One shared presentation layer for all pages. -->
 
 {% if page.pseudocode %}
   <!-- pseudocode -->
@@ -75,7 +69,6 @@
 {% elsif site.icon != blank %}
   <link rel="shortcut icon" href="{{ site.icon | prepend: '/assets/img/' | relative_url | bust_file_cache}}">
 {% endif %}
-<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
 
 {% if site.enable_darkmode %}

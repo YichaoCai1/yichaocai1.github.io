@@ -1,17 +1,28 @@
 <div class="profile-links" aria-label="Contact and profiles">
-  {% if site.data.socials.email -%}
-    <a href="mailto:{{ site.data.socials.email | encode_email }}">Email</a>
-  {%- endif %}
-  {% if site.data.socials.scholar_userid -%}
-    <a href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}">Scholar</a>
-  {%- endif %}
-  {% if site.data.socials.github_username -%}
-    <a href="https://github.com/{{ site.data.socials.github_username }}">GitHub</a>
-  {%- endif %}
-  {% if site.data.socials.linkedin_username -%}
-    <a href="https://www.linkedin.com/in/{{ site.data.socials.linkedin_username }}">LinkedIn</a>
-  {%- endif %}
-  {% if site.data.socials.cv_pdf -%}
-    <a href="{{ site.data.socials.cv_pdf | relative_url }}">CV</a>
-  {%- endif %}
+  {% if site.data.socials.email %}
+    <a href="mailto:{{ site.data.socials.email | encode_email }}" aria-label="Email" title="Email"
+      ><i class="profile-icon profile-icon-email" aria-hidden="true"></i
+    ></a>
+  {% endif %}
+  {% if site.data.socials.cv_pdf %}
+    {% assign cv_file = site.data.socials.cv_pdf | relative_url | url_encode %}
+    <a href="{{ '/pdf/' | relative_url }}?file={{ cv_file }}&amp;title=Curriculum%20vitae" aria-label="Curriculum vitae" title="Curriculum vitae"
+      ><i class="ai ai-cv-square" aria-hidden="true"></i
+    ></a>
+  {% endif %}
+  {% if site.data.socials.linkedin_username %}
+    <a href="https://www.linkedin.com/in/{{ site.data.socials.linkedin_username }}" aria-label="LinkedIn" title="LinkedIn"
+      ><i class="profile-icon profile-icon-linkedin" aria-hidden="true"></i
+    ></a>
+  {% endif %}
+  {% if site.data.socials.scholar_userid %}
+    <a href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}" aria-label="Google Scholar" title="Google Scholar"
+      ><i class="ai ai-google-scholar-square" aria-hidden="true"></i
+    ></a>
+  {% endif %}
+  {% if site.data.socials.github_username %}
+    <a href="https://github.com/{{ site.data.socials.github_username }}" aria-label="GitHub" title="GitHub"
+      ><i class="profile-icon profile-icon-github" aria-hidden="true"></i
+    ></a>
+  {% endif %}
 </div>

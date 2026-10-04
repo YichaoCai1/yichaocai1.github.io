@@ -1,4 +1,5 @@
 **/*.map
+assets/vendor/pdfjs/**
 **/*.min.css
 **/*.min.js
 assets/css/main.scss

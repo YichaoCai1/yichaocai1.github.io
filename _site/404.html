@@ -37,17 +37,16 @@
 
 
 
-
-<!-- Bootstrap & MDB -->
-<link rel="stylesheet" href="/assets/css/bootstrap.min.css?v=b05f9a0b7405d7c8c89c7465593dea81">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+<script>
+  document.documentElement.classList.add('js');
+</script>
 
 
 
 <!-- Fonts & Icons -->
 <link defer rel="stylesheet" href="/assets/css/academicons.min.css?v=dadeb9c5d1fd12bc8d37475657446863">
 <link defer rel="stylesheet" href="/assets/css/scholar-icons.css?v=62b2ac103a88034e6882a5be5f3e2772">
-<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&amp;family=Lato:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap">
+<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&amp;family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;display=swap">
 <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <!-- Code Syntax Highlighting -->
@@ -55,19 +54,18 @@
 
 
 
-<!-- Styles -->
+<!-- One shared presentation layer for all pages. -->
 
 
 
 
   <link rel="shortcut icon" href="/assets/img/AG1p230.svg?v=92faa2941c5bb71cb6d333d23aed1d71">
 
-<link rel="stylesheet" href="/assets/css/main.css?v=1790667637">
 <link rel="canonical" href="http://localhost:4000/404.html">
 
 
   <!-- Dark Mode -->
-  <script src="/assets/js/theme.js?v=48c9b5bd7f2e0605e39e579400e22553"></script>
+  <script src="/assets/js/theme.js?v=eb4d1c56a8bfdfd661d8e3a4c85ba2e6"></script>
   <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark">
   <script>
     initTheme();
@@ -82,7 +80,7 @@
 
 
 
-<link rel="stylesheet" href="/assets/css/academic.css?v=1790667637">
+<link rel="stylesheet" href="/assets/css/academic.css?v=1791097441">
 
   </head>
 
@@ -93,37 +91,26 @@
 
 
 
-
-
-
-
-
 <header class="academic-header">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <nav class="academic-nav" aria-label="Site navigation">
-    <a class="mobile-brand" href="/">Yichao Cai</a>
-    <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="academic-nav-links">
-      Menu
-      <span aria-hidden="true">☰</span>
+    <a class="navbar-brand" href="/">Yichao Cai</a>
+    <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="academic-nav-links" aria-label="Toggle navigation">
+      <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
     </button>
     <div class="academic-nav-links" id="academic-nav-links">
-      
-        <a href="/#about" data-home-section="about">About</a>
-      
-        <a href="/#teaching" data-home-section="teaching">Teaching</a>
-      
-      <span class="nav-divider" aria-hidden="true">|</span>
-      <a href="/research-agenda/">Agenda</a>
+      <a href="/">Home</a>
+      <a href="/publications/">Publications</a>
+      <a href="/research-agenda/">Research</a>
       <a href="/blog/">Blog</a>
-    </div>
-    <div class="academic-utilities">
+      <a href="/teaching/">Teaching</a>
+      <a href="/service/">Service</a>
+      <a class="language-switch" href="/zh/" lang="zh" aria-label="切换到中文">中</a>
       
-        <a href="/zh/" lang="zh" aria-label="切换到中文">中</a>
-      
-      <button type="button" id="search-toggle" title="Search (Ctrl K)" aria-label="Search" onclick="openSearchModal()">
-          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <button id="theme-toggle" type="button" aria-label="Toggle light/dark mode">
+          <span id="theme-toggle-icon" aria-hidden="true">☾</span><span class="label-stack" aria-hidden="true"><span id="label-dark">Dark</span><span id="label-light">Light</span></span>
         </button>
-      <button type="button" id="light-toggle" title="Change theme" aria-label="Change theme"><span aria-hidden="true">◐</span></button>
+      
     </div>
   </nav>
 </header>
@@ -155,21 +142,16 @@
 
     <!-- Footer -->
     <footer class="academic-footer" role="contentinfo">
-  <p>
-    © 2026
-    Yichao
-    Cai
-    <a class="reading-diamond" href="/assets/essays/books.html" title="Reading list" aria-label="Reading list">◆</a>
-    
-  </p>
-  <p>
-    Design adapted from <a href="https://github.com/leonidk/leonidk.github.io" rel="external nofollow noopener" target="_blank">Leonid Keselman's template</a>, based on
-    <a href="https://jonbarron.info/" rel="external nofollow noopener" target="_blank">Jon Barron's website</a>.
-  </p>
-  <p>
-    Built with <a href="https://jekyllrb.com/" rel="external nofollow noopener" target="_blank">Jekyll</a> and <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> · Hosted on
-    <a href="https://pages.github.com/" rel="external nofollow noopener" target="_blank">GitHub Pages</a>.
-  </p>
+  <div class="footer-inner">
+    <p>
+      © 2026
+      Yichao
+      Cai
+      <a class="reading-diamond" href="/assets/essays/books.html" title="Reading list" aria-label="Reading list">◆</a>
+    </p>
+    <p>Theme adapted from <a href="https://github.com/bazilinskyy/bazilinskyy.github.io" rel="external nofollow noopener" target="_blank">Pavlo Bazilinskyy</a>.</p>
+    <p>Built with <a href="https://jekyllrb.com/" rel="external nofollow noopener" target="_blank">Jekyll</a> and <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a>.</p>
+  </div>
 </footer>
 
 
@@ -276,7 +258,9 @@
 
 
 
-<script defer src="/assets/js/academic.js"></script>
+<script defer src="/assets/js/academic.js" data-pdf-reader-url="/pdf/"></script>
+
+<script defer src="/assets/js/publications.js?v=a08b2ebf12331da8f0c58f233a9cdf16"></script>
 
   </body>
 </html>

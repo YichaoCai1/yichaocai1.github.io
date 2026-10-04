@@ -4,7 +4,7 @@ title: Research Agenda
 nav_title: agenda
 nav_title_zh: 研究议程
 nav_url_zh: /research-agenda/
-description: An interactive map of the objectives, structures, limits, and design principles connecting Yichao Cai's research.
+description: Research questions connecting contrastive learning, masked prediction, and predictive state through objectives, identifiable structure, limits, and design.
 permalink: /research-agenda/
 lang: en
 lang_en_url: /research-agenda/
@@ -13,39 +13,66 @@ nav: true
 nav_order: 1
 ---
 
-<main id="main-content" class="research-agenda" role="main">
-  <section class="global-stage" id="globalStage" aria-labelledby="page-title">
-    <div class="global-wrap">
-      <header class="global-heading">
-        <p class="agenda-kicker">Research agenda</p>
-        <h1 id="page-title"></h1>
-      </header>
-
-      <figure class="diagram-card" aria-label="Research agenda map">
-        <svg class="agenda-diagram" viewBox="0 0 420 300" role="group" aria-label="Interactive research themes">
-          <defs id="diagramDefs"></defs>
-          <rect class="diagram-surface" x="0" y="0" width="420" height="300" rx="8"></rect>
-          <path class="inner-loop" id="diagramLoop"></path>
-          <g id="diagramNodes"></g>
-          <text class="diagram-caption" id="diagramCaption" x="210" y="286" text-anchor="middle"></text>
-        </svg>
-      </figure>
+<main id="main-content" class="research-agenda">
+  <header class="agenda-intro">
+    <p class="agenda-eyebrow">Research agenda</p>
+    <h1 id="page-title">What do learning objectives make representations preserve?</h1>
+    <p class="agenda-introduction" id="agendaIntroduction">
+      I study what learning objectives identify, what they leave unresolved, and how those limits can guide the design of learning systems.
+    </p>
+  </header>
+  <figure class="framework" aria-labelledby="frameworkTitle" aria-describedby="frameworkCaption">
+    <div class="framework-heading">
+      <h2 id="frameworkTitle">One framework, three research questions</h2>
+      <button class="motion-toggle" id="motionToggle" type="button" aria-pressed="false" hidden>Pause motion</button>
     </div>
-  </section>
-
-  <section class="detail-layer" id="detailLayer" aria-live="polite" hidden>
-    <button class="return-button" type="button" id="returnButton" aria-label="Return to global agenda map">
-      <span aria-hidden="true">&larr;</span>
-      <span>Back to agenda</span>
-    </button>
-
-    <div class="layer-heading">
-      <p class="eyebrow" id="layerEyebrow"></p>
-      <h2 id="layerTitle"></h2>
-      <p id="layerText"></p>
+    <div class="framework-map" id="frameworkMap">
+      <svg class="framework-orbit" id="frameworkOrbit" aria-hidden="true" focusable="false">
+        <path class="orbit-track" id="orbitTrack"></path>
+        <path class="inner-loop" id="diagramLoop"></path>
+      </svg>
+      <ol class="framework-stages">
+        <li class="framework-stage phase-objective" id="objective">
+          <span class="phase-number">01</span>
+          <div><strong>Objective</strong><span>The learning signal</span></div>
+        </li>
+        <li class="framework-stage phase-structure" id="structure">
+          <span class="phase-number">02</span>
+          <div><strong>Structure</strong><span>What is recovered</span></div>
+        </li>
+        <li class="framework-stage phase-limits" id="limits">
+          <span class="phase-number">03</span>
+          <div><strong>Limits</strong><span>What remains hidden</span></div>
+        </li>
+        <li class="framework-stage phase-design" id="design">
+          <span class="phase-number">04</span>
+          <div><strong>Design</strong><span>How to intervene</span></div>
+        </li>
+      </ol>
     </div>
-
-    <div class="node-layer" id="nodeLayer"></div>
-    <article class="node-detail" id="nodeDetail"></article>
+    <figcaption id="frameworkCaption">Understanding the limits informs the next objective.</figcaption>
+  </figure>
+  <section class="agenda-explorer" aria-labelledby="questionsHeading">
+    <div class="explorer-heading">
+      <h2 id="questionsHeading">Explore the questions</h2>
+      <p>From the learning signal to the next research direction.</p>
+    </div>
+    <p id="agendaStatus" role="status">Loading research questions…</p>
+    <noscript
+      ><p>
+        Enable JavaScript to explore the research questions, or browse <a href="{{ '/publications/' | relative_url }}">all publications</a>.
+      </p></noscript
+    >
+    <nav class="strand-navigation" id="strandNavigation" aria-label="Research questions"></nav>
+    <p class="sr-only" id="strandAnnouncement" role="status" aria-live="polite"></p>
+    <article class="strand-story" id="strandStory" aria-labelledby="strandTitle" hidden></article>
   </section>
+  <aside class="agenda-connection" id="agendaConnection" aria-labelledby="connectionTitle" hidden>
+    <span class="connection-mark" aria-hidden="true">↗</span>
+    <div>
+      <h2 id="connectionTitle">The common thread</h2>
+      <p id="connectionText"></p>
+    </div>
+    <a href="{{ '/publications/' | relative_url }}">All publications <span aria-hidden="true">→</span></a>
+  </aside>
 </main>

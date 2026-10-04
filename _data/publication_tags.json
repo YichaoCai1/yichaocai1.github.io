@@ -1,0 +1,44 @@
+{
+  "cai2026identifiability": {
+    "type": "Preprint",
+    "methods": ["Masked prediction"],
+    "topics": ["Identifiability"],
+    "domains": ["Language models"]
+  },
+  "cai2026geometric": {
+    "type": "Conference",
+    "methods": ["Contrastive learning"],
+    "topics": ["Representation geometry", "Cross-modal alignment"],
+    "domains": ["Vision-language"]
+  },
+  "jiang2026singlecell": {
+    "type": "Conference",
+    "methods": ["Variational inference"],
+    "topics": ["Identifiability", "Causal representations"],
+    "domains": ["Single-cell biology"]
+  },
+  "chen2026boundary": {
+    "type": "Conference",
+    "methods": ["Contrastive learning"],
+    "topics": ["Disentanglement"],
+    "domains": ["Graphs"]
+  },
+  "liu2026predict": {
+    "type": "Conference",
+    "methods": ["Next-token prediction"],
+    "topics": ["Identifiability", "Concept interpretability"],
+    "domains": ["Language models"]
+  },
+  "cai2025misalignment": {
+    "type": "Conference",
+    "methods": ["Contrastive learning"],
+    "topics": ["Identifiability", "Cross-modal alignment"],
+    "domains": ["Vision-language"]
+  },
+  "cai2024clap": {
+    "type": "Conference",
+    "methods": ["Contrastive learning"],
+    "topics": ["Disentanglement", "OOD generalization"],
+    "domains": ["Vision-language"]
+  }
+}

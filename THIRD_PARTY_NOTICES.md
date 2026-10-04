@@ -1,6 +1,12 @@
 # Website design acknowledgments
 
-The academic presentation is adapted from [Leonid Keselman's Jekyll template](https://github.com/leonidk/leonidk.github.io), itself based on [Jon Barron's website](https://jonbarron.info/).
+## PDF reader
+
+The on-site PDF reader uses Mozilla's [PDF.js 6.3.289 legacy distribution](https://github.com/mozilla/pdf.js/releases/tag/v6.3.289), licensed under Apache 2.0. Its license and bundled font/resource notices are retained in `assets/vendor/pdfjs/`. Source maps, debugging tools, and the example PDF are omitted. The viewer HTML loads a local site skin and configuration; the PDF.js JavaScript bundles are unchanged.
+
+The current visual presentation follows [Pavlo Bazilinskyy’s website](https://github.com/bazilinskyy/bazilinskyy.github.io): its fixed navigation, typography, page proportions, light/dark palette, and publication catalogue. The local implementation uses this repository’s own Jekyll layouts, bibliography, and JavaScript; the reference site’s personal content, data, and analytics are not included.
+
+The previous academic presentation was adapted from [Leonid Keselman's Jekyll template](https://github.com/leonidk/leonidk.github.io), itself based on [Jon Barron's website](https://jonbarron.info/).
 
 The implementation retains this site's Jekyll/al-folio foundation and its existing license in `LICENSE`. The template's personal text, photographs, publications, and project images are not included. The following upstream notice is retained for the template's Jekyll Now ancestry.
 

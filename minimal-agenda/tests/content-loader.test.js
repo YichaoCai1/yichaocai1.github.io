@@ -1,200 +1,110 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { test } from "node:test";
-import { fileURLToPath } from "node:url";
-import { loadAgenda, parseMarkdownDocument } from "../assets/content-loader.js";
+import { loadAgenda, parseMarkdownDocument, resolveStrandHash } from "../assets/content-loader.js";
 
-const realContentRoot = new URL("../content/", import.meta.url);
-
-test("loads the current Markdown agenda", async () => {
-  const agenda = await loadAgenda({
-    contentRoot: realContentRoot,
-    fetchText: readUrl,
-  });
-
-  assert.equal(agenda.site.headline, "Objectives decide what representations can know.");
-  assert.equal(agenda.site.claimLabel, "Claim");
-  assert.deepEqual(agenda.globalOrder, ["objective", "structure", "limits", "design"]);
-  assert.equal(agenda.globalNodes.objective.children[0], "views");
-  assert.equal(agenda.conceptNodes.views.projects[0], "clap");
-  assert.equal(agenda.projects.clap.claim, "View construction changes which semantic factors are recoverable.");
-});
-
-test("paper claim edits are reflected without JavaScript changes", async () => {
-  const files = createVirtualAgendaFiles();
-  files["papers/basePaper.md"] = files["papers/basePaper.md"].replace("The original claim.", "The updated claim.");
-
-  const agenda = await loadAgenda(createVirtualLoadOptions(files));
-
-  assert.equal(agenda.projects.basePaper.claim, "The updated claim.");
-});
-
-test("new papers, lenses, and global nodes load from added Markdown files", async () => {
-  const files = createVirtualAgendaFiles();
-  files["agenda.md"] = files["agenda.md"].replace("  - objective", "  - objective\n  - newObjective");
-  files["global/objective.md"] = files["global/objective.md"].replace("  - baseLens", "  - baseLens\n  - addedLens");
-  files["global/newObjective.md"] = `---
-id: newObjective
-label: New objective
-subtitle: new signal
-title: A new global node.
-theme: teal
-lenses:
-  - addedLens
----
-
-This is an added top-level node.
-`;
-  files["lenses/baseLens.md"] = files["lenses/baseLens.md"].replace("  - basePaper", "  - basePaper\n  - addedPaper");
-  files["lenses/addedLens.md"] = `---
-id: addedLens
-label: Added lens
-title: An added lens.
-theme: sage
-papers:
-  - addedPaper
----
-
-This lens was added from Markdown.
-`;
-  files["papers/addedPaper.md"] = `---
-id: addedPaper
-title: Added paper
-venue: Test venue
-summary: Added summary.
----
-
-## Claim
-
-An added claim.
-
-## Limit
-
-An added limit.
-
-## Design move
-
-An added design move.
-`;
-
-  const agenda = await loadAgenda(createVirtualLoadOptions(files));
-
-  assert.ok(agenda.globalNodes.newObjective);
-  assert.ok(agenda.conceptNodes.addedLens);
-  assert.ok(agenda.projects.addedPaper);
-  assert.deepEqual(agenda.globalNodes.objective.children, ["baseLens", "addedLens"]);
-  assert.deepEqual(agenda.conceptNodes.baseLens.projects, ["basePaper", "addedPaper"]);
-});
-
-test("frontmatter parser keeps quoted colons and list values", () => {
-  const document = parseMarkdownDocument(`---
-title: "Objective: the risk signal"
-global_nodes:
-  - objective
-  - design
----
-
-Body text.
-`);
-
-  assert.equal(document.data.title, "Objective: the risk signal");
-  assert.deepEqual(document.data.global_nodes, ["objective", "design"]);
-  assert.equal(document.body, "Body text.");
-});
-
-test("raw content marker keeps agenda Markdown readable after Jekyll copies it", () => {
-  const document = parseMarkdownDocument(`<!-- raw-agenda-content -->
-
----
-
-title: Marked agenda content
-
----
-
-Body text.
-`);
-
-  assert.equal(document.data.title, "Marked agenda content");
-  assert.equal(document.body, "Body text.");
-});
-
-async function readUrl(url) {
-  return readFile(fileURLToPath(url), "utf8");
-}
-
-function createVirtualLoadOptions(files) {
-  const contentRoot = new URL("https://example.test/content/");
-  return {
+const contentRoot = new URL("../content/", import.meta.url);
+const loadReal = (changes = {}, requested = []) =>
+  loadAgenda({
     contentRoot,
     fetchText: async (url) => {
-      const key = new URL(url).pathname.replace(/^\/content\//, "");
-      if (!Object.hasOwn(files, key)) {
-        throw new Error(`Missing virtual file ${key}`);
-      }
-      return files[key];
+      const key = url.href.slice(contentRoot.href.length);
+      requested.push(key);
+      const text = await readFile(url, "utf8");
+      return changes[key] ? changes[key](text) : text;
     },
-  };
-}
+  });
 
-function createVirtualAgendaFiles() {
-  return {
-    "agenda.md": `---
-browser_title: Test agenda
-headline: Test headline.
-caption_left: test left
-caption_right: test right
-lens_eyebrow: Test mechanism
-memory_label: Test hook
-claim_label: Claim
-limit_label: Limit
-design_move_label: Design move
-global_nodes:
-  - objective
----
-`,
-    "global/objective.md": `---
-id: objective
-label: Objective
-subtitle: signal
-title: Test objective.
-theme: objective
-lenses:
-  - baseLens
----
+test("three distinct research stories retain all five papers and five directions", async () => {
+  const requested = [];
+  const agenda = await loadReal({}, requested);
+  assert.deepEqual(agenda.strandOrder, ["contrastive", "masked", "predictive"]);
+  assert.deepEqual(agenda.strands.contrastive.papers, ["clap", "misalignment", "contrastiveGeometry"]);
+  assert.deepEqual(agenda.strands.masked.papers, ["masked"]);
+  assert.deepEqual(agenda.strands.predictive.papers, ["ipta"]);
+  assert.equal(Object.keys(agenda.projects).length, 10);
+  assert.equal(Object.values(agenda.projects).filter((p) => p.url).length, 5);
+  assert.equal(agenda.projects.masked.status, "preprint");
+  assert.equal(agenda.projects.ntp.status, "ongoing");
+  assert.equal(agenda.projects.agents.status, "long-term");
+  assert.ok(agenda.site.connection);
+  assert.ok(requested.every((file) => !file.startsWith("lenses/") && !file.startsWith("global/")));
+  assert.equal(requested.filter((file) => file.startsWith("papers/")).length, 10);
+});
 
-The objective body.
-`,
-    "lenses/baseLens.md": `---
-id: baseLens
-label: Base lens
-short: short lens
-title: Base lens title.
-memory: Base memory.
-theme: blue
-papers:
-  - basePaper
----
+test("each story has four distinct explanations and contextual evidence", async () => {
+  const agenda = await loadReal();
+  for (const strand of Object.values(agenda.strands)) {
+    assert.deepEqual(
+      strand.phases.map((p) => p.id),
+      ["objective", "structure", "limits", "design"]
+    );
+    assert.equal(new Set(strand.phases.map((p) => p.text)).size, 4);
+    strand.papers.forEach((id) => assert.ok(strand.evidence[id]));
+    strand.directions.forEach((id) => assert.ok(agenda.projects[id].question.endsWith("?")));
+  }
+});
 
-The lens body.
-`,
-    "papers/basePaper.md": `---
-id: basePaper
-title: Base paper
-venue: Test venue
-summary: Base summary.
----
+test("editing strand Markdown updates the explanation without code changes", async () => {
+  const agenda = await loadReal({ "strands/masked.md": (text) => text.replace("Control what is visible", "Choose the visible context") });
+  assert.equal(agenda.strands.masked.phases[0].title, "Choose the visible context");
+});
 
-## Claim
+test("a shared paper is loaded once and keeps different contextual descriptions", async () => {
+  const requested = [];
+  const agenda = await loadReal(
+    {
+      "strands/masked.md": (text) =>
+        text.replace("papers: [masked]", "papers: [masked, clap]") +
+        "\n## Evidence clap\n\nView construction provides a comparison for controlling visibility.\n",
+    },
+    requested
+  );
+  assert.equal(requested.filter((file) => file === "papers/clap.md").length, 1);
+  assert.notEqual(agenda.strands.masked.evidence.clap, agenda.strands.contrastive.evidence.clap);
+});
 
-The original claim.
+test("duplicate placements within a strand are rejected", async () => {
+  await assert.rejects(loadReal({ "strands/masked.md": (text) => text.replace("papers: [masked]", "papers: [masked, masked]") }), /duplicate id/);
+});
 
-## Limit
+test("missing contextual evidence and missing phase text are rejected", async () => {
+  await assert.rejects(
+    loadReal({ "strands/masked.md": (text) => text.replace("## Evidence masked", "## Removed evidence") }),
+    /Evidence masked.*required/
+  );
+  await assert.rejects(loadReal({ "strands/masked.md": (text) => text.replace("## Limits", "## Removed limits") }), /limits.*required/);
+});
 
-The original limit.
+test("unpublished directions cannot silently become evidence", async () => {
+  await assert.rejects(
+    loadReal({ "papers/masked.md": (text) => text.replace("status: preprint", "status: future") }),
+    /evidence needs a publication/
+  );
+  await assert.rejects(loadReal({ "papers/ntp.md": (text) => text.replace(/^question:.*$/m, "") }), /direction needs a research question/);
+});
 
-## Design move
+test("unsafe publication link protocols are rejected", async () => {
+  await assert.rejects(
+    loadReal({ "papers/clap.md": (text) => text.replace("https://arxiv.org/abs/2311.16445", "javascript:alert(1)") }),
+    /HTTP\(S\)/
+  );
+});
 
-The original design move.
-`,
-  };
-}
+test("deep links restore strands while old framework and malformed hashes remain usable", () => {
+  const ids = ["contrastive", "masked", "predictive"];
+  assert.equal(resolveStrandHash("#masked", ids), "masked");
+  assert.equal(resolveStrandHash("#predictive", ids), "predictive");
+  for (const hash of ["", "#objective", "#structure", "#limits", "#design", "#missing", "#%broken"]) {
+    assert.equal(resolveStrandHash(hash, ids), "contrastive");
+  }
+});
+
+test("raw Markdown markers and quoted colons survive Jekyll copying", () => {
+  const doc = parseMarkdownDocument(
+    '<!-- raw-agenda-content -->\n\n---\ntitle: "Objective: signal"\nstrands:\n  - contrastive\n  - masked\n---\n\nBody text.\n'
+  );
+  assert.equal(doc.data.title, "Objective: signal");
+  assert.deepEqual(doc.data.strands, ["contrastive", "masked"]);
+  assert.equal(doc.body, "Body text.");
+});

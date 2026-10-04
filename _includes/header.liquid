@@ -1,41 +1,57 @@
 {% assign current_lang = page.lang | default: site.lang | default: 'en' %}
-{% assign home_url = '/' %}
-{% assign blog_url = '/blog/' %}
-{% assign nav_labels = 'About,Teaching' | split: ',' %}
-{% assign agenda_label = 'Agenda' %}
-{% assign blog_label = 'Blog' %}
-{% assign menu_label = 'Menu' %}
+{% assign home_url = '/' -%}
+{%- assign blog_url = '/blog/' -%}
+{%- assign teaching_url = '/teaching/' -%}
+{%- assign service_url = '/service/' -%}
+{%- assign publications_url = '/publications/' %}
+{% assign nav_labels = 'Home,Publications,Research,Blog,Teaching,Service' | split: ',' %}
 {% if current_lang == 'zh' %}
-  {% assign home_url = '/zh/' %}
-  {% assign blog_url = '/zh/blog/' %}
-  {% assign nav_labels = '关于,教学' | split: ',' %}
-  {% assign agenda_label = '研究议程' %}
-  {% assign blog_label = '博客' %}
-  {% assign menu_label = '菜单' %}
+  {% assign home_url = '/zh/' -%}
+  {%- assign blog_url = '/zh/blog/' -%}
+  {%- assign teaching_url = '/zh/teaching/' -%}
+  {%- assign service_url = '/zh/service/' -%}
+  {%- assign publications_url = '/zh/publications/' %}
+  {% assign nav_labels = '首页,论文,研究,博客,教学,学术服务' | split: ',' %}
 {% endif %}
-{% assign section_ids = 'about,teaching' | split: ',' %}
 <header class="academic-header">
   <a class="skip-link" href="#main-content">
     {%- if current_lang == 'zh' %}跳至正文{% else %}Skip to content{% endif -%}
   </a>
   <nav class="academic-nav" aria-label="{% if current_lang == 'zh' %}网站导航{% else %}Site navigation{% endif %}">
-    <a class="mobile-brand" href="{{ home_url | relative_url }}">Yichao Cai</a>
-    <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="academic-nav-links">
-      {{ menu_label }}
-      <span aria-hidden="true">☰</span>
+    <a class="navbar-brand" href="{{ home_url | relative_url }}">Yichao Cai</a>
+    <button
+      class="nav-menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="academic-nav-links"
+      aria-label="{% if current_lang == 'zh' %}展开导航{% else %}Toggle navigation{% endif %}"
+    >
+      <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
     </button>
     <div class="academic-nav-links" id="academic-nav-links">
-      {% for section_id in section_ids %}
-        <a href="{{ home_url | relative_url }}#{{ section_id }}" data-home-section="{{ section_id }}">{{ nav_labels[forloop.index0] }}</a>
-      {% endfor %}
-      <span class="nav-divider" aria-hidden="true">|</span>
+      <a
+        href="{{ home_url | relative_url }}"
+        {% if page.url == home_url %}
+          aria-current="page"
+        {% endif %}
+      >
+        {{- nav_labels[0] -}}
+      </a>
+      <a
+        href="{{ publications_url | relative_url }}"
+        {% if page.url contains '/publications/' %}
+          aria-current="page"
+        {% endif %}
+      >
+        {{- nav_labels[1] -}}
+      </a>
       <a
         href="{{ '/research-agenda/' | relative_url }}"
         {% if page.url contains '/research-agenda/' %}
           aria-current="page"
         {% endif %}
       >
-        {{- agenda_label -}}
+        {{- nav_labels[2] -}}
       </a>
       <a
         href="{{ blog_url | relative_url }}"
@@ -43,28 +59,35 @@
           aria-current="page"
         {% endif %}
       >
-        {{- blog_label -}}
+        {{- nav_labels[3] -}}
       </a>
-    </div>
-    <div class="academic-utilities">
-      {% if current_lang == 'zh' %}
-        <a href="{{ page.lang_en_url | default: '/' | relative_url }}" lang="en" aria-label="Switch to English">EN</a>
-      {% else %}
-        <a
-          href="{{ page.lang_zh_url | default: '/zh/' | relative_url }}"
-          lang="zh"
-          aria-label="切换到中文{% if page.essay %}博客列表{% elsif page.url contains '/research-agenda/' %}首页{% endif %}"
-          >中</a
-        >
-      {% endif %}
-      {% if site.search_enabled -%}
-        <button type="button" id="search-toggle" title="Search (Ctrl K)" aria-label="Search" onclick="openSearchModal()">
-          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <a
+        href="{{ teaching_url | relative_url }}"
+        {% if page.url contains '/teaching/' %}
+          aria-current="page"
+        {% endif %}
+      >
+        {{- nav_labels[4] -}}
+      </a>
+      <a
+        href="{{ service_url | relative_url }}"
+        {% if page.url contains '/service/' %}
+          aria-current="page"
+        {% endif %}
+      >
+        {{- nav_labels[5] -}}
+      </a>
+      {% if current_lang == 'zh' -%}
+        <a class="language-switch" href="{{ page.lang_en_url | default: '/' | relative_url }}" lang="en" aria-label="Switch to English">EN</a>
+      {% else -%}
+        <a class="language-switch" href="{{ page.lang_zh_url | default: '/zh/' | relative_url }}" lang="zh" aria-label="切换到中文">中</a>
+      {%- endif %}
+      {% if site.enable_darkmode %}
+        <button id="theme-toggle" type="button" aria-label="Toggle light/dark mode">
+          <span id="theme-toggle-icon" aria-hidden="true">☾</span
+          ><span class="label-stack" aria-hidden="true"><span id="label-dark">Dark</span><span id="label-light">Light</span></span>
         </button>
-      {%- endif %}
-      {% if site.enable_darkmode -%}
-        <button type="button" id="light-toggle" title="Change theme" aria-label="Change theme"><span aria-hidden="true">◐</span></button>
-      {%- endif %}
+      {% endif %}
     </div>
   </nav>
 </header>

@@ -1,0 +1,29 @@
+<div class="publication-catalogue" data-publication-catalogue>
+  <header class="post-header">
+    <h1>{{ page.title }}</h1>
+  </header>
+  <div class="publication-tools" hidden>
+    <div class="publication-chart" aria-label="Publications per year"></div>
+    <div class="publication-filter-row">
+      <label class="publication-filter-label" for="publication-search">
+        {%- if page.lang == 'zh' %}搜索{% else %}Search{% endif -%}</label
+      ><input
+        class="publication-search"
+        id="publication-search"
+        type="search"
+        placeholder="{% if page.lang == 'zh' %}标题、作者、会议、年份…{% else %}title, author, venue, year…{% endif %}"
+        autocomplete="off"
+      >
+    </div>
+    <div class="publication-facets"></div>
+    <div class="publication-filter-footer">
+      <button type="button" class="publication-filter publication-reset">
+        {% if page.lang == 'zh' %}重置筛选{% else %}Reset filters{% endif %}</button
+      ><span class="publication-count" role="status" aria-live="polite"></span>
+    </div>
+  </div>
+  <div class="publications">{% bibliography %}</div>
+  <p class="publication-empty" hidden>
+    {% if page.lang == 'zh' %}没有符合筛选条件的论文。{% else %}No matching publications. Reset filters to see all papers.{% endif %}
+  </p>
+</div>

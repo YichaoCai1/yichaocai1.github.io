@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<article class="pdf-essay">
+  <header class="post-header">
+    <h1>{{ page.title }}</h1>
+    <p class="post-meta">
+      <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%B %-d, %Y' }}</time>
+      {%- if page.read_time %} · {{ page.read_time }} min read{% endif %}
+    </p>
+    <p>{{ page.description }}</p>
+  </header>
+  {{ content }}
+  {% include pdf-reader.liquid file=page.pdf title=page.title %}
+  <p class="essay-back-link"><a href="{{ '/blog/' | relative_url }}">&larr; Back to Blog</a></p>
+</article>

@@ -1,5 +1,19 @@
-// Shared navigation for the homepage, agenda, and reading pages.
+// Shared fixed navigation, including standalone essays.
 document.addEventListener("DOMContentLoaded", () => {
+  // Keep local PDFs in the site's reader; explicit download links remain downloads.
+  const pdfReaderUrl = document.querySelector("script[data-pdf-reader-url]")?.dataset.pdfReaderUrl;
+  if (pdfReaderUrl) {
+    document.querySelectorAll("a[href]:not([download])").forEach((link) => {
+      const file = new URL(link.href, location.href);
+      if (file.origin !== location.origin || !file.pathname.toLowerCase().endsWith(".pdf")) return;
+      const reader = new URL(pdfReaderUrl, location.href);
+      reader.searchParams.set("file", file.href);
+      const title = link.getAttribute("title") || link.getAttribute("aria-label") || link.textContent.trim();
+      if (title) reader.searchParams.set("title", title);
+      link.href = reader.href;
+    });
+  }
+
   const header = document.querySelector(".academic-header");
   const menu = document.querySelector(".nav-menu-toggle");
   const links = document.querySelector(".academic-nav-links");
@@ -21,34 +35,43 @@ document.addEventListener("DOMContentLoaded", () => {
       menu.focus();
     }
   });
-  const sectionLinks = [...document.querySelectorAll("[data-home-section]")];
-  const sections = sectionLinks.map((link) => document.getElementById(link.dataset.homeSection)).filter(Boolean);
-  if (!document.querySelector(".academic-home") || !sections.length) return;
-  let pending = false;
-  const updateCurrent = () => {
-    const offset = (header?.offsetHeight || 60) + 36;
-    let current = sections[0];
-    for (const section of sections) {
-      if (section.getBoundingClientRect().top <= offset) current = section;
-    }
-    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) current = sections.at(-1);
-    sectionLinks.forEach((link) => {
-      if (link.dataset.homeSection === current.id) link.setAttribute("aria-current", "location");
-      else link.removeAttribute("aria-current");
-    });
-    pending = false;
-  };
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (!pending) {
-        pending = true;
-        requestAnimationFrame(updateCurrent);
+  window.matchMedia("(min-width: 916px)").addEventListener("change", closeMenu);
+
+  // Size the scroll window to exactly the newest three entries, including wrapped text.
+  document.querySelectorAll(".news-scroll").forEach((feed) => {
+    const sizeNews = () => {
+      const items = [...feed.querySelectorAll(".sidebar-news-item")];
+      if (items.length <= 3) {
+        feed.style.maxHeight = "none";
+        return;
       }
-    },
-    { passive: true }
-  );
-  window.addEventListener("resize", updateCurrent);
-  window.addEventListener("hashchange", updateCurrent);
-  updateCurrent();
+      const height = items[2].getBoundingClientRect().bottom - items[0].getBoundingClientRect().top;
+      const value = height + "px";
+      if (feed.style.maxHeight !== value) feed.style.maxHeight = value;
+    };
+    sizeNews();
+    document.fonts.ready.then(sizeNews);
+    const observer = new ResizeObserver(sizeNews);
+    feed.querySelectorAll(".sidebar-news-item").forEach((item) => observer.observe(item));
+  });
+  // Preserve section and paper anchors previously shared from the homepage.
+  const followPaperAnchor = () => {
+    if (!document.querySelector(".academic-home") || !location.hash) return;
+    let id;
+    try {
+      id = decodeURIComponent(location.hash.slice(1));
+    } catch {
+      return;
+    }
+    if (document.getElementById(id)) return;
+    if (id === "teaching" || id === "service") {
+      const prefix = document.documentElement.lang.startsWith("zh") ? "/zh/" : "/";
+      location.replace(prefix + id + "/");
+      return;
+    }
+    const catalogue = document.querySelector("a[data-publication-keys]");
+    if (catalogue?.dataset.publicationKeys.split("|").includes(id)) location.replace(catalogue.href + "#" + encodeURIComponent(id));
+  };
+  window.addEventListener("hashchange", followPaperAnchor);
+  followPaperAnchor();
 });

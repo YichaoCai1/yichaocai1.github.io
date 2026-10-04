@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Metadata, OpenGraph and Schema.org -->
+
+    <!-- Standard metadata -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>What Does InfoNCE Actually Do to Representation Geometry? | Yichao Cai</title>
+    <meta name="author" content="Yichao Cai" />
+    <meta
+      name="description"
+      content="How InfoNCE shapes representation distributions through alignment potentials, entropic dispersion, and cross-modal coupling."
+    />
+
+    <meta
+      name="keywords"
+      content="Yichao Cai, representation learning, vision-language, multimodal, identifiability, contrastive learning, AIML, Adelaide"
+    />
+
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+
+    <!-- Fonts & Icons -->
+    <link defer rel="stylesheet" href="/assets/css/academicons.min.css?v=dadeb9c5d1fd12bc8d37475657446863" />
+    <link defer rel="stylesheet" href="/assets/css/scholar-icons.css?v=62b2ac103a88034e6882a5be5f3e2772" />
+    <link
+      defer
+      rel="stylesheet"
+      type="text/css"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&amp;family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;display=swap"
+    />
+    <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <!-- Code Syntax Highlighting -->
+    <link
+      defer
+      rel="stylesheet"
+      href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99"
+      media=""
+      id="highlight_theme_light"
+    />
+
+    <!-- One shared presentation layer for all pages. -->
+
+    <link rel="shortcut icon" href="/assets/img/AG1p230.svg?v=92faa2941c5bb71cb6d333d23aed1d71" />
+
+    <link rel="canonical" href="https://yichaocai.com/blog/2026/what-does-infonce-do-to-representation-geometry/" />
+
+    <!-- Dark Mode -->
+    <script src="/assets/js/theme.js?v=eb4d1c56a8bfdfd661d8e3a4c85ba2e6"></script>
+    <link
+      defer
+      rel="stylesheet"
+      href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca"
+      media="none"
+      id="highlight_theme_dark"
+    />
+    <script>
+      initTheme();
+    </script>
+
+    <link rel="stylesheet" href="/assets/css/academic.css?v=1791050880" />
+
+    <link rel="stylesheet" href="/assets/essays/blog-theme.css" />
+  </head>
+  <body class="essay-page">
+    <header class="academic-header">
+      <a class="skip-link" href="#main-content">Skip to content</a>
+      <nav class="academic-nav" aria-label="Site navigation">
+        <a class="navbar-brand" href="/">Yichao Cai</a>
+        <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="academic-nav-links" aria-label="Toggle navigation">
+          <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+        </button>
+        <div class="academic-nav-links" id="academic-nav-links">
+          <a href="/">Home</a>
+          <a href="/publications/">Publications</a>
+          <a href="/research-agenda/">Research</a>
+          <a href="/blog/" aria-current="page">Blog</a>
+          <a href="/teaching/">Teaching</a>
+          <a href="/service/">Service</a>
+          <a class="language-switch" href="/zh/blog/" lang="zh" aria-label="切换到中文">中</a>
+
+          <button id="theme-toggle" type="button" aria-label="Toggle light/dark mode">
+            <span id="theme-toggle-icon" aria-hidden="true">☾</span
+            ><span class="label-stack" aria-hidden="true"><span id="label-dark">Dark</span><span id="label-light">Light</span></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content" class="essay-content">
+      <header>
+        <h1>What Does InfoNCE Actually Do to Representation Geometry?</h1>
+        <p class="meta">
+          Yichao Cai · <time datetime="2026-10-03">October 3, 2026</time>
+          · 12 min read
+        </p>
+
+        <div class="post-tags" aria-label="Topics">
+          <a class="pub-tag blog-tag" data-tag="representation-learning" href="/blog/tag/representation-learning">representation-learning</a>
+        </div>
+      </header>
+      <article>
+        <p>
+          Our paper,
+          <strong
+            >“The Geometric Mechanics of Contrastive Representation Learning: Alignment Potentials, Entropic Dispersion, and Cross-modal
+            Divergence,”</strong
+          >
+          was recently accepted to <strong>ICML 2026</strong>. Links to the paper and code are included at the end of this post.
+        </p>
+
+        <p>In this work, we do not propose a new method or network architecture. Instead, we ask a more basic question:</p>
+
+        <blockquote>
+          <p>When we train a model with the InfoNCE loss, what is the contrastive objective actually doing in representation space?</p>
+        </blockquote>
+
+        <p>
+          If you are familiar with contrastive learning, this may sound like a question that already has a standard answer. The influential ICML 2020
+          paper by Wang and Isola introduced the now widely used view of contrastive learning in terms of <strong>alignment</strong> and
+          <strong>uniformity</strong>: positive pairs should be close, while representations should remain well spread out. This perspective has
+          become one of the standard ways to think about contrastive objectives.
+        </p>
+
+        <p>But once we move from individual sample pairs to the distribution of representations as a whole, something interesting happens.</p>
+
+        <p>
+          Consider multimodal contrastive learning with InfoNCE, as in CLIP-style vision-language models. Matched images and texts can have very high
+          cosine similarity, and image-text retrieval can work extremely well. Yet the overall distributions of image and text representations may
+          still occupy different regions of the embedding space. This is the phenomenon described by Liang et al. (NeurIPS 2022) as the
+          <strong>modality gap</strong>.
+        </p>
+
+        <p>
+          So there is an apparent tension: if matched image-text pairs are already well aligned, why can the two representation distributions still
+          remain separated?
+        </p>
+
+        <p>There has been relatively little theory aimed directly at this question. That was the starting point of our work.</p>
+
+        <figure>
+          <picture>
+            <!-- Auto scaling with imagemagick -->
+            <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+
+            <img
+              src="/assets/img/posts/infonce-geometric-mechanics/alignment-and-modality-gap.png"
+              width="1181"
+              height="428"
+              alt="Positive-pair alignment and separation between image and text representation distributions."
+              data-zoomable=""
+              loading="lazy"
+              onerror="
+                this.onerror = null;
+                $('.responsive-img-srcset').remove();
+              "
+            />
+          </picture>
+
+          <figcaption class="caption">
+            Figure 1: Positive-pair alignment constrains local pairwise relationships, while the modality gap concerns the difference between the two
+            representation distributions as a whole.
+          </figcaption>
+        </figure>
+
+        <h2 id="from-individual-embeddings-to-representation-distributions">From individual embeddings to representation distributions</h2>
+
+        <p>
+          We usually think of an encoder as a function that maps one input at a time to a point in representation space. For example, an image encoder
+          takes an image and returns a point on the unit sphere after L2 normalization. From this perspective, InfoNCE appears to mainly act on
+          pairwise similarities between individual embeddings.
+        </p>
+
+        <p>
+          But over the data distribution, an encoder also induces a <strong>distribution of representations</strong>. The image encoder produces a
+          distribution over image embeddings, the text encoder produces a distribution over text embeddings, and paired data determine a joint
+          relationship between the two.
+        </p>
+
+        <p>
+          We therefore shift the object of analysis from a finite set of embedding vectors to probability measures over representation space. This
+          lets us ask a different set of questions:
+        </p>
+
+        <ul>
+          <li>What energy does InfoNCE induce on these representation distributions?</li>
+          <li>What kinds of equilibrium distributions does it prefer?</li>
+          <li>Is the geometry the same in unimodal and multimodal contrastive learning?</li>
+        </ul>
+
+        <p>
+          There is an important technical issue before we can answer these questions. In practice, training uses the stochastic InfoNCE loss computed
+          on finite minibatches, while our theoretical analysis is based on a deterministic population objective. If the population objective only
+          matches the minibatch objective in value, but gives different gradient directions, then it would not really explain the optimization
+          dynamics used in practice.
+        </p>
+
+        <p>
+          We show that, in the large-batch limit, finite-batch InfoNCE converges to an explicit population energy not only in
+          <strong>objective value</strong>, but also in its <strong>parameter gradient</strong>. This gives us the following chain of analysis:
+        </p>
+
+        <blockquote>
+          <p>finite-batch stochastic InfoNCE → deterministic population energy → intrinsic geometry of representation distributions</p>
+        </blockquote>
+
+        <p>
+          This step is important because the rest of the theory is not based on an arbitrary surrogate chosen only for mathematical convenience. It
+          describes the geometry that actual InfoNCE approaches in the large-batch limit.
+        </p>
+
+        <figure>
+          <picture>
+            <!-- Auto scaling with imagemagick -->
+            <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+
+            <img
+              src="/assets/img/posts/infonce-geometric-mechanics/population-geometry.png"
+              width="917"
+              height="175"
+              alt="Analysis from finite-batch InfoNCE to population energy and representation geometry."
+              data-zoomable=""
+              loading="lazy"
+              onerror="
+                this.onerror = null;
+                $('.responsive-img-srcset').remove();
+              "
+            />
+          </picture>
+
+          <figcaption class="caption">
+            Figure 2: From a finite-batch stochastic objective to population-level representation geometry. Consistency in both value and gradient
+            connects practical optimization to the intrinsic energy landscape.
+          </figcaption>
+        </figure>
+
+        <h2 id="unimodal-contrastive-learning-alignment-tells-the-distribution-where-to-go-entropy-controls-how-it-spreads">
+          Unimodal contrastive learning: alignment tells the distribution where to go, entropy controls how it spreads
+        </h2>
+
+        <p>Let us start with the more familiar unimodal setting. In our framework, the population objective takes the form of a free energy:</p>
+
+        \[\mathcal{F}_\tau(\rho) = \frac{1}{\tau}\int_{\mathcal Z} U(z)\rho(z)\,\mathrm d\mu(z) + \int_{\mathcal Z}\rho(z)\log\rho(z)\,\mathrm
+        d\mu(z).\]
+
+        <p>Up to a scaling by temperature, this has the same form as the Helmholtz free energy from statistical physics.</p>
+
+        <p>
+          Here, \(\rho\) is the representation density, \(U(z)\) is an alignment potential determined by the law of positive pairs, and \(\mathcal Z\)
+          is a complete Riemannian representation space. For intuition, you can simply think of \(\mathcal Z\) as a hypersphere.
+        </p>
+
+        <p>
+          The first term can be understood as an <strong>alignment energy</strong>. Positive-pair relationships create an energy landscape that makes
+          some regions of representation space more favorable than others.
+        </p>
+
+        <p>
+          The second term is negative entropy. It creates an <strong>entropy-driven dispersion</strong> effect: the representation distribution is
+          encouraged not only to move toward low-energy regions, but also to avoid unnecessary concentration.
+        </p>
+
+        <p>Together, these two effects produce a unique Gibbs equilibrium:</p>
+
+        \[\rho^*_{\tau,U}(z) \propto \exp\left(-\frac{U(z)}{\tau}\right).\]
+
+        <p>This gives a more concrete interpretation of the familiar idea of alignment and uniformity:</p>
+
+        <ul>
+          <li>the alignment potential determines which regions are preferred;</li>
+          <li>temperature controls how strongly the distribution responds to energy differences;</li>
+          <li>entropy controls how probability mass spreads within the regions allowed by the alignment structure.</li>
+        </ul>
+
+        <p>
+          Under this view, uniformity does <strong>not</strong> mean that representations must mechanically cover the entire sphere. A better
+          interpretation is entropy-driven spreading under the constraints imposed by alignment.
+        </p>
+
+        <p>
+          If many geometric arrangements satisfy the positive-pair constraints, entropy decides how the representation mass is distributed among them.
+          As the temperature becomes smaller, the Gibbs distribution concentrates more strongly around low-energy regions of the alignment potential.
+        </p>
+
+        <p>
+          So semantic clustering and representation diversity are not two unrelated empirical effects. They arise as competing terms in the same
+          free-energy objective.
+        </p>
+
+        <figure>
+          <picture>
+            <!-- Auto scaling with imagemagick -->
+            <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+
+            <img
+              src="/assets/img/posts/infonce-geometric-mechanics/gibbs-equilibrium.png"
+              width="1440"
+              height="713"
+              alt="Alignment potential and entropy shaping a unimodal Gibbs equilibrium."
+              data-zoomable=""
+              loading="lazy"
+              onerror="
+                this.onerror = null;
+                $('.responsive-img-srcset').remove();
+              "
+            />
+          </picture>
+
+          <figcaption class="caption">
+            Figure 3: Gibbs geometry for unimodal InfoNCE. The alignment potential selects low-energy regions, while entropy controls how broadly
+            representations spread within them.
+          </figcaption>
+        </figure>
+
+        <h2 id="symmetric-infonce-is-not-geometrically-symmetric-in-the-way-we-might-expect">
+          Symmetric InfoNCE is not geometrically symmetric in the way we might expect
+        </h2>
+
+        <p>The more surprising part of the story appears in multimodal contrastive learning.</p>
+
+        <p>
+          In CLIP-style training, the usual objective averages two directional losses: image-to-text and text-to-image. Because the formula is
+          symmetric, this is commonly called <strong>symmetric InfoNCE</strong>. It is tempting to think of it as simply adding together two
+          unimodal-style objectives: images retrieve texts, and texts retrieve images.
+        </p>
+
+        <p>But at the level of representation distributions, the two modalities are not independent. They are <strong>cross-coupled</strong>.</p>
+
+        <p>
+          The reason is that the two modalities can have different data distributions, and each modality appears in the other direction as the
+          reference distribution that forms the negatives in the softmax denominator.
+        </p>
+
+        <p>In our derivation, the multimodal population energy contains a persistent negative symmetrized divergence term:</p>
+
+        \[\frac{1}{2} \Bigl[ \mathcal F_{1\to2}(\rho_1) + \mathcal F_{2\to1}(\rho_2) \Bigr] - \frac{1}{2} \Bigl[ D_{\mathrm{KL}}(\rho_1\Vert\rho_2) +
+        D_{\mathrm{KL}}(\rho_2\Vert\rho_1) \Bigr].\]
+
+        <p>Here, \(1\to2\) denotes the contrastive direction from modality 1 to modality 2, and vice versa.</p>
+
+        <p>
+          The negative sign in front of the divergence does <strong>not</strong> mean that the two distributions must always move infinitely far
+          apart. What it tells us is more subtle: exact overlap of the two marginal distributions is not automatically preferred by the objective.
+        </p>
+
+        <p>
+          When the modalities are conditionally heterogeneous, this cross-coupling can create a barrier-like geometry. Each modality effectively
+          reshapes the potential seen by the other. In the paper, we write the effective potential for modality 1 given modality 2 as
+        </p>
+
+        \[V_{1\mid2}(z) = \frac{1}{\tau}U_{1\to2}(z) + \log\rho_2(z).\]
+
+        <p>
+          If we hold the text distribution fixed, the image modality sees an effective potential containing the log density of the text
+          representations. Roughly speaking, regions where the other modality already has high density can become more costly for the current
+          modality. The same happens in the reverse direction.
+        </p>
+
+        <p>
+          The two representation distributions therefore do not optimize their geometry independently. Instead, they evolve as a coupled best-response
+          system.
+        </p>
+
+        <p>This gives a population-level explanation for why the following two facts can hold at the same time:</p>
+
+        <ol>
+          <li>matched image-text pairs have high similarity;</li>
+          <li>the marginal image and text representation distributions still remain noticeably separated.</li>
+        </ol>
+
+        <p>The key point is that <strong>pairwise alignment and distributional alignment are not the same constraint</strong>.</p>
+
+        <p>
+          Pairwise alignment asks whether a particular image is close to its matched text. Distributional alignment asks whether the full image and
+          text representation populations follow similar distributions. Satisfying the first condition does not automatically satisfy the second.
+        </p>
+
+        <figure>
+          <picture>
+            <!-- Auto scaling with imagemagick -->
+            <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+
+            <img
+              src="/assets/img/posts/infonce-geometric-mechanics/multimodal-cross-coupling.png"
+              width="1440"
+              height="740"
+              alt="Cross-coupled image and text distributions under symmetric InfoNCE."
+              data-zoomable=""
+              loading="lazy"
+              onerror="
+                this.onerror = null;
+                $('.responsive-img-srcset').remove();
+              "
+            />
+          </picture>
+
+          <figcaption class="caption">
+            Figure 4: Symmetric multimodal InfoNCE combines pairwise attraction with distribution-level cross-coupling. Strong positive-pair alignment
+            can therefore coexist with separation between the two marginal distributions.
+          </figcaption>
+        </figure>
+
+        <h2 id="does-this-mean-the-modality-gap-is-always-harmful">Does this mean the modality gap is always harmful?</h2>
+
+        <p>No.</p>
+
+        <p>
+          Our conclusion is not that InfoNCE necessarily creates a modality gap, nor that the existence of a modality gap means the model has failed
+          to train properly.
+        </p>
+
+        <p>
+          What we provide is a <strong>geometric explanation at the objective level</strong>: a modality gap need not be only an accident caused by
+          finite batches, incomplete optimization, or limited model capacity. Under some conditions, it can also be compatible with, or maintained by,
+          the population geometry of symmetric InfoNCE itself.
+        </p>
+
+        <p>Whether such a gap is harmful depends on the downstream task.</p>
+
+        <p>
+          Cross-modal retrieval mainly depends on the relative geometry of matched and mismatched pairs. A model can therefore have excellent
+          retrieval performance even when the image and text marginals are visibly separated.
+        </p>
+
+        <p>
+          On the other hand, if a downstream application requires cross-modal calibration, a shared decision boundary, or representations that are
+          directly interchangeable across modalities, then positive-pair alignment alone may not be enough.
+        </p>
+
+        <p>This leads to a simple practical message:</p>
+
+        <blockquote>
+          <p>
+            <strong
+              >If an application really requires the marginal representation distributions of two modalities to match, that property should be
+              measured directly and, when necessary, controlled explicitly. It should not be assumed to follow automatically from the pairwise
+              contrastive loss.</strong
+            >
+          </p>
+        </blockquote>
+
+        <h2 id="what-do-the-experiments-show">What do the experiments show?</h2>
+
+        <p>
+          Our theory describes the population objective and the geometry that appears in the large-batch limit. To see whether this mechanism is
+          relevant to real models, we also run controlled synthetic experiments and analyze OpenCLIP representations on MS-COCO.
+        </p>
+
+        <p>
+          One simple observation is that different pretrained checkpoints can achieve very similar retrieval performance while exhibiting
+          substantially different modality gaps.
+        </p>
+
+        <p>
+          We also perform controlled caption-corruption experiments. As we weaken the instance-level correspondence between images and captions,
+          retrieval performance degrades, while the measured modality gap increases systematically.
+        </p>
+
+        <p>
+          These results suggest that retrieval quality and modality gap are related, but they are not the same quantity. A single retrieval score does
+          not fully describe the geometric state of a multimodal representation system.
+        </p>
+
+        <p>
+          There is also an important limitation to keep in mind. Our experiments do not show that a finite-batch model with a particular architecture
+          and optimizer must converge exactly to the theoretical equilibrium. A better interpretation is that the population-level mechanism
+          identified by the theory leaves measurable geometric signatures in practical models.
+        </p>
+
+        <figure class="figure-pair" id="figure-5">
+          <div class="figure-pair-images">
+            <a href="/assets/img/posts/infonce-geometric-mechanics/retrieval-and-gap.png" aria-label="Open retrieval performance plot at full size">
+              <img
+                src="/assets/img/posts/infonce-geometric-mechanics/retrieval-and-gap.png"
+                alt="Retrieval performance and modality gap across pretrained checkpoints."
+                width="665"
+                height="472"
+                loading="lazy"
+                data-zoomable=""
+              />
+            </a>
+            <a href="/assets/img/posts/infonce-geometric-mechanics/caption-corruption.png" aria-label="Open caption corruption plot at full size">
+              <img
+                src="/assets/img/posts/infonce-geometric-mechanics/caption-corruption.png"
+                alt="Retrieval performance and modality gap under caption corruption."
+                width="646"
+                height="462"
+                loading="lazy"
+                data-zoomable=""
+              />
+            </a>
+          </div>
+          <figcaption>
+            Figure 5: Retrieval performance and modality gap are related, but not equivalent. Similar retrieval performance can correspond to
+            different distribution-level geometries.
+          </figcaption>
+        </figure>
+
+        <h2 id="what-does-the-objective-actually-ask-the-model-to-learn">What does the objective actually ask the model to learn?</h2>
+
+        <p>
+          This work is part of a broader question I have been increasingly interested in:
+          <strong>what properties of a representation are actually identified by the learning objective?</strong>
+        </p>
+
+        <p>
+          A model can perform its training task extremely well while leaving other aspects of its internal representation largely unconstrained. Those
+          unconstrained properties may then vary with architecture, initialization, optimization, or data details, without noticeably affecting the
+          training loss.
+        </p>
+
+        <p>
+          Contrastive learning gives a clean example. InfoNCE strongly constrains the relative geometry of positive and negative samples, but this
+          does not mean that every global property of the resulting representation distribution is also fixed. In the multimodal setting, good
+          pairwise alignment therefore does not imply that the two marginal distributions must coincide.
+        </p>
+
+        <p>
+          I think this distinction matters increasingly as we scale models and make stronger claims about what their representations contain. Better
+          performance alone cannot tell us whether a desired latent structure is uniquely determined by the objective, merely compatible with it, or
+          not constrained at all.
+        </p>
+
+        <p>So beyond asking whether a learning objective works, it is worth asking a second question:</p>
+
+        <blockquote>
+          <p><strong>Does the supervision actually measure and constrain the representation property we care about?</strong></p>
+        </blockquote>
+
+        <p>
+          If it does not, then failure to recover that property need not mean that the model is too small, the optimizer is poor, or training has not
+          gone far enough. The objective may simply never have required it.
+        </p>
+
+        <p>
+          From this perspective, the geometry of InfoNCE is one instance of a more general problem: understanding what learning objectives make
+          identifiable, what they leave ambiguous, and what additional supervision is needed to resolve that ambiguity.
+        </p>
+
+        <hr />
+
+        <p>
+          <strong>Paper:</strong>
+          <a href="https://arxiv.org/abs/2601.19597" rel="external nofollow noopener" target="_blank"
+            >The Geometric Mechanics of Contrastive Representation Learning</a
+          >
+        </p>
+
+        <p><strong>Conference:</strong> International Conference on Machine Learning (ICML 2026)</p>
+
+        <p><strong>Authors:</strong> Yichao Cai, Zhen Zhang, Yuhang Liu, Javen Qinfeng Shi</p>
+
+        <p>
+          <strong>Code:</strong>
+          <a href="https://github.com/YichaoCai1/InfoNCE_Geometry" rel="external nofollow noopener" target="_blank">InfoNCE_Geometry on GitHub</a>
+        </p>
+
+        <p>
+          I am always happy to discuss representation learning theory, identifiability, and representation geometry with people working on related
+          questions.
+        </p>
+      </article>
+    </main>
+    <footer class="academic-footer" role="contentinfo">
+      <div class="footer-inner">
+        <p>
+          © 2026 Yichao Cai
+          <a class="reading-diamond" href="/assets/essays/books.html" title="Reading list" aria-label="Reading list">◆</a>
+        </p>
+        <p>
+          Theme adapted from
+          <a href="https://github.com/bazilinskyy/bazilinskyy.github.io" rel="external nofollow noopener" target="_blank">Pavlo Bazilinskyy</a>.
+        </p>
+        <p>
+          Built with <a href="https://jekyllrb.com/" rel="external nofollow noopener" target="_blank">Jekyll</a> and
+          <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a>.
+        </p>
+      </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Bootsrap & MDB scripts -->
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js"
+      integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Masonry & imagesLoaded -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+      integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js"
+      integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc="
+      crossorigin="anonymous"
+    ></script>
+    <script defer src="/assets/js/masonry.js?v=a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script>
+
+    <!-- Medium Zoom JS -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"
+      integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc="
+      crossorigin="anonymous"
+    ></script>
+    <script defer src="/assets/js/zoom.js?v=85ddb88934d28b74e78031fd54cf8308"></script>
+
+    <!-- Load Common JS -->
+    <script src="/assets/js/no_defer.js?v=2781658a0a2b13ed609542042a859126"></script>
+    <script defer src="/assets/js/common.js?v=a25cf1d2772911592f56b18400433172"></script>
+    <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script>
+
+    <!-- Jupyter Open External Links New Tab -->
+    <script defer src="/assets/js/jupyter_new_tab.js?v=d9f17b6adc2311cbabd747f4538bb15f"></script>
+
+    <!-- Badges -->
+
+    <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+    <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+    <!-- MathJax -->
+    <script
+      defer
+      type="text/javascript"
+      id="MathJax-script"
+      src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"
+      integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="/assets/js/mathjax-setup.js?v=a5bb4e6a542c546dd929b24b8b236dfd"></script>
+    <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+
+    <!-- Back to Top -->
+    <script src="/assets/js/vanilla-back-to-top.min.js?v=f40d453793ff4f64e238e420181a1d17"></script>
+    <script>
+      addBackToTop();
+    </script>
+
+    <!-- Search -->
+    <script type="module" src="/assets/js/search/ninja-keys.min.js?v=230637657ac0b42e92d76e2b4c1b4764"></script>
+    <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys>
+    <script src="/assets/js/search-setup.js?v=6c304f7b1992d4b60f7a07956e52f04a"></script>
+    <script src="/assets/js/search-data.js"></script>
+    <script src="/assets/js/shortcut-key.js?v=6f508d74becd347268a7f822bca7309d"></script>
+
+    <script defer src="/assets/js/academic.js" data-pdf-reader-url="/pdf/"></script>
+
+    <script defer src="/assets/js/publications.js?v=a08b2ebf12331da8f0c58f233a9cdf16"></script>
+
+    <script defer src="/assets/essays/blog-shell.js"></script>
+  </body>
+</html>

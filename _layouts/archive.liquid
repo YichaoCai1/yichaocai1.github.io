@@ -2,6 +2,9 @@
 layout: default
 ---
 <div class="post">
+  {% if page.collection_name == 'posts' %}
+    <p class="archive-back-link"><a href="{{ '/blog/' | relative_url }}">&larr; Back to Blog</a></p>
+  {% endif %}
   <header class="post-header">
     {% if page.type == 'categories' %}
       <h1 class="post-title"><i class="fa-solid fa-tag fa-sm"></i> {{ page.title }}</h1>
@@ -29,7 +32,7 @@ layout: default
               {% else %}
                 <a class="post-link" href="{{ document.redirect | relative_url }}">{{ document.title }}</a>
               {% endif %}
-              {% if document.redirect contains '.pdf' -%}
+              {% if document.redirect contains '.pdf' or document.pdf -%}
                 <span class="file-label">PDF</span>
               {%- endif %}
             </td>

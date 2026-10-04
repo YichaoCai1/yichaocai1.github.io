@@ -1,0 +1,71 @@
+{
+  "responsiveChecks": 24,
+  "finalLayoutChecks": [
+    {
+      "width": 320,
+      "strand": "masked",
+      "overflow": false,
+      "columns": "290px",
+      "nextColumns": "246px"
+    },
+    {
+      "width": 320,
+      "strand": "predictive",
+      "overflow": false,
+      "columns": "290px",
+      "nextColumns": "246px"
+    },
+    {
+      "width": 390,
+      "strand": "masked",
+      "overflow": false,
+      "columns": "360px",
+      "nextColumns": "316px"
+    },
+    {
+      "width": 390,
+      "strand": "predictive",
+      "overflow": false,
+      "columns": "360px",
+      "nextColumns": "316px"
+    },
+    {
+      "width": 768,
+      "strand": "masked",
+      "overflow": false,
+      "columns": "738px",
+      "nextColumns": "333px 333px 0px"
+    },
+    {
+      "width": 768,
+      "strand": "predictive",
+      "overflow": false,
+      "columns": "738px",
+      "nextColumns": "214.656px 214.672px 214.672px"
+    },
+    {
+      "width": 1440,
+      "strand": "masked",
+      "overflow": false,
+      "columns": "970px",
+      "nextColumns": "449px 449px 0px 0px"
+    },
+    {
+      "width": 1440,
+      "strand": "predictive",
+      "overflow": false,
+      "columns": "970px",
+      "nextColumns": "292px 292px 292px 0px"
+    }
+  ],
+  "interactionChecks": [
+    "browser Back",
+    "scope state retained",
+    "hash deep link",
+    "keyboard activation",
+    "pause/resume motion",
+    "reduced motion",
+    "framework non-interactive"
+  ],
+  "passed": true
+}
