@@ -1,14 +1,8 @@
 name: Prettier code formatter
 
+# Formatting is optional; run this workflow manually from the Actions tab.
 on:
-  pull_request:
-    branches:
-      - master
-      - main
-  push:
-    branches:
-      - master
-      - main
+  workflow_dispatch:
 
 jobs:
   check:
