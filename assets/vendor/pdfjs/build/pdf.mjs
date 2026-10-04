@@ -24765,7 +24765,7 @@ class WidgetAnnotationElement extends AnnotationElement {
     const roundToOneDecimal = (x) => Math.round(10 * x) / 10;
     if (this.data.multiLine) {
       const height = Math.abs(this.data.rect[3] - this.data.rect[1] - BORDER_SIZE);
-      const numberOfLines = Math.round(height / (/* inlined export .LINE_FACTOR */ 1.35 * fontSize)) || 1;
+      const numberOfLines = Math.round(height / /* inlined export .LINE_FACTOR */ (1.35 * fontSize)) || 1;
       const lineHeight = height / numberOfLines;
       computedFontSize = Math.min(fontSize, roundToOneDecimal(lineHeight / /* inlined export .LINE_FACTOR */ 1.35));
     } else {
