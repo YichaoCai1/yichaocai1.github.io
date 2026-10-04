@@ -24,841 +24,782 @@
  * pdfjsVersion = 6.3.289
  * pdfjsBuild = 1c8020a7d
  */
-/******/ var __webpack_modules__ = ({
+/******/ var __webpack_modules__ = {
+  /***/ 9306(module, __unused_webpack_exports, __webpack_require__) {
+    var isCallable = __webpack_require__(4901);
+    var tryToString = __webpack_require__(6823);
+
+    var $TypeError = TypeError;
+
+    // `Assert: IsCallable(argument) is true`
+    module.exports = function (argument) {
+      if (isCallable(argument)) return argument;
+      throw new $TypeError(tryToString(argument) + " is not a function");
+    };
 
-/***/ 9306
-(module, __unused_webpack_exports, __webpack_require__) {
+    /***/
+  },
+
+  /***/ 3506(module, __unused_webpack_exports, __webpack_require__) {
+    var isPossiblePrototype = __webpack_require__(3925);
+
+    var $String = String;
+    var $TypeError = TypeError;
+
+    module.exports = function (argument) {
+      if (isPossiblePrototype(argument)) return argument;
+      throw new $TypeError("Can't set " + $String(argument) + " as a prototype");
+    };
 
+    /***/
+  },
+
+  /***/ 7080(module, __unused_webpack_exports, __webpack_require__) {
+    var has = __webpack_require__(4402).has;
 
-var isCallable = __webpack_require__(4901);
-var tryToString = __webpack_require__(6823);
+    // Perform ? RequireInternalSlot(M, [[SetData]])
+    module.exports = function (it) {
+      has(it);
+      return it;
+    };
 
-var $TypeError = TypeError;
+    /***/
+  },
 
-// `Assert: IsCallable(argument) is true`
-module.exports = function (argument) {
-  if (isCallable(argument)) return argument;
-  throw new $TypeError(tryToString(argument) + ' is not a function');
-};
+  /***/ 3463(module) {
+    var $TypeError = TypeError;
 
-
-/***/ },
-
-/***/ 3506
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var isPossiblePrototype = __webpack_require__(3925);
-
-var $String = String;
-var $TypeError = TypeError;
-
-module.exports = function (argument) {
-  if (isPossiblePrototype(argument)) return argument;
-  throw new $TypeError("Can't set " + $String(argument) + ' as a prototype');
-};
-
-
-/***/ },
-
-/***/ 7080
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var has = (__webpack_require__(4402).has);
-
-// Perform ? RequireInternalSlot(M, [[SetData]])
-module.exports = function (it) {
-  has(it);
-  return it;
-};
-
-
-/***/ },
-
-/***/ 3463
-(module) {
-
-
-var $TypeError = TypeError;
-
-module.exports = function (argument) {
-  if (typeof argument == 'string') return argument;
-  throw new $TypeError('Argument is not a string');
-};
-
-
-/***/ },
-
-/***/ 4328
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var WeakMapHelpers = __webpack_require__(4995);
-
-var weakmap = new WeakMapHelpers.WeakMap();
-var set = WeakMapHelpers.set;
-var remove = WeakMapHelpers.remove;
-
-module.exports = function (key) {
-  set(weakmap, key, 1);
-  remove(weakmap, key);
-  return key;
-};
-
-
-/***/ },
-
-/***/ 6557
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var has = (__webpack_require__(4995).has);
-
-// Perform ? RequireInternalSlot(M, [[WeakMapData]])
-module.exports = function (it) {
-  has(it);
-  return it;
-};
-
-
-/***/ },
-
-/***/ 6469
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var wellKnownSymbol = __webpack_require__(8227);
-var create = __webpack_require__(2360);
-var defineProperty = (__webpack_require__(4913).f);
-
-var UNSCOPABLES = wellKnownSymbol('unscopables');
-var ArrayPrototype = Array.prototype;
-
-// Array.prototype[@@unscopables]
-// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
-if (ArrayPrototype[UNSCOPABLES] === undefined) {
-  defineProperty(ArrayPrototype, UNSCOPABLES, {
-    configurable: true,
-    value: create(null)
-  });
-}
-
-// add a key to Array.prototype[@@unscopables]
-module.exports = function (key) {
-  ArrayPrototype[UNSCOPABLES][key] = true;
-};
-
-
-/***/ },
-
-/***/ 679
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var isPrototypeOf = __webpack_require__(1625);
-
-var $TypeError = TypeError;
-
-module.exports = function (it, Prototype) {
-  if (isPrototypeOf(Prototype, it)) return it;
-  throw new $TypeError('Incorrect invocation');
-};
-
-
-/***/ },
-
-/***/ 8551
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var isObject = __webpack_require__(34);
-
-var $String = String;
-var $TypeError = TypeError;
-
-// `Assert: Type(argument) is Object`
-module.exports = function (argument) {
-  if (isObject(argument)) return argument;
-  throw new $TypeError($String(argument) + ' is not an object');
-};
-
-
-/***/ },
-
-/***/ 7811
-(module) {
-
-
-// eslint-disable-next-line es/no-typed-arrays -- safe
-module.exports = typeof ArrayBuffer != 'undefined' && typeof DataView != 'undefined';
-
-
-/***/ },
-
-/***/ 4644
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var NATIVE_ARRAY_BUFFER = __webpack_require__(7811);
-var DESCRIPTORS = __webpack_require__(3724);
-var globalThis = __webpack_require__(4576);
-var isCallable = __webpack_require__(4901);
-var isObject = __webpack_require__(34);
-var hasOwn = __webpack_require__(9297);
-var classof = __webpack_require__(6955);
-var tryToString = __webpack_require__(6823);
-var createNonEnumerableProperty = __webpack_require__(6699);
-var defineBuiltIn = __webpack_require__(6840);
-var defineBuiltInAccessor = __webpack_require__(2106);
-var isPrototypeOf = __webpack_require__(1625);
-var getPrototypeOf = __webpack_require__(2787);
-var setPrototypeOf = __webpack_require__(2967);
-var wellKnownSymbol = __webpack_require__(8227);
-var uid = __webpack_require__(3392);
-var InternalStateModule = __webpack_require__(1181);
-
-var enforceInternalState = InternalStateModule.enforce;
-var getInternalState = InternalStateModule.get;
-var Int8Array = globalThis.Int8Array;
-var Int8ArrayPrototype = Int8Array && Int8Array.prototype;
-var Uint8ClampedArray = globalThis.Uint8ClampedArray;
-var Uint8ClampedArrayPrototype = Uint8ClampedArray && Uint8ClampedArray.prototype;
-var TypedArray = Int8Array && getPrototypeOf(Int8Array);
-var TypedArrayPrototype = Int8ArrayPrototype && getPrototypeOf(Int8ArrayPrototype);
-var ObjectPrototype = Object.prototype;
-var TypeError = globalThis.TypeError;
-
-var TO_STRING_TAG = wellKnownSymbol('toStringTag');
-var TYPED_ARRAY_TAG = uid('TYPED_ARRAY_TAG');
-var TYPED_ARRAY_CONSTRUCTOR = 'TypedArrayConstructor';
-// Fixing native typed arrays in Opera Presto crashes the browser, see #595
-var NATIVE_ARRAY_BUFFER_VIEWS = NATIVE_ARRAY_BUFFER && !!setPrototypeOf && classof(globalThis.opera) !== 'Opera';
-var TYPED_ARRAY_TAG_REQUIRED = false;
-var NAME, Constructor, Prototype;
-
-var TypedArrayConstructorsList = {
-  Int8Array: 1,
-  Uint8Array: 1,
-  Uint8ClampedArray: 1,
-  Int16Array: 2,
-  Uint16Array: 2,
-  Int32Array: 4,
-  Uint32Array: 4,
-  Float32Array: 4,
-  Float64Array: 8
-};
-
-var BigIntArrayConstructorsList = {
-  BigInt64Array: 8,
-  BigUint64Array: 8
-};
-
-var isView = function isView(it) {
-  if (!isObject(it)) return false;
-  var klass = classof(it);
-  return klass === 'DataView'
-    || hasOwn(TypedArrayConstructorsList, klass)
-    || hasOwn(BigIntArrayConstructorsList, klass);
-};
-
-var getTypedArrayConstructor = function (it) {
-  var proto = getPrototypeOf(it);
-  if (!isObject(proto)) return;
-  var state = getInternalState(proto);
-  return (state && hasOwn(state, TYPED_ARRAY_CONSTRUCTOR)) ? state[TYPED_ARRAY_CONSTRUCTOR] : getTypedArrayConstructor(proto);
-};
-
-var isTypedArray = function (it) {
-  if (!isObject(it)) return false;
-  var klass = classof(it);
-  return hasOwn(TypedArrayConstructorsList, klass)
-    || hasOwn(BigIntArrayConstructorsList, klass);
-};
-
-var aTypedArray = function (it) {
-  if (isTypedArray(it)) return it;
-  throw new TypeError('Target is not a typed array');
-};
-
-var aTypedArrayConstructor = function (C) {
-  if (isCallable(C) && (!setPrototypeOf || isPrototypeOf(TypedArray, C))) return C;
-  throw new TypeError(tryToString(C) + ' is not a typed array constructor');
-};
-
-var exportTypedArrayMethod = function (KEY, property, forced, options) {
-  if (!DESCRIPTORS) return;
-  if (forced) for (var ARRAY in TypedArrayConstructorsList) {
-    var TypedArrayConstructor = globalThis[ARRAY];
-    if (TypedArrayConstructor && hasOwn(TypedArrayConstructor.prototype, KEY)) try {
-      delete TypedArrayConstructor.prototype[KEY];
-    } catch (error) {
-      // old WebKit bug - some methods are non-configurable
+    module.exports = function (argument) {
+      if (typeof argument == "string") return argument;
+      throw new $TypeError("Argument is not a string");
+    };
+
+    /***/
+  },
+
+  /***/ 4328(module, __unused_webpack_exports, __webpack_require__) {
+    var WeakMapHelpers = __webpack_require__(4995);
+
+    var weakmap = new WeakMapHelpers.WeakMap();
+    var set = WeakMapHelpers.set;
+    var remove = WeakMapHelpers.remove;
+
+    module.exports = function (key) {
+      set(weakmap, key, 1);
+      remove(weakmap, key);
+      return key;
+    };
+
+    /***/
+  },
+
+  /***/ 6557(module, __unused_webpack_exports, __webpack_require__) {
+    var has = __webpack_require__(4995).has;
+
+    // Perform ? RequireInternalSlot(M, [[WeakMapData]])
+    module.exports = function (it) {
+      has(it);
+      return it;
+    };
+
+    /***/
+  },
+
+  /***/ 6469(module, __unused_webpack_exports, __webpack_require__) {
+    var wellKnownSymbol = __webpack_require__(8227);
+    var create = __webpack_require__(2360);
+    var defineProperty = __webpack_require__(4913).f;
+
+    var UNSCOPABLES = wellKnownSymbol("unscopables");
+    var ArrayPrototype = Array.prototype;
+
+    // Array.prototype[@@unscopables]
+    // https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
+    if (ArrayPrototype[UNSCOPABLES] === undefined) {
+      defineProperty(ArrayPrototype, UNSCOPABLES, {
+        configurable: true,
+        value: create(null),
+      });
+    }
+
+    // add a key to Array.prototype[@@unscopables]
+    module.exports = function (key) {
+      ArrayPrototype[UNSCOPABLES][key] = true;
+    };
+
+    /***/
+  },
+
+  /***/ 679(module, __unused_webpack_exports, __webpack_require__) {
+    var isPrototypeOf = __webpack_require__(1625);
+
+    var $TypeError = TypeError;
+
+    module.exports = function (it, Prototype) {
+      if (isPrototypeOf(Prototype, it)) return it;
+      throw new $TypeError("Incorrect invocation");
+    };
+
+    /***/
+  },
+
+  /***/ 8551(module, __unused_webpack_exports, __webpack_require__) {
+    var isObject = __webpack_require__(34);
+
+    var $String = String;
+    var $TypeError = TypeError;
+
+    // `Assert: Type(argument) is Object`
+    module.exports = function (argument) {
+      if (isObject(argument)) return argument;
+      throw new $TypeError($String(argument) + " is not an object");
+    };
+
+    /***/
+  },
+
+  /***/ 7811(module) {
+    // eslint-disable-next-line es/no-typed-arrays -- safe
+    module.exports = typeof ArrayBuffer != "undefined" && typeof DataView != "undefined";
+
+    /***/
+  },
+
+  /***/ 4644(module, __unused_webpack_exports, __webpack_require__) {
+    var NATIVE_ARRAY_BUFFER = __webpack_require__(7811);
+    var DESCRIPTORS = __webpack_require__(3724);
+    var globalThis = __webpack_require__(4576);
+    var isCallable = __webpack_require__(4901);
+    var isObject = __webpack_require__(34);
+    var hasOwn = __webpack_require__(9297);
+    var classof = __webpack_require__(6955);
+    var tryToString = __webpack_require__(6823);
+    var createNonEnumerableProperty = __webpack_require__(6699);
+    var defineBuiltIn = __webpack_require__(6840);
+    var defineBuiltInAccessor = __webpack_require__(2106);
+    var isPrototypeOf = __webpack_require__(1625);
+    var getPrototypeOf = __webpack_require__(2787);
+    var setPrototypeOf = __webpack_require__(2967);
+    var wellKnownSymbol = __webpack_require__(8227);
+    var uid = __webpack_require__(3392);
+    var InternalStateModule = __webpack_require__(1181);
+
+    var enforceInternalState = InternalStateModule.enforce;
+    var getInternalState = InternalStateModule.get;
+    var Int8Array = globalThis.Int8Array;
+    var Int8ArrayPrototype = Int8Array && Int8Array.prototype;
+    var Uint8ClampedArray = globalThis.Uint8ClampedArray;
+    var Uint8ClampedArrayPrototype = Uint8ClampedArray && Uint8ClampedArray.prototype;
+    var TypedArray = Int8Array && getPrototypeOf(Int8Array);
+    var TypedArrayPrototype = Int8ArrayPrototype && getPrototypeOf(Int8ArrayPrototype);
+    var ObjectPrototype = Object.prototype;
+    var TypeError = globalThis.TypeError;
+
+    var TO_STRING_TAG = wellKnownSymbol("toStringTag");
+    var TYPED_ARRAY_TAG = uid("TYPED_ARRAY_TAG");
+    var TYPED_ARRAY_CONSTRUCTOR = "TypedArrayConstructor";
+    // Fixing native typed arrays in Opera Presto crashes the browser, see #595
+    var NATIVE_ARRAY_BUFFER_VIEWS = NATIVE_ARRAY_BUFFER && !!setPrototypeOf && classof(globalThis.opera) !== "Opera";
+    var TYPED_ARRAY_TAG_REQUIRED = false;
+    var NAME, Constructor, Prototype;
+
+    var TypedArrayConstructorsList = {
+      Int8Array: 1,
+      Uint8Array: 1,
+      Uint8ClampedArray: 1,
+      Int16Array: 2,
+      Uint16Array: 2,
+      Int32Array: 4,
+      Uint32Array: 4,
+      Float32Array: 4,
+      Float64Array: 8,
+    };
+
+    var BigIntArrayConstructorsList = {
+      BigInt64Array: 8,
+      BigUint64Array: 8,
+    };
+
+    var isView = function isView(it) {
+      if (!isObject(it)) return false;
+      var klass = classof(it);
+      return klass === "DataView" || hasOwn(TypedArrayConstructorsList, klass) || hasOwn(BigIntArrayConstructorsList, klass);
+    };
+
+    var getTypedArrayConstructor = function (it) {
+      var proto = getPrototypeOf(it);
+      if (!isObject(proto)) return;
+      var state = getInternalState(proto);
+      return state && hasOwn(state, TYPED_ARRAY_CONSTRUCTOR) ? state[TYPED_ARRAY_CONSTRUCTOR] : getTypedArrayConstructor(proto);
+    };
+
+    var isTypedArray = function (it) {
+      if (!isObject(it)) return false;
+      var klass = classof(it);
+      return hasOwn(TypedArrayConstructorsList, klass) || hasOwn(BigIntArrayConstructorsList, klass);
+    };
+
+    var aTypedArray = function (it) {
+      if (isTypedArray(it)) return it;
+      throw new TypeError("Target is not a typed array");
+    };
+
+    var aTypedArrayConstructor = function (C) {
+      if (isCallable(C) && (!setPrototypeOf || isPrototypeOf(TypedArray, C))) return C;
+      throw new TypeError(tryToString(C) + " is not a typed array constructor");
+    };
+
+    var exportTypedArrayMethod = function (KEY, property, forced, options) {
+      if (!DESCRIPTORS) return;
+      if (forced)
+        for (var ARRAY in TypedArrayConstructorsList) {
+          var TypedArrayConstructor = globalThis[ARRAY];
+          if (TypedArrayConstructor && hasOwn(TypedArrayConstructor.prototype, KEY))
+            try {
+              delete TypedArrayConstructor.prototype[KEY];
+            } catch (error) {
+              // old WebKit bug - some methods are non-configurable
+              try {
+                TypedArrayConstructor.prototype[KEY] = property;
+              } catch (error2) {
+                /* empty */
+              }
+            }
+        }
+      if (!TypedArrayPrototype[KEY] || forced) {
+        defineBuiltIn(TypedArrayPrototype, KEY, forced ? property : (NATIVE_ARRAY_BUFFER_VIEWS && Int8ArrayPrototype[KEY]) || property, options);
+      }
+    };
+
+    var exportTypedArrayStaticMethod = function (KEY, property, forced) {
+      var ARRAY, TypedArrayConstructor;
+      if (!DESCRIPTORS) return;
+      if (setPrototypeOf) {
+        if (forced)
+          for (ARRAY in TypedArrayConstructorsList) {
+            TypedArrayConstructor = globalThis[ARRAY];
+            if (TypedArrayConstructor && hasOwn(TypedArrayConstructor, KEY))
+              try {
+                delete TypedArrayConstructor[KEY];
+              } catch (error) {
+                /* empty */
+              }
+          }
+        if (!TypedArray[KEY] || forced) {
+          // V8 ~ Chrome 49-50 `%TypedArray%` methods are non-writable non-configurable
+          try {
+            return defineBuiltIn(TypedArray, KEY, forced ? property : (NATIVE_ARRAY_BUFFER_VIEWS && TypedArray[KEY]) || property);
+          } catch (error) {
+            /* empty */
+          }
+        } else return;
+      }
+      for (ARRAY in TypedArrayConstructorsList) {
+        TypedArrayConstructor = globalThis[ARRAY];
+        if (TypedArrayConstructor && (!TypedArrayConstructor[KEY] || forced)) {
+          defineBuiltIn(TypedArrayConstructor, KEY, property);
+        }
+      }
+    };
+
+    for (NAME in TypedArrayConstructorsList) {
+      Constructor = globalThis[NAME];
+      Prototype = Constructor && Constructor.prototype;
+      if (Prototype) enforceInternalState(Prototype)[TYPED_ARRAY_CONSTRUCTOR] = Constructor;
+      else NATIVE_ARRAY_BUFFER_VIEWS = false;
+    }
+
+    for (NAME in BigIntArrayConstructorsList) {
+      Constructor = globalThis[NAME];
+      Prototype = Constructor && Constructor.prototype;
+      if (Prototype) enforceInternalState(Prototype)[TYPED_ARRAY_CONSTRUCTOR] = Constructor;
+    }
+
+    // WebKit bug - typed arrays constructors prototype is Object.prototype
+    if (!NATIVE_ARRAY_BUFFER_VIEWS || !isCallable(TypedArray) || TypedArray === Function.prototype) {
+      // eslint-disable-next-line no-shadow -- safe
+      TypedArray = function TypedArray() {
+        throw new TypeError("Incorrect invocation");
+      };
+      if (NATIVE_ARRAY_BUFFER_VIEWS)
+        for (NAME in TypedArrayConstructorsList) {
+          if (globalThis[NAME]) setPrototypeOf(globalThis[NAME], TypedArray);
+        }
+    }
+
+    if (!NATIVE_ARRAY_BUFFER_VIEWS || !TypedArrayPrototype || TypedArrayPrototype === ObjectPrototype) {
+      TypedArrayPrototype = TypedArray.prototype;
+      if (NATIVE_ARRAY_BUFFER_VIEWS)
+        for (NAME in TypedArrayConstructorsList) {
+          if (globalThis[NAME]) setPrototypeOf(globalThis[NAME].prototype, TypedArrayPrototype);
+        }
+    }
+
+    // WebKit bug - one more object in Uint8ClampedArray prototype chain
+    if (NATIVE_ARRAY_BUFFER_VIEWS && getPrototypeOf(Uint8ClampedArrayPrototype) !== TypedArrayPrototype) {
+      setPrototypeOf(Uint8ClampedArrayPrototype, TypedArrayPrototype);
+    }
+
+    if (DESCRIPTORS && !hasOwn(TypedArrayPrototype, TO_STRING_TAG)) {
+      TYPED_ARRAY_TAG_REQUIRED = true;
+      defineBuiltInAccessor(TypedArrayPrototype, TO_STRING_TAG, {
+        configurable: true,
+        get: function () {
+          return isObject(this) ? this[TYPED_ARRAY_TAG] : undefined;
+        },
+      });
+      for (NAME in TypedArrayConstructorsList)
+        if (globalThis[NAME]) {
+          createNonEnumerableProperty(globalThis[NAME].prototype, TYPED_ARRAY_TAG, NAME);
+        }
+    }
+
+    module.exports = {
+      NATIVE_ARRAY_BUFFER_VIEWS: NATIVE_ARRAY_BUFFER_VIEWS,
+      TYPED_ARRAY_TAG: TYPED_ARRAY_TAG_REQUIRED && TYPED_ARRAY_TAG,
+      aTypedArray: aTypedArray,
+      aTypedArrayConstructor: aTypedArrayConstructor,
+      exportTypedArrayMethod: exportTypedArrayMethod,
+      exportTypedArrayStaticMethod: exportTypedArrayStaticMethod,
+      getTypedArrayConstructor: getTypedArrayConstructor,
+      isView: isView,
+      isTypedArray: isTypedArray,
+      TypedArray: TypedArray,
+      TypedArrayPrototype: TypedArrayPrototype,
+    };
+
+    /***/
+  },
+
+  /***/ 9617(module, __unused_webpack_exports, __webpack_require__) {
+    var toIndexedObject = __webpack_require__(5397);
+    var toAbsoluteIndex = __webpack_require__(5610);
+    var lengthOfArrayLike = __webpack_require__(6198);
+
+    // `Array.prototype.{ indexOf, includes }` methods implementation
+    var createMethod = function (IS_INCLUDES) {
+      return function ($this, el, fromIndex) {
+        var O = toIndexedObject($this);
+        var length = lengthOfArrayLike(O);
+        if (length === 0) return !IS_INCLUDES && -1;
+        var index = toAbsoluteIndex(fromIndex, length);
+        var value;
+        // Array#includes uses SameValueZero equality algorithm
+        // eslint-disable-next-line no-self-compare -- NaN check
+        if (IS_INCLUDES && el !== el)
+          while (length > index) {
+            value = O[index++];
+            // eslint-disable-next-line no-self-compare -- NaN check
+            if (value !== value) return true;
+            // Array#indexOf ignores holes, Array#includes - not
+          }
+        else
+          for (; length > index; index++) {
+            if ((IS_INCLUDES || index in O) && O[index] === el) return IS_INCLUDES || index || 0;
+          }
+        return !IS_INCLUDES && -1;
+      };
+    };
+
+    module.exports = {
+      // `Array.prototype.includes` method
+      // https://tc39.es/ecma262/#sec-array.prototype.includes
+      includes: createMethod(true),
+      // `Array.prototype.indexOf` method
+      // https://tc39.es/ecma262/#sec-array.prototype.indexof
+      indexOf: createMethod(false),
+    };
+
+    /***/
+  },
+
+  /***/ 4527(module, __unused_webpack_exports, __webpack_require__) {
+    var DESCRIPTORS = __webpack_require__(3724);
+    var isArray = __webpack_require__(4376);
+
+    var $TypeError = TypeError;
+    // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+    var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+
+    // Safari < 13 does not throw an error in this case
+    var SILENT_ON_NON_WRITABLE_LENGTH_SET =
+      DESCRIPTORS &&
+      !(function () {
+        // makes no sense without proper strict mode support
+        if (this !== undefined) return true;
+        try {
+          // eslint-disable-next-line es/no-object-defineproperty -- safe
+          Object.defineProperty([], "length", { writable: false }).length = 1;
+        } catch (error) {
+          return error instanceof TypeError;
+        }
+      })();
+
+    module.exports = SILENT_ON_NON_WRITABLE_LENGTH_SET
+      ? function (O, length) {
+          if (isArray(O) && !getOwnPropertyDescriptor(O, "length").writable) {
+            throw new $TypeError("Cannot set read only .length");
+          }
+          return (O.length = length);
+        }
+      : function (O, length) {
+          return (O.length = length);
+        };
+
+    /***/
+  },
+
+  /***/ 6319(module, __unused_webpack_exports, __webpack_require__) {
+    var anObject = __webpack_require__(8551);
+    var iteratorClose = __webpack_require__(9539);
+
+    // call something on iterator step with safe closing on error
+    module.exports = function (iterator, fn, value, ENTRIES) {
       try {
-        TypedArrayConstructor.prototype[KEY] = property;
-      } catch (error2) { /* empty */ }
-    }
-  }
-  if (!TypedArrayPrototype[KEY] || forced) {
-    defineBuiltIn(TypedArrayPrototype, KEY, forced ? property
-      : NATIVE_ARRAY_BUFFER_VIEWS && Int8ArrayPrototype[KEY] || property, options);
-  }
-};
+        return ENTRIES ? fn(anObject(value)[0], value[1]) : fn(value);
+      } catch (error) {
+        iteratorClose(iterator, "throw", error);
+      }
+    };
 
-var exportTypedArrayStaticMethod = function (KEY, property, forced) {
-  var ARRAY, TypedArrayConstructor;
-  if (!DESCRIPTORS) return;
-  if (setPrototypeOf) {
-    if (forced) for (ARRAY in TypedArrayConstructorsList) {
-      TypedArrayConstructor = globalThis[ARRAY];
-      if (TypedArrayConstructor && hasOwn(TypedArrayConstructor, KEY)) try {
-        delete TypedArrayConstructor[KEY];
-      } catch (error) { /* empty */ }
-    }
-    if (!TypedArray[KEY] || forced) {
-      // V8 ~ Chrome 49-50 `%TypedArray%` methods are non-writable non-configurable
+    /***/
+  },
+
+  /***/ 2195(module, __unused_webpack_exports, __webpack_require__) {
+    var uncurryThis = __webpack_require__(9504);
+
+    var toString = uncurryThis({}.toString);
+    var stringSlice = uncurryThis("".slice);
+
+    module.exports = function (it) {
+      return stringSlice(toString(it), 8, -1);
+    };
+
+    /***/
+  },
+
+  /***/ 6955(module, __unused_webpack_exports, __webpack_require__) {
+    var TO_STRING_TAG_SUPPORT = __webpack_require__(2140);
+    var isCallable = __webpack_require__(4901);
+    var classofRaw = __webpack_require__(2195);
+    var wellKnownSymbol = __webpack_require__(8227);
+
+    var TO_STRING_TAG = wellKnownSymbol("toStringTag");
+    var $Object = Object;
+
+    // ES3 wrong here
+    var CORRECT_ARGUMENTS =
+      classofRaw(
+        (function () {
+          return arguments;
+        })()
+      ) === "Arguments";
+
+    // fallback for IE11 Script Access Denied error
+    var tryGet = function (it, key) {
       try {
-        return defineBuiltIn(TypedArray, KEY, forced ? property : NATIVE_ARRAY_BUFFER_VIEWS && TypedArray[KEY] || property);
-      } catch (error) { /* empty */ }
-    } else return;
-  }
-  for (ARRAY in TypedArrayConstructorsList) {
-    TypedArrayConstructor = globalThis[ARRAY];
-    if (TypedArrayConstructor && (!TypedArrayConstructor[KEY] || forced)) {
-      defineBuiltIn(TypedArrayConstructor, KEY, property);
-    }
-  }
-};
-
-for (NAME in TypedArrayConstructorsList) {
-  Constructor = globalThis[NAME];
-  Prototype = Constructor && Constructor.prototype;
-  if (Prototype) enforceInternalState(Prototype)[TYPED_ARRAY_CONSTRUCTOR] = Constructor;
-  else NATIVE_ARRAY_BUFFER_VIEWS = false;
-}
-
-for (NAME in BigIntArrayConstructorsList) {
-  Constructor = globalThis[NAME];
-  Prototype = Constructor && Constructor.prototype;
-  if (Prototype) enforceInternalState(Prototype)[TYPED_ARRAY_CONSTRUCTOR] = Constructor;
-}
-
-// WebKit bug - typed arrays constructors prototype is Object.prototype
-if (!NATIVE_ARRAY_BUFFER_VIEWS || !isCallable(TypedArray) || TypedArray === Function.prototype) {
-  // eslint-disable-next-line no-shadow -- safe
-  TypedArray = function TypedArray() {
-    throw new TypeError('Incorrect invocation');
-  };
-  if (NATIVE_ARRAY_BUFFER_VIEWS) for (NAME in TypedArrayConstructorsList) {
-    if (globalThis[NAME]) setPrototypeOf(globalThis[NAME], TypedArray);
-  }
-}
-
-if (!NATIVE_ARRAY_BUFFER_VIEWS || !TypedArrayPrototype || TypedArrayPrototype === ObjectPrototype) {
-  TypedArrayPrototype = TypedArray.prototype;
-  if (NATIVE_ARRAY_BUFFER_VIEWS) for (NAME in TypedArrayConstructorsList) {
-    if (globalThis[NAME]) setPrototypeOf(globalThis[NAME].prototype, TypedArrayPrototype);
-  }
-}
-
-// WebKit bug - one more object in Uint8ClampedArray prototype chain
-if (NATIVE_ARRAY_BUFFER_VIEWS && getPrototypeOf(Uint8ClampedArrayPrototype) !== TypedArrayPrototype) {
-  setPrototypeOf(Uint8ClampedArrayPrototype, TypedArrayPrototype);
-}
-
-if (DESCRIPTORS && !hasOwn(TypedArrayPrototype, TO_STRING_TAG)) {
-  TYPED_ARRAY_TAG_REQUIRED = true;
-  defineBuiltInAccessor(TypedArrayPrototype, TO_STRING_TAG, {
-    configurable: true,
-    get: function () {
-      return isObject(this) ? this[TYPED_ARRAY_TAG] : undefined;
-    }
-  });
-  for (NAME in TypedArrayConstructorsList) if (globalThis[NAME]) {
-    createNonEnumerableProperty(globalThis[NAME].prototype, TYPED_ARRAY_TAG, NAME);
-  }
-}
-
-module.exports = {
-  NATIVE_ARRAY_BUFFER_VIEWS: NATIVE_ARRAY_BUFFER_VIEWS,
-  TYPED_ARRAY_TAG: TYPED_ARRAY_TAG_REQUIRED && TYPED_ARRAY_TAG,
-  aTypedArray: aTypedArray,
-  aTypedArrayConstructor: aTypedArrayConstructor,
-  exportTypedArrayMethod: exportTypedArrayMethod,
-  exportTypedArrayStaticMethod: exportTypedArrayStaticMethod,
-  getTypedArrayConstructor: getTypedArrayConstructor,
-  isView: isView,
-  isTypedArray: isTypedArray,
-  TypedArray: TypedArray,
-  TypedArrayPrototype: TypedArrayPrototype
-};
-
-
-/***/ },
-
-/***/ 9617
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var toIndexedObject = __webpack_require__(5397);
-var toAbsoluteIndex = __webpack_require__(5610);
-var lengthOfArrayLike = __webpack_require__(6198);
-
-// `Array.prototype.{ indexOf, includes }` methods implementation
-var createMethod = function (IS_INCLUDES) {
-  return function ($this, el, fromIndex) {
-    var O = toIndexedObject($this);
-    var length = lengthOfArrayLike(O);
-    if (length === 0) return !IS_INCLUDES && -1;
-    var index = toAbsoluteIndex(fromIndex, length);
-    var value;
-    // Array#includes uses SameValueZero equality algorithm
-    // eslint-disable-next-line no-self-compare -- NaN check
-    if (IS_INCLUDES && el !== el) while (length > index) {
-      value = O[index++];
-      // eslint-disable-next-line no-self-compare -- NaN check
-      if (value !== value) return true;
-    // Array#indexOf ignores holes, Array#includes - not
-    } else for (;length > index; index++) {
-      if ((IS_INCLUDES || index in O) && O[index] === el) return IS_INCLUDES || index || 0;
-    } return !IS_INCLUDES && -1;
-  };
-};
-
-module.exports = {
-  // `Array.prototype.includes` method
-  // https://tc39.es/ecma262/#sec-array.prototype.includes
-  includes: createMethod(true),
-  // `Array.prototype.indexOf` method
-  // https://tc39.es/ecma262/#sec-array.prototype.indexof
-  indexOf: createMethod(false)
-};
-
-
-/***/ },
-
-/***/ 4527
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var DESCRIPTORS = __webpack_require__(3724);
-var isArray = __webpack_require__(4376);
-
-var $TypeError = TypeError;
-// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
-var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-
-// Safari < 13 does not throw an error in this case
-var SILENT_ON_NON_WRITABLE_LENGTH_SET = DESCRIPTORS && !function () {
-  // makes no sense without proper strict mode support
-  if (this !== undefined) return true;
-  try {
-    // eslint-disable-next-line es/no-object-defineproperty -- safe
-    Object.defineProperty([], 'length', { writable: false }).length = 1;
-  } catch (error) {
-    return error instanceof TypeError;
-  }
-}();
-
-module.exports = SILENT_ON_NON_WRITABLE_LENGTH_SET ? function (O, length) {
-  if (isArray(O) && !getOwnPropertyDescriptor(O, 'length').writable) {
-    throw new $TypeError('Cannot set read only .length');
-  } return O.length = length;
-} : function (O, length) {
-  return O.length = length;
-};
-
-
-/***/ },
-
-/***/ 6319
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var anObject = __webpack_require__(8551);
-var iteratorClose = __webpack_require__(9539);
-
-// call something on iterator step with safe closing on error
-module.exports = function (iterator, fn, value, ENTRIES) {
-  try {
-    return ENTRIES ? fn(anObject(value)[0], value[1]) : fn(value);
-  } catch (error) {
-    iteratorClose(iterator, 'throw', error);
-  }
-};
-
-
-/***/ },
-
-/***/ 2195
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var uncurryThis = __webpack_require__(9504);
-
-var toString = uncurryThis({}.toString);
-var stringSlice = uncurryThis(''.slice);
-
-module.exports = function (it) {
-  return stringSlice(toString(it), 8, -1);
-};
-
-
-/***/ },
-
-/***/ 6955
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var TO_STRING_TAG_SUPPORT = __webpack_require__(2140);
-var isCallable = __webpack_require__(4901);
-var classofRaw = __webpack_require__(2195);
-var wellKnownSymbol = __webpack_require__(8227);
-
-var TO_STRING_TAG = wellKnownSymbol('toStringTag');
-var $Object = Object;
-
-// ES3 wrong here
-var CORRECT_ARGUMENTS = classofRaw(function () { return arguments; }()) === 'Arguments';
-
-// fallback for IE11 Script Access Denied error
-var tryGet = function (it, key) {
-  try {
-    return it[key];
-  } catch (error) { /* empty */ }
-};
-
-// getting tag from ES6+ `Object.prototype.toString`
-module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function (it) {
-  var O, tag, result;
-  return it === undefined ? 'Undefined' : it === null ? 'Null'
-    // @@toStringTag case
-    : typeof (tag = tryGet(O = $Object(it), TO_STRING_TAG)) == 'string' ? tag
-    // builtinTag case
-    : CORRECT_ARGUMENTS ? classofRaw(O)
-    // ES3 arguments fallback
-    : (result = classofRaw(O)) === 'Object' && isCallable(O.callee) ? 'Arguments' : result;
-};
-
-
-/***/ },
-
-/***/ 7740
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var hasOwn = __webpack_require__(9297);
-var ownKeys = __webpack_require__(5031);
-var getOwnPropertyDescriptorModule = __webpack_require__(7347);
-var definePropertyModule = __webpack_require__(4913);
-
-module.exports = function (target, source, exceptions) {
-  var keys = ownKeys(source);
-  var defineProperty = definePropertyModule.f;
-  var getOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
-  for (var i = 0; i < keys.length; i++) {
-    var key = keys[i];
-    if (!hasOwn(target, key) && !(exceptions && hasOwn(exceptions, key))) {
-      defineProperty(target, key, getOwnPropertyDescriptor(source, key));
-    }
-  }
-};
-
-
-/***/ },
-
-/***/ 2211
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var fails = __webpack_require__(9039);
-
-module.exports = !fails(function () {
-  function F() { /* empty */ }
-  F.prototype.constructor = null;
-  // eslint-disable-next-line es/no-object-getprototypeof -- required for testing
-  return Object.getPrototypeOf(new F()) !== F.prototype;
-});
-
-
-/***/ },
-
-/***/ 2529
-(module) {
-
-
-// `CreateIterResultObject` abstract operation
-// https://tc39.es/ecma262/#sec-createiterresultobject
-module.exports = function (value, done) {
-  return { value: value, done: done };
-};
-
-
-/***/ },
-
-/***/ 6699
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var DESCRIPTORS = __webpack_require__(3724);
-var definePropertyModule = __webpack_require__(4913);
-var createPropertyDescriptor = __webpack_require__(6980);
-
-module.exports = DESCRIPTORS ? function (object, key, value) {
-  return definePropertyModule.f(object, key, createPropertyDescriptor(1, value));
-} : function (object, key, value) {
-  object[key] = value;
-  return object;
-};
-
-
-/***/ },
-
-/***/ 6980
-(module) {
-
-
-module.exports = function (bitmap, value) {
-  return {
-    enumerable: !(bitmap & 1),
-    configurable: !(bitmap & 2),
-    writable: !(bitmap & 4),
-    value: value
-  };
-};
-
-
-/***/ },
-
-/***/ 4659
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var DESCRIPTORS = __webpack_require__(3724);
-var definePropertyModule = __webpack_require__(4913);
-var createPropertyDescriptor = __webpack_require__(6980);
-
-module.exports = function (object, key, value) {
-  if (DESCRIPTORS) definePropertyModule.f(object, key, createPropertyDescriptor(0, value));
-  else object[key] = value;
-};
-
-
-/***/ },
-
-/***/ 2106
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var makeBuiltIn = __webpack_require__(283);
-var defineProperty = __webpack_require__(4913);
-
-module.exports = function (target, name, descriptor) {
-  if (descriptor.get) makeBuiltIn(descriptor.get, name, { getter: true });
-  if (descriptor.set) makeBuiltIn(descriptor.set, name, { setter: true });
-  return defineProperty.f(target, name, descriptor);
-};
-
-
-/***/ },
-
-/***/ 6840
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var isCallable = __webpack_require__(4901);
-var definePropertyModule = __webpack_require__(4913);
-var makeBuiltIn = __webpack_require__(283);
-var defineGlobalProperty = __webpack_require__(9433);
-
-module.exports = function (O, key, value, options) {
-  if (!options) options = {};
-  var simple = options.enumerable;
-  var name = options.name !== undefined ? options.name : key;
-  if (isCallable(value)) makeBuiltIn(value, name, options);
-  if (options.global) {
-    if (simple) O[key] = value;
-    else defineGlobalProperty(key, value);
-  } else {
-    try {
-      if (!options.unsafe) delete O[key];
-      else if (O[key]) simple = true;
-    } catch (error) { /* empty */ }
-    if (simple) O[key] = value;
-    else definePropertyModule.f(O, key, {
-      value: value,
-      enumerable: false,
-      configurable: !options.nonConfigurable,
-      writable: !options.nonWritable
+        return it[key];
+      } catch (error) {
+        /* empty */
+      }
+    };
+
+    // getting tag from ES6+ `Object.prototype.toString`
+    module.exports = TO_STRING_TAG_SUPPORT
+      ? classofRaw
+      : function (it) {
+          var O, tag, result;
+          return it === undefined
+            ? "Undefined"
+            : it === null
+              ? "Null"
+              : // @@toStringTag case
+                typeof (tag = tryGet((O = $Object(it)), TO_STRING_TAG)) == "string"
+                ? tag
+                : // builtinTag case
+                  CORRECT_ARGUMENTS
+                  ? classofRaw(O)
+                  : // ES3 arguments fallback
+                    (result = classofRaw(O)) === "Object" && isCallable(O.callee)
+                    ? "Arguments"
+                    : result;
+        };
+
+    /***/
+  },
+
+  /***/ 7740(module, __unused_webpack_exports, __webpack_require__) {
+    var hasOwn = __webpack_require__(9297);
+    var ownKeys = __webpack_require__(5031);
+    var getOwnPropertyDescriptorModule = __webpack_require__(7347);
+    var definePropertyModule = __webpack_require__(4913);
+
+    module.exports = function (target, source, exceptions) {
+      var keys = ownKeys(source);
+      var defineProperty = definePropertyModule.f;
+      var getOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
+      for (var i = 0; i < keys.length; i++) {
+        var key = keys[i];
+        if (!hasOwn(target, key) && !(exceptions && hasOwn(exceptions, key))) {
+          defineProperty(target, key, getOwnPropertyDescriptor(source, key));
+        }
+      }
+    };
+
+    /***/
+  },
+
+  /***/ 2211(module, __unused_webpack_exports, __webpack_require__) {
+    var fails = __webpack_require__(9039);
+
+    module.exports = !fails(function () {
+      function F() {
+        /* empty */
+      }
+      F.prototype.constructor = null;
+      // eslint-disable-next-line es/no-object-getprototypeof -- required for testing
+      return Object.getPrototypeOf(new F()) !== F.prototype;
     });
-  } return O;
-};
 
+    /***/
+  },
 
-/***/ },
+  /***/ 2529(module) {
+    // `CreateIterResultObject` abstract operation
+    // https://tc39.es/ecma262/#sec-createiterresultobject
+    module.exports = function (value, done) {
+      return { value: value, done: done };
+    };
 
-/***/ 6279
-(module, __unused_webpack_exports, __webpack_require__) {
+    /***/
+  },
 
+  /***/ 6699(module, __unused_webpack_exports, __webpack_require__) {
+    var DESCRIPTORS = __webpack_require__(3724);
+    var definePropertyModule = __webpack_require__(4913);
+    var createPropertyDescriptor = __webpack_require__(6980);
 
-var defineBuiltIn = __webpack_require__(6840);
+    module.exports = DESCRIPTORS
+      ? function (object, key, value) {
+          return definePropertyModule.f(object, key, createPropertyDescriptor(1, value));
+        }
+      : function (object, key, value) {
+          object[key] = value;
+          return object;
+        };
 
-module.exports = function (target, src, options) {
-  for (var key in src) defineBuiltIn(target, key, src[key], options);
-  return target;
-};
+    /***/
+  },
 
+  /***/ 6980(module) {
+    module.exports = function (bitmap, value) {
+      return {
+        enumerable: !(bitmap & 1),
+        configurable: !(bitmap & 2),
+        writable: !(bitmap & 4),
+        value: value,
+      };
+    };
 
-/***/ },
+    /***/
+  },
 
-/***/ 9433
-(module, __unused_webpack_exports, __webpack_require__) {
+  /***/ 4659(module, __unused_webpack_exports, __webpack_require__) {
+    var DESCRIPTORS = __webpack_require__(3724);
+    var definePropertyModule = __webpack_require__(4913);
+    var createPropertyDescriptor = __webpack_require__(6980);
 
+    module.exports = function (object, key, value) {
+      if (DESCRIPTORS) definePropertyModule.f(object, key, createPropertyDescriptor(0, value));
+      else object[key] = value;
+    };
 
-var globalThis = __webpack_require__(4576);
+    /***/
+  },
 
-// eslint-disable-next-line es/no-object-defineproperty -- safe
-var defineProperty = Object.defineProperty;
+  /***/ 2106(module, __unused_webpack_exports, __webpack_require__) {
+    var makeBuiltIn = __webpack_require__(283);
+    var defineProperty = __webpack_require__(4913);
 
-module.exports = function (key, value) {
-  try {
-    defineProperty(globalThis, key, { value: value, configurable: true, writable: true });
-  } catch (error) {
-    globalThis[key] = value;
-  } return value;
-};
+    module.exports = function (target, name, descriptor) {
+      if (descriptor.get) makeBuiltIn(descriptor.get, name, { getter: true });
+      if (descriptor.set) makeBuiltIn(descriptor.set, name, { setter: true });
+      return defineProperty.f(target, name, descriptor);
+    };
 
+    /***/
+  },
 
-/***/ },
+  /***/ 6840(module, __unused_webpack_exports, __webpack_require__) {
+    var isCallable = __webpack_require__(4901);
+    var definePropertyModule = __webpack_require__(4913);
+    var makeBuiltIn = __webpack_require__(283);
+    var defineGlobalProperty = __webpack_require__(9433);
 
-/***/ 3724
-(module, __unused_webpack_exports, __webpack_require__) {
+    module.exports = function (O, key, value, options) {
+      if (!options) options = {};
+      var simple = options.enumerable;
+      var name = options.name !== undefined ? options.name : key;
+      if (isCallable(value)) makeBuiltIn(value, name, options);
+      if (options.global) {
+        if (simple) O[key] = value;
+        else defineGlobalProperty(key, value);
+      } else {
+        try {
+          if (!options.unsafe) delete O[key];
+          else if (O[key]) simple = true;
+        } catch (error) {
+          /* empty */
+        }
+        if (simple) O[key] = value;
+        else
+          definePropertyModule.f(O, key, {
+            value: value,
+            enumerable: false,
+            configurable: !options.nonConfigurable,
+            writable: !options.nonWritable,
+          });
+      }
+      return O;
+    };
 
+    /***/
+  },
 
-var fails = __webpack_require__(9039);
+  /***/ 6279(module, __unused_webpack_exports, __webpack_require__) {
+    var defineBuiltIn = __webpack_require__(6840);
 
-// Detect IE8's incomplete defineProperty implementation
-module.exports = !fails(function () {
-  // eslint-disable-next-line es/no-object-defineproperty -- required for testing
-  return Object.defineProperty({}, 1, { get: function () { return 7; } })[1] !== 7;
-});
+    module.exports = function (target, src, options) {
+      for (var key in src) defineBuiltIn(target, key, src[key], options);
+      return target;
+    };
 
+    /***/
+  },
 
-/***/ },
+  /***/ 9433(module, __unused_webpack_exports, __webpack_require__) {
+    var globalThis = __webpack_require__(4576);
 
-/***/ 4055
-(module, __unused_webpack_exports, __webpack_require__) {
+    // eslint-disable-next-line es/no-object-defineproperty -- safe
+    var defineProperty = Object.defineProperty;
 
+    module.exports = function (key, value) {
+      try {
+        defineProperty(globalThis, key, { value: value, configurable: true, writable: true });
+      } catch (error) {
+        globalThis[key] = value;
+      }
+      return value;
+    };
 
-var globalThis = __webpack_require__(4576);
-var isObject = __webpack_require__(34);
+    /***/
+  },
 
-var document = globalThis.document;
-// typeof document.createElement is 'object' in old IE
-var EXISTS = isObject(document) && isObject(document.createElement);
+  /***/ 3724(module, __unused_webpack_exports, __webpack_require__) {
+    var fails = __webpack_require__(9039);
 
-module.exports = function (it) {
-  return EXISTS ? document.createElement(it) : {};
-};
+    // Detect IE8's incomplete defineProperty implementation
+    module.exports = !fails(function () {
+      // eslint-disable-next-line es/no-object-defineproperty -- required for testing
+      return (
+        Object.defineProperty({}, 1, {
+          get: function () {
+            return 7;
+          },
+        })[1] !== 7
+      );
+    });
 
+    /***/
+  },
 
-/***/ },
+  /***/ 4055(module, __unused_webpack_exports, __webpack_require__) {
+    var globalThis = __webpack_require__(4576);
+    var isObject = __webpack_require__(34);
 
-/***/ 6837
-(module) {
+    var document = globalThis.document;
+    // typeof document.createElement is 'object' in old IE
+    var EXISTS = isObject(document) && isObject(document.createElement);
 
+    module.exports = function (it) {
+      return EXISTS ? document.createElement(it) : {};
+    };
 
-var $TypeError = TypeError;
-var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF; // 2 ** 53 - 1 == 9007199254740991
+    /***/
+  },
 
-module.exports = function (it) {
-  if (it > MAX_SAFE_INTEGER) throw new $TypeError('Maximum allowed index exceeded');
-  return it;
-};
+  /***/ 6837(module) {
+    var $TypeError = TypeError;
+    var MAX_SAFE_INTEGER = 0x1fffffffffffff; // 2 ** 53 - 1 == 9007199254740991
 
+    module.exports = function (it) {
+      if (it > MAX_SAFE_INTEGER) throw new $TypeError("Maximum allowed index exceeded");
+      return it;
+    };
 
-/***/ },
+    /***/
+  },
 
-/***/ 8727
-(module) {
+  /***/ 8727(module) {
+    // IE8- don't enum bug keys
+    module.exports = ["constructor", "hasOwnProperty", "isPrototypeOf", "propertyIsEnumerable", "toLocaleString", "toString", "valueOf"];
 
+    /***/
+  },
 
-// IE8- don't enum bug keys
-module.exports = [
-  'constructor',
-  'hasOwnProperty',
-  'isPrototypeOf',
-  'propertyIsEnumerable',
-  'toLocaleString',
-  'toString',
-  'valueOf'
-];
+  /***/ 2839(module, __unused_webpack_exports, __webpack_require__) {
+    var globalThis = __webpack_require__(4576);
 
+    var navigator = globalThis.navigator;
+    var userAgent = navigator && navigator.userAgent;
 
-/***/ },
+    module.exports = userAgent ? String(userAgent) : "";
 
-/***/ 2839
-(module, __unused_webpack_exports, __webpack_require__) {
+    /***/
+  },
 
+  /***/ 9519(module, __unused_webpack_exports, __webpack_require__) {
+    var globalThis = __webpack_require__(4576);
+    var userAgent = __webpack_require__(2839);
 
-var globalThis = __webpack_require__(4576);
+    var process = globalThis.process;
+    var Deno = globalThis.Deno;
+    var versions = (process && process.versions) || (Deno && Deno.version);
+    var v8 = versions && versions.v8;
+    var match, version;
 
-var navigator = globalThis.navigator;
-var userAgent = navigator && navigator.userAgent;
+    if (v8) {
+      match = v8.split(".");
+      // in old Chrome, versions of V8 isn't V8 = Chrome / 10
+      // but their correct versions are not interesting for us
+      version = match[0] > 0 && match[0] < 4 ? 1 : +(match[0] + match[1]);
+    }
 
-module.exports = userAgent ? String(userAgent) : '';
+    // BrowserFS NodeJS `process` polyfill incorrectly set `.v8` to `0.0`
+    // so check `userAgent` even if `.v8` exists, but 0
+    if (!version && userAgent) {
+      match = userAgent.match(/Edge\/(\d+)/);
+      if (!match || match[1] >= 74) {
+        match = userAgent.match(/Chrome\/(\d+)/);
+        if (match) version = +match[1];
+      }
+    }
 
+    module.exports = version;
 
-/***/ },
+    /***/
+  },
 
-/***/ 9519
-(module, __unused_webpack_exports, __webpack_require__) {
+  /***/ 6518(module, __unused_webpack_exports, __webpack_require__) {
+    var globalThis = __webpack_require__(4576);
+    var getOwnPropertyDescriptor = __webpack_require__(7347).f;
+    var createNonEnumerableProperty = __webpack_require__(6699);
+    var defineBuiltIn = __webpack_require__(6840);
+    var defineGlobalProperty = __webpack_require__(9433);
+    var copyConstructorProperties = __webpack_require__(7740);
+    var isForced = __webpack_require__(2796);
 
-
-var globalThis = __webpack_require__(4576);
-var userAgent = __webpack_require__(2839);
-
-var process = globalThis.process;
-var Deno = globalThis.Deno;
-var versions = process && process.versions || Deno && Deno.version;
-var v8 = versions && versions.v8;
-var match, version;
-
-if (v8) {
-  match = v8.split('.');
-  // in old Chrome, versions of V8 isn't V8 = Chrome / 10
-  // but their correct versions are not interesting for us
-  version = match[0] > 0 && match[0] < 4 ? 1 : +(match[0] + match[1]);
-}
-
-// BrowserFS NodeJS `process` polyfill incorrectly set `.v8` to `0.0`
-// so check `userAgent` even if `.v8` exists, but 0
-if (!version && userAgent) {
-  match = userAgent.match(/Edge\/(\d+)/);
-  if (!match || match[1] >= 74) {
-    match = userAgent.match(/Chrome\/(\d+)/);
-    if (match) version = +match[1];
-  }
-}
-
-module.exports = version;
-
-
-/***/ },
-
-/***/ 6518
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var globalThis = __webpack_require__(4576);
-var getOwnPropertyDescriptor = (__webpack_require__(7347).f);
-var createNonEnumerableProperty = __webpack_require__(6699);
-var defineBuiltIn = __webpack_require__(6840);
-var defineGlobalProperty = __webpack_require__(9433);
-var copyConstructorProperties = __webpack_require__(7740);
-var isForced = __webpack_require__(2796);
-
-/*
+    /*
   options.target         - name of the target object
   options.global         - target is the global object
   options.stat           - export as static methods of target
@@ -873,4131 +814,4060 @@ var isForced = __webpack_require__(2796);
   options.dontCallGetSet - prevent calling a getter on target
   options.name           - the .name of the function if it does not match the key
 */
-module.exports = function (options, source) {
-  var TARGET = options.target;
-  var GLOBAL = options.global;
-  var STATIC = options.stat;
-  var FORCED, target, key, targetProperty, sourceProperty, descriptor;
-  if (GLOBAL) {
-    target = globalThis;
-  } else if (STATIC) {
-    target = globalThis[TARGET] || defineGlobalProperty(TARGET, {});
-  } else {
-    target = globalThis[TARGET] && globalThis[TARGET].prototype;
-  }
-  if (target) for (key in source) {
-    sourceProperty = source[key];
-    if (options.dontCallGetSet) {
-      descriptor = getOwnPropertyDescriptor(target, key);
-      targetProperty = descriptor && descriptor.value;
-    } else targetProperty = target[key];
-    FORCED = isForced(GLOBAL ? key : TARGET + (STATIC ? '.' : '#') + key, options.forced);
-    // contained in target
-    if (!FORCED && targetProperty !== undefined) {
-      if (typeof sourceProperty == typeof targetProperty) continue;
-      copyConstructorProperties(sourceProperty, targetProperty);
-    }
-    // add a flag to not completely full polyfills
-    if (options.sham || (targetProperty && targetProperty.sham)) {
-      createNonEnumerableProperty(sourceProperty, 'sham', true);
-    }
-    defineBuiltIn(target, key, sourceProperty, options);
-  }
-};
-
-
-/***/ },
-
-/***/ 9039
-(module) {
-
-
-module.exports = function (exec) {
-  try {
-    return !!exec();
-  } catch (error) {
-    return true;
-  }
-};
-
-
-/***/ },
-
-/***/ 6080
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var uncurryThis = __webpack_require__(7476);
-var aCallable = __webpack_require__(9306);
-var NATIVE_BIND = __webpack_require__(616);
-
-var bind = uncurryThis(uncurryThis.bind);
-
-// optional / simple context binding
-module.exports = function (fn, that) {
-  aCallable(fn);
-  return that === undefined ? fn : NATIVE_BIND ? bind(fn, that) : function (/* ...args */) {
-    return fn.apply(that, arguments);
-  };
-};
-
-
-/***/ },
-
-/***/ 616
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var fails = __webpack_require__(9039);
-
-module.exports = !fails(function () {
-  // eslint-disable-next-line es/no-function-prototype-bind -- safe
-  var test = function () { /* empty */ }.bind();
-  // eslint-disable-next-line no-prototype-builtins -- safe
-  return typeof test != 'function' || test.hasOwnProperty('prototype');
-});
-
-
-/***/ },
-
-/***/ 9565
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var NATIVE_BIND = __webpack_require__(616);
-
-var call = Function.prototype.call;
-// eslint-disable-next-line es/no-function-prototype-bind -- safe
-module.exports = NATIVE_BIND ? call.bind(call) : function () {
-  return call.apply(call, arguments);
-};
-
-
-/***/ },
-
-/***/ 350
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var DESCRIPTORS = __webpack_require__(3724);
-var hasOwn = __webpack_require__(9297);
-
-var FunctionPrototype = Function.prototype;
-// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
-var getDescriptor = DESCRIPTORS && Object.getOwnPropertyDescriptor;
-
-var EXISTS = hasOwn(FunctionPrototype, 'name');
-// additional protection from minified / mangled / dropped function names
-var PROPER = EXISTS && function something() { /* empty */ }.name === 'something';
-var CONFIGURABLE = EXISTS && (!DESCRIPTORS || (DESCRIPTORS && getDescriptor(FunctionPrototype, 'name').configurable));
-
-module.exports = {
-  EXISTS: EXISTS,
-  PROPER: PROPER,
-  CONFIGURABLE: CONFIGURABLE
-};
-
-
-/***/ },
-
-/***/ 6706
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var uncurryThis = __webpack_require__(9504);
-var aCallable = __webpack_require__(9306);
-
-module.exports = function (object, key, method) {
-  try {
-    // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
-    return uncurryThis(aCallable(Object.getOwnPropertyDescriptor(object, key)[method]));
-  } catch (error) { /* empty */ }
-};
-
-
-/***/ },
-
-/***/ 7476
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var classofRaw = __webpack_require__(2195);
-var uncurryThis = __webpack_require__(9504);
-
-module.exports = function (fn) {
-  // Nashorn bug:
-  //   https://github.com/zloirock/core-js/issues/1128
-  //   https://github.com/zloirock/core-js/issues/1130
-  if (classofRaw(fn) === 'Function') return uncurryThis(fn);
-};
-
-
-/***/ },
-
-/***/ 9504
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var NATIVE_BIND = __webpack_require__(616);
-
-var FunctionPrototype = Function.prototype;
-var call = FunctionPrototype.call;
-// eslint-disable-next-line es/no-function-prototype-bind -- safe
-var uncurryThisWithBind = NATIVE_BIND && FunctionPrototype.bind.bind(call, call);
-
-module.exports = NATIVE_BIND ? uncurryThisWithBind : function (fn) {
-  return function () {
-    return call.apply(fn, arguments);
-  };
-};
-
-
-/***/ },
-
-/***/ 7751
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var globalThis = __webpack_require__(4576);
-var isCallable = __webpack_require__(4901);
-
-var aFunction = function (argument) {
-  return isCallable(argument) ? argument : undefined;
-};
-
-module.exports = function (namespace, method) {
-  return arguments.length < 2 ? aFunction(globalThis[namespace]) : globalThis[namespace] && globalThis[namespace][method];
-};
-
-
-/***/ },
-
-/***/ 1767
-(module) {
-
-
-// `GetIteratorDirect(obj)` abstract operation
-// https://tc39.es/ecma262/#sec-getiteratordirect
-module.exports = function (obj) {
-  return {
-    iterator: obj,
-    next: obj.next,
-    done: false
-  };
-};
-
-
-/***/ },
-
-/***/ 8563
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var call = __webpack_require__(9565);
-var isCallable = __webpack_require__(4901);
-var anObject = __webpack_require__(8551);
-var tryToString = __webpack_require__(6823);
-var getIteratorMethod = __webpack_require__(3085);
-
-var $TypeError = TypeError;
-
-module.exports = function (argument, usingIterator) {
-  var iteratorMethod = arguments.length < 2 ? getIteratorMethod(argument) : usingIterator;
-  if (isCallable(iteratorMethod)) return anObject(call(iteratorMethod, argument));
-  throw new $TypeError(tryToString(argument) + ' is not iterable');
-};
-
-
-/***/ },
-
-/***/ 3085
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var classof = __webpack_require__(2195);
-var isNullOrUndefined = __webpack_require__(4117);
-var getMethod = __webpack_require__(5966);
-var wellKnownSymbol = __webpack_require__(8227);
-
-var ITERATOR = wellKnownSymbol('iterator');
-var ArrayPrototype = Array.prototype;
-
-module.exports = function (it) {
-  if (!isNullOrUndefined(it)) return getMethod(it, ITERATOR)
-    || getMethod(it, '@@iterator')
-    || (classof(it) === 'Arguments' ? ArrayPrototype[ITERATOR] : undefined);
-};
-
-
-/***/ },
-
-/***/ 5966
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var aCallable = __webpack_require__(9306);
-var isNullOrUndefined = __webpack_require__(4117);
-
-// `GetMethod` abstract operation
-// https://tc39.es/ecma262/#sec-getmethod
-module.exports = function (V, P) {
-  var func = V[P];
-  return isNullOrUndefined(func) ? undefined : aCallable(func);
-};
-
-
-/***/ },
-
-/***/ 3789
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var aCallable = __webpack_require__(9306);
-var anObject = __webpack_require__(8551);
-var call = __webpack_require__(9565);
-var toIntegerOrInfinity = __webpack_require__(1291);
-var getIteratorDirect = __webpack_require__(1767);
-
-var INVALID_SIZE = 'Invalid size';
-var $RangeError = RangeError;
-var $TypeError = TypeError;
-var max = Math.max;
-
-var SetRecord = function (set, intSize) {
-  this.set = set;
-  this.size = max(intSize, 0);
-  this.has = aCallable(set.has);
-  this.keys = aCallable(set.keys);
-};
-
-SetRecord.prototype = {
-  getIterator: function () {
-    return getIteratorDirect(anObject(call(this.keys, this.set)));
-  },
-  includes: function (it) {
-    return call(this.has, this.set, it);
-  }
-};
-
-// `GetSetRecord` abstract operation
-// https://tc39.es/proposal-set-methods/#sec-getsetrecord
-module.exports = function (obj) {
-  anObject(obj);
-  var numSize = +obj.size;
-  // NOTE: If size is undefined, then numSize will be NaN
-  // eslint-disable-next-line no-self-compare -- NaN check
-  if (numSize !== numSize) throw new $TypeError(INVALID_SIZE);
-  var intSize = toIntegerOrInfinity(numSize);
-  if (intSize < 0) throw new $RangeError(INVALID_SIZE);
-  return new SetRecord(obj, intSize);
-};
-
-
-/***/ },
-
-/***/ 4576
-(module) {
-
-
-var check = function (it) {
-  return it && it.Math === Math && it;
-};
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-module.exports =
-  // eslint-disable-next-line es/no-global-this -- safe
-  check(typeof globalThis == 'object' && globalThis) ||
-  check(typeof window == 'object' && window) ||
-  // eslint-disable-next-line no-restricted-globals -- safe
-  check(typeof self == 'object' && self) ||
-  check(typeof global == 'object' && global) ||
-  check(typeof this == 'object' && this) ||
-  // eslint-disable-next-line no-new-func -- fallback
-  (function () { return this; })() || Function('return this')();
-
-
-/***/ },
-
-/***/ 9297
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var uncurryThis = __webpack_require__(9504);
-var toObject = __webpack_require__(8981);
-
-var hasOwnProperty = uncurryThis({}.hasOwnProperty);
-
-// `HasOwnProperty` abstract operation
-// https://tc39.es/ecma262/#sec-hasownproperty
-// eslint-disable-next-line es/no-object-hasown -- safe
-module.exports = Object.hasOwn || function hasOwn(it, key) {
-  return hasOwnProperty(toObject(it), key);
-};
-
-
-/***/ },
-
-/***/ 421
-(module) {
-
-
-module.exports = {};
-
-
-/***/ },
-
-/***/ 397
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var getBuiltIn = __webpack_require__(7751);
-
-module.exports = getBuiltIn('document', 'documentElement');
-
-
-/***/ },
-
-/***/ 5917
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var DESCRIPTORS = __webpack_require__(3724);
-var fails = __webpack_require__(9039);
-var createElement = __webpack_require__(4055);
-
-// Thanks to IE8 for its funny defineProperty
-module.exports = !DESCRIPTORS && !fails(function () {
-  // eslint-disable-next-line es/no-object-defineproperty -- required for testing
-  return Object.defineProperty(createElement('div'), 'a', {
-    get: function () { return 7; }
-  }).a !== 7;
-});
-
-
-/***/ },
-
-/***/ 7055
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var uncurryThis = __webpack_require__(9504);
-var fails = __webpack_require__(9039);
-var classof = __webpack_require__(2195);
-
-var $Object = Object;
-var split = uncurryThis(''.split);
-
-// fallback for non-array-like ES3 and non-enumerable old V8 strings
-module.exports = fails(function () {
-  // throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
-  // eslint-disable-next-line no-prototype-builtins -- safe
-  return !$Object('z').propertyIsEnumerable(0);
-}) ? function (it) {
-  return classof(it) === 'String' ? split(it, '') : $Object(it);
-} : $Object;
-
-
-/***/ },
-
-/***/ 3706
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var uncurryThis = __webpack_require__(9504);
-var isCallable = __webpack_require__(4901);
-var store = __webpack_require__(7629);
-
-var functionToString = uncurryThis(Function.toString);
-
-// this helper broken in `core-js@3.4.1-3.4.4`, so we can't use `shared` helper
-if (!isCallable(store.inspectSource)) {
-  store.inspectSource = function (it) {
-    return functionToString(it);
-  };
-}
-
-module.exports = store.inspectSource;
-
-
-/***/ },
-
-/***/ 1181
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var NATIVE_WEAK_MAP = __webpack_require__(8622);
-var globalThis = __webpack_require__(4576);
-var isObject = __webpack_require__(34);
-var createNonEnumerableProperty = __webpack_require__(6699);
-var hasOwn = __webpack_require__(9297);
-var shared = __webpack_require__(7629);
-var sharedKey = __webpack_require__(6119);
-var hiddenKeys = __webpack_require__(421);
-
-var OBJECT_ALREADY_INITIALIZED = 'Object already initialized';
-var TypeError = globalThis.TypeError;
-var WeakMap = globalThis.WeakMap;
-var set, get, has;
-
-var enforce = function (it) {
-  return has(it) ? get(it) : set(it, {});
-};
-
-var getterFor = function (TYPE) {
-  return function (it) {
-    var state;
-    if (!isObject(it) || (state = get(it)).type !== TYPE) {
-      throw new TypeError('Incompatible receiver, ' + TYPE + ' required');
-    } return state;
-  };
-};
-
-if (NATIVE_WEAK_MAP || shared.state) {
-  var store = shared.state || (shared.state = new WeakMap());
-  /* eslint-disable no-self-assign -- prototype methods protection */
-  store.get = store.get;
-  store.has = store.has;
-  store.set = store.set;
-  /* eslint-enable no-self-assign -- prototype methods protection */
-  set = function (it, metadata) {
-    if (store.has(it)) throw new TypeError(OBJECT_ALREADY_INITIALIZED);
-    metadata.facade = it;
-    store.set(it, metadata);
-    return metadata;
-  };
-  get = function (it) {
-    return store.get(it) || {};
-  };
-  has = function (it) {
-    return store.has(it);
-  };
-} else {
-  var STATE = sharedKey('state');
-  hiddenKeys[STATE] = true;
-  set = function (it, metadata) {
-    if (hasOwn(it, STATE)) throw new TypeError(OBJECT_ALREADY_INITIALIZED);
-    metadata.facade = it;
-    createNonEnumerableProperty(it, STATE, metadata);
-    return metadata;
-  };
-  get = function (it) {
-    return hasOwn(it, STATE) ? it[STATE] : {};
-  };
-  has = function (it) {
-    return hasOwn(it, STATE);
-  };
-}
-
-module.exports = {
-  set: set,
-  get: get,
-  has: has,
-  enforce: enforce,
-  getterFor: getterFor
-};
-
-
-/***/ },
-
-/***/ 4209
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var wellKnownSymbol = __webpack_require__(8227);
-var Iterators = __webpack_require__(6269);
-
-var ITERATOR = wellKnownSymbol('iterator');
-var ArrayPrototype = Array.prototype;
-
-// check on default Array iterator
-module.exports = function (it) {
-  return it !== undefined && (Iterators.Array === it || ArrayPrototype[ITERATOR] === it);
-};
-
-
-/***/ },
-
-/***/ 4376
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var classof = __webpack_require__(2195);
-
-// `IsArray` abstract operation
-// https://tc39.es/ecma262/#sec-isarray
-// eslint-disable-next-line es/no-array-isarray -- safe
-module.exports = Array.isArray || function isArray(argument) {
-  return classof(argument) === 'Array';
-};
-
-
-/***/ },
-
-/***/ 1108
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var classof = __webpack_require__(6955);
-
-module.exports = function (it) {
-  var klass = classof(it);
-  return klass === 'BigInt64Array' || klass === 'BigUint64Array';
-};
-
-
-/***/ },
-
-/***/ 4901
-(module) {
-
-
-// https://tc39.es/ecma262/#sec-IsHTMLDDA-internal-slot
-var documentAll = typeof document == 'object' && document.all;
-
-// `IsCallable` abstract operation
-// https://tc39.es/ecma262/#sec-iscallable
-// eslint-disable-next-line unicorn/no-typeof-undefined -- required for testing
-module.exports = typeof documentAll == 'undefined' && documentAll !== undefined ? function (argument) {
-  return typeof argument == 'function' || argument === documentAll;
-} : function (argument) {
-  return typeof argument == 'function';
-};
-
-
-/***/ },
-
-/***/ 2796
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var fails = __webpack_require__(9039);
-var isCallable = __webpack_require__(4901);
-
-var replacement = /#|\.prototype\./;
-
-var isForced = function (feature, detection) {
-  var value = data[normalize(feature)];
-  return value === POLYFILL ? true
-    : value === NATIVE ? false
-    : isCallable(detection) ? fails(detection)
-    : !!detection;
-};
-
-var normalize = isForced.normalize = function (string) {
-  return String(string).replace(replacement, '.').toLowerCase();
-};
-
-var data = isForced.data = {};
-var NATIVE = isForced.NATIVE = 'N';
-var POLYFILL = isForced.POLYFILL = 'P';
-
-module.exports = isForced;
-
-
-/***/ },
-
-/***/ 4117
-(module) {
-
-
-// we can't use just `it == null` since of `document.all` special case
-// https://tc39.es/ecma262/#sec-IsHTMLDDA-internal-slot-aec
-module.exports = function (it) {
-  return it === null || it === undefined;
-};
-
-
-/***/ },
-
-/***/ 34
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var isCallable = __webpack_require__(4901);
-
-module.exports = function (it) {
-  return typeof it == 'object' ? it !== null : isCallable(it);
-};
-
-
-/***/ },
-
-/***/ 3925
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var isObject = __webpack_require__(34);
-
-module.exports = function (argument) {
-  return isObject(argument) || argument === null;
-};
-
-
-/***/ },
-
-/***/ 6395
-(module) {
-
-
-module.exports = false;
-
-
-/***/ },
-
-/***/ 5810
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var isObject = __webpack_require__(34);
-var getInternalState = (__webpack_require__(1181).get);
-
-module.exports = function isRawJSON(O) {
-  if (!isObject(O)) return false;
-  var state = getInternalState(O);
-  return !!state && state.type === 'RawJSON';
-};
-
-
-/***/ },
-
-/***/ 757
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var getBuiltIn = __webpack_require__(7751);
-var isCallable = __webpack_require__(4901);
-var isPrototypeOf = __webpack_require__(1625);
-var USE_SYMBOL_AS_UID = __webpack_require__(7040);
-
-var $Object = Object;
-
-module.exports = USE_SYMBOL_AS_UID ? function (it) {
-  return typeof it == 'symbol';
-} : function (it) {
-  var $Symbol = getBuiltIn('Symbol');
-  return isCallable($Symbol) && isPrototypeOf($Symbol.prototype, $Object(it));
-};
-
-
-/***/ },
-
-/***/ 507
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var call = __webpack_require__(9565);
-
-module.exports = function (record, fn, ITERATOR_INSTEAD_OF_RECORD) {
-  var iterator = ITERATOR_INSTEAD_OF_RECORD ? record : record.iterator;
-  var next = record.next;
-  var step, result;
-  while (!(step = call(next, iterator)).done) {
-    result = fn(step.value);
-    if (result !== undefined) return result;
-  }
-};
-
-
-/***/ },
-
-/***/ 2652
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var bind = __webpack_require__(6080);
-var call = __webpack_require__(9565);
-var anObject = __webpack_require__(8551);
-var tryToString = __webpack_require__(6823);
-var isArrayIteratorMethod = __webpack_require__(4209);
-var lengthOfArrayLike = __webpack_require__(6198);
-var isPrototypeOf = __webpack_require__(1625);
-var getIterator = __webpack_require__(8563);
-var getIteratorMethod = __webpack_require__(3085);
-var iteratorClose = __webpack_require__(9539);
-
-var $TypeError = TypeError;
-
-var Result = function (stopped, result) {
-  this.stopped = stopped;
-  this.result = result;
-};
-
-var ResultPrototype = Result.prototype;
-
-module.exports = function (iterable, unboundFunction, options) {
-  var that = options && options.that;
-  var AS_ENTRIES = !!(options && options.AS_ENTRIES);
-  var IS_RECORD = !!(options && options.IS_RECORD);
-  var IS_ITERATOR = !!(options && options.IS_ITERATOR);
-  var INTERRUPTED = !!(options && options.INTERRUPTED);
-  var fn = bind(unboundFunction, that);
-  var iterator, iterFn, index, length, result, next, step;
-
-  var stop = function (condition) {
-    var $iterator = iterator;
-    iterator = undefined;
-    if ($iterator) iteratorClose($iterator, 'normal');
-    return new Result(true, condition);
-  };
-
-  var callFn = function (value) {
-    if (AS_ENTRIES) {
-      anObject(value);
-      return INTERRUPTED ? fn(value[0], value[1], stop) : fn(value[0], value[1]);
-    } return INTERRUPTED ? fn(value, stop) : fn(value);
-  };
-
-  if (IS_RECORD) {
-    iterator = iterable.iterator;
-  } else if (IS_ITERATOR) {
-    iterator = iterable;
-  } else {
-    iterFn = getIteratorMethod(iterable);
-    if (!iterFn) throw new $TypeError(tryToString(iterable) + ' is not iterable');
-    // optimisation for array iterators
-    if (isArrayIteratorMethod(iterFn)) {
-      for (index = 0, length = lengthOfArrayLike(iterable); length > index; index++) {
-        result = callFn(iterable[index]);
-        if (result && isPrototypeOf(ResultPrototype, result)) return result;
-      } return new Result(false);
-    }
-    iterator = getIterator(iterable, iterFn);
-  }
-
-  next = IS_RECORD ? iterable.next : iterator.next;
-  while (!(step = call(next, iterator)).done) {
-    // `IteratorValue` errors should propagate without closing the iterator
-    var value = step.value;
-    try {
-      result = callFn(value);
-    } catch (error) {
-      if (iterator) iteratorClose(iterator, 'throw', error);
-      else throw error;
-    }
-    if (typeof result == 'object' && result && isPrototypeOf(ResultPrototype, result)) return result;
-  } return new Result(false);
-};
-
-
-/***/ },
-
-/***/ 6859
-(module) {
-
-
-// release references held by exhausted / closed iterator helpers to allow GC of the source chain
-module.exports = function (state) {
-  state.iterator = state.next = state.nextHandler = state.mapper = state.predicate = state.inner =
-    state.iterables = state.iters = state.openIters = state.padding = state.finishResults = state.buffer = null;
-};
-
-
-/***/ },
-
-/***/ 1385
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var iteratorClose = __webpack_require__(9539);
-
-module.exports = function (iters, kind, value) {
-  for (var i = iters.length - 1; i >= 0; i--) {
-    if (iters[i] === undefined) continue;
-    try {
-      value = iteratorClose(iters[i].iterator, kind, value);
-    } catch (error) {
-      kind = 'throw';
-      value = error;
-    }
-  }
-  if (kind === 'throw') throw value;
-  return value;
-};
-
-
-/***/ },
-
-/***/ 9539
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var call = __webpack_require__(9565);
-var anObject = __webpack_require__(8551);
-var getMethod = __webpack_require__(5966);
-
-module.exports = function (iterator, kind, value) {
-  var innerResult, innerError;
-  anObject(iterator);
-  try {
-    innerResult = getMethod(iterator, 'return');
-    if (!innerResult) {
-      if (kind === 'throw') throw value;
-      return value;
-    }
-    innerResult = call(innerResult, iterator);
-  } catch (error) {
-    innerError = true;
-    innerResult = error;
-  }
-  if (kind === 'throw') throw value;
-  if (innerError) throw innerResult;
-  anObject(innerResult);
-  return value;
-};
-
-
-/***/ },
-
-/***/ 9462
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var call = __webpack_require__(9565);
-var create = __webpack_require__(2360);
-var createNonEnumerableProperty = __webpack_require__(6699);
-var defineBuiltIns = __webpack_require__(6279);
-var wellKnownSymbol = __webpack_require__(8227);
-var InternalStateModule = __webpack_require__(1181);
-var getMethod = __webpack_require__(5966);
-var IteratorPrototype = (__webpack_require__(7657).IteratorPrototype);
-var createIterResultObject = __webpack_require__(2529);
-var iteratorClose = __webpack_require__(9539);
-var iteratorCloseAll = __webpack_require__(1385);
-var cleanupState = __webpack_require__(6859);
-
-var TO_STRING_TAG = wellKnownSymbol('toStringTag');
-var ITERATOR_HELPER = 'IteratorHelper';
-var WRAP_FOR_VALID_ITERATOR = 'WrapForValidIterator';
-var NORMAL = 'normal';
-var THROW = 'throw';
-var setInternalState = InternalStateModule.set;
-
-var createIteratorProxyPrototype = function (IS_ITERATOR) {
-  var getInternalState = InternalStateModule.getterFor(IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER);
-
-  return defineBuiltIns(create(IteratorPrototype), {
-    next: function next() {
-      var state = getInternalState(this);
-      // for simplification:
-      //   for `%WrapForValidIteratorPrototype%.next` or with `state.returnHandlerResult` our `nextHandler` returns `IterResultObject`
-      //   for `%IteratorHelperPrototype%.next` - just a value
-      if (IS_ITERATOR) return state.nextHandler();
-      if (state.done) return createIterResultObject(undefined, true);
-      try {
-        var result = state.nextHandler();
-        if (state.done) cleanupState(state);
-        return state.returnHandlerResult ? result : createIterResultObject(result, state.done);
-      } catch (error) {
-        state.done = true;
-        cleanupState(state);
-        throw error;
+    module.exports = function (options, source) {
+      var TARGET = options.target;
+      var GLOBAL = options.global;
+      var STATIC = options.stat;
+      var FORCED, target, key, targetProperty, sourceProperty, descriptor;
+      if (GLOBAL) {
+        target = globalThis;
+      } else if (STATIC) {
+        target = globalThis[TARGET] || defineGlobalProperty(TARGET, {});
+      } else {
+        target = globalThis[TARGET] && globalThis[TARGET].prototype;
       }
-    },
-    'return': function () {
-      var state = getInternalState(this);
-      var iterator = state.iterator;
-      var inner = state.inner;
-      var openIters = state.openIters;
-      var done = state.done;
-      state.done = true;
-      if (IS_ITERATOR) {
-        var returnMethod = getMethod(iterator, 'return');
-        return returnMethod ? call(returnMethod, iterator) : createIterResultObject(undefined, true);
-      }
-      cleanupState(state);
-      if (done) return createIterResultObject(undefined, true);
-      if (inner) try {
-        iteratorClose(inner.iterator, NORMAL);
-      } catch (error) {
-        return iteratorClose(iterator, THROW, error);
-      }
-      if (openIters) try {
-        iteratorCloseAll(openIters, NORMAL);
-      } catch (error) {
-        if (iterator) return iteratorClose(iterator, THROW, error);
-        throw error;
-      }
-      if (iterator) iteratorClose(iterator, NORMAL);
-      return createIterResultObject(undefined, true);
-    }
-  });
-};
-
-var WrapForValidIteratorPrototype = createIteratorProxyPrototype(true);
-var IteratorHelperPrototype = createIteratorProxyPrototype(false);
-
-createNonEnumerableProperty(IteratorHelperPrototype, TO_STRING_TAG, 'Iterator Helper');
-
-module.exports = function (nextHandler, IS_ITERATOR, RETURN_HANDLER_RESULT) {
-  var IteratorProxy = function Iterator(record, state) {
-    if (state) {
-      state.iterator = record.iterator;
-      state.next = record.next;
-    } else state = record;
-    state.type = IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER;
-    state.returnHandlerResult = !!RETURN_HANDLER_RESULT;
-    state.nextHandler = nextHandler;
-    state.counter = 0;
-    state.done = false;
-    setInternalState(this, state);
-  };
-
-  IteratorProxy.prototype = IS_ITERATOR ? WrapForValidIteratorPrototype : IteratorHelperPrototype;
-
-  return IteratorProxy;
-};
-
-
-/***/ },
-
-/***/ 684
-(module) {
-
-
-// Should throw an error on invalid iterator
-// https://issues.chromium.org/issues/336839115
-module.exports = function (methodName, argument) {
-  // eslint-disable-next-line es/no-iterator -- required for testing
-  var method = typeof Iterator == 'function' && Iterator.prototype[methodName];
-  if (method) try {
-    method.call({ next: null }, argument).next();
-  } catch (error) {
-    return true;
-  }
-};
-
-
-/***/ },
-
-/***/ 4549
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var globalThis = __webpack_require__(4576);
-
-// https://github.com/tc39/ecma262/pull/3467
-module.exports = function (METHOD_NAME, ExpectedError) {
-  var Iterator = globalThis.Iterator;
-  var IteratorPrototype = Iterator && Iterator.prototype;
-  var method = IteratorPrototype && IteratorPrototype[METHOD_NAME];
-
-  var CLOSED = false;
-
-  if (method) try {
-    method.call({
-      next: function () { return { done: true }; },
-      'return': function () { CLOSED = true; }
-    }, -1);
-  } catch (error) {
-    // https://bugs.webkit.org/show_bug.cgi?id=291195
-    if (!(error instanceof ExpectedError)) CLOSED = false;
-  }
-
-  if (!CLOSED) return method;
-};
-
-
-/***/ },
-
-/***/ 7657
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var fails = __webpack_require__(9039);
-var isCallable = __webpack_require__(4901);
-var isObject = __webpack_require__(34);
-var create = __webpack_require__(2360);
-var getPrototypeOf = __webpack_require__(2787);
-var defineBuiltIn = __webpack_require__(6840);
-var wellKnownSymbol = __webpack_require__(8227);
-var IS_PURE = __webpack_require__(6395);
-
-var ITERATOR = wellKnownSymbol('iterator');
-var BUGGY_SAFARI_ITERATORS = false;
-
-// `%IteratorPrototype%` object
-// https://tc39.es/ecma262/#sec-%iteratorprototype%-object
-var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
-
-/* eslint-disable es/no-array-prototype-keys -- safe */
-if ([].keys) {
-  arrayIterator = [].keys();
-  // Safari 8 has buggy iterators w/o `next`
-  if (!('next' in arrayIterator)) BUGGY_SAFARI_ITERATORS = true;
-  else {
-    PrototypeOfArrayIteratorPrototype = getPrototypeOf(getPrototypeOf(arrayIterator));
-    if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype = PrototypeOfArrayIteratorPrototype;
-  }
-}
-
-var NEW_ITERATOR_PROTOTYPE = !isObject(IteratorPrototype) || fails(function () {
-  var test = {};
-  // FF44- legacy iterators case
-  return IteratorPrototype[ITERATOR].call(test) !== test;
-});
-
-if (NEW_ITERATOR_PROTOTYPE) IteratorPrototype = {};
-else if (IS_PURE) IteratorPrototype = create(IteratorPrototype);
-
-// `%IteratorPrototype%[@@iterator]()` method
-// https://tc39.es/ecma262/#sec-%iteratorprototype%-@@iterator
-if (!isCallable(IteratorPrototype[ITERATOR])) {
-  defineBuiltIn(IteratorPrototype, ITERATOR, function () {
-    return this;
-  });
-}
-
-module.exports = {
-  IteratorPrototype: IteratorPrototype,
-  BUGGY_SAFARI_ITERATORS: BUGGY_SAFARI_ITERATORS
-};
-
-
-/***/ },
-
-/***/ 6269
-(module) {
-
-
-module.exports = Object.create ? Object.create(null) : {};
-
-
-/***/ },
-
-/***/ 6198
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var toLength = __webpack_require__(8014);
-
-// `LengthOfArrayLike` abstract operation
-// https://tc39.es/ecma262/#sec-lengthofarraylike
-module.exports = function (obj) {
-  return toLength(obj.length);
-};
-
-
-/***/ },
-
-/***/ 283
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var uncurryThis = __webpack_require__(9504);
-var fails = __webpack_require__(9039);
-var isCallable = __webpack_require__(4901);
-var hasOwn = __webpack_require__(9297);
-var DESCRIPTORS = __webpack_require__(3724);
-var CONFIGURABLE_FUNCTION_NAME = (__webpack_require__(350).CONFIGURABLE);
-var inspectSource = __webpack_require__(3706);
-var InternalStateModule = __webpack_require__(1181);
-
-var enforceInternalState = InternalStateModule.enforce;
-var getInternalState = InternalStateModule.get;
-var $String = String;
-// eslint-disable-next-line es/no-object-defineproperty -- safe
-var defineProperty = Object.defineProperty;
-var stringSlice = uncurryThis(''.slice);
-var replace = uncurryThis(''.replace);
-var join = uncurryThis([].join);
-
-var CONFIGURABLE_LENGTH = DESCRIPTORS && !fails(function () {
-  return defineProperty(function () { /* empty */ }, 'length', { value: 8 }).length !== 8;
-});
-
-var TEMPLATE = String(String).split('String');
-
-var makeBuiltIn = module.exports = function (value, name, options) {
-  if (stringSlice($String(name), 0, 7) === 'Symbol(') {
-    name = '[' + replace($String(name), /^Symbol\(([^)]*)\).*$/, '$1') + ']';
-  }
-  if (options && options.getter) name = 'get ' + name;
-  if (options && options.setter) name = 'set ' + name;
-  if (!hasOwn(value, 'name') || (CONFIGURABLE_FUNCTION_NAME && value.name !== name)) {
-    if (DESCRIPTORS) defineProperty(value, 'name', { value: name, configurable: true });
-    else value.name = name;
-  }
-  if (CONFIGURABLE_LENGTH && options && hasOwn(options, 'arity') && value.length !== options.arity) {
-    defineProperty(value, 'length', { value: options.arity });
-  }
-  try {
-    if (options && hasOwn(options, 'constructor') && options.constructor) {
-      if (DESCRIPTORS) defineProperty(value, 'prototype', { writable: false });
-    // in V8 ~ Chrome 53, prototypes of some methods, like `Array.prototype.values`, are non-writable
-    } else if (value.prototype) value.prototype = undefined;
-  } catch (error) { /* empty */ }
-  var state = enforceInternalState(value);
-  if (!hasOwn(state, 'source')) {
-    state.source = join(TEMPLATE, typeof name == 'string' ? name : '');
-  } return value;
-};
-
-// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
-// eslint-disable-next-line no-extend-native -- required
-Function.prototype.toString = makeBuiltIn(function toString() {
-  return isCallable(this) && getInternalState(this).source || inspectSource(this);
-}, 'toString');
-
-
-/***/ },
-
-/***/ 2248
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var uncurryThis = __webpack_require__(9504);
-
-// eslint-disable-next-line es/no-map -- safe
-var MapPrototype = Map.prototype;
-
-module.exports = {
-  // eslint-disable-next-line es/no-map -- safe
-  Map: Map,
-  set: uncurryThis(MapPrototype.set),
-  get: uncurryThis(MapPrototype.get),
-  has: uncurryThis(MapPrototype.has),
-  remove: uncurryThis(MapPrototype['delete']),
-  proto: MapPrototype
-};
-
-
-/***/ },
-
-/***/ 741
-(module) {
-
-
-var ceil = Math.ceil;
-var floor = Math.floor;
-
-// `Math.trunc` method
-// https://tc39.es/ecma262/#sec-math.trunc
-// eslint-disable-next-line es/no-math-trunc -- safe
-module.exports = Math.trunc || function trunc(x) {
-  var n = +x;
-  return (n > 0 ? floor : ceil)(n);
-};
-
-
-/***/ },
-
-/***/ 7819
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-/* eslint-disable es/no-json -- safe */
-var fails = __webpack_require__(9039);
-
-module.exports = !fails(function () {
-  var unsafeInt = '9007199254740993';
-  // eslint-disable-next-line es/no-json-rawjson -- feature detection
-  var raw = JSON.rawJSON(unsafeInt);
-  // eslint-disable-next-line es/no-json-israwjson -- feature detection
-  return !JSON.isRawJSON(raw) || JSON.stringify(raw) !== unsafeInt;
-});
-
-
-/***/ },
-
-/***/ 2360
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-/* global ActiveXObject -- old IE, WSH */
-var anObject = __webpack_require__(8551);
-var definePropertiesModule = __webpack_require__(6801);
-var enumBugKeys = __webpack_require__(8727);
-var hiddenKeys = __webpack_require__(421);
-var html = __webpack_require__(397);
-var documentCreateElement = __webpack_require__(4055);
-var sharedKey = __webpack_require__(6119);
-
-var GT = '>';
-var LT = '<';
-var PROTOTYPE = 'prototype';
-var SCRIPT = 'script';
-var IE_PROTO = sharedKey('IE_PROTO');
-
-var EmptyConstructor = function () { /* empty */ };
-
-var scriptTag = function (content) {
-  return LT + SCRIPT + GT + content + LT + '/' + SCRIPT + GT;
-};
-
-// Create object with fake `null` prototype: use ActiveX Object with cleared prototype
-var NullProtoObjectViaActiveX = function (activeXDocument) {
-  activeXDocument.write(scriptTag(''));
-  activeXDocument.close();
-  var temp = activeXDocument.parentWindow.Object;
-  // eslint-disable-next-line no-useless-assignment -- avoid memory leak
-  activeXDocument = null;
-  return temp;
-};
-
-// Create object with fake `null` prototype: use iframe Object with cleared prototype
-var NullProtoObjectViaIFrame = function () {
-  // Thrash, waste and sodomy: IE GC bug
-  var iframe = documentCreateElement('iframe');
-  var JS = 'java' + SCRIPT + ':';
-  var iframeDocument;
-  iframe.style.display = 'none';
-  html.appendChild(iframe);
-  // https://github.com/zloirock/core-js/issues/475
-  iframe.src = String(JS);
-  iframeDocument = iframe.contentWindow.document;
-  iframeDocument.open();
-  iframeDocument.write(scriptTag('document.F=Object'));
-  iframeDocument.close();
-  return iframeDocument.F;
-};
-
-// Check for document.domain and active x support
-// No need to use active x approach when document.domain is not set
-// see https://github.com/es-shims/es5-shim/issues/150
-// variation of https://github.com/kitcambridge/es5-shim/commit/4f738ac066346
-// avoid IE GC bug
-var activeXDocument;
-var NullProtoObject = function () {
-  try {
-    activeXDocument = new ActiveXObject('htmlfile');
-  } catch (error) { /* ignore */ }
-  NullProtoObject = typeof document != 'undefined'
-    ? document.domain && activeXDocument
-      ? NullProtoObjectViaActiveX(activeXDocument) // old IE
-      : NullProtoObjectViaIFrame()
-    : NullProtoObjectViaActiveX(activeXDocument); // WSH
-  var length = enumBugKeys.length;
-  while (length--) delete NullProtoObject[PROTOTYPE][enumBugKeys[length]];
-  return NullProtoObject();
-};
-
-hiddenKeys[IE_PROTO] = true;
-
-// `Object.create` method
-// https://tc39.es/ecma262/#sec-object.create
-// eslint-disable-next-line es/no-object-create -- safe
-module.exports = Object.create || function create(O, Properties) {
-  var result;
-  if (O !== null) {
-    EmptyConstructor[PROTOTYPE] = anObject(O);
-    result = new EmptyConstructor();
-    EmptyConstructor[PROTOTYPE] = null;
-    // add "__proto__" for Object.getPrototypeOf polyfill
-    result[IE_PROTO] = O;
-  } else result = NullProtoObject();
-  return Properties === undefined ? result : definePropertiesModule.f(result, Properties);
-};
-
-
-/***/ },
-
-/***/ 6801
-(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var DESCRIPTORS = __webpack_require__(3724);
-var V8_PROTOTYPE_DEFINE_BUG = __webpack_require__(8686);
-var definePropertyModule = __webpack_require__(4913);
-var anObject = __webpack_require__(8551);
-var toIndexedObject = __webpack_require__(5397);
-var objectKeys = __webpack_require__(1072);
-
-// `Object.defineProperties` method
-// https://tc39.es/ecma262/#sec-object.defineproperties
-// eslint-disable-next-line es/no-object-defineproperties -- safe
-exports.f = DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : function defineProperties(O, Properties) {
-  anObject(O);
-  var props = toIndexedObject(Properties);
-  var keys = objectKeys(Properties);
-  var length = keys.length;
-  var index = 0;
-  var key;
-  while (length > index) definePropertyModule.f(O, key = keys[index++], props[key]);
-  return O;
-};
-
-
-/***/ },
-
-/***/ 4913
-(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var DESCRIPTORS = __webpack_require__(3724);
-var IE8_DOM_DEFINE = __webpack_require__(5917);
-var V8_PROTOTYPE_DEFINE_BUG = __webpack_require__(8686);
-var anObject = __webpack_require__(8551);
-var toPropertyKey = __webpack_require__(6969);
-
-var $TypeError = TypeError;
-// eslint-disable-next-line es/no-object-defineproperty -- safe
-var $defineProperty = Object.defineProperty;
-// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
-var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-var ENUMERABLE = 'enumerable';
-var CONFIGURABLE = 'configurable';
-var WRITABLE = 'writable';
-
-// `Object.defineProperty` method
-// https://tc39.es/ecma262/#sec-object.defineproperty
-exports.f = DESCRIPTORS ? V8_PROTOTYPE_DEFINE_BUG ? function defineProperty(O, P, Attributes) {
-  anObject(O);
-  P = toPropertyKey(P);
-  anObject(Attributes);
-  if (typeof O === 'function' && P === 'prototype' && 'value' in Attributes && WRITABLE in Attributes && !Attributes[WRITABLE]) {
-    var current = $getOwnPropertyDescriptor(O, P);
-    if (current && current[WRITABLE]) {
-      O[P] = Attributes.value;
-      Attributes = {
-        configurable: CONFIGURABLE in Attributes ? Attributes[CONFIGURABLE] : current[CONFIGURABLE],
-        enumerable: ENUMERABLE in Attributes ? Attributes[ENUMERABLE] : current[ENUMERABLE],
-        writable: false
-      };
-    }
-  } return $defineProperty(O, P, Attributes);
-} : $defineProperty : function defineProperty(O, P, Attributes) {
-  anObject(O);
-  P = toPropertyKey(P);
-  anObject(Attributes);
-  if (IE8_DOM_DEFINE) try {
-    return $defineProperty(O, P, Attributes);
-  } catch (error) { /* empty */ }
-  if ('get' in Attributes || 'set' in Attributes) throw new $TypeError('Accessors not supported');
-  if ('value' in Attributes) O[P] = Attributes.value;
-  return O;
-};
-
-
-/***/ },
-
-/***/ 7347
-(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var DESCRIPTORS = __webpack_require__(3724);
-var call = __webpack_require__(9565);
-var propertyIsEnumerableModule = __webpack_require__(8773);
-var createPropertyDescriptor = __webpack_require__(6980);
-var toIndexedObject = __webpack_require__(5397);
-var toPropertyKey = __webpack_require__(6969);
-var hasOwn = __webpack_require__(9297);
-var IE8_DOM_DEFINE = __webpack_require__(5917);
-
-// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
-var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-
-// `Object.getOwnPropertyDescriptor` method
-// https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
-exports.f = DESCRIPTORS ? $getOwnPropertyDescriptor : function getOwnPropertyDescriptor(O, P) {
-  O = toIndexedObject(O);
-  P = toPropertyKey(P);
-  if (IE8_DOM_DEFINE) try {
-    return $getOwnPropertyDescriptor(O, P);
-  } catch (error) { /* empty */ }
-  if (hasOwn(O, P)) return createPropertyDescriptor(!call(propertyIsEnumerableModule.f, O, P), O[P]);
-};
-
-
-/***/ },
-
-/***/ 8480
-(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var internalObjectKeys = __webpack_require__(1828);
-var enumBugKeys = __webpack_require__(8727);
-
-var hiddenKeys = enumBugKeys.concat('length', 'prototype');
-
-// `Object.getOwnPropertyNames` method
-// https://tc39.es/ecma262/#sec-object.getownpropertynames
-// eslint-disable-next-line es/no-object-getownpropertynames -- safe
-exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
-  return internalObjectKeys(O, hiddenKeys);
-};
-
-
-/***/ },
-
-/***/ 3717
-(__unused_webpack_module, exports) {
-
-
-// eslint-disable-next-line es/no-object-getownpropertysymbols -- safe
-exports.f = Object.getOwnPropertySymbols;
-
-
-/***/ },
-
-/***/ 2787
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var hasOwn = __webpack_require__(9297);
-var isCallable = __webpack_require__(4901);
-var toObject = __webpack_require__(8981);
-var sharedKey = __webpack_require__(6119);
-var CORRECT_PROTOTYPE_GETTER = __webpack_require__(2211);
-
-var IE_PROTO = sharedKey('IE_PROTO');
-var $Object = Object;
-var ObjectPrototype = $Object.prototype;
-
-// `Object.getPrototypeOf` method
-// https://tc39.es/ecma262/#sec-object.getprototypeof
-// eslint-disable-next-line es/no-object-getprototypeof -- safe
-module.exports = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : function (O) {
-  var object = toObject(O);
-  if (hasOwn(object, IE_PROTO)) return object[IE_PROTO];
-  var constructor = object.constructor;
-  if (isCallable(constructor) && object instanceof constructor) {
-    return constructor.prototype;
-  } return object instanceof $Object ? ObjectPrototype : null;
-};
-
-
-/***/ },
-
-/***/ 1625
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var uncurryThis = __webpack_require__(9504);
-
-module.exports = uncurryThis({}.isPrototypeOf);
-
-
-/***/ },
-
-/***/ 1828
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var uncurryThis = __webpack_require__(9504);
-var hasOwn = __webpack_require__(9297);
-var toIndexedObject = __webpack_require__(5397);
-var indexOf = (__webpack_require__(9617).indexOf);
-var hiddenKeys = __webpack_require__(421);
-
-var push = uncurryThis([].push);
-
-module.exports = function (object, names) {
-  var O = toIndexedObject(object);
-  var i = 0;
-  var result = [];
-  var key;
-  for (key in O) !hasOwn(hiddenKeys, key) && hasOwn(O, key) && push(result, key);
-  // Don't enum bug & hidden keys
-  while (names.length > i) if (hasOwn(O, key = names[i++])) {
-    ~indexOf(result, key) || push(result, key);
-  }
-  return result;
-};
-
-
-/***/ },
-
-/***/ 1072
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var internalObjectKeys = __webpack_require__(1828);
-var enumBugKeys = __webpack_require__(8727);
-
-// `Object.keys` method
-// https://tc39.es/ecma262/#sec-object.keys
-// eslint-disable-next-line es/no-object-keys -- safe
-module.exports = Object.keys || function keys(O) {
-  return internalObjectKeys(O, enumBugKeys);
-};
-
-
-/***/ },
-
-/***/ 8773
-(__unused_webpack_module, exports) {
-
-
-var $propertyIsEnumerable = {}.propertyIsEnumerable;
-// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
-var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-
-// Nashorn ~ JDK8 bug
-var NASHORN_BUG = getOwnPropertyDescriptor && !$propertyIsEnumerable.call({ 1: 2 }, 1);
-
-// `Object.prototype.propertyIsEnumerable` method implementation
-// https://tc39.es/ecma262/#sec-object.prototype.propertyisenumerable
-exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
-  var descriptor = getOwnPropertyDescriptor(this, V);
-  return !!descriptor && descriptor.enumerable;
-} : $propertyIsEnumerable;
-
-
-/***/ },
-
-/***/ 2967
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-/* eslint-disable no-proto -- safe */
-var uncurryThisAccessor = __webpack_require__(6706);
-var isObject = __webpack_require__(34);
-var requireObjectCoercible = __webpack_require__(7750);
-var aPossiblePrototype = __webpack_require__(3506);
-
-// `Object.setPrototypeOf` method
-// https://tc39.es/ecma262/#sec-object.setprototypeof
-// Works with __proto__ only. Old v8 can't work with null proto objects.
-// eslint-disable-next-line es/no-object-setprototypeof -- safe
-module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
-  var CORRECT_SETTER = false;
-  var test = {};
-  var setter;
-  try {
-    setter = uncurryThisAccessor(Object.prototype, '__proto__', 'set');
-    setter(test, []);
-    CORRECT_SETTER = test instanceof Array;
-  } catch (error) { /* empty */ }
-  return function setPrototypeOf(O, proto) {
-    requireObjectCoercible(O);
-    aPossiblePrototype(proto);
-    if (!isObject(O)) return O;
-    if (CORRECT_SETTER) setter(O, proto);
-    else O.__proto__ = proto;
-    return O;
-  };
-}() : undefined);
-
-
-/***/ },
-
-/***/ 4270
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var call = __webpack_require__(9565);
-var isCallable = __webpack_require__(4901);
-var isObject = __webpack_require__(34);
-
-var $TypeError = TypeError;
-
-// `OrdinaryToPrimitive` abstract operation
-// https://tc39.es/ecma262/#sec-ordinarytoprimitive
-module.exports = function (input, pref) {
-  var fn, val;
-  if (pref === 'string' && isCallable(fn = input.toString) && !isObject(val = call(fn, input))) return val;
-  if (isCallable(fn = input.valueOf) && !isObject(val = call(fn, input))) return val;
-  if (pref !== 'string' && isCallable(fn = input.toString) && !isObject(val = call(fn, input))) return val;
-  throw new $TypeError("Can't convert object to primitive value");
-};
-
-
-/***/ },
-
-/***/ 5031
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var getBuiltIn = __webpack_require__(7751);
-var uncurryThis = __webpack_require__(9504);
-var getOwnPropertyNamesModule = __webpack_require__(8480);
-var getOwnPropertySymbolsModule = __webpack_require__(3717);
-var anObject = __webpack_require__(8551);
-
-var concat = uncurryThis([].concat);
-
-// all object keys, includes non-enumerable and symbols
-module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
-  var keys = getOwnPropertyNamesModule.f(anObject(it));
-  var getOwnPropertySymbols = getOwnPropertySymbolsModule.f;
-  return getOwnPropertySymbols ? concat(keys, getOwnPropertySymbols(it)) : keys;
-};
-
-
-/***/ },
-
-/***/ 8235
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var uncurryThis = __webpack_require__(9504);
-var hasOwn = __webpack_require__(9297);
-
-var $SyntaxError = SyntaxError;
-var $parseInt = parseInt;
-var fromCharCode = String.fromCharCode;
-var at = uncurryThis(''.charAt);
-var slice = uncurryThis(''.slice);
-var exec = uncurryThis(/./.exec);
-
-var codePoints = {
-  '\\"': '"',
-  '\\\\': '\\',
-  '\\/': '/',
-  '\\b': '\b',
-  '\\f': '\f',
-  '\\n': '\n',
-  '\\r': '\r',
-  '\\t': '\t'
-};
-
-var IS_4_HEX_DIGITS = /^[\da-f]{4}$/i;
-// eslint-disable-next-line regexp/no-control-character -- safe
-var IS_C0_CONTROL_CODE = /^[\u0000-\u001F]$/;
-
-module.exports = function (source, i) {
-  var unterminated = true;
-  var value = '';
-  while (i < source.length) {
-    var chr = at(source, i);
-    if (chr === '\\') {
-      var twoChars = slice(source, i, i + 2);
-      if (hasOwn(codePoints, twoChars)) {
-        value += codePoints[twoChars];
-        i += 2;
-      } else if (twoChars === '\\u') {
-        i += 2;
-        var fourHexDigits = slice(source, i, i + 4);
-        if (!exec(IS_4_HEX_DIGITS, fourHexDigits)) throw new $SyntaxError('Bad Unicode escape at: ' + i);
-        value += fromCharCode($parseInt(fourHexDigits, 16));
-        i += 4;
-      } else throw new $SyntaxError('Unknown escape sequence: "' + twoChars + '"');
-    } else if (chr === '"') {
-      unterminated = false;
-      i++;
-      break;
-    } else {
-      if (exec(IS_C0_CONTROL_CODE, chr)) throw new $SyntaxError('Bad control character in string literal at: ' + i);
-      value += chr;
-      i++;
-    }
-  }
-  if (unterminated) throw new $SyntaxError('Unterminated string at: ' + i);
-  return { value: value, end: i };
-};
-
-
-/***/ },
-
-/***/ 7750
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var isNullOrUndefined = __webpack_require__(4117);
-
-var $TypeError = TypeError;
-
-// `RequireObjectCoercible` abstract operation
-// https://tc39.es/ecma262/#sec-requireobjectcoercible
-module.exports = function (it) {
-  if (isNullOrUndefined(it)) throw new $TypeError("Can't call method on " + it);
-  return it;
-};
-
-
-/***/ },
-
-/***/ 9286
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var SetHelpers = __webpack_require__(4402);
-var iterate = __webpack_require__(8469);
-
-var Set = SetHelpers.Set;
-var add = SetHelpers.add;
-
-module.exports = function (set) {
-  var result = new Set();
-  iterate(set, function (it) {
-    add(result, it);
-  });
-  return result;
-};
-
-
-/***/ },
-
-/***/ 3440
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var aSet = __webpack_require__(7080);
-var SetHelpers = __webpack_require__(4402);
-var clone = __webpack_require__(9286);
-var size = __webpack_require__(5170);
-var getSetRecord = __webpack_require__(3789);
-var iterateSet = __webpack_require__(8469);
-var iterateSimple = __webpack_require__(507);
-
-var has = SetHelpers.has;
-var remove = SetHelpers.remove;
-
-// `Set.prototype.difference` method
-// https://tc39.es/ecma262/#sec-set.prototype.difference
-module.exports = function difference(other) {
-  var O = aSet(this);
-  var otherRec = getSetRecord(other);
-  var result = clone(O);
-  if (size(result) <= otherRec.size) iterateSet(result, function (e) {
-    if (otherRec.includes(e)) remove(result, e);
-  });
-  else iterateSimple(otherRec.getIterator(), function (e) {
-    if (has(result, e)) remove(result, e);
-  });
-  return result;
-};
-
-
-/***/ },
-
-/***/ 4402
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var uncurryThis = __webpack_require__(9504);
-
-// eslint-disable-next-line es/no-set -- safe
-var SetPrototype = Set.prototype;
-
-module.exports = {
-  // eslint-disable-next-line es/no-set -- safe
-  Set: Set,
-  add: uncurryThis(SetPrototype.add),
-  has: uncurryThis(SetPrototype.has),
-  remove: uncurryThis(SetPrototype['delete']),
-  proto: SetPrototype
-};
-
-
-/***/ },
-
-/***/ 8750
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var aSet = __webpack_require__(7080);
-var SetHelpers = __webpack_require__(4402);
-var size = __webpack_require__(5170);
-var getSetRecord = __webpack_require__(3789);
-var iterateSet = __webpack_require__(8469);
-var iterateSimple = __webpack_require__(507);
-
-var Set = SetHelpers.Set;
-var add = SetHelpers.add;
-var has = SetHelpers.has;
-
-// `Set.prototype.intersection` method
-// https://tc39.es/ecma262/#sec-set.prototype.intersection
-module.exports = function intersection(other) {
-  var O = aSet(this);
-  var otherRec = getSetRecord(other);
-  var result = new Set();
-
-  if (size(O) > otherRec.size) {
-    iterateSimple(otherRec.getIterator(), function (e) {
-      if (has(O, e)) add(result, e);
-    });
-  } else {
-    iterateSet(O, function (e) {
-      if (otherRec.includes(e)) add(result, e);
-    });
-  }
-
-  return result;
-};
-
-
-/***/ },
-
-/***/ 4449
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var aSet = __webpack_require__(7080);
-var has = (__webpack_require__(4402).has);
-var size = __webpack_require__(5170);
-var getSetRecord = __webpack_require__(3789);
-var iterateSet = __webpack_require__(8469);
-var iterateSimple = __webpack_require__(507);
-var iteratorClose = __webpack_require__(9539);
-
-// `Set.prototype.isDisjointFrom` method
-// https://tc39.es/ecma262/#sec-set.prototype.isdisjointfrom
-module.exports = function isDisjointFrom(other) {
-  var O = aSet(this);
-  var otherRec = getSetRecord(other);
-  if (size(O) <= otherRec.size) return iterateSet(O, function (e) {
-    if (otherRec.includes(e)) return false;
-  }, true) !== false;
-  var iterator = otherRec.getIterator();
-  return iterateSimple(iterator, function (e) {
-    if (has(O, e)) return iteratorClose(iterator.iterator, 'normal', false);
-  }) !== false;
-};
-
-
-/***/ },
-
-/***/ 3838
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var aSet = __webpack_require__(7080);
-var size = __webpack_require__(5170);
-var iterate = __webpack_require__(8469);
-var getSetRecord = __webpack_require__(3789);
-
-// `Set.prototype.isSubsetOf` method
-// https://tc39.es/ecma262/#sec-set.prototype.issubsetof
-module.exports = function isSubsetOf(other) {
-  var O = aSet(this);
-  var otherRec = getSetRecord(other);
-  if (size(O) > otherRec.size) return false;
-  return iterate(O, function (e) {
-    if (!otherRec.includes(e)) return false;
-  }, true) !== false;
-};
-
-
-/***/ },
-
-/***/ 8527
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var aSet = __webpack_require__(7080);
-var has = (__webpack_require__(4402).has);
-var size = __webpack_require__(5170);
-var getSetRecord = __webpack_require__(3789);
-var iterateSimple = __webpack_require__(507);
-var iteratorClose = __webpack_require__(9539);
-
-// `Set.prototype.isSupersetOf` method
-// https://tc39.es/ecma262/#sec-set.prototype.issupersetof
-module.exports = function isSupersetOf(other) {
-  var O = aSet(this);
-  var otherRec = getSetRecord(other);
-  if (size(O) < otherRec.size) return false;
-  var iterator = otherRec.getIterator();
-  return iterateSimple(iterator, function (e) {
-    if (!has(O, e)) return iteratorClose(iterator.iterator, 'normal', false);
-  }) !== false;
-};
-
-
-/***/ },
-
-/***/ 8469
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var uncurryThis = __webpack_require__(9504);
-var iterateSimple = __webpack_require__(507);
-var SetHelpers = __webpack_require__(4402);
-
-var Set = SetHelpers.Set;
-var SetPrototype = SetHelpers.proto;
-var forEach = uncurryThis(SetPrototype.forEach);
-var keys = uncurryThis(SetPrototype.keys);
-var next = keys(new Set()).next;
-
-module.exports = function (set, fn, interruptible) {
-  return interruptible ? iterateSimple({ iterator: keys(set), next: next }, fn) : forEach(set, fn);
-};
-
-
-/***/ },
-
-/***/ 4916
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var getBuiltIn = __webpack_require__(7751);
-
-var createSetLike = function (size) {
-  return {
-    size: size,
-    has: function () {
-      return false;
-    },
-    keys: function () {
-      return {
-        next: function () {
-          return { done: true };
-        }
-      };
-    }
-  };
-};
-
-var createSetLikeWithInfinitySize = function (size) {
-  return {
-    size: size,
-    has: function () {
-      return true;
-    },
-    keys: function () {
-      throw new Error('e');
-    }
-  };
-};
-
-module.exports = function (name, callback) {
-  var Set = getBuiltIn('Set');
-  try {
-    new Set()[name](createSetLike(0));
-    try {
-      // late spec change, early WebKit ~ Safari 17 implementation does not pass it
-      // https://github.com/tc39/proposal-set-methods/pull/88
-      // also covered engines with
-      // https://bugs.webkit.org/show_bug.cgi?id=272679
-      new Set()[name](createSetLike(-1));
-      return false;
-    } catch (error2) {
-      if (!callback) return true;
-      // early V8 implementation bug
-      // https://issues.chromium.org/issues/351332634
-      try {
-        new Set()[name](createSetLikeWithInfinitySize(-Infinity));
-        return false;
-      } catch (error) {
-        var set = new Set([1, 2]);
-        return callback(set[name](createSetLikeWithInfinitySize(Infinity)));
-      }
-    }
-  } catch (error) {
-    return false;
-  }
-};
-
-
-/***/ },
-
-/***/ 9835
-(module) {
-
-
-// Should get iterator record of a set-like object before cloning this
-// https://bugs.webkit.org/show_bug.cgi?id=289430
-module.exports = function (METHOD_NAME) {
-  try {
-    // eslint-disable-next-line es/no-set -- needed for test
-    var baseSet = new Set();
-    var setLike = {
-      size: 0,
-      has: function () { return true; },
-      keys: function () {
-        // eslint-disable-next-line es/no-object-defineproperty -- needed for test
-        return Object.defineProperty({}, 'next', {
-          get: function () {
-            baseSet.clear();
-            baseSet.add(4);
-            return function () {
-              return { done: true };
-            };
+      if (target)
+        for (key in source) {
+          sourceProperty = source[key];
+          if (options.dontCallGetSet) {
+            descriptor = getOwnPropertyDescriptor(target, key);
+            targetProperty = descriptor && descriptor.value;
+          } else targetProperty = target[key];
+          FORCED = isForced(GLOBAL ? key : TARGET + (STATIC ? "." : "#") + key, options.forced);
+          // contained in target
+          if (!FORCED && targetProperty !== undefined) {
+            if (typeof sourceProperty == typeof targetProperty) continue;
+            copyConstructorProperties(sourceProperty, targetProperty);
           }
-        });
+          // add a flag to not completely full polyfills
+          if (options.sham || (targetProperty && targetProperty.sham)) {
+            createNonEnumerableProperty(sourceProperty, "sham", true);
+          }
+          defineBuiltIn(target, key, sourceProperty, options);
+        }
+    };
+
+    /***/
+  },
+
+  /***/ 9039(module) {
+    module.exports = function (exec) {
+      try {
+        return !!exec();
+      } catch (error) {
+        return true;
       }
     };
-    var result = baseSet[METHOD_NAME](setLike);
 
-    return result.size === 1 && result.values().next().value === 4;
-  } catch (error) {
-    return false;
-  }
-};
+    /***/
+  },
 
+  /***/ 6080(module, __unused_webpack_exports, __webpack_require__) {
+    var uncurryThis = __webpack_require__(7476);
+    var aCallable = __webpack_require__(9306);
+    var NATIVE_BIND = __webpack_require__(616);
 
-/***/ },
+    var bind = uncurryThis(uncurryThis.bind);
 
-/***/ 5170
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var uncurryThisAccessor = __webpack_require__(6706);
-var SetHelpers = __webpack_require__(4402);
-
-module.exports = uncurryThisAccessor(SetHelpers.proto, 'size', 'get') || function (set) {
-  return set.size;
-};
-
-
-/***/ },
-
-/***/ 3650
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var aSet = __webpack_require__(7080);
-var SetHelpers = __webpack_require__(4402);
-var clone = __webpack_require__(9286);
-var getSetRecord = __webpack_require__(3789);
-var iterateSimple = __webpack_require__(507);
-
-var add = SetHelpers.add;
-var has = SetHelpers.has;
-var remove = SetHelpers.remove;
-
-// `Set.prototype.symmetricDifference` method
-// https://tc39.es/ecma262/#sec-set.prototype.symmetricdifference
-module.exports = function symmetricDifference(other) {
-  var O = aSet(this);
-  var keysIter = getSetRecord(other).getIterator();
-  var result = clone(O);
-  iterateSimple(keysIter, function (e) {
-    if (has(O, e)) remove(result, e);
-    else add(result, e);
-  });
-  return result;
-};
-
-
-/***/ },
-
-/***/ 4204
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var aSet = __webpack_require__(7080);
-var add = (__webpack_require__(4402).add);
-var clone = __webpack_require__(9286);
-var getSetRecord = __webpack_require__(3789);
-var iterateSimple = __webpack_require__(507);
-
-// `Set.prototype.union` method
-// https://tc39.es/ecma262/#sec-set.prototype.union
-module.exports = function union(other) {
-  var O = aSet(this);
-  var keysIter = getSetRecord(other).getIterator();
-  var result = clone(O);
-  iterateSimple(keysIter, function (it) {
-    add(result, it);
-  });
-  return result;
-};
-
-
-/***/ },
-
-/***/ 6119
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var shared = __webpack_require__(5745);
-var uid = __webpack_require__(3392);
-
-var keys = shared('keys');
-
-module.exports = function (key) {
-  return keys[key] || (keys[key] = uid(key));
-};
-
-
-/***/ },
-
-/***/ 7629
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var IS_PURE = __webpack_require__(6395);
-var globalThis = __webpack_require__(4576);
-var defineGlobalProperty = __webpack_require__(9433);
-
-var SHARED = '__core-js_shared__';
-var store = module.exports = globalThis[SHARED] || defineGlobalProperty(SHARED, {});
-
-(store.versions || (store.versions = [])).push({
-  version: '3.50.0',
-  mode: IS_PURE ? 'pure' : 'global',
-  copyright: '© 2013–2025 Denis Pushkarev (zloirock.ru), 2025–2026 CoreJS Company (core-js.io). All rights reserved.',
-  license: 'https://github.com/zloirock/core-js/blob/v3.50.0/LICENSE',
-  source: 'https://github.com/zloirock/core-js'
-});
-
-
-/***/ },
-
-/***/ 5745
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var store = __webpack_require__(7629);
-// eslint-disable-next-line es/no-object-create -- safe
-var create = Object.create || Object;
-
-module.exports = function (key, value) {
-  return store[key] || (store[key] = value || create(null));
-};
-
-
-/***/ },
-
-/***/ 533
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var uncurryThis = __webpack_require__(9504);
-var toLength = __webpack_require__(8014);
-var toString = __webpack_require__(655);
-var $repeat = __webpack_require__(2333);
-var requireObjectCoercible = __webpack_require__(7750);
-
-var repeat = uncurryThis($repeat);
-var stringSlice = uncurryThis(''.slice);
-var ceil = Math.ceil;
-
-// `String.prototype.{ padStart, padEnd }` methods implementation
-var createMethod = function (IS_END) {
-  return function ($this, maxLength, fillString) {
-    var S = toString(requireObjectCoercible($this));
-    var intMaxLength = toLength(maxLength);
-    var stringLength = S.length;
-    if (intMaxLength <= stringLength) return S;
-    var fillStr = fillString === undefined ? ' ' : toString(fillString);
-    var fillLen, stringFiller;
-    if (fillStr === '') return S;
-    fillLen = intMaxLength - stringLength;
-    stringFiller = repeat(fillStr, ceil(fillLen / fillStr.length));
-    if (stringFiller.length > fillLen) stringFiller = stringSlice(stringFiller, 0, fillLen);
-    return IS_END ? S + stringFiller : stringFiller + S;
-  };
-};
-
-module.exports = {
-  // `String.prototype.padStart` method
-  // https://tc39.es/ecma262/#sec-string.prototype.padstart
-  start: createMethod(false),
-  // `String.prototype.padEnd` method
-  // https://tc39.es/ecma262/#sec-string.prototype.padend
-  end: createMethod(true)
-};
-
-
-/***/ },
-
-/***/ 2333
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var toIntegerOrInfinity = __webpack_require__(1291);
-var toString = __webpack_require__(655);
-var requireObjectCoercible = __webpack_require__(7750);
-
-var $RangeError = RangeError;
-var floor = Math.floor;
-
-// `String.prototype.repeat` method implementation
-// https://tc39.es/ecma262/#sec-string.prototype.repeat
-module.exports = function repeat(count) {
-  var str = toString(requireObjectCoercible(this));
-  var result = '';
-  var n = toIntegerOrInfinity(count);
-  if (n < 0 || n === Infinity) throw new $RangeError('Wrong number of repetitions');
-  for (;n > 0; (n = floor(n / 2)) && (str += str)) if (n % 2) result += str;
-  return result;
-};
-
-
-/***/ },
-
-/***/ 4495
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-/* eslint-disable es/no-symbol -- required for testing */
-var V8_VERSION = __webpack_require__(9519);
-var fails = __webpack_require__(9039);
-var globalThis = __webpack_require__(4576);
-
-var $String = globalThis.String;
-
-// eslint-disable-next-line es/no-object-getownpropertysymbols -- required for testing
-module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
-  var symbol = Symbol('symbol detection');
-  // Chrome 38 Symbol has incorrect toString conversion
-  // `get-own-property-symbols` polyfill symbols converted to object are not Symbol instances
-  // nb: Do not call `String` directly to avoid this being optimized out to `symbol+''` which will,
-  // of course, fail.
-  return !$String(symbol) || !(Object(symbol) instanceof Symbol) ||
-    // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances
-    !Symbol.sham && V8_VERSION && V8_VERSION < 41;
-});
-
-
-/***/ },
-
-/***/ 1240
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var uncurryThis = __webpack_require__(9504);
-
-// `thisNumberValue` abstract operation
-// https://tc39.es/ecma262/#sec-thisnumbervalue
-module.exports = uncurryThis(1.1.valueOf);
-
-
-/***/ },
-
-/***/ 5610
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var toIntegerOrInfinity = __webpack_require__(1291);
-
-var max = Math.max;
-var min = Math.min;
-
-// Helper for a popular repeating case of the spec:
-// Let integer be ? ToInteger(index).
-// If integer < 0, let result be max((length + integer), 0); else let result be min(integer, length).
-module.exports = function (index, length) {
-  var integer = toIntegerOrInfinity(index);
-  return integer < 0 ? max(integer + length, 0) : min(integer, length);
-};
-
-
-/***/ },
-
-/***/ 5854
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var toPrimitive = __webpack_require__(2777);
-
-var $TypeError = TypeError;
-
-// `ToBigInt` abstract operation
-// https://tc39.es/ecma262/#sec-tobigint
-module.exports = function (argument) {
-  var prim = toPrimitive(argument, 'number');
-  if (typeof prim == 'number') throw new $TypeError("Can't convert number to bigint");
-  // eslint-disable-next-line es/no-bigint -- safe
-  return BigInt(prim);
-};
-
-
-/***/ },
-
-/***/ 5397
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-// toObject with fallback for non-array-like ES3 strings
-var IndexedObject = __webpack_require__(7055);
-var requireObjectCoercible = __webpack_require__(7750);
-
-module.exports = function (it) {
-  return IndexedObject(requireObjectCoercible(it));
-};
-
-
-/***/ },
-
-/***/ 1291
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var trunc = __webpack_require__(741);
-
-// `ToIntegerOrInfinity` abstract operation
-// https://tc39.es/ecma262/#sec-tointegerorinfinity
-module.exports = function (argument) {
-  var number = +argument;
-  // eslint-disable-next-line no-self-compare -- NaN check
-  return number !== number || number === 0 ? 0 : trunc(number);
-};
-
-
-/***/ },
-
-/***/ 8014
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var toIntegerOrInfinity = __webpack_require__(1291);
-
-var min = Math.min;
-
-// `ToLength` abstract operation
-// https://tc39.es/ecma262/#sec-tolength
-module.exports = function (argument) {
-  var len = toIntegerOrInfinity(argument);
-  return len > 0 ? min(len, 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
-};
-
-
-/***/ },
-
-/***/ 8981
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var requireObjectCoercible = __webpack_require__(7750);
-
-var $Object = Object;
-
-// `ToObject` abstract operation
-// https://tc39.es/ecma262/#sec-toobject
-module.exports = function (argument) {
-  return $Object(requireObjectCoercible(argument));
-};
-
-
-/***/ },
-
-/***/ 2777
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var call = __webpack_require__(9565);
-var isObject = __webpack_require__(34);
-var isSymbol = __webpack_require__(757);
-var getMethod = __webpack_require__(5966);
-var ordinaryToPrimitive = __webpack_require__(4270);
-var wellKnownSymbol = __webpack_require__(8227);
-
-var $TypeError = TypeError;
-var TO_PRIMITIVE = wellKnownSymbol('toPrimitive');
-
-// `ToPrimitive` abstract operation
-// https://tc39.es/ecma262/#sec-toprimitive
-module.exports = function (input, pref) {
-  if (!isObject(input) || isSymbol(input)) return input;
-  var exoticToPrim = getMethod(input, TO_PRIMITIVE);
-  var result;
-  if (exoticToPrim) {
-    if (pref === undefined) pref = 'default';
-    result = call(exoticToPrim, input, pref);
-    if (!isObject(result) || isSymbol(result)) return result;
-    throw new $TypeError("Can't convert object to primitive value");
-  }
-  if (pref === undefined) pref = 'number';
-  return ordinaryToPrimitive(input, pref);
-};
-
-
-/***/ },
-
-/***/ 6969
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var toPrimitive = __webpack_require__(2777);
-var isSymbol = __webpack_require__(757);
-
-// `ToPropertyKey` abstract operation
-// https://tc39.es/ecma262/#sec-topropertykey
-module.exports = function (argument) {
-  var key = toPrimitive(argument, 'string');
-  return isSymbol(key) ? key : key + '';
-};
-
-
-/***/ },
-
-/***/ 2140
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var wellKnownSymbol = __webpack_require__(8227);
-
-var TO_STRING_TAG = wellKnownSymbol('toStringTag');
-var test = {};
-// eslint-disable-next-line unicorn/no-immediate-mutation -- ES3 syntax limitation
-test[TO_STRING_TAG] = 'z';
-
-module.exports = String(test) === '[object z]';
-
-
-/***/ },
-
-/***/ 655
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var classof = __webpack_require__(6955);
-
-var $String = String;
-
-module.exports = function (argument) {
-  if (classof(argument) === 'Symbol') throw new TypeError('Cannot convert a Symbol value to a string');
-  return $String(argument);
-};
-
-
-/***/ },
-
-/***/ 6823
-(module) {
-
-
-var $String = String;
-
-module.exports = function (argument) {
-  try {
-    return $String(argument);
-  } catch (error) {
-    return 'Object';
-  }
-};
-
-
-/***/ },
-
-/***/ 3392
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var uncurryThis = __webpack_require__(9504);
-
-var id = 0;
-var postfix = Math.random();
-var toString = uncurryThis(1.1.toString);
-
-module.exports = function (key) {
-  return 'Symbol(' + (key === undefined ? '' : key) + ')_' + toString(++id + postfix, 36);
-};
-
-
-/***/ },
-
-/***/ 7416
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var fails = __webpack_require__(9039);
-var wellKnownSymbol = __webpack_require__(8227);
-var DESCRIPTORS = __webpack_require__(3724);
-var IS_PURE = __webpack_require__(6395);
-
-var ITERATOR = wellKnownSymbol('iterator');
-
-module.exports = !fails(function () {
-  // eslint-disable-next-line unicorn/relative-url-style -- required for testing
-  var url = new URL('b?a=1&b=2&c=3', 'https://a');
-  var params = url.searchParams;
-  var params2 = new URLSearchParams('a=1&a=2&b=3');
-  var result = '';
-  url.pathname = 'c%20d';
-  params.forEach(function (value, key) {
-    params['delete']('b');
-    result += key + value;
-  });
-  params2['delete']('a', 2);
-  // `undefined` case is a Chromium 117 bug
-  // https://bugs.chromium.org/p/v8/issues/detail?id=14222
-  params2['delete']('b', undefined);
-  return (IS_PURE && (!url.toJSON || !params2.has('a', 1) || params2.has('a', 2) || !params2.has('a', undefined) || params2.has('b')))
-    || (!params.size && (IS_PURE || !DESCRIPTORS))
-    || !params.sort
-    || url.href !== 'https://a/c%20d?a=1&c=3'
-    || params.get('c') !== '3'
-    || String(new URLSearchParams('?a=1')) !== 'a=1'
-    || !params[ITERATOR]
-    // throws in Edge
-    || new URL('https://a@b').username !== 'a'
-    || new URLSearchParams(new URLSearchParams('a=b')).get('a') !== 'b'
-    // not punycoded in Edge
-    || new URL('https://тест').host !== 'xn--e1aybc'
-    // not escaped in Chrome 62-
-    || new URL('https://a#б').hash !== '#%D0%B1'
-    // fails in Chrome 66-
-    || result !== 'a1c3'
-    // throws in Safari
-    || new URL('https://x', undefined).host !== 'x';
-});
-
-
-/***/ },
-
-/***/ 7040
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-/* eslint-disable es/no-symbol -- required for testing */
-var NATIVE_SYMBOL = __webpack_require__(4495);
-
-module.exports = NATIVE_SYMBOL &&
-  !Symbol.sham &&
-  typeof Symbol.iterator == 'symbol';
-
-
-/***/ },
-
-/***/ 8686
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var DESCRIPTORS = __webpack_require__(3724);
-var fails = __webpack_require__(9039);
-
-// V8 ~ Chrome 36-
-// https://bugs.chromium.org/p/v8/issues/detail?id=3334
-module.exports = DESCRIPTORS && fails(function () {
-  // eslint-disable-next-line es/no-object-defineproperty -- required for testing
-  return Object.defineProperty(function () { /* empty */ }, 'prototype', {
-    value: 42,
-    writable: false
-  }).prototype !== 42;
-});
-
-
-/***/ },
-
-/***/ 2812
-(module) {
-
-
-var $TypeError = TypeError;
-
-module.exports = function (passed, required) {
-  if (passed < required) throw new $TypeError('Not enough arguments');
-  return passed;
-};
-
-
-/***/ },
-
-/***/ 8622
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var globalThis = __webpack_require__(4576);
-var isCallable = __webpack_require__(4901);
-
-var WeakMap = globalThis.WeakMap;
-
-module.exports = isCallable(WeakMap) && /native code/.test(String(WeakMap));
-
-
-/***/ },
-
-/***/ 4995
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var uncurryThis = __webpack_require__(9504);
-
-// eslint-disable-next-line es/no-weak-map -- safe
-var WeakMapPrototype = WeakMap.prototype;
-
-module.exports = {
-  // eslint-disable-next-line es/no-weak-map -- safe
-  WeakMap: WeakMap,
-  set: uncurryThis(WeakMapPrototype.set),
-  get: uncurryThis(WeakMapPrototype.get),
-  has: uncurryThis(WeakMapPrototype.has),
-  remove: uncurryThis(WeakMapPrototype['delete'])
-};
-
-
-/***/ },
-
-/***/ 8227
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var globalThis = __webpack_require__(4576);
-var shared = __webpack_require__(5745);
-var hasOwn = __webpack_require__(9297);
-var uid = __webpack_require__(3392);
-var NATIVE_SYMBOL = __webpack_require__(4495);
-var USE_SYMBOL_AS_UID = __webpack_require__(7040);
-
-var Symbol = globalThis.Symbol;
-var WellKnownSymbolsStore = shared('wks');
-var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol['for'] || Symbol : Symbol && Symbol.withoutSetter || uid;
-
-module.exports = function (name) {
-  if (!hasOwn(WellKnownSymbolsStore, name)) {
-    WellKnownSymbolsStore[name] = NATIVE_SYMBOL && hasOwn(Symbol, name)
-      ? Symbol[name]
-      : createWellKnownSymbol('Symbol.' + name);
-  } return WellKnownSymbolsStore[name];
-};
-
-
-/***/ },
-
-/***/ 7452
-(module) {
-
-
-// a string of all valid unicode whitespaces
-module.exports = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u2002' +
-  '\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
-
-
-/***/ },
-
-/***/ 4423
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var $includes = (__webpack_require__(9617).includes);
-var fails = __webpack_require__(9039);
-var addToUnscopables = __webpack_require__(6469);
-
-// FF99+ bug
-var BROKEN_ON_SPARSE = fails(function () {
-  // eslint-disable-next-line es/no-array-prototype-includes -- detection
-  return !Array(1).includes();
-});
-
-// Safari 26.4- bug
-var BROKEN_ON_SPARSE_WITH_FROM_INDEX = fails(function () {
-  // eslint-disable-next-line no-sparse-arrays, es/no-array-prototype-includes -- detection
-  return [, 1].includes(undefined, 1);
-});
-
-// `Array.prototype.includes` method
-// https://tc39.es/ecma262/#sec-array.prototype.includes
-$({ target: 'Array', proto: true, forced: BROKEN_ON_SPARSE || BROKEN_ON_SPARSE_WITH_FROM_INDEX }, {
-  includes: function includes(el /* , fromIndex = 0 */) {
-    return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
-  }
-});
-
-// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
-addToUnscopables('includes');
-
-
-/***/ },
-
-/***/ 4114
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var toObject = __webpack_require__(8981);
-var lengthOfArrayLike = __webpack_require__(6198);
-var setArrayLength = __webpack_require__(4527);
-var doesNotExceedSafeInteger = __webpack_require__(6837);
-var fails = __webpack_require__(9039);
-
-var INCORRECT_TO_LENGTH = fails(function () {
-  return [].push.call({ length: 0x100000000 }, 1) !== 4294967297;
-});
-
-// V8 <= 121 and Safari <= 15.4; FF < 23 throws InternalError
-// https://bugs.chromium.org/p/v8/issues/detail?id=12681
-var properErrorOnNonWritableLength = function () {
-  try {
-    // eslint-disable-next-line es/no-object-defineproperty -- safe
-    Object.defineProperty([], 'length', { writable: false }).push();
-  } catch (error) {
-    return error instanceof TypeError;
-  }
-};
-
-var FORCED = INCORRECT_TO_LENGTH || !properErrorOnNonWritableLength();
-
-// `Array.prototype.push` method
-// https://tc39.es/ecma262/#sec-array.prototype.push
-$({ target: 'Array', proto: true, arity: 1, forced: FORCED }, {
-  // eslint-disable-next-line no-unused-vars -- required for `.length`
-  push: function push(item) {
-    var O = toObject(this);
-    var len = lengthOfArrayLike(O);
-    var argCount = arguments.length;
-    doesNotExceedSafeInteger(len + argCount);
-    for (var i = 0; i < argCount; i++) {
-      O[len] = arguments[i];
-      len++;
-    }
-    setArrayLength(O, len);
-    return len;
-  }
-});
-
-
-/***/ },
-
-/***/ 8111
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var globalThis = __webpack_require__(4576);
-var anInstance = __webpack_require__(679);
-var anObject = __webpack_require__(8551);
-var isCallable = __webpack_require__(4901);
-var getPrototypeOf = __webpack_require__(2787);
-var defineBuiltInAccessor = __webpack_require__(2106);
-var createProperty = __webpack_require__(4659);
-var fails = __webpack_require__(9039);
-var hasOwn = __webpack_require__(9297);
-var wellKnownSymbol = __webpack_require__(8227);
-var IteratorPrototype = (__webpack_require__(7657).IteratorPrototype);
-var DESCRIPTORS = __webpack_require__(3724);
-var IS_PURE = __webpack_require__(6395);
-
-var CONSTRUCTOR = 'constructor';
-var ITERATOR = 'Iterator';
-var TO_STRING_TAG = wellKnownSymbol('toStringTag');
-
-var $TypeError = TypeError;
-var NativeIterator = globalThis[ITERATOR];
-
-// FF56- have non-standard global helper `Iterator`
-var FORCED = IS_PURE
-  || !isCallable(NativeIterator)
-  || NativeIterator.prototype !== IteratorPrototype
-  // FF44- non-standard `Iterator` passes previous tests
-  || !fails(function () { NativeIterator({}); });
-
-var IteratorConstructor = function Iterator() {
-  anInstance(this, IteratorPrototype);
-  if (getPrototypeOf(this) === IteratorPrototype) throw new $TypeError('Abstract class Iterator not directly constructable');
-};
-
-var defineIteratorPrototypeAccessor = function (key, value) {
-  if (DESCRIPTORS) {
-    defineBuiltInAccessor(IteratorPrototype, key, {
-      configurable: true,
-      get: function () {
-        return value;
-      },
-      set: function (replacement) {
-        anObject(this);
-        if (this === IteratorPrototype) throw new $TypeError("You can't redefine this property");
-        if (hasOwn(this, key)) this[key] = replacement;
-        else createProperty(this, key, replacement);
-      }
-    });
-  } else IteratorPrototype[key] = value;
-};
-
-if (!hasOwn(IteratorPrototype, TO_STRING_TAG)) defineIteratorPrototypeAccessor(TO_STRING_TAG, ITERATOR);
-
-if (FORCED || !hasOwn(IteratorPrototype, CONSTRUCTOR) || IteratorPrototype[CONSTRUCTOR] === Object) {
-  defineIteratorPrototypeAccessor(CONSTRUCTOR, IteratorConstructor);
-}
-
-IteratorConstructor.prototype = IteratorPrototype;
-
-// `Iterator` constructor
-// https://tc39.es/ecma262/#sec-iterator
-$({ global: true, constructor: true, forced: FORCED }, {
-  Iterator: IteratorConstructor
-});
-
-
-/***/ },
-
-/***/ 1148
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var call = __webpack_require__(9565);
-var iterate = __webpack_require__(2652);
-var aCallable = __webpack_require__(9306);
-var anObject = __webpack_require__(8551);
-var getIteratorDirect = __webpack_require__(1767);
-var iteratorClose = __webpack_require__(9539);
-var iteratorHelperWithoutClosingOnEarlyError = __webpack_require__(4549);
-
-var everyWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError('every', TypeError);
-
-// `Iterator.prototype.every` method
-// https://tc39.es/ecma262/#sec-iterator.prototype.every
-$({ target: 'Iterator', proto: true, real: true, forced: everyWithoutClosingOnEarlyError }, {
-  every: function every(predicate) {
-    anObject(this);
-    try {
-      aCallable(predicate);
-    } catch (error) {
-      iteratorClose(this, 'throw', error);
-    }
-
-    if (everyWithoutClosingOnEarlyError) return call(everyWithoutClosingOnEarlyError, this, predicate);
-
-    var record = getIteratorDirect(this);
-    var counter = 0;
-    return !iterate(record, function (value, stop) {
-      if (!predicate(value, counter++)) return stop();
-    }, { IS_RECORD: true, INTERRUPTED: true }).stopped;
-  }
-});
-
-
-/***/ },
-
-/***/ 2489
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var call = __webpack_require__(9565);
-var aCallable = __webpack_require__(9306);
-var anObject = __webpack_require__(8551);
-var getIteratorDirect = __webpack_require__(1767);
-var createIteratorProxy = __webpack_require__(9462);
-var callWithSafeIterationClosing = __webpack_require__(6319);
-var IS_PURE = __webpack_require__(6395);
-var iteratorClose = __webpack_require__(9539);
-var iteratorHelperThrowsOnInvalidIterator = __webpack_require__(684);
-var iteratorHelperWithoutClosingOnEarlyError = __webpack_require__(4549);
-
-var FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !iteratorHelperThrowsOnInvalidIterator('filter', function () { /* empty */ });
-var filterWithoutClosingOnEarlyError = !IS_PURE && !FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR
-  && iteratorHelperWithoutClosingOnEarlyError('filter', TypeError);
-
-var FORCED = IS_PURE || FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR || filterWithoutClosingOnEarlyError;
-
-var IteratorProxy = createIteratorProxy(function () {
-  var iterator = this.iterator;
-  var predicate = this.predicate;
-  var next = this.next;
-  var result, done, value;
-  while (true) {
-    result = anObject(call(next, iterator));
-    done = this.done = !!result.done;
-    if (done) return;
-    value = result.value;
-    if (callWithSafeIterationClosing(iterator, predicate, [value, this.counter++], true)) return value;
-  }
-});
-
-// `Iterator.prototype.filter` method
-// https://tc39.es/ecma262/#sec-iterator.prototype.filter
-$({ target: 'Iterator', proto: true, real: true, forced: FORCED }, {
-  filter: function filter(predicate) {
-    anObject(this);
-    try {
-      aCallable(predicate);
-    } catch (error) {
-      iteratorClose(this, 'throw', error);
-    }
-
-    if (filterWithoutClosingOnEarlyError) return call(filterWithoutClosingOnEarlyError, this, predicate);
-
-    return new IteratorProxy(getIteratorDirect(this), {
-      predicate: predicate
-    });
-  }
-});
-
-
-/***/ },
-
-/***/ 116
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var call = __webpack_require__(9565);
-var iterate = __webpack_require__(2652);
-var aCallable = __webpack_require__(9306);
-var anObject = __webpack_require__(8551);
-var getIteratorDirect = __webpack_require__(1767);
-var iteratorClose = __webpack_require__(9539);
-var iteratorHelperWithoutClosingOnEarlyError = __webpack_require__(4549);
-
-var findWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError('find', TypeError);
-
-// `Iterator.prototype.find` method
-// https://tc39.es/ecma262/#sec-iterator.prototype.find
-$({ target: 'Iterator', proto: true, real: true, forced: findWithoutClosingOnEarlyError }, {
-  find: function find(predicate) {
-    anObject(this);
-    try {
-      aCallable(predicate);
-    } catch (error) {
-      iteratorClose(this, 'throw', error);
-    }
-
-    if (findWithoutClosingOnEarlyError) return call(findWithoutClosingOnEarlyError, this, predicate);
-
-    var record = getIteratorDirect(this);
-    var counter = 0;
-    return iterate(record, function (value, stop) {
-      if (predicate(value, counter++)) return stop(value);
-    }, { IS_RECORD: true, INTERRUPTED: true }).result;
-  }
-});
-
-
-/***/ },
-
-/***/ 7588
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var call = __webpack_require__(9565);
-var iterate = __webpack_require__(2652);
-var aCallable = __webpack_require__(9306);
-var anObject = __webpack_require__(8551);
-var getIteratorDirect = __webpack_require__(1767);
-var iteratorClose = __webpack_require__(9539);
-var iteratorHelperWithoutClosingOnEarlyError = __webpack_require__(4549);
-
-var forEachWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError('forEach', TypeError);
-
-// `Iterator.prototype.forEach` method
-// https://tc39.es/ecma262/#sec-iterator.prototype.foreach
-$({ target: 'Iterator', proto: true, real: true, forced: forEachWithoutClosingOnEarlyError }, {
-  forEach: function forEach(fn) {
-    anObject(this);
-    try {
+    // optional / simple context binding
+    module.exports = function (fn, that) {
       aCallable(fn);
-    } catch (error) {
-      iteratorClose(this, 'throw', error);
-    }
+      return that === undefined
+        ? fn
+        : NATIVE_BIND
+          ? bind(fn, that)
+          : function (/* ...args */) {
+              return fn.apply(that, arguments);
+            };
+    };
 
-    if (forEachWithoutClosingOnEarlyError) return call(forEachWithoutClosingOnEarlyError, this, fn);
+    /***/
+  },
 
-    var record = getIteratorDirect(this);
-    var counter = 0;
-    iterate(record, function (value) {
-      fn(value, counter++);
-    }, { IS_RECORD: true });
-  }
-});
+  /***/ 616(module, __unused_webpack_exports, __webpack_require__) {
+    var fails = __webpack_require__(9039);
 
-
-/***/ },
-
-/***/ 1701
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var call = __webpack_require__(9565);
-var aCallable = __webpack_require__(9306);
-var anObject = __webpack_require__(8551);
-var getIteratorDirect = __webpack_require__(1767);
-var createIteratorProxy = __webpack_require__(9462);
-var callWithSafeIterationClosing = __webpack_require__(6319);
-var iteratorClose = __webpack_require__(9539);
-var iteratorHelperThrowsOnInvalidIterator = __webpack_require__(684);
-var iteratorHelperWithoutClosingOnEarlyError = __webpack_require__(4549);
-var IS_PURE = __webpack_require__(6395);
-
-var MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !iteratorHelperThrowsOnInvalidIterator('map', function () { /* empty */ });
-var mapWithoutClosingOnEarlyError = !IS_PURE && !MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR
-  && iteratorHelperWithoutClosingOnEarlyError('map', TypeError);
-
-var FORCED = IS_PURE || MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR || mapWithoutClosingOnEarlyError;
-
-var IteratorProxy = createIteratorProxy(function () {
-  var iterator = this.iterator;
-  var result = anObject(call(this.next, iterator));
-  var done = this.done = !!result.done;
-  if (!done) return callWithSafeIterationClosing(iterator, this.mapper, [result.value, this.counter++], true);
-});
-
-// `Iterator.prototype.map` method
-// https://tc39.es/ecma262/#sec-iterator.prototype.map
-$({ target: 'Iterator', proto: true, real: true, forced: FORCED }, {
-  map: function map(mapper) {
-    anObject(this);
-    try {
-      aCallable(mapper);
-    } catch (error) {
-      iteratorClose(this, 'throw', error);
-    }
-
-    if (mapWithoutClosingOnEarlyError) return call(mapWithoutClosingOnEarlyError, this, mapper);
-
-    return new IteratorProxy(getIteratorDirect(this), {
-      mapper: mapper
+    module.exports = !fails(function () {
+      // eslint-disable-next-line es/no-function-prototype-bind -- safe
+      var test = function () {
+        /* empty */
+      }.bind();
+      // eslint-disable-next-line no-prototype-builtins -- safe
+      return typeof test != "function" || test.hasOwnProperty("prototype");
     });
-  }
-});
 
-
-/***/ },
-
-/***/ 3579
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var call = __webpack_require__(9565);
-var iterate = __webpack_require__(2652);
-var aCallable = __webpack_require__(9306);
-var anObject = __webpack_require__(8551);
-var getIteratorDirect = __webpack_require__(1767);
-var iteratorClose = __webpack_require__(9539);
-var iteratorHelperWithoutClosingOnEarlyError = __webpack_require__(4549);
-
-var someWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError('some', TypeError);
-
-// `Iterator.prototype.some` method
-// https://tc39.es/ecma262/#sec-iterator.prototype.some
-$({ target: 'Iterator', proto: true, real: true, forced: someWithoutClosingOnEarlyError }, {
-  some: function some(predicate) {
-    anObject(this);
-    try {
-      aCallable(predicate);
-    } catch (error) {
-      iteratorClose(this, 'throw', error);
-    }
-
-    if (someWithoutClosingOnEarlyError) return call(someWithoutClosingOnEarlyError, this, predicate);
-
-    var record = getIteratorDirect(this);
-    var counter = 0;
-    return iterate(record, function (value, stop) {
-      if (predicate(value, counter++)) return stop();
-    }, { IS_RECORD: true, INTERRUPTED: true }).stopped;
-  }
-});
-
-
-/***/ },
-
-/***/ 9112
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var DESCRIPTORS = __webpack_require__(3724);
-var globalThis = __webpack_require__(4576);
-var getBuiltIn = __webpack_require__(7751);
-var uncurryThis = __webpack_require__(9504);
-var call = __webpack_require__(9565);
-var isCallable = __webpack_require__(4901);
-var isObject = __webpack_require__(34);
-var isArray = __webpack_require__(4376);
-var hasOwn = __webpack_require__(9297);
-var toString = __webpack_require__(655);
-var lengthOfArrayLike = __webpack_require__(6198);
-var createProperty = __webpack_require__(4659);
-var fails = __webpack_require__(9039);
-var parseJSONString = __webpack_require__(8235);
-var NATIVE_SYMBOL = __webpack_require__(4495);
-
-var JSON = globalThis.JSON;
-var Number = globalThis.Number;
-var SyntaxError = globalThis.SyntaxError;
-var nativeParse = JSON && JSON.parse;
-var enumerableOwnProperties = getBuiltIn('Object', 'keys');
-// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
-var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-var at = uncurryThis(''.charAt);
-var slice = uncurryThis(''.slice);
-var exec = uncurryThis(/./.exec);
-var push = uncurryThis([].push);
-
-var IS_DIGIT = /^\d$/;
-var IS_NON_ZERO_DIGIT = /^[1-9]$/;
-var IS_NUMBER_START = /^[\d-]$/;
-var IS_WHITESPACE = /^[\t\n\r ]$/;
-
-var PRIMITIVE = 0;
-var OBJECT = 1;
-
-var $parse = function (source, reviver) {
-  source = toString(source);
-  var context = new Context(source, 0);
-  var root = context.parse();
-  var value = root.value;
-  var endIndex = context.skip(IS_WHITESPACE, root.end);
-  if (endIndex < source.length) {
-    throw new SyntaxError('Unexpected extra character: "' + at(source, endIndex) + '" after the parsed data at: ' + endIndex);
-  }
-  return isCallable(reviver) ? internalize({ '': value }, '', reviver, root) : value;
-};
-
-var internalize = function (holder, name, reviver, node) {
-  var val = holder[name];
-  var unmodified = node && val === node.value;
-  var context = unmodified && typeof node.source == 'string' ? { source: node.source } : {};
-  var elementRecordsLen, keys, len, i, P;
-  if (isObject(val)) {
-    var nodeIsArray = isArray(val);
-    var nodes = unmodified ? node.nodes : nodeIsArray ? [] : {};
-    if (nodeIsArray) {
-      elementRecordsLen = nodes.length;
-      len = lengthOfArrayLike(val);
-      for (i = 0; i < len; i++) {
-        internalizeProperty(val, i, internalize(val, '' + i, reviver, i < elementRecordsLen ? nodes[i] : undefined));
-      }
-    } else {
-      keys = enumerableOwnProperties(val);
-      len = lengthOfArrayLike(keys);
-      for (i = 0; i < len; i++) {
-        P = keys[i];
-        internalizeProperty(val, P, internalize(val, P, reviver, hasOwn(nodes, P) ? nodes[P] : undefined));
-      }
-    }
-  }
-  return call(reviver, holder, name, val, context);
-};
-
-var internalizeProperty = function (object, key, value) {
-  if (DESCRIPTORS) {
-    var descriptor = getOwnPropertyDescriptor(object, key);
-    if (descriptor && !descriptor.configurable) return;
-  }
-  if (value === undefined) delete object[key];
-  else createProperty(object, key, value);
-};
-
-var Node = function (value, end, source, nodes) {
-  this.value = value;
-  this.end = end;
-  this.source = source;
-  this.nodes = nodes;
-};
-
-var Context = function (source, index) {
-  this.source = source;
-  this.index = index;
-};
-
-// https://www.json.org/json-en.html
-Context.prototype = {
-  fork: function (nextIndex) {
-    return new Context(this.source, nextIndex);
+    /***/
   },
-  parse: function () {
-    var source = this.source;
-    var i = this.skip(IS_WHITESPACE, this.index);
-    var fork = this.fork(i);
-    var chr = at(source, i);
-    if (exec(IS_NUMBER_START, chr)) return fork.number();
-    switch (chr) {
-      case '{':
-        return fork.object();
-      case '[':
-        return fork.array();
-      case '"':
-        return fork.string();
-      case 't':
-        return fork.keyword(true);
-      case 'f':
-        return fork.keyword(false);
-      case 'n':
-        return fork.keyword(null);
-    } throw new SyntaxError('Unexpected character: "' + chr + '" at: ' + i);
+
+  /***/ 9565(module, __unused_webpack_exports, __webpack_require__) {
+    var NATIVE_BIND = __webpack_require__(616);
+
+    var call = Function.prototype.call;
+    // eslint-disable-next-line es/no-function-prototype-bind -- safe
+    module.exports = NATIVE_BIND
+      ? call.bind(call)
+      : function () {
+          return call.apply(call, arguments);
+        };
+
+    /***/
   },
-  node: function (type, value, start, end, nodes) {
-    return new Node(value, end, type ? null : slice(this.source, start, end), nodes);
+
+  /***/ 350(module, __unused_webpack_exports, __webpack_require__) {
+    var DESCRIPTORS = __webpack_require__(3724);
+    var hasOwn = __webpack_require__(9297);
+
+    var FunctionPrototype = Function.prototype;
+    // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+    var getDescriptor = DESCRIPTORS && Object.getOwnPropertyDescriptor;
+
+    var EXISTS = hasOwn(FunctionPrototype, "name");
+    // additional protection from minified / mangled / dropped function names
+    var PROPER =
+      EXISTS &&
+      function something() {
+        /* empty */
+      }.name === "something";
+    var CONFIGURABLE = EXISTS && (!DESCRIPTORS || (DESCRIPTORS && getDescriptor(FunctionPrototype, "name").configurable));
+
+    module.exports = {
+      EXISTS: EXISTS,
+      PROPER: PROPER,
+      CONFIGURABLE: CONFIGURABLE,
+    };
+
+    /***/
   },
-  object: function () {
-    var source = this.source;
-    var i = this.index + 1;
-    var expectKeypair = false;
-    var object = {};
-    var nodes = {};
-    var closed = false;
-    while (i < source.length) {
-      i = this.until(['"', '}'], i);
-      if (at(source, i) === '}' && !expectKeypair) {
-        i++;
-        closed = true;
-        break;
+
+  /***/ 6706(module, __unused_webpack_exports, __webpack_require__) {
+    var uncurryThis = __webpack_require__(9504);
+    var aCallable = __webpack_require__(9306);
+
+    module.exports = function (object, key, method) {
+      try {
+        // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+        return uncurryThis(aCallable(Object.getOwnPropertyDescriptor(object, key)[method]));
+      } catch (error) {
+        /* empty */
       }
-      // Parsing the key
-      var result = this.fork(i).string();
-      var key = result.value;
-      i = result.end;
-      i = this.until([':'], i) + 1;
-      // Parsing value
-      i = this.skip(IS_WHITESPACE, i);
-      result = this.fork(i).parse();
-      createProperty(nodes, key, result);
-      createProperty(object, key, result.value);
-      i = this.until([',', '}'], result.end);
-      var chr = at(source, i);
-      if (chr === ',') {
-        expectKeypair = true;
-        i++;
-      } else if (chr === '}') {
-        i++;
-        closed = true;
-        break;
-      }
-    }
-    if (!closed) throw new SyntaxError('Unterminated object at: ' + i);
-    return this.node(OBJECT, object, this.index, i, nodes);
+    };
+
+    /***/
   },
-  array: function () {
-    var source = this.source;
-    var i = this.index + 1;
-    var expectElement = false;
-    var array = [];
-    var nodes = [];
-    var closed = false;
-    while (i < source.length) {
-      i = this.skip(IS_WHITESPACE, i);
-      if (at(source, i) === ']' && !expectElement) {
-        i++;
-        closed = true;
-        break;
-      }
-      var result = this.fork(i).parse();
-      push(nodes, result);
-      push(array, result.value);
-      i = this.until([',', ']'], result.end);
-      if (at(source, i) === ',') {
-        expectElement = true;
-        i++;
-      } else if (at(source, i) === ']') {
-        i++;
-        closed = true;
-        break;
-      }
-    }
-    if (!closed) throw new SyntaxError('Unterminated array at: ' + i);
-    return this.node(OBJECT, array, this.index, i, nodes);
+
+  /***/ 7476(module, __unused_webpack_exports, __webpack_require__) {
+    var classofRaw = __webpack_require__(2195);
+    var uncurryThis = __webpack_require__(9504);
+
+    module.exports = function (fn) {
+      // Nashorn bug:
+      //   https://github.com/zloirock/core-js/issues/1128
+      //   https://github.com/zloirock/core-js/issues/1130
+      if (classofRaw(fn) === "Function") return uncurryThis(fn);
+    };
+
+    /***/
   },
-  string: function () {
-    var index = this.index;
-    var parsed = parseJSONString(this.source, this.index + 1);
-    return this.node(PRIMITIVE, parsed.value, index, parsed.end);
+
+  /***/ 9504(module, __unused_webpack_exports, __webpack_require__) {
+    var NATIVE_BIND = __webpack_require__(616);
+
+    var FunctionPrototype = Function.prototype;
+    var call = FunctionPrototype.call;
+    // eslint-disable-next-line es/no-function-prototype-bind -- safe
+    var uncurryThisWithBind = NATIVE_BIND && FunctionPrototype.bind.bind(call, call);
+
+    module.exports = NATIVE_BIND
+      ? uncurryThisWithBind
+      : function (fn) {
+          return function () {
+            return call.apply(fn, arguments);
+          };
+        };
+
+    /***/
   },
-  number: function () {
-    var source = this.source;
-    var startIndex = this.index;
-    var i = startIndex;
-    if (at(source, i) === '-') i++;
-    if (at(source, i) === '0') i++;
-    else if (exec(IS_NON_ZERO_DIGIT, at(source, i))) i = this.skip(IS_DIGIT, i + 1);
-    else throw new SyntaxError('Failed to parse number at: ' + i);
-    if (at(source, i) === '.') {
-      var fractionStartIndex = i + 1;
-      i = this.skip(IS_DIGIT, fractionStartIndex);
-      if (fractionStartIndex === i) throw new SyntaxError("Failed to parse number's fraction at: " + i);
-    }
-    if (at(source, i) === 'e' || at(source, i) === 'E') {
-      i++;
-      if (at(source, i) === '+' || at(source, i) === '-') i++;
-      var exponentStartIndex = i;
-      i = this.skip(IS_DIGIT, i);
-      if (exponentStartIndex === i) throw new SyntaxError("Failed to parse number's exponent value at: " + i);
-    }
-    return this.node(PRIMITIVE, Number(slice(source, startIndex, i)), startIndex, i);
+
+  /***/ 7751(module, __unused_webpack_exports, __webpack_require__) {
+    var globalThis = __webpack_require__(4576);
+    var isCallable = __webpack_require__(4901);
+
+    var aFunction = function (argument) {
+      return isCallable(argument) ? argument : undefined;
+    };
+
+    module.exports = function (namespace, method) {
+      return arguments.length < 2 ? aFunction(globalThis[namespace]) : globalThis[namespace] && globalThis[namespace][method];
+    };
+
+    /***/
   },
-  keyword: function (value) {
-    var keyword = '' + value;
-    var index = this.index;
-    var endIndex = index + keyword.length;
-    if (slice(this.source, index, endIndex) !== keyword) throw new SyntaxError('Failed to parse value at: ' + index);
-    return this.node(PRIMITIVE, value, index, endIndex);
-  },
-  skip: function (regex, i) {
-    var source = this.source;
-    for (; i < source.length; i++) if (!exec(regex, at(source, i))) break;
-    return i;
-  },
-  until: function (array, i) {
-    i = this.skip(IS_WHITESPACE, i);
-    var chr = at(this.source, i);
-    for (var j = 0; j < array.length; j++) if (array[j] === chr) return i;
-    throw new SyntaxError('Unexpected character: "' + chr + '" at: ' + i);
-  }
-};
 
-var NO_SOURCE_SUPPORT = fails(function () {
-  var unsafeInt = '9007199254740993';
-  var source;
-  nativeParse(unsafeInt, function (key, value, context) {
-    source = context.source;
-  });
-  return source !== unsafeInt;
-});
-
-var PROPER_BASE_PARSE = NATIVE_SYMBOL && !fails(function () {
-  // Safari 9 bug
-  return 1 / nativeParse('-0 \t') !== -Infinity;
-});
-
-// `JSON.parse` method
-// https://tc39.es/ecma262/#sec-json.parse
-// https://github.com/tc39/proposal-json-parse-with-source
-$({ target: 'JSON', stat: true, forced: NO_SOURCE_SUPPORT }, {
-  parse: function parse(text, reviver) {
-    return PROPER_BASE_PARSE && !isCallable(reviver) ? nativeParse(text) : $parse(text, reviver);
-  }
-});
-
-
-/***/ },
-
-/***/ 3110
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var getBuiltIn = __webpack_require__(7751);
-var call = __webpack_require__(9565);
-var uncurryThis = __webpack_require__(9504);
-var fails = __webpack_require__(9039);
-var isArray = __webpack_require__(4376);
-var isCallable = __webpack_require__(4901);
-var isObject = __webpack_require__(34);
-var create = __webpack_require__(2360);
-var isRawJSON = __webpack_require__(5810);
-var isSymbol = __webpack_require__(757);
-var classof = __webpack_require__(2195);
-var thisNumberValue = __webpack_require__(1240);
-var includes = (__webpack_require__(9617).includes);
-var hasOwn = __webpack_require__(9297);
-var toString = __webpack_require__(655);
-var parseJSONString = __webpack_require__(8235);
-var uid = __webpack_require__(3392);
-var NATIVE_SYMBOL = __webpack_require__(4495);
-var NATIVE_RAW_JSON = __webpack_require__(7819);
-
-var $String = String;
-var $TypeError = TypeError;
-var $stringify = getBuiltIn('JSON', 'stringify');
-var $BigInt = getBuiltIn('BigInt');
-var stringValueOf = uncurryThis(''.valueOf);
-var booleanValueOf = uncurryThis(true.valueOf);
-var bigIntValueOf = $BigInt && uncurryThis($BigInt.prototype.valueOf);
-var exec = uncurryThis(/./.exec);
-var charAt = uncurryThis(''.charAt);
-var charCodeAt = uncurryThis(''.charCodeAt);
-var replace = uncurryThis(''.replace);
-var slice = uncurryThis(''.slice);
-var push = uncurryThis([].push);
-var pop = uncurryThis([].pop);
-var numberToString = uncurryThis(1.1.toString);
-
-var surrogates = /[\uD800-\uDFFF]/g;
-var leadingSurrogates = /^[\uD800-\uDBFF]$/;
-var trailingSurrogates = /^[\uDC00-\uDFFF]$/;
-var digits = /^\d+$/;
-
-// a placeholder of a raw JSON value
-var RAW_MARK = uid();
-// a prefix of keys of a reordered object, see `createOrderedObject`
-var KEY_MARK = uid();
-// the last key of a reordered object, marks the end of its serialization
-var END_MARK = uid();
-var RAW_MARK_LENGTH = RAW_MARK.length;
-var KEY_MARK_LENGTH = KEY_MARK.length;
-
-var WRONG_SYMBOLS_CONVERSION = !NATIVE_SYMBOL || fails(function () {
-  var symbol = getBuiltIn('Symbol')('stringify detection');
-  // MS Edge converts symbol values to JSON as {}
-  return $stringify([symbol]) !== '[null]'
-    // WebKit converts symbol values to JSON as null
-    || $stringify({ a: symbol }) !== '{}'
-    // V8 throws on boxed symbols
-    || $stringify(Object(symbol)) !== '{}';
-});
-
-// https://github.com/tc39/proposal-well-formed-stringify
-var ILL_FORMED_UNICODE = fails(function () {
-  return $stringify('\uDF06\uD834') !== '"\\udf06\\ud834"'
-    || $stringify('\uDEAD') !== '"\\udead"';
-});
-
-var isRawJSONValue = NATIVE_RAW_JSON ? getBuiltIn('JSON', 'isRawJSON') : isRawJSON;
-
-var stringifyWithProperSymbolsConversion = WRONG_SYMBOLS_CONVERSION ? function (it, replacer, space) {
-  return $stringify(it, function (key, value) {
-    var replaced = call(replacer, this, key, value);
-    if (!isSymbol(replaced)) return replaced;
-  }, space);
-} : $stringify;
-
-var fixIllFormedJSON = function (match, offset, string) {
-  var prev = charAt(string, offset - 1);
-  var next = charAt(string, offset + 1);
-  if (
-    (exec(leadingSurrogates, match) && !exec(trailingSurrogates, next)) ||
-    (exec(trailingSurrogates, match) && !exec(leadingSurrogates, prev))
-  ) {
-    return '\\u' + numberToString(charCodeAt(match, 0), 16);
-  } return match;
-};
-
-// `PropertyList` of `JSON.stringify`
-// https://tc39.es/ecma262/#sec-json.stringify
-var getPropertyList = function (replacer) {
-  if (!isArray(replacer)) return;
-  var rawLength = replacer.length;
-  var propertyList = [];
-  // a null prototype object is used as a set of already added keys to keep the deduplication linear
-  var addedKeys = create(null);
-  for (var i = 0; i < rawLength; i++) {
-    var element = replacer[i];
-    var key;
-    if (typeof element == 'string') key = element;
-    else if (typeof element == 'number' || classof(element) === 'Number' || classof(element) === 'String') key = toString(element);
-    else continue;
-    if (!hasOwn(addedKeys, key)) {
-      addedKeys[key] = true;
-      push(propertyList, key);
-    }
-  }
-  return propertyList;
-};
-
-// values with such an internal slot are unwrapped by `SerializeJSONProperty` instead of being serialized as objects
-var hasInternalSlot = function (valueOf, it) {
-  try {
-    valueOf(it);
-    return true;
-  } catch (error) {
-    return false;
-  }
-};
-
-// the slot check is expensive, so it's performed only for the kind reported by the value itself -
-// a value lying about its kind via `Symbol.toStringTag` is serialized as an ordinary object
-var isBoxedPrimitive = function (it) {
-  var kind = classof(it);
-  return (kind === 'Number' && hasInternalSlot(thisNumberValue, it))
-    || (kind === 'String' && hasInternalSlot(stringValueOf, it))
-    || (kind === 'Boolean' && hasInternalSlot(booleanValueOf, it))
-    || (!!bigIntValueOf && kind === 'BigInt' && hasInternalSlot(bigIntValueOf, it));
-};
-
-// only objects serialized by `SerializeJSONObject` are affected by the property list
-var isSerializedAsObject = function (it) {
-  if (!isObject(it) || isCallable(it) || isArray(it)) return false;
-  try {
-    return !isBoxedPrimitive(it);
-  // `classof` reads `Symbol.toStringTag`, so a proxy could throw - it has no internal slots anyway
-  } catch (error) {
-    return true;
-  }
-};
-
-// the engine unwraps it in the same order as it would read the original property,
-// so the property is read lazily and `toJSON` is called once and with the original key
-var createElementHolder = function (holder, key) {
-  return {
-    toJSON: function () {
-      var element = holder[key];
-      if (isObject(element) || typeof element == 'bigint') {
-        var elementToJSON = element.toJSON;
-        if (isCallable(elementToJSON)) element = call(elementToJSON, element, key);
-      } return element;
-    }
-  };
-};
-
-// own keys of objects are sorted - integer-like keys are moved to the beginning,
-// so such keys should be marked and restored in the serialized string
-var getKeyPrefix = function (propertyList) {
-  for (var i = 0, length = propertyList.length; i < length; i++) {
-    if (exec(digits, propertyList[i])) return KEY_MARK;
-  } return '';
-};
-
-// `SerializeJSONObject` iterates the property list, so the value is replaced with an object with keys in this order
-var createOrderedObject = function (value, propertyList, keyPrefix) {
-  // keys are not marked if the property list has no integer-like keys, so `Object.prototype`
-  // with a setter, a non-writable property or `__proto__` should not intercept the assignment
-  var ordered = create(null);
-  for (var i = 0, length = propertyList.length; i < length; i++) {
-    var key = propertyList[i];
-    ordered[keyPrefix + key] = createElementHolder(value, key);
-  }
-  ordered[END_MARK] = null;
-  return ordered;
-};
-
-// `JSON.stringify` method
-// https://tc39.es/ecma262/#sec-json.stringify
-// https://github.com/tc39/proposal-json-parse-with-source
-if ($stringify) $({ target: 'JSON', stat: true, arity: 3, forced: WRONG_SYMBOLS_CONVERSION || ILL_FORMED_UNICODE || !NATIVE_RAW_JSON }, {
-  stringify: function stringify(text, replacer, space) {
-    var replacerFunction = isCallable(replacer) ? replacer : undefined;
-    var propertyList = replacerFunction ? undefined : getPropertyList(replacer);
-    var keyPrefix = propertyList && getKeyPrefix(propertyList);
-    var rawStrings = [];
-    var openObjects = [];
-    var parentOrdered = [];
-    var currentOrdered;
-    var marked = false;
-    var root = true;
-
-    var json = stringifyWithProperSymbolsConversion(text, function (key, value) {
-      // some old implementations (like WebKit) could pass numbers as keys
-      key = $String(key);
-
-      if (propertyList) {
-        if (key === END_MARK) {
-          pop(openObjects);
-          currentOrdered = pop(parentOrdered);
-          return;
-        }
-        if (root) root = false;
-        // the innermost reordered object already contains only keys of the property list and arrays are not
-        // affected by it, the rest of objects (like objects with a fake `Symbol.toStringTag`) are filtered here
-        else if (this !== currentOrdered && !isArray(this) && !includes(propertyList, key)) return;
-      } else if (replacerFunction) value = call(replacerFunction, this, key, value);
-
-      if (isRawJSONValue(value)) {
-        if (NATIVE_RAW_JSON) return value;
-        marked = true;
-        return RAW_MARK + (push(rawStrings, value.rawJSON) - 1);
-      }
-
-      if (propertyList && isSerializedAsObject(value)) {
-        // reordered objects are new each time, so cycles should be detected before the engine does it
-        if (includes(openObjects, value)) throw new $TypeError('Converting circular structure to JSON');
-        var ordered = createOrderedObject(value, propertyList, keyPrefix);
-        push(openObjects, value);
-        push(parentOrdered, currentOrdered);
-        currentOrdered = ordered;
-        if (keyPrefix) marked = true;
-        return ordered;
-      }
-
-      return value;
-    }, space);
-
-    if (typeof json != 'string') return json;
-
-    if (ILL_FORMED_UNICODE) json = replace(json, surrogates, fixIllFormedJSON);
-
-    if (!marked) return json;
-
-    var result = '';
-    var length = json.length;
-
-    for (var i = 0; i < length; i++) {
-      var chr = charAt(json, i);
-      if (chr === '"') {
-        var end = parseJSONString(json, ++i).end - 1;
-        var string = slice(json, i, end);
-        if (slice(string, 0, RAW_MARK_LENGTH) === RAW_MARK) result += rawStrings[slice(string, RAW_MARK_LENGTH)];
-        else if (slice(string, 0, KEY_MARK_LENGTH) === KEY_MARK) result += '"' + slice(string, KEY_MARK_LENGTH) + '"';
-        else result += '"' + string + '"';
-        i = end;
-      } else result += chr;
-    }
-
-    return result;
-  }
-});
-
-
-/***/ },
-
-/***/ 2731
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var aCallable = __webpack_require__(9306);
-var MapHelpers = __webpack_require__(2248);
-var IS_PURE = __webpack_require__(6395);
-
-var get = MapHelpers.get;
-var has = MapHelpers.has;
-var set = MapHelpers.set;
-
-// `Map.prototype.getOrInsertComputed` method
-// https://tc39.es/ecma262/#sec-map.prototype.getorinsertcomputed
-$({ target: 'Map', proto: true, real: true, forced: IS_PURE }, {
-  getOrInsertComputed: function getOrInsertComputed(key, callbackfn) {
-    var hasKey = has(this, key);
-    aCallable(callbackfn);
-    if (hasKey) return get(this, key);
-    // CanonicalizeKeyedCollectionKey
-    if (key === 0 && 1 / key === -Infinity) key = 0;
-    var value = callbackfn(key);
-    set(this, key, value);
-    return value;
-  }
-});
-
-
-/***/ },
-
-/***/ 5367
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var MapHelpers = __webpack_require__(2248);
-var IS_PURE = __webpack_require__(6395);
-
-var get = MapHelpers.get;
-var has = MapHelpers.has;
-var set = MapHelpers.set;
-
-// `Map.prototype.getOrInsert` method
-// https://tc39.es/ecma262/#sec-map.prototype.getorinsert
-$({ target: 'Map', proto: true, real: true, forced: IS_PURE }, {
-  getOrInsert: function getOrInsert(key, value) {
-    if (has(this, key)) return get(this, key);
-    set(this, key, value);
-    return value;
-  }
-});
-
-
-/***/ },
-
-/***/ 6069
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var uncurryThis = __webpack_require__(9504);
-var aString = __webpack_require__(3463);
-var hasOwn = __webpack_require__(9297);
-var padStart = (__webpack_require__(533).start);
-var WHITESPACES = __webpack_require__(7452);
-
-var $Array = Array;
-var $escape = RegExp.escape;
-var charAt = uncurryThis(''.charAt);
-var charCodeAt = uncurryThis(''.charCodeAt);
-var numberToString = uncurryThis(1.1.toString);
-var join = uncurryThis([].join);
-var FIRST_DIGIT_OR_ASCII = /^[0-9a-z]/i;
-var SYNTAX_SOLIDUS = /^[$()*+./?[\\\]^{|}]/;
-var OTHER_PUNCTUATORS_AND_WHITESPACES = RegExp('^[!"#%&\',\\-:;<=>@`~' + WHITESPACES + ']');
-var exec = uncurryThis(FIRST_DIGIT_OR_ASCII.exec);
-
-var ControlEscape = {
-  '\u0009': 't',
-  '\u000A': 'n',
-  '\u000B': 'v',
-  '\u000C': 'f',
-  '\u000D': 'r'
-};
-
-var escapeChar = function (chr) {
-  var hex = numberToString(charCodeAt(chr, 0), 16);
-  return hex.length < 3 ? '\\x' + padStart(hex, 2, '0') : '\\u' + padStart(hex, 4, '0');
-};
-
-// Avoiding the use of polyfills of the previous iteration of this proposal
-var FORCED = !$escape || $escape('ab') !== '\\x61b';
-
-// `RegExp.escape` method
-// https://tc39.es/ecma262/#sec-regexp.escape
-$({ target: 'RegExp', stat: true, forced: FORCED }, {
-  escape: function escape(S) {
-    aString(S);
-    var length = S.length;
-    var result = $Array(length);
-
-    for (var i = 0; i < length; i++) {
-      var chr = charAt(S, i);
-      if (i === 0 && exec(FIRST_DIGIT_OR_ASCII, chr)) {
-        result[i] = escapeChar(chr);
-      } else if (hasOwn(ControlEscape, chr)) {
-        result[i] = '\\' + ControlEscape[chr];
-      } else if (exec(SYNTAX_SOLIDUS, chr)) {
-        result[i] = '\\' + chr;
-      } else if (exec(OTHER_PUNCTUATORS_AND_WHITESPACES, chr)) {
-        result[i] = escapeChar(chr);
-      } else {
-        var charCode = charCodeAt(chr, 0);
-        // single UTF-16 code unit
-        if ((charCode & 0xF800) !== 0xD800) result[i] = chr;
-        // unpaired surrogate
-        else if (charCode >= 0xDC00 || i + 1 >= length || (charCodeAt(S, i + 1) & 0xFC00) !== 0xDC00) result[i] = escapeChar(chr);
-        // surrogate pair
-        else {
-          result[i] = chr;
-          result[++i] = charAt(S, i);
-        }
-      }
-    }
-
-    return join(result, '');
-  }
-});
-
-
-/***/ },
-
-/***/ 7642
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var difference = __webpack_require__(3440);
-var fails = __webpack_require__(9039);
-var setMethodAcceptSetLike = __webpack_require__(4916);
-
-var SET_LIKE_INCORRECT_BEHAVIOR = !setMethodAcceptSetLike('difference', function (result) {
-  return result.size === 0;
-});
-
-var FORCED = SET_LIKE_INCORRECT_BEHAVIOR || fails(function () {
-  // https://bugs.webkit.org/show_bug.cgi?id=288595
-  var setLike = {
-    size: 1,
-    has: function () { return true; },
-    keys: function () {
-      var index = 0;
+  /***/ 1767(module) {
+    // `GetIteratorDirect(obj)` abstract operation
+    // https://tc39.es/ecma262/#sec-getiteratordirect
+    module.exports = function (obj) {
       return {
-        next: function () {
-          var done = index++ > 1;
-          if (baseSet.has(1)) baseSet.clear();
-          return { done: done, value: 2 };
+        iterator: obj,
+        next: obj.next,
+        done: false,
+      };
+    };
+
+    /***/
+  },
+
+  /***/ 8563(module, __unused_webpack_exports, __webpack_require__) {
+    var call = __webpack_require__(9565);
+    var isCallable = __webpack_require__(4901);
+    var anObject = __webpack_require__(8551);
+    var tryToString = __webpack_require__(6823);
+    var getIteratorMethod = __webpack_require__(3085);
+
+    var $TypeError = TypeError;
+
+    module.exports = function (argument, usingIterator) {
+      var iteratorMethod = arguments.length < 2 ? getIteratorMethod(argument) : usingIterator;
+      if (isCallable(iteratorMethod)) return anObject(call(iteratorMethod, argument));
+      throw new $TypeError(tryToString(argument) + " is not iterable");
+    };
+
+    /***/
+  },
+
+  /***/ 3085(module, __unused_webpack_exports, __webpack_require__) {
+    var classof = __webpack_require__(2195);
+    var isNullOrUndefined = __webpack_require__(4117);
+    var getMethod = __webpack_require__(5966);
+    var wellKnownSymbol = __webpack_require__(8227);
+
+    var ITERATOR = wellKnownSymbol("iterator");
+    var ArrayPrototype = Array.prototype;
+
+    module.exports = function (it) {
+      if (!isNullOrUndefined(it))
+        return getMethod(it, ITERATOR) || getMethod(it, "@@iterator") || (classof(it) === "Arguments" ? ArrayPrototype[ITERATOR] : undefined);
+    };
+
+    /***/
+  },
+
+  /***/ 5966(module, __unused_webpack_exports, __webpack_require__) {
+    var aCallable = __webpack_require__(9306);
+    var isNullOrUndefined = __webpack_require__(4117);
+
+    // `GetMethod` abstract operation
+    // https://tc39.es/ecma262/#sec-getmethod
+    module.exports = function (V, P) {
+      var func = V[P];
+      return isNullOrUndefined(func) ? undefined : aCallable(func);
+    };
+
+    /***/
+  },
+
+  /***/ 3789(module, __unused_webpack_exports, __webpack_require__) {
+    var aCallable = __webpack_require__(9306);
+    var anObject = __webpack_require__(8551);
+    var call = __webpack_require__(9565);
+    var toIntegerOrInfinity = __webpack_require__(1291);
+    var getIteratorDirect = __webpack_require__(1767);
+
+    var INVALID_SIZE = "Invalid size";
+    var $RangeError = RangeError;
+    var $TypeError = TypeError;
+    var max = Math.max;
+
+    var SetRecord = function (set, intSize) {
+      this.set = set;
+      this.size = max(intSize, 0);
+      this.has = aCallable(set.has);
+      this.keys = aCallable(set.keys);
+    };
+
+    SetRecord.prototype = {
+      getIterator: function () {
+        return getIteratorDirect(anObject(call(this.keys, this.set)));
+      },
+      includes: function (it) {
+        return call(this.has, this.set, it);
+      },
+    };
+
+    // `GetSetRecord` abstract operation
+    // https://tc39.es/proposal-set-methods/#sec-getsetrecord
+    module.exports = function (obj) {
+      anObject(obj);
+      var numSize = +obj.size;
+      // NOTE: If size is undefined, then numSize will be NaN
+      // eslint-disable-next-line no-self-compare -- NaN check
+      if (numSize !== numSize) throw new $TypeError(INVALID_SIZE);
+      var intSize = toIntegerOrInfinity(numSize);
+      if (intSize < 0) throw new $RangeError(INVALID_SIZE);
+      return new SetRecord(obj, intSize);
+    };
+
+    /***/
+  },
+
+  /***/ 4576(module) {
+    var check = function (it) {
+      return it && it.Math === Math && it;
+    };
+
+    // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+    module.exports =
+      // eslint-disable-next-line es/no-global-this -- safe
+      check(typeof globalThis == "object" && globalThis) ||
+      check(typeof window == "object" && window) ||
+      // eslint-disable-next-line no-restricted-globals -- safe
+      check(typeof self == "object" && self) ||
+      check(typeof global == "object" && global) ||
+      check(typeof this == "object" && this) ||
+      // eslint-disable-next-line no-new-func -- fallback
+      (function () {
+        return this;
+      })() ||
+      Function("return this")();
+
+    /***/
+  },
+
+  /***/ 9297(module, __unused_webpack_exports, __webpack_require__) {
+    var uncurryThis = __webpack_require__(9504);
+    var toObject = __webpack_require__(8981);
+
+    var hasOwnProperty = uncurryThis({}.hasOwnProperty);
+
+    // `HasOwnProperty` abstract operation
+    // https://tc39.es/ecma262/#sec-hasownproperty
+    // eslint-disable-next-line es/no-object-hasown -- safe
+    module.exports =
+      Object.hasOwn ||
+      function hasOwn(it, key) {
+        return hasOwnProperty(toObject(it), key);
+      };
+
+    /***/
+  },
+
+  /***/ 421(module) {
+    module.exports = {};
+
+    /***/
+  },
+
+  /***/ 397(module, __unused_webpack_exports, __webpack_require__) {
+    var getBuiltIn = __webpack_require__(7751);
+
+    module.exports = getBuiltIn("document", "documentElement");
+
+    /***/
+  },
+
+  /***/ 5917(module, __unused_webpack_exports, __webpack_require__) {
+    var DESCRIPTORS = __webpack_require__(3724);
+    var fails = __webpack_require__(9039);
+    var createElement = __webpack_require__(4055);
+
+    // Thanks to IE8 for its funny defineProperty
+    module.exports =
+      !DESCRIPTORS &&
+      !fails(function () {
+        // eslint-disable-next-line es/no-object-defineproperty -- required for testing
+        return (
+          Object.defineProperty(createElement("div"), "a", {
+            get: function () {
+              return 7;
+            },
+          }).a !== 7
+        );
+      });
+
+    /***/
+  },
+
+  /***/ 7055(module, __unused_webpack_exports, __webpack_require__) {
+    var uncurryThis = __webpack_require__(9504);
+    var fails = __webpack_require__(9039);
+    var classof = __webpack_require__(2195);
+
+    var $Object = Object;
+    var split = uncurryThis("".split);
+
+    // fallback for non-array-like ES3 and non-enumerable old V8 strings
+    module.exports = fails(function () {
+      // throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
+      // eslint-disable-next-line no-prototype-builtins -- safe
+      return !$Object("z").propertyIsEnumerable(0);
+    })
+      ? function (it) {
+          return classof(it) === "String" ? split(it, "") : $Object(it);
         }
+      : $Object;
+
+    /***/
+  },
+
+  /***/ 3706(module, __unused_webpack_exports, __webpack_require__) {
+    var uncurryThis = __webpack_require__(9504);
+    var isCallable = __webpack_require__(4901);
+    var store = __webpack_require__(7629);
+
+    var functionToString = uncurryThis(Function.toString);
+
+    // this helper broken in `core-js@3.4.1-3.4.4`, so we can't use `shared` helper
+    if (!isCallable(store.inspectSource)) {
+      store.inspectSource = function (it) {
+        return functionToString(it);
       };
     }
-  };
-  // eslint-disable-next-line es/no-set -- testing
-  var baseSet = new Set([1, 2, 3, 4]);
-  // eslint-disable-next-line es/no-set-prototype-difference -- testing
-  return baseSet.difference(setLike).size !== 3;
-});
 
-// `Set.prototype.difference` method
-// https://tc39.es/ecma262/#sec-set.prototype.difference
-$({ target: 'Set', proto: true, real: true, forced: FORCED }, {
-  difference: difference
-});
-
-
-/***/ },
-
-/***/ 8004
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var fails = __webpack_require__(9039);
-var intersection = __webpack_require__(8750);
-var setMethodAcceptSetLike = __webpack_require__(4916);
-
-var INCORRECT = !setMethodAcceptSetLike('intersection', function (result) {
-  return result.size === 2 && result.has(1) && result.has(2);
-}) || fails(function () {
-  // eslint-disable-next-line es/no-array-from, es/no-set, es/no-set-prototype-intersection -- testing
-  return String(Array.from(new Set([1, 2, 3]).intersection(new Set([3, 2])))) !== '3,2';
-});
-
-// `Set.prototype.intersection` method
-// https://tc39.es/ecma262/#sec-set.prototype.intersection
-$({ target: 'Set', proto: true, real: true, forced: INCORRECT }, {
-  intersection: intersection
-});
-
-
-/***/ },
-
-/***/ 3853
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var isDisjointFrom = __webpack_require__(4449);
-var setMethodAcceptSetLike = __webpack_require__(4916);
-
-var INCORRECT = !setMethodAcceptSetLike('isDisjointFrom', function (result) {
-  return !result;
-});
-
-// `Set.prototype.isDisjointFrom` method
-// https://tc39.es/ecma262/#sec-set.prototype.isdisjointfrom
-$({ target: 'Set', proto: true, real: true, forced: INCORRECT }, {
-  isDisjointFrom: isDisjointFrom
-});
-
-
-/***/ },
-
-/***/ 5876
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var isSubsetOf = __webpack_require__(3838);
-var setMethodAcceptSetLike = __webpack_require__(4916);
-
-var INCORRECT = !setMethodAcceptSetLike('isSubsetOf', function (result) {
-  return result;
-});
-
-// `Set.prototype.isSubsetOf` method
-// https://tc39.es/ecma262/#sec-set.prototype.issubsetof
-$({ target: 'Set', proto: true, real: true, forced: INCORRECT }, {
-  isSubsetOf: isSubsetOf
-});
-
-
-/***/ },
-
-/***/ 2475
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var isSupersetOf = __webpack_require__(8527);
-var setMethodAcceptSetLike = __webpack_require__(4916);
-
-var INCORRECT = !setMethodAcceptSetLike('isSupersetOf', function (result) {
-  return !result;
-});
-
-// `Set.prototype.isSupersetOf` method
-// https://tc39.es/ecma262/#sec-set.prototype.issupersetof
-$({ target: 'Set', proto: true, real: true, forced: INCORRECT }, {
-  isSupersetOf: isSupersetOf
-});
-
-
-/***/ },
-
-/***/ 5024
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var symmetricDifference = __webpack_require__(3650);
-var setMethodGetKeysBeforeCloning = __webpack_require__(9835);
-var setMethodAcceptSetLike = __webpack_require__(4916);
-
-var FORCED = !setMethodAcceptSetLike('symmetricDifference') || !setMethodGetKeysBeforeCloning('symmetricDifference');
-
-// `Set.prototype.symmetricDifference` method
-// https://tc39.es/ecma262/#sec-set.prototype.symmetricdifference
-$({ target: 'Set', proto: true, real: true, forced: FORCED }, {
-  symmetricDifference: symmetricDifference
-});
-
-
-/***/ },
-
-/***/ 1698
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var union = __webpack_require__(4204);
-var setMethodGetKeysBeforeCloning = __webpack_require__(9835);
-var setMethodAcceptSetLike = __webpack_require__(4916);
-
-var FORCED = !setMethodAcceptSetLike('union') || !setMethodGetKeysBeforeCloning('union');
-
-// `Set.prototype.union` method
-// https://tc39.es/ecma262/#sec-set.prototype.union
-$({ target: 'Set', proto: true, real: true, forced: FORCED }, {
-  union: union
-});
-
-
-/***/ },
-
-/***/ 9577
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var ArrayBufferViewCore = __webpack_require__(4644);
-var isBigIntArray = __webpack_require__(1108);
-var lengthOfArrayLike = __webpack_require__(6198);
-var toIntegerOrInfinity = __webpack_require__(1291);
-var toBigInt = __webpack_require__(5854);
-
-var aTypedArray = ArrayBufferViewCore.aTypedArray;
-var getTypedArrayConstructor = ArrayBufferViewCore.getTypedArrayConstructor;
-var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
-
-var $RangeError = RangeError;
-
-var PROPER_ORDER = function () {
-  try {
-    // eslint-disable-next-line no-throw-literal, es/no-typed-arrays, es/no-array-prototype-with -- required for testing
-    new Int8Array(1)['with'](2, { valueOf: function () { throw 8; } });
-  } catch (error) {
-    // some early implementations, like WebKit, does not follow the final semantic
-    // https://github.com/tc39/proposal-change-array-by-copy/pull/86
-    return error === 8;
-  }
-}();
-
-// Bug in WebKit. It should truncate a negative fractional index to zero, but instead throws an error
-var THROW_ON_NEGATIVE_FRACTIONAL_INDEX = PROPER_ORDER && function () {
-  try {
-    // eslint-disable-next-line es/no-typed-arrays, es/no-array-prototype-with -- required for testing
-    new Int8Array(1)['with'](-0.5, 1);
-  } catch (error) {
-    return true;
-  }
-}();
-
-// `%TypedArray%.prototype.with` method
-// https://tc39.es/ecma262/#sec-%typedarray%.prototype.with
-exportTypedArrayMethod('with', { 'with': function (index, value) {
-  var O = aTypedArray(this);
-  var len = lengthOfArrayLike(O);
-  var relativeIndex = toIntegerOrInfinity(index);
-  var actualIndex = relativeIndex < 0 ? len + relativeIndex : relativeIndex;
-  var numericValue = isBigIntArray(O) ? toBigInt(value) : +value;
-  if (actualIndex >= len || actualIndex < 0) throw new $RangeError('Incorrect index');
-  var A = new (getTypedArrayConstructor(O))(len);
-  var k = 0;
-  for (; k < len; k++) A[k] = k === actualIndex ? numericValue : O[k];
-  return A;
-} }['with'], !PROPER_ORDER || THROW_ON_NEGATIVE_FRACTIONAL_INDEX);
-
-
-/***/ },
-
-/***/ 9452
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var aCallable = __webpack_require__(9306);
-var aWeakMap = __webpack_require__(6557);
-var aWeakKey = __webpack_require__(4328);
-var WeakMapHelpers = __webpack_require__(4995);
-var IS_PURE = __webpack_require__(6395);
-
-var get = WeakMapHelpers.get;
-var has = WeakMapHelpers.has;
-var set = WeakMapHelpers.set;
-
-var FORCED = IS_PURE || !function () {
-  try {
-    // eslint-disable-next-line es/no-weak-map, no-throw-literal -- testing
-    if (WeakMap.prototype.getOrInsertComputed) new WeakMap().getOrInsertComputed(1, function () { throw 1; });
-  } catch (error) {
-    // FF144 Nightly - Beta 3 bug
-    // https://bugzilla.mozilla.org/show_bug.cgi?id=1988369
-    return error instanceof TypeError;
-  }
-}();
-
-// `WeakMap.prototype.getOrInsertComputed` method
-// https://tc39.es/ecma262/#sec-weakmap.prototype.getorinsertcomputed
-$({ target: 'WeakMap', proto: true, real: true, forced: FORCED }, {
-  getOrInsertComputed: function getOrInsertComputed(key, callbackfn) {
-    if (!IS_PURE) aWeakMap(this);
-    aWeakKey(key);
-    aCallable(callbackfn);
-    if (has(this, key)) return get(this, key);
-    var value = callbackfn(key);
-    set(this, key, value);
-    return value;
-  }
-});
-
-
-/***/ },
-
-/***/ 8454
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var WeakMapHelpers = __webpack_require__(4995);
-var IS_PURE = __webpack_require__(6395);
-
-var get = WeakMapHelpers.get;
-var has = WeakMapHelpers.has;
-var set = WeakMapHelpers.set;
-
-// `WeakMap.prototype.getOrInsert` method
-// https://tc39.es/ecma262/#sec-weakmap.prototype.getorinsert
-$({ target: 'WeakMap', proto: true, real: true, forced: IS_PURE }, {
-  getOrInsert: function getOrInsert(key, value) {
-    if (has(this, key)) return get(this, key);
-    set(this, key, value);
-    return value;
-  }
-});
-
-
-/***/ },
-
-/***/ 5781
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-
-var $ = __webpack_require__(6518);
-var getBuiltIn = __webpack_require__(7751);
-var validateArgumentsLength = __webpack_require__(2812);
-var toString = __webpack_require__(655);
-var USE_NATIVE_URL = __webpack_require__(7416);
-
-var URL = getBuiltIn('URL');
-
-// `URL.parse` method
-// https://url.spec.whatwg.org/#dom-url-parse
-$({ target: 'URL', stat: true, forced: !USE_NATIVE_URL }, {
-  parse: function parse(url) {
-    var length = validateArgumentsLength(arguments.length, 1);
-    var urlString = toString(url);
-    var base = length < 2 || arguments[1] === undefined ? undefined : toString(arguments[1]);
-    try {
-      return new URL(urlString, base);
-    } catch (error) {
-      return null;
+    module.exports = store.inspectSource;
+
+    /***/
+  },
+
+  /***/ 1181(module, __unused_webpack_exports, __webpack_require__) {
+    var NATIVE_WEAK_MAP = __webpack_require__(8622);
+    var globalThis = __webpack_require__(4576);
+    var isObject = __webpack_require__(34);
+    var createNonEnumerableProperty = __webpack_require__(6699);
+    var hasOwn = __webpack_require__(9297);
+    var shared = __webpack_require__(7629);
+    var sharedKey = __webpack_require__(6119);
+    var hiddenKeys = __webpack_require__(421);
+
+    var OBJECT_ALREADY_INITIALIZED = "Object already initialized";
+    var TypeError = globalThis.TypeError;
+    var WeakMap = globalThis.WeakMap;
+    var set, get, has;
+
+    var enforce = function (it) {
+      return has(it) ? get(it) : set(it, {});
+    };
+
+    var getterFor = function (TYPE) {
+      return function (it) {
+        var state;
+        if (!isObject(it) || (state = get(it)).type !== TYPE) {
+          throw new TypeError("Incompatible receiver, " + TYPE + " required");
+        }
+        return state;
+      };
+    };
+
+    if (NATIVE_WEAK_MAP || shared.state) {
+      var store = shared.state || (shared.state = new WeakMap());
+      /* eslint-disable no-self-assign -- prototype methods protection */
+      store.get = store.get;
+      store.has = store.has;
+      store.set = store.set;
+      /* eslint-enable no-self-assign -- prototype methods protection */
+      set = function (it, metadata) {
+        if (store.has(it)) throw new TypeError(OBJECT_ALREADY_INITIALIZED);
+        metadata.facade = it;
+        store.set(it, metadata);
+        return metadata;
+      };
+      get = function (it) {
+        return store.get(it) || {};
+      };
+      has = function (it) {
+        return store.has(it);
+      };
+    } else {
+      var STATE = sharedKey("state");
+      hiddenKeys[STATE] = true;
+      set = function (it, metadata) {
+        if (hasOwn(it, STATE)) throw new TypeError(OBJECT_ALREADY_INITIALIZED);
+        metadata.facade = it;
+        createNonEnumerableProperty(it, STATE, metadata);
+        return metadata;
+      };
+      get = function (it) {
+        return hasOwn(it, STATE) ? it[STATE] : {};
+      };
+      has = function (it) {
+        return hasOwn(it, STATE);
+      };
     }
-  }
-});
 
+    module.exports = {
+      set: set,
+      get: get,
+      has: has,
+      enforce: enforce,
+      getterFor: getterFor,
+    };
 
-/***/ }
+    /***/
+  },
 
-/******/ });
+  /***/ 4209(module, __unused_webpack_exports, __webpack_require__) {
+    var wellKnownSymbol = __webpack_require__(8227);
+    var Iterators = __webpack_require__(6269);
+
+    var ITERATOR = wellKnownSymbol("iterator");
+    var ArrayPrototype = Array.prototype;
+
+    // check on default Array iterator
+    module.exports = function (it) {
+      return it !== undefined && (Iterators.Array === it || ArrayPrototype[ITERATOR] === it);
+    };
+
+    /***/
+  },
+
+  /***/ 4376(module, __unused_webpack_exports, __webpack_require__) {
+    var classof = __webpack_require__(2195);
+
+    // `IsArray` abstract operation
+    // https://tc39.es/ecma262/#sec-isarray
+    // eslint-disable-next-line es/no-array-isarray -- safe
+    module.exports =
+      Array.isArray ||
+      function isArray(argument) {
+        return classof(argument) === "Array";
+      };
+
+    /***/
+  },
+
+  /***/ 1108(module, __unused_webpack_exports, __webpack_require__) {
+    var classof = __webpack_require__(6955);
+
+    module.exports = function (it) {
+      var klass = classof(it);
+      return klass === "BigInt64Array" || klass === "BigUint64Array";
+    };
+
+    /***/
+  },
+
+  /***/ 4901(module) {
+    // https://tc39.es/ecma262/#sec-IsHTMLDDA-internal-slot
+    var documentAll = typeof document == "object" && document.all;
+
+    // `IsCallable` abstract operation
+    // https://tc39.es/ecma262/#sec-iscallable
+    // eslint-disable-next-line unicorn/no-typeof-undefined -- required for testing
+    module.exports =
+      typeof documentAll == "undefined" && documentAll !== undefined
+        ? function (argument) {
+            return typeof argument == "function" || argument === documentAll;
+          }
+        : function (argument) {
+            return typeof argument == "function";
+          };
+
+    /***/
+  },
+
+  /***/ 2796(module, __unused_webpack_exports, __webpack_require__) {
+    var fails = __webpack_require__(9039);
+    var isCallable = __webpack_require__(4901);
+
+    var replacement = /#|\.prototype\./;
+
+    var isForced = function (feature, detection) {
+      var value = data[normalize(feature)];
+      return value === POLYFILL ? true : value === NATIVE ? false : isCallable(detection) ? fails(detection) : !!detection;
+    };
+
+    var normalize = (isForced.normalize = function (string) {
+      return String(string).replace(replacement, ".").toLowerCase();
+    });
+
+    var data = (isForced.data = {});
+    var NATIVE = (isForced.NATIVE = "N");
+    var POLYFILL = (isForced.POLYFILL = "P");
+
+    module.exports = isForced;
+
+    /***/
+  },
+
+  /***/ 4117(module) {
+    // we can't use just `it == null` since of `document.all` special case
+    // https://tc39.es/ecma262/#sec-IsHTMLDDA-internal-slot-aec
+    module.exports = function (it) {
+      return it === null || it === undefined;
+    };
+
+    /***/
+  },
+
+  /***/ 34(module, __unused_webpack_exports, __webpack_require__) {
+    var isCallable = __webpack_require__(4901);
+
+    module.exports = function (it) {
+      return typeof it == "object" ? it !== null : isCallable(it);
+    };
+
+    /***/
+  },
+
+  /***/ 3925(module, __unused_webpack_exports, __webpack_require__) {
+    var isObject = __webpack_require__(34);
+
+    module.exports = function (argument) {
+      return isObject(argument) || argument === null;
+    };
+
+    /***/
+  },
+
+  /***/ 6395(module) {
+    module.exports = false;
+
+    /***/
+  },
+
+  /***/ 5810(module, __unused_webpack_exports, __webpack_require__) {
+    var isObject = __webpack_require__(34);
+    var getInternalState = __webpack_require__(1181).get;
+
+    module.exports = function isRawJSON(O) {
+      if (!isObject(O)) return false;
+      var state = getInternalState(O);
+      return !!state && state.type === "RawJSON";
+    };
+
+    /***/
+  },
+
+  /***/ 757(module, __unused_webpack_exports, __webpack_require__) {
+    var getBuiltIn = __webpack_require__(7751);
+    var isCallable = __webpack_require__(4901);
+    var isPrototypeOf = __webpack_require__(1625);
+    var USE_SYMBOL_AS_UID = __webpack_require__(7040);
+
+    var $Object = Object;
+
+    module.exports = USE_SYMBOL_AS_UID
+      ? function (it) {
+          return typeof it == "symbol";
+        }
+      : function (it) {
+          var $Symbol = getBuiltIn("Symbol");
+          return isCallable($Symbol) && isPrototypeOf($Symbol.prototype, $Object(it));
+        };
+
+    /***/
+  },
+
+  /***/ 507(module, __unused_webpack_exports, __webpack_require__) {
+    var call = __webpack_require__(9565);
+
+    module.exports = function (record, fn, ITERATOR_INSTEAD_OF_RECORD) {
+      var iterator = ITERATOR_INSTEAD_OF_RECORD ? record : record.iterator;
+      var next = record.next;
+      var step, result;
+      while (!(step = call(next, iterator)).done) {
+        result = fn(step.value);
+        if (result !== undefined) return result;
+      }
+    };
+
+    /***/
+  },
+
+  /***/ 2652(module, __unused_webpack_exports, __webpack_require__) {
+    var bind = __webpack_require__(6080);
+    var call = __webpack_require__(9565);
+    var anObject = __webpack_require__(8551);
+    var tryToString = __webpack_require__(6823);
+    var isArrayIteratorMethod = __webpack_require__(4209);
+    var lengthOfArrayLike = __webpack_require__(6198);
+    var isPrototypeOf = __webpack_require__(1625);
+    var getIterator = __webpack_require__(8563);
+    var getIteratorMethod = __webpack_require__(3085);
+    var iteratorClose = __webpack_require__(9539);
+
+    var $TypeError = TypeError;
+
+    var Result = function (stopped, result) {
+      this.stopped = stopped;
+      this.result = result;
+    };
+
+    var ResultPrototype = Result.prototype;
+
+    module.exports = function (iterable, unboundFunction, options) {
+      var that = options && options.that;
+      var AS_ENTRIES = !!(options && options.AS_ENTRIES);
+      var IS_RECORD = !!(options && options.IS_RECORD);
+      var IS_ITERATOR = !!(options && options.IS_ITERATOR);
+      var INTERRUPTED = !!(options && options.INTERRUPTED);
+      var fn = bind(unboundFunction, that);
+      var iterator, iterFn, index, length, result, next, step;
+
+      var stop = function (condition) {
+        var $iterator = iterator;
+        iterator = undefined;
+        if ($iterator) iteratorClose($iterator, "normal");
+        return new Result(true, condition);
+      };
+
+      var callFn = function (value) {
+        if (AS_ENTRIES) {
+          anObject(value);
+          return INTERRUPTED ? fn(value[0], value[1], stop) : fn(value[0], value[1]);
+        }
+        return INTERRUPTED ? fn(value, stop) : fn(value);
+      };
+
+      if (IS_RECORD) {
+        iterator = iterable.iterator;
+      } else if (IS_ITERATOR) {
+        iterator = iterable;
+      } else {
+        iterFn = getIteratorMethod(iterable);
+        if (!iterFn) throw new $TypeError(tryToString(iterable) + " is not iterable");
+        // optimisation for array iterators
+        if (isArrayIteratorMethod(iterFn)) {
+          for (index = 0, length = lengthOfArrayLike(iterable); length > index; index++) {
+            result = callFn(iterable[index]);
+            if (result && isPrototypeOf(ResultPrototype, result)) return result;
+          }
+          return new Result(false);
+        }
+        iterator = getIterator(iterable, iterFn);
+      }
+
+      next = IS_RECORD ? iterable.next : iterator.next;
+      while (!(step = call(next, iterator)).done) {
+        // `IteratorValue` errors should propagate without closing the iterator
+        var value = step.value;
+        try {
+          result = callFn(value);
+        } catch (error) {
+          if (iterator) iteratorClose(iterator, "throw", error);
+          else throw error;
+        }
+        if (typeof result == "object" && result && isPrototypeOf(ResultPrototype, result)) return result;
+      }
+      return new Result(false);
+    };
+
+    /***/
+  },
+
+  /***/ 6859(module) {
+    // release references held by exhausted / closed iterator helpers to allow GC of the source chain
+    module.exports = function (state) {
+      state.iterator =
+        state.next =
+        state.nextHandler =
+        state.mapper =
+        state.predicate =
+        state.inner =
+        state.iterables =
+        state.iters =
+        state.openIters =
+        state.padding =
+        state.finishResults =
+        state.buffer =
+          null;
+    };
+
+    /***/
+  },
+
+  /***/ 1385(module, __unused_webpack_exports, __webpack_require__) {
+    var iteratorClose = __webpack_require__(9539);
+
+    module.exports = function (iters, kind, value) {
+      for (var i = iters.length - 1; i >= 0; i--) {
+        if (iters[i] === undefined) continue;
+        try {
+          value = iteratorClose(iters[i].iterator, kind, value);
+        } catch (error) {
+          kind = "throw";
+          value = error;
+        }
+      }
+      if (kind === "throw") throw value;
+      return value;
+    };
+
+    /***/
+  },
+
+  /***/ 9539(module, __unused_webpack_exports, __webpack_require__) {
+    var call = __webpack_require__(9565);
+    var anObject = __webpack_require__(8551);
+    var getMethod = __webpack_require__(5966);
+
+    module.exports = function (iterator, kind, value) {
+      var innerResult, innerError;
+      anObject(iterator);
+      try {
+        innerResult = getMethod(iterator, "return");
+        if (!innerResult) {
+          if (kind === "throw") throw value;
+          return value;
+        }
+        innerResult = call(innerResult, iterator);
+      } catch (error) {
+        innerError = true;
+        innerResult = error;
+      }
+      if (kind === "throw") throw value;
+      if (innerError) throw innerResult;
+      anObject(innerResult);
+      return value;
+    };
+
+    /***/
+  },
+
+  /***/ 9462(module, __unused_webpack_exports, __webpack_require__) {
+    var call = __webpack_require__(9565);
+    var create = __webpack_require__(2360);
+    var createNonEnumerableProperty = __webpack_require__(6699);
+    var defineBuiltIns = __webpack_require__(6279);
+    var wellKnownSymbol = __webpack_require__(8227);
+    var InternalStateModule = __webpack_require__(1181);
+    var getMethod = __webpack_require__(5966);
+    var IteratorPrototype = __webpack_require__(7657).IteratorPrototype;
+    var createIterResultObject = __webpack_require__(2529);
+    var iteratorClose = __webpack_require__(9539);
+    var iteratorCloseAll = __webpack_require__(1385);
+    var cleanupState = __webpack_require__(6859);
+
+    var TO_STRING_TAG = wellKnownSymbol("toStringTag");
+    var ITERATOR_HELPER = "IteratorHelper";
+    var WRAP_FOR_VALID_ITERATOR = "WrapForValidIterator";
+    var NORMAL = "normal";
+    var THROW = "throw";
+    var setInternalState = InternalStateModule.set;
+
+    var createIteratorProxyPrototype = function (IS_ITERATOR) {
+      var getInternalState = InternalStateModule.getterFor(IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER);
+
+      return defineBuiltIns(create(IteratorPrototype), {
+        next: function next() {
+          var state = getInternalState(this);
+          // for simplification:
+          //   for `%WrapForValidIteratorPrototype%.next` or with `state.returnHandlerResult` our `nextHandler` returns `IterResultObject`
+          //   for `%IteratorHelperPrototype%.next` - just a value
+          if (IS_ITERATOR) return state.nextHandler();
+          if (state.done) return createIterResultObject(undefined, true);
+          try {
+            var result = state.nextHandler();
+            if (state.done) cleanupState(state);
+            return state.returnHandlerResult ? result : createIterResultObject(result, state.done);
+          } catch (error) {
+            state.done = true;
+            cleanupState(state);
+            throw error;
+          }
+        },
+        return: function () {
+          var state = getInternalState(this);
+          var iterator = state.iterator;
+          var inner = state.inner;
+          var openIters = state.openIters;
+          var done = state.done;
+          state.done = true;
+          if (IS_ITERATOR) {
+            var returnMethod = getMethod(iterator, "return");
+            return returnMethod ? call(returnMethod, iterator) : createIterResultObject(undefined, true);
+          }
+          cleanupState(state);
+          if (done) return createIterResultObject(undefined, true);
+          if (inner)
+            try {
+              iteratorClose(inner.iterator, NORMAL);
+            } catch (error) {
+              return iteratorClose(iterator, THROW, error);
+            }
+          if (openIters)
+            try {
+              iteratorCloseAll(openIters, NORMAL);
+            } catch (error) {
+              if (iterator) return iteratorClose(iterator, THROW, error);
+              throw error;
+            }
+          if (iterator) iteratorClose(iterator, NORMAL);
+          return createIterResultObject(undefined, true);
+        },
+      });
+    };
+
+    var WrapForValidIteratorPrototype = createIteratorProxyPrototype(true);
+    var IteratorHelperPrototype = createIteratorProxyPrototype(false);
+
+    createNonEnumerableProperty(IteratorHelperPrototype, TO_STRING_TAG, "Iterator Helper");
+
+    module.exports = function (nextHandler, IS_ITERATOR, RETURN_HANDLER_RESULT) {
+      var IteratorProxy = function Iterator(record, state) {
+        if (state) {
+          state.iterator = record.iterator;
+          state.next = record.next;
+        } else state = record;
+        state.type = IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER;
+        state.returnHandlerResult = !!RETURN_HANDLER_RESULT;
+        state.nextHandler = nextHandler;
+        state.counter = 0;
+        state.done = false;
+        setInternalState(this, state);
+      };
+
+      IteratorProxy.prototype = IS_ITERATOR ? WrapForValidIteratorPrototype : IteratorHelperPrototype;
+
+      return IteratorProxy;
+    };
+
+    /***/
+  },
+
+  /***/ 684(module) {
+    // Should throw an error on invalid iterator
+    // https://issues.chromium.org/issues/336839115
+    module.exports = function (methodName, argument) {
+      // eslint-disable-next-line es/no-iterator -- required for testing
+      var method = typeof Iterator == "function" && Iterator.prototype[methodName];
+      if (method)
+        try {
+          method.call({ next: null }, argument).next();
+        } catch (error) {
+          return true;
+        }
+    };
+
+    /***/
+  },
+
+  /***/ 4549(module, __unused_webpack_exports, __webpack_require__) {
+    var globalThis = __webpack_require__(4576);
+
+    // https://github.com/tc39/ecma262/pull/3467
+    module.exports = function (METHOD_NAME, ExpectedError) {
+      var Iterator = globalThis.Iterator;
+      var IteratorPrototype = Iterator && Iterator.prototype;
+      var method = IteratorPrototype && IteratorPrototype[METHOD_NAME];
+
+      var CLOSED = false;
+
+      if (method)
+        try {
+          method.call(
+            {
+              next: function () {
+                return { done: true };
+              },
+              return: function () {
+                CLOSED = true;
+              },
+            },
+            -1
+          );
+        } catch (error) {
+          // https://bugs.webkit.org/show_bug.cgi?id=291195
+          if (!(error instanceof ExpectedError)) CLOSED = false;
+        }
+
+      if (!CLOSED) return method;
+    };
+
+    /***/
+  },
+
+  /***/ 7657(module, __unused_webpack_exports, __webpack_require__) {
+    var fails = __webpack_require__(9039);
+    var isCallable = __webpack_require__(4901);
+    var isObject = __webpack_require__(34);
+    var create = __webpack_require__(2360);
+    var getPrototypeOf = __webpack_require__(2787);
+    var defineBuiltIn = __webpack_require__(6840);
+    var wellKnownSymbol = __webpack_require__(8227);
+    var IS_PURE = __webpack_require__(6395);
+
+    var ITERATOR = wellKnownSymbol("iterator");
+    var BUGGY_SAFARI_ITERATORS = false;
+
+    // `%IteratorPrototype%` object
+    // https://tc39.es/ecma262/#sec-%iteratorprototype%-object
+    var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
+
+    /* eslint-disable es/no-array-prototype-keys -- safe */
+    if ([].keys) {
+      arrayIterator = [].keys();
+      // Safari 8 has buggy iterators w/o `next`
+      if (!("next" in arrayIterator)) BUGGY_SAFARI_ITERATORS = true;
+      else {
+        PrototypeOfArrayIteratorPrototype = getPrototypeOf(getPrototypeOf(arrayIterator));
+        if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype = PrototypeOfArrayIteratorPrototype;
+      }
+    }
+
+    var NEW_ITERATOR_PROTOTYPE =
+      !isObject(IteratorPrototype) ||
+      fails(function () {
+        var test = {};
+        // FF44- legacy iterators case
+        return IteratorPrototype[ITERATOR].call(test) !== test;
+      });
+
+    if (NEW_ITERATOR_PROTOTYPE) IteratorPrototype = {};
+    else if (IS_PURE) IteratorPrototype = create(IteratorPrototype);
+
+    // `%IteratorPrototype%[@@iterator]()` method
+    // https://tc39.es/ecma262/#sec-%iteratorprototype%-@@iterator
+    if (!isCallable(IteratorPrototype[ITERATOR])) {
+      defineBuiltIn(IteratorPrototype, ITERATOR, function () {
+        return this;
+      });
+    }
+
+    module.exports = {
+      IteratorPrototype: IteratorPrototype,
+      BUGGY_SAFARI_ITERATORS: BUGGY_SAFARI_ITERATORS,
+    };
+
+    /***/
+  },
+
+  /***/ 6269(module) {
+    module.exports = Object.create ? Object.create(null) : {};
+
+    /***/
+  },
+
+  /***/ 6198(module, __unused_webpack_exports, __webpack_require__) {
+    var toLength = __webpack_require__(8014);
+
+    // `LengthOfArrayLike` abstract operation
+    // https://tc39.es/ecma262/#sec-lengthofarraylike
+    module.exports = function (obj) {
+      return toLength(obj.length);
+    };
+
+    /***/
+  },
+
+  /***/ 283(module, __unused_webpack_exports, __webpack_require__) {
+    var uncurryThis = __webpack_require__(9504);
+    var fails = __webpack_require__(9039);
+    var isCallable = __webpack_require__(4901);
+    var hasOwn = __webpack_require__(9297);
+    var DESCRIPTORS = __webpack_require__(3724);
+    var CONFIGURABLE_FUNCTION_NAME = __webpack_require__(350).CONFIGURABLE;
+    var inspectSource = __webpack_require__(3706);
+    var InternalStateModule = __webpack_require__(1181);
+
+    var enforceInternalState = InternalStateModule.enforce;
+    var getInternalState = InternalStateModule.get;
+    var $String = String;
+    // eslint-disable-next-line es/no-object-defineproperty -- safe
+    var defineProperty = Object.defineProperty;
+    var stringSlice = uncurryThis("".slice);
+    var replace = uncurryThis("".replace);
+    var join = uncurryThis([].join);
+
+    var CONFIGURABLE_LENGTH =
+      DESCRIPTORS &&
+      !fails(function () {
+        return (
+          defineProperty(
+            function () {
+              /* empty */
+            },
+            "length",
+            { value: 8 }
+          ).length !== 8
+        );
+      });
+
+    var TEMPLATE = String(String).split("String");
+
+    var makeBuiltIn = (module.exports = function (value, name, options) {
+      if (stringSlice($String(name), 0, 7) === "Symbol(") {
+        name = "[" + replace($String(name), /^Symbol\(([^)]*)\).*$/, "$1") + "]";
+      }
+      if (options && options.getter) name = "get " + name;
+      if (options && options.setter) name = "set " + name;
+      if (!hasOwn(value, "name") || (CONFIGURABLE_FUNCTION_NAME && value.name !== name)) {
+        if (DESCRIPTORS) defineProperty(value, "name", { value: name, configurable: true });
+        else value.name = name;
+      }
+      if (CONFIGURABLE_LENGTH && options && hasOwn(options, "arity") && value.length !== options.arity) {
+        defineProperty(value, "length", { value: options.arity });
+      }
+      try {
+        if (options && hasOwn(options, "constructor") && options.constructor) {
+          if (DESCRIPTORS) defineProperty(value, "prototype", { writable: false });
+          // in V8 ~ Chrome 53, prototypes of some methods, like `Array.prototype.values`, are non-writable
+        } else if (value.prototype) value.prototype = undefined;
+      } catch (error) {
+        /* empty */
+      }
+      var state = enforceInternalState(value);
+      if (!hasOwn(state, "source")) {
+        state.source = join(TEMPLATE, typeof name == "string" ? name : "");
+      }
+      return value;
+    });
+
+    // add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
+    // eslint-disable-next-line no-extend-native -- required
+    Function.prototype.toString = makeBuiltIn(function toString() {
+      return (isCallable(this) && getInternalState(this).source) || inspectSource(this);
+    }, "toString");
+
+    /***/
+  },
+
+  /***/ 2248(module, __unused_webpack_exports, __webpack_require__) {
+    var uncurryThis = __webpack_require__(9504);
+
+    // eslint-disable-next-line es/no-map -- safe
+    var MapPrototype = Map.prototype;
+
+    module.exports = {
+      // eslint-disable-next-line es/no-map -- safe
+      Map: Map,
+      set: uncurryThis(MapPrototype.set),
+      get: uncurryThis(MapPrototype.get),
+      has: uncurryThis(MapPrototype.has),
+      remove: uncurryThis(MapPrototype["delete"]),
+      proto: MapPrototype,
+    };
+
+    /***/
+  },
+
+  /***/ 741(module) {
+    var ceil = Math.ceil;
+    var floor = Math.floor;
+
+    // `Math.trunc` method
+    // https://tc39.es/ecma262/#sec-math.trunc
+    // eslint-disable-next-line es/no-math-trunc -- safe
+    module.exports =
+      Math.trunc ||
+      function trunc(x) {
+        var n = +x;
+        return (n > 0 ? floor : ceil)(n);
+      };
+
+    /***/
+  },
+
+  /***/ 7819(module, __unused_webpack_exports, __webpack_require__) {
+    /* eslint-disable es/no-json -- safe */
+    var fails = __webpack_require__(9039);
+
+    module.exports = !fails(function () {
+      var unsafeInt = "9007199254740993";
+      // eslint-disable-next-line es/no-json-rawjson -- feature detection
+      var raw = JSON.rawJSON(unsafeInt);
+      // eslint-disable-next-line es/no-json-israwjson -- feature detection
+      return !JSON.isRawJSON(raw) || JSON.stringify(raw) !== unsafeInt;
+    });
+
+    /***/
+  },
+
+  /***/ 2360(module, __unused_webpack_exports, __webpack_require__) {
+    /* global ActiveXObject -- old IE, WSH */
+    var anObject = __webpack_require__(8551);
+    var definePropertiesModule = __webpack_require__(6801);
+    var enumBugKeys = __webpack_require__(8727);
+    var hiddenKeys = __webpack_require__(421);
+    var html = __webpack_require__(397);
+    var documentCreateElement = __webpack_require__(4055);
+    var sharedKey = __webpack_require__(6119);
+
+    var GT = ">";
+    var LT = "<";
+    var PROTOTYPE = "prototype";
+    var SCRIPT = "script";
+    var IE_PROTO = sharedKey("IE_PROTO");
+
+    var EmptyConstructor = function () {
+      /* empty */
+    };
+
+    var scriptTag = function (content) {
+      return LT + SCRIPT + GT + content + LT + "/" + SCRIPT + GT;
+    };
+
+    // Create object with fake `null` prototype: use ActiveX Object with cleared prototype
+    var NullProtoObjectViaActiveX = function (activeXDocument) {
+      activeXDocument.write(scriptTag(""));
+      activeXDocument.close();
+      var temp = activeXDocument.parentWindow.Object;
+      // eslint-disable-next-line no-useless-assignment -- avoid memory leak
+      activeXDocument = null;
+      return temp;
+    };
+
+    // Create object with fake `null` prototype: use iframe Object with cleared prototype
+    var NullProtoObjectViaIFrame = function () {
+      // Thrash, waste and sodomy: IE GC bug
+      var iframe = documentCreateElement("iframe");
+      var JS = "java" + SCRIPT + ":";
+      var iframeDocument;
+      iframe.style.display = "none";
+      html.appendChild(iframe);
+      // https://github.com/zloirock/core-js/issues/475
+      iframe.src = String(JS);
+      iframeDocument = iframe.contentWindow.document;
+      iframeDocument.open();
+      iframeDocument.write(scriptTag("document.F=Object"));
+      iframeDocument.close();
+      return iframeDocument.F;
+    };
+
+    // Check for document.domain and active x support
+    // No need to use active x approach when document.domain is not set
+    // see https://github.com/es-shims/es5-shim/issues/150
+    // variation of https://github.com/kitcambridge/es5-shim/commit/4f738ac066346
+    // avoid IE GC bug
+    var activeXDocument;
+    var NullProtoObject = function () {
+      try {
+        activeXDocument = new ActiveXObject("htmlfile");
+      } catch (error) {
+        /* ignore */
+      }
+      NullProtoObject =
+        typeof document != "undefined"
+          ? document.domain && activeXDocument
+            ? NullProtoObjectViaActiveX(activeXDocument) // old IE
+            : NullProtoObjectViaIFrame()
+          : NullProtoObjectViaActiveX(activeXDocument); // WSH
+      var length = enumBugKeys.length;
+      while (length--) delete NullProtoObject[PROTOTYPE][enumBugKeys[length]];
+      return NullProtoObject();
+    };
+
+    hiddenKeys[IE_PROTO] = true;
+
+    // `Object.create` method
+    // https://tc39.es/ecma262/#sec-object.create
+    // eslint-disable-next-line es/no-object-create -- safe
+    module.exports =
+      Object.create ||
+      function create(O, Properties) {
+        var result;
+        if (O !== null) {
+          EmptyConstructor[PROTOTYPE] = anObject(O);
+          result = new EmptyConstructor();
+          EmptyConstructor[PROTOTYPE] = null;
+          // add "__proto__" for Object.getPrototypeOf polyfill
+          result[IE_PROTO] = O;
+        } else result = NullProtoObject();
+        return Properties === undefined ? result : definePropertiesModule.f(result, Properties);
+      };
+
+    /***/
+  },
+
+  /***/ 6801(__unused_webpack_module, exports, __webpack_require__) {
+    var DESCRIPTORS = __webpack_require__(3724);
+    var V8_PROTOTYPE_DEFINE_BUG = __webpack_require__(8686);
+    var definePropertyModule = __webpack_require__(4913);
+    var anObject = __webpack_require__(8551);
+    var toIndexedObject = __webpack_require__(5397);
+    var objectKeys = __webpack_require__(1072);
+
+    // `Object.defineProperties` method
+    // https://tc39.es/ecma262/#sec-object.defineproperties
+    // eslint-disable-next-line es/no-object-defineproperties -- safe
+    exports.f =
+      DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG
+        ? Object.defineProperties
+        : function defineProperties(O, Properties) {
+            anObject(O);
+            var props = toIndexedObject(Properties);
+            var keys = objectKeys(Properties);
+            var length = keys.length;
+            var index = 0;
+            var key;
+            while (length > index) definePropertyModule.f(O, (key = keys[index++]), props[key]);
+            return O;
+          };
+
+    /***/
+  },
+
+  /***/ 4913(__unused_webpack_module, exports, __webpack_require__) {
+    var DESCRIPTORS = __webpack_require__(3724);
+    var IE8_DOM_DEFINE = __webpack_require__(5917);
+    var V8_PROTOTYPE_DEFINE_BUG = __webpack_require__(8686);
+    var anObject = __webpack_require__(8551);
+    var toPropertyKey = __webpack_require__(6969);
+
+    var $TypeError = TypeError;
+    // eslint-disable-next-line es/no-object-defineproperty -- safe
+    var $defineProperty = Object.defineProperty;
+    // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+    var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+    var ENUMERABLE = "enumerable";
+    var CONFIGURABLE = "configurable";
+    var WRITABLE = "writable";
+
+    // `Object.defineProperty` method
+    // https://tc39.es/ecma262/#sec-object.defineproperty
+    exports.f = DESCRIPTORS
+      ? V8_PROTOTYPE_DEFINE_BUG
+        ? function defineProperty(O, P, Attributes) {
+            anObject(O);
+            P = toPropertyKey(P);
+            anObject(Attributes);
+            if (typeof O === "function" && P === "prototype" && "value" in Attributes && WRITABLE in Attributes && !Attributes[WRITABLE]) {
+              var current = $getOwnPropertyDescriptor(O, P);
+              if (current && current[WRITABLE]) {
+                O[P] = Attributes.value;
+                Attributes = {
+                  configurable: CONFIGURABLE in Attributes ? Attributes[CONFIGURABLE] : current[CONFIGURABLE],
+                  enumerable: ENUMERABLE in Attributes ? Attributes[ENUMERABLE] : current[ENUMERABLE],
+                  writable: false,
+                };
+              }
+            }
+            return $defineProperty(O, P, Attributes);
+          }
+        : $defineProperty
+      : function defineProperty(O, P, Attributes) {
+          anObject(O);
+          P = toPropertyKey(P);
+          anObject(Attributes);
+          if (IE8_DOM_DEFINE)
+            try {
+              return $defineProperty(O, P, Attributes);
+            } catch (error) {
+              /* empty */
+            }
+          if ("get" in Attributes || "set" in Attributes) throw new $TypeError("Accessors not supported");
+          if ("value" in Attributes) O[P] = Attributes.value;
+          return O;
+        };
+
+    /***/
+  },
+
+  /***/ 7347(__unused_webpack_module, exports, __webpack_require__) {
+    var DESCRIPTORS = __webpack_require__(3724);
+    var call = __webpack_require__(9565);
+    var propertyIsEnumerableModule = __webpack_require__(8773);
+    var createPropertyDescriptor = __webpack_require__(6980);
+    var toIndexedObject = __webpack_require__(5397);
+    var toPropertyKey = __webpack_require__(6969);
+    var hasOwn = __webpack_require__(9297);
+    var IE8_DOM_DEFINE = __webpack_require__(5917);
+
+    // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+    var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+
+    // `Object.getOwnPropertyDescriptor` method
+    // https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
+    exports.f = DESCRIPTORS
+      ? $getOwnPropertyDescriptor
+      : function getOwnPropertyDescriptor(O, P) {
+          O = toIndexedObject(O);
+          P = toPropertyKey(P);
+          if (IE8_DOM_DEFINE)
+            try {
+              return $getOwnPropertyDescriptor(O, P);
+            } catch (error) {
+              /* empty */
+            }
+          if (hasOwn(O, P)) return createPropertyDescriptor(!call(propertyIsEnumerableModule.f, O, P), O[P]);
+        };
+
+    /***/
+  },
+
+  /***/ 8480(__unused_webpack_module, exports, __webpack_require__) {
+    var internalObjectKeys = __webpack_require__(1828);
+    var enumBugKeys = __webpack_require__(8727);
+
+    var hiddenKeys = enumBugKeys.concat("length", "prototype");
+
+    // `Object.getOwnPropertyNames` method
+    // https://tc39.es/ecma262/#sec-object.getownpropertynames
+    // eslint-disable-next-line es/no-object-getownpropertynames -- safe
+    exports.f =
+      Object.getOwnPropertyNames ||
+      function getOwnPropertyNames(O) {
+        return internalObjectKeys(O, hiddenKeys);
+      };
+
+    /***/
+  },
+
+  /***/ 3717(__unused_webpack_module, exports) {
+    // eslint-disable-next-line es/no-object-getownpropertysymbols -- safe
+    exports.f = Object.getOwnPropertySymbols;
+
+    /***/
+  },
+
+  /***/ 2787(module, __unused_webpack_exports, __webpack_require__) {
+    var hasOwn = __webpack_require__(9297);
+    var isCallable = __webpack_require__(4901);
+    var toObject = __webpack_require__(8981);
+    var sharedKey = __webpack_require__(6119);
+    var CORRECT_PROTOTYPE_GETTER = __webpack_require__(2211);
+
+    var IE_PROTO = sharedKey("IE_PROTO");
+    var $Object = Object;
+    var ObjectPrototype = $Object.prototype;
+
+    // `Object.getPrototypeOf` method
+    // https://tc39.es/ecma262/#sec-object.getprototypeof
+    // eslint-disable-next-line es/no-object-getprototypeof -- safe
+    module.exports = CORRECT_PROTOTYPE_GETTER
+      ? $Object.getPrototypeOf
+      : function (O) {
+          var object = toObject(O);
+          if (hasOwn(object, IE_PROTO)) return object[IE_PROTO];
+          var constructor = object.constructor;
+          if (isCallable(constructor) && object instanceof constructor) {
+            return constructor.prototype;
+          }
+          return object instanceof $Object ? ObjectPrototype : null;
+        };
+
+    /***/
+  },
+
+  /***/ 1625(module, __unused_webpack_exports, __webpack_require__) {
+    var uncurryThis = __webpack_require__(9504);
+
+    module.exports = uncurryThis({}.isPrototypeOf);
+
+    /***/
+  },
+
+  /***/ 1828(module, __unused_webpack_exports, __webpack_require__) {
+    var uncurryThis = __webpack_require__(9504);
+    var hasOwn = __webpack_require__(9297);
+    var toIndexedObject = __webpack_require__(5397);
+    var indexOf = __webpack_require__(9617).indexOf;
+    var hiddenKeys = __webpack_require__(421);
+
+    var push = uncurryThis([].push);
+
+    module.exports = function (object, names) {
+      var O = toIndexedObject(object);
+      var i = 0;
+      var result = [];
+      var key;
+      for (key in O) !hasOwn(hiddenKeys, key) && hasOwn(O, key) && push(result, key);
+      // Don't enum bug & hidden keys
+      while (names.length > i)
+        if (hasOwn(O, (key = names[i++]))) {
+          ~indexOf(result, key) || push(result, key);
+        }
+      return result;
+    };
+
+    /***/
+  },
+
+  /***/ 1072(module, __unused_webpack_exports, __webpack_require__) {
+    var internalObjectKeys = __webpack_require__(1828);
+    var enumBugKeys = __webpack_require__(8727);
+
+    // `Object.keys` method
+    // https://tc39.es/ecma262/#sec-object.keys
+    // eslint-disable-next-line es/no-object-keys -- safe
+    module.exports =
+      Object.keys ||
+      function keys(O) {
+        return internalObjectKeys(O, enumBugKeys);
+      };
+
+    /***/
+  },
+
+  /***/ 8773(__unused_webpack_module, exports) {
+    var $propertyIsEnumerable = {}.propertyIsEnumerable;
+    // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+    var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+
+    // Nashorn ~ JDK8 bug
+    var NASHORN_BUG = getOwnPropertyDescriptor && !$propertyIsEnumerable.call({ 1: 2 }, 1);
+
+    // `Object.prototype.propertyIsEnumerable` method implementation
+    // https://tc39.es/ecma262/#sec-object.prototype.propertyisenumerable
+    exports.f = NASHORN_BUG
+      ? function propertyIsEnumerable(V) {
+          var descriptor = getOwnPropertyDescriptor(this, V);
+          return !!descriptor && descriptor.enumerable;
+        }
+      : $propertyIsEnumerable;
+
+    /***/
+  },
+
+  /***/ 2967(module, __unused_webpack_exports, __webpack_require__) {
+    /* eslint-disable no-proto -- safe */
+    var uncurryThisAccessor = __webpack_require__(6706);
+    var isObject = __webpack_require__(34);
+    var requireObjectCoercible = __webpack_require__(7750);
+    var aPossiblePrototype = __webpack_require__(3506);
+
+    // `Object.setPrototypeOf` method
+    // https://tc39.es/ecma262/#sec-object.setprototypeof
+    // Works with __proto__ only. Old v8 can't work with null proto objects.
+    // eslint-disable-next-line es/no-object-setprototypeof -- safe
+    module.exports =
+      Object.setPrototypeOf ||
+      ("__proto__" in {}
+        ? (function () {
+            var CORRECT_SETTER = false;
+            var test = {};
+            var setter;
+            try {
+              setter = uncurryThisAccessor(Object.prototype, "__proto__", "set");
+              setter(test, []);
+              CORRECT_SETTER = test instanceof Array;
+            } catch (error) {
+              /* empty */
+            }
+            return function setPrototypeOf(O, proto) {
+              requireObjectCoercible(O);
+              aPossiblePrototype(proto);
+              if (!isObject(O)) return O;
+              if (CORRECT_SETTER) setter(O, proto);
+              else O.__proto__ = proto;
+              return O;
+            };
+          })()
+        : undefined);
+
+    /***/
+  },
+
+  /***/ 4270(module, __unused_webpack_exports, __webpack_require__) {
+    var call = __webpack_require__(9565);
+    var isCallable = __webpack_require__(4901);
+    var isObject = __webpack_require__(34);
+
+    var $TypeError = TypeError;
+
+    // `OrdinaryToPrimitive` abstract operation
+    // https://tc39.es/ecma262/#sec-ordinarytoprimitive
+    module.exports = function (input, pref) {
+      var fn, val;
+      if (pref === "string" && isCallable((fn = input.toString)) && !isObject((val = call(fn, input)))) return val;
+      if (isCallable((fn = input.valueOf)) && !isObject((val = call(fn, input)))) return val;
+      if (pref !== "string" && isCallable((fn = input.toString)) && !isObject((val = call(fn, input)))) return val;
+      throw new $TypeError("Can't convert object to primitive value");
+    };
+
+    /***/
+  },
+
+  /***/ 5031(module, __unused_webpack_exports, __webpack_require__) {
+    var getBuiltIn = __webpack_require__(7751);
+    var uncurryThis = __webpack_require__(9504);
+    var getOwnPropertyNamesModule = __webpack_require__(8480);
+    var getOwnPropertySymbolsModule = __webpack_require__(3717);
+    var anObject = __webpack_require__(8551);
+
+    var concat = uncurryThis([].concat);
+
+    // all object keys, includes non-enumerable and symbols
+    module.exports =
+      getBuiltIn("Reflect", "ownKeys") ||
+      function ownKeys(it) {
+        var keys = getOwnPropertyNamesModule.f(anObject(it));
+        var getOwnPropertySymbols = getOwnPropertySymbolsModule.f;
+        return getOwnPropertySymbols ? concat(keys, getOwnPropertySymbols(it)) : keys;
+      };
+
+    /***/
+  },
+
+  /***/ 8235(module, __unused_webpack_exports, __webpack_require__) {
+    var uncurryThis = __webpack_require__(9504);
+    var hasOwn = __webpack_require__(9297);
+
+    var $SyntaxError = SyntaxError;
+    var $parseInt = parseInt;
+    var fromCharCode = String.fromCharCode;
+    var at = uncurryThis("".charAt);
+    var slice = uncurryThis("".slice);
+    var exec = uncurryThis(/./.exec);
+
+    var codePoints = {
+      '\\"': '"',
+      "\\\\": "\\",
+      "\\/": "/",
+      "\\b": "\b",
+      "\\f": "\f",
+      "\\n": "\n",
+      "\\r": "\r",
+      "\\t": "\t",
+    };
+
+    var IS_4_HEX_DIGITS = /^[\da-f]{4}$/i;
+    // eslint-disable-next-line regexp/no-control-character -- safe
+    var IS_C0_CONTROL_CODE = /^[\u0000-\u001F]$/;
+
+    module.exports = function (source, i) {
+      var unterminated = true;
+      var value = "";
+      while (i < source.length) {
+        var chr = at(source, i);
+        if (chr === "\\") {
+          var twoChars = slice(source, i, i + 2);
+          if (hasOwn(codePoints, twoChars)) {
+            value += codePoints[twoChars];
+            i += 2;
+          } else if (twoChars === "\\u") {
+            i += 2;
+            var fourHexDigits = slice(source, i, i + 4);
+            if (!exec(IS_4_HEX_DIGITS, fourHexDigits)) throw new $SyntaxError("Bad Unicode escape at: " + i);
+            value += fromCharCode($parseInt(fourHexDigits, 16));
+            i += 4;
+          } else throw new $SyntaxError('Unknown escape sequence: "' + twoChars + '"');
+        } else if (chr === '"') {
+          unterminated = false;
+          i++;
+          break;
+        } else {
+          if (exec(IS_C0_CONTROL_CODE, chr)) throw new $SyntaxError("Bad control character in string literal at: " + i);
+          value += chr;
+          i++;
+        }
+      }
+      if (unterminated) throw new $SyntaxError("Unterminated string at: " + i);
+      return { value: value, end: i };
+    };
+
+    /***/
+  },
+
+  /***/ 7750(module, __unused_webpack_exports, __webpack_require__) {
+    var isNullOrUndefined = __webpack_require__(4117);
+
+    var $TypeError = TypeError;
+
+    // `RequireObjectCoercible` abstract operation
+    // https://tc39.es/ecma262/#sec-requireobjectcoercible
+    module.exports = function (it) {
+      if (isNullOrUndefined(it)) throw new $TypeError("Can't call method on " + it);
+      return it;
+    };
+
+    /***/
+  },
+
+  /***/ 9286(module, __unused_webpack_exports, __webpack_require__) {
+    var SetHelpers = __webpack_require__(4402);
+    var iterate = __webpack_require__(8469);
+
+    var Set = SetHelpers.Set;
+    var add = SetHelpers.add;
+
+    module.exports = function (set) {
+      var result = new Set();
+      iterate(set, function (it) {
+        add(result, it);
+      });
+      return result;
+    };
+
+    /***/
+  },
+
+  /***/ 3440(module, __unused_webpack_exports, __webpack_require__) {
+    var aSet = __webpack_require__(7080);
+    var SetHelpers = __webpack_require__(4402);
+    var clone = __webpack_require__(9286);
+    var size = __webpack_require__(5170);
+    var getSetRecord = __webpack_require__(3789);
+    var iterateSet = __webpack_require__(8469);
+    var iterateSimple = __webpack_require__(507);
+
+    var has = SetHelpers.has;
+    var remove = SetHelpers.remove;
+
+    // `Set.prototype.difference` method
+    // https://tc39.es/ecma262/#sec-set.prototype.difference
+    module.exports = function difference(other) {
+      var O = aSet(this);
+      var otherRec = getSetRecord(other);
+      var result = clone(O);
+      if (size(result) <= otherRec.size)
+        iterateSet(result, function (e) {
+          if (otherRec.includes(e)) remove(result, e);
+        });
+      else
+        iterateSimple(otherRec.getIterator(), function (e) {
+          if (has(result, e)) remove(result, e);
+        });
+      return result;
+    };
+
+    /***/
+  },
+
+  /***/ 4402(module, __unused_webpack_exports, __webpack_require__) {
+    var uncurryThis = __webpack_require__(9504);
+
+    // eslint-disable-next-line es/no-set -- safe
+    var SetPrototype = Set.prototype;
+
+    module.exports = {
+      // eslint-disable-next-line es/no-set -- safe
+      Set: Set,
+      add: uncurryThis(SetPrototype.add),
+      has: uncurryThis(SetPrototype.has),
+      remove: uncurryThis(SetPrototype["delete"]),
+      proto: SetPrototype,
+    };
+
+    /***/
+  },
+
+  /***/ 8750(module, __unused_webpack_exports, __webpack_require__) {
+    var aSet = __webpack_require__(7080);
+    var SetHelpers = __webpack_require__(4402);
+    var size = __webpack_require__(5170);
+    var getSetRecord = __webpack_require__(3789);
+    var iterateSet = __webpack_require__(8469);
+    var iterateSimple = __webpack_require__(507);
+
+    var Set = SetHelpers.Set;
+    var add = SetHelpers.add;
+    var has = SetHelpers.has;
+
+    // `Set.prototype.intersection` method
+    // https://tc39.es/ecma262/#sec-set.prototype.intersection
+    module.exports = function intersection(other) {
+      var O = aSet(this);
+      var otherRec = getSetRecord(other);
+      var result = new Set();
+
+      if (size(O) > otherRec.size) {
+        iterateSimple(otherRec.getIterator(), function (e) {
+          if (has(O, e)) add(result, e);
+        });
+      } else {
+        iterateSet(O, function (e) {
+          if (otherRec.includes(e)) add(result, e);
+        });
+      }
+
+      return result;
+    };
+
+    /***/
+  },
+
+  /***/ 4449(module, __unused_webpack_exports, __webpack_require__) {
+    var aSet = __webpack_require__(7080);
+    var has = __webpack_require__(4402).has;
+    var size = __webpack_require__(5170);
+    var getSetRecord = __webpack_require__(3789);
+    var iterateSet = __webpack_require__(8469);
+    var iterateSimple = __webpack_require__(507);
+    var iteratorClose = __webpack_require__(9539);
+
+    // `Set.prototype.isDisjointFrom` method
+    // https://tc39.es/ecma262/#sec-set.prototype.isdisjointfrom
+    module.exports = function isDisjointFrom(other) {
+      var O = aSet(this);
+      var otherRec = getSetRecord(other);
+      if (size(O) <= otherRec.size)
+        return (
+          iterateSet(
+            O,
+            function (e) {
+              if (otherRec.includes(e)) return false;
+            },
+            true
+          ) !== false
+        );
+      var iterator = otherRec.getIterator();
+      return (
+        iterateSimple(iterator, function (e) {
+          if (has(O, e)) return iteratorClose(iterator.iterator, "normal", false);
+        }) !== false
+      );
+    };
+
+    /***/
+  },
+
+  /***/ 3838(module, __unused_webpack_exports, __webpack_require__) {
+    var aSet = __webpack_require__(7080);
+    var size = __webpack_require__(5170);
+    var iterate = __webpack_require__(8469);
+    var getSetRecord = __webpack_require__(3789);
+
+    // `Set.prototype.isSubsetOf` method
+    // https://tc39.es/ecma262/#sec-set.prototype.issubsetof
+    module.exports = function isSubsetOf(other) {
+      var O = aSet(this);
+      var otherRec = getSetRecord(other);
+      if (size(O) > otherRec.size) return false;
+      return (
+        iterate(
+          O,
+          function (e) {
+            if (!otherRec.includes(e)) return false;
+          },
+          true
+        ) !== false
+      );
+    };
+
+    /***/
+  },
+
+  /***/ 8527(module, __unused_webpack_exports, __webpack_require__) {
+    var aSet = __webpack_require__(7080);
+    var has = __webpack_require__(4402).has;
+    var size = __webpack_require__(5170);
+    var getSetRecord = __webpack_require__(3789);
+    var iterateSimple = __webpack_require__(507);
+    var iteratorClose = __webpack_require__(9539);
+
+    // `Set.prototype.isSupersetOf` method
+    // https://tc39.es/ecma262/#sec-set.prototype.issupersetof
+    module.exports = function isSupersetOf(other) {
+      var O = aSet(this);
+      var otherRec = getSetRecord(other);
+      if (size(O) < otherRec.size) return false;
+      var iterator = otherRec.getIterator();
+      return (
+        iterateSimple(iterator, function (e) {
+          if (!has(O, e)) return iteratorClose(iterator.iterator, "normal", false);
+        }) !== false
+      );
+    };
+
+    /***/
+  },
+
+  /***/ 8469(module, __unused_webpack_exports, __webpack_require__) {
+    var uncurryThis = __webpack_require__(9504);
+    var iterateSimple = __webpack_require__(507);
+    var SetHelpers = __webpack_require__(4402);
+
+    var Set = SetHelpers.Set;
+    var SetPrototype = SetHelpers.proto;
+    var forEach = uncurryThis(SetPrototype.forEach);
+    var keys = uncurryThis(SetPrototype.keys);
+    var next = keys(new Set()).next;
+
+    module.exports = function (set, fn, interruptible) {
+      return interruptible ? iterateSimple({ iterator: keys(set), next: next }, fn) : forEach(set, fn);
+    };
+
+    /***/
+  },
+
+  /***/ 4916(module, __unused_webpack_exports, __webpack_require__) {
+    var getBuiltIn = __webpack_require__(7751);
+
+    var createSetLike = function (size) {
+      return {
+        size: size,
+        has: function () {
+          return false;
+        },
+        keys: function () {
+          return {
+            next: function () {
+              return { done: true };
+            },
+          };
+        },
+      };
+    };
+
+    var createSetLikeWithInfinitySize = function (size) {
+      return {
+        size: size,
+        has: function () {
+          return true;
+        },
+        keys: function () {
+          throw new Error("e");
+        },
+      };
+    };
+
+    module.exports = function (name, callback) {
+      var Set = getBuiltIn("Set");
+      try {
+        new Set()[name](createSetLike(0));
+        try {
+          // late spec change, early WebKit ~ Safari 17 implementation does not pass it
+          // https://github.com/tc39/proposal-set-methods/pull/88
+          // also covered engines with
+          // https://bugs.webkit.org/show_bug.cgi?id=272679
+          new Set()[name](createSetLike(-1));
+          return false;
+        } catch (error2) {
+          if (!callback) return true;
+          // early V8 implementation bug
+          // https://issues.chromium.org/issues/351332634
+          try {
+            new Set()[name](createSetLikeWithInfinitySize(-Infinity));
+            return false;
+          } catch (error) {
+            var set = new Set([1, 2]);
+            return callback(set[name](createSetLikeWithInfinitySize(Infinity)));
+          }
+        }
+      } catch (error) {
+        return false;
+      }
+    };
+
+    /***/
+  },
+
+  /***/ 9835(module) {
+    // Should get iterator record of a set-like object before cloning this
+    // https://bugs.webkit.org/show_bug.cgi?id=289430
+    module.exports = function (METHOD_NAME) {
+      try {
+        // eslint-disable-next-line es/no-set -- needed for test
+        var baseSet = new Set();
+        var setLike = {
+          size: 0,
+          has: function () {
+            return true;
+          },
+          keys: function () {
+            // eslint-disable-next-line es/no-object-defineproperty -- needed for test
+            return Object.defineProperty({}, "next", {
+              get: function () {
+                baseSet.clear();
+                baseSet.add(4);
+                return function () {
+                  return { done: true };
+                };
+              },
+            });
+          },
+        };
+        var result = baseSet[METHOD_NAME](setLike);
+
+        return result.size === 1 && result.values().next().value === 4;
+      } catch (error) {
+        return false;
+      }
+    };
+
+    /***/
+  },
+
+  /***/ 5170(module, __unused_webpack_exports, __webpack_require__) {
+    var uncurryThisAccessor = __webpack_require__(6706);
+    var SetHelpers = __webpack_require__(4402);
+
+    module.exports =
+      uncurryThisAccessor(SetHelpers.proto, "size", "get") ||
+      function (set) {
+        return set.size;
+      };
+
+    /***/
+  },
+
+  /***/ 3650(module, __unused_webpack_exports, __webpack_require__) {
+    var aSet = __webpack_require__(7080);
+    var SetHelpers = __webpack_require__(4402);
+    var clone = __webpack_require__(9286);
+    var getSetRecord = __webpack_require__(3789);
+    var iterateSimple = __webpack_require__(507);
+
+    var add = SetHelpers.add;
+    var has = SetHelpers.has;
+    var remove = SetHelpers.remove;
+
+    // `Set.prototype.symmetricDifference` method
+    // https://tc39.es/ecma262/#sec-set.prototype.symmetricdifference
+    module.exports = function symmetricDifference(other) {
+      var O = aSet(this);
+      var keysIter = getSetRecord(other).getIterator();
+      var result = clone(O);
+      iterateSimple(keysIter, function (e) {
+        if (has(O, e)) remove(result, e);
+        else add(result, e);
+      });
+      return result;
+    };
+
+    /***/
+  },
+
+  /***/ 4204(module, __unused_webpack_exports, __webpack_require__) {
+    var aSet = __webpack_require__(7080);
+    var add = __webpack_require__(4402).add;
+    var clone = __webpack_require__(9286);
+    var getSetRecord = __webpack_require__(3789);
+    var iterateSimple = __webpack_require__(507);
+
+    // `Set.prototype.union` method
+    // https://tc39.es/ecma262/#sec-set.prototype.union
+    module.exports = function union(other) {
+      var O = aSet(this);
+      var keysIter = getSetRecord(other).getIterator();
+      var result = clone(O);
+      iterateSimple(keysIter, function (it) {
+        add(result, it);
+      });
+      return result;
+    };
+
+    /***/
+  },
+
+  /***/ 6119(module, __unused_webpack_exports, __webpack_require__) {
+    var shared = __webpack_require__(5745);
+    var uid = __webpack_require__(3392);
+
+    var keys = shared("keys");
+
+    module.exports = function (key) {
+      return keys[key] || (keys[key] = uid(key));
+    };
+
+    /***/
+  },
+
+  /***/ 7629(module, __unused_webpack_exports, __webpack_require__) {
+    var IS_PURE = __webpack_require__(6395);
+    var globalThis = __webpack_require__(4576);
+    var defineGlobalProperty = __webpack_require__(9433);
+
+    var SHARED = "__core-js_shared__";
+    var store = (module.exports = globalThis[SHARED] || defineGlobalProperty(SHARED, {}));
+
+    (store.versions || (store.versions = [])).push({
+      version: "3.50.0",
+      mode: IS_PURE ? "pure" : "global",
+      copyright: "© 2013–2025 Denis Pushkarev (zloirock.ru), 2025–2026 CoreJS Company (core-js.io). All rights reserved.",
+      license: "https://github.com/zloirock/core-js/blob/v3.50.0/LICENSE",
+      source: "https://github.com/zloirock/core-js",
+    });
+
+    /***/
+  },
+
+  /***/ 5745(module, __unused_webpack_exports, __webpack_require__) {
+    var store = __webpack_require__(7629);
+    // eslint-disable-next-line es/no-object-create -- safe
+    var create = Object.create || Object;
+
+    module.exports = function (key, value) {
+      return store[key] || (store[key] = value || create(null));
+    };
+
+    /***/
+  },
+
+  /***/ 533(module, __unused_webpack_exports, __webpack_require__) {
+    var uncurryThis = __webpack_require__(9504);
+    var toLength = __webpack_require__(8014);
+    var toString = __webpack_require__(655);
+    var $repeat = __webpack_require__(2333);
+    var requireObjectCoercible = __webpack_require__(7750);
+
+    var repeat = uncurryThis($repeat);
+    var stringSlice = uncurryThis("".slice);
+    var ceil = Math.ceil;
+
+    // `String.prototype.{ padStart, padEnd }` methods implementation
+    var createMethod = function (IS_END) {
+      return function ($this, maxLength, fillString) {
+        var S = toString(requireObjectCoercible($this));
+        var intMaxLength = toLength(maxLength);
+        var stringLength = S.length;
+        if (intMaxLength <= stringLength) return S;
+        var fillStr = fillString === undefined ? " " : toString(fillString);
+        var fillLen, stringFiller;
+        if (fillStr === "") return S;
+        fillLen = intMaxLength - stringLength;
+        stringFiller = repeat(fillStr, ceil(fillLen / fillStr.length));
+        if (stringFiller.length > fillLen) stringFiller = stringSlice(stringFiller, 0, fillLen);
+        return IS_END ? S + stringFiller : stringFiller + S;
+      };
+    };
+
+    module.exports = {
+      // `String.prototype.padStart` method
+      // https://tc39.es/ecma262/#sec-string.prototype.padstart
+      start: createMethod(false),
+      // `String.prototype.padEnd` method
+      // https://tc39.es/ecma262/#sec-string.prototype.padend
+      end: createMethod(true),
+    };
+
+    /***/
+  },
+
+  /***/ 2333(module, __unused_webpack_exports, __webpack_require__) {
+    var toIntegerOrInfinity = __webpack_require__(1291);
+    var toString = __webpack_require__(655);
+    var requireObjectCoercible = __webpack_require__(7750);
+
+    var $RangeError = RangeError;
+    var floor = Math.floor;
+
+    // `String.prototype.repeat` method implementation
+    // https://tc39.es/ecma262/#sec-string.prototype.repeat
+    module.exports = function repeat(count) {
+      var str = toString(requireObjectCoercible(this));
+      var result = "";
+      var n = toIntegerOrInfinity(count);
+      if (n < 0 || n === Infinity) throw new $RangeError("Wrong number of repetitions");
+      for (; n > 0; (n = floor(n / 2)) && (str += str)) if (n % 2) result += str;
+      return result;
+    };
+
+    /***/
+  },
+
+  /***/ 4495(module, __unused_webpack_exports, __webpack_require__) {
+    /* eslint-disable es/no-symbol -- required for testing */
+    var V8_VERSION = __webpack_require__(9519);
+    var fails = __webpack_require__(9039);
+    var globalThis = __webpack_require__(4576);
+
+    var $String = globalThis.String;
+
+    // eslint-disable-next-line es/no-object-getownpropertysymbols -- required for testing
+    module.exports =
+      !!Object.getOwnPropertySymbols &&
+      !fails(function () {
+        var symbol = Symbol("symbol detection");
+        // Chrome 38 Symbol has incorrect toString conversion
+        // `get-own-property-symbols` polyfill symbols converted to object are not Symbol instances
+        // nb: Do not call `String` directly to avoid this being optimized out to `symbol+''` which will,
+        // of course, fail.
+        return (
+          !$String(symbol) ||
+          !(Object(symbol) instanceof Symbol) ||
+          // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances
+          (!Symbol.sham && V8_VERSION && V8_VERSION < 41)
+        );
+      });
+
+    /***/
+  },
+
+  /***/ 1240(module, __unused_webpack_exports, __webpack_require__) {
+    var uncurryThis = __webpack_require__(9504);
+
+    // `thisNumberValue` abstract operation
+    // https://tc39.es/ecma262/#sec-thisnumbervalue
+    module.exports = uncurryThis((1.1).valueOf);
+
+    /***/
+  },
+
+  /***/ 5610(module, __unused_webpack_exports, __webpack_require__) {
+    var toIntegerOrInfinity = __webpack_require__(1291);
+
+    var max = Math.max;
+    var min = Math.min;
+
+    // Helper for a popular repeating case of the spec:
+    // Let integer be ? ToInteger(index).
+    // If integer < 0, let result be max((length + integer), 0); else let result be min(integer, length).
+    module.exports = function (index, length) {
+      var integer = toIntegerOrInfinity(index);
+      return integer < 0 ? max(integer + length, 0) : min(integer, length);
+    };
+
+    /***/
+  },
+
+  /***/ 5854(module, __unused_webpack_exports, __webpack_require__) {
+    var toPrimitive = __webpack_require__(2777);
+
+    var $TypeError = TypeError;
+
+    // `ToBigInt` abstract operation
+    // https://tc39.es/ecma262/#sec-tobigint
+    module.exports = function (argument) {
+      var prim = toPrimitive(argument, "number");
+      if (typeof prim == "number") throw new $TypeError("Can't convert number to bigint");
+      // eslint-disable-next-line es/no-bigint -- safe
+      return BigInt(prim);
+    };
+
+    /***/
+  },
+
+  /***/ 5397(module, __unused_webpack_exports, __webpack_require__) {
+    // toObject with fallback for non-array-like ES3 strings
+    var IndexedObject = __webpack_require__(7055);
+    var requireObjectCoercible = __webpack_require__(7750);
+
+    module.exports = function (it) {
+      return IndexedObject(requireObjectCoercible(it));
+    };
+
+    /***/
+  },
+
+  /***/ 1291(module, __unused_webpack_exports, __webpack_require__) {
+    var trunc = __webpack_require__(741);
+
+    // `ToIntegerOrInfinity` abstract operation
+    // https://tc39.es/ecma262/#sec-tointegerorinfinity
+    module.exports = function (argument) {
+      var number = +argument;
+      // eslint-disable-next-line no-self-compare -- NaN check
+      return number !== number || number === 0 ? 0 : trunc(number);
+    };
+
+    /***/
+  },
+
+  /***/ 8014(module, __unused_webpack_exports, __webpack_require__) {
+    var toIntegerOrInfinity = __webpack_require__(1291);
+
+    var min = Math.min;
+
+    // `ToLength` abstract operation
+    // https://tc39.es/ecma262/#sec-tolength
+    module.exports = function (argument) {
+      var len = toIntegerOrInfinity(argument);
+      return len > 0 ? min(len, 0x1fffffffffffff) : 0; // 2 ** 53 - 1 == 9007199254740991
+    };
+
+    /***/
+  },
+
+  /***/ 8981(module, __unused_webpack_exports, __webpack_require__) {
+    var requireObjectCoercible = __webpack_require__(7750);
+
+    var $Object = Object;
+
+    // `ToObject` abstract operation
+    // https://tc39.es/ecma262/#sec-toobject
+    module.exports = function (argument) {
+      return $Object(requireObjectCoercible(argument));
+    };
+
+    /***/
+  },
+
+  /***/ 2777(module, __unused_webpack_exports, __webpack_require__) {
+    var call = __webpack_require__(9565);
+    var isObject = __webpack_require__(34);
+    var isSymbol = __webpack_require__(757);
+    var getMethod = __webpack_require__(5966);
+    var ordinaryToPrimitive = __webpack_require__(4270);
+    var wellKnownSymbol = __webpack_require__(8227);
+
+    var $TypeError = TypeError;
+    var TO_PRIMITIVE = wellKnownSymbol("toPrimitive");
+
+    // `ToPrimitive` abstract operation
+    // https://tc39.es/ecma262/#sec-toprimitive
+    module.exports = function (input, pref) {
+      if (!isObject(input) || isSymbol(input)) return input;
+      var exoticToPrim = getMethod(input, TO_PRIMITIVE);
+      var result;
+      if (exoticToPrim) {
+        if (pref === undefined) pref = "default";
+        result = call(exoticToPrim, input, pref);
+        if (!isObject(result) || isSymbol(result)) return result;
+        throw new $TypeError("Can't convert object to primitive value");
+      }
+      if (pref === undefined) pref = "number";
+      return ordinaryToPrimitive(input, pref);
+    };
+
+    /***/
+  },
+
+  /***/ 6969(module, __unused_webpack_exports, __webpack_require__) {
+    var toPrimitive = __webpack_require__(2777);
+    var isSymbol = __webpack_require__(757);
+
+    // `ToPropertyKey` abstract operation
+    // https://tc39.es/ecma262/#sec-topropertykey
+    module.exports = function (argument) {
+      var key = toPrimitive(argument, "string");
+      return isSymbol(key) ? key : key + "";
+    };
+
+    /***/
+  },
+
+  /***/ 2140(module, __unused_webpack_exports, __webpack_require__) {
+    var wellKnownSymbol = __webpack_require__(8227);
+
+    var TO_STRING_TAG = wellKnownSymbol("toStringTag");
+    var test = {};
+    // eslint-disable-next-line unicorn/no-immediate-mutation -- ES3 syntax limitation
+    test[TO_STRING_TAG] = "z";
+
+    module.exports = String(test) === "[object z]";
+
+    /***/
+  },
+
+  /***/ 655(module, __unused_webpack_exports, __webpack_require__) {
+    var classof = __webpack_require__(6955);
+
+    var $String = String;
+
+    module.exports = function (argument) {
+      if (classof(argument) === "Symbol") throw new TypeError("Cannot convert a Symbol value to a string");
+      return $String(argument);
+    };
+
+    /***/
+  },
+
+  /***/ 6823(module) {
+    var $String = String;
+
+    module.exports = function (argument) {
+      try {
+        return $String(argument);
+      } catch (error) {
+        return "Object";
+      }
+    };
+
+    /***/
+  },
+
+  /***/ 3392(module, __unused_webpack_exports, __webpack_require__) {
+    var uncurryThis = __webpack_require__(9504);
+
+    var id = 0;
+    var postfix = Math.random();
+    var toString = uncurryThis((1.1).toString);
+
+    module.exports = function (key) {
+      return "Symbol(" + (key === undefined ? "" : key) + ")_" + toString(++id + postfix, 36);
+    };
+
+    /***/
+  },
+
+  /***/ 7416(module, __unused_webpack_exports, __webpack_require__) {
+    var fails = __webpack_require__(9039);
+    var wellKnownSymbol = __webpack_require__(8227);
+    var DESCRIPTORS = __webpack_require__(3724);
+    var IS_PURE = __webpack_require__(6395);
+
+    var ITERATOR = wellKnownSymbol("iterator");
+
+    module.exports = !fails(function () {
+      // eslint-disable-next-line unicorn/relative-url-style -- required for testing
+      var url = new URL("b?a=1&b=2&c=3", "https://a");
+      var params = url.searchParams;
+      var params2 = new URLSearchParams("a=1&a=2&b=3");
+      var result = "";
+      url.pathname = "c%20d";
+      params.forEach(function (value, key) {
+        params["delete"]("b");
+        result += key + value;
+      });
+      params2["delete"]("a", 2);
+      // `undefined` case is a Chromium 117 bug
+      // https://bugs.chromium.org/p/v8/issues/detail?id=14222
+      params2["delete"]("b", undefined);
+      return (
+        (IS_PURE && (!url.toJSON || !params2.has("a", 1) || params2.has("a", 2) || !params2.has("a", undefined) || params2.has("b"))) ||
+        (!params.size && (IS_PURE || !DESCRIPTORS)) ||
+        !params.sort ||
+        url.href !== "https://a/c%20d?a=1&c=3" ||
+        params.get("c") !== "3" ||
+        String(new URLSearchParams("?a=1")) !== "a=1" ||
+        !params[ITERATOR] ||
+        // throws in Edge
+        new URL("https://a@b").username !== "a" ||
+        new URLSearchParams(new URLSearchParams("a=b")).get("a") !== "b" ||
+        // not punycoded in Edge
+        new URL("https://тест").host !== "xn--e1aybc" ||
+        // not escaped in Chrome 62-
+        new URL("https://a#б").hash !== "#%D0%B1" ||
+        // fails in Chrome 66-
+        result !== "a1c3" ||
+        // throws in Safari
+        new URL("https://x", undefined).host !== "x"
+      );
+    });
+
+    /***/
+  },
+
+  /***/ 7040(module, __unused_webpack_exports, __webpack_require__) {
+    /* eslint-disable es/no-symbol -- required for testing */
+    var NATIVE_SYMBOL = __webpack_require__(4495);
+
+    module.exports = NATIVE_SYMBOL && !Symbol.sham && typeof Symbol.iterator == "symbol";
+
+    /***/
+  },
+
+  /***/ 8686(module, __unused_webpack_exports, __webpack_require__) {
+    var DESCRIPTORS = __webpack_require__(3724);
+    var fails = __webpack_require__(9039);
+
+    // V8 ~ Chrome 36-
+    // https://bugs.chromium.org/p/v8/issues/detail?id=3334
+    module.exports =
+      DESCRIPTORS &&
+      fails(function () {
+        // eslint-disable-next-line es/no-object-defineproperty -- required for testing
+        return (
+          Object.defineProperty(
+            function () {
+              /* empty */
+            },
+            "prototype",
+            {
+              value: 42,
+              writable: false,
+            }
+          ).prototype !== 42
+        );
+      });
+
+    /***/
+  },
+
+  /***/ 2812(module) {
+    var $TypeError = TypeError;
+
+    module.exports = function (passed, required) {
+      if (passed < required) throw new $TypeError("Not enough arguments");
+      return passed;
+    };
+
+    /***/
+  },
+
+  /***/ 8622(module, __unused_webpack_exports, __webpack_require__) {
+    var globalThis = __webpack_require__(4576);
+    var isCallable = __webpack_require__(4901);
+
+    var WeakMap = globalThis.WeakMap;
+
+    module.exports = isCallable(WeakMap) && /native code/.test(String(WeakMap));
+
+    /***/
+  },
+
+  /***/ 4995(module, __unused_webpack_exports, __webpack_require__) {
+    var uncurryThis = __webpack_require__(9504);
+
+    // eslint-disable-next-line es/no-weak-map -- safe
+    var WeakMapPrototype = WeakMap.prototype;
+
+    module.exports = {
+      // eslint-disable-next-line es/no-weak-map -- safe
+      WeakMap: WeakMap,
+      set: uncurryThis(WeakMapPrototype.set),
+      get: uncurryThis(WeakMapPrototype.get),
+      has: uncurryThis(WeakMapPrototype.has),
+      remove: uncurryThis(WeakMapPrototype["delete"]),
+    };
+
+    /***/
+  },
+
+  /***/ 8227(module, __unused_webpack_exports, __webpack_require__) {
+    var globalThis = __webpack_require__(4576);
+    var shared = __webpack_require__(5745);
+    var hasOwn = __webpack_require__(9297);
+    var uid = __webpack_require__(3392);
+    var NATIVE_SYMBOL = __webpack_require__(4495);
+    var USE_SYMBOL_AS_UID = __webpack_require__(7040);
+
+    var Symbol = globalThis.Symbol;
+    var WellKnownSymbolsStore = shared("wks");
+    var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol["for"] || Symbol : (Symbol && Symbol.withoutSetter) || uid;
+
+    module.exports = function (name) {
+      if (!hasOwn(WellKnownSymbolsStore, name)) {
+        WellKnownSymbolsStore[name] = NATIVE_SYMBOL && hasOwn(Symbol, name) ? Symbol[name] : createWellKnownSymbol("Symbol." + name);
+      }
+      return WellKnownSymbolsStore[name];
+    };
+
+    /***/
+  },
+
+  /***/ 7452(module) {
+    // a string of all valid unicode whitespaces
+    module.exports =
+      "\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u2002" +
+      "\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF";
+
+    /***/
+  },
+
+  /***/ 4423(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var $includes = __webpack_require__(9617).includes;
+    var fails = __webpack_require__(9039);
+    var addToUnscopables = __webpack_require__(6469);
+
+    // FF99+ bug
+    var BROKEN_ON_SPARSE = fails(function () {
+      // eslint-disable-next-line es/no-array-prototype-includes -- detection
+      return !Array(1).includes();
+    });
+
+    // Safari 26.4- bug
+    var BROKEN_ON_SPARSE_WITH_FROM_INDEX = fails(function () {
+      // eslint-disable-next-line no-sparse-arrays, es/no-array-prototype-includes -- detection
+      return [, 1].includes(undefined, 1);
+    });
+
+    // `Array.prototype.includes` method
+    // https://tc39.es/ecma262/#sec-array.prototype.includes
+    $(
+      { target: "Array", proto: true, forced: BROKEN_ON_SPARSE || BROKEN_ON_SPARSE_WITH_FROM_INDEX },
+      {
+        includes: function includes(el /* , fromIndex = 0 */) {
+          return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
+        },
+      }
+    );
+
+    // https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
+    addToUnscopables("includes");
+
+    /***/
+  },
+
+  /***/ 4114(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var toObject = __webpack_require__(8981);
+    var lengthOfArrayLike = __webpack_require__(6198);
+    var setArrayLength = __webpack_require__(4527);
+    var doesNotExceedSafeInteger = __webpack_require__(6837);
+    var fails = __webpack_require__(9039);
+
+    var INCORRECT_TO_LENGTH = fails(function () {
+      return [].push.call({ length: 0x100000000 }, 1) !== 4294967297;
+    });
+
+    // V8 <= 121 and Safari <= 15.4; FF < 23 throws InternalError
+    // https://bugs.chromium.org/p/v8/issues/detail?id=12681
+    var properErrorOnNonWritableLength = function () {
+      try {
+        // eslint-disable-next-line es/no-object-defineproperty -- safe
+        Object.defineProperty([], "length", { writable: false }).push();
+      } catch (error) {
+        return error instanceof TypeError;
+      }
+    };
+
+    var FORCED = INCORRECT_TO_LENGTH || !properErrorOnNonWritableLength();
+
+    // `Array.prototype.push` method
+    // https://tc39.es/ecma262/#sec-array.prototype.push
+    $(
+      { target: "Array", proto: true, arity: 1, forced: FORCED },
+      {
+        // eslint-disable-next-line no-unused-vars -- required for `.length`
+        push: function push(item) {
+          var O = toObject(this);
+          var len = lengthOfArrayLike(O);
+          var argCount = arguments.length;
+          doesNotExceedSafeInteger(len + argCount);
+          for (var i = 0; i < argCount; i++) {
+            O[len] = arguments[i];
+            len++;
+          }
+          setArrayLength(O, len);
+          return len;
+        },
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 8111(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var globalThis = __webpack_require__(4576);
+    var anInstance = __webpack_require__(679);
+    var anObject = __webpack_require__(8551);
+    var isCallable = __webpack_require__(4901);
+    var getPrototypeOf = __webpack_require__(2787);
+    var defineBuiltInAccessor = __webpack_require__(2106);
+    var createProperty = __webpack_require__(4659);
+    var fails = __webpack_require__(9039);
+    var hasOwn = __webpack_require__(9297);
+    var wellKnownSymbol = __webpack_require__(8227);
+    var IteratorPrototype = __webpack_require__(7657).IteratorPrototype;
+    var DESCRIPTORS = __webpack_require__(3724);
+    var IS_PURE = __webpack_require__(6395);
+
+    var CONSTRUCTOR = "constructor";
+    var ITERATOR = "Iterator";
+    var TO_STRING_TAG = wellKnownSymbol("toStringTag");
+
+    var $TypeError = TypeError;
+    var NativeIterator = globalThis[ITERATOR];
+
+    // FF56- have non-standard global helper `Iterator`
+    var FORCED =
+      IS_PURE ||
+      !isCallable(NativeIterator) ||
+      NativeIterator.prototype !== IteratorPrototype ||
+      // FF44- non-standard `Iterator` passes previous tests
+      !fails(function () {
+        NativeIterator({});
+      });
+
+    var IteratorConstructor = function Iterator() {
+      anInstance(this, IteratorPrototype);
+      if (getPrototypeOf(this) === IteratorPrototype) throw new $TypeError("Abstract class Iterator not directly constructable");
+    };
+
+    var defineIteratorPrototypeAccessor = function (key, value) {
+      if (DESCRIPTORS) {
+        defineBuiltInAccessor(IteratorPrototype, key, {
+          configurable: true,
+          get: function () {
+            return value;
+          },
+          set: function (replacement) {
+            anObject(this);
+            if (this === IteratorPrototype) throw new $TypeError("You can't redefine this property");
+            if (hasOwn(this, key)) this[key] = replacement;
+            else createProperty(this, key, replacement);
+          },
+        });
+      } else IteratorPrototype[key] = value;
+    };
+
+    if (!hasOwn(IteratorPrototype, TO_STRING_TAG)) defineIteratorPrototypeAccessor(TO_STRING_TAG, ITERATOR);
+
+    if (FORCED || !hasOwn(IteratorPrototype, CONSTRUCTOR) || IteratorPrototype[CONSTRUCTOR] === Object) {
+      defineIteratorPrototypeAccessor(CONSTRUCTOR, IteratorConstructor);
+    }
+
+    IteratorConstructor.prototype = IteratorPrototype;
+
+    // `Iterator` constructor
+    // https://tc39.es/ecma262/#sec-iterator
+    $(
+      { global: true, constructor: true, forced: FORCED },
+      {
+        Iterator: IteratorConstructor,
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 1148(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var call = __webpack_require__(9565);
+    var iterate = __webpack_require__(2652);
+    var aCallable = __webpack_require__(9306);
+    var anObject = __webpack_require__(8551);
+    var getIteratorDirect = __webpack_require__(1767);
+    var iteratorClose = __webpack_require__(9539);
+    var iteratorHelperWithoutClosingOnEarlyError = __webpack_require__(4549);
+
+    var everyWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError("every", TypeError);
+
+    // `Iterator.prototype.every` method
+    // https://tc39.es/ecma262/#sec-iterator.prototype.every
+    $(
+      { target: "Iterator", proto: true, real: true, forced: everyWithoutClosingOnEarlyError },
+      {
+        every: function every(predicate) {
+          anObject(this);
+          try {
+            aCallable(predicate);
+          } catch (error) {
+            iteratorClose(this, "throw", error);
+          }
+
+          if (everyWithoutClosingOnEarlyError) return call(everyWithoutClosingOnEarlyError, this, predicate);
+
+          var record = getIteratorDirect(this);
+          var counter = 0;
+          return !iterate(
+            record,
+            function (value, stop) {
+              if (!predicate(value, counter++)) return stop();
+            },
+            { IS_RECORD: true, INTERRUPTED: true }
+          ).stopped;
+        },
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 2489(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var call = __webpack_require__(9565);
+    var aCallable = __webpack_require__(9306);
+    var anObject = __webpack_require__(8551);
+    var getIteratorDirect = __webpack_require__(1767);
+    var createIteratorProxy = __webpack_require__(9462);
+    var callWithSafeIterationClosing = __webpack_require__(6319);
+    var IS_PURE = __webpack_require__(6395);
+    var iteratorClose = __webpack_require__(9539);
+    var iteratorHelperThrowsOnInvalidIterator = __webpack_require__(684);
+    var iteratorHelperWithoutClosingOnEarlyError = __webpack_require__(4549);
+
+    var FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR =
+      !IS_PURE &&
+      !iteratorHelperThrowsOnInvalidIterator("filter", function () {
+        /* empty */
+      });
+    var filterWithoutClosingOnEarlyError =
+      !IS_PURE && !FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR && iteratorHelperWithoutClosingOnEarlyError("filter", TypeError);
+
+    var FORCED = IS_PURE || FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR || filterWithoutClosingOnEarlyError;
+
+    var IteratorProxy = createIteratorProxy(function () {
+      var iterator = this.iterator;
+      var predicate = this.predicate;
+      var next = this.next;
+      var result, done, value;
+      while (true) {
+        result = anObject(call(next, iterator));
+        done = this.done = !!result.done;
+        if (done) return;
+        value = result.value;
+        if (callWithSafeIterationClosing(iterator, predicate, [value, this.counter++], true)) return value;
+      }
+    });
+
+    // `Iterator.prototype.filter` method
+    // https://tc39.es/ecma262/#sec-iterator.prototype.filter
+    $(
+      { target: "Iterator", proto: true, real: true, forced: FORCED },
+      {
+        filter: function filter(predicate) {
+          anObject(this);
+          try {
+            aCallable(predicate);
+          } catch (error) {
+            iteratorClose(this, "throw", error);
+          }
+
+          if (filterWithoutClosingOnEarlyError) return call(filterWithoutClosingOnEarlyError, this, predicate);
+
+          return new IteratorProxy(getIteratorDirect(this), {
+            predicate: predicate,
+          });
+        },
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 116(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var call = __webpack_require__(9565);
+    var iterate = __webpack_require__(2652);
+    var aCallable = __webpack_require__(9306);
+    var anObject = __webpack_require__(8551);
+    var getIteratorDirect = __webpack_require__(1767);
+    var iteratorClose = __webpack_require__(9539);
+    var iteratorHelperWithoutClosingOnEarlyError = __webpack_require__(4549);
+
+    var findWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError("find", TypeError);
+
+    // `Iterator.prototype.find` method
+    // https://tc39.es/ecma262/#sec-iterator.prototype.find
+    $(
+      { target: "Iterator", proto: true, real: true, forced: findWithoutClosingOnEarlyError },
+      {
+        find: function find(predicate) {
+          anObject(this);
+          try {
+            aCallable(predicate);
+          } catch (error) {
+            iteratorClose(this, "throw", error);
+          }
+
+          if (findWithoutClosingOnEarlyError) return call(findWithoutClosingOnEarlyError, this, predicate);
+
+          var record = getIteratorDirect(this);
+          var counter = 0;
+          return iterate(
+            record,
+            function (value, stop) {
+              if (predicate(value, counter++)) return stop(value);
+            },
+            { IS_RECORD: true, INTERRUPTED: true }
+          ).result;
+        },
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 7588(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var call = __webpack_require__(9565);
+    var iterate = __webpack_require__(2652);
+    var aCallable = __webpack_require__(9306);
+    var anObject = __webpack_require__(8551);
+    var getIteratorDirect = __webpack_require__(1767);
+    var iteratorClose = __webpack_require__(9539);
+    var iteratorHelperWithoutClosingOnEarlyError = __webpack_require__(4549);
+
+    var forEachWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError("forEach", TypeError);
+
+    // `Iterator.prototype.forEach` method
+    // https://tc39.es/ecma262/#sec-iterator.prototype.foreach
+    $(
+      { target: "Iterator", proto: true, real: true, forced: forEachWithoutClosingOnEarlyError },
+      {
+        forEach: function forEach(fn) {
+          anObject(this);
+          try {
+            aCallable(fn);
+          } catch (error) {
+            iteratorClose(this, "throw", error);
+          }
+
+          if (forEachWithoutClosingOnEarlyError) return call(forEachWithoutClosingOnEarlyError, this, fn);
+
+          var record = getIteratorDirect(this);
+          var counter = 0;
+          iterate(
+            record,
+            function (value) {
+              fn(value, counter++);
+            },
+            { IS_RECORD: true }
+          );
+        },
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 1701(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var call = __webpack_require__(9565);
+    var aCallable = __webpack_require__(9306);
+    var anObject = __webpack_require__(8551);
+    var getIteratorDirect = __webpack_require__(1767);
+    var createIteratorProxy = __webpack_require__(9462);
+    var callWithSafeIterationClosing = __webpack_require__(6319);
+    var iteratorClose = __webpack_require__(9539);
+    var iteratorHelperThrowsOnInvalidIterator = __webpack_require__(684);
+    var iteratorHelperWithoutClosingOnEarlyError = __webpack_require__(4549);
+    var IS_PURE = __webpack_require__(6395);
+
+    var MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR =
+      !IS_PURE &&
+      !iteratorHelperThrowsOnInvalidIterator("map", function () {
+        /* empty */
+      });
+    var mapWithoutClosingOnEarlyError =
+      !IS_PURE && !MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR && iteratorHelperWithoutClosingOnEarlyError("map", TypeError);
+
+    var FORCED = IS_PURE || MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR || mapWithoutClosingOnEarlyError;
+
+    var IteratorProxy = createIteratorProxy(function () {
+      var iterator = this.iterator;
+      var result = anObject(call(this.next, iterator));
+      var done = (this.done = !!result.done);
+      if (!done) return callWithSafeIterationClosing(iterator, this.mapper, [result.value, this.counter++], true);
+    });
+
+    // `Iterator.prototype.map` method
+    // https://tc39.es/ecma262/#sec-iterator.prototype.map
+    $(
+      { target: "Iterator", proto: true, real: true, forced: FORCED },
+      {
+        map: function map(mapper) {
+          anObject(this);
+          try {
+            aCallable(mapper);
+          } catch (error) {
+            iteratorClose(this, "throw", error);
+          }
+
+          if (mapWithoutClosingOnEarlyError) return call(mapWithoutClosingOnEarlyError, this, mapper);
+
+          return new IteratorProxy(getIteratorDirect(this), {
+            mapper: mapper,
+          });
+        },
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 3579(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var call = __webpack_require__(9565);
+    var iterate = __webpack_require__(2652);
+    var aCallable = __webpack_require__(9306);
+    var anObject = __webpack_require__(8551);
+    var getIteratorDirect = __webpack_require__(1767);
+    var iteratorClose = __webpack_require__(9539);
+    var iteratorHelperWithoutClosingOnEarlyError = __webpack_require__(4549);
+
+    var someWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError("some", TypeError);
+
+    // `Iterator.prototype.some` method
+    // https://tc39.es/ecma262/#sec-iterator.prototype.some
+    $(
+      { target: "Iterator", proto: true, real: true, forced: someWithoutClosingOnEarlyError },
+      {
+        some: function some(predicate) {
+          anObject(this);
+          try {
+            aCallable(predicate);
+          } catch (error) {
+            iteratorClose(this, "throw", error);
+          }
+
+          if (someWithoutClosingOnEarlyError) return call(someWithoutClosingOnEarlyError, this, predicate);
+
+          var record = getIteratorDirect(this);
+          var counter = 0;
+          return iterate(
+            record,
+            function (value, stop) {
+              if (predicate(value, counter++)) return stop();
+            },
+            { IS_RECORD: true, INTERRUPTED: true }
+          ).stopped;
+        },
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 9112(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var DESCRIPTORS = __webpack_require__(3724);
+    var globalThis = __webpack_require__(4576);
+    var getBuiltIn = __webpack_require__(7751);
+    var uncurryThis = __webpack_require__(9504);
+    var call = __webpack_require__(9565);
+    var isCallable = __webpack_require__(4901);
+    var isObject = __webpack_require__(34);
+    var isArray = __webpack_require__(4376);
+    var hasOwn = __webpack_require__(9297);
+    var toString = __webpack_require__(655);
+    var lengthOfArrayLike = __webpack_require__(6198);
+    var createProperty = __webpack_require__(4659);
+    var fails = __webpack_require__(9039);
+    var parseJSONString = __webpack_require__(8235);
+    var NATIVE_SYMBOL = __webpack_require__(4495);
+
+    var JSON = globalThis.JSON;
+    var Number = globalThis.Number;
+    var SyntaxError = globalThis.SyntaxError;
+    var nativeParse = JSON && JSON.parse;
+    var enumerableOwnProperties = getBuiltIn("Object", "keys");
+    // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+    var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+    var at = uncurryThis("".charAt);
+    var slice = uncurryThis("".slice);
+    var exec = uncurryThis(/./.exec);
+    var push = uncurryThis([].push);
+
+    var IS_DIGIT = /^\d$/;
+    var IS_NON_ZERO_DIGIT = /^[1-9]$/;
+    var IS_NUMBER_START = /^[\d-]$/;
+    var IS_WHITESPACE = /^[\t\n\r ]$/;
+
+    var PRIMITIVE = 0;
+    var OBJECT = 1;
+
+    var $parse = function (source, reviver) {
+      source = toString(source);
+      var context = new Context(source, 0);
+      var root = context.parse();
+      var value = root.value;
+      var endIndex = context.skip(IS_WHITESPACE, root.end);
+      if (endIndex < source.length) {
+        throw new SyntaxError('Unexpected extra character: "' + at(source, endIndex) + '" after the parsed data at: ' + endIndex);
+      }
+      return isCallable(reviver) ? internalize({ "": value }, "", reviver, root) : value;
+    };
+
+    var internalize = function (holder, name, reviver, node) {
+      var val = holder[name];
+      var unmodified = node && val === node.value;
+      var context = unmodified && typeof node.source == "string" ? { source: node.source } : {};
+      var elementRecordsLen, keys, len, i, P;
+      if (isObject(val)) {
+        var nodeIsArray = isArray(val);
+        var nodes = unmodified ? node.nodes : nodeIsArray ? [] : {};
+        if (nodeIsArray) {
+          elementRecordsLen = nodes.length;
+          len = lengthOfArrayLike(val);
+          for (i = 0; i < len; i++) {
+            internalizeProperty(val, i, internalize(val, "" + i, reviver, i < elementRecordsLen ? nodes[i] : undefined));
+          }
+        } else {
+          keys = enumerableOwnProperties(val);
+          len = lengthOfArrayLike(keys);
+          for (i = 0; i < len; i++) {
+            P = keys[i];
+            internalizeProperty(val, P, internalize(val, P, reviver, hasOwn(nodes, P) ? nodes[P] : undefined));
+          }
+        }
+      }
+      return call(reviver, holder, name, val, context);
+    };
+
+    var internalizeProperty = function (object, key, value) {
+      if (DESCRIPTORS) {
+        var descriptor = getOwnPropertyDescriptor(object, key);
+        if (descriptor && !descriptor.configurable) return;
+      }
+      if (value === undefined) delete object[key];
+      else createProperty(object, key, value);
+    };
+
+    var Node = function (value, end, source, nodes) {
+      this.value = value;
+      this.end = end;
+      this.source = source;
+      this.nodes = nodes;
+    };
+
+    var Context = function (source, index) {
+      this.source = source;
+      this.index = index;
+    };
+
+    // https://www.json.org/json-en.html
+    Context.prototype = {
+      fork: function (nextIndex) {
+        return new Context(this.source, nextIndex);
+      },
+      parse: function () {
+        var source = this.source;
+        var i = this.skip(IS_WHITESPACE, this.index);
+        var fork = this.fork(i);
+        var chr = at(source, i);
+        if (exec(IS_NUMBER_START, chr)) return fork.number();
+        switch (chr) {
+          case "{":
+            return fork.object();
+          case "[":
+            return fork.array();
+          case '"':
+            return fork.string();
+          case "t":
+            return fork.keyword(true);
+          case "f":
+            return fork.keyword(false);
+          case "n":
+            return fork.keyword(null);
+        }
+        throw new SyntaxError('Unexpected character: "' + chr + '" at: ' + i);
+      },
+      node: function (type, value, start, end, nodes) {
+        return new Node(value, end, type ? null : slice(this.source, start, end), nodes);
+      },
+      object: function () {
+        var source = this.source;
+        var i = this.index + 1;
+        var expectKeypair = false;
+        var object = {};
+        var nodes = {};
+        var closed = false;
+        while (i < source.length) {
+          i = this.until(['"', "}"], i);
+          if (at(source, i) === "}" && !expectKeypair) {
+            i++;
+            closed = true;
+            break;
+          }
+          // Parsing the key
+          var result = this.fork(i).string();
+          var key = result.value;
+          i = result.end;
+          i = this.until([":"], i) + 1;
+          // Parsing value
+          i = this.skip(IS_WHITESPACE, i);
+          result = this.fork(i).parse();
+          createProperty(nodes, key, result);
+          createProperty(object, key, result.value);
+          i = this.until([",", "}"], result.end);
+          var chr = at(source, i);
+          if (chr === ",") {
+            expectKeypair = true;
+            i++;
+          } else if (chr === "}") {
+            i++;
+            closed = true;
+            break;
+          }
+        }
+        if (!closed) throw new SyntaxError("Unterminated object at: " + i);
+        return this.node(OBJECT, object, this.index, i, nodes);
+      },
+      array: function () {
+        var source = this.source;
+        var i = this.index + 1;
+        var expectElement = false;
+        var array = [];
+        var nodes = [];
+        var closed = false;
+        while (i < source.length) {
+          i = this.skip(IS_WHITESPACE, i);
+          if (at(source, i) === "]" && !expectElement) {
+            i++;
+            closed = true;
+            break;
+          }
+          var result = this.fork(i).parse();
+          push(nodes, result);
+          push(array, result.value);
+          i = this.until([",", "]"], result.end);
+          if (at(source, i) === ",") {
+            expectElement = true;
+            i++;
+          } else if (at(source, i) === "]") {
+            i++;
+            closed = true;
+            break;
+          }
+        }
+        if (!closed) throw new SyntaxError("Unterminated array at: " + i);
+        return this.node(OBJECT, array, this.index, i, nodes);
+      },
+      string: function () {
+        var index = this.index;
+        var parsed = parseJSONString(this.source, this.index + 1);
+        return this.node(PRIMITIVE, parsed.value, index, parsed.end);
+      },
+      number: function () {
+        var source = this.source;
+        var startIndex = this.index;
+        var i = startIndex;
+        if (at(source, i) === "-") i++;
+        if (at(source, i) === "0") i++;
+        else if (exec(IS_NON_ZERO_DIGIT, at(source, i))) i = this.skip(IS_DIGIT, i + 1);
+        else throw new SyntaxError("Failed to parse number at: " + i);
+        if (at(source, i) === ".") {
+          var fractionStartIndex = i + 1;
+          i = this.skip(IS_DIGIT, fractionStartIndex);
+          if (fractionStartIndex === i) throw new SyntaxError("Failed to parse number's fraction at: " + i);
+        }
+        if (at(source, i) === "e" || at(source, i) === "E") {
+          i++;
+          if (at(source, i) === "+" || at(source, i) === "-") i++;
+          var exponentStartIndex = i;
+          i = this.skip(IS_DIGIT, i);
+          if (exponentStartIndex === i) throw new SyntaxError("Failed to parse number's exponent value at: " + i);
+        }
+        return this.node(PRIMITIVE, Number(slice(source, startIndex, i)), startIndex, i);
+      },
+      keyword: function (value) {
+        var keyword = "" + value;
+        var index = this.index;
+        var endIndex = index + keyword.length;
+        if (slice(this.source, index, endIndex) !== keyword) throw new SyntaxError("Failed to parse value at: " + index);
+        return this.node(PRIMITIVE, value, index, endIndex);
+      },
+      skip: function (regex, i) {
+        var source = this.source;
+        for (; i < source.length; i++) if (!exec(regex, at(source, i))) break;
+        return i;
+      },
+      until: function (array, i) {
+        i = this.skip(IS_WHITESPACE, i);
+        var chr = at(this.source, i);
+        for (var j = 0; j < array.length; j++) if (array[j] === chr) return i;
+        throw new SyntaxError('Unexpected character: "' + chr + '" at: ' + i);
+      },
+    };
+
+    var NO_SOURCE_SUPPORT = fails(function () {
+      var unsafeInt = "9007199254740993";
+      var source;
+      nativeParse(unsafeInt, function (key, value, context) {
+        source = context.source;
+      });
+      return source !== unsafeInt;
+    });
+
+    var PROPER_BASE_PARSE =
+      NATIVE_SYMBOL &&
+      !fails(function () {
+        // Safari 9 bug
+        return 1 / nativeParse("-0 \t") !== -Infinity;
+      });
+
+    // `JSON.parse` method
+    // https://tc39.es/ecma262/#sec-json.parse
+    // https://github.com/tc39/proposal-json-parse-with-source
+    $(
+      { target: "JSON", stat: true, forced: NO_SOURCE_SUPPORT },
+      {
+        parse: function parse(text, reviver) {
+          return PROPER_BASE_PARSE && !isCallable(reviver) ? nativeParse(text) : $parse(text, reviver);
+        },
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 3110(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var getBuiltIn = __webpack_require__(7751);
+    var call = __webpack_require__(9565);
+    var uncurryThis = __webpack_require__(9504);
+    var fails = __webpack_require__(9039);
+    var isArray = __webpack_require__(4376);
+    var isCallable = __webpack_require__(4901);
+    var isObject = __webpack_require__(34);
+    var create = __webpack_require__(2360);
+    var isRawJSON = __webpack_require__(5810);
+    var isSymbol = __webpack_require__(757);
+    var classof = __webpack_require__(2195);
+    var thisNumberValue = __webpack_require__(1240);
+    var includes = __webpack_require__(9617).includes;
+    var hasOwn = __webpack_require__(9297);
+    var toString = __webpack_require__(655);
+    var parseJSONString = __webpack_require__(8235);
+    var uid = __webpack_require__(3392);
+    var NATIVE_SYMBOL = __webpack_require__(4495);
+    var NATIVE_RAW_JSON = __webpack_require__(7819);
+
+    var $String = String;
+    var $TypeError = TypeError;
+    var $stringify = getBuiltIn("JSON", "stringify");
+    var $BigInt = getBuiltIn("BigInt");
+    var stringValueOf = uncurryThis("".valueOf);
+    var booleanValueOf = uncurryThis(true.valueOf);
+    var bigIntValueOf = $BigInt && uncurryThis($BigInt.prototype.valueOf);
+    var exec = uncurryThis(/./.exec);
+    var charAt = uncurryThis("".charAt);
+    var charCodeAt = uncurryThis("".charCodeAt);
+    var replace = uncurryThis("".replace);
+    var slice = uncurryThis("".slice);
+    var push = uncurryThis([].push);
+    var pop = uncurryThis([].pop);
+    var numberToString = uncurryThis((1.1).toString);
+
+    var surrogates = /[\uD800-\uDFFF]/g;
+    var leadingSurrogates = /^[\uD800-\uDBFF]$/;
+    var trailingSurrogates = /^[\uDC00-\uDFFF]$/;
+    var digits = /^\d+$/;
+
+    // a placeholder of a raw JSON value
+    var RAW_MARK = uid();
+    // a prefix of keys of a reordered object, see `createOrderedObject`
+    var KEY_MARK = uid();
+    // the last key of a reordered object, marks the end of its serialization
+    var END_MARK = uid();
+    var RAW_MARK_LENGTH = RAW_MARK.length;
+    var KEY_MARK_LENGTH = KEY_MARK.length;
+
+    var WRONG_SYMBOLS_CONVERSION =
+      !NATIVE_SYMBOL ||
+      fails(function () {
+        var symbol = getBuiltIn("Symbol")("stringify detection");
+        // MS Edge converts symbol values to JSON as {}
+        return (
+          $stringify([symbol]) !== "[null]" ||
+          // WebKit converts symbol values to JSON as null
+          $stringify({ a: symbol }) !== "{}" ||
+          // V8 throws on boxed symbols
+          $stringify(Object(symbol)) !== "{}"
+        );
+      });
+
+    // https://github.com/tc39/proposal-well-formed-stringify
+    var ILL_FORMED_UNICODE = fails(function () {
+      return $stringify("\uDF06\uD834") !== '"\\udf06\\ud834"' || $stringify("\uDEAD") !== '"\\udead"';
+    });
+
+    var isRawJSONValue = NATIVE_RAW_JSON ? getBuiltIn("JSON", "isRawJSON") : isRawJSON;
+
+    var stringifyWithProperSymbolsConversion = WRONG_SYMBOLS_CONVERSION
+      ? function (it, replacer, space) {
+          return $stringify(
+            it,
+            function (key, value) {
+              var replaced = call(replacer, this, key, value);
+              if (!isSymbol(replaced)) return replaced;
+            },
+            space
+          );
+        }
+      : $stringify;
+
+    var fixIllFormedJSON = function (match, offset, string) {
+      var prev = charAt(string, offset - 1);
+      var next = charAt(string, offset + 1);
+      if (
+        (exec(leadingSurrogates, match) && !exec(trailingSurrogates, next)) ||
+        (exec(trailingSurrogates, match) && !exec(leadingSurrogates, prev))
+      ) {
+        return "\\u" + numberToString(charCodeAt(match, 0), 16);
+      }
+      return match;
+    };
+
+    // `PropertyList` of `JSON.stringify`
+    // https://tc39.es/ecma262/#sec-json.stringify
+    var getPropertyList = function (replacer) {
+      if (!isArray(replacer)) return;
+      var rawLength = replacer.length;
+      var propertyList = [];
+      // a null prototype object is used as a set of already added keys to keep the deduplication linear
+      var addedKeys = create(null);
+      for (var i = 0; i < rawLength; i++) {
+        var element = replacer[i];
+        var key;
+        if (typeof element == "string") key = element;
+        else if (typeof element == "number" || classof(element) === "Number" || classof(element) === "String") key = toString(element);
+        else continue;
+        if (!hasOwn(addedKeys, key)) {
+          addedKeys[key] = true;
+          push(propertyList, key);
+        }
+      }
+      return propertyList;
+    };
+
+    // values with such an internal slot are unwrapped by `SerializeJSONProperty` instead of being serialized as objects
+    var hasInternalSlot = function (valueOf, it) {
+      try {
+        valueOf(it);
+        return true;
+      } catch (error) {
+        return false;
+      }
+    };
+
+    // the slot check is expensive, so it's performed only for the kind reported by the value itself -
+    // a value lying about its kind via `Symbol.toStringTag` is serialized as an ordinary object
+    var isBoxedPrimitive = function (it) {
+      var kind = classof(it);
+      return (
+        (kind === "Number" && hasInternalSlot(thisNumberValue, it)) ||
+        (kind === "String" && hasInternalSlot(stringValueOf, it)) ||
+        (kind === "Boolean" && hasInternalSlot(booleanValueOf, it)) ||
+        (!!bigIntValueOf && kind === "BigInt" && hasInternalSlot(bigIntValueOf, it))
+      );
+    };
+
+    // only objects serialized by `SerializeJSONObject` are affected by the property list
+    var isSerializedAsObject = function (it) {
+      if (!isObject(it) || isCallable(it) || isArray(it)) return false;
+      try {
+        return !isBoxedPrimitive(it);
+        // `classof` reads `Symbol.toStringTag`, so a proxy could throw - it has no internal slots anyway
+      } catch (error) {
+        return true;
+      }
+    };
+
+    // the engine unwraps it in the same order as it would read the original property,
+    // so the property is read lazily and `toJSON` is called once and with the original key
+    var createElementHolder = function (holder, key) {
+      return {
+        toJSON: function () {
+          var element = holder[key];
+          if (isObject(element) || typeof element == "bigint") {
+            var elementToJSON = element.toJSON;
+            if (isCallable(elementToJSON)) element = call(elementToJSON, element, key);
+          }
+          return element;
+        },
+      };
+    };
+
+    // own keys of objects are sorted - integer-like keys are moved to the beginning,
+    // so such keys should be marked and restored in the serialized string
+    var getKeyPrefix = function (propertyList) {
+      for (var i = 0, length = propertyList.length; i < length; i++) {
+        if (exec(digits, propertyList[i])) return KEY_MARK;
+      }
+      return "";
+    };
+
+    // `SerializeJSONObject` iterates the property list, so the value is replaced with an object with keys in this order
+    var createOrderedObject = function (value, propertyList, keyPrefix) {
+      // keys are not marked if the property list has no integer-like keys, so `Object.prototype`
+      // with a setter, a non-writable property or `__proto__` should not intercept the assignment
+      var ordered = create(null);
+      for (var i = 0, length = propertyList.length; i < length; i++) {
+        var key = propertyList[i];
+        ordered[keyPrefix + key] = createElementHolder(value, key);
+      }
+      ordered[END_MARK] = null;
+      return ordered;
+    };
+
+    // `JSON.stringify` method
+    // https://tc39.es/ecma262/#sec-json.stringify
+    // https://github.com/tc39/proposal-json-parse-with-source
+    if ($stringify)
+      $(
+        { target: "JSON", stat: true, arity: 3, forced: WRONG_SYMBOLS_CONVERSION || ILL_FORMED_UNICODE || !NATIVE_RAW_JSON },
+        {
+          stringify: function stringify(text, replacer, space) {
+            var replacerFunction = isCallable(replacer) ? replacer : undefined;
+            var propertyList = replacerFunction ? undefined : getPropertyList(replacer);
+            var keyPrefix = propertyList && getKeyPrefix(propertyList);
+            var rawStrings = [];
+            var openObjects = [];
+            var parentOrdered = [];
+            var currentOrdered;
+            var marked = false;
+            var root = true;
+
+            var json = stringifyWithProperSymbolsConversion(
+              text,
+              function (key, value) {
+                // some old implementations (like WebKit) could pass numbers as keys
+                key = $String(key);
+
+                if (propertyList) {
+                  if (key === END_MARK) {
+                    pop(openObjects);
+                    currentOrdered = pop(parentOrdered);
+                    return;
+                  }
+                  if (root) root = false;
+                  // the innermost reordered object already contains only keys of the property list and arrays are not
+                  // affected by it, the rest of objects (like objects with a fake `Symbol.toStringTag`) are filtered here
+                  else if (this !== currentOrdered && !isArray(this) && !includes(propertyList, key)) return;
+                } else if (replacerFunction) value = call(replacerFunction, this, key, value);
+
+                if (isRawJSONValue(value)) {
+                  if (NATIVE_RAW_JSON) return value;
+                  marked = true;
+                  return RAW_MARK + (push(rawStrings, value.rawJSON) - 1);
+                }
+
+                if (propertyList && isSerializedAsObject(value)) {
+                  // reordered objects are new each time, so cycles should be detected before the engine does it
+                  if (includes(openObjects, value)) throw new $TypeError("Converting circular structure to JSON");
+                  var ordered = createOrderedObject(value, propertyList, keyPrefix);
+                  push(openObjects, value);
+                  push(parentOrdered, currentOrdered);
+                  currentOrdered = ordered;
+                  if (keyPrefix) marked = true;
+                  return ordered;
+                }
+
+                return value;
+              },
+              space
+            );
+
+            if (typeof json != "string") return json;
+
+            if (ILL_FORMED_UNICODE) json = replace(json, surrogates, fixIllFormedJSON);
+
+            if (!marked) return json;
+
+            var result = "";
+            var length = json.length;
+
+            for (var i = 0; i < length; i++) {
+              var chr = charAt(json, i);
+              if (chr === '"') {
+                var end = parseJSONString(json, ++i).end - 1;
+                var string = slice(json, i, end);
+                if (slice(string, 0, RAW_MARK_LENGTH) === RAW_MARK) result += rawStrings[slice(string, RAW_MARK_LENGTH)];
+                else if (slice(string, 0, KEY_MARK_LENGTH) === KEY_MARK) result += '"' + slice(string, KEY_MARK_LENGTH) + '"';
+                else result += '"' + string + '"';
+                i = end;
+              } else result += chr;
+            }
+
+            return result;
+          },
+        }
+      );
+
+    /***/
+  },
+
+  /***/ 2731(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var aCallable = __webpack_require__(9306);
+    var MapHelpers = __webpack_require__(2248);
+    var IS_PURE = __webpack_require__(6395);
+
+    var get = MapHelpers.get;
+    var has = MapHelpers.has;
+    var set = MapHelpers.set;
+
+    // `Map.prototype.getOrInsertComputed` method
+    // https://tc39.es/ecma262/#sec-map.prototype.getorinsertcomputed
+    $(
+      { target: "Map", proto: true, real: true, forced: IS_PURE },
+      {
+        getOrInsertComputed: function getOrInsertComputed(key, callbackfn) {
+          var hasKey = has(this, key);
+          aCallable(callbackfn);
+          if (hasKey) return get(this, key);
+          // CanonicalizeKeyedCollectionKey
+          if (key === 0 && 1 / key === -Infinity) key = 0;
+          var value = callbackfn(key);
+          set(this, key, value);
+          return value;
+        },
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 5367(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var MapHelpers = __webpack_require__(2248);
+    var IS_PURE = __webpack_require__(6395);
+
+    var get = MapHelpers.get;
+    var has = MapHelpers.has;
+    var set = MapHelpers.set;
+
+    // `Map.prototype.getOrInsert` method
+    // https://tc39.es/ecma262/#sec-map.prototype.getorinsert
+    $(
+      { target: "Map", proto: true, real: true, forced: IS_PURE },
+      {
+        getOrInsert: function getOrInsert(key, value) {
+          if (has(this, key)) return get(this, key);
+          set(this, key, value);
+          return value;
+        },
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 6069(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var uncurryThis = __webpack_require__(9504);
+    var aString = __webpack_require__(3463);
+    var hasOwn = __webpack_require__(9297);
+    var padStart = __webpack_require__(533).start;
+    var WHITESPACES = __webpack_require__(7452);
+
+    var $Array = Array;
+    var $escape = RegExp.escape;
+    var charAt = uncurryThis("".charAt);
+    var charCodeAt = uncurryThis("".charCodeAt);
+    var numberToString = uncurryThis((1.1).toString);
+    var join = uncurryThis([].join);
+    var FIRST_DIGIT_OR_ASCII = /^[0-9a-z]/i;
+    var SYNTAX_SOLIDUS = /^[$()*+./?[\\\]^{|}]/;
+    var OTHER_PUNCTUATORS_AND_WHITESPACES = RegExp("^[!\"#%&',\\-:;<=>@`~" + WHITESPACES + "]");
+    var exec = uncurryThis(FIRST_DIGIT_OR_ASCII.exec);
+
+    var ControlEscape = {
+      "\u0009": "t",
+      "\u000A": "n",
+      "\u000B": "v",
+      "\u000C": "f",
+      "\u000D": "r",
+    };
+
+    var escapeChar = function (chr) {
+      var hex = numberToString(charCodeAt(chr, 0), 16);
+      return hex.length < 3 ? "\\x" + padStart(hex, 2, "0") : "\\u" + padStart(hex, 4, "0");
+    };
+
+    // Avoiding the use of polyfills of the previous iteration of this proposal
+    var FORCED = !$escape || $escape("ab") !== "\\x61b";
+
+    // `RegExp.escape` method
+    // https://tc39.es/ecma262/#sec-regexp.escape
+    $(
+      { target: "RegExp", stat: true, forced: FORCED },
+      {
+        escape: function escape(S) {
+          aString(S);
+          var length = S.length;
+          var result = $Array(length);
+
+          for (var i = 0; i < length; i++) {
+            var chr = charAt(S, i);
+            if (i === 0 && exec(FIRST_DIGIT_OR_ASCII, chr)) {
+              result[i] = escapeChar(chr);
+            } else if (hasOwn(ControlEscape, chr)) {
+              result[i] = "\\" + ControlEscape[chr];
+            } else if (exec(SYNTAX_SOLIDUS, chr)) {
+              result[i] = "\\" + chr;
+            } else if (exec(OTHER_PUNCTUATORS_AND_WHITESPACES, chr)) {
+              result[i] = escapeChar(chr);
+            } else {
+              var charCode = charCodeAt(chr, 0);
+              // single UTF-16 code unit
+              if ((charCode & 0xf800) !== 0xd800) result[i] = chr;
+              // unpaired surrogate
+              else if (charCode >= 0xdc00 || i + 1 >= length || (charCodeAt(S, i + 1) & 0xfc00) !== 0xdc00) result[i] = escapeChar(chr);
+              // surrogate pair
+              else {
+                result[i] = chr;
+                result[++i] = charAt(S, i);
+              }
+            }
+          }
+
+          return join(result, "");
+        },
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 7642(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var difference = __webpack_require__(3440);
+    var fails = __webpack_require__(9039);
+    var setMethodAcceptSetLike = __webpack_require__(4916);
+
+    var SET_LIKE_INCORRECT_BEHAVIOR = !setMethodAcceptSetLike("difference", function (result) {
+      return result.size === 0;
+    });
+
+    var FORCED =
+      SET_LIKE_INCORRECT_BEHAVIOR ||
+      fails(function () {
+        // https://bugs.webkit.org/show_bug.cgi?id=288595
+        var setLike = {
+          size: 1,
+          has: function () {
+            return true;
+          },
+          keys: function () {
+            var index = 0;
+            return {
+              next: function () {
+                var done = index++ > 1;
+                if (baseSet.has(1)) baseSet.clear();
+                return { done: done, value: 2 };
+              },
+            };
+          },
+        };
+        // eslint-disable-next-line es/no-set -- testing
+        var baseSet = new Set([1, 2, 3, 4]);
+        // eslint-disable-next-line es/no-set-prototype-difference -- testing
+        return baseSet.difference(setLike).size !== 3;
+      });
+
+    // `Set.prototype.difference` method
+    // https://tc39.es/ecma262/#sec-set.prototype.difference
+    $(
+      { target: "Set", proto: true, real: true, forced: FORCED },
+      {
+        difference: difference,
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 8004(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var fails = __webpack_require__(9039);
+    var intersection = __webpack_require__(8750);
+    var setMethodAcceptSetLike = __webpack_require__(4916);
+
+    var INCORRECT =
+      !setMethodAcceptSetLike("intersection", function (result) {
+        return result.size === 2 && result.has(1) && result.has(2);
+      }) ||
+      fails(function () {
+        // eslint-disable-next-line es/no-array-from, es/no-set, es/no-set-prototype-intersection -- testing
+        return String(Array.from(new Set([1, 2, 3]).intersection(new Set([3, 2])))) !== "3,2";
+      });
+
+    // `Set.prototype.intersection` method
+    // https://tc39.es/ecma262/#sec-set.prototype.intersection
+    $(
+      { target: "Set", proto: true, real: true, forced: INCORRECT },
+      {
+        intersection: intersection,
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 3853(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var isDisjointFrom = __webpack_require__(4449);
+    var setMethodAcceptSetLike = __webpack_require__(4916);
+
+    var INCORRECT = !setMethodAcceptSetLike("isDisjointFrom", function (result) {
+      return !result;
+    });
+
+    // `Set.prototype.isDisjointFrom` method
+    // https://tc39.es/ecma262/#sec-set.prototype.isdisjointfrom
+    $(
+      { target: "Set", proto: true, real: true, forced: INCORRECT },
+      {
+        isDisjointFrom: isDisjointFrom,
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 5876(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var isSubsetOf = __webpack_require__(3838);
+    var setMethodAcceptSetLike = __webpack_require__(4916);
+
+    var INCORRECT = !setMethodAcceptSetLike("isSubsetOf", function (result) {
+      return result;
+    });
+
+    // `Set.prototype.isSubsetOf` method
+    // https://tc39.es/ecma262/#sec-set.prototype.issubsetof
+    $(
+      { target: "Set", proto: true, real: true, forced: INCORRECT },
+      {
+        isSubsetOf: isSubsetOf,
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 2475(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var isSupersetOf = __webpack_require__(8527);
+    var setMethodAcceptSetLike = __webpack_require__(4916);
+
+    var INCORRECT = !setMethodAcceptSetLike("isSupersetOf", function (result) {
+      return !result;
+    });
+
+    // `Set.prototype.isSupersetOf` method
+    // https://tc39.es/ecma262/#sec-set.prototype.issupersetof
+    $(
+      { target: "Set", proto: true, real: true, forced: INCORRECT },
+      {
+        isSupersetOf: isSupersetOf,
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 5024(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var symmetricDifference = __webpack_require__(3650);
+    var setMethodGetKeysBeforeCloning = __webpack_require__(9835);
+    var setMethodAcceptSetLike = __webpack_require__(4916);
+
+    var FORCED = !setMethodAcceptSetLike("symmetricDifference") || !setMethodGetKeysBeforeCloning("symmetricDifference");
+
+    // `Set.prototype.symmetricDifference` method
+    // https://tc39.es/ecma262/#sec-set.prototype.symmetricdifference
+    $(
+      { target: "Set", proto: true, real: true, forced: FORCED },
+      {
+        symmetricDifference: symmetricDifference,
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 1698(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var union = __webpack_require__(4204);
+    var setMethodGetKeysBeforeCloning = __webpack_require__(9835);
+    var setMethodAcceptSetLike = __webpack_require__(4916);
+
+    var FORCED = !setMethodAcceptSetLike("union") || !setMethodGetKeysBeforeCloning("union");
+
+    // `Set.prototype.union` method
+    // https://tc39.es/ecma262/#sec-set.prototype.union
+    $(
+      { target: "Set", proto: true, real: true, forced: FORCED },
+      {
+        union: union,
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 9577(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var ArrayBufferViewCore = __webpack_require__(4644);
+    var isBigIntArray = __webpack_require__(1108);
+    var lengthOfArrayLike = __webpack_require__(6198);
+    var toIntegerOrInfinity = __webpack_require__(1291);
+    var toBigInt = __webpack_require__(5854);
+
+    var aTypedArray = ArrayBufferViewCore.aTypedArray;
+    var getTypedArrayConstructor = ArrayBufferViewCore.getTypedArrayConstructor;
+    var exportTypedArrayMethod = ArrayBufferViewCore.exportTypedArrayMethod;
+
+    var $RangeError = RangeError;
+
+    var PROPER_ORDER = (function () {
+      try {
+        // eslint-disable-next-line no-throw-literal, es/no-typed-arrays, es/no-array-prototype-with -- required for testing
+        new Int8Array(1)["with"](2, {
+          valueOf: function () {
+            throw 8;
+          },
+        });
+      } catch (error) {
+        // some early implementations, like WebKit, does not follow the final semantic
+        // https://github.com/tc39/proposal-change-array-by-copy/pull/86
+        return error === 8;
+      }
+    })();
+
+    // Bug in WebKit. It should truncate a negative fractional index to zero, but instead throws an error
+    var THROW_ON_NEGATIVE_FRACTIONAL_INDEX =
+      PROPER_ORDER &&
+      (function () {
+        try {
+          // eslint-disable-next-line es/no-typed-arrays, es/no-array-prototype-with -- required for testing
+          new Int8Array(1)["with"](-0.5, 1);
+        } catch (error) {
+          return true;
+        }
+      })();
+
+    // `%TypedArray%.prototype.with` method
+    // https://tc39.es/ecma262/#sec-%typedarray%.prototype.with
+    exportTypedArrayMethod(
+      "with",
+      {
+        with: function (index, value) {
+          var O = aTypedArray(this);
+          var len = lengthOfArrayLike(O);
+          var relativeIndex = toIntegerOrInfinity(index);
+          var actualIndex = relativeIndex < 0 ? len + relativeIndex : relativeIndex;
+          var numericValue = isBigIntArray(O) ? toBigInt(value) : +value;
+          if (actualIndex >= len || actualIndex < 0) throw new $RangeError("Incorrect index");
+          var A = new (getTypedArrayConstructor(O))(len);
+          var k = 0;
+          for (; k < len; k++) A[k] = k === actualIndex ? numericValue : O[k];
+          return A;
+        },
+      }["with"],
+      !PROPER_ORDER || THROW_ON_NEGATIVE_FRACTIONAL_INDEX
+    );
+
+    /***/
+  },
+
+  /***/ 9452(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var aCallable = __webpack_require__(9306);
+    var aWeakMap = __webpack_require__(6557);
+    var aWeakKey = __webpack_require__(4328);
+    var WeakMapHelpers = __webpack_require__(4995);
+    var IS_PURE = __webpack_require__(6395);
+
+    var get = WeakMapHelpers.get;
+    var has = WeakMapHelpers.has;
+    var set = WeakMapHelpers.set;
+
+    var FORCED =
+      IS_PURE ||
+      !(function () {
+        try {
+          // eslint-disable-next-line es/no-weak-map, no-throw-literal -- testing
+          if (WeakMap.prototype.getOrInsertComputed)
+            new WeakMap().getOrInsertComputed(1, function () {
+              throw 1;
+            });
+        } catch (error) {
+          // FF144 Nightly - Beta 3 bug
+          // https://bugzilla.mozilla.org/show_bug.cgi?id=1988369
+          return error instanceof TypeError;
+        }
+      })();
+
+    // `WeakMap.prototype.getOrInsertComputed` method
+    // https://tc39.es/ecma262/#sec-weakmap.prototype.getorinsertcomputed
+    $(
+      { target: "WeakMap", proto: true, real: true, forced: FORCED },
+      {
+        getOrInsertComputed: function getOrInsertComputed(key, callbackfn) {
+          if (!IS_PURE) aWeakMap(this);
+          aWeakKey(key);
+          aCallable(callbackfn);
+          if (has(this, key)) return get(this, key);
+          var value = callbackfn(key);
+          set(this, key, value);
+          return value;
+        },
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 8454(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var WeakMapHelpers = __webpack_require__(4995);
+    var IS_PURE = __webpack_require__(6395);
+
+    var get = WeakMapHelpers.get;
+    var has = WeakMapHelpers.has;
+    var set = WeakMapHelpers.set;
+
+    // `WeakMap.prototype.getOrInsert` method
+    // https://tc39.es/ecma262/#sec-weakmap.prototype.getorinsert
+    $(
+      { target: "WeakMap", proto: true, real: true, forced: IS_PURE },
+      {
+        getOrInsert: function getOrInsert(key, value) {
+          if (has(this, key)) return get(this, key);
+          set(this, key, value);
+          return value;
+        },
+      }
+    );
+
+    /***/
+  },
+
+  /***/ 5781(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+    var $ = __webpack_require__(6518);
+    var getBuiltIn = __webpack_require__(7751);
+    var validateArgumentsLength = __webpack_require__(2812);
+    var toString = __webpack_require__(655);
+    var USE_NATIVE_URL = __webpack_require__(7416);
+
+    var URL = getBuiltIn("URL");
+
+    // `URL.parse` method
+    // https://url.spec.whatwg.org/#dom-url-parse
+    $(
+      { target: "URL", stat: true, forced: !USE_NATIVE_URL },
+      {
+        parse: function parse(url) {
+          var length = validateArgumentsLength(arguments.length, 1);
+          var urlString = toString(url);
+          var base = length < 2 || arguments[1] === undefined ? undefined : toString(arguments[1]);
+          try {
+            return new URL(urlString, base);
+          } catch (error) {
+            return null;
+          }
+        },
+      }
+    );
+
+    /***/
+  },
+
+  /******/
+};
 /************************************************************************/
 /******/ // The module cache
 /******/ const __webpack_module_cache__ = {};
-/******/ 
+/******/
 /******/ // The require function
 /******/ function __webpack_require__(moduleId) {
-/******/ 	// Check if module is in cache
-/******/ 	const cachedModule = __webpack_module_cache__[moduleId];
-/******/ 	if (cachedModule !== undefined) {
-/******/ 		return cachedModule.exports;
-/******/ 	}
-/******/ 	// Create a new module (and put it into the cache)
-/******/ 	const module = __webpack_module_cache__[moduleId] = {
-/******/ 		// no module.id needed
-/******/ 		// no module.loaded needed
-/******/ 		exports: {}
-/******/ 	};
-/******/ 
-/******/ 	// Execute the module function
-/******/ 	__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/ 
-/******/ 	// Return the exports of the module
-/******/ 	return module.exports;
-/******/ }
-/******/ 
+  /******/ // Check if module is in cache
+  /******/ const cachedModule = __webpack_module_cache__[moduleId];
+  /******/ if (cachedModule !== undefined) {
+    /******/ return cachedModule.exports;
+    /******/
+  }
+  /******/ // Create a new module (and put it into the cache)
+  /******/ const module = (__webpack_module_cache__[moduleId] = {
+    /******/ // no module.id needed
+    /******/ // no module.loaded needed
+    /******/ exports: {},
+    /******/
+  });
+  /******/
+  /******/ // Execute the module function
+  /******/ __webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+  /******/
+  /******/ // Return the exports of the module
+  /******/ return module.exports;
+  /******/
+}
+/******/
 /************************************************************************/
 /******/ /* webpack/runtime/define property getters */
 /******/ (() => {
-/******/ 	// define getter/value functions for harmony exports
-/******/ 	__webpack_require__.d = (exports, definition) => {
-/******/ 		if(Array.isArray(definition)) {
-/******/ 			var i = 0;
-/******/ 			while(i < definition.length) {
-/******/ 				var key = definition[i++];
-/******/ 				var binding = definition[i++];
-/******/ 				if(!__webpack_require__.o(exports, key)) {
-/******/ 					if(binding === 0) {
-/******/ 						Object.defineProperty(exports, key, { enumerable: true, value: definition[i++] });
-/******/ 					} else {
-/******/ 						Object.defineProperty(exports, key, { enumerable: true, get: binding });
-/******/ 					}
-/******/ 				} else if(binding === 0) { i++; }
-/******/ 			}
-/******/ 		} else {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		}
-/******/ 	};
-/******/ })();
-/******/ 
+  /******/ // define getter/value functions for harmony exports
+  /******/ __webpack_require__.d = (exports, definition) => {
+    /******/ if (Array.isArray(definition)) {
+      /******/ var i = 0;
+      /******/ while (i < definition.length) {
+        /******/ var key = definition[i++];
+        /******/ var binding = definition[i++];
+        /******/ if (!__webpack_require__.o(exports, key)) {
+          /******/ if (binding === 0) {
+            /******/ Object.defineProperty(exports, key, { enumerable: true, value: definition[i++] });
+            /******/
+          } else {
+            /******/ Object.defineProperty(exports, key, { enumerable: true, get: binding });
+            /******/
+          }
+          /******/
+        } else if (binding === 0) {
+          i++;
+        }
+        /******/
+      }
+      /******/
+    } else {
+      /******/ for (var key in definition) {
+        /******/ if (__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+          /******/ Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+          /******/
+        }
+        /******/
+      }
+      /******/
+    }
+    /******/
+  };
+  /******/
+})();
+/******/
 /******/ /* webpack/runtime/hasOwnProperty shorthand */
 /******/ (() => {
-/******/ 	__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ })();
-/******/ 
+  /******/ __webpack_require__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
+  /******/
+})();
+/******/
 /************************************************************************/
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.includes.js
@@ -5021,19 +4891,7 @@ var es_set_is_superset_of_v2 = __webpack_require__(2475);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.set.symmetric-difference.v2.js
 var es_set_symmetric_difference_v2 = __webpack_require__(5024);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.set.union.v2.js
-var es_set_union_v2 = __webpack_require__(1698);
-;// ./web/ui_utils.js
-
-
-
-
-
-
-
-
-
-
-
+var es_set_union_v2 = __webpack_require__(1698); // ./web/ui_utils.js
 const DEFAULT_SCALE_VALUE = "auto";
 const DEFAULT_SCALE = 1.0;
 const DEFAULT_SCALE_DELTA = 1.1;
@@ -5047,7 +4905,7 @@ const PresentationModeState = {
   UNKNOWN: 0,
   NORMAL: 1,
   CHANGING: 2,
-  FULLSCREEN: 3
+  FULLSCREEN: 3,
 };
 const SidebarView = {
   UNKNOWN: -1,
@@ -5055,30 +4913,30 @@ const SidebarView = {
   THUMBS: 1,
   OUTLINE: 2,
   ATTACHMENTS: 3,
-  LAYERS: 4
+  LAYERS: 4,
 };
 const TextLayerMode = {
   DISABLE: 0,
   ENABLE: 1,
-  ENABLE_PERMISSIONS: 2
+  ENABLE_PERMISSIONS: 2,
 };
 const ScrollMode = {
   UNKNOWN: -1,
   VERTICAL: 0,
   HORIZONTAL: 1,
   WRAPPED: 2,
-  PAGE: 3
+  PAGE: 3,
 };
 const SpreadMode = {
   UNKNOWN: -1,
   NONE: 0,
   ODD: 1,
-  EVEN: 2
+  EVEN: 2,
 };
 const CursorTool = {
   SELECT: 0,
   HAND: 1,
-  ZOOM: 2
+  ZOOM: 2,
 };
 const AutoPrintRegExp = /\bprint\s*\(/;
 function scrollIntoView(element, spot) {
@@ -5129,17 +4987,21 @@ function watchScroll(viewAreaElement, callback, abortSignal = undefined) {
     right: true,
     down: true,
     lastX: viewAreaElement.scrollLeft,
-    lastY: viewAreaElement.scrollTop
+    lastY: viewAreaElement.scrollTop,
   };
   let rAF = null;
-  viewAreaElement.addEventListener("scroll", () => {
-    rAF ??= window.requestAnimationFrame(onRAF);
-  }, {
-    useCapture: true,
-    signal: abortSignal
-  });
+  viewAreaElement.addEventListener(
+    "scroll",
+    () => {
+      rAF ??= window.requestAnimationFrame(onRAF);
+    },
+    {
+      useCapture: true,
+      signal: abortSignal,
+    }
+  );
   abortSignal?.addEventListener("abort", () => window.cancelAnimationFrame(rAF), {
-    once: true
+    once: true,
   });
   return state;
 }
@@ -5156,7 +5018,7 @@ function removeNullCharacters(str, replaceInvisible = false) {
     return str;
   }
   if (replaceInvisible) {
-    return str.replaceAll(InvisibleCharsRegExp, m => m === "\x00" ? "" : " ");
+    return str.replaceAll(InvisibleCharsRegExp, (m) => (m === "\x00" ? "" : " "));
   }
   return str.replaceAll("\x00", "");
 }
@@ -5170,7 +5032,7 @@ function binarySearchFirstItem(items, condition, start = 0) {
     return minIndex;
   }
   while (minIndex < maxIndex) {
-    const currentIndex = minIndex + maxIndex >> 1;
+    const currentIndex = (minIndex + maxIndex) >> 1;
     const currentItem = items[currentIndex];
     if (condition(currentItem)) {
       maxIndex = currentIndex;
@@ -5216,20 +5078,16 @@ function approximateFraction(x) {
   return x_ === x ? [c, d] : [d, c];
 }
 function floorToDivide(x, div) {
-  return x - x % div;
+  return x - (x % div);
 }
-function getPageSizeInches({
-  view,
-  userUnit,
-  rotate
-}) {
+function getPageSizeInches({ view, userUnit, rotate }) {
   const [x1, y1, x2, y2] = view;
   const changeOrientation = rotate % 180 !== 0;
-  const width = (x2 - x1) / 72 * userUnit;
-  const height = (y2 - y1) / 72 * userUnit;
+  const width = ((x2 - x1) / 72) * userUnit;
+  const height = ((y2 - y1) / 72) * userUnit;
   return {
     width: changeOrientation ? height : width,
-    height: changeOrientation ? width : height
+    height: changeOrientation ? width : height,
   };
 }
 function backtrackBeforeAllVisibleElements(index, views, top) {
@@ -5255,13 +5113,7 @@ function visibleSort(a, b) {
   const pc = a.percent - b.percent;
   return Math.abs(pc) > 0.001 ? -pc : a.id - b.id;
 }
-function getVisibleElements({
-  scrollEl,
-  views,
-  sortByVisibility = false,
-  horizontal = false,
-  rtl = false
-}) {
+function getVisibleElements({ scrollEl, views, sortByVisibility = false, horizontal = false, rtl = false }) {
   const top = scrollEl.scrollTop,
     bottom = top + scrollEl.clientHeight;
   const left = scrollEl.scrollLeft,
@@ -5310,20 +5162,23 @@ function getVisibleElements({
     const hiddenWidth = minX + Math.max(0, viewRight - right);
     const fractionHeight = (viewHeight - hiddenHeight) / viewHeight,
       fractionWidth = (viewWidth - hiddenWidth) / viewWidth;
-    const percent = fractionHeight * fractionWidth * 100 | 0;
+    const percent = (fractionHeight * fractionWidth * 100) | 0;
     visible.push({
       id: view.id,
       x: currentWidth,
       y: currentHeight,
-      visibleArea: percent === 100 ? null : {
-        minX,
-        minY,
-        maxX: Math.min(viewRight, right) - currentWidth,
-        maxY: Math.min(viewBottom, bottom) - currentHeight
-      },
+      visibleArea:
+        percent === 100
+          ? null
+          : {
+              minX,
+              minY,
+              maxX: Math.min(viewRight, right) - currentWidth,
+              maxY: Math.min(viewBottom, bottom) - currentHeight,
+            },
       view,
       percent,
-      widthPercent: fractionWidth * 100 | 0
+      widthPercent: (fractionWidth * 100) | 0,
     });
     ids.add(view.id);
   }
@@ -5336,7 +5191,7 @@ function getVisibleElements({
     first,
     last,
     views: visible,
-    ids
+    ids,
   };
 }
 function normalizeWheelEventDirection(evt) {
@@ -5466,7 +5321,7 @@ function apiPageLayoutToViewerModes(layout) {
   }
   return {
     scrollMode,
-    spreadMode
+    spreadMode,
   };
 }
 function apiPageModeToSidebarView(mode) {
@@ -5499,30 +5354,21 @@ function toggleExpandedBtn(button, toggle, view = null) {
   button.setAttribute("aria-expanded", toggle);
   view?.classList.toggle("hidden", !toggle);
 }
-const calcRound = function () {
+const calcRound = (function () {
   const e = document.createElement("div");
   e.style.width = "round(down, calc(1.6666666666666665 * 792px), 1px)";
-  return e.style.width === "calc(1320px)" ? Math.fround : x => x;
-}();
+  return e.style.width === "calc(1320px)" ? Math.fround : (x) => x;
+})();
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.iterator.constructor.js
 var es_iterator_constructor = __webpack_require__(8111);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.iterator.for-each.js
-var es_iterator_for_each = __webpack_require__(7588);
-;// ./web/app_options.js
-
-
-
-
+var es_iterator_for_each = __webpack_require__(7588); // ./web/app_options.js
 {
   var compatParams = new Map();
-  const {
-    maxTouchPoints,
-    platform,
-    userAgent
-  } = navigator;
+  const { maxTouchPoints, platform, userAgent } = navigator;
   const isAndroid = /Android/.test(userAgent);
-  const isIOS = /\b(?:iPad|iPhone|iPod)(?=;)/.test(userAgent) || platform === "MacIntel" && maxTouchPoints > 1;
+  const isIOS = /\b(?:iPad|iPhone|iPod)(?=;)/.test(userAgent) || (platform === "MacIntel" && maxTouchPoints > 1);
   if (isIOS || isAndroid) {
     compatParams.set("maxCanvasPixels", 5242880);
   }
@@ -5536,292 +5382,668 @@ const OptionKind = {
   API: 0x04,
   WORKER: 0x08,
   EVENT_DISPATCH: 0x10,
-  PREFERENCE: 0x80
+  PREFERENCE: 0x80,
 };
 const Type = {
   BOOLEAN: 0x01,
   NUMBER: 0x02,
   OBJECT: 0x04,
   STRING: 0x08,
-  UNDEFINED: 0x10
+  UNDEFINED: 0x10,
 };
-const defaultOptions = new Map([["allowedGlobalEvents", {
-  value: null,
-  kind: OptionKind.BROWSER
-}], ["canvasMaxAreaInBytes", {
-  value: -1,
-  kind: OptionKind.BROWSER + OptionKind.API
-}], ["isInAutomation", {
-  value: false,
-  kind: OptionKind.BROWSER
-}], ["localeProperties", {
-  value: {
-    lang: navigator.language || "en-US"
-  },
-  kind: OptionKind.BROWSER
-}], ["maxCanvasDim", {
-  value: 32767,
-  kind: OptionKind.BROWSER + OptionKind.VIEWER
-}], ["nimbusDataStr", {
-  value: "",
-  kind: OptionKind.BROWSER
-}], ["supportsCaretBrowsingMode", {
-  value: false,
-  kind: OptionKind.BROWSER
-}], ["supportsDocumentFonts", {
-  value: true,
-  kind: OptionKind.BROWSER
-}], ["supportsDownloading", {
-  value: true,
-  kind: OptionKind.BROWSER
-}], ["supportsIntegratedFind", {
-  value: false,
-  kind: OptionKind.BROWSER
-}], ["supportsMouseWheelZoomCtrlKey", {
-  value: true,
-  kind: OptionKind.BROWSER
-}], ["supportsMouseWheelZoomMetaKey", {
-  value: true,
-  kind: OptionKind.BROWSER
-}], ["supportsPinchToZoom", {
-  value: true,
-  kind: OptionKind.BROWSER
-}], ["supportsPrinting", {
-  value: true,
-  kind: OptionKind.BROWSER
-}], ["toolbarDensity", {
-  value: 0,
-  kind: OptionKind.BROWSER + OptionKind.EVENT_DISPATCH
-}], ["altTextLearnMoreUrl", {
-  value: "",
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["annotationEditorMode", {
-  value: 0,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["annotationMode", {
-  value: 2,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["capCanvasAreaFactor", {
-  value: 200,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["commentLearnMoreUrl", {
-  value: "",
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["cursorToolOnLoad", {
-  value: 0,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["debuggerSrc", {
-  value: "./debugger.mjs",
-  kind: OptionKind.VIEWER
-}], ...[["defaultUrl", {
-  value: "compressed.tracemonkey-pldi-09.pdf",
-  kind: OptionKind.VIEWER
-}]], ["defaultZoomDelay", {
-  value: 400,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["defaultZoomValue", {
-  value: "",
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["disableHistory", {
-  value: false,
-  kind: OptionKind.VIEWER
-}], ["disablePageLabels", {
-  value: false,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ...[["disablePreferences", {
-  value: false,
-  kind: OptionKind.VIEWER
-}]], ...[], ["enableAltText", {
-  value: false,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["enableAltTextModelDownload", {
-  value: true,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE + OptionKind.EVENT_DISPATCH
-}], ["enableAutoLinking", {
-  value: true,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["enableComment", {
-  value: false,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["enableDetailCanvas", {
-  value: true,
-  kind: OptionKind.VIEWER
-}], ...[], ["enableGuessAltText", {
-  value: true,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE + OptionKind.EVENT_DISPATCH
-}], ["enableHighlightFloatingButton", {
-  value: false,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["enableMerge", {
-  value: false,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["enableNewAltTextWhenAddingImage", {
-  value: true,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["enableNewBadge", {
-  value: false,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["enableNova", {
-  value: true,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["enableOptimizedPartialRendering", {
-  value: false,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["enablePermissions", {
-  value: false,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["enablePrintAutoRotate", {
-  value: true,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["enableScripting", {
-  value: true,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["enableSelectionRendering", {
-  value: true,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["enableSignatureEditor", {
-  value: false,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["enableSignatureVerification", {
-  value: false,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["enableSplitMerge", {
-  value: false,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["enableUpdatedAddImage", {
-  value: false,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["externalLinkRel", {
-  value: "noopener noreferrer nofollow",
-  kind: OptionKind.VIEWER
-}], ["externalLinkTarget", {
-  value: 0,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ...[], ["highlightEditorColors", {
-  value: "yellow=#FFFF98,green=#53FFBC,blue=#80EBFF,pink=#FFCBE6,red=#FF4F5F," + "yellow_HCM=#FFFFCC,green_HCM=#53FFBC,blue_HCM=#80EBFF,pink_HCM=#F6B8FF,red_HCM=#C50043",
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["historyUpdateUrl", {
-  value: false,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["ignoreDestinationZoom", {
-  value: false,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["imageResourcesPath", {
-  value: "./images/",
-  kind: OptionKind.VIEWER
-}], ["imagesRightClickMinSize", {
-  value: -1,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["maxCanvasPixels", {
-  value: 2 ** 25,
-  kind: OptionKind.VIEWER
-}], ["minDurationToUpdateCanvas", {
-  value: 500,
-  kind: OptionKind.VIEWER
-}], ["forcePageColors", {
-  value: false,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["pageColorsBackground", {
-  value: "Canvas",
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["pageColorsForeground", {
-  value: "CanvasText",
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["pdfBugEnabled", {
-  value: false,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["postMessageAfterPrintCallback", {
-  value: false,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["printResolution", {
-  value: 150,
-  kind: OptionKind.VIEWER
-}], ...[["sandboxBundleSrc", {
-  value: "../build/pdf.sandbox.mjs",
-  kind: OptionKind.VIEWER
-}]], ["sidebarViewOnLoad", {
-  value: -1,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["scrollModeOnLoad", {
-  value: -1,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["spreadModeOnLoad", {
-  value: -1,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["textLayerMode", {
-  value: 1,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["viewerCssTheme", {
-  value: 0,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["viewOnLoad", {
-  value: 0,
-  kind: OptionKind.VIEWER + OptionKind.PREFERENCE
-}], ["cMapPacked", {
-  value: true,
-  kind: OptionKind.API
-}], ["cMapUrl", {
-  value: "../web/cmaps/",
-  kind: OptionKind.API
-}], ["disableAutoFetch", {
-  value: false,
-  kind: OptionKind.API + OptionKind.PREFERENCE
-}], ["disableFontFace", {
-  value: false,
-  kind: OptionKind.API + OptionKind.PREFERENCE
-}], ["disableRange", {
-  value: false,
-  kind: OptionKind.API + OptionKind.PREFERENCE
-}], ["disableStream", {
-  value: false,
-  kind: OptionKind.API + OptionKind.PREFERENCE
-}], ["docBaseUrl", {
-  value: "",
-  kind: OptionKind.API
-}], ["enableHWA", {
-  value: true,
-  kind: OptionKind.API + OptionKind.PREFERENCE
-}], ["enableWebGPU", {
-  value: true,
-  kind: OptionKind.API + OptionKind.PREFERENCE
-}], ["enableXfa", {
-  value: true,
-  kind: OptionKind.API + OptionKind.PREFERENCE
-}], ["fontExtraProperties", {
-  value: false,
-  kind: OptionKind.API
-}], ["iccUrl", {
-  value: "../web/iccs/",
-  kind: OptionKind.API
-}], ["isOffscreenCanvasSupported", {
-  value: true,
-  kind: OptionKind.API
-}], ["maxImageSize", {
-  value: -1,
-  kind: OptionKind.API
-}], ["pdfBug", {
-  value: false,
-  kind: OptionKind.API
-}], ["standardFontDataUrl", {
-  value: "../web/standard_fonts/",
-  kind: OptionKind.API
-}], ["useSystemFonts", {
-  value: undefined,
-  kind: OptionKind.API,
-  type: Type.BOOLEAN + Type.UNDEFINED
-}], ["verbosity", {
-  value: 1,
-  kind: OptionKind.API
-}], ["wasmUrl", {
-  value: "../web/wasm/",
-  kind: OptionKind.API
-}], ["workerPort", {
-  value: null,
-  kind: OptionKind.WORKER
-}], ["workerSrc", {
-  value: "../build/pdf.worker.mjs",
-  kind: OptionKind.WORKER
-}]]);
+const defaultOptions = new Map([
+  [
+    "allowedGlobalEvents",
+    {
+      value: null,
+      kind: OptionKind.BROWSER,
+    },
+  ],
+  [
+    "canvasMaxAreaInBytes",
+    {
+      value: -1,
+      kind: OptionKind.BROWSER + OptionKind.API,
+    },
+  ],
+  [
+    "isInAutomation",
+    {
+      value: false,
+      kind: OptionKind.BROWSER,
+    },
+  ],
+  [
+    "localeProperties",
+    {
+      value: {
+        lang: navigator.language || "en-US",
+      },
+      kind: OptionKind.BROWSER,
+    },
+  ],
+  [
+    "maxCanvasDim",
+    {
+      value: 32767,
+      kind: OptionKind.BROWSER + OptionKind.VIEWER,
+    },
+  ],
+  [
+    "nimbusDataStr",
+    {
+      value: "",
+      kind: OptionKind.BROWSER,
+    },
+  ],
+  [
+    "supportsCaretBrowsingMode",
+    {
+      value: false,
+      kind: OptionKind.BROWSER,
+    },
+  ],
+  [
+    "supportsDocumentFonts",
+    {
+      value: true,
+      kind: OptionKind.BROWSER,
+    },
+  ],
+  [
+    "supportsDownloading",
+    {
+      value: true,
+      kind: OptionKind.BROWSER,
+    },
+  ],
+  [
+    "supportsIntegratedFind",
+    {
+      value: false,
+      kind: OptionKind.BROWSER,
+    },
+  ],
+  [
+    "supportsMouseWheelZoomCtrlKey",
+    {
+      value: true,
+      kind: OptionKind.BROWSER,
+    },
+  ],
+  [
+    "supportsMouseWheelZoomMetaKey",
+    {
+      value: true,
+      kind: OptionKind.BROWSER,
+    },
+  ],
+  [
+    "supportsPinchToZoom",
+    {
+      value: true,
+      kind: OptionKind.BROWSER,
+    },
+  ],
+  [
+    "supportsPrinting",
+    {
+      value: true,
+      kind: OptionKind.BROWSER,
+    },
+  ],
+  [
+    "toolbarDensity",
+    {
+      value: 0,
+      kind: OptionKind.BROWSER + OptionKind.EVENT_DISPATCH,
+    },
+  ],
+  [
+    "altTextLearnMoreUrl",
+    {
+      value: "",
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "annotationEditorMode",
+    {
+      value: 0,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "annotationMode",
+    {
+      value: 2,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "capCanvasAreaFactor",
+    {
+      value: 200,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "commentLearnMoreUrl",
+    {
+      value: "",
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "cursorToolOnLoad",
+    {
+      value: 0,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "debuggerSrc",
+    {
+      value: "./debugger.mjs",
+      kind: OptionKind.VIEWER,
+    },
+  ],
+  ...[
+    [
+      "defaultUrl",
+      {
+        value: "compressed.tracemonkey-pldi-09.pdf",
+        kind: OptionKind.VIEWER,
+      },
+    ],
+  ],
+  [
+    "defaultZoomDelay",
+    {
+      value: 400,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "defaultZoomValue",
+    {
+      value: "",
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "disableHistory",
+    {
+      value: false,
+      kind: OptionKind.VIEWER,
+    },
+  ],
+  [
+    "disablePageLabels",
+    {
+      value: false,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  ...[
+    [
+      "disablePreferences",
+      {
+        value: false,
+        kind: OptionKind.VIEWER,
+      },
+    ],
+  ],
+  ...[],
+  [
+    "enableAltText",
+    {
+      value: false,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "enableAltTextModelDownload",
+    {
+      value: true,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE + OptionKind.EVENT_DISPATCH,
+    },
+  ],
+  [
+    "enableAutoLinking",
+    {
+      value: true,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "enableComment",
+    {
+      value: false,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "enableDetailCanvas",
+    {
+      value: true,
+      kind: OptionKind.VIEWER,
+    },
+  ],
+  ...[],
+  [
+    "enableGuessAltText",
+    {
+      value: true,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE + OptionKind.EVENT_DISPATCH,
+    },
+  ],
+  [
+    "enableHighlightFloatingButton",
+    {
+      value: false,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "enableMerge",
+    {
+      value: false,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "enableNewAltTextWhenAddingImage",
+    {
+      value: true,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "enableNewBadge",
+    {
+      value: false,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "enableNova",
+    {
+      value: true,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "enableOptimizedPartialRendering",
+    {
+      value: false,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "enablePermissions",
+    {
+      value: false,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "enablePrintAutoRotate",
+    {
+      value: true,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "enableScripting",
+    {
+      value: true,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "enableSelectionRendering",
+    {
+      value: true,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "enableSignatureEditor",
+    {
+      value: false,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "enableSignatureVerification",
+    {
+      value: false,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "enableSplitMerge",
+    {
+      value: false,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "enableUpdatedAddImage",
+    {
+      value: false,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "externalLinkRel",
+    {
+      value: "noopener noreferrer nofollow",
+      kind: OptionKind.VIEWER,
+    },
+  ],
+  [
+    "externalLinkTarget",
+    {
+      value: 0,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  ...[],
+  [
+    "highlightEditorColors",
+    {
+      value:
+        "yellow=#FFFF98,green=#53FFBC,blue=#80EBFF,pink=#FFCBE6,red=#FF4F5F," +
+        "yellow_HCM=#FFFFCC,green_HCM=#53FFBC,blue_HCM=#80EBFF,pink_HCM=#F6B8FF,red_HCM=#C50043",
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "historyUpdateUrl",
+    {
+      value: false,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "ignoreDestinationZoom",
+    {
+      value: false,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "imageResourcesPath",
+    {
+      value: "./images/",
+      kind: OptionKind.VIEWER,
+    },
+  ],
+  [
+    "imagesRightClickMinSize",
+    {
+      value: -1,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "maxCanvasPixels",
+    {
+      value: 2 ** 25,
+      kind: OptionKind.VIEWER,
+    },
+  ],
+  [
+    "minDurationToUpdateCanvas",
+    {
+      value: 500,
+      kind: OptionKind.VIEWER,
+    },
+  ],
+  [
+    "forcePageColors",
+    {
+      value: false,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "pageColorsBackground",
+    {
+      value: "Canvas",
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "pageColorsForeground",
+    {
+      value: "CanvasText",
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "pdfBugEnabled",
+    {
+      value: false,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "postMessageAfterPrintCallback",
+    {
+      value: false,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "printResolution",
+    {
+      value: 150,
+      kind: OptionKind.VIEWER,
+    },
+  ],
+  ...[
+    [
+      "sandboxBundleSrc",
+      {
+        value: "../build/pdf.sandbox.mjs",
+        kind: OptionKind.VIEWER,
+      },
+    ],
+  ],
+  [
+    "sidebarViewOnLoad",
+    {
+      value: -1,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "scrollModeOnLoad",
+    {
+      value: -1,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "spreadModeOnLoad",
+    {
+      value: -1,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "textLayerMode",
+    {
+      value: 1,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "viewerCssTheme",
+    {
+      value: 0,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "viewOnLoad",
+    {
+      value: 0,
+      kind: OptionKind.VIEWER + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "cMapPacked",
+    {
+      value: true,
+      kind: OptionKind.API,
+    },
+  ],
+  [
+    "cMapUrl",
+    {
+      value: "../web/cmaps/",
+      kind: OptionKind.API,
+    },
+  ],
+  [
+    "disableAutoFetch",
+    {
+      value: false,
+      kind: OptionKind.API + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "disableFontFace",
+    {
+      value: false,
+      kind: OptionKind.API + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "disableRange",
+    {
+      value: false,
+      kind: OptionKind.API + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "disableStream",
+    {
+      value: false,
+      kind: OptionKind.API + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "docBaseUrl",
+    {
+      value: "",
+      kind: OptionKind.API,
+    },
+  ],
+  [
+    "enableHWA",
+    {
+      value: true,
+      kind: OptionKind.API + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "enableWebGPU",
+    {
+      value: true,
+      kind: OptionKind.API + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "enableXfa",
+    {
+      value: true,
+      kind: OptionKind.API + OptionKind.PREFERENCE,
+    },
+  ],
+  [
+    "fontExtraProperties",
+    {
+      value: false,
+      kind: OptionKind.API,
+    },
+  ],
+  [
+    "iccUrl",
+    {
+      value: "../web/iccs/",
+      kind: OptionKind.API,
+    },
+  ],
+  [
+    "isOffscreenCanvasSupported",
+    {
+      value: true,
+      kind: OptionKind.API,
+    },
+  ],
+  [
+    "maxImageSize",
+    {
+      value: -1,
+      kind: OptionKind.API,
+    },
+  ],
+  [
+    "pdfBug",
+    {
+      value: false,
+      kind: OptionKind.API,
+    },
+  ],
+  [
+    "standardFontDataUrl",
+    {
+      value: "../web/standard_fonts/",
+      kind: OptionKind.API,
+    },
+  ],
+  [
+    "useSystemFonts",
+    {
+      value: undefined,
+      kind: OptionKind.API,
+      type: Type.BOOLEAN + Type.UNDEFINED,
+    },
+  ],
+  [
+    "verbosity",
+    {
+      value: 1,
+      kind: OptionKind.API,
+    },
+  ],
+  [
+    "wasmUrl",
+    {
+      value: "../web/wasm/",
+      kind: OptionKind.API,
+    },
+  ],
+  [
+    "workerPort",
+    {
+      value: null,
+      kind: OptionKind.WORKER,
+    },
+  ],
+  [
+    "workerSrc",
+    {
+      value: "../build/pdf.worker.mjs",
+      kind: OptionKind.WORKER,
+    },
+  ],
+]);
 class AppOptions {
   static eventBus;
   static #opts = new Map();
@@ -5858,7 +6080,7 @@ class AppOptions {
   }
   static set(name, value) {
     this.setAll({
-      [name]: value
+      [name]: value,
     });
   }
   static setAll(options, prefs = false) {
@@ -5870,9 +6092,7 @@ class AppOptions {
       if (!defaultOpt || !(typeof userOpt === typeof defaultOpt.value || Type[(typeof userOpt).toUpperCase()] & defaultOpt.type)) {
         continue;
       }
-      const {
-        kind
-      } = defaultOpt;
+      const { kind } = defaultOpt;
       if (prefs && !(kind & OptionKind.BROWSER || kind & OptionKind.PREFERENCE)) {
         continue;
       }
@@ -5884,7 +6104,7 @@ class AppOptions {
     events?.forEach((value, name) => {
       this.eventBus.dispatch(name.toLowerCase(), {
         source: this,
-        value
+        value,
       });
     });
   }
@@ -5895,8 +6115,7 @@ var es_json_parse = __webpack_require__(9112);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.json.stringify.js
 var es_json_stringify = __webpack_require__(3110);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.url.parse.js
-var web_url_parse = __webpack_require__(5781);
-;// ./web/pdfjs.js
+var web_url_parse = __webpack_require__(5781); // ./web/pdfjs.js
 const {
   AbortException,
   AnnotationEditorLayer,
@@ -5959,23 +6178,13 @@ const {
   Util,
   VerbosityLevel,
   version,
-  XfaLayer
-} = globalThis.pdfjsLib;
+  XfaLayer,
+} = globalThis.pdfjsLib; // ./web/internal_evt.js
 
-;// ./web/internal_evt.js
 const INTERNAL_EVT = "e4c8307e-183e-4bf3-b76e-4ccdfc3f885a";
 const internalOpt = Object.freeze({
-  internal: INTERNAL_EVT
-});
-
-;// ./web/pdf_link_service.js
-
-
-
-
-
-
-
+  internal: INTERNAL_EVT,
+}); // ./web/pdf_link_service.js
 
 const DEFAULT_LINK_REL = "noopener noreferrer nofollow";
 const LinkTarget = {
@@ -5983,16 +6192,11 @@ const LinkTarget = {
   SELF: 1,
   BLANK: 2,
   PARENT: 3,
-  TOP: 4
+  TOP: 4,
 };
 class PDFLinkService {
   externalLinkEnabled = true;
-  constructor({
-    eventBus,
-    externalLinkTarget = null,
-    externalLinkRel = null,
-    ignoreDestinationZoom = false
-  } = {}) {
+  constructor({ eventBus, externalLinkTarget = null, externalLinkRel = null, ignoreDestinationZoom = false } = {}) {
     this.eventBus = eventBus;
     this.externalLinkTarget = externalLinkTarget;
     this.externalLinkRel = externalLinkRel;
@@ -6073,30 +6277,34 @@ class PDFLinkService {
       this.pdfHistory.push({
         namedDest,
         explicitDest,
-        pageNumber
+        pageNumber,
       });
     }
     this.pdfViewer.scrollPageIntoView({
       pageNumber,
       destArray: explicitDest,
-      ignoreDestinationZoom: this._ignoreDestinationZoom
+      ignoreDestinationZoom: this._ignoreDestinationZoom,
     });
     const ac = new AbortController();
-    this.eventBus.on("textlayerrendered", evt => {
-      if (evt.pageNumber === pageNumber) {
-        evt.source.textLayer.div.focus();
-        ac.abort();
+    this.eventBus.on(
+      "textlayerrendered",
+      (evt) => {
+        if (evt.pageNumber === pageNumber) {
+          evt.source.textLayer.div.focus();
+          ac.abort();
+        }
+      },
+      {
+        signal: ac.signal,
+        ...internalOpt,
       }
-    }, {
-      signal: ac.signal,
-      ...internalOpt
-    });
+    );
   }
   goToPage(val) {
     if (!this.pdfDocument) {
       return;
     }
-    const pageNumber = typeof val === "string" && this.pdfViewer.pageLabelToPageNumber(val) || val | 0;
+    const pageNumber = (typeof val === "string" && this.pdfViewer.pageLabelToPageNumber(val)) || val | 0;
     if (!(Number.isInteger(pageNumber) && pageNumber > 0 && pageNumber <= this.pagesCount)) {
       console.error(`PDFLinkService.goToPage: "${val}" is not a valid page.`);
       return;
@@ -6106,17 +6314,22 @@ class PDFLinkService {
       this.pdfHistory.pushPage(pageNumber);
     }
     this.pdfViewer.scrollPageIntoView({
-      pageNumber
+      pageNumber,
     });
   }
   goToXY(pageNumber, x, y, options = {}) {
     this.pdfViewer.scrollPageIntoView({
       pageNumber,
-      destArray: [null, {
-        name: "XYZ"
-      }, x, y],
+      destArray: [
+        null,
+        {
+          name: "XYZ",
+        },
+        x,
+        y,
+      ],
       ignoreDestinationZoom: true,
-      ...options
+      ...options,
     });
   }
   async getAttachmentContent(id) {
@@ -6197,7 +6410,7 @@ class PDFLinkService {
           phrase = params.get("phrase") === "true";
         this.eventBus.dispatch("findfromurlhash", {
           source: this,
-          query: phrase ? query : query.match(/\S+/g)
+          query: phrase ? query : query.match(/\S+/g),
         });
       }
       if (params.has("page")) {
@@ -6208,24 +6421,44 @@ class PDFLinkService {
         const zoomArg = zoomArgs[0];
         const zoomArgNumber = parseFloat(zoomArg);
         if (!zoomArg.includes("Fit")) {
-          dest = [null, {
-            name: "XYZ"
-          }, zoomArgs.length > 1 ? zoomArgs[1] | 0 : null, zoomArgs.length > 2 ? zoomArgs[2] | 0 : null, zoomArgNumber ? zoomArgNumber / 100 : zoomArg];
+          dest = [
+            null,
+            {
+              name: "XYZ",
+            },
+            zoomArgs.length > 1 ? zoomArgs[1] | 0 : null,
+            zoomArgs.length > 2 ? zoomArgs[2] | 0 : null,
+            zoomArgNumber ? zoomArgNumber / 100 : zoomArg,
+          ];
         } else if (zoomArg === "Fit" || zoomArg === "FitB") {
-          dest = [null, {
-            name: zoomArg
-          }];
+          dest = [
+            null,
+            {
+              name: zoomArg,
+            },
+          ];
         } else if (zoomArg === "FitH" || zoomArg === "FitBH" || zoomArg === "FitV" || zoomArg === "FitBV") {
-          dest = [null, {
-            name: zoomArg
-          }, zoomArgs.length > 1 ? zoomArgs[1] | 0 : null];
+          dest = [
+            null,
+            {
+              name: zoomArg,
+            },
+            zoomArgs.length > 1 ? zoomArgs[1] | 0 : null,
+          ];
         } else if (zoomArg === "FitR") {
           if (zoomArgs.length !== 5) {
             console.error('PDFLinkService.setHash: Not enough parameters for "FitR".');
           } else {
-            dest = [null, {
-              name: zoomArg
-            }, zoomArgs[1] | 0, zoomArgs[2] | 0, zoomArgs[3] | 0, zoomArgs[4] | 0];
+            dest = [
+              null,
+              {
+                name: zoomArg,
+              },
+              zoomArgs[1] | 0,
+              zoomArgs[2] | 0,
+              zoomArgs[3] | 0,
+              zoomArgs[4] | 0,
+            ];
           }
         } else {
           console.error(`PDFLinkService.setHash: "${zoomArg}" is not a valid zoom value.`);
@@ -6235,7 +6468,7 @@ class PDFLinkService {
         this.pdfViewer.scrollPageIntoView({
           pageNumber: pageNumber || this.page,
           destArray: dest,
-          allowNegativeOffset: true
+          allowNegativeOffset: true,
         });
       } else if (pageNumber) {
         this.page = pageNumber;
@@ -6243,7 +6476,7 @@ class PDFLinkService {
       if (params.has("pagemode")) {
         this.eventBus.dispatch("pagemode", {
           source: this,
-          mode: params.get("pagemode")
+          mode: params.get("pagemode"),
         });
       }
       if (params.has("nameddest")) {
@@ -6292,7 +6525,7 @@ class PDFLinkService {
     }
     this.eventBus.dispatch("namedaction", {
       source: this,
-      action
+      action,
     });
   }
   async executeSetOCGState(action) {
@@ -6315,38 +6548,16 @@ class SimpleLinkService extends PDFLinkService {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.iterator.some.js
 var es_iterator_some = __webpack_require__(3579);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.iterator.find.js
-var es_iterator_find = __webpack_require__(116);
-;// ./web/event_utils.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+var es_iterator_find = __webpack_require__(116); // ./web/event_utils.js
 const WaitOnType = {
   EVENT: "event",
-  TIMEOUT: "timeout"
+  TIMEOUT: "timeout",
 };
-async function waitOnEventOrTimeout({
-  target,
-  name,
-  delay = 0
-}) {
+async function waitOnEventOrTimeout({ target, name, delay = 0 }) {
   if (typeof target !== "object" || !(name && typeof name === "string") || !(Number.isInteger(delay) && delay >= 0)) {
     throw new Error("waitOnEventOrTimeout - invalid parameters.");
   }
-  const {
-    promise,
-    resolve
-  } = Promise.withResolvers();
+  const { promise, resolve } = Promise.withResolvers();
   const ac = new AbortController();
   function handler(type) {
     ac.abort();
@@ -6354,12 +6565,15 @@ async function waitOnEventOrTimeout({
     resolve(type);
   }
   const evtMethod = target instanceof EventBus ? "on" : "addEventListener";
-  const evtOpts = target instanceof EventBus ? {
-    signal: ac.signal,
-    ...internalOpt
-  } : {
-    signal: ac.signal
-  };
+  const evtOpts =
+    target instanceof EventBus
+      ? {
+          signal: ac.signal,
+          ...internalOpt,
+        }
+      : {
+          signal: ac.signal,
+        };
   target[evtMethod](name, handler.bind(null, WaitOnType.EVENT), evtOpts);
   const timeout = setTimeout(handler.bind(null, WaitOnType.TIMEOUT), delay);
   return promise;
@@ -6372,9 +6586,7 @@ class EventBus {
   on(eventName, listener, options = null) {
     let rmAbort = null;
     if (options?.signal instanceof AbortSignal) {
-      const {
-        signal
-      } = options;
+      const { signal } = options;
       if (signal.aborted) {
         console.error("Cannot use an `aborted` signal.");
         return;
@@ -6387,12 +6599,12 @@ class EventBus {
       listener,
       internal: options?.internal === INTERNAL_EVT,
       once: options?.once === true,
-      rmAbort
+      rmAbort,
     });
   }
   off(eventName, listener, options = null) {
     const eventListeners = this.#listeners.get(eventName);
-    const evt = eventListeners?.keys().find(e => e.listener === listener);
+    const evt = eventListeners?.keys().find((e) => e.listener === listener);
     if (evt) {
       evt.rmAbort?.();
       eventListeners.delete(evt);
@@ -6404,11 +6616,7 @@ class EventBus {
       return;
     }
     let extListeners;
-    for (const {
-      listener,
-      internal,
-      once
-    } of new Set(eventListeners)) {
+    for (const { listener, internal, once } of new Set(eventListeners)) {
       if (once) {
         this.off(eventName, listener);
       }
@@ -6438,9 +6646,8 @@ class FirefoxEventBus extends EventBus {
   dispatch(eventName, data) {
     throw new Error("Not implemented: FirefoxEventBus.dispatch");
   }
-}
+} // ./web/external_services.js
 
-;// ./web/external_services.js
 class BaseExternalServices {
   updateFindControlState(data) {}
   updateFindMatchesCount(data) {}
@@ -6463,25 +6670,23 @@ class BaseExternalServices {
     throw new Error("Not implemented: updateEditorStates");
   }
   dispatchGlobalEvent(_event) {}
-}
-
-;// ./web/preferences.js
+} // ./web/preferences.js
 
 class BasePreferences {
   #defaults = Object.freeze(AppOptions.getAll(OptionKind.PREFERENCE, true));
   #initializedPromise = null;
   constructor() {
-    this.#initializedPromise = this._readFromStorage(this.#defaults).then(({
-      browserPrefs,
-      prefs
-    }) => {
+    this.#initializedPromise = this._readFromStorage(this.#defaults).then(({ browserPrefs, prefs }) => {
       if (AppOptions._checkDisablePreferences()) {
         return;
       }
-      AppOptions.setAll({
-        ...browserPrefs,
-        ...prefs
-      }, true);
+      AppOptions.setAll(
+        {
+          ...browserPrefs,
+          ...prefs,
+        },
+        true
+      );
     });
   }
   async _writeToStorage(prefObj) {
@@ -6497,9 +6702,12 @@ class BasePreferences {
   }
   async set(name, value) {
     await this.#initializedPromise;
-    AppOptions.setAll({
-      [name]: value
-    }, true);
+    AppOptions.setAll(
+      {
+        [name]: value,
+      },
+      true
+    );
     await this._writeToStorage(AppOptions.getAll(OptionKind.PREFERENCE));
   }
   async get(name) {
@@ -6512,9 +6720,8 @@ class BasePreferences {
   get initializedPromise() {
     return this.#initializedPromise;
   }
-}
+} // ./node_modules/@fluent/bundle/esm/types.js
 
-;// ./node_modules/@fluent/bundle/esm/types.js
 class FluentType {
   constructor(value) {
     this.value = value;
@@ -6555,7 +6762,14 @@ class FluentDateTime extends FluentType {
     if (value instanceof FluentType) return FluentDateTime.supportsValue(value.valueOf());
     if ("Temporal" in globalThis) {
       const _Temporal = globalThis.Temporal;
-      if (value instanceof _Temporal.Instant || value instanceof _Temporal.PlainDateTime || value instanceof _Temporal.PlainDate || value instanceof _Temporal.PlainMonthDay || value instanceof _Temporal.PlainTime || value instanceof _Temporal.PlainYearMonth) {
+      if (
+        value instanceof _Temporal.Instant ||
+        value instanceof _Temporal.PlainDateTime ||
+        value instanceof _Temporal.PlainDate ||
+        value instanceof _Temporal.PlainMonthDay ||
+        value instanceof _Temporal.PlainTime ||
+        value instanceof _Temporal.PlainYearMonth
+      ) {
         return true;
       }
     }
@@ -6565,7 +6779,7 @@ class FluentDateTime extends FluentType {
     if (value instanceof FluentDateTime) {
       opts = {
         ...value.opts,
-        ...opts
+        ...opts,
       };
       value = value.value;
     } else if (value instanceof FluentType) {
@@ -6574,7 +6788,7 @@ class FluentDateTime extends FluentType {
     if (typeof value === "object" && "calendarId" in value && opts.calendar === undefined) {
       opts = {
         ...opts,
-        calendar: value.calendarId
+        calendar: value.calendarId,
       };
     }
     super(value);
@@ -6609,10 +6823,7 @@ class FluentDateTime extends FluentType {
     }
     return this.value.toString();
   }
-}
-;// ./node_modules/@fluent/bundle/esm/resolver.js
-
-
+} // ./node_modules/@fluent/bundle/esm/resolver.js
 const MAX_PLACEABLES = 100;
 const FSI = "\u2068";
 const PDI = "\u2069";
@@ -6650,7 +6861,7 @@ function getArguments(scope, args) {
   }
   return {
     positional,
-    named
+    named,
   };
 }
 function resolveExpression(scope, expr) {
@@ -6659,7 +6870,7 @@ function resolveExpression(scope, expr) {
       return expr.value;
     case "num":
       return new FluentNumber(expr.value, {
-        minimumFractionDigits: expr.precision
+        minimumFractionDigits: expr.precision,
       });
     case "var":
       return resolveVariableReference(scope, expr);
@@ -6675,9 +6886,7 @@ function resolveExpression(scope, expr) {
       return new FluentNone();
   }
 }
-function resolveVariableReference(scope, {
-  name
-}) {
+function resolveVariableReference(scope, { name }) {
   let arg;
   if (scope.params) {
     if (Object.prototype.hasOwnProperty.call(scope.params, name)) {
@@ -6708,10 +6917,7 @@ function resolveVariableReference(scope, {
       return new FluentNone(`$${name}`);
   }
 }
-function resolveMessageReference(scope, {
-  name,
-  attr
-}) {
+function resolveMessageReference(scope, { name, attr }) {
   const message = scope.bundle._messages.get(name);
   if (!message) {
     scope.reportError(new ReferenceError(`Unknown message: ${name}`));
@@ -6731,11 +6937,7 @@ function resolveMessageReference(scope, {
   scope.reportError(new ReferenceError(`No value: ${name}`));
   return new FluentNone(name);
 }
-function resolveTermReference(scope, {
-  name,
-  attr,
-  args
-}) {
+function resolveTermReference(scope, { name, attr, args }) {
   const id = `-${name}`;
   const term = scope.bundle._terms.get(id);
   if (!term) {
@@ -6758,10 +6960,7 @@ function resolveTermReference(scope, {
   scope.params = null;
   return resolved;
 }
-function resolveFunctionReference(scope, {
-  name,
-  args
-}) {
+function resolveFunctionReference(scope, { name, args }) {
   let func = scope.bundle._functions[name];
   if (!func) {
     scope.reportError(new ReferenceError(`Unknown function: ${name}()`));
@@ -6779,11 +6978,7 @@ function resolveFunctionReference(scope, {
     return new FluentNone(`${name}()`);
   }
 }
-function resolveSelectExpression(scope, {
-  selector,
-  variants,
-  star
-}) {
+function resolveSelectExpression(scope, { selector, variants, star }) {
   let sel = resolveExpression(scope, selector);
   if (sel instanceof FluentNone) {
     return getDefault(scope, variants, star);
@@ -6830,10 +7025,7 @@ function resolvePattern(scope, value) {
     return scope.bundle._transform(value);
   }
   return resolveComplexPattern(scope, value);
-}
-;// ./node_modules/@fluent/bundle/esm/scope.js
-
-
+} // ./node_modules/@fluent/bundle/esm/scope.js
 class Scope {
   constructor(bundle, errors, args) {
     this.dirty = new WeakSet();
@@ -6861,10 +7053,7 @@ class Scope {
     }
     return cache[id];
   }
-}
-;// ./node_modules/@fluent/bundle/esm/builtins.js
-
-
+} // ./node_modules/@fluent/bundle/esm/builtins.js
 function values(opts, allowed) {
   const unwrapped = Object.create(null);
   for (const [name, opt] of Object.entries(opts)) {
@@ -6874,7 +7063,16 @@ function values(opts, allowed) {
   }
   return unwrapped;
 }
-const NUMBER_ALLOWED = ["unitDisplay", "currencyDisplay", "useGrouping", "minimumIntegerDigits", "minimumFractionDigits", "maximumFractionDigits", "minimumSignificantDigits", "maximumSignificantDigits"];
+const NUMBER_ALLOWED = [
+  "unitDisplay",
+  "currencyDisplay",
+  "useGrouping",
+  "minimumIntegerDigits",
+  "minimumFractionDigits",
+  "maximumFractionDigits",
+  "minimumSignificantDigits",
+  "maximumSignificantDigits",
+];
 function NUMBER(args, opts) {
   let arg = args[0];
   if (arg instanceof FluentNone) {
@@ -6883,17 +7081,32 @@ function NUMBER(args, opts) {
   if (arg instanceof FluentNumber) {
     return new FluentNumber(arg.valueOf(), {
       ...arg.opts,
-      ...values(opts, NUMBER_ALLOWED)
+      ...values(opts, NUMBER_ALLOWED),
     });
   }
   if (arg instanceof FluentDateTime) {
     return new FluentNumber(arg.toNumber(), {
-      ...values(opts, NUMBER_ALLOWED)
+      ...values(opts, NUMBER_ALLOWED),
     });
   }
   throw new TypeError("Invalid argument to NUMBER");
 }
-const DATETIME_ALLOWED = ["dateStyle", "timeStyle", "fractionalSecondDigits", "dayPeriod", "hour12", "weekday", "era", "year", "month", "day", "hour", "minute", "second", "timeZoneName"];
+const DATETIME_ALLOWED = [
+  "dateStyle",
+  "timeStyle",
+  "fractionalSecondDigits",
+  "dayPeriod",
+  "hour12",
+  "weekday",
+  "era",
+  "year",
+  "month",
+  "day",
+  "hour",
+  "minute",
+  "second",
+  "timeZoneName",
+];
 function DATETIME(args, opts) {
   let arg = args[0];
   if (arg instanceof FluentNone) {
@@ -6903,10 +7116,7 @@ function DATETIME(args, opts) {
     return new FluentDateTime(arg, values(opts, DATETIME_ALLOWED));
   }
   throw new TypeError("Invalid argument to DATETIME");
-}
-;// ./node_modules/@fluent/bundle/esm/memoizer.js
-
-
+} // ./node_modules/@fluent/bundle/esm/memoizer.js
 const cache = new Map();
 function getMemoizerForLocale(locales) {
   const stringLocale = Array.isArray(locales) ? locales.join(" ") : locales;
@@ -6916,29 +7126,16 @@ function getMemoizerForLocale(locales) {
     cache.set(stringLocale, memoizer);
   }
   return memoizer;
-}
-;// ./node_modules/@fluent/bundle/esm/bundle.js
-
-
-
-
-
-
-
-
+} // ./node_modules/@fluent/bundle/esm/bundle.js
 class FluentBundle {
-  constructor(locales, {
-    functions,
-    useIsolating = true,
-    transform = v => v
-  } = {}) {
+  constructor(locales, { functions, useIsolating = true, transform = (v) => v } = {}) {
     this._terms = new Map();
     this._messages = new Map();
     this.locales = Array.isArray(locales) ? locales : [locales];
     this._functions = {
       NUMBER: NUMBER,
       DATETIME: DATETIME,
-      ...functions
+      ...functions,
     };
     this._useIsolating = useIsolating;
     this._transform = transform;
@@ -6950,9 +7147,7 @@ class FluentBundle {
   getMessage(id) {
     return this._messages.get(id);
   }
-  addResource(res, {
-    allowOverrides = false
-  } = {}) {
+  addResource(res, { allowOverrides = false } = {}) {
     const errors = [];
     for (let i = 0; i < res.body.length; i++) {
       let entry = res.body[i];
@@ -6988,9 +7183,7 @@ class FluentBundle {
       throw err;
     }
   }
-}
-;// ./node_modules/@fluent/bundle/esm/resource.js
-
+} // ./node_modules/@fluent/bundle/esm/resource.js
 const RE_MESSAGE_START = /^(-?[a-zA-Z][\w-]*) *= */gm;
 const RE_ATTRIBUTE_START = /\.([a-zA-Z][\w-]*) *= */y;
 const RE_VARIANT_START = /\*?\[/y;
@@ -7080,7 +7273,7 @@ class FluentResource {
       return {
         id,
         value,
-        attributes
+        attributes,
       };
     }
     function parseAttributes() {
@@ -7165,7 +7358,7 @@ class FluentResource {
         return {
           type: "select",
           selector,
-          ...variants
+          ...variants,
         };
       }
       throw new SyntaxError("Unclosed placeable");
@@ -7179,7 +7372,7 @@ class FluentResource {
         if (sigil === "$") {
           return {
             type: "var",
-            name
+            name,
           };
         }
         if (consumeToken(TOKEN_PAREN_OPEN)) {
@@ -7189,14 +7382,14 @@ class FluentResource {
               type: "term",
               name,
               attr,
-              args
+              args,
             };
           }
           if (RE_FUNCTION_NAME.test(name)) {
             return {
               type: "func",
               name,
-              args
+              args,
             };
           }
           throw new SyntaxError("Function names must be all upper-case");
@@ -7206,13 +7399,13 @@ class FluentResource {
             type: "term",
             name,
             attr,
-            args: []
+            args: [],
           };
         }
         return {
           type: "mesg",
           name,
-          attr
+          attr,
         };
       }
       return parseLiteral();
@@ -7240,7 +7433,7 @@ class FluentResource {
         return {
           type: "narg",
           name: expr.name,
-          value: parseLiteral()
+          value: parseLiteral(),
         };
       }
       return expr;
@@ -7260,7 +7453,7 @@ class FluentResource {
         }
         variants[count++] = {
           key,
-          value
+          value,
         };
       }
       if (count === 0) {
@@ -7271,7 +7464,7 @@ class FluentResource {
       }
       return {
         variants,
-        star
+        star,
       };
     }
     function parseVariantKey() {
@@ -7282,7 +7475,7 @@ class FluentResource {
       } else {
         key = {
           type: "str",
-          value: match1(RE_IDENTIFIER)
+          value: match1(RE_IDENTIFIER),
         };
       }
       consumeToken(TOKEN_BRACKET_CLOSE, SyntaxError);
@@ -7303,7 +7496,7 @@ class FluentResource {
       return {
         type: "num",
         value: parseFloat(value),
-        precision
+        precision,
       };
     }
     function parseStringLiteral() {
@@ -7318,7 +7511,7 @@ class FluentResource {
         if (consumeChar('"')) {
           return {
             type: "str",
-            value
+            value,
           };
         }
         throw new SyntaxError("Unclosed string literal");
@@ -7368,20 +7561,38 @@ class Indent {
     this.value = value;
     this.length = length;
   }
-}
-;// ./node_modules/@fluent/bundle/esm/index.js
-
-
-
+} // ./node_modules/@fluent/bundle/esm/index.js
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.iterator.map.js
-var es_iterator_map = __webpack_require__(1701);
-;// ./node_modules/@fluent/dom/esm/overlay.js
-
-
-
+var es_iterator_map = __webpack_require__(1701); // ./node_modules/@fluent/dom/esm/overlay.js
 const reOverlay = /<|&#?\w+;/;
 const TEXT_LEVEL_ELEMENTS = {
-  "http://www.w3.org/1999/xhtml": ["em", "strong", "small", "s", "cite", "q", "dfn", "abbr", "data", "time", "code", "var", "samp", "kbd", "sub", "sup", "i", "b", "u", "mark", "bdi", "bdo", "span", "br", "wbr"]
+  "http://www.w3.org/1999/xhtml": [
+    "em",
+    "strong",
+    "small",
+    "s",
+    "cite",
+    "q",
+    "dfn",
+    "abbr",
+    "data",
+    "time",
+    "code",
+    "var",
+    "samp",
+    "kbd",
+    "sub",
+    "sup",
+    "i",
+    "b",
+    "u",
+    "mark",
+    "bdi",
+    "bdo",
+    "span",
+    "br",
+    "wbr",
+  ],
 };
 const LOCALIZABLE_ATTRIBUTES = {
   "http://www.w3.org/1999/xhtml": {
@@ -7396,20 +7607,18 @@ const LOCALIZABLE_ATTRIBUTES = {
     track: ["label"],
     img: ["alt"],
     textarea: ["placeholder"],
-    th: ["abbr"]
+    th: ["abbr"],
   },
   "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul": {
     global: ["accesskey", "aria-label", "aria-valuetext", "label", "title", "tooltiptext"],
     description: ["value"],
     key: ["key", "keycode"],
     label: ["value"],
-    textbox: ["placeholder", "value"]
-  }
+    textbox: ["placeholder", "value"],
+  },
 };
 function translateElement(element, translation) {
-  const {
-    value
-  } = translation;
+  const { value } = translation;
   if (typeof value === "string") {
     if (element.localName === "title" && element.namespaceURI === "http://www.w3.org/1999/xhtml") {
       element.textContent = value;
@@ -7438,7 +7647,11 @@ function overlayChildNodes(fromFragment, toElement) {
       fromFragment.replaceChild(sanitized, childNode);
       continue;
     }
-    console.warn(`An element of forbidden type "${childNode.localName}" was found in ` + "the translation. Only safe text-level elements and elements with " + "data-l10n-name are allowed.");
+    console.warn(
+      `An element of forbidden type "${childNode.localName}" was found in ` +
+        "the translation. Only safe text-level elements and elements with " +
+        "data-l10n-name are allowed."
+    );
     fromFragment.replaceChild(createTextNodeFromTextContent(childNode), childNode);
   }
   toElement.textContent = "";
@@ -7456,7 +7669,12 @@ function hasAttribute(attributes, name) {
   return false;
 }
 function overlayAttributes(fromElement, toElement) {
-  const explicitlyAllowed = toElement.hasAttribute("data-l10n-attrs") ? toElement.getAttribute("data-l10n-attrs").split(",").map(i => i.trim()) : null;
+  const explicitlyAllowed = toElement.hasAttribute("data-l10n-attrs")
+    ? toElement
+        .getAttribute("data-l10n-attrs")
+        .split(",")
+        .map((i) => i.trim())
+    : null;
   for (const attr of Array.from(toElement.attributes)) {
     if (isAttrNameLocalizable(attr.name, toElement, explicitlyAllowed) && !hasAttribute(fromElement.attributes, attr.name)) {
       toElement.removeAttribute(attr.name);
@@ -7479,7 +7697,11 @@ function getNodeForNamedElement(sourceElement, translatedChild) {
     return createTextNodeFromTextContent(translatedChild);
   }
   if (sourceChild.localName !== translatedChild.localName) {
-    console.warn(`An element named "${childName}" was found in the translation ` + `but its type ${translatedChild.localName} didn't match the ` + `element found in the source (${sourceChild.localName}).`);
+    console.warn(
+      `An element named "${childName}" was found in the translation ` +
+        `but its type ${translatedChild.localName} didn't match the ` +
+        `element found in the source (${sourceChild.localName}).`
+    );
     return createTextNodeFromTextContent(translatedChild);
   }
   sourceElement.removeChild(sourceChild);
@@ -7530,8 +7752,7 @@ function shallowPopulateUsing(fromElement, toElement) {
   return toElement;
 }
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.iterator.filter.js
-var es_iterator_filter = __webpack_require__(2489);
-;// ./node_modules/cached-iterable/src/cached_iterable.mjs
+var es_iterator_filter = __webpack_require__(2489); // ./node_modules/cached-iterable/src/cached_iterable.mjs
 class CachedIterable extends Array {
   static from(iterable) {
     if (iterable instanceof this) {
@@ -7539,10 +7760,7 @@ class CachedIterable extends Array {
     }
     return new this(iterable);
   }
-}
-;// ./node_modules/cached-iterable/src/cached_sync_iterable.mjs
-
-
+} // ./node_modules/cached-iterable/src/cached_sync_iterable.mjs
 class CachedSyncIterable extends CachedIterable {
   constructor(iterable) {
     super();
@@ -7561,7 +7779,7 @@ class CachedSyncIterable extends CachedIterable {
           cached.push(cached.iterator.next());
         }
         return cached[cur++];
-      }
+      },
     };
   }
   touchNext(count = 1) {
@@ -7575,10 +7793,7 @@ class CachedSyncIterable extends CachedIterable {
     }
     return this[this.length - 1];
   }
-}
-;// ./node_modules/cached-iterable/src/cached_async_iterable.mjs
-
-
+} // ./node_modules/cached-iterable/src/cached_async_iterable.mjs
 class CachedAsyncIterable extends CachedIterable {
   constructor(iterable) {
     super();
@@ -7599,7 +7814,7 @@ class CachedAsyncIterable extends CachedIterable {
           cached.push(cached.iterator.next());
         }
         return cached[cur++];
-      }
+      },
     };
   }
   async touchNext(count = 1) {
@@ -7613,25 +7828,8 @@ class CachedAsyncIterable extends CachedIterable {
     }
     return this[this.length - 1];
   }
-}
-;// ./node_modules/cached-iterable/src/index.mjs
-
-
-;// ./node_modules/@fluent/dom/esm/localization.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+} // ./node_modules/cached-iterable/src/index.mjs
+// ./node_modules/@fluent/dom/esm/localization.js
 class Localization {
   constructor(resourceIds = [], generateBundles) {
     this.resourceIds = resourceIds;
@@ -7644,7 +7842,7 @@ class Localization {
     return this.resourceIds.length;
   }
   removeResourceIds(resourceIds) {
-    this.resourceIds = this.resourceIds.filter(r => !resourceIds.includes(r));
+    this.resourceIds = this.resourceIds.filter((r) => !resourceIds.includes(r));
     this.onChange();
     return this.resourceIds.length;
   }
@@ -7677,10 +7875,12 @@ class Localization {
     return this.formatWithFallback(keys, valueFromBundle);
   }
   async formatValue(id, args) {
-    const [val] = await this.formatValues([{
-      id,
-      args
-    }]);
+    const [val] = await this.formatValues([
+      {
+        id,
+        args,
+      },
+    ]);
     return val;
   }
   handleEvent() {
@@ -7702,7 +7902,7 @@ function valueFromBundle(bundle, errors, message, args) {
 function messageFromBundle(bundle, errors, message, args) {
   const formatted = {
     value: null,
-    attributes: null
+    attributes: null,
   };
   if (message.value) {
     formatted.value = bundle.formatPattern(message.value, args, errors);
@@ -7714,7 +7914,7 @@ function messageFromBundle(bundle, errors, message, args) {
       let value = bundle.formatPattern(message.attributes[name], args, errors);
       formatted.attributes[i] = {
         name,
-        value
+        value,
       };
     }
   }
@@ -7723,10 +7923,7 @@ function messageFromBundle(bundle, errors, message, args) {
 function keysFromBundle(method, bundle, keys, translations) {
   const messageErrors = [];
   const missingIds = new Set();
-  keys.forEach(({
-    id,
-    args
-  }, i) => {
+  keys.forEach(({ id, args }, i) => {
     if (translations[i] !== undefined) {
       return;
     }
@@ -7744,22 +7941,7 @@ function keysFromBundle(method, bundle, keys, translations) {
     }
   });
   return missingIds;
-}
-;// ./node_modules/@fluent/dom/esm/dom_localization.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+} // ./node_modules/@fluent/dom/esm/dom_localization.js
 const L10NID_ATTR_NAME = "data-l10n-id";
 const L10NARGS_ATTR_NAME = "data-l10n-args";
 const L10N_ELEMENT_QUERY = `[${L10NID_ATTR_NAME}]`;
@@ -7776,7 +7958,7 @@ class DOMLocalization extends Localization {
       characterData: false,
       childList: true,
       subtree: true,
-      attributeFilter: [L10NID_ATTR_NAME, L10NARGS_ATTR_NAME]
+      attributeFilter: [L10NID_ATTR_NAME, L10NARGS_ATTR_NAME],
     };
   }
   onChange(eager = false) {
@@ -7797,7 +7979,7 @@ class DOMLocalization extends Localization {
   getAttributes(element) {
     return {
       id: element.getAttribute(L10NID_ATTR_NAME),
-      args: JSON.parse(element.getAttribute(L10NARGS_ATTR_NAME) || null)
+      args: JSON.parse(element.getAttribute(L10NARGS_ATTR_NAME) || null),
     };
   }
   connectRoot(newRoot) {
@@ -7813,7 +7995,7 @@ class DOMLocalization extends Localization {
       }
     } else {
       this.windowElement = newRoot.ownerDocument.defaultView;
-      this.mutationObserver = new this.windowElement.MutationObserver(mutations => this.translateMutations(mutations));
+      this.mutationObserver = new this.windowElement.MutationObserver((mutations) => this.translateMutations(mutations));
     }
     this.roots.add(newRoot);
     this.mutationObserver.observe(newRoot, this.observerConfig);
@@ -7836,7 +8018,7 @@ class DOMLocalization extends Localization {
   }
   translateRoots() {
     const roots = Array.from(this.roots);
-    return Promise.all(roots.map(root => this.translateFragment(root)));
+    return Promise.all(roots.map((root) => this.translateFragment(root)));
   }
   pauseObserving() {
     if (!this.mutationObserver) {
@@ -7916,36 +8098,20 @@ class DOMLocalization extends Localization {
   getKeysForElement(element) {
     return {
       id: element.getAttribute(L10NID_ATTR_NAME),
-      args: JSON.parse(element.getAttribute(L10NARGS_ATTR_NAME) || null)
+      args: JSON.parse(element.getAttribute(L10NARGS_ATTR_NAME) || null),
     };
   }
-}
-;// ./node_modules/@fluent/dom/esm/index.js
-
-
-;// ./web/l10n.js
-
-
-
-
-
-
-
-
-
-
+} // ./node_modules/@fluent/dom/esm/index.js
+// ./web/l10n.js
 class L10n {
   #dir;
   #elements;
   #lang;
   #l10n;
-  constructor({
-    lang,
-    isRTL
-  }, l10n = null) {
+  constructor({ lang, isRTL }, l10n = null) {
     this.#lang = L10n.#fixupLangCode(lang);
     this.#l10n = l10n;
-    this.#dir = isRTL ?? L10n.#isRTL(this.#lang) ? "rtl" : "ltr";
+    this.#dir = (isRTL ?? L10n.#isRTL(this.#lang)) ? "rtl" : "ltr";
   }
   _setL10n(l10n) {
     this.#l10n = l10n;
@@ -7958,16 +8124,18 @@ class L10n {
   }
   async get(ids, args = null, fallback) {
     if (Array.isArray(ids)) {
-      ids = ids.map(id => ({
-        id
+      ids = ids.map((id) => ({
+        id,
       }));
       const messages = await this.#l10n.formatMessages(ids);
-      return messages.map(message => message.value);
+      return messages.map((message) => message.value);
     }
-    const messages = await this.#l10n.formatMessages([{
-      id: ids,
-      args
-    }]);
+    const messages = await this.#l10n.formatMessages([
+      {
+        id: ids,
+        args,
+      },
+    ]);
     return messages[0]?.value || fallback;
   }
   async translate(element) {
@@ -8016,7 +8184,7 @@ class L10n {
       pa: "pa-in",
       pt: "pt-pt",
       sv: "sv-se",
-      zh: "zh-cn"
+      zh: "zh-cn",
     };
     return PARTIAL_LANG_CODES[langCode] || langCode;
   }
@@ -8025,21 +8193,10 @@ class L10n {
     return ["ar", "he", "fa", "ps", "ur"].includes(shortCode);
   }
 }
-const GenericL10n = null;
-
-;// ./web/genericl10n.js
-
-
-
-
+const GenericL10n = null; // ./web/genericl10n.js
 
 function PLATFORM() {
-  const {
-    isAndroid,
-    isLinux,
-    isMac,
-    isWindows
-  } = FeatureTest.platform;
+  const { isAndroid, isLinux, isMac, isWindows } = FeatureTest.platform;
   if (isLinux) {
     return "linux";
   }
@@ -8058,8 +8215,8 @@ function createBundle(lang, text) {
   const resource = new FluentResource(text);
   const bundle = new FluentBundle(lang, {
     functions: {
-      PLATFORM
-    }
+      PLATFORM,
+    },
   });
   const errors = bundle.addResource(resource);
   if (errors.length) {
@@ -8070,16 +8227,15 @@ function createBundle(lang, text) {
 class genericl10n_GenericL10n extends L10n {
   constructor(lang) {
     super({
-      lang
+      lang,
     });
-    const generateBundles = !lang ? genericl10n_GenericL10n.#generateBundlesFallback.bind(genericl10n_GenericL10n, this.getLanguage()) : genericl10n_GenericL10n.#generateBundles.bind(genericl10n_GenericL10n, "en-us", this.getLanguage());
+    const generateBundles = !lang
+      ? genericl10n_GenericL10n.#generateBundlesFallback.bind(genericl10n_GenericL10n, this.getLanguage())
+      : genericl10n_GenericL10n.#generateBundles.bind(genericl10n_GenericL10n, "en-us", this.getLanguage());
     this._setL10n(new DOMLocalization([], generateBundles));
   }
   static async *#generateBundles(defaultLang, baseLang) {
-    const {
-      baseURL,
-      paths
-    } = await this.#getPaths();
+    const { baseURL, paths } = await this.#getPaths();
     const langs = [baseLang];
     if (defaultLang !== baseLang) {
       const shortLang = baseLang.split("-", 1)[0];
@@ -8088,7 +8244,7 @@ class genericl10n_GenericL10n extends L10n {
       }
       langs.push(defaultLang);
     }
-    const bundles = langs.map(lang => [lang, this.#createBundle(lang, baseURL, paths)]);
+    const bundles = langs.map((lang) => [lang, this.#createBundle(lang, baseURL, paths)]);
     for (const [lang, bundlePromise] of bundles) {
       const bundle = await bundlePromise;
       if (bundle) {
@@ -8109,41 +8265,34 @@ class genericl10n_GenericL10n extends L10n {
   }
   static async #getPaths() {
     try {
-      const {
-        href
-      } = document.querySelector(`link[type="application/l10n"]`);
+      const { href } = document.querySelector(`link[type="application/l10n"]`);
       const paths = await fetchData(href, "json");
       return {
         baseURL: href.substring(0, href.lastIndexOf("/") + 1) || "./",
-        paths
+        paths,
       };
     } catch {}
     return {
       baseURL: "./",
-      paths: Object.create(null)
+      paths: Object.create(null),
     };
   }
   static async *#generateBundlesFallback(lang) {
     yield this.#createBundleFallback(lang);
   }
   static async #createBundleFallback(lang) {
-    const text = "pdfjs-previous-button =\n    .title = Previous Page\npdfjs-previous-button-label = Previous\npdfjs-next-button =\n    .title = Next Page\npdfjs-next-button-label = Next\npdfjs-page-input =\n    .title = Page\npdfjs-of-pages = of { $pagesCount }\npdfjs-page-of-pages = ({ $pageNumber } of { $pagesCount })\npdfjs-zoom-out-button =\n    .title = Zoom Out\npdfjs-zoom-out-button-label = Zoom Out\npdfjs-zoom-in-button =\n    .title = Zoom In\npdfjs-zoom-in-button-label = Zoom In\npdfjs-zoom-select =\n    .title = Zoom\npdfjs-presentation-mode-button =\n    .title = Switch to Presentation Mode\npdfjs-presentation-mode-button-label = Presentation Mode\npdfjs-open-file-button =\n    .title = Open File\npdfjs-open-file-button-label = Open\npdfjs-print-button =\n    .title = Print\npdfjs-print-button-label = Print\npdfjs-save-button =\n    .title = Save\npdfjs-save-button-label = Save\npdfjs-download-button =\n    .title = Download\npdfjs-download-button-label = Download\npdfjs-bookmark-button =\n    .title = Current Page (View URL from Current Page)\npdfjs-bookmark-button-label = Current Page\npdfjs-tools-button =\n    .title = Tools\npdfjs-tools-button-label = Tools\npdfjs-first-page-button =\n    .title = Go to First Page\npdfjs-first-page-button-label = Go to First Page\npdfjs-last-page-button =\n    .title = Go to Last Page\npdfjs-last-page-button-label = Go to Last Page\npdfjs-page-rotate-cw-button =\n    .title = Rotate Clockwise\npdfjs-page-rotate-cw-button-label = Rotate Clockwise\npdfjs-page-rotate-ccw-button =\n    .title = Rotate Counterclockwise\npdfjs-page-rotate-ccw-button-label = Rotate Counterclockwise\npdfjs-cursor-text-select-tool-button =\n    .title = Enable Text Selection Tool\npdfjs-cursor-text-select-tool-button-label = Text Selection Tool\npdfjs-cursor-hand-tool-button =\n    .title = Enable Hand Tool\npdfjs-cursor-hand-tool-button-label = Hand Tool\npdfjs-scroll-page-button =\n    .title = Use Page Scrolling\npdfjs-scroll-page-button-label = Page Scrolling\npdfjs-scroll-vertical-button =\n    .title = Use Vertical Scrolling\npdfjs-scroll-vertical-button-label = Vertical Scrolling\npdfjs-scroll-horizontal-button =\n    .title = Use Horizontal Scrolling\npdfjs-scroll-horizontal-button-label = Horizontal Scrolling\npdfjs-scroll-wrapped-button =\n    .title = Use Wrapped Scrolling\npdfjs-scroll-wrapped-button-label = Wrapped Scrolling\npdfjs-spread-none-button =\n    .title = Do not join page spreads\npdfjs-spread-none-button-label = No Spreads\npdfjs-spread-odd-button =\n    .title = Join page spreads starting with odd-numbered pages\npdfjs-spread-odd-button-label = Odd Spreads\npdfjs-spread-even-button =\n    .title = Join page spreads starting with even-numbered pages\npdfjs-spread-even-button-label = Even Spreads\npdfjs-document-properties-button =\n    .title = Document Properties…\npdfjs-document-properties-button-label = Document Properties…\npdfjs-document-properties-file-name = File name:\npdfjs-document-properties-file-size = File size:\npdfjs-document-properties-size-kb = { NUMBER($kb, maximumSignificantDigits: 3) } KB ({ $b } bytes)\npdfjs-document-properties-size-mb = { NUMBER($mb, maximumSignificantDigits: 3) } MB ({ $b } bytes)\npdfjs-document-properties-title = Title:\npdfjs-document-properties-author = Author:\npdfjs-document-properties-subject = Subject:\npdfjs-document-properties-keywords = Keywords:\npdfjs-document-properties-creation-date = Creation Date:\npdfjs-document-properties-modification-date = Modification Date:\npdfjs-document-properties-date-time-string = { DATETIME($dateObj, dateStyle: \"short\", timeStyle: \"medium\") }\npdfjs-document-properties-creator = Creator:\npdfjs-document-properties-producer = PDF Producer:\npdfjs-document-properties-version = PDF Version:\npdfjs-document-properties-page-count = Page Count:\npdfjs-document-properties-page-size = Page Size:\npdfjs-document-properties-page-size-unit-inches = in\npdfjs-document-properties-page-size-unit-millimeters = mm\npdfjs-document-properties-page-size-orientation-portrait = portrait\npdfjs-document-properties-page-size-orientation-landscape = landscape\npdfjs-document-properties-page-size-name-a-three = A3\npdfjs-document-properties-page-size-name-a-four = A4\npdfjs-document-properties-page-size-name-letter = Letter\npdfjs-document-properties-page-size-name-legal = Legal\npdfjs-document-properties-page-size-dimension-string = { $width } × { $height } { $unit } ({ $orientation })\npdfjs-document-properties-page-size-dimension-name-string = { $width } × { $height } { $unit } ({ $name }, { $orientation })\npdfjs-document-properties-linearized = Fast Web View:\npdfjs-document-properties-linearized-yes = Yes\npdfjs-document-properties-linearized-no = No\npdfjs-document-properties-close-button = Close\npdfjs-print-progress-message = Preparing document for printing…\npdfjs-print-progress-percent = { $progress }%\npdfjs-print-progress-close-button = Cancel\npdfjs-printing-not-supported = Warning: Printing is not fully supported by this browser.\npdfjs-printing-not-ready = Warning: The PDF is not fully loaded for printing.\npdfjs-current-outline-item-button =\n    .title = Find Current Outline Item\npdfjs-current-outline-item-button-label = Current Outline Item\npdfjs-findbar-button =\n    .title = Find in Document\npdfjs-findbar-button-label = Find\npdfjs-additional-layers = Additional Layers\npdfjs-thumb-page-title1 =\n    .title = Page { $page } of { $total }\npdfjs-thumb-page-canvas =\n    .aria-label = Thumbnail of Page { $page }\npdfjs-thumb-page-checkbox1 =\n    .title = Select page { $page }\npdfjs-find-input =\n    .title = Find\n    .placeholder = Find in document…\npdfjs-find-previous-button =\n    .title = Find the previous occurrence of the phrase\npdfjs-find-previous-button-label = Previous\npdfjs-find-next-button =\n    .title = Find the next occurrence of the phrase\npdfjs-find-next-button-label = Next\npdfjs-find-highlight-checkbox = Highlight All\npdfjs-find-match-case-checkbox-label = Match Case\npdfjs-find-match-diacritics-checkbox-label = Match Diacritics\npdfjs-find-entire-word-checkbox-label = Whole Words\npdfjs-find-reached-top = Reached top of document, continued from bottom\npdfjs-find-reached-bottom = Reached end of document, continued from top\npdfjs-find-match-count =\n    { $total ->\n        [one] { $current } of { $total } match\n       *[other] { $current } of { $total } matches\n    }\npdfjs-find-match-count-limit =\n    { $limit ->\n        [one] More than { $limit } match\n       *[other] More than { $limit } matches\n    }\npdfjs-find-not-found = Phrase not found\npdfjs-page-scale-width = Page Width\npdfjs-page-scale-fit = Page Fit\npdfjs-page-scale-auto = Automatic Zoom\npdfjs-page-scale-actual = Actual Size\npdfjs-page-scale-percent = { $scale }%\npdfjs-page-landmark =\n    .aria-label = Page { $page }\npdfjs-loading-error = An error occurred while loading the PDF.\npdfjs-invalid-file-error = Invalid or corrupted PDF file.\npdfjs-missing-file-error = Missing PDF file.\npdfjs-unexpected-response-error = Unexpected server response.\npdfjs-rendering-error = An error occurred while rendering the page.\npdfjs-annotation-date-time-string = { DATETIME($dateObj, dateStyle: \"short\", timeStyle: \"medium\") }\npdfjs-text-annotation-type =\n    .alt = [{ $type } Annotation]\npdfjs-password-label = Enter the password to open this PDF file.\npdfjs-password-invalid = Invalid password. Please try again.\npdfjs-password-ok-button = OK\npdfjs-password-cancel-button = Cancel\npdfjs-web-fonts-disabled = Web fonts are disabled: unable to use embedded PDF fonts.\npdfjs-editor-free-text-button =\n    .title = Text\npdfjs-editor-color-picker-free-text-input =\n    .title = Change text color\npdfjs-editor-free-text-button-label = Text\npdfjs-editor-ink-button =\n    .title = Draw\npdfjs-editor-color-picker-ink-input =\n    .title = Change drawing color\npdfjs-editor-ink-button-label = Draw\npdfjs-editor-stamp-button =\n    .title = Add or edit images\npdfjs-editor-stamp-button-label = Add or edit images\npdfjs-editor-highlight-button =\n    .title = Highlight\npdfjs-editor-highlight-button-label = Highlight\npdfjs-highlight-floating-button1 =\n    .title = Highlight\n    .aria-label = Highlight\npdfjs-highlight-floating-button-label = Highlight\npdfjs-comment-floating-button =\n    .title = Comment\n    .aria-label = Comment\npdfjs-comment-floating-button-label = Comment\npdfjs-editor-comment-button =\n    .title = Comment\n    .aria-label = Comment\npdfjs-editor-comment-button-label = Comment\npdfjs-editor-signature-button =\n    .title = Add signature\npdfjs-editor-signature-button-label = Add signature\npdfjs-editor-highlight-editor =\n    .aria-label = Highlight editor\npdfjs-editor-ink-editor =\n    .aria-label = Drawing editor\npdfjs-editor-signature-editor1 =\n    .aria-description = Signature editor: { $description }\npdfjs-editor-stamp-editor =\n    .aria-label = Image editor\npdfjs-editor-remove-ink-button =\n    .title = Remove drawing\npdfjs-editor-remove-freetext-button =\n    .title = Remove text\npdfjs-editor-remove-stamp-button =\n    .title = Remove image\npdfjs-editor-remove-highlight-button =\n    .title = Remove highlight\npdfjs-editor-remove-signature-button =\n    .title = Remove signature\npdfjs-editor-free-text-color-input = Color\npdfjs-editor-free-text-size-input = Size\npdfjs-editor-ink-color-input = Color\npdfjs-editor-ink-thickness-input = Thickness\npdfjs-editor-ink-opacity-input = Opacity\npdfjs-editor-stamp-add-image-button =\n    .title = Add image\npdfjs-editor-stamp-add-image-button-label = Add image\npdfjs-editor-free-highlight-thickness-input = Thickness\npdfjs-editor-free-highlight-thickness-title =\n    .title = Change thickness when highlighting items other than text\npdfjs-editor-add-signature-container =\n    .aria-label = Signature controls and saved signatures\npdfjs-editor-signature-add-signature-button =\n    .title = Add new signature\npdfjs-editor-signature-add-signature-button-label = Add new signature\npdfjs-editor-add-saved-signature-button =\n    .title = Saved signature: { $description }\npdfjs-free-text2 =\n    .aria-label = Text Editor\n    .default-content = Start typing…\npdfjs-editor-comments-sidebar-title =\n    { $count ->\n        [one] Comment\n       *[other] Comments\n    }\npdfjs-editor-comments-sidebar-close-button =\n    .title = Close the sidebar\n    .aria-label = Close the sidebar\npdfjs-editor-comments-sidebar-close-button-label = Close the sidebar\npdfjs-editor-comments-sidebar-no-comments1 = See something noteworthy? Highlight it and leave a comment.\npdfjs-editor-comments-sidebar-no-comments-link = Learn more\npdfjs-editor-alt-text-button =\n    .aria-label = Alt text\npdfjs-editor-alt-text-button-label = Alt text\npdfjs-editor-alt-text-edit-button =\n    .aria-label = Edit alt text\npdfjs-editor-alt-text-dialog-label = Choose an option\npdfjs-editor-alt-text-dialog-description = Alt text (alternative text) helps when people can’t see the image or when it doesn’t load.\npdfjs-editor-alt-text-add-description-label = Add a description\npdfjs-editor-alt-text-add-description-description = Aim for 1-2 sentences that describe the subject, setting, or actions.\npdfjs-editor-alt-text-mark-decorative-label = Mark as decorative\npdfjs-editor-alt-text-mark-decorative-description = This is used for ornamental images, like borders or watermarks.\npdfjs-editor-alt-text-cancel-button = Cancel\npdfjs-editor-alt-text-save-button = Save\npdfjs-editor-alt-text-decorative-tooltip = Marked as decorative\npdfjs-editor-alt-text-textarea =\n    .placeholder = For example, “A young man sits down at a table to eat a meal”\npdfjs-editor-resizer-top-left =\n    .aria-label = Top left corner — resize\npdfjs-editor-resizer-top-middle =\n    .aria-label = Top middle — resize\npdfjs-editor-resizer-top-right =\n    .aria-label = Top right corner — resize\npdfjs-editor-resizer-middle-right =\n    .aria-label = Middle right — resize\npdfjs-editor-resizer-bottom-right =\n    .aria-label = Bottom right corner — resize\npdfjs-editor-resizer-bottom-middle =\n    .aria-label = Bottom middle — resize\npdfjs-editor-resizer-bottom-left =\n    .aria-label = Bottom left corner — resize\npdfjs-editor-resizer-middle-left =\n    .aria-label = Middle left — resize\npdfjs-editor-highlight-colorpicker-label = Highlight color\npdfjs-editor-colorpicker-button =\n    .title = Change color\npdfjs-editor-colorpicker-dropdown =\n    .aria-label = Color choices\npdfjs-editor-colorpicker-yellow =\n    .title = Yellow\npdfjs-editor-colorpicker-green =\n    .title = Green\npdfjs-editor-colorpicker-blue =\n    .title = Blue\npdfjs-editor-colorpicker-pink =\n    .title = Pink\npdfjs-editor-colorpicker-red =\n    .title = Red\npdfjs-editor-highlight-show-all-button-label = Show all\npdfjs-editor-highlight-show-all-button =\n    .title = Show all\npdfjs-editor-new-alt-text-dialog-edit-label = Edit alt text (image description)\npdfjs-editor-new-alt-text-dialog-add-label = Add alt text (image description)\npdfjs-editor-new-alt-text-textarea =\n    .placeholder = Write your description here…\npdfjs-editor-new-alt-text-description = Short description for people who can’t see the image or when the image doesn’t load.\npdfjs-editor-new-alt-text-disclaimer1 = This alt text was created automatically and may be inaccurate.\npdfjs-editor-new-alt-text-disclaimer-learn-more-url = Learn more\npdfjs-editor-new-alt-text-create-automatically-button-label = Create alt text automatically\npdfjs-editor-new-alt-text-not-now-button = Not now\npdfjs-editor-new-alt-text-error-title = Couldn’t create alt text automatically\npdfjs-editor-new-alt-text-error-description = Please write your own alt text or try again later.\npdfjs-editor-new-alt-text-error-close-button = Close\npdfjs-editor-new-alt-text-ai-model-downloading-progress = Downloading alt text AI model ({ $downloadedSize } of { $totalSize } MB)\n    .aria-valuetext = Downloading alt text AI model ({ $downloadedSize } of { $totalSize } MB)\npdfjs-editor-new-alt-text-added-button =\n    .aria-label = Alt text added\npdfjs-editor-new-alt-text-added-button-label = Alt text added\npdfjs-editor-new-alt-text-missing-button =\n    .aria-label = Missing alt text\npdfjs-editor-new-alt-text-missing-button-label = Missing alt text\npdfjs-editor-new-alt-text-to-review-button =\n    .aria-label = Review alt text\npdfjs-editor-new-alt-text-to-review-button-label = Review alt text\npdfjs-editor-new-alt-text-generated-alt-text-with-disclaimer = Created automatically: { $generatedAltText }\npdfjs-image-alt-text-settings-button =\n    .title = Image alt text settings\npdfjs-image-alt-text-settings-button-label = Image alt text settings\npdfjs-editor-alt-text-settings-dialog-label = Image alt text settings\npdfjs-editor-alt-text-settings-automatic-title = Automatic alt text\npdfjs-editor-alt-text-settings-create-model-button-label = Create alt text automatically\npdfjs-editor-alt-text-settings-create-model-description = Suggests descriptions to help people who can’t see the image or when the image doesn’t load.\npdfjs-editor-alt-text-settings-editor-title = Alt text editor\npdfjs-editor-alt-text-settings-show-dialog-button-label = Show alt text editor right away when adding an image\npdfjs-editor-alt-text-settings-show-dialog-description = Helps you make sure all your images have alt text.\npdfjs-editor-alt-text-settings-close-button = Close\npdfjs-editor-highlight-added-alert = Highlight added\npdfjs-editor-freetext-added-alert = Text added\npdfjs-editor-ink-added-alert = Drawing added\npdfjs-editor-stamp-added-alert = Image added\npdfjs-editor-signature-added-alert = Signature added\npdfjs-editor-undo-bar-message-highlight = Highlight removed\npdfjs-editor-undo-bar-message-freetext = Text removed\npdfjs-editor-undo-bar-message-ink = Drawing removed\npdfjs-editor-undo-bar-message-stamp = Image removed\npdfjs-editor-undo-bar-message-signature = Signature removed\npdfjs-editor-undo-bar-message-comment = Comment removed\npdfjs-editor-undo-bar-message-multiple =\n    { $count ->\n        [one] { $count } annotation removed\n       *[other] { $count } annotations removed\n    }\npdfjs-editor-undo-bar-undo-button =\n    .title = Undo\npdfjs-editor-undo-bar-undo-button-label = Undo\npdfjs-editor-undo-bar-close-button =\n    .title = Close\npdfjs-editor-undo-bar-close-button-label = Close\npdfjs-editor-add-signature-dialog-label = This modal allows the user to create a signature to add to a PDF document. The user can edit the name (which also serves as the alt text), and optionally save the signature for repeated use.\npdfjs-editor-add-signature-dialog-title = Add a signature\npdfjs-editor-add-signature-type-button = Type\n    .title = Type\npdfjs-editor-add-signature-draw-button = Draw\n    .title = Draw\npdfjs-editor-add-signature-image-button = Image\n    .title = Image\npdfjs-editor-add-signature-type-input =\n    .aria-label = Type your signature\n    .placeholder = Type your signature\npdfjs-editor-add-signature-draw-placeholder = Draw your signature\npdfjs-editor-add-signature-draw-thickness-range-label = Thickness\npdfjs-editor-add-signature-draw-thickness-range =\n    .title = Drawing thickness: { $thickness }\npdfjs-editor-add-signature-image-placeholder = Drag a file here to upload\npdfjs-editor-add-signature-image-browse-link =\n    { PLATFORM() ->\n        [macos] Or choose image files\n       *[other] Or browse image files\n    }\npdfjs-editor-add-signature-description-label = Description (alt text)\npdfjs-editor-add-signature-description-input =\n    .title = Description (alt text)\npdfjs-editor-add-signature-description-default-when-drawing = Signature\npdfjs-editor-add-signature-clear-button-label = Clear signature\npdfjs-editor-add-signature-clear-button =\n    .title = Clear signature\npdfjs-editor-add-signature-save-checkbox = Save signature\npdfjs-editor-add-signature-save-warning-message = You’ve reached the limit of 5 saved signatures. Remove one to save more.\npdfjs-editor-add-signature-image-upload-error-title = Couldn’t upload image\npdfjs-editor-add-signature-image-upload-error-description = Check your network connection or try another image.\npdfjs-editor-add-signature-image-no-data-error-title = Can’t convert this image into a signature\npdfjs-editor-add-signature-image-no-data-error-description = Please try uploading a different image.\npdfjs-editor-add-signature-error-close-button = Close\npdfjs-editor-add-signature-cancel-button = Cancel\npdfjs-editor-add-signature-add-button = Add\npdfjs-editor-delete-signature-button1 =\n    .title = Remove saved signature\npdfjs-editor-delete-signature-button-label1 = Remove saved signature\npdfjs-editor-add-signature-edit-button-label = Edit description\npdfjs-editor-edit-signature-dialog-title = Edit description\npdfjs-editor-edit-signature-update-button = Update\npdfjs-show-comment-button =\n    .title = Show comment\npdfjs-editor-edit-comment-popup-button-label = Edit comment\npdfjs-editor-edit-comment-popup-button =\n    .title = Edit comment\npdfjs-editor-delete-comment-popup-button-label = Remove comment\npdfjs-editor-delete-comment-popup-button =\n    .title = Remove comment\npdfjs-editor-edit-comment-dialog-title-when-editing = Edit comment\npdfjs-editor-edit-comment-dialog-save-button-when-editing = Update\npdfjs-editor-edit-comment-dialog-title-when-adding = Add comment\npdfjs-editor-edit-comment-dialog-save-button-when-adding = Add\npdfjs-editor-edit-comment-dialog-text-input =\n    .placeholder = Start typing…\npdfjs-editor-edit-comment-dialog-cancel-button = Cancel\npdfjs-editor-add-comment-button =\n    .title = Add comment\npdfjs-toggle-views-manager-button1 =\n    .title = Manage pages\npdfjs-toggle-views-manager-notification-button =\n    .title = Toggle Sidebar (document contains thumbnails/outline/attachments/layers)\npdfjs-toggle-views-manager-button1-label = Manage pages\npdfjs-views-manager-sidebar =\n    .aria-label = Sidebar\npdfjs-views-manager-sidebar-resizer =\n    .aria-label = Sidebar resizer\npdfjs-views-manager-view-selector-button =\n    .title = Views\npdfjs-views-manager-view-selector-button-label = Views\npdfjs-views-manager-pages-title = Pages\npdfjs-views-manager-outlines-title1 = Document outline\n    .title = Document outline (double-click to expand/collapse all items)\npdfjs-views-manager-attachments-title = Attachments\npdfjs-views-manager-layers-title1 = Layers\n    .title = Layers (double-click to reset all layers to the default state)\npdfjs-views-manager-pages-option-label = Pages\npdfjs-views-manager-outlines-option-label = Document outline\npdfjs-views-manager-attachments-option-label = Attachments\npdfjs-views-manager-layers-option-label = Layers\npdfjs-views-manager-add-file-button =\n    .title = Add file\npdfjs-views-manager-add-file-button-label = Add file\npdfjs-views-manager-pages-status-action-label =\n    { $count ->\n        [one] { $count } selected\n        *[other] { $count } selected\n    }\npdfjs-views-manager-pages-status-none-action-label = Select pages\npdfjs-views-manager-pages-status-action-button-label = Manage\npdfjs-views-manager-pages-status-copy-button-label = Copy\npdfjs-views-manager-pages-status-cut-button-label = Cut\npdfjs-views-manager-pages-status-delete-button-label = Delete\npdfjs-views-manager-pages-status-export-selected-button-label = Export selected…\npdfjs-views-manager-status-undo-cut-label =\n    { $count ->\n        [one] 1 page cut\n        *[other] { $count } pages cut\n    }\npdfjs-views-manager-pages-status-undo-copy-label =\n    { $count ->\n        [one] 1 page copied\n        *[other] { $count } pages copied\n    }\npdfjs-views-manager-pages-status-undo-delete-label =\n    { $count ->\n        [one] 1 page deleted\n        *[other] { $count } pages deleted\n    }\npdfjs-views-manager-status-undo-button-label = Undo\npdfjs-views-manager-status-done-button-label = Done\npdfjs-views-manager-status-close-button =\n    .title = Close\npdfjs-views-manager-status-close-button-label = Close\npdfjs-views-manager-paste-button-label = Paste\npdfjs-views-manager-paste-button-before =\n    .title = Paste before the first page\npdfjs-views-manager-paste-button-after =\n    .title = Paste after page { $page }\npdfjs-new-badge-content = NEW\npdfjs-views-manager-waiting-for-file = Uploading file…\npdfjs-digital-signature-properties-button =\n    .title = Digital signature properties\n    .aria-label = Digital signature properties\npdfjs-digital-signature-properties-button-label = Digital signature properties\npdfjs-digital-signature-properties-banner-verified = Document was signed with a valid digital signature\npdfjs-digital-signature-properties-banner-unknown =\n    { $count ->\n        [one] Document signed but { $count } digital signature could not be verified\n       *[other] Document signed but { $count } digital signatures could not be verified\n    }\npdfjs-digital-signature-properties-banner-untrusted =\n    { $count ->\n        [one] Document signed with { $count } certificate that is not trusted\n       *[other] Document signed with { $count } certificates that are not trusted\n    }\npdfjs-digital-signature-properties-banner-expired =\n    { $count ->\n        [one] Document signed with { $count } expired certificate\n       *[other] Document signed with { $count } expired certificates\n    }\npdfjs-digital-signature-properties-banner-invalid =\n    { $count ->\n        [one] Document has { $count } invalid digital signature\n       *[other] Document has { $count } invalid digital signatures\n    }\npdfjs-digital-signature-properties-banner-revoked =\n    { $count ->\n        [one] Document signed with { $count } revoked certificate\n       *[other] Document signed with { $count } revoked certificates\n    }\npdfjs-digital-signature-properties-status-verified = Status: Signature verified\npdfjs-digital-signature-properties-status-invalid = Status: Signature invalid\npdfjs-digital-signature-properties-status-unknown = Status: Unable to verify (unsupported)\npdfjs-digital-signature-properties-certificate-trusted = Certificate: Trusted ({ $issuer })\npdfjs-digital-signature-properties-certificate-unknown = Certificate: Unavailable\npdfjs-digital-signature-properties-certificate-untrusted = Certificate: Untrusted\npdfjs-digital-signature-properties-certificate-untrusted-unknown-issuer = Certificate: Unknown issuer ({ $issuer })\npdfjs-digital-signature-properties-certificate-untrusted-self-signed = Certificate: Self-signed ({ $issuer })\npdfjs-digital-signature-properties-certificate-untrusted-untrusted-issuer = Certificate: Untrusted issuer ({ $issuer })\npdfjs-digital-signature-properties-certificate-expired = Certificate: Expired\npdfjs-digital-signature-properties-certificate-expired-with-date = Certificate: Expired ({ DATETIME($dateObj, dateStyle: \"medium\") })\npdfjs-digital-signature-properties-certificate-revoked = Certificate: Revoked\npdfjs-digital-signature-properties-view-certificate = View certificate\npdfjs-digital-signature-properties-reason = Reason: { $reason }\npdfjs-digital-signature-properties-timestamp = Timestamp: { DATETIME($dateObj, dateStyle: \"short\", timeStyle: \"medium\") }\npdfjs-digital-signature-properties-sub-signatures =\n    { $count ->\n        [one] Sub-signature ({ $count })\n       *[other] Sub-signatures ({ $count })\n    }";
+    const text =
+      'pdfjs-previous-button =\n    .title = Previous Page\npdfjs-previous-button-label = Previous\npdfjs-next-button =\n    .title = Next Page\npdfjs-next-button-label = Next\npdfjs-page-input =\n    .title = Page\npdfjs-of-pages = of { $pagesCount }\npdfjs-page-of-pages = ({ $pageNumber } of { $pagesCount })\npdfjs-zoom-out-button =\n    .title = Zoom Out\npdfjs-zoom-out-button-label = Zoom Out\npdfjs-zoom-in-button =\n    .title = Zoom In\npdfjs-zoom-in-button-label = Zoom In\npdfjs-zoom-select =\n    .title = Zoom\npdfjs-presentation-mode-button =\n    .title = Switch to Presentation Mode\npdfjs-presentation-mode-button-label = Presentation Mode\npdfjs-open-file-button =\n    .title = Open File\npdfjs-open-file-button-label = Open\npdfjs-print-button =\n    .title = Print\npdfjs-print-button-label = Print\npdfjs-save-button =\n    .title = Save\npdfjs-save-button-label = Save\npdfjs-download-button =\n    .title = Download\npdfjs-download-button-label = Download\npdfjs-bookmark-button =\n    .title = Current Page (View URL from Current Page)\npdfjs-bookmark-button-label = Current Page\npdfjs-tools-button =\n    .title = Tools\npdfjs-tools-button-label = Tools\npdfjs-first-page-button =\n    .title = Go to First Page\npdfjs-first-page-button-label = Go to First Page\npdfjs-last-page-button =\n    .title = Go to Last Page\npdfjs-last-page-button-label = Go to Last Page\npdfjs-page-rotate-cw-button =\n    .title = Rotate Clockwise\npdfjs-page-rotate-cw-button-label = Rotate Clockwise\npdfjs-page-rotate-ccw-button =\n    .title = Rotate Counterclockwise\npdfjs-page-rotate-ccw-button-label = Rotate Counterclockwise\npdfjs-cursor-text-select-tool-button =\n    .title = Enable Text Selection Tool\npdfjs-cursor-text-select-tool-button-label = Text Selection Tool\npdfjs-cursor-hand-tool-button =\n    .title = Enable Hand Tool\npdfjs-cursor-hand-tool-button-label = Hand Tool\npdfjs-scroll-page-button =\n    .title = Use Page Scrolling\npdfjs-scroll-page-button-label = Page Scrolling\npdfjs-scroll-vertical-button =\n    .title = Use Vertical Scrolling\npdfjs-scroll-vertical-button-label = Vertical Scrolling\npdfjs-scroll-horizontal-button =\n    .title = Use Horizontal Scrolling\npdfjs-scroll-horizontal-button-label = Horizontal Scrolling\npdfjs-scroll-wrapped-button =\n    .title = Use Wrapped Scrolling\npdfjs-scroll-wrapped-button-label = Wrapped Scrolling\npdfjs-spread-none-button =\n    .title = Do not join page spreads\npdfjs-spread-none-button-label = No Spreads\npdfjs-spread-odd-button =\n    .title = Join page spreads starting with odd-numbered pages\npdfjs-spread-odd-button-label = Odd Spreads\npdfjs-spread-even-button =\n    .title = Join page spreads starting with even-numbered pages\npdfjs-spread-even-button-label = Even Spreads\npdfjs-document-properties-button =\n    .title = Document Properties…\npdfjs-document-properties-button-label = Document Properties…\npdfjs-document-properties-file-name = File name:\npdfjs-document-properties-file-size = File size:\npdfjs-document-properties-size-kb = { NUMBER($kb, maximumSignificantDigits: 3) } KB ({ $b } bytes)\npdfjs-document-properties-size-mb = { NUMBER($mb, maximumSignificantDigits: 3) } MB ({ $b } bytes)\npdfjs-document-properties-title = Title:\npdfjs-document-properties-author = Author:\npdfjs-document-properties-subject = Subject:\npdfjs-document-properties-keywords = Keywords:\npdfjs-document-properties-creation-date = Creation Date:\npdfjs-document-properties-modification-date = Modification Date:\npdfjs-document-properties-date-time-string = { DATETIME($dateObj, dateStyle: "short", timeStyle: "medium") }\npdfjs-document-properties-creator = Creator:\npdfjs-document-properties-producer = PDF Producer:\npdfjs-document-properties-version = PDF Version:\npdfjs-document-properties-page-count = Page Count:\npdfjs-document-properties-page-size = Page Size:\npdfjs-document-properties-page-size-unit-inches = in\npdfjs-document-properties-page-size-unit-millimeters = mm\npdfjs-document-properties-page-size-orientation-portrait = portrait\npdfjs-document-properties-page-size-orientation-landscape = landscape\npdfjs-document-properties-page-size-name-a-three = A3\npdfjs-document-properties-page-size-name-a-four = A4\npdfjs-document-properties-page-size-name-letter = Letter\npdfjs-document-properties-page-size-name-legal = Legal\npdfjs-document-properties-page-size-dimension-string = { $width } × { $height } { $unit } ({ $orientation })\npdfjs-document-properties-page-size-dimension-name-string = { $width } × { $height } { $unit } ({ $name }, { $orientation })\npdfjs-document-properties-linearized = Fast Web View:\npdfjs-document-properties-linearized-yes = Yes\npdfjs-document-properties-linearized-no = No\npdfjs-document-properties-close-button = Close\npdfjs-print-progress-message = Preparing document for printing…\npdfjs-print-progress-percent = { $progress }%\npdfjs-print-progress-close-button = Cancel\npdfjs-printing-not-supported = Warning: Printing is not fully supported by this browser.\npdfjs-printing-not-ready = Warning: The PDF is not fully loaded for printing.\npdfjs-current-outline-item-button =\n    .title = Find Current Outline Item\npdfjs-current-outline-item-button-label = Current Outline Item\npdfjs-findbar-button =\n    .title = Find in Document\npdfjs-findbar-button-label = Find\npdfjs-additional-layers = Additional Layers\npdfjs-thumb-page-title1 =\n    .title = Page { $page } of { $total }\npdfjs-thumb-page-canvas =\n    .aria-label = Thumbnail of Page { $page }\npdfjs-thumb-page-checkbox1 =\n    .title = Select page { $page }\npdfjs-find-input =\n    .title = Find\n    .placeholder = Find in document…\npdfjs-find-previous-button =\n    .title = Find the previous occurrence of the phrase\npdfjs-find-previous-button-label = Previous\npdfjs-find-next-button =\n    .title = Find the next occurrence of the phrase\npdfjs-find-next-button-label = Next\npdfjs-find-highlight-checkbox = Highlight All\npdfjs-find-match-case-checkbox-label = Match Case\npdfjs-find-match-diacritics-checkbox-label = Match Diacritics\npdfjs-find-entire-word-checkbox-label = Whole Words\npdfjs-find-reached-top = Reached top of document, continued from bottom\npdfjs-find-reached-bottom = Reached end of document, continued from top\npdfjs-find-match-count =\n    { $total ->\n        [one] { $current } of { $total } match\n       *[other] { $current } of { $total } matches\n    }\npdfjs-find-match-count-limit =\n    { $limit ->\n        [one] More than { $limit } match\n       *[other] More than { $limit } matches\n    }\npdfjs-find-not-found = Phrase not found\npdfjs-page-scale-width = Page Width\npdfjs-page-scale-fit = Page Fit\npdfjs-page-scale-auto = Automatic Zoom\npdfjs-page-scale-actual = Actual Size\npdfjs-page-scale-percent = { $scale }%\npdfjs-page-landmark =\n    .aria-label = Page { $page }\npdfjs-loading-error = An error occurred while loading the PDF.\npdfjs-invalid-file-error = Invalid or corrupted PDF file.\npdfjs-missing-file-error = Missing PDF file.\npdfjs-unexpected-response-error = Unexpected server response.\npdfjs-rendering-error = An error occurred while rendering the page.\npdfjs-annotation-date-time-string = { DATETIME($dateObj, dateStyle: "short", timeStyle: "medium") }\npdfjs-text-annotation-type =\n    .alt = [{ $type } Annotation]\npdfjs-password-label = Enter the password to open this PDF file.\npdfjs-password-invalid = Invalid password. Please try again.\npdfjs-password-ok-button = OK\npdfjs-password-cancel-button = Cancel\npdfjs-web-fonts-disabled = Web fonts are disabled: unable to use embedded PDF fonts.\npdfjs-editor-free-text-button =\n    .title = Text\npdfjs-editor-color-picker-free-text-input =\n    .title = Change text color\npdfjs-editor-free-text-button-label = Text\npdfjs-editor-ink-button =\n    .title = Draw\npdfjs-editor-color-picker-ink-input =\n    .title = Change drawing color\npdfjs-editor-ink-button-label = Draw\npdfjs-editor-stamp-button =\n    .title = Add or edit images\npdfjs-editor-stamp-button-label = Add or edit images\npdfjs-editor-highlight-button =\n    .title = Highlight\npdfjs-editor-highlight-button-label = Highlight\npdfjs-highlight-floating-button1 =\n    .title = Highlight\n    .aria-label = Highlight\npdfjs-highlight-floating-button-label = Highlight\npdfjs-comment-floating-button =\n    .title = Comment\n    .aria-label = Comment\npdfjs-comment-floating-button-label = Comment\npdfjs-editor-comment-button =\n    .title = Comment\n    .aria-label = Comment\npdfjs-editor-comment-button-label = Comment\npdfjs-editor-signature-button =\n    .title = Add signature\npdfjs-editor-signature-button-label = Add signature\npdfjs-editor-highlight-editor =\n    .aria-label = Highlight editor\npdfjs-editor-ink-editor =\n    .aria-label = Drawing editor\npdfjs-editor-signature-editor1 =\n    .aria-description = Signature editor: { $description }\npdfjs-editor-stamp-editor =\n    .aria-label = Image editor\npdfjs-editor-remove-ink-button =\n    .title = Remove drawing\npdfjs-editor-remove-freetext-button =\n    .title = Remove text\npdfjs-editor-remove-stamp-button =\n    .title = Remove image\npdfjs-editor-remove-highlight-button =\n    .title = Remove highlight\npdfjs-editor-remove-signature-button =\n    .title = Remove signature\npdfjs-editor-free-text-color-input = Color\npdfjs-editor-free-text-size-input = Size\npdfjs-editor-ink-color-input = Color\npdfjs-editor-ink-thickness-input = Thickness\npdfjs-editor-ink-opacity-input = Opacity\npdfjs-editor-stamp-add-image-button =\n    .title = Add image\npdfjs-editor-stamp-add-image-button-label = Add image\npdfjs-editor-free-highlight-thickness-input = Thickness\npdfjs-editor-free-highlight-thickness-title =\n    .title = Change thickness when highlighting items other than text\npdfjs-editor-add-signature-container =\n    .aria-label = Signature controls and saved signatures\npdfjs-editor-signature-add-signature-button =\n    .title = Add new signature\npdfjs-editor-signature-add-signature-button-label = Add new signature\npdfjs-editor-add-saved-signature-button =\n    .title = Saved signature: { $description }\npdfjs-free-text2 =\n    .aria-label = Text Editor\n    .default-content = Start typing…\npdfjs-editor-comments-sidebar-title =\n    { $count ->\n        [one] Comment\n       *[other] Comments\n    }\npdfjs-editor-comments-sidebar-close-button =\n    .title = Close the sidebar\n    .aria-label = Close the sidebar\npdfjs-editor-comments-sidebar-close-button-label = Close the sidebar\npdfjs-editor-comments-sidebar-no-comments1 = See something noteworthy? Highlight it and leave a comment.\npdfjs-editor-comments-sidebar-no-comments-link = Learn more\npdfjs-editor-alt-text-button =\n    .aria-label = Alt text\npdfjs-editor-alt-text-button-label = Alt text\npdfjs-editor-alt-text-edit-button =\n    .aria-label = Edit alt text\npdfjs-editor-alt-text-dialog-label = Choose an option\npdfjs-editor-alt-text-dialog-description = Alt text (alternative text) helps when people can’t see the image or when it doesn’t load.\npdfjs-editor-alt-text-add-description-label = Add a description\npdfjs-editor-alt-text-add-description-description = Aim for 1-2 sentences that describe the subject, setting, or actions.\npdfjs-editor-alt-text-mark-decorative-label = Mark as decorative\npdfjs-editor-alt-text-mark-decorative-description = This is used for ornamental images, like borders or watermarks.\npdfjs-editor-alt-text-cancel-button = Cancel\npdfjs-editor-alt-text-save-button = Save\npdfjs-editor-alt-text-decorative-tooltip = Marked as decorative\npdfjs-editor-alt-text-textarea =\n    .placeholder = For example, “A young man sits down at a table to eat a meal”\npdfjs-editor-resizer-top-left =\n    .aria-label = Top left corner — resize\npdfjs-editor-resizer-top-middle =\n    .aria-label = Top middle — resize\npdfjs-editor-resizer-top-right =\n    .aria-label = Top right corner — resize\npdfjs-editor-resizer-middle-right =\n    .aria-label = Middle right — resize\npdfjs-editor-resizer-bottom-right =\n    .aria-label = Bottom right corner — resize\npdfjs-editor-resizer-bottom-middle =\n    .aria-label = Bottom middle — resize\npdfjs-editor-resizer-bottom-left =\n    .aria-label = Bottom left corner — resize\npdfjs-editor-resizer-middle-left =\n    .aria-label = Middle left — resize\npdfjs-editor-highlight-colorpicker-label = Highlight color\npdfjs-editor-colorpicker-button =\n    .title = Change color\npdfjs-editor-colorpicker-dropdown =\n    .aria-label = Color choices\npdfjs-editor-colorpicker-yellow =\n    .title = Yellow\npdfjs-editor-colorpicker-green =\n    .title = Green\npdfjs-editor-colorpicker-blue =\n    .title = Blue\npdfjs-editor-colorpicker-pink =\n    .title = Pink\npdfjs-editor-colorpicker-red =\n    .title = Red\npdfjs-editor-highlight-show-all-button-label = Show all\npdfjs-editor-highlight-show-all-button =\n    .title = Show all\npdfjs-editor-new-alt-text-dialog-edit-label = Edit alt text (image description)\npdfjs-editor-new-alt-text-dialog-add-label = Add alt text (image description)\npdfjs-editor-new-alt-text-textarea =\n    .placeholder = Write your description here…\npdfjs-editor-new-alt-text-description = Short description for people who can’t see the image or when the image doesn’t load.\npdfjs-editor-new-alt-text-disclaimer1 = This alt text was created automatically and may be inaccurate.\npdfjs-editor-new-alt-text-disclaimer-learn-more-url = Learn more\npdfjs-editor-new-alt-text-create-automatically-button-label = Create alt text automatically\npdfjs-editor-new-alt-text-not-now-button = Not now\npdfjs-editor-new-alt-text-error-title = Couldn’t create alt text automatically\npdfjs-editor-new-alt-text-error-description = Please write your own alt text or try again later.\npdfjs-editor-new-alt-text-error-close-button = Close\npdfjs-editor-new-alt-text-ai-model-downloading-progress = Downloading alt text AI model ({ $downloadedSize } of { $totalSize } MB)\n    .aria-valuetext = Downloading alt text AI model ({ $downloadedSize } of { $totalSize } MB)\npdfjs-editor-new-alt-text-added-button =\n    .aria-label = Alt text added\npdfjs-editor-new-alt-text-added-button-label = Alt text added\npdfjs-editor-new-alt-text-missing-button =\n    .aria-label = Missing alt text\npdfjs-editor-new-alt-text-missing-button-label = Missing alt text\npdfjs-editor-new-alt-text-to-review-button =\n    .aria-label = Review alt text\npdfjs-editor-new-alt-text-to-review-button-label = Review alt text\npdfjs-editor-new-alt-text-generated-alt-text-with-disclaimer = Created automatically: { $generatedAltText }\npdfjs-image-alt-text-settings-button =\n    .title = Image alt text settings\npdfjs-image-alt-text-settings-button-label = Image alt text settings\npdfjs-editor-alt-text-settings-dialog-label = Image alt text settings\npdfjs-editor-alt-text-settings-automatic-title = Automatic alt text\npdfjs-editor-alt-text-settings-create-model-button-label = Create alt text automatically\npdfjs-editor-alt-text-settings-create-model-description = Suggests descriptions to help people who can’t see the image or when the image doesn’t load.\npdfjs-editor-alt-text-settings-editor-title = Alt text editor\npdfjs-editor-alt-text-settings-show-dialog-button-label = Show alt text editor right away when adding an image\npdfjs-editor-alt-text-settings-show-dialog-description = Helps you make sure all your images have alt text.\npdfjs-editor-alt-text-settings-close-button = Close\npdfjs-editor-highlight-added-alert = Highlight added\npdfjs-editor-freetext-added-alert = Text added\npdfjs-editor-ink-added-alert = Drawing added\npdfjs-editor-stamp-added-alert = Image added\npdfjs-editor-signature-added-alert = Signature added\npdfjs-editor-undo-bar-message-highlight = Highlight removed\npdfjs-editor-undo-bar-message-freetext = Text removed\npdfjs-editor-undo-bar-message-ink = Drawing removed\npdfjs-editor-undo-bar-message-stamp = Image removed\npdfjs-editor-undo-bar-message-signature = Signature removed\npdfjs-editor-undo-bar-message-comment = Comment removed\npdfjs-editor-undo-bar-message-multiple =\n    { $count ->\n        [one] { $count } annotation removed\n       *[other] { $count } annotations removed\n    }\npdfjs-editor-undo-bar-undo-button =\n    .title = Undo\npdfjs-editor-undo-bar-undo-button-label = Undo\npdfjs-editor-undo-bar-close-button =\n    .title = Close\npdfjs-editor-undo-bar-close-button-label = Close\npdfjs-editor-add-signature-dialog-label = This modal allows the user to create a signature to add to a PDF document. The user can edit the name (which also serves as the alt text), and optionally save the signature for repeated use.\npdfjs-editor-add-signature-dialog-title = Add a signature\npdfjs-editor-add-signature-type-button = Type\n    .title = Type\npdfjs-editor-add-signature-draw-button = Draw\n    .title = Draw\npdfjs-editor-add-signature-image-button = Image\n    .title = Image\npdfjs-editor-add-signature-type-input =\n    .aria-label = Type your signature\n    .placeholder = Type your signature\npdfjs-editor-add-signature-draw-placeholder = Draw your signature\npdfjs-editor-add-signature-draw-thickness-range-label = Thickness\npdfjs-editor-add-signature-draw-thickness-range =\n    .title = Drawing thickness: { $thickness }\npdfjs-editor-add-signature-image-placeholder = Drag a file here to upload\npdfjs-editor-add-signature-image-browse-link =\n    { PLATFORM() ->\n        [macos] Or choose image files\n       *[other] Or browse image files\n    }\npdfjs-editor-add-signature-description-label = Description (alt text)\npdfjs-editor-add-signature-description-input =\n    .title = Description (alt text)\npdfjs-editor-add-signature-description-default-when-drawing = Signature\npdfjs-editor-add-signature-clear-button-label = Clear signature\npdfjs-editor-add-signature-clear-button =\n    .title = Clear signature\npdfjs-editor-add-signature-save-checkbox = Save signature\npdfjs-editor-add-signature-save-warning-message = You’ve reached the limit of 5 saved signatures. Remove one to save more.\npdfjs-editor-add-signature-image-upload-error-title = Couldn’t upload image\npdfjs-editor-add-signature-image-upload-error-description = Check your network connection or try another image.\npdfjs-editor-add-signature-image-no-data-error-title = Can’t convert this image into a signature\npdfjs-editor-add-signature-image-no-data-error-description = Please try uploading a different image.\npdfjs-editor-add-signature-error-close-button = Close\npdfjs-editor-add-signature-cancel-button = Cancel\npdfjs-editor-add-signature-add-button = Add\npdfjs-editor-delete-signature-button1 =\n    .title = Remove saved signature\npdfjs-editor-delete-signature-button-label1 = Remove saved signature\npdfjs-editor-add-signature-edit-button-label = Edit description\npdfjs-editor-edit-signature-dialog-title = Edit description\npdfjs-editor-edit-signature-update-button = Update\npdfjs-show-comment-button =\n    .title = Show comment\npdfjs-editor-edit-comment-popup-button-label = Edit comment\npdfjs-editor-edit-comment-popup-button =\n    .title = Edit comment\npdfjs-editor-delete-comment-popup-button-label = Remove comment\npdfjs-editor-delete-comment-popup-button =\n    .title = Remove comment\npdfjs-editor-edit-comment-dialog-title-when-editing = Edit comment\npdfjs-editor-edit-comment-dialog-save-button-when-editing = Update\npdfjs-editor-edit-comment-dialog-title-when-adding = Add comment\npdfjs-editor-edit-comment-dialog-save-button-when-adding = Add\npdfjs-editor-edit-comment-dialog-text-input =\n    .placeholder = Start typing…\npdfjs-editor-edit-comment-dialog-cancel-button = Cancel\npdfjs-editor-add-comment-button =\n    .title = Add comment\npdfjs-toggle-views-manager-button1 =\n    .title = Manage pages\npdfjs-toggle-views-manager-notification-button =\n    .title = Toggle Sidebar (document contains thumbnails/outline/attachments/layers)\npdfjs-toggle-views-manager-button1-label = Manage pages\npdfjs-views-manager-sidebar =\n    .aria-label = Sidebar\npdfjs-views-manager-sidebar-resizer =\n    .aria-label = Sidebar resizer\npdfjs-views-manager-view-selector-button =\n    .title = Views\npdfjs-views-manager-view-selector-button-label = Views\npdfjs-views-manager-pages-title = Pages\npdfjs-views-manager-outlines-title1 = Document outline\n    .title = Document outline (double-click to expand/collapse all items)\npdfjs-views-manager-attachments-title = Attachments\npdfjs-views-manager-layers-title1 = Layers\n    .title = Layers (double-click to reset all layers to the default state)\npdfjs-views-manager-pages-option-label = Pages\npdfjs-views-manager-outlines-option-label = Document outline\npdfjs-views-manager-attachments-option-label = Attachments\npdfjs-views-manager-layers-option-label = Layers\npdfjs-views-manager-add-file-button =\n    .title = Add file\npdfjs-views-manager-add-file-button-label = Add file\npdfjs-views-manager-pages-status-action-label =\n    { $count ->\n        [one] { $count } selected\n        *[other] { $count } selected\n    }\npdfjs-views-manager-pages-status-none-action-label = Select pages\npdfjs-views-manager-pages-status-action-button-label = Manage\npdfjs-views-manager-pages-status-copy-button-label = Copy\npdfjs-views-manager-pages-status-cut-button-label = Cut\npdfjs-views-manager-pages-status-delete-button-label = Delete\npdfjs-views-manager-pages-status-export-selected-button-label = Export selected…\npdfjs-views-manager-status-undo-cut-label =\n    { $count ->\n        [one] 1 page cut\n        *[other] { $count } pages cut\n    }\npdfjs-views-manager-pages-status-undo-copy-label =\n    { $count ->\n        [one] 1 page copied\n        *[other] { $count } pages copied\n    }\npdfjs-views-manager-pages-status-undo-delete-label =\n    { $count ->\n        [one] 1 page deleted\n        *[other] { $count } pages deleted\n    }\npdfjs-views-manager-status-undo-button-label = Undo\npdfjs-views-manager-status-done-button-label = Done\npdfjs-views-manager-status-close-button =\n    .title = Close\npdfjs-views-manager-status-close-button-label = Close\npdfjs-views-manager-paste-button-label = Paste\npdfjs-views-manager-paste-button-before =\n    .title = Paste before the first page\npdfjs-views-manager-paste-button-after =\n    .title = Paste after page { $page }\npdfjs-new-badge-content = NEW\npdfjs-views-manager-waiting-for-file = Uploading file…\npdfjs-digital-signature-properties-button =\n    .title = Digital signature properties\n    .aria-label = Digital signature properties\npdfjs-digital-signature-properties-button-label = Digital signature properties\npdfjs-digital-signature-properties-banner-verified = Document was signed with a valid digital signature\npdfjs-digital-signature-properties-banner-unknown =\n    { $count ->\n        [one] Document signed but { $count } digital signature could not be verified\n       *[other] Document signed but { $count } digital signatures could not be verified\n    }\npdfjs-digital-signature-properties-banner-untrusted =\n    { $count ->\n        [one] Document signed with { $count } certificate that is not trusted\n       *[other] Document signed with { $count } certificates that are not trusted\n    }\npdfjs-digital-signature-properties-banner-expired =\n    { $count ->\n        [one] Document signed with { $count } expired certificate\n       *[other] Document signed with { $count } expired certificates\n    }\npdfjs-digital-signature-properties-banner-invalid =\n    { $count ->\n        [one] Document has { $count } invalid digital signature\n       *[other] Document has { $count } invalid digital signatures\n    }\npdfjs-digital-signature-properties-banner-revoked =\n    { $count ->\n        [one] Document signed with { $count } revoked certificate\n       *[other] Document signed with { $count } revoked certificates\n    }\npdfjs-digital-signature-properties-status-verified = Status: Signature verified\npdfjs-digital-signature-properties-status-invalid = Status: Signature invalid\npdfjs-digital-signature-properties-status-unknown = Status: Unable to verify (unsupported)\npdfjs-digital-signature-properties-certificate-trusted = Certificate: Trusted ({ $issuer })\npdfjs-digital-signature-properties-certificate-unknown = Certificate: Unavailable\npdfjs-digital-signature-properties-certificate-untrusted = Certificate: Untrusted\npdfjs-digital-signature-properties-certificate-untrusted-unknown-issuer = Certificate: Unknown issuer ({ $issuer })\npdfjs-digital-signature-properties-certificate-untrusted-self-signed = Certificate: Self-signed ({ $issuer })\npdfjs-digital-signature-properties-certificate-untrusted-untrusted-issuer = Certificate: Untrusted issuer ({ $issuer })\npdfjs-digital-signature-properties-certificate-expired = Certificate: Expired\npdfjs-digital-signature-properties-certificate-expired-with-date = Certificate: Expired ({ DATETIME($dateObj, dateStyle: "medium") })\npdfjs-digital-signature-properties-certificate-revoked = Certificate: Revoked\npdfjs-digital-signature-properties-view-certificate = View certificate\npdfjs-digital-signature-properties-reason = Reason: { $reason }\npdfjs-digital-signature-properties-timestamp = Timestamp: { DATETIME($dateObj, dateStyle: "short", timeStyle: "medium") }\npdfjs-digital-signature-properties-sub-signatures =\n    { $count ->\n        [one] Sub-signature ({ $count })\n       *[other] Sub-signatures ({ $count })\n    }';
     return createBundle(lang, text);
   }
-}
+} // ./web/generic_scripting.js
 
-;// ./web/generic_scripting.js
 /* unused harmony import specifier */ var generic_scripting_getPdfFilenameFromUrl;
 
 async function docProperties(pdfDocument) {
   const url = "",
     baseUrl = "";
-  const {
-    info,
-    metadata,
-    contentDispositionFilename,
-    contentLength
-  } = await pdfDocument.getMetadata();
+  const { info, metadata, contentDispositionFilename, contentLength } = await pdfDocument.getMetadata();
   return {
     ...info,
     baseURL: baseUrl,
@@ -8152,19 +8301,22 @@ async function docProperties(pdfDocument) {
     metadata: metadata?.getRaw(),
     authors: metadata?.get("dc:creator"),
     numPages: pdfDocument.numPages,
-    URL: url
+    URL: url,
   };
 }
 class GenericScripting {
   constructor(sandboxBundleSrc, wasmUrl) {
     this._ready = new Promise((resolve, reject) => {
       const sandbox = import(
-      /*webpackIgnore: true*/
-      /*@vite-ignore*/
-      sandboxBundleSrc);
-      sandbox.then(pdfjsSandbox => {
-        resolve(pdfjsSandbox.QuickJSSandbox(new URL(wasmUrl, location.href).href));
-      }).catch(reject);
+        /*webpackIgnore: true*/
+        /*@vite-ignore*/
+        sandboxBundleSrc
+      );
+      sandbox
+        .then((pdfjsSandbox) => {
+          resolve(pdfjsSandbox.QuickJSSandbox(new URL(wasmUrl, location.href).href));
+        })
+        .catch(reject);
     });
   }
   async createSandbox(data) {
@@ -8179,13 +8331,7 @@ class GenericScripting {
     const sandbox = await this._ready;
     sandbox.nukeSandbox();
   }
-}
-
-;// ./web/generic_signature_storage.js
-
-
-
-
+} // ./web/generic_signature_storage.js
 
 const KEY_STORAGE = "pdfjs.signature";
 class SignatureStorage {
@@ -8201,18 +8347,20 @@ class SignatureStorage {
   }
   async getAll() {
     if (this.#signal) {
-      window.addEventListener("storage", ({
-        key
-      }) => {
-        if (key === KEY_STORAGE) {
-          this.#signatures = null;
-          this.#eventBus?.dispatch("storedsignatureschanged", {
-            source: this
-          });
+      window.addEventListener(
+        "storage",
+        ({ key }) => {
+          if (key === KEY_STORAGE) {
+            this.#signatures = null;
+            this.#eventBus?.dispatch("storedsignatureschanged", {
+              source: this,
+            });
+          }
+        },
+        {
+          signal: this.#signal,
         }
-      }, {
-        signal: this.#signal
-      });
+      );
       this.#signal = null;
     }
     if (!this.#signatures) {
@@ -8250,16 +8398,7 @@ class SignatureStorage {
     this.#save();
     return true;
   }
-}
-
-;// ./web/genericcom.js
-
-
-
-
-
-
-
+} // ./web/genericcom.js
 
 function initCom(app) {}
 class Preferences extends BasePreferences {
@@ -8268,7 +8407,7 @@ class Preferences extends BasePreferences {
   }
   async _readFromStorage(prefObj) {
     return {
-      prefs: JSON.parse(localStorage.getItem("pdfjs.preferences"))
+      prefs: JSON.parse(localStorage.getItem("pdfjs.preferences")),
     };
   }
 }
@@ -8301,20 +8440,7 @@ class MLManager {
   }
   guess(_data) {}
   toggleService(_name, _enabled) {}
-}
-
-;// ./web/new_alt_text_manager.js
-
-
-
-
-
-
-
-
-
-
-
+} // ./web/new_alt_text_manager.js
 
 class NewAltTextManager {
   #boundCancel = this.#cancel.bind(this);
@@ -8342,22 +8468,26 @@ class NewAltTextManager {
   #title;
   #uiManager;
   #previousAltText = null;
-  constructor({
-    descriptionContainer,
-    dialog,
-    imagePreview,
-    cancelButton,
-    disclaimer,
-    notNowButton,
-    saveButton,
-    textarea,
-    learnMore,
-    errorCloseButton,
-    createAutomaticallyButton,
-    downloadModel,
-    downloadModelDescription,
-    title
-  }, overlayManager, eventBus) {
+  constructor(
+    {
+      descriptionContainer,
+      dialog,
+      imagePreview,
+      cancelButton,
+      disclaimer,
+      notNowButton,
+      saveButton,
+      textarea,
+      learnMore,
+      errorCloseButton,
+      createAutomaticallyButton,
+      downloadModel,
+      downloadModelDescription,
+      title,
+    },
+    overlayManager,
+    eventBus
+  ) {
     this.#cancelButton = cancelButton;
     this.#createAutomaticallyButton = createAutomaticallyButton;
     this.#descriptionContainer = descriptionContainer;
@@ -8373,7 +8503,7 @@ class NewAltTextManager {
     this.#overlayManager = overlayManager;
     this.#eventBus = eventBus;
     dialog.addEventListener("close", this.#close.bind(this));
-    dialog.addEventListener("contextmenu", event => {
+    dialog.addEventListener("contextmenu", (event) => {
       if (event.target !== this.#textarea) {
         event.preventDefault();
       }
@@ -8389,8 +8519,8 @@ class NewAltTextManager {
       this.#currentEditor._reportTelemetry({
         action: "pdfjs.image.alt_text.ai_generation_check",
         data: {
-          status: checked
-        }
+          status: checked,
+        },
       });
       if (this.#uiManager) {
         const isAltTextEnabled = await this.#uiManager.mlManager.isEnabledFor("altText");
@@ -8425,23 +8555,25 @@ class NewAltTextManager {
     textarea.addEventListener("input", () => {
       this.#toggleTitleAndDisclaimer();
     });
-    textarea.addEventListener("keydown", e => {
+    textarea.addEventListener("keydown", (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key === "Enter" && !saveButton.disabled) {
         this.#save();
       }
     });
-    eventBus.on("enableguessalttext", ({
-      value
-    }) => {
-      this.#toggleGuessAltText(value, false);
-    }, internalOpt);
+    eventBus.on(
+      "enableguessalttext",
+      ({ value }) => {
+        this.#toggleGuessAltText(value, false);
+      },
+      internalOpt
+    );
     this.#overlayManager.register(dialog);
     this.#learnMore.addEventListener("click", () => {
       this.#currentEditor._reportTelemetry({
         action: "pdfjs.image.alt_text.info",
         data: {
-          topic: "alt_text"
-        }
+          topic: "alt_text",
+        },
       });
     });
   }
@@ -8449,7 +8581,7 @@ class NewAltTextManager {
     this.#eventBus.dispatch("setpreference", {
       source: this,
       name,
-      value
+      value,
     });
   }
   #toggleLoading(value) {
@@ -8472,9 +8604,7 @@ class NewAltTextManager {
     this.#dialog.classList.toggle("aiDisabled", !value);
     this.#createAutomaticallyButton.setAttribute("aria-pressed", value);
     if (value) {
-      const {
-        altTextLearnMoreUrl
-      } = this.#uiManager.mlManager;
+      const { altTextLearnMoreUrl } = this.#uiManager.mlManager;
       if (altTextLearnMoreUrl) {
         this.#learnMore.href = altTextLearnMoreUrl;
       }
@@ -8498,14 +8628,17 @@ class NewAltTextManager {
     this.#toggleTitleAndDisclaimer();
   }
   #toggleTitleAndDisclaimer() {
-    const visible = this.#isAILoading || this.#guessedAltText && this.#guessedAltText === this.#textarea.value;
+    const visible = this.#isAILoading || (this.#guessedAltText && this.#guessedAltText === this.#textarea.value);
     this.#disclaimer.hidden = !visible;
     const isEditing = this.#isAILoading || !!this.#textarea.value;
     if (this.#isEditing === isEditing) {
       return;
     }
     this.#isEditing = isEditing;
-    this.#title.setAttribute("data-l10n-id", isEditing ? "pdfjs-editor-new-alt-text-dialog-edit-label" : "pdfjs-editor-new-alt-text-dialog-add-label");
+    this.#title.setAttribute(
+      "data-l10n-id",
+      isEditing ? "pdfjs-editor-new-alt-text-dialog-edit-label" : "pdfjs-editor-new-alt-text-dialog-add-label"
+    );
   }
   async #mlGuessAltText(isInitial) {
     if (this.#isAILoading) {
@@ -8553,21 +8686,18 @@ class NewAltTextManager {
   }
   #setProgress() {
     this.#downloadModel.classList.toggle("hidden", false);
-    const callback = async ({
-      detail: {
-        finished,
-        total,
-        totalLoaded
-      }
-    }) => {
+    const callback = async ({ detail: { finished, total, totalLoaded } }) => {
       const ONE_MEGA_BYTES = 1e6;
       totalLoaded = Math.min(0.99 * total, totalLoaded);
-      const totalSize = this.#downloadModelDescription.ariaValueMax = Math.round(total / ONE_MEGA_BYTES);
-      const downloadedSize = this.#downloadModelDescription.ariaValueNow = Math.round(totalLoaded / ONE_MEGA_BYTES);
-      this.#downloadModelDescription.setAttribute("data-l10n-args", JSON.stringify({
-        totalSize,
-        downloadedSize
-      }));
+      const totalSize = (this.#downloadModelDescription.ariaValueMax = Math.round(total / ONE_MEGA_BYTES));
+      const downloadedSize = (this.#downloadModelDescription.ariaValueNow = Math.round(totalLoaded / ONE_MEGA_BYTES));
+      this.#downloadModelDescription.setAttribute(
+        "data-l10n-args",
+        JSON.stringify({
+          totalSize,
+          downloadedSize,
+        })
+      );
       if (!finished) {
         return;
       }
@@ -8577,9 +8707,7 @@ class NewAltTextManager {
       if (!this.#uiManager) {
         return;
       }
-      const {
-        mlManager
-      } = this.#uiManager;
+      const { mlManager } = this.#uiManager;
       mlManager.toggleService("altText", true);
       this.#toggleGuessAltText(await mlManager.isEnabledFor("altText"), true);
     };
@@ -8594,9 +8722,7 @@ class NewAltTextManager {
       return;
     }
     this.#firstTime = firstTime;
-    const {
-      mlManager
-    } = uiManager;
+    const { mlManager } = uiManager;
     const hasAI = !!mlManager;
     this.#toggleTitleAndDisclaimer();
     if (mlManager && !mlManager.isReady("altText")) {
@@ -8612,34 +8738,21 @@ class NewAltTextManager {
     this.#currentEditor = editor;
     this.#uiManager = uiManager;
     this.#uiManager.removeEditListeners();
-    ({
-      altText: this.#previousAltText
-    } = editor.altTextData);
+    ({ altText: this.#previousAltText } = editor.altTextData);
     this.#textarea.value = this.#previousAltText ?? "";
     const AI_MAX_IMAGE_DIMENSION = 224;
     const MAX_PREVIEW_DIMENSION = 180;
     let canvas, width, height;
     if (mlManager) {
-      ({
-        canvas,
-        width,
-        height,
-        imageData: this.#imageData
-      } = editor.copyCanvas(AI_MAX_IMAGE_DIMENSION, MAX_PREVIEW_DIMENSION, true));
+      ({ canvas, width, height, imageData: this.#imageData } = editor.copyCanvas(AI_MAX_IMAGE_DIMENSION, MAX_PREVIEW_DIMENSION, true));
       if (hasAI) {
         this.#toggleGuessAltText(await isAltTextEnabledPromise, true);
       }
     } else {
-      ({
-        canvas,
-        width,
-        height
-      } = editor.copyCanvas(AI_MAX_IMAGE_DIMENSION, MAX_PREVIEW_DIMENSION, false));
+      ({ canvas, width, height } = editor.copyCanvas(AI_MAX_IMAGE_DIMENSION, MAX_PREVIEW_DIMENSION, false));
     }
     canvas.setAttribute("role", "presentation");
-    const {
-      style
-    } = canvas;
+    const { style } = canvas;
     style.width = `${width}px`;
     style.height = `${height}px`;
     this.#imagePreview.append(canvas);
@@ -8655,22 +8768,22 @@ class NewAltTextManager {
   }
   #cancel() {
     this.#currentEditor.altTextData = {
-      cancel: true
+      cancel: true,
     };
     const altText = this.#textarea.value.trim();
     this.#currentEditor._reportTelemetry({
       action: "pdfjs.image.alt_text.dismiss",
       data: {
         alt_text_type: altText ? "present" : "empty",
-        flow: this.#firstTime ? "image_add" : "alt_text_edit"
-      }
+        flow: this.#firstTime ? "image_add" : "alt_text_edit",
+      },
     });
     this.#currentEditor._reportTelemetry({
       action: "pdfjs.image.image_added",
       data: {
         alt_text_modal: true,
-        alt_text_type: "skipped"
-      }
+        alt_text_type: "skipped",
+      },
     });
     this.#finish();
   }
@@ -8690,13 +8803,18 @@ class NewAltTextManager {
     this.#uiManager = null;
   }
   #extractWords(text) {
-    return new Set(text.toLowerCase().split(/[^\p{L}\p{N}]+/gu).filter(Boolean));
+    return new Set(
+      text
+        .toLowerCase()
+        .split(/[^\p{L}\p{N}]+/gu)
+        .filter(Boolean)
+    );
   }
   #save() {
     const altText = this.#textarea.value.trim();
     this.#currentEditor.altTextData = {
       altText,
-      decorative: false
+      decorative: false,
     };
     this.#currentEditor.altTextData.guessedAltText = this.#guessedAltText;
     if (this.#guessedAltText && this.#guessedAltText !== altText) {
@@ -8707,23 +8825,23 @@ class NewAltTextManager {
         data: {
           total_words: guessedWords.size,
           words_removed: guessedWords.difference(words).size,
-          words_added: words.difference(guessedWords).size
-        }
+          words_added: words.difference(guessedWords).size,
+        },
       });
     }
     this.#currentEditor._reportTelemetry({
       action: "pdfjs.image.image_added",
       data: {
         alt_text_modal: true,
-        alt_text_type: altText ? "present" : "empty"
-      }
+        alt_text_type: altText ? "present" : "empty",
+      },
     });
     this.#currentEditor._reportTelemetry({
       action: "pdfjs.image.alt_text.save",
       data: {
         alt_text_type: altText ? "present" : "empty",
-        flow: this.#firstTime ? "image_add" : "alt_text_edit"
-      }
+        flow: this.#firstTime ? "image_add" : "alt_text_edit",
+      },
     });
     this.#finish();
   }
@@ -8739,27 +8857,19 @@ class ImageAltTextSettings {
   #mlManager;
   #overlayManager;
   #showAltTextDialogButton;
-  constructor({
-    dialog,
-    createModelButton,
-    learnMore,
-    closeButton,
-    showAltTextDialogButton
-  }, overlayManager, eventBus, mlManager) {
+  constructor({ dialog, createModelButton, learnMore, closeButton, showAltTextDialogButton }, overlayManager, eventBus, mlManager) {
     this.#dialog = dialog;
     this.#createModelButton = createModelButton;
     this.#showAltTextDialogButton = showAltTextDialogButton;
     this.#overlayManager = overlayManager;
     this.#eventBus = eventBus;
     this.#mlManager = mlManager;
-    const {
-      altTextLearnMoreUrl
-    } = mlManager;
+    const { altTextLearnMoreUrl } = mlManager;
     if (altTextLearnMoreUrl) {
       learnMore.href = altTextLearnMoreUrl;
     }
     dialog.addEventListener("contextmenu", noContextMenu);
-    createModelButton.addEventListener("click", async e => {
+    createModelButton.addEventListener("click", async (e) => {
       const checked = this.#togglePref("enableGuessAltText", e);
       await (checked ? this.#download(true) : this.#delete(true));
       await mlManager.toggleService("altText", checked);
@@ -8767,18 +8877,18 @@ class ImageAltTextSettings {
         type: "stamp",
         action: "pdfjs.image.alt_text.settings_ai_generation_check",
         data: {
-          status: checked
-        }
+          status: checked,
+        },
       });
     });
-    showAltTextDialogButton.addEventListener("click", e => {
+    showAltTextDialogButton.addEventListener("click", (e) => {
       const checked = this.#togglePref("enableNewAltTextWhenAddingImage", e);
       this.#reportTelemetry({
         type: "stamp",
         action: "pdfjs.image.alt_text.settings_edit_alt_text_check",
         data: {
-          status: checked
-        }
+          status: checked,
+        },
       });
     });
     closeButton.addEventListener("click", this.#finish.bind(this));
@@ -8787,19 +8897,21 @@ class ImageAltTextSettings {
         type: "stamp",
         action: "pdfjs.image.alt_text.info",
         data: {
-          topic: "ai_generation"
-        }
+          topic: "ai_generation",
+        },
       });
     });
-    eventBus.on("enablealttextmodeldownload", ({
-      value
-    }) => {
-      if (value) {
-        this.#download(false);
-      } else {
-        this.#delete(false);
-      }
-    }, internalOpt);
+    eventBus.on(
+      "enablealttextmodeldownload",
+      ({ value }) => {
+        if (value) {
+          this.#download(false);
+        } else {
+          this.#delete(false);
+        }
+      },
+      internalOpt
+    );
     this.#overlayManager.register(dialog);
   }
   #reportTelemetry(data) {
@@ -8807,8 +8919,8 @@ class ImageAltTextSettings {
       source: this,
       details: {
         type: "editing",
-        data
-      }
+        data,
+      },
     });
   }
   async #download(isFromUI = false) {
@@ -8827,24 +8939,17 @@ class ImageAltTextSettings {
     }
     this.#createModelButton.setAttribute("aria-pressed", false);
   }
-  async open({
-    enableGuessAltText,
-    enableNewAltTextWhenAddingImage
-  }) {
-    const {
-      enableAltTextModelDownload
-    } = this.#mlManager;
+  async open({ enableGuessAltText, enableNewAltTextWhenAddingImage }) {
+    const { enableAltTextModelDownload } = this.#mlManager;
     this.#createModelButton.setAttribute("aria-pressed", enableAltTextModelDownload && enableGuessAltText);
     this.#showAltTextDialogButton.setAttribute("aria-pressed", enableNewAltTextWhenAddingImage);
     await this.#overlayManager.open(this.#dialog);
     this.#reportTelemetry({
       type: "stamp",
-      action: "pdfjs.image.alt_text.settings_displayed"
+      action: "pdfjs.image.alt_text.settings_displayed",
     });
   }
-  #togglePref(name, {
-    target
-  }) {
+  #togglePref(name, { target }) {
     const checked = target.getAttribute("aria-pressed") !== "true";
     this.#setPref(name, checked);
     target.setAttribute("aria-pressed", checked);
@@ -8854,16 +8959,13 @@ class ImageAltTextSettings {
     this.#eventBus.dispatch("setpreference", {
       source: this,
       name,
-      value
+      value,
     });
   }
   #finish() {
     this.#overlayManager.closeIfActive(this.#dialog);
   }
-}
-
-;// ./web/alt_text_manager.js
-
+} // ./web/alt_text_manager.js
 
 class AltTextManager {
   #clickAC = null;
@@ -8884,14 +8986,7 @@ class AltTextManager {
   #rectElement = null;
   #container;
   #telemetryData = null;
-  constructor({
-    dialog,
-    optionDescription,
-    optionDecorative,
-    textarea,
-    cancelButton,
-    saveButton
-  }, container, overlayManager, eventBus) {
+  constructor({ dialog, optionDescription, optionDecorative, textarea, cancelButton, saveButton }, container, overlayManager, eventBus) {
     this.#dialog = dialog;
     this.#optionDescription = optionDescription;
     this.#optionDecorative = optionDecorative;
@@ -8903,7 +8998,7 @@ class AltTextManager {
     this.#container = container;
     const onUpdateUIState = this.#updateUIState.bind(this);
     dialog.addEventListener("close", this.#close.bind(this));
-    dialog.addEventListener("contextmenu", event => {
+    dialog.addEventListener("contextmenu", (event) => {
       if (event.target !== this.#textarea) {
         event.preventDefault();
       }
@@ -8912,7 +9007,7 @@ class AltTextManager {
     saveButton.addEventListener("click", this.#save.bind(this));
     optionDescription.addEventListener("change", onUpdateUIState);
     optionDecorative.addEventListener("change", onUpdateUIState);
-    textarea.addEventListener("keydown", e => {
+    textarea.addEventListener("keydown", (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key === "Enter" && !saveButton.disabled) {
         this.#save();
       }
@@ -8924,7 +9019,7 @@ class AltTextManager {
       return;
     }
     const svgFactory = new DOMSVGFactory();
-    const svg = this.#svgElement = svgFactory.createElement("svg");
+    const svg = (this.#svgElement = svgFactory.createElement("svg"));
     svg.setAttribute("width", "0");
     svg.setAttribute("height", "0");
     const defs = svgFactory.createElement("defs");
@@ -8953,16 +9048,13 @@ class AltTextManager {
     this.#hasUsedPointer = false;
     this.#clickAC = new AbortController();
     const clickOpts = {
-        signal: this.#clickAC.signal
+        signal: this.#clickAC.signal,
       },
       onClick = this.#onClick.bind(this);
     for (const element of [this.#optionDescription, this.#optionDecorative, this.#textarea, this.#saveButton, this.#cancelButton]) {
       element.addEventListener("click", onClick, clickOpts);
     }
-    const {
-      altText,
-      decorative
-    } = editor.altTextData;
+    const { altText, decorative } = editor.altTextData;
     if (decorative === true) {
       this.#optionDecorative.checked = true;
       this.#optionDescription.checked = false;
@@ -8978,7 +9070,7 @@ class AltTextManager {
     this.#resizeAC = new AbortController();
     this.#eventBus.on("resize", this.#setPosition.bind(this), {
       signal: this.#resizeAC.signal,
-      ...internalOpt
+      ...internalOpt,
     });
     try {
       await this.#overlayManager.open(this.#dialog);
@@ -8993,29 +9085,11 @@ class AltTextManager {
       return;
     }
     const dialog = this.#dialog;
-    const {
-      style
-    } = dialog;
-    const {
-      x: containerX,
-      y: containerY,
-      width: containerW,
-      height: containerH
-    } = this.#container.getBoundingClientRect();
-    const {
-      innerWidth: windowW,
-      innerHeight: windowH
-    } = window;
-    const {
-      width: dialogW,
-      height: dialogH
-    } = dialog.getBoundingClientRect();
-    const {
-      x,
-      y,
-      width,
-      height
-    } = this.#currentEditor.getClientDimensions();
+    const { style } = dialog;
+    const { x: containerX, y: containerY, width: containerW, height: containerH } = this.#container.getBoundingClientRect();
+    const { innerWidth: windowW, innerHeight: windowH } = window;
+    const { width: dialogW, height: dialogH } = dialog.getBoundingClientRect();
+    const { x, y, width, height } = this.#currentEditor.getClientDimensions();
     const MARGIN = 10;
     const isLTR = this.#uiManager.direction === "ltr";
     const xs = Math.max(x, containerX);
@@ -9068,10 +9142,12 @@ class AltTextManager {
     this.#overlayManager.closeIfActive(this.#dialog);
   }
   #close() {
-    this.#currentEditor._reportTelemetry(this.#telemetryData || {
-      action: "alt_text_cancel",
-      alt_text_keyboard: !this.#hasUsedPointer
-    });
+    this.#currentEditor._reportTelemetry(
+      this.#telemetryData || {
+        action: "alt_text_cancel",
+        alt_text_keyboard: !this.#hasUsedPointer,
+      }
+    );
     this.#telemetryData = null;
     this.#removeOnClickListeners();
     this.#uiManager?.addEditListeners();
@@ -9089,14 +9165,14 @@ class AltTextManager {
     const decorative = this.#optionDecorative.checked;
     this.#currentEditor.altTextData = {
       altText,
-      decorative
+      decorative,
     };
     this.#telemetryData = {
       action: "alt_text_save",
       alt_text_description: !!altText,
       alt_text_edit: !!this.#previousAltText && this.#previousAltText !== altText,
       alt_text_decorative: decorative,
-      alt_text_keyboard: !this.#hasUsedPointer
+      alt_text_keyboard: !this.#hasUsedPointer,
     };
     this.#finish();
   }
@@ -9117,10 +9193,7 @@ class AltTextManager {
     this.#svgElement?.remove();
     this.#svgElement = this.#rectElement = null;
   }
-}
-
-;// ./web/annotation_editor_params.js
-
+} // ./web/annotation_editor_params.js
 
 class AnnotationEditorParams {
   constructor(options, eventBus) {
@@ -9136,16 +9209,14 @@ class AnnotationEditorParams {
     editorStampAddImage,
     editorFreeHighlightThickness,
     editorHighlightShowAll,
-    editorSignatureAddSignature
+    editorSignatureAddSignature,
   }) {
-    const {
-      eventBus
-    } = this;
+    const { eventBus } = this;
     const dispatchEvent = (typeStr, value) => {
       eventBus.dispatch("switchannotationeditorparams", {
         source: this,
         type: AnnotationEditorParamsType[typeStr],
-        value
+        value,
       });
     };
     editorFreeTextFontSize.addEventListener("input", function () {
@@ -9171,15 +9242,15 @@ class AnnotationEditorParams {
         currentInkOpacity = opacity;
         dispatchEvent("INK_COLOR_AND_OPACITY", {
           color: hex,
-          opacity
+          opacity,
         });
       });
-      updateInkColor = value => {
+      updateInkColor = (value) => {
         currentInkColor = value;
         const alphaHex = Util.hexNums[Math.round(currentInkOpacity * 255)];
         editorInkColor.value = currentInkColor + alphaHex;
       };
-      updateInkOpacity = value => {
+      updateInkOpacity = (value) => {
         currentInkOpacity = value;
         const alphaHex = Util.hexNums[Math.round(currentInkOpacity * 255)];
         editorInkColor.value = currentInkColor + alphaHex;
@@ -9191,10 +9262,10 @@ class AnnotationEditorParams {
       editorInkOpacity.addEventListener("input", function () {
         dispatchEvent("INK_OPACITY", this.valueAsNumber);
       });
-      updateInkColor = value => {
+      updateInkColor = (value) => {
         editorInkColor.value = value;
       };
-      updateInkOpacity = value => {
+      updateInkOpacity = (value) => {
         editorInkOpacity.value = value;
       };
     }
@@ -9207,9 +9278,9 @@ class AnnotationEditorParams {
         details: {
           type: "editing",
           data: {
-            action: "pdfjs.image.add_image_click"
-          }
-        }
+            action: "pdfjs.image.add_image_click",
+          },
+        },
       });
       dispatchEvent("CREATE");
     });
@@ -9224,46 +9295,48 @@ class AnnotationEditorParams {
     editorSignatureAddSignature.addEventListener("click", () => {
       dispatchEvent("CREATE");
     });
-    eventBus.on("annotationeditorparamschanged", evt => {
-      for (const [type, value] of evt.details) {
-        switch (type) {
-          case AnnotationEditorParamsType.FREETEXT_SIZE:
-            editorFreeTextFontSize.value = value;
-            break;
-          case AnnotationEditorParamsType.FREETEXT_COLOR:
-            editorFreeTextColor.value = value;
-            break;
-          case AnnotationEditorParamsType.INK_COLOR:
-            updateInkColor(value);
-            break;
-          case AnnotationEditorParamsType.INK_THICKNESS:
-            editorInkThickness.value = value;
-            break;
-          case AnnotationEditorParamsType.INK_OPACITY:
-            updateInkOpacity(value);
-            break;
-          case AnnotationEditorParamsType.HIGHLIGHT_COLOR:
-            eventBus.dispatch("mainhighlightcolorpickerupdatecolor", {
-              source: this,
-              value
-            });
-            break;
-          case AnnotationEditorParamsType.HIGHLIGHT_THICKNESS:
-            editorFreeHighlightThickness.value = value;
-            break;
-          case AnnotationEditorParamsType.HIGHLIGHT_FREE:
-            editorFreeHighlightThickness.disabled = !value;
-            break;
-          case AnnotationEditorParamsType.HIGHLIGHT_SHOW_ALL:
-            editorHighlightShowAll.setAttribute("aria-pressed", value);
-            break;
+    eventBus.on(
+      "annotationeditorparamschanged",
+      (evt) => {
+        for (const [type, value] of evt.details) {
+          switch (type) {
+            case AnnotationEditorParamsType.FREETEXT_SIZE:
+              editorFreeTextFontSize.value = value;
+              break;
+            case AnnotationEditorParamsType.FREETEXT_COLOR:
+              editorFreeTextColor.value = value;
+              break;
+            case AnnotationEditorParamsType.INK_COLOR:
+              updateInkColor(value);
+              break;
+            case AnnotationEditorParamsType.INK_THICKNESS:
+              editorInkThickness.value = value;
+              break;
+            case AnnotationEditorParamsType.INK_OPACITY:
+              updateInkOpacity(value);
+              break;
+            case AnnotationEditorParamsType.HIGHLIGHT_COLOR:
+              eventBus.dispatch("mainhighlightcolorpickerupdatecolor", {
+                source: this,
+                value,
+              });
+              break;
+            case AnnotationEditorParamsType.HIGHLIGHT_THICKNESS:
+              editorFreeHighlightThickness.value = value;
+              break;
+            case AnnotationEditorParamsType.HIGHLIGHT_FREE:
+              editorFreeHighlightThickness.disabled = !value;
+              break;
+            case AnnotationEditorParamsType.HIGHLIGHT_SHOW_ALL:
+              editorHighlightShowAll.setAttribute("aria-pressed", value);
+              break;
+          }
         }
-      }
-    }, internalOpt);
+      },
+      internalOpt
+    );
   }
-}
-
-;// ./web/caret_browsing.js
+} // ./web/caret_browsing.js
 
 const PRECISION = 1e-1;
 class CaretBrowsingMode {
@@ -9277,7 +9350,7 @@ class CaretBrowsingMode {
       return;
     }
     this.#toolBarHeight = toolbarContainer.getBoundingClientRect().height;
-    const toolbarObserver = new ResizeObserver(entries => {
+    const toolbarObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
         if (entry.target === toolbarContainer) {
           this.#toolBarHeight = Math.floor(entry.borderBoxSize[0].blockSize);
@@ -9287,7 +9360,7 @@ class CaretBrowsingMode {
     });
     toolbarObserver.observe(toolbarContainer);
     abortSignal.addEventListener("abort", () => toolbarObserver.disconnect(), {
-      once: true
+      once: true,
     });
   }
   #isOnSameLine(rect1, rect2) {
@@ -9297,20 +9370,22 @@ class CaretBrowsingMode {
     const top2 = rect2.y;
     const bot2 = rect2.bottom;
     const mid2 = rect2.y + rect2.height / 2;
-    return top1 <= mid2 && mid2 <= bot1 || top2 <= mid1 && mid1 <= bot2;
+    return (top1 <= mid2 && mid2 <= bot1) || (top2 <= mid1 && mid1 <= bot2);
   }
   #isUnderOver(rect, x, y, isUp) {
     const midY = rect.y + rect.height / 2;
     return (isUp ? y >= midY : y <= midY) && rect.x - PRECISION <= x && x <= rect.right + PRECISION;
   }
   #isVisible(rect) {
-    return rect.top >= this.#toolBarHeight && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth);
+    return (
+      rect.top >= this.#toolBarHeight &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
   }
   #getCaretPosition(selection, isUp) {
-    const {
-      focusNode,
-      focusOffset
-    } = selection;
+    const { focusNode, focusOffset } = selection;
     const range = document.createRange();
     range.setStart(focusNode, focusOffset);
     range.setEnd(focusNode, focusOffset);
@@ -9319,13 +9394,10 @@ class CaretBrowsingMode {
   }
   static #caretPositionFromPoint(x, y) {
     if (!document.caretPositionFromPoint) {
-      const {
-        startContainer: offsetNode,
-        startOffset: offset
-      } = document.caretRangeFromPoint(x, y);
+      const { startContainer: offsetNode, startOffset: offset } = document.caretRangeFromPoint(x, y);
       return {
         offsetNode,
-        offset
+        offset,
       };
     }
     return document.caretPositionFromPoint(x, y);
@@ -9341,9 +9413,7 @@ class CaretBrowsingMode {
       return;
     }
     if (rect.right - PRECISION <= caretX) {
-      const {
-        lastChild
-      } = element;
+      const { lastChild } = element;
       if (select) {
         selection.extend(lastChild, lastChild.length);
       } else {
@@ -9361,9 +9431,7 @@ class CaretBrowsingMode {
         if (el === element) {
           break;
         }
-        const {
-          style
-        } = el;
+        const { style } = el;
         savedVisibilities.push([el, style.visibility]);
         style.visibility = "hidden";
       }
@@ -9393,7 +9461,7 @@ class CaretBrowsingMode {
       return;
     }
     this.#mainContainer.addEventListener("scrollend", this.#setCaretPositionHelper.bind(this, selection, caretX, select, newLineElement, null), {
-      once: true
+      once: true,
     });
     newLineElement.scrollIntoView();
   }
@@ -9418,9 +9486,7 @@ class CaretBrowsingMode {
     if (selection.rangeCount === 0) {
       return;
     }
-    const {
-      focusNode
-    } = selection;
+    const { focusNode } = selection;
     const focusElement = focusNode.nodeType !== Node.ELEMENT_NODE ? focusNode.parentElement : focusNode;
     const root = focusElement.closest(".textLayer");
     if (!root) {
@@ -9453,9 +9519,7 @@ class CaretBrowsingMode {
         return;
       }
       const [caretX] = this.#getCaretPosition(selection, isUp);
-      const {
-        parentElement
-      } = node;
+      const { parentElement } = node;
       this.#setCaretPosition(select, selection, parentElement, parentElement.getBoundingClientRect(), caretX);
       return;
     }
@@ -9483,9 +9547,7 @@ class CaretBrowsingMode {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.weak-map.get-or-insert.js
 var es_weak_map_get_or_insert = __webpack_require__(8454);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.weak-map.get-or-insert-computed.js
-var es_weak_map_get_or_insert_computed = __webpack_require__(9452);
-;// ./web/sidebar.js
-
+var es_weak_map_get_or_insert_computed = __webpack_require__(9452); // ./web/sidebar.js
 const RESIZE_TIMEOUT = 400;
 class Sidebar {
   #initialWidth = 0;
@@ -9497,11 +9559,7 @@ class Sidebar {
   #isKeyboardResizing = false;
   #resizeObserver;
   #prevX = 0;
-  constructor({
-    sidebar,
-    resizer,
-    toggleButton
-  }, ltr, isResizerOnTheLeft, globalAbortSignal) {
+  constructor({ sidebar, resizer, toggleButton }, ltr, isResizerOnTheLeft, globalAbortSignal) {
     this._sidebar = sidebar;
     this.#coefficient = ltr === isResizerOnTheLeft ? -1 : 1;
     this.#resizer = resizer;
@@ -9516,18 +9574,20 @@ class Sidebar {
     this._isOpen = false;
     sidebar.hidden = true;
     globalAbortSignal?.addEventListener("abort", this.destroy.bind(this), {
-      once: true
+      once: true,
     });
-    this.#resizeObserver = new ResizeObserver(([{
-      borderBoxSize: [{
-        inlineSize
-      }]
-    }]) => {
-      if (!isNaN(this.#prevX)) {
-        this.#prevX += this.#coefficient * (inlineSize - this.#width);
+    this.#resizeObserver = new ResizeObserver(
+      ([
+        {
+          borderBoxSize: [{ inlineSize }],
+        },
+      ]) => {
+        if (!isNaN(this.#prevX)) {
+          this.#prevX += this.#coefficient * (inlineSize - this.#width);
+        }
+        this.#setWidth(inlineSize);
       }
-      this.#setWidth(inlineSize);
-    });
+    );
     this.#resizeObserver.observe(sidebar);
   }
   #makeSidebarResizable() {
@@ -9542,54 +9602,56 @@ class Sidebar {
       this.onStopResizing();
       this.#prevX = NaN;
     };
-    this.#resizer.addEventListener("pointerdown", e => {
+    this.#resizer.addEventListener("pointerdown", (e) => {
       if (pointerMoveAC) {
         cancelResize();
         return;
       }
       this.onStartResizing();
-      const {
-        clientX
-      } = e;
+      const { clientX } = e;
       stopEvent(e);
       this.#prevX = clientX;
       pointerMoveAC = new AbortController();
-      const {
-        signal
-      } = pointerMoveAC;
+      const { signal } = pointerMoveAC;
       const sidebar = this._sidebar;
       sidebar.classList.add("resizing");
       const parentStyle = sidebar.parentElement.style;
       parentStyle.minWidth = 0;
       window.addEventListener("contextmenu", noContextMenu, {
-        signal
-      });
-      window.addEventListener("pointermove", ev => {
-        if (!pointerMoveAC || Math.abs(ev.clientX - this.#prevX) < 1) {
-          return;
-        }
-        stopEvent(ev);
-        sidebarStyle.width = `${Math.round(this.#width + this.#coefficient * (ev.clientX - this.#prevX))}px`;
-      }, {
         signal,
-        capture: true
       });
-      window.addEventListener("blur", cancelResize, {
-        signal
-      });
-      window.addEventListener("pointerup", ev => {
-        if (pointerMoveAC) {
-          cancelResize();
+      window.addEventListener(
+        "pointermove",
+        (ev) => {
+          if (!pointerMoveAC || Math.abs(ev.clientX - this.#prevX) < 1) {
+            return;
+          }
           stopEvent(ev);
+          sidebarStyle.width = `${Math.round(this.#width + this.#coefficient * (ev.clientX - this.#prevX))}px`;
+        },
+        {
+          signal,
+          capture: true,
         }
-      }, {
-        signal
+      );
+      window.addEventListener("blur", cancelResize, {
+        signal,
       });
+      window.addEventListener(
+        "pointerup",
+        (ev) => {
+          if (pointerMoveAC) {
+            cancelResize();
+            stopEvent(ev);
+          }
+        },
+        {
+          signal,
+        }
+      );
     });
-    this.#resizer.addEventListener("keydown", e => {
-      const {
-        key
-      } = e;
+    this.#resizer.addEventListener("keydown", (e) => {
+      const { key } = e;
       const isArrowLeft = key === "ArrowLeft";
       if (isArrowLeft || key === "ArrowRight") {
         if (!this.#isKeyboardResizing) {
@@ -9630,24 +9692,7 @@ class Sidebar {
     this.#resizeObserver?.disconnect();
     this.#resizeObserver = null;
   }
-}
-
-;// ./web/comment_manager.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+} // ./web/comment_manager.js
 
 class CommentManager {
   #dialog;
@@ -9656,7 +9701,7 @@ class CommentManager {
   static #hasForcedColors = null;
   constructor(commentDialog, sidebar, eventBus, linkService, overlayManager, ltr, hasForcedColors, globalAbortSignal) {
     const dateFormat = new Intl.DateTimeFormat(undefined, {
-      dateStyle: "long"
+      dateStyle: "long",
     });
     this.dialogElement = commentDialog.dialog;
     this.#dialog = new CommentDialog(commentDialog, overlayManager, eventBus, ltr);
@@ -9729,21 +9774,25 @@ class CommentSidebar extends Sidebar {
   #elementsToAnnotations = null;
   #idsToElements = null;
   #uiManager = null;
-  constructor({
-    learnMoreUrl,
-    sidebar,
-    sidebarResizer,
-    commentsList,
-    commentCount,
-    sidebarTitle,
-    closeButton,
-    commentToolbarButton
-  }, eventBus, linkService, popup, dateFormat, ltr, globalAbortSignal) {
-    super({
-      sidebar,
-      resizer: sidebarResizer,
-      toggleButton: commentToolbarButton
-    }, ltr, true, globalAbortSignal);
+  constructor(
+    { learnMoreUrl, sidebar, sidebarResizer, commentsList, commentCount, sidebarTitle, closeButton, commentToolbarButton },
+    eventBus,
+    linkService,
+    popup,
+    dateFormat,
+    ltr,
+    globalAbortSignal
+  ) {
+    super(
+      {
+        sidebar,
+        resizer: sidebarResizer,
+        toggleButton: commentToolbarButton,
+      },
+      ltr,
+      true,
+      globalAbortSignal
+    );
     this.#sidebarTitle = sidebarTitle;
     this.#commentsList = commentsList;
     this.#commentCount = commentCount;
@@ -9756,10 +9805,10 @@ class CommentSidebar extends Sidebar {
     closeButton.addEventListener("click", () => {
       eventBus.dispatch("switchannotationeditormode", {
         source: this,
-        mode: AnnotationEditorType.NONE
+        mode: AnnotationEditorType.NONE,
       });
     });
-    const keyDownCallback = e => {
+    const keyDownCallback = (e) => {
       if (e.key === "ArrowDown" || e.key === "Home" || e.key === "F6") {
         this.#commentsList.firstElementChild.focus();
         stopEvent(e);
@@ -9795,9 +9844,9 @@ class CommentSidebar extends Sidebar {
       details: {
         type: "commentSidebar",
         data: {
-          numberOfAnnotations: annotations.length
-        }
-      }
+          numberOfAnnotations: annotations.length,
+        },
+      },
     });
   }
   hide() {
@@ -9833,15 +9882,8 @@ class CommentSidebar extends Sidebar {
     if (!this.#idsToElements) {
       return;
     }
-    const {
-      id,
-      creationDate,
-      modificationDate,
-      richText,
-      contentsObj,
-      popupRef
-    } = annotation;
-    if (!popupRef || !richText && !contentsObj?.str) {
+    const { id, creationDate, modificationDate, richText, contentsObj, popupRef } = annotation;
+    if (!popupRef || (!richText && !contentsObj?.str)) {
       this.#removeComment(id);
     }
     const element = this.#idsToElements.get(id);
@@ -9849,14 +9891,14 @@ class CommentSidebar extends Sidebar {
       return;
     }
     const prevAnnotation = this.#elementsToAnnotations.get(element);
-    let index = binarySearchFirstItem(this.#annotations, a => this.#sortComments(a, prevAnnotation) >= 0);
+    let index = binarySearchFirstItem(this.#annotations, (a) => this.#sortComments(a, prevAnnotation) >= 0);
     if (index >= this.#annotations.length) {
       return;
     }
     this.#setDate(element.firstElementChild, modificationDate || creationDate);
     this.#setText(element.lastElementChild, richText, contentsObj);
     this.#annotations.splice(index, 1);
-    index = binarySearchFirstItem(this.#annotations, a => this.#sortComments(a, annotation) >= 0);
+    index = binarySearchFirstItem(this.#annotations, (a) => this.#sortComments(a, annotation) >= 0);
     this.#annotations.splice(index, 0, annotation);
     if (index >= this.#commentsList.children.length) {
       this.#commentsList.append(element);
@@ -9870,7 +9912,7 @@ class CommentSidebar extends Sidebar {
       return;
     }
     const annotation = this.#elementsToAnnotations.get(element);
-    const index = binarySearchFirstItem(this.#annotations, a => this.#sortComments(a, annotation) >= 0);
+    const index = binarySearchFirstItem(this.#annotations, (a) => this.#sortComments(a, annotation) >= 0);
     if (index >= this.#annotations.length) {
       return;
     }
@@ -9898,7 +9940,7 @@ class CommentSidebar extends Sidebar {
     if (hasNoElement) {
       element?.scrollIntoView({
         behavior: "instant",
-        block: "center"
+        block: "center",
       });
     }
   }
@@ -9906,10 +9948,7 @@ class CommentSidebar extends Sidebar {
     if (this.#idsToElements?.has(annotation.id)) {
       return;
     }
-    const {
-      popupRef,
-      contentsObj
-    } = annotation;
+    const { popupRef, contentsObj } = annotation;
     if (!popupRef || !contentsObj?.str) {
       return;
     }
@@ -9920,7 +9959,7 @@ class CommentSidebar extends Sidebar {
       this.#setCommentsCount();
       return;
     }
-    const index = binarySearchFirstItem(this.#annotations, a => this.#sortComments(a, annotation) >= 0);
+    const index = binarySearchFirstItem(this.#annotations, (a) => this.#sortComments(a, annotation) >= 0);
     this.#annotations.splice(index, 0, annotation);
     if (index >= this.#commentsList.children.length) {
       this.#commentsList.append(commentItem);
@@ -9931,9 +9970,12 @@ class CommentSidebar extends Sidebar {
   }
   #setCommentsCount(container = this.#commentsList) {
     const count = this.#idsToElements.size;
-    this.#sidebarTitle.setAttribute("data-l10n-args", JSON.stringify({
-      count
-    }));
+    this.#sidebarTitle.setAttribute(
+      "data-l10n-args",
+      JSON.stringify({
+        count,
+      })
+    );
     this.#commentCount.textContent = count;
     if (count === 0) {
       container.append(this.#createZeroCommentElement());
@@ -9964,27 +10006,22 @@ class CommentSidebar extends Sidebar {
   #setText(element, richText, contentsObj) {
     element.replaceChildren();
     const html = richText?.str && (!contentsObj?.str || richText.str === contentsObj.str) ? richText.html : contentsObj?.str;
-    renderRichText({
-      html,
-      dir: contentsObj?.dir || "auto",
-      className: "richText"
-    }, element);
+    renderRichText(
+      {
+        html,
+        dir: contentsObj?.dir || "auto",
+        className: "richText",
+      },
+      element
+    );
   }
   #createCommentElement(annotation) {
-    const {
-      id,
-      creationDate,
-      modificationDate,
-      richText,
-      contentsObj,
-      color,
-      opacity
-    } = annotation;
+    const { id, creationDate, modificationDate, richText, contentsObj, color, opacity } = annotation;
     const commentItem = document.createElement("li");
     commentItem.role = "button";
     commentItem.className = "sidebarComment";
     commentItem.tabIndex = -1;
-    commentItem.style.backgroundColor = color && CommentManager._makeCommentColor(color, opacity) || "";
+    commentItem.style.backgroundColor = (color && CommentManager._makeCommentColor(color, opacity)) || "";
     const dateDiv = document.createElement("time");
     this.#setDate(dateDiv, modificationDate || creationDate);
     const textDiv = document.createElement("div");
@@ -9997,9 +10034,7 @@ class CommentSidebar extends Sidebar {
     this.#idsToElements.set(id, commentItem);
     return commentItem;
   }
-  async #commentClick({
-    currentTarget
-  }) {
+  async #commentClick({ currentTarget }) {
     if (currentTarget.classList.contains("selected")) {
       currentTarget.classList.remove("selected");
       this.#popup._hide();
@@ -10010,25 +10045,18 @@ class CommentSidebar extends Sidebar {
       return;
     }
     this.#popup._hide();
-    const {
-      id,
-      pageIndex,
-      rect
-    } = annotation;
+    const { id, pageIndex, rect } = annotation;
     const pageNumber = pageIndex + 1;
     const pageVisiblePromise = this.#uiManager?.waitForEditorsRendered(pageNumber);
     this.#linkService?.goToXY(pageNumber, rect[0], rect[3], {
-      center: "both"
+      center: "both",
     });
     this.selectComment(currentTarget);
     await pageVisiblePromise;
     this.#uiManager?.selectComment(pageIndex, id);
   }
   #commentKeydown(e) {
-    const {
-      key,
-      currentTarget
-    } = e;
+    const { key, currentTarget } = e;
     switch (key) {
       case "ArrowDown":
         (currentTarget.nextElementSibling || this.#commentsList.firstElementChild).focus();
@@ -10101,14 +10129,7 @@ class CommentDialog {
   #dialogY = 0;
   #isLTR;
   #eventBus;
-  constructor({
-    dialog,
-    toolbar,
-    title,
-    textInput,
-    cancelButton,
-    saveButton
-  }, overlayManager, eventBus, ltr) {
+  constructor({ dialog, toolbar, title, textInput, cancelButton, saveButton }, overlayManager, eventBus, ltr) {
     this.#dialog = dialog;
     this.#textInput = textInput;
     this.#overlayManager = overlayManager;
@@ -10119,7 +10140,7 @@ class CommentDialog {
     this.#isLTR = ltr;
     const finishBound = this.#finish.bind(this);
     dialog.addEventListener("close", finishBound);
-    dialog.addEventListener("contextmenu", e => {
+    dialog.addEventListener("contextmenu", (e) => {
       if (e.target !== this.#textInput) {
         e.preventDefault();
       }
@@ -10129,7 +10150,7 @@ class CommentDialog {
     textInput.addEventListener("input", () => {
       saveButton.disabled = textInput.value === this.#previousText;
     });
-    textInput.addEventListener("keydown", e => {
+    textInput.addEventListener("keydown", (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key === "Enter" && !saveButton.disabled) {
         this.#save();
       }
@@ -10140,53 +10161,50 @@ class CommentDialog {
       pointerMoveAC?.abort();
       pointerMoveAC = null;
     };
-    toolbar.addEventListener("pointerdown", e => {
+    toolbar.addEventListener("pointerdown", (e) => {
       if (pointerMoveAC) {
         cancelDrag();
         return;
       }
-      const {
-        clientX,
-        clientY
-      } = e;
+      const { clientX, clientY } = e;
       stopEvent(e);
       this.#prevDragX = clientX;
       this.#prevDragY = clientY;
       pointerMoveAC = new AbortController();
-      const {
-        signal
-      } = pointerMoveAC;
-      const {
-        innerHeight,
-        innerWidth
-      } = window;
+      const { signal } = pointerMoveAC;
+      const { innerHeight, innerWidth } = window;
       dialog.classList.add("dragging");
-      window.addEventListener("pointermove", ev => {
-        if (!pointerMoveAC) {
-          return;
-        }
-        const {
-          clientX: x,
-          clientY: y
-        } = ev;
-        this.#setPosition(this.#dialogX + (x - this.#prevDragX) / innerWidth, this.#dialogY + (y - this.#prevDragY) / innerHeight);
-        this.#prevDragX = x;
-        this.#prevDragY = y;
-        stopEvent(ev);
-      }, {
-        signal
-      });
-      window.addEventListener("blur", cancelDrag, {
-        signal
-      });
-      window.addEventListener("pointerup", ev => {
-        if (pointerMoveAC) {
-          cancelDrag();
+      window.addEventListener(
+        "pointermove",
+        (ev) => {
+          if (!pointerMoveAC) {
+            return;
+          }
+          const { clientX: x, clientY: y } = ev;
+          this.#setPosition(this.#dialogX + (x - this.#prevDragX) / innerWidth, this.#dialogY + (y - this.#prevDragY) / innerHeight);
+          this.#prevDragX = x;
+          this.#prevDragY = y;
           stopEvent(ev);
+        },
+        {
+          signal,
         }
-      }, {
-        signal
+      );
+      window.addEventListener("blur", cancelDrag, {
+        signal,
       });
+      window.addEventListener(
+        "pointerup",
+        (ev) => {
+          if (pointerMoveAC) {
+            cancelDrag();
+            stopEvent(ev);
+          }
+        },
+        {
+          signal,
+        }
+      );
     });
     overlayManager.register(dialog);
   }
@@ -10196,15 +10214,11 @@ class CommentDialog {
       this.#editor = editor;
     }
     const {
-      contentsObj: {
-        str
-      },
+      contentsObj: { str },
       color,
-      opacity
+      opacity,
     } = editor.getData();
-    const {
-      style: dialogStyle
-    } = this.#dialog;
+    const { style: dialogStyle } = this.#dialog;
     if (color) {
       dialogStyle.backgroundColor = CommentManager._makeCommentColor(color, opacity);
       dialogStyle.borderColor = Util.makeHexColor(...color);
@@ -10227,15 +10241,9 @@ class CommentDialog {
     this.#uiManager?.removeEditListeners();
     this.#saveButton.disabled = true;
     const parentDimensions = options?.parentDimensions;
-    const {
-      innerHeight,
-      innerWidth
-    } = window;
+    const { innerHeight, innerWidth } = window;
     if (editor.hasDefaultPopupPosition()) {
-      const {
-        dialogWidth,
-        dialogHeight
-      } = this._dialogDimensions;
+      const { dialogWidth, dialogHeight } = this._dialogDimensions;
       if (parentDimensions) {
         if (this.#isLTR && posX + dialogWidth > Math.min(parentDimensions.x + parentDimensions.width, innerWidth)) {
           const buttonWidth = this.#editor.commentButtonWidth;
@@ -10269,27 +10277,20 @@ class CommentDialog {
   }
   get _dialogDimensions() {
     const dialog = this.#dialog;
-    const {
-      style
-    } = dialog;
+    const { style } = dialog;
     style.opacity = "0";
     style.display = "block";
-    const {
-      width,
-      height
-    } = dialog.getBoundingClientRect();
+    const { width, height } = dialog.getBoundingClientRect();
     style.opacity = style.display = "";
     return shadow(this, "_dialogDimensions", {
       dialogWidth: width,
-      dialogHeight: height
+      dialogHeight: height,
     });
   }
   #setPosition(x, y) {
     this.#dialogX = x;
     this.#dialogY = y;
-    const {
-      style
-    } = this.#dialog;
+    const { style } = this.#dialog;
     style.left = `${100 * x}%`;
     style.top = `${100 * y}%`;
   }
@@ -10303,9 +10304,9 @@ class CommentDialog {
       details: {
         type: "comment",
         data: {
-          edited
-        }
-      }
+          edited,
+        },
+      },
     });
     this.#editor?.focusCommentButton();
     this.#editor = null;
@@ -10347,9 +10348,7 @@ class CommentPopup {
   }
   get _popupWidth() {
     const container = this.#createPopup();
-    const {
-      style
-    } = container;
+    const { style } = container;
     style.opacity = "0";
     style.display = "block";
     document.body.append(container);
@@ -10362,14 +10361,14 @@ class CommentPopup {
     if (this.#container) {
       return this.#container;
     }
-    const container = this.#container = document.createElement("div");
+    const container = (this.#container = document.createElement("div"));
     container.className = "commentPopup";
     container.id = "commentPopup";
     container.tabIndex = -1;
     container.role = "dialog";
     container.ariaModal = "false";
     container.addEventListener("contextmenu", noContextMenu);
-    container.addEventListener("keydown", e => {
+    container.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         this.toggle(this.#editor, true, false);
         this.#previousFocusedElement?.focus();
@@ -10381,9 +10380,9 @@ class CommentPopup {
     });
     const top = document.createElement("div");
     top.className = "commentPopupTop";
-    const time = this.#time = document.createElement("time");
+    const time = (this.#time = document.createElement("time"));
     time.className = "commentPopupTime";
-    const buttons = this.#buttonsContainer = document.createElement("div");
+    const buttons = (this.#buttonsContainer = document.createElement("div"));
     buttons.className = "commentPopupButtons";
     const edit = document.createElement("button");
     edit.classList.add("commentPopupEdit", "toolbarButton");
@@ -10399,7 +10398,7 @@ class CommentPopup {
       const height = parseFloat(getComputedStyle(this.#text).height);
       this.toggle(editor, true, false);
       editor.editComment({
-        height
+        height,
       });
     });
     edit.addEventListener("contextmenu", noContextMenu);
@@ -10416,9 +10415,9 @@ class CommentPopup {
         details: {
           type: "comment",
           data: {
-            deleted: true
-          }
-        }
+            deleted: true,
+          },
+        },
       });
       const editor = this.#editor;
       const savedData = editor.comment;
@@ -10434,7 +10433,7 @@ class CommentPopup {
     buttons.append(edit, del);
     top.append(time, buttons);
     const separator = document.createElement("hr");
-    const text = this.#text = document.createElement("div");
+    const text = (this.#text = document.createElement("div"));
     text.className = "commentPopupText";
     container.append(top, separator, text);
     let pointerMoveAC;
@@ -10443,57 +10442,53 @@ class CommentPopup {
       pointerMoveAC?.abort();
       pointerMoveAC = null;
     };
-    top.addEventListener("pointerdown", e => {
+    top.addEventListener("pointerdown", (e) => {
       if (pointerMoveAC) {
         cancelDrag();
         return;
       }
-      const {
-        target,
-        clientX,
-        clientY
-      } = e;
+      const { target, clientX, clientY } = e;
       if (buttons.contains(target)) {
         return;
       }
       stopEvent(e);
-      const {
-        width: parentWidth,
-        height: parentHeight
-      } = this.#editor.parentBoundingClientRect;
+      const { width: parentWidth, height: parentHeight } = this.#editor.parentBoundingClientRect;
       this.#prevDragX = clientX;
       this.#prevDragY = clientY;
       pointerMoveAC = new AbortController();
-      const {
-        signal
-      } = pointerMoveAC;
+      const { signal } = pointerMoveAC;
       container.classList.add("dragging");
-      window.addEventListener("pointermove", ev => {
-        if (!pointerMoveAC) {
-          return;
-        }
-        const {
-          clientX: x,
-          clientY: y
-        } = ev;
-        this.#setPosition(this.#posX + (x - this.#prevDragX) / parentWidth, this.#posY + (y - this.#prevDragY) / parentHeight, false);
-        this.#prevDragX = x;
-        this.#prevDragY = y;
-        stopEvent(ev);
-      }, {
-        signal
-      });
-      window.addEventListener("blur", cancelDrag, {
-        signal
-      });
-      window.addEventListener("pointerup", ev => {
-        if (pointerMoveAC) {
-          cancelDrag();
+      window.addEventListener(
+        "pointermove",
+        (ev) => {
+          if (!pointerMoveAC) {
+            return;
+          }
+          const { clientX: x, clientY: y } = ev;
+          this.#setPosition(this.#posX + (x - this.#prevDragX) / parentWidth, this.#posY + (y - this.#prevDragY) / parentHeight, false);
+          this.#prevDragX = x;
+          this.#prevDragY = y;
           stopEvent(ev);
+        },
+        {
+          signal,
         }
-      }, {
-        signal
+      );
+      window.addEventListener("blur", cancelDrag, {
+        signal,
       });
+      window.addEventListener(
+        "pointerup",
+        (ev) => {
+          if (pointerMoveAC) {
+            cancelDrag();
+            stopEvent(ev);
+          }
+        },
+        {
+          signal,
+        }
+      );
     });
     return container;
   }
@@ -10501,11 +10496,8 @@ class CommentPopup {
     if (this.#editor !== editor || !this.#visible) {
       return;
     }
-    const {
-      color,
-      opacity
-    } = editor.getData();
-    this.#container.style.backgroundColor = color && CommentManager._makeCommentColor(color, opacity) || "";
+    const { color, opacity } = editor.getData();
+    this.#container.style.backgroundColor = (color && CommentManager._makeCommentColor(color, opacity)) || "";
   }
   _hide(editor) {
     const container = this.#createPopup();
@@ -10513,7 +10505,7 @@ class CommentPopup {
     container.classList.toggle("selected", false);
     (editor || this.#editor)?.setCommentButtonStates({
       selected: false,
-      hasPopup: false
+      hasPopup: false,
     });
     this.#editor = null;
     this.#selected = false;
@@ -10542,7 +10534,7 @@ class CommentPopup {
     if (this.#editor !== editor) {
       this.#editor?.setCommentButtonStates({
         selected: false,
-        hasPopup: false
+        hasPopup: false,
       });
     }
     const container = this.#createPopup();
@@ -10553,36 +10545,34 @@ class CommentPopup {
     this.#editor = editor;
     editor.setCommentButtonStates({
       selected: isSelected,
-      hasPopup: true
+      hasPopup: true,
     });
-    const {
-      contentsObj,
-      richText,
-      creationDate,
-      modificationDate,
-      color,
-      opacity
-    } = editor.getData();
-    container.style.backgroundColor = color && CommentManager._makeCommentColor(color, opacity) || "";
+    const { contentsObj, richText, creationDate, modificationDate, color, opacity } = editor.getData();
+    container.style.backgroundColor = (color && CommentManager._makeCommentColor(color, opacity)) || "";
     this.#text.replaceChildren();
     const html = richText?.str && (!contentsObj?.str || richText.str === contentsObj.str) ? richText.html : contentsObj?.str;
     if (html) {
-      renderRichText({
-        html,
-        dir: contentsObj?.dir || "auto",
-        className: "richText"
-      }, this.#text);
+      renderRichText(
+        {
+          html,
+          dir: contentsObj?.dir || "auto",
+          className: "richText",
+        },
+        this.#text
+      );
     }
     this.#time.textContent = this.#dateFormat.format(PDFDateString.toDateObject(modificationDate || creationDate));
     this.#setPosition(...editor.commentPopupPosition, editor.hasDefaultPopupPosition());
     editor.elementBeforePopup.after(container);
-    container.addEventListener("focus", ({
-      relatedTarget
-    }) => {
-      this.#previousFocusedElement = relatedTarget;
-    }, {
-      once: true
-    });
+    container.addEventListener(
+      "focus",
+      ({ relatedTarget }) => {
+        this.#previousFocusedElement = relatedTarget;
+      },
+      {
+        once: true,
+      }
+    );
     if (isSelected) {
       setTimeout(() => container.focus(), 0);
     }
@@ -10593,7 +10583,7 @@ class CommentPopup {
     } else {
       const parentRect = this.#editor.parentBoundingClientRect;
       const widthRatio = this._popupWidth / parentRect.width;
-      if (this.#isLTR && x + widthRatio > 1 || !this.#isLTR && x - widthRatio >= 0) {
+      if ((this.#isLTR && x + widthRatio > 1) || (!this.#isLTR && x - widthRatio >= 0)) {
         const buttonWidth = this.#editor.commentButtonWidth;
         x -= widthRatio - buttonWidth;
       }
@@ -10606,9 +10596,7 @@ class CommentPopup {
     }
     this.#posX = x;
     this.#posY = y;
-    const {
-      style
-    } = this.#container;
+    const { style } = this.#container;
     style.left = `${100 * x}%`;
     style.top = `${100 * y}%`;
   }
@@ -10620,11 +10608,7 @@ class CommentPopup {
     this.#posX = this.#posY = 0;
     this.#previousFocusedElement = null;
   }
-}
-
-;// ./web/base_download_manager.js
-
-
+} // ./web/base_download_manager.js
 
 class BaseDownloadManager {
   #openBlobUrls = new WeakMap();
@@ -10635,18 +10619,24 @@ class BaseDownloadManager {
     throw new Error("Not implemented: _getOpenDataUrl");
   }
   downloadData(data, filename, contentType) {
-    const blobUrl = URL.createObjectURL(new Blob([data], {
-      type: contentType
-    }));
+    const blobUrl = URL.createObjectURL(
+      new Blob([data], {
+        type: contentType,
+      })
+    );
     this._triggerDownload(blobUrl, blobUrl, filename, true);
   }
   openOrDownloadData(data, filename, dest = null) {
     const isPdfData = isPdfFile(filename);
     const contentType = isPdfData ? "application/pdf" : "";
     if (isPdfData) {
-      const blobUrl = this.#openBlobUrls.getOrInsertComputed(data, () => URL.createObjectURL(new Blob([data], {
-        type: contentType
-      })));
+      const blobUrl = this.#openBlobUrls.getOrInsertComputed(data, () =>
+        URL.createObjectURL(
+          new Blob([data], {
+            type: contentType,
+          })
+        )
+      );
       try {
         const viewerUrl = this._getOpenDataUrl(blobUrl, filename, dest);
         window.open(viewerUrl);
@@ -10661,15 +10651,16 @@ class BaseDownloadManager {
     return false;
   }
   download(data, url, filename) {
-    const blobUrl = data ? URL.createObjectURL(new Blob([data], {
-      type: "application/pdf"
-    })) : null;
+    const blobUrl = data
+      ? URL.createObjectURL(
+          new Blob([data], {
+            type: "application/pdf",
+          })
+        )
+      : null;
     this._triggerDownload(blobUrl, url, filename);
   }
-}
-
-;// ./web/download_manager.js
-
+} // ./web/download_manager.js
 
 class DownloadManager extends BaseDownloadManager {
   _triggerDownload(blobUrl, originalUrl, filename, isAttachment = false) {
@@ -10696,11 +10687,7 @@ class DownloadManager extends BaseDownloadManager {
     }
     return url;
   }
-}
-
-;// ./web/editor_undo_bar.js
-
-
+} // ./web/editor_undo_bar.js
 
 class EditorUndoBar {
   #closeButton = null;
@@ -10719,14 +10706,9 @@ class EditorUndoBar {
     ink: "pdfjs-editor-undo-bar-message-ink",
     signature: "pdfjs-editor-undo-bar-message-signature",
     comment: "pdfjs-editor-undo-bar-message-comment",
-    _multiple: "pdfjs-editor-undo-bar-message-multiple"
+    _multiple: "pdfjs-editor-undo-bar-message-multiple",
   });
-  constructor({
-    container,
-    message,
-    undoButton,
-    closeButton
-  }, eventBus) {
+  constructor({ container, message, undoButton, closeButton }, eventBus) {
     this.#container = container;
     this.#message = message;
     this.#undoButton = undoButton;
@@ -10742,11 +10724,11 @@ class EditorUndoBar {
     if (!this.#initController) {
       this.#initController = new AbortController();
       const domOpts = {
-        signal: this.#initController.signal
+        signal: this.#initController.signal,
       };
       const evtOpts = {
         signal: this.#initController.signal,
-        ...internalOpt
+        ...internalOpt,
       };
       const boundHide = this.hide.bind(this);
       this.#container.addEventListener("contextmenu", noContextMenu, domOpts);
@@ -10759,19 +10741,26 @@ class EditorUndoBar {
       this.#message.setAttribute("data-l10n-id", EditorUndoBar.#l10nMessages[messageData]);
     } else {
       this.#message.setAttribute("data-l10n-id", EditorUndoBar.#l10nMessages._multiple);
-      this.#message.setAttribute("data-l10n-args", JSON.stringify({
-        count: messageData
-      }));
+      this.#message.setAttribute(
+        "data-l10n-args",
+        JSON.stringify({
+          count: messageData,
+        })
+      );
     }
     this.isOpen = true;
     this.#container.hidden = false;
     this.#showController = new AbortController();
-    this.#undoButton.addEventListener("click", () => {
-      undoAction();
-      this.hide();
-    }, {
-      signal: this.#showController.signal
-    });
+    this.#undoButton.addEventListener(
+      "click",
+      () => {
+        undoAction();
+        this.hide();
+      },
+      {
+        signal: this.#showController.signal,
+      }
+    );
     this.#focusTimeout = setTimeout(() => {
       if (!this.#container.contains(document.activeElement)) {
         this.#container.focus();
@@ -10792,10 +10781,7 @@ class EditorUndoBar {
       this.#focusTimeout = null;
     }
   }
-}
-
-;// ./web/overlay_manager.js
-
+} // ./web/overlay_manager.js
 
 class OverlayManager {
   #overlays = new WeakMap();
@@ -10810,11 +10796,9 @@ class OverlayManager {
       throw new Error("The overlay is already registered.");
     }
     this.#overlays.set(dialog, {
-      canForceClose
+      canForceClose,
     });
-    dialog.addEventListener("cancel", ({
-      target
-    }) => {
+    dialog.addEventListener("cancel", ({ target }) => {
       if (this.#active === target) {
         this.#active = null;
       }
@@ -10851,9 +10835,7 @@ class OverlayManager {
       await this.close(dialog);
     }
   }
-}
-
-;// ./web/password_prompt.js
+} // ./web/password_prompt.js
 
 class PasswordPrompt {
   #activeCapability = null;
@@ -10869,7 +10851,7 @@ class PasswordPrompt {
     this._isViewerEmbedded = isViewerEmbedded;
     this.submitButton.addEventListener("click", this.#verify.bind(this));
     this.cancelButton.addEventListener("click", this.close.bind(this));
-    this.input.addEventListener("keydown", e => {
+    this.input.addEventListener("keydown", (e) => {
       if (e.keyCode === 13) {
         this.#verify();
         e.preventDefault();
@@ -10922,10 +10904,7 @@ class PasswordPrompt {
     this.#updateCallback = updateCallback;
     this.#reason = reason;
   }
-}
-
-;// ./web/base_tree_viewer.js
-
+} // ./web/base_tree_viewer.js
 
 const TREEITEM_SELECTED_CLASS = "selected";
 class BaseTreeViewer {
@@ -10974,10 +10953,8 @@ class BaseTreeViewer {
     if (hasAnyNesting) {
       this.container.classList.add("withNesting");
       this._lastToggleIsShow = !fragment.querySelector(".treeItemsHidden");
-      this.container.addEventListener("click", e => {
-        const {
-          target
-        } = e;
+      this.container.addEventListener("click", (e) => {
+        const { target } = e;
         if (!target.classList.contains("treeItemToggler")) {
           return;
         }
@@ -11026,16 +11003,10 @@ class BaseTreeViewer {
       behavior: "instant",
       block: "center",
       inline: "center",
-      container: "nearest"
+      container: "nearest",
     });
   }
-}
-
-;// ./web/pdf_attachment_viewer.js
-
-
-
-
+} // ./web/pdf_attachment_viewer.js
 
 class PDFAttachmentViewer extends BaseTreeViewer {
   constructor(options) {
@@ -11059,7 +11030,7 @@ class PDFAttachmentViewer extends BaseTreeViewer {
       await waitOnEventOrTimeout({
         target: this.eventBus,
         name: "annotationlayerrendered",
-        delay: 1000
+        delay: 1000,
       });
       if (!this._pendingDispatchEvent) {
         return;
@@ -11068,15 +11039,10 @@ class PDFAttachmentViewer extends BaseTreeViewer {
     this._pendingDispatchEvent = false;
     this.eventBus.dispatch("attachmentsloaded", {
       source: this,
-      attachmentsCount
+      attachmentsCount,
     });
   }
-  _bindLink(element, {
-    attachmentId,
-    content: fallbackContent,
-    description,
-    filename
-  }) {
+  _bindLink(element, { attachmentId, content: fallbackContent, description, filename }) {
     if (description) {
       element.title = description;
     }
@@ -11091,10 +11057,7 @@ class PDFAttachmentViewer extends BaseTreeViewer {
       return false;
     };
   }
-  render({
-    attachments,
-    keepRenderedCapability = false
-  }) {
+  render({ attachments, keepRenderedCapability = false }) {
     if (this._attachments) {
       this.reset(keepRenderedCapability);
     }
@@ -11114,7 +11077,7 @@ class PDFAttachmentViewer extends BaseTreeViewer {
       li.append(element);
       this._bindLink(element, {
         ...item,
-        attachmentId: item.attachmentId ?? name
+        attachmentId: item.attachmentId ?? name,
       });
       element.textContent = this._normalizeTextContent(item.filename);
       attachmentsCount++;
@@ -11134,25 +11097,21 @@ class PDFAttachmentViewer extends BaseTreeViewer {
       attachments.set(item.filename, item);
       this.render({
         attachments,
-        keepRenderedCapability: true
+        keepRenderedCapability: true,
       });
     });
   }
-}
-
-;// ./web/grab_to_pan.js
+} // ./web/grab_to_pan.js
 
 const CSS_CLASS_GRAB = "grab-to-pan-grab";
 class GrabToPan {
   #activateAC = null;
   #mouseDownAC = null;
   #scrollAC = null;
-  constructor({
-    element
-  }) {
+  constructor({ element }) {
     this.element = element;
     this.document = element.ownerDocument;
-    const overlay = this.overlay = document.createElement("div");
+    const overlay = (this.overlay = document.createElement("div"));
     overlay.className = "grab-to-pan-grabbing";
   }
   activate() {
@@ -11160,7 +11119,7 @@ class GrabToPan {
       this.#activateAC = new AbortController();
       this.element.addEventListener("mousedown", this.#onMouseDown.bind(this), {
         capture: true,
-        signal: this.#activateAC.signal
+        signal: this.#activateAC.signal,
       });
       this.element.classList.add(CSS_CLASS_GRAB);
     }
@@ -11195,14 +11154,14 @@ class GrabToPan {
     const boundEndPan = this.#endPan.bind(this),
       mouseOpts = {
         capture: true,
-        signal: this.#mouseDownAC.signal
+        signal: this.#mouseDownAC.signal,
       };
     this.document.addEventListener("mousemove", this.#onMouseMove.bind(this), mouseOpts);
     this.document.addEventListener("mouseup", boundEndPan, mouseOpts);
     this.#scrollAC = new AbortController();
     this.element.addEventListener("scroll", boundEndPan, {
       capture: true,
-      signal: this.#scrollAC.signal
+      signal: this.#scrollAC.signal,
     });
     stopEvent(event);
     const focusedElement = document.activeElement;
@@ -11222,7 +11181,7 @@ class GrabToPan {
     this.element.scrollTo({
       top: this.scrollTopStart - yDiff,
       left: this.scrollLeftStart - xDiff,
-      behavior: "instant"
+      behavior: "instant",
     });
     if (!this.overlay.parentNode) {
       document.body.append(this.overlay);
@@ -11235,21 +11194,12 @@ class GrabToPan {
     this.#scrollAC = null;
     this.overlay.remove();
   }
-}
-
-;// ./web/pdf_cursor_tools.js
-
-
-
+} // ./web/pdf_cursor_tools.js
 
 class PDFCursorTools {
   #active = CursorTool.SELECT;
   #prevActive = null;
-  constructor({
-    container,
-    eventBus,
-    cursorToolOnLoad = CursorTool.SELECT
-  }) {
+  constructor({ container, eventBus, cursorToolOnLoad = CursorTool.SELECT }) {
     this.container = container;
     this.eventBus = eventBus;
     this.#addEventListeners();
@@ -11272,7 +11222,7 @@ class PDFCursorTools {
         this.eventBus.dispatch("cursortoolchanged", {
           source: this,
           tool,
-          disabled
+          disabled,
         });
       }
       return;
@@ -11304,22 +11254,24 @@ class PDFCursorTools {
     this.eventBus.dispatch("cursortoolchanged", {
       source: this,
       tool,
-      disabled
+      disabled,
     });
   }
   #addEventListeners() {
-    const {
-      eventBus
-    } = this;
-    eventBus.on("switchcursortool", evt => {
-      if (!evt.reset) {
-        this.switchTool(evt.tool);
-      } else if (this.#prevActive !== null) {
-        annotationEditorMode = AnnotationEditorType.NONE;
-        presentationModeState = PresentationModeState.NORMAL;
-        enableActive();
-      }
-    }, internalOpt);
+    const { eventBus } = this;
+    eventBus.on(
+      "switchcursortool",
+      (evt) => {
+        if (!evt.reset) {
+          this.switchTool(evt.tool);
+        } else if (this.#prevActive !== null) {
+          annotationEditorMode = AnnotationEditorType.NONE;
+          presentationModeState = PresentationModeState.NORMAL;
+          enableActive();
+        }
+      },
+      internalOpt
+    );
     let annotationEditorMode = AnnotationEditorType.NONE,
       presentationModeState = PresentationModeState.NORMAL;
     const disableActive = () => {
@@ -11332,47 +11284,50 @@ class PDFCursorTools {
         this.#prevActive = null;
       }
     };
-    eventBus.on("annotationeditormodechanged", ({
-      mode
-    }) => {
-      annotationEditorMode = mode;
-      if (mode === AnnotationEditorType.NONE) {
-        enableActive();
-      } else {
-        disableActive();
-      }
-    }, internalOpt);
-    eventBus.on("presentationmodechanged", ({
-      state
-    }) => {
-      presentationModeState = state;
-      if (state === PresentationModeState.NORMAL) {
-        enableActive();
-      } else if (state === PresentationModeState.FULLSCREEN) {
-        disableActive();
-      }
-    }, internalOpt);
+    eventBus.on(
+      "annotationeditormodechanged",
+      ({ mode }) => {
+        annotationEditorMode = mode;
+        if (mode === AnnotationEditorType.NONE) {
+          enableActive();
+        } else {
+          disableActive();
+        }
+      },
+      internalOpt
+    );
+    eventBus.on(
+      "presentationmodechanged",
+      ({ state }) => {
+        presentationModeState = state;
+        if (state === PresentationModeState.NORMAL) {
+          enableActive();
+        } else if (state === PresentationModeState.FULLSCREEN) {
+          disableActive();
+        }
+      },
+      internalOpt
+    );
   }
   get _handTool() {
-    return shadow(this, "_handTool", new GrabToPan({
-      element: this.container
-    }));
+    return shadow(
+      this,
+      "_handTool",
+      new GrabToPan({
+        element: this.container,
+      })
+    );
   }
-}
-
-;// ./web/pdf_document_properties.js
-
-
-
+} // ./web/pdf_document_properties.js
 
 const NON_METRIC_LOCALES = ["en-us", "en-lr", "my"];
 const US_PAGE_NAMES = {
   "8.5x11": "pdfjs-document-properties-page-size-name-letter",
-  "8.5x14": "pdfjs-document-properties-page-size-name-legal"
+  "8.5x14": "pdfjs-document-properties-page-size-name-legal",
 };
 const METRIC_PAGE_NAMES = {
   "297x420": "pdfjs-document-properties-page-size-name-a-three",
-  "210x297": "pdfjs-document-properties-page-size-name-a-four"
+  "210x297": "pdfjs-document-properties-page-size-name-a-four",
 };
 function getPageName(size, isPortrait, pageNames) {
   const width = isPortrait ? size.width : size.height;
@@ -11381,11 +11336,7 @@ function getPageName(size, isPortrait, pageNames) {
 }
 class PDFDocumentProperties {
   #fieldData = null;
-  constructor({
-    dialog,
-    fields,
-    closeButton
-  }, overlayManager, eventBus, l10n, fileNameLookup, titleLookup) {
+  constructor({ dialog, fields, closeButton }, overlayManager, eventBus, l10n, fileNameLookup, titleLookup) {
     this.dialog = dialog;
     this.fields = fields;
     this.overlayManager = overlayManager;
@@ -11395,12 +11346,20 @@ class PDFDocumentProperties {
     this.#reset();
     closeButton.addEventListener("click", this.close.bind(this));
     this.overlayManager.register(this.dialog);
-    eventBus.on("pagechanging", evt => {
-      this._currentPageNumber = evt.pageNumber;
-    }, internalOpt);
-    eventBus.on("rotationchanging", evt => {
-      this._pagesRotation = evt.pagesRotation;
-    }, internalOpt);
+    eventBus.on(
+      "pagechanging",
+      (evt) => {
+        this._currentPageNumber = evt.pageNumber;
+      },
+      internalOpt
+    );
+    eventBus.on(
+      "rotationchanging",
+      (evt) => {
+        this._pagesRotation = evt.pagesRotation;
+      },
+      internalOpt
+    );
   }
   async open() {
     await Promise.all([this.overlayManager.open(this.dialog), this._dataAvailableCapability.promise]);
@@ -11410,15 +11369,22 @@ class PDFDocumentProperties {
       this.#updateUI();
       return;
     }
-    const [{
-      info,
-      metadata,
-      contentLength
-    }, pdfPage] = await Promise.all([this.pdfDocument.getMetadata(), this.pdfDocument.getPage(currentPageNumber).catch(reason => {
-      console.error(`PDFDocumentProperties - unable to get page ${currentPageNumber}.`, reason);
-      return null;
-    })]);
-    const [fileName, fileSize, title, creationDate, modificationDate, pageSize, isLinearized] = await Promise.all([this._fileNameLookup(), this.#parseFileSize(contentLength), this._titleLookup(), this.#parseDate(metadata?.get("xmp:createdate"), info.CreationDate), this.#parseDate(metadata?.get("xmp:modifydate"), info.ModDate), this.#parsePageSize(pdfPage, pagesRotation), this.#parseLinearization(info.IsLinearized)]);
+    const [{ info, metadata, contentLength }, pdfPage] = await Promise.all([
+      this.pdfDocument.getMetadata(),
+      this.pdfDocument.getPage(currentPageNumber).catch((reason) => {
+        console.error(`PDFDocumentProperties - unable to get page ${currentPageNumber}.`, reason);
+        return null;
+      }),
+    ]);
+    const [fileName, fileSize, title, creationDate, modificationDate, pageSize, isLinearized] = await Promise.all([
+      this._fileNameLookup(),
+      this.#parseFileSize(contentLength),
+      this._titleLookup(),
+      this.#parseDate(metadata?.get("xmp:createdate"), info.CreationDate),
+      this.#parseDate(metadata?.get("xmp:modifydate"), info.ModDate),
+      this.#parsePageSize(pdfPage, pagesRotation),
+      this.#parseLinearization(info.IsLinearized),
+    ]);
     this.#fieldData = Object.freeze({
       fileName,
       fileSize,
@@ -11435,12 +11401,10 @@ class PDFDocumentProperties {
       pageSize,
       linearized: isLinearized,
       _currentPageNumber: currentPageNumber,
-      _pagesRotation: pagesRotation
+      _pagesRotation: pagesRotation,
     });
     this.#updateUI();
-    const {
-      length
-    } = await this.pdfDocument.getDownloadInfo();
+    const { length } = await this.pdfDocument.getDownloadInfo();
     if (contentLength === length) {
       return;
     }
@@ -11482,11 +11446,13 @@ class PDFDocumentProperties {
   async #parseFileSize(b = 0) {
     const kb = b / 1024,
       mb = kb / 1024;
-    return kb ? this.l10n.get(mb >= 1 ? "pdfjs-document-properties-size-mb" : "pdfjs-document-properties-size-kb", {
-      mb,
-      kb,
-      b
-    }) : undefined;
+    return kb
+      ? this.l10n.get(mb >= 1 ? "pdfjs-document-properties-size-mb" : "pdfjs-document-properties-size-kb", {
+          mb,
+          kb,
+          b,
+        })
+      : undefined;
   }
   async #parsePageSize(pdfPage, pagesRotation) {
     if (!pdfPage) {
@@ -11496,57 +11462,66 @@ class PDFDocumentProperties {
     if (pagesRotation % 180 !== 0) {
       pageSizeInches = {
         width: pageSizeInches.height,
-        height: pageSizeInches.width
+        height: pageSizeInches.width,
       };
     }
     const isPortrait = isPortraitOrientation(pageSizeInches),
       nonMetric = NON_METRIC_LOCALES.includes(this.l10n.getLanguage());
     let sizeInches = {
       width: Math.round(pageSizeInches.width * 100) / 100,
-      height: Math.round(pageSizeInches.height * 100) / 100
+      height: Math.round(pageSizeInches.height * 100) / 100,
     };
     let sizeMillimeters = {
       width: Math.round(pageSizeInches.width * 25.4 * 10) / 10,
-      height: Math.round(pageSizeInches.height * 25.4 * 10) / 10
+      height: Math.round(pageSizeInches.height * 25.4 * 10) / 10,
     };
     let nameId = getPageName(sizeInches, isPortrait, US_PAGE_NAMES) || getPageName(sizeMillimeters, isPortrait, METRIC_PAGE_NAMES);
     if (!nameId && !(Number.isInteger(sizeMillimeters.width) && Number.isInteger(sizeMillimeters.height))) {
       const exactMillimeters = {
         width: pageSizeInches.width * 25.4,
-        height: pageSizeInches.height * 25.4
+        height: pageSizeInches.height * 25.4,
       };
       const intMillimeters = {
         width: Math.round(sizeMillimeters.width),
-        height: Math.round(sizeMillimeters.height)
+        height: Math.round(sizeMillimeters.height),
       };
       if (Math.abs(exactMillimeters.width - intMillimeters.width) < 0.1 && Math.abs(exactMillimeters.height - intMillimeters.height) < 0.1) {
         nameId = getPageName(intMillimeters, isPortrait, METRIC_PAGE_NAMES);
         if (nameId) {
           sizeInches = {
-            width: Math.round(intMillimeters.width / 25.4 * 100) / 100,
-            height: Math.round(intMillimeters.height / 25.4 * 100) / 100
+            width: Math.round((intMillimeters.width / 25.4) * 100) / 100,
+            height: Math.round((intMillimeters.height / 25.4) * 100) / 100,
           };
           sizeMillimeters = intMillimeters;
         }
       }
     }
-    const [{
-      width,
-      height
-    }, unit, name, orientation] = await Promise.all([nonMetric ? sizeInches : sizeMillimeters, this.l10n.get(nonMetric ? "pdfjs-document-properties-page-size-unit-inches" : "pdfjs-document-properties-page-size-unit-millimeters"), nameId && this.l10n.get(nameId), this.l10n.get(isPortrait ? "pdfjs-document-properties-page-size-orientation-portrait" : "pdfjs-document-properties-page-size-orientation-landscape")]);
-    return this.l10n.get(name ? "pdfjs-document-properties-page-size-dimension-name-string" : "pdfjs-document-properties-page-size-dimension-string", {
-      width,
-      height,
-      unit,
-      name,
-      orientation
-    });
+    const [{ width, height }, unit, name, orientation] = await Promise.all([
+      nonMetric ? sizeInches : sizeMillimeters,
+      this.l10n.get(nonMetric ? "pdfjs-document-properties-page-size-unit-inches" : "pdfjs-document-properties-page-size-unit-millimeters"),
+      nameId && this.l10n.get(nameId),
+      this.l10n.get(
+        isPortrait ? "pdfjs-document-properties-page-size-orientation-portrait" : "pdfjs-document-properties-page-size-orientation-landscape"
+      ),
+    ]);
+    return this.l10n.get(
+      name ? "pdfjs-document-properties-page-size-dimension-name-string" : "pdfjs-document-properties-page-size-dimension-string",
+      {
+        width,
+        height,
+        unit,
+        name,
+        orientation,
+      }
+    );
   }
   async #parseDate(metadataDate, infoDate) {
     const dateObj = Date.parse(metadataDate) || PDFDateString.toDateObject(infoDate);
-    return dateObj ? this.l10n.get("pdfjs-document-properties-date-time-string", {
-      dateObj: dateObj.valueOf()
-    }) : undefined;
+    return dateObj
+      ? this.l10n.get("pdfjs-document-properties-date-time-string", {
+          dateObj: dateObj.valueOf(),
+        })
+      : undefined;
   }
   #parseLinearization(isLinearized) {
     return this.l10n.get(isLinearized ? "pdfjs-document-properties-linearized-yes" : "pdfjs-document-properties-linearized-no");
@@ -11556,15 +11531,12 @@ class PDFDocumentProperties {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.escape.js
 var es_regexp_escape = __webpack_require__(6069);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.with.js
-var es_typed_array_with = __webpack_require__(9577);
-;// ./web/pdf_find_utils.js
-
-
+var es_typed_array_with = __webpack_require__(9577); // ./web/pdf_find_utils.js
 let wordSegmenter = null;
 let graphemeSegmenter = null;
 function isWordBreakAt(content, pos) {
   graphemeSegmenter ||= new Intl.Segmenter(undefined, {
-    granularity: "grapheme"
+    granularity: "grapheme",
   });
   const graphemes = graphemeSegmenter.segment(content);
   const after = graphemes.containing(pos);
@@ -11572,7 +11544,7 @@ function isWordBreakAt(content, pos) {
     return false;
   }
   wordSegmenter ||= new Intl.Segmenter(undefined, {
-    granularity: "word"
+    granularity: "word",
   });
   const before = graphemes.containing(pos - 1).segment;
   return wordSegmenter.segment(before + after.segment).containing(before.length).index === before.length;
@@ -11615,7 +11587,11 @@ function getNormalizeWithNFKC() {
     } else if (rangesStr !== NormalizeWithNFKC) {
       for (let i = 1; i < rangesStr.length; i++) {
         if (rangesStr[i] !== NormalizeWithNFKC[i]) {
-          console.log(`Difference at index ${i}: ` + `U+${rangesStr.charCodeAt(i).toString(16).toUpperCase().padStart(4, "0")}` + `!== U+${NormalizeWithNFKC.charCodeAt(i).toString(16).toUpperCase().padStart(4, "0")}`);
+          console.log(
+            `Difference at index ${i}: ` +
+              `U+${rangesStr.charCodeAt(i).toString(16).toUpperCase().padStart(4, "0")}` +
+              `!== U+${NormalizeWithNFKC.charCodeAt(i).toString(16).toUpperCase().padStart(4, "0")}`
+          );
           break;
         }
       }
@@ -11623,37 +11599,33 @@ function getNormalizeWithNFKC() {
     }
   }
   return NormalizeWithNFKC;
-}
-
-;// ./web/pdf_find_controller.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+} // ./web/pdf_find_controller.js
 
 const FindState = {
   FOUND: 0,
   NOT_FOUND: 1,
   WRAPPED: 2,
-  PENDING: 3
+  PENDING: 3,
 };
-const CHARACTERS_TO_NORMALIZE = new Map([["\u2010", "-"], ["\u2018", "'"], ["\u2019", "'"], ["\u201A", "'"], ["\u201B", "'"], ["\u201C", '"'], ["\u201D", '"'], ["\u201E", '"'], ["\u201F", '"'], ["\u00BC", "1/4"], ["\u00BD", "1/2"], ["\u00BE", "3/4"]]);
-const DIACRITICS_EXCEPTION = new Set([0x3099, 0x309a, 0x094d, 0x09cd, 0x0a4d, 0x0acd, 0x0b4d, 0x0bcd, 0x0c4d, 0x0ccd, 0x0d3b, 0x0d3c, 0x0d4d, 0x0dca, 0x0e3a, 0x0eba, 0x0f84, 0x1039, 0x103a, 0x1714, 0x1734, 0x17d2, 0x1a60, 0x1b44, 0x1baa, 0x1bab, 0x1bf2, 0x1bf3, 0x2d7f, 0xa806, 0xa82c, 0xa8c4, 0xa953, 0xa9c0, 0xaaf6, 0xabed, 0x0c56, 0x0f71, 0x0f72, 0x0f7a, 0x0f7b, 0x0f7c, 0x0f7d, 0x0f80, 0x0f74]);
+const CHARACTERS_TO_NORMALIZE = new Map([
+  ["\u2010", "-"],
+  ["\u2018", "'"],
+  ["\u2019", "'"],
+  ["\u201A", "'"],
+  ["\u201B", "'"],
+  ["\u201C", '"'],
+  ["\u201D", '"'],
+  ["\u201E", '"'],
+  ["\u201F", '"'],
+  ["\u00BC", "1/4"],
+  ["\u00BD", "1/2"],
+  ["\u00BE", "3/4"],
+]);
+const DIACRITICS_EXCEPTION = new Set([
+  0x3099, 0x309a, 0x094d, 0x09cd, 0x0a4d, 0x0acd, 0x0b4d, 0x0bcd, 0x0c4d, 0x0ccd, 0x0d3b, 0x0d3c, 0x0d4d, 0x0dca, 0x0e3a, 0x0eba, 0x0f84, 0x1039,
+  0x103a, 0x1714, 0x1734, 0x17d2, 0x1a60, 0x1b44, 0x1baa, 0x1bab, 0x1bf2, 0x1bf3, 0x2d7f, 0xa806, 0xa82c, 0xa8c4, 0xa953, 0xa9c0, 0xaaf6, 0xabed,
+  0x0c56, 0x0f71, 0x0f72, 0x0f7a, 0x0f7b, 0x0f7c, 0x0f7d, 0x0f80, 0x0f74,
+]);
 let DIACRITICS_EXCEPTION_STR;
 const DIACRITICS_REG_EXP = /\p{M}+/gu;
 const SPECIAL_CHARS_REG_EXP = /([+^$|])|(\p{P}+)|(\s+)|(\p{M})|(\p{L})/gu;
@@ -11667,9 +11639,7 @@ function normalize(text, options = {}) {
   const syllablePositions = [];
   let m;
   while ((m = SYLLABLES_REG_EXP.exec(text)) !== null) {
-    let {
-      index
-    } = m;
+    let { index } = m;
     for (const char of m[0]) {
       let len = SYLLABLES_LENGTHS.get(char);
       if (!len) {
@@ -11692,8 +11662,18 @@ function normalize(text, options = {}) {
     const CJK = "(?:\\p{Ideographic}|[\u3040-\u30FF])";
     const HKDiacritics = "(?:\u3099|\u309A)";
     const BrokenWord = `\\p{Ll}-\\n(?=\\p{Ll})|\\p{Lu}-\\n(?=\\p{L})`;
-    const regexps = [`[${replace}]`, `[${toNormalizeWithNFKC}]`, `${HKDiacritics}\\n`, "\\p{M}+(?:-\\n)?", `${BrokenWord}`, "\\S-\\n", `${CJK}\\n`, "\\n", hasSyllables ? FIRST_CHAR_SYLLABLES_REG_EXP : "\\u0000"];
-    normalizationRegex = new RegExp(regexps.map(r => `(${r})`).join("|"), "gmu");
+    const regexps = [
+      `[${replace}]`,
+      `[${toNormalizeWithNFKC}]`,
+      `${HKDiacritics}\\n`,
+      "\\p{M}+(?:-\\n)?",
+      `${BrokenWord}`,
+      "\\S-\\n",
+      `${CJK}\\n`,
+      "\\n",
+      hasSyllables ? FIRST_CHAR_SYLLABLES_REG_EXP : "\\u0000",
+    ];
+    normalizationRegex = new RegExp(regexps.map((r) => `(${r})`).join("|"), "gmu");
     if (hasSyllables) {
       withSyllablesRegExp = normalizationRegex;
     } else {
@@ -11829,11 +11809,11 @@ function getOriginalIndex(diffs, pos, len) {
   const [starts, shifts] = diffs;
   const start = pos;
   const end = pos + len - 1;
-  let i = binarySearchFirstItem(starts, x => x >= start);
+  let i = binarySearchFirstItem(starts, (x) => x >= start);
   if (starts[i] > start) {
     --i;
   }
-  let j = binarySearchFirstItem(starts, x => x >= end, i);
+  let j = binarySearchFirstItem(starts, (x) => x >= end, i);
   if (starts[j] > end) {
     --j;
   }
@@ -11849,12 +11829,7 @@ class PDFFindController {
   #visitedPagesCount = 0;
   #copiedPageData = null;
   #savedPageData = null;
-  constructor({
-    linkService,
-    eventBus,
-    delay = 250,
-    updateMatchesCountOnProgress = true
-  }) {
+  constructor({ linkService, eventBus, delay = 250, updateMatchesCountOnProgress = true }) {
     this._linkService = linkService;
     this._eventBus = eventBus;
     this.#updateMatchesCountOnProgress = updateMatchesCountOnProgress;
@@ -11895,9 +11870,7 @@ class PDFFindController {
       return;
     }
     const pdfDocument = this._pdfDocument;
-    const {
-      type
-    } = state;
+    const { type } = state;
     if (this.#state === null || this.#shouldDirtyMatch(state)) {
       this._dirtyMatch = true;
     }
@@ -11906,7 +11879,7 @@ class PDFFindController {
       this.#updateUIState(FindState.PENDING);
     }
     this._firstPageCapability.promise.then(() => {
-      if (!this._pdfDocument || pdfDocument && this._pdfDocument !== pdfDocument) {
+      if (!this._pdfDocument || (pdfDocument && this._pdfDocument !== pdfDocument)) {
         return;
       }
       this.#extractText();
@@ -11940,11 +11913,7 @@ class PDFFindController {
       }
     });
   }
-  scrollMatchIntoView({
-    element = null,
-    pageIndex = -1,
-    matchIndex = -1
-  }) {
+  scrollMatchIntoView({ element = null, pageIndex = -1, matchIndex = -1 }) {
     if (!this._scrollMatches || !element) {
       return;
     } else if (matchIndex === -1 || matchIndex !== this._selected.matchIdx) {
@@ -11955,7 +11924,7 @@ class PDFFindController {
     this._scrollMatches = false;
     element.scrollIntoView({
       block: "start",
-      inline: "center"
+      inline: "center",
     });
   }
   #reset() {
@@ -11968,12 +11937,12 @@ class PDFFindController {
     this.#state = null;
     this._selected = {
       pageIdx: -1,
-      matchIdx: -1
+      matchIdx: -1,
     };
     this._offset = {
       pageIdx: null,
       matchIdx: null,
-      wrapped: false
+      wrapped: false,
     };
     this._extractTextPromises = [];
     this._pageContents = [];
@@ -11990,9 +11959,7 @@ class PDFFindController {
     this._firstPageCapability = Promise.withResolvers();
   }
   get #query() {
-    const {
-      query
-    } = this.#state;
+    const { query } = this.#state;
     if (typeof query === "string") {
       if (query !== this._rawQuery) {
         this._rawQuery = query;
@@ -12000,7 +11967,7 @@ class PDFFindController {
       }
       return this._normalizedQuery;
     }
-    return (query || []).filter(Boolean).map(q => normalize(q)[0]);
+    return (query || []).filter(Boolean).map((q) => normalize(q)[0]);
   }
   #shouldDirtyMatch(state) {
     const newQuery = state.query,
@@ -12021,16 +11988,16 @@ class PDFFindController {
       case "again":
         const pageNumber = this._selected.pageIdx + 1;
         const linkService = this._linkService;
-        return pageNumber >= 1 && pageNumber <= linkService.pagesCount && pageNumber !== linkService.page && !(this.onIsPageVisible?.(pageNumber) ?? true);
+        return (
+          pageNumber >= 1 && pageNumber <= linkService.pagesCount && pageNumber !== linkService.page && !(this.onIsPageVisible?.(pageNumber) ?? true)
+        );
       case "highlightallchange":
         return false;
     }
     return true;
   }
   #convertToRegExpString(query, hasDiacritics) {
-    const {
-      matchDiacritics
-    } = this.#state;
+    const { matchDiacritics } = this.#state;
     let isUnicode = false;
     const addExtraWhitespaces = (original, fixed) => {
       if (original === query) {
@@ -12089,13 +12056,10 @@ class PDFFindController {
     }
     const pageContent = this._pageContents[pageIndex];
     const matcherResult = this.match(query, pageContent, pageIndex);
-    const matches = this._pageMatches[pageIndex] = [];
-    const matchesLength = this._pageMatchesLength[pageIndex] = [];
+    const matches = (this._pageMatches[pageIndex] = []);
+    const matchesLength = (this._pageMatchesLength[pageIndex] = []);
     const diffs = this._pageDiffs[pageIndex];
-    matcherResult?.forEach(({
-      index,
-      length
-    }) => {
+    matcherResult?.forEach(({ index, length }) => {
       const [matchPos, matchLen] = getOriginalIndex(diffs, index, length);
       if (matchLen) {
         matches.push(matchPos);
@@ -12125,19 +12089,20 @@ class PDFFindController {
     if (typeof query === "string") {
       [isUnicode, query] = this.#convertToRegExpString(query, hasDiacritics);
     } else {
-      query = query.sort().reverse().map(q => {
-        const [isUnicodePart, queryPart] = this.#convertToRegExpString(q, hasDiacritics);
-        isUnicode ||= isUnicodePart;
-        return `(${queryPart})`;
-      }).join("|");
+      query = query
+        .sort()
+        .reverse()
+        .map((q) => {
+          const [isUnicodePart, queryPart] = this.#convertToRegExpString(q, hasDiacritics);
+          isUnicode ||= isUnicodePart;
+          return `(${queryPart})`;
+        })
+        .join("|");
     }
     if (!query) {
       return undefined;
     }
-    const {
-      caseSensitive,
-      entireWord
-    } = this.#state;
+    const { caseSensitive, entireWord } = this.#state;
     const flags = `g${isUnicode ? "u" : ""}${caseSensitive ? "" : "i"}`;
     query = new RegExp(query, flags);
     const matches = [];
@@ -12148,7 +12113,7 @@ class PDFFindController {
       }
       matches.push({
         index: match.index,
-        length: match[0].length
+        length: match[0].length,
       });
     }
     return matches;
@@ -12159,14 +12124,11 @@ class PDFFindController {
     }
     let deferred = Promise.resolve();
     const textOptions = {
-      disableNormalization: true
+      disableNormalization: true,
     };
     const pdfDoc = this._pdfDocument;
     for (let i = 0, ii = this._linkService.pagesCount; i < ii; i++) {
-      const {
-        promise,
-        resolve
-      } = Promise.withResolvers();
+      const { promise, resolve } = Promise.withResolvers();
       this._extractTextPromises[i] = promise;
       deferred = deferred.then(async () => {
         if (pdfDoc !== this._pdfDocument) {
@@ -12206,13 +12168,13 @@ class PDFFindController {
     }
     this._eventBus.dispatch("updatetextlayermatches", {
       source: this,
-      pageIndex: index
+      pageIndex: index,
     });
   }
   #updateAllPages() {
     this._eventBus.dispatch("updatetextlayermatches", {
       source: this,
-      pageIndex: -1
+      pageIndex: -1,
     });
   }
   #nextMatch() {
@@ -12255,7 +12217,7 @@ class PDFFindController {
     this._pagesToSearch = numPages;
     if (offset.matchIdx !== null) {
       const numPageMatches = this._pageMatches[offset.pageIdx].length;
-      if (!previous && offset.matchIdx + 1 < numPageMatches || previous && offset.matchIdx > 0) {
+      if ((!previous && offset.matchIdx + 1 < numPageMatches) || (previous && offset.matchIdx > 0)) {
         offset.matchIdx = previous ? offset.matchIdx - 1 : offset.matchIdx + 1;
         this.#updateMatch(true);
         return;
@@ -12327,11 +12289,7 @@ class PDFFindController {
       this.#updatePage(this._selected.pageIdx);
     }
   }
-  #onPagesEdited({
-    pagesMapper,
-    type,
-    pageNumbers
-  }) {
+  #onPagesEdited({ pagesMapper, type, pageNumbers }) {
     if (this._extractTextPromises.length === 0) {
       return;
     }
@@ -12350,7 +12308,7 @@ class PDFFindController {
         promises,
         contents,
         diffs,
-        diacritics
+        diacritics,
       };
       return;
     }
@@ -12363,7 +12321,7 @@ class PDFFindController {
         promises: this._extractTextPromises,
         contents: this._pageContents,
         diffs: this._pageDiffs,
-        diacritics: this._hasDiacritics
+        diacritics: this._hasDiacritics,
       };
     }
     if (type === "cancelDelete") {
@@ -12387,10 +12345,10 @@ class PDFFindController {
     const prevContents = this._pageContents;
     const prevDiffs = this._pageDiffs;
     const prevDiacritics = this._hasDiacritics;
-    const extractTextPromises = this._extractTextPromises = [];
-    const pageContents = this._pageContents = [];
-    const pageDiffs = this._pageDiffs = [];
-    const hasDiacritics = this._hasDiacritics = [];
+    const extractTextPromises = (this._extractTextPromises = []);
+    const pageContents = (this._pageContents = []);
+    const pageDiffs = (this._pageDiffs = []);
+    const hasDiacritics = (this._hasDiacritics = []);
     for (let i = 1, ii = pagesMapper.pagesNumber; i <= ii; i++) {
       const prevPageNumber = pagesMapper.getPrevPageNumber(i);
       if (prevPageNumber < 0) {
@@ -12413,7 +12371,7 @@ class PDFFindController {
   #onFindBarClose(evt) {
     const pdfDocument = this._pdfDocument;
     this._firstPageCapability.promise.then(() => {
-      if (!this._pdfDocument || pdfDocument && this._pdfDocument !== pdfDocument) {
+      if (!this._pdfDocument || (pdfDocument && this._pdfDocument !== pdfDocument)) {
         return;
       }
       if (this._findTimeout) {
@@ -12430,10 +12388,7 @@ class PDFFindController {
     });
   }
   #requestMatchesCount() {
-    const {
-      pageIdx,
-      matchIdx
-    } = this._selected;
+    const { pageIdx, matchIdx } = this._selected;
     let current = 0,
       total = this._matchesCountTotal;
     if (matchIdx !== -1) {
@@ -12447,13 +12402,13 @@ class PDFFindController {
     }
     return {
       current,
-      total
+      total,
     };
   }
   #updateUIResultsCount() {
     this._eventBus.dispatch("updatefindmatchescount", {
       source: this,
-      matchesCount: this.#requestMatchesCount()
+      matchesCount: this.#requestMatchesCount(),
     });
   }
   #updateUIState(state, previous = false) {
@@ -12466,16 +12421,10 @@ class PDFFindController {
       previous,
       entireWord: this.#state?.entireWord ?? null,
       matchesCount: this.#requestMatchesCount(),
-      rawQuery: this.#state?.query ?? null
+      rawQuery: this.#state?.query ?? null,
     });
   }
-}
-
-;// ./web/pdf_find_bar.js
-
-
-
-
+} // ./web/pdf_find_bar.js
 
 const MATCHES_COUNT_LIMIT = 1000;
 class PDFFindBar {
@@ -12496,18 +12445,19 @@ class PDFFindBar {
     this.findNextButton = options.findNextButton;
     this.eventBus = eventBus;
     this.#mainContainer = mainContainer;
-    const checkedInputs = new Map([[this.highlightAll, "highlightallchange"], [this.caseSensitive, "casesensitivitychange"], [this.entireWord, "entirewordchange"], [this.matchDiacritics, "diacriticmatchingchange"]]);
+    const checkedInputs = new Map([
+      [this.highlightAll, "highlightallchange"],
+      [this.caseSensitive, "casesensitivitychange"],
+      [this.entireWord, "entirewordchange"],
+      [this.matchDiacritics, "diacriticmatchingchange"],
+    ]);
     this.toggleButton.addEventListener("click", () => {
       this.toggle();
     });
     this.findField.addEventListener("input", () => {
       this.dispatchEvent("");
     });
-    this.bar.addEventListener("keydown", ({
-      keyCode,
-      shiftKey,
-      target
-    }) => {
+    this.bar.addEventListener("keydown", ({ keyCode, shiftKey, target }) => {
       switch (keyCode) {
         case 13:
           if (target === this.findField) {
@@ -12546,14 +12496,11 @@ class PDFFindBar {
       entireWord: this.entireWord.checked,
       highlightAll: this.highlightAll.checked,
       findPrevious: findPrev,
-      matchDiacritics: this.matchDiacritics.checked
+      matchDiacritics: this.matchDiacritics.checked,
     });
   }
   updateUIState(state, previous, matchesCount) {
-    const {
-      findField,
-      findMsg
-    } = this;
+    const { findField, findMsg } = this;
     let findMsgId = "",
       status = "";
     switch (state) {
@@ -12581,21 +12528,19 @@ class PDFFindBar {
     }
     this.updateResultsCount(matchesCount);
   }
-  updateResultsCount({
-    current = 0,
-    total = 0
-  } = {}) {
-    const {
-      findResultsCount
-    } = this;
+  updateResultsCount({ current = 0, total = 0 } = {}) {
+    const { findResultsCount } = this;
     if (total > 0) {
       const limit = MATCHES_COUNT_LIMIT;
       findResultsCount.setAttribute("data-l10n-id", total > limit ? "pdfjs-find-match-count-limit" : "pdfjs-find-match-count");
-      findResultsCount.setAttribute("data-l10n-args", JSON.stringify({
-        limit,
-        current,
-        total
-      }));
+      findResultsCount.setAttribute(
+        "data-l10n-args",
+        JSON.stringify({
+          limit,
+          current,
+          total,
+        })
+      );
     } else {
       findResultsCount.removeAttribute("data-l10n-id");
       findResultsCount.textContent = "";
@@ -12619,7 +12564,7 @@ class PDFFindBar {
     this.opened = false;
     toggleExpandedBtn(this.toggleButton, false, this.bar);
     this.eventBus.dispatch("findbarclose", {
-      source: this
+      source: this,
     });
   }
   toggle() {
@@ -12630,9 +12575,7 @@ class PDFFindBar {
     }
   }
   #resizeObserverCallback() {
-    const {
-      bar
-    } = this;
+    const { bar } = this;
     bar.classList.remove("wrapContainers");
     const findbarHeight = bar.clientHeight;
     const inputContainerHeight = bar.firstElementChild.clientHeight;
@@ -12640,13 +12583,7 @@ class PDFFindBar {
       bar.classList.add("wrapContainers");
     }
   }
-}
-
-;// ./web/pdf_history.js
-
-
-
-
+} // ./web/pdf_history.js
 
 const HASH_CHANGE_TIMEOUT = 1000;
 const POSITION_UPDATED_THRESHOLD = 50;
@@ -12656,30 +12593,31 @@ function getCurrentHash() {
 }
 class PDFHistory {
   #eventAC = null;
-  constructor({
-    linkService,
-    eventBus
-  }) {
+  constructor({ linkService, eventBus }) {
     this.linkService = linkService;
     this.eventBus = eventBus;
     this._initialized = false;
     this._fingerprint = "";
     this.reset();
-    this.eventBus.on("pagesinit", () => {
-      this._isPagesLoaded = false;
-      this.eventBus.on("pagesloaded", evt => {
-        this._isPagesLoaded = !!evt.pagesCount;
-      }, {
-        once: true,
-        ...internalOpt
-      });
-    }, internalOpt);
+    this.eventBus.on(
+      "pagesinit",
+      () => {
+        this._isPagesLoaded = false;
+        this.eventBus.on(
+          "pagesloaded",
+          (evt) => {
+            this._isPagesLoaded = !!evt.pagesCount;
+          },
+          {
+            once: true,
+            ...internalOpt,
+          }
+        );
+      },
+      internalOpt
+    );
   }
-  initialize({
-    fingerprint,
-    resetHistory = false,
-    updateUrl = false
-  }) {
+  initialize({ fingerprint, resetHistory = false, updateUrl = false }) {
     if (!fingerprint || typeof fingerprint !== "string") {
       console.error('PDFHistory.initialize: The "fingerprint" must be a non-empty string.');
       return;
@@ -12701,20 +12639,19 @@ class PDFHistory {
     this._destination = null;
     this._position = null;
     if (!this.#isValidState(state, true) || resetHistory) {
-      const {
-        hash,
-        page,
-        rotation
-      } = this.#parseCurrentHash(true);
+      const { hash, page, rotation } = this.#parseCurrentHash(true);
       if (!hash || reInitialized || resetHistory) {
         this.#pushOrReplaceState(null, true);
         return;
       }
-      this.#pushOrReplaceState({
-        hash,
-        page,
-        rotation
-      }, true);
+      this.#pushOrReplaceState(
+        {
+          hash,
+          page,
+          rotation,
+        },
+        true
+      );
       return;
     }
     const destination = state.destination;
@@ -12744,11 +12681,7 @@ class PDFHistory {
     this._initialBookmark = null;
     this._initialRotation = null;
   }
-  push({
-    namedDest = null,
-    explicitDest,
-    pageNumber
-  }) {
+  push({ namedDest = null, explicitDest, pageNumber }) {
     if (!this._initialized) {
       return;
     }
@@ -12778,12 +12711,15 @@ class PDFHistory {
     if (this._popStateInProgress && !forceReplace) {
       return;
     }
-    this.#pushOrReplaceState({
-      dest: explicitDest,
-      hash,
-      page: pageNumber,
-      rotation: this.linkService.rotation
-    }, forceReplace);
+    this.#pushOrReplaceState(
+      {
+        dest: explicitDest,
+        hash,
+        page: pageNumber,
+        rotation: this.linkService.rotation,
+      },
+      forceReplace
+    );
     if (!this._popStateInProgress) {
       this._popStateInProgress = true;
       Promise.resolve().then(() => {
@@ -12809,7 +12745,7 @@ class PDFHistory {
       dest: null,
       hash: `page=${pageNumber}`,
       page: pageNumber,
-      rotation: this.linkService.rotation
+      rotation: this.linkService.rotation,
     });
     if (!this._popStateInProgress) {
       this._popStateInProgress = true;
@@ -12856,15 +12792,12 @@ class PDFHistory {
     const newState = {
       fingerprint: this._fingerprint,
       uid: shouldReplace ? this._uid : this._uid + 1,
-      destination
+      destination,
     };
     this.#updateInternalState(destination, newState.uid);
     let newUrl;
     if (this._updateUrl && destination?.hash) {
-      const {
-        href,
-        protocol
-      } = document.location;
+      const { href, protocol } = document.location;
       if (protocol !== "file:") {
         newUrl = updateUrlHash(href, destination.hash);
       }
@@ -12895,7 +12828,7 @@ class PDFHistory {
     if (this._destination.hash === position.hash) {
       return;
     }
-    if (!this._destination.page && ( false || this._numPositionUpdates <= POSITION_UPDATED_THRESHOLD)) {
+    if (!this._destination.page && (false || this._numPositionUpdates <= POSITION_UPDATED_THRESHOLD)) {
       return;
     }
     let forceReplace = false;
@@ -12953,18 +12886,16 @@ class PDFHistory {
     const params = parseQueryString(hash);
     const nameddest = params.get("nameddest") || "";
     let page = params.get("page") | 0;
-    if (!this.#isValidPage(page) || checkNameddest && nameddest.length > 0) {
+    if (!this.#isValidPage(page) || (checkNameddest && nameddest.length > 0)) {
       page = null;
     }
     return {
       hash,
       page,
-      rotation: this.linkService.rotation
+      rotation: this.linkService.rotation,
     };
   }
-  #updateViewarea({
-    location
-  }) {
+  #updateViewarea({ location }) {
     if (this._updateViewareaTimeout) {
       clearTimeout(this._updateViewareaTimeout);
       this._updateViewareaTimeout = null;
@@ -12973,12 +12904,12 @@ class PDFHistory {
       hash: location.pdfOpenParams.substring(1),
       page: this.linkService.page,
       first: location.pageNumber,
-      rotation: location.rotation
+      rotation: location.rotation,
     };
     if (this._popStateInProgress) {
       return;
     }
-    if ( true && this._isPagesLoaded && this._destination && !this._destination.page) {
+    if (true && this._isPagesLoaded && this._destination && !this._destination.page) {
       this._numPositionUpdates++;
     }
     if (true) {
@@ -12990,24 +12921,21 @@ class PDFHistory {
       }, UPDATE_VIEWAREA_TIMEOUT);
     }
   }
-  #popState({
-    state
-  }) {
+  #popState({ state }) {
     const newHash = getCurrentHash(),
       hashChanged = this._currentHash !== newHash;
     this._currentHash = newHash;
     if (!state) {
       this._uid++;
-      const {
-        hash,
-        page,
-        rotation
-      } = this.#parseCurrentHash();
-      this.#pushOrReplaceState({
-        hash,
-        page,
-        rotation
-      }, true);
+      const { hash, page, rotation } = this.#parseCurrentHash();
+      this.#pushOrReplaceState(
+        {
+          hash,
+          page,
+          rotation,
+        },
+        true
+      );
       return;
     }
     if (!this.#isValidState(state)) {
@@ -13019,7 +12947,7 @@ class PDFHistory {
       waitOnEventOrTimeout({
         target: window,
         name: "hashchange",
-        delay: HASH_CHANGE_TIMEOUT
+        delay: HASH_CHANGE_TIMEOUT,
       }).then(() => {
         this._blockHashChange--;
       });
@@ -13050,18 +12978,16 @@ class PDFHistory {
       return;
     }
     this.#eventAC = new AbortController();
-    const {
-      signal
-    } = this.#eventAC;
+    const { signal } = this.#eventAC;
     this.eventBus.on("updateviewarea", this.#updateViewarea.bind(this), {
       signal,
-      ...internalOpt
+      ...internalOpt,
     });
     window.addEventListener("popstate", this.#popState.bind(this), {
-      signal
+      signal,
     });
     window.addEventListener("pagehide", this.#pageHide.bind(this), {
-      signal
+      signal,
     });
   }
   #unbindEvents() {
@@ -13101,7 +13027,7 @@ function isDestArraysEqual(firstDest, secondDest) {
       }
       return true;
     }
-    return first === second || Number.isNaN(first) && Number.isNaN(second);
+    return first === second || (Number.isNaN(first) && Number.isNaN(second));
   }
   if (!(Array.isArray(firstDest) && Array.isArray(secondDest))) {
     return false;
@@ -13115,26 +13041,26 @@ function isDestArraysEqual(firstDest, secondDest) {
     }
   }
   return true;
-}
-
-;// ./web/pdf_layer_viewer.js
-
-
-
-
+} // ./web/pdf_layer_viewer.js
 
 class PDFLayerViewer extends BaseTreeViewer {
   constructor(options) {
     super(options);
-    const {
-      eventBus
-    } = this;
-    eventBus.on("optionalcontentconfigchanged", evt => {
-      this.#updateLayers(evt.promise);
-    }, internalOpt);
-    eventBus.on("resetlayers", () => {
-      this.#updateLayers();
-    }, internalOpt);
+    const { eventBus } = this;
+    eventBus.on(
+      "optionalcontentconfigchanged",
+      (evt) => {
+        this.#updateLayers(evt.promise);
+      },
+      internalOpt
+    );
+    eventBus.on(
+      "resetlayers",
+      () => {
+        this.#updateLayers();
+      },
+      internalOpt
+    );
     eventBus.on("togglelayerstree", this._toggleAllTreeItems.bind(this), internalOpt);
   }
   reset() {
@@ -13146,13 +13072,10 @@ class PDFLayerViewer extends BaseTreeViewer {
   _dispatchEvent(layersCount) {
     this.eventBus.dispatch("layersloaded", {
       source: this,
-      layersCount
+      layersCount,
     });
   }
-  _bindLink(element, {
-    groupId,
-    input
-  }) {
+  _bindLink(element, { groupId, input }) {
     const setVisibility = () => {
       const visible = input.checked;
       this._optionalContentConfig.setVisibility(groupId, visible);
@@ -13162,10 +13085,10 @@ class PDFLayerViewer extends BaseTreeViewer {
       }
       this.eventBus.dispatch("optionalcontentconfig", {
         source: this,
-        promise: Promise.resolve(this._optionalContentConfig)
+        promise: Promise.resolve(this._optionalContentConfig),
       });
     };
-    element.onclick = evt => {
+    element.onclick = (evt) => {
       if (evt.target === input) {
         setVisibility();
         return true;
@@ -13177,9 +13100,7 @@ class PDFLayerViewer extends BaseTreeViewer {
       return false;
     };
   }
-  _setNestedName(element, {
-    name = null
-  }) {
+  _setNestedName(element, { name = null }) {
     if (typeof name === "string") {
       element.textContent = this._normalizeTextContent(name);
       return;
@@ -13188,9 +13109,7 @@ class PDFLayerViewer extends BaseTreeViewer {
     element.style.fontStyle = "italic";
     this._l10n.translateOnce(element);
   }
-  _addToggleButton(div, {
-    name = null
-  }) {
+  _addToggleButton(div, { name = null }) {
     super._addToggleButton(div, name === null);
   }
   _toggleAllTreeItems() {
@@ -13199,10 +13118,7 @@ class PDFLayerViewer extends BaseTreeViewer {
     }
     super._toggleAllTreeItems();
   }
-  render({
-    optionalContentConfig,
-    pdfDocument
-  }) {
+  render({ optionalContentConfig, pdfDocument }) {
     if (this._optionalContentConfig) {
       this.reset();
     }
@@ -13215,10 +13131,12 @@ class PDFLayerViewer extends BaseTreeViewer {
     }
     this._optionalContentVisibility = new Map();
     const fragment = document.createDocumentFragment(),
-      queue = [{
-        parent: fragment,
-        groups
-      }];
+      queue = [
+        {
+          parent: fragment,
+          groups,
+        },
+      ];
     let layersCount = 0,
       hasAnyNesting = false;
     while (queue.length > 0) {
@@ -13237,7 +13155,7 @@ class PDFLayerViewer extends BaseTreeViewer {
           div.append(itemsDiv);
           queue.push({
             parent: itemsDiv,
-            groups: groupId.order
+            groups: groupId.order,
           });
         } else {
           const group = optionalContentConfig.getGroup(groupId);
@@ -13246,13 +13164,13 @@ class PDFLayerViewer extends BaseTreeViewer {
           label.append(input, document.createTextNode(this._normalizeTextContent(group.name)));
           this._bindLink(element, {
             groupId,
-            input
+            input,
           });
           input.type = "checkbox";
           input.checked = group.visible;
           this._optionalContentVisibility.set(groupId, {
             input,
-            visible: input.checked
+            visible: input.checked,
           });
           element.append(label);
           layersCount++;
@@ -13267,9 +13185,10 @@ class PDFLayerViewer extends BaseTreeViewer {
       return;
     }
     const pdfDocument = this._pdfDocument;
-    const optionalContentConfig = await (promise || pdfDocument.getOptionalContentConfig({
-      intent: "display"
-    }));
+    const optionalContentConfig = await (promise ||
+      pdfDocument.getOptionalContentConfig({
+        intent: "display",
+      }));
     if (pdfDocument !== this._pdfDocument) {
       return;
     }
@@ -13284,42 +13203,45 @@ class PDFLayerViewer extends BaseTreeViewer {
     }
     this.eventBus.dispatch("optionalcontentconfig", {
       source: this,
-      promise: Promise.resolve(optionalContentConfig)
+      promise: Promise.resolve(optionalContentConfig),
     });
     this.render({
       optionalContentConfig,
-      pdfDocument: this._pdfDocument
+      pdfDocument: this._pdfDocument,
     });
   }
-}
-
-;// ./web/pdf_outline_viewer.js
-
-
-
-
-
+} // ./web/pdf_outline_viewer.js
 
 class PDFOutlineViewer extends BaseTreeViewer {
   constructor(options) {
     super(options);
     this.linkService = options.linkService;
     this.downloadManager = options.downloadManager;
-    const {
-      eventBus
-    } = this;
+    const { eventBus } = this;
     eventBus.on("toggleoutlinetree", this._toggleAllTreeItems.bind(this), internalOpt);
     eventBus.on("currentoutlineitem", this._currentOutlineItem.bind(this), internalOpt);
-    eventBus.on("pagechanging", evt => {
-      this._currentPageNumber = evt.pageNumber;
-    }, internalOpt);
-    eventBus.on("pagesloaded", evt => {
-      this._isPagesLoaded = !!evt.pagesCount;
-      this._currentOutlineItemCapability?.resolve(this._isPagesLoaded);
-    }, internalOpt);
-    eventBus.on("sidebarviewchanged", evt => {
-      this._sidebarView = evt.view;
-    }, internalOpt);
+    eventBus.on(
+      "pagechanging",
+      (evt) => {
+        this._currentPageNumber = evt.pageNumber;
+      },
+      internalOpt
+    );
+    eventBus.on(
+      "pagesloaded",
+      (evt) => {
+        this._isPagesLoaded = !!evt.pagesCount;
+        this._currentOutlineItemCapability?.resolve(this._isPagesLoaded);
+      },
+      internalOpt
+    );
+    eventBus.on(
+      "sidebarviewchanged",
+      (evt) => {
+        this._sidebarView = evt.view;
+      },
+      internalOpt
+    );
   }
   reset() {
     super.reset();
@@ -13340,21 +13262,11 @@ class PDFOutlineViewer extends BaseTreeViewer {
     this.eventBus.dispatch("outlineloaded", {
       source: this,
       outlineCount,
-      currentOutlineItemPromise: this._currentOutlineItemCapability.promise
+      currentOutlineItemPromise: this._currentOutlineItemCapability.promise,
     });
   }
-  _bindLink(element, {
-    url,
-    newWindow,
-    action,
-    attachmentId,
-    attachment,
-    dest,
-    setOCGState
-  }) {
-    const {
-      linkService
-    } = this;
+  _bindLink(element, { url, newWindow, action, attachmentId, attachment, dest, setOCGState }) {
+    const { linkService } = this;
     if (url) {
       linkService.addLinkAttributes(element, url, newWindow);
       return;
@@ -13390,7 +13302,7 @@ class PDFOutlineViewer extends BaseTreeViewer {
       return;
     }
     element.href = linkService.getDestinationHash(dest);
-    element.onclick = evt => {
+    element.onclick = (evt) => {
       this._updateCurrentTreeItem(evt.target.parentNode);
       if (dest) {
         linkService.goToDestination(dest);
@@ -13398,10 +13310,7 @@ class PDFOutlineViewer extends BaseTreeViewer {
       return false;
     };
   }
-  _setStyles(element, {
-    bold,
-    italic
-  }) {
+  _setStyles(element, { bold, italic }) {
     if (bold) {
       element.style.fontWeight = "bold";
     }
@@ -13409,20 +13318,14 @@ class PDFOutlineViewer extends BaseTreeViewer {
       element.style.fontStyle = "italic";
     }
   }
-  _addToggleButton(div, {
-    count,
-    items
-  }) {
+  _addToggleButton(div, { count, items }) {
     let hidden = false;
     if (count < 0) {
       let totalCount = items.length;
       if (totalCount > 0) {
         const queue = [...items];
         while (queue.length > 0) {
-          const {
-            count: nestedCount,
-            items: nestedItems
-          } = queue.shift();
+          const { count: nestedCount, items: nestedItems } = queue.shift();
           if (nestedCount > 0 && nestedItems.length > 0) {
             totalCount += nestedItems.length;
             queue.push(...nestedItems);
@@ -13441,10 +13344,7 @@ class PDFOutlineViewer extends BaseTreeViewer {
     }
     super._toggleAllTreeItems();
   }
-  render({
-    outline,
-    pdfDocument
-  }) {
+  render({ outline, pdfDocument }) {
     if (this._outline) {
       this.reset();
     }
@@ -13455,10 +13355,12 @@ class PDFOutlineViewer extends BaseTreeViewer {
       return;
     }
     const fragment = document.createDocumentFragment();
-    const queue = [{
-      parent: fragment,
-      items: outline
-    }];
+    const queue = [
+      {
+        parent: fragment,
+        items: outline,
+      },
+    ];
     let outlineCount = 0,
       hasAnyNesting = false;
     while (queue.length > 0) {
@@ -13479,7 +13381,7 @@ class PDFOutlineViewer extends BaseTreeViewer {
           div.append(itemsDiv);
           queue.push({
             parent: itemsDiv,
-            items: item.items
+            items: item.items,
           });
         }
         levelData.parent.append(div);
@@ -13523,17 +13425,16 @@ class PDFOutlineViewer extends BaseTreeViewer {
     this._pageNumberToDestHashCapability = Promise.withResolvers();
     const pageNumberToDestHash = new Map(),
       pageNumberNesting = new Map();
-    const queue = [{
-      nesting: 0,
-      items: this._outline
-    }];
+    const queue = [
+      {
+        nesting: 0,
+        items: this._outline,
+      },
+    ];
     while (queue.length > 0) {
       const levelData = queue.shift(),
         currentNesting = levelData.nesting;
-      for (const {
-        dest,
-        items
-      } of levelData.items) {
+      for (const { dest, items } of levelData.items) {
         let explicitDest, pageNumber;
         if (typeof dest === "string") {
           explicitDest = await pdfDocument.getDestination(dest);
@@ -13559,7 +13460,7 @@ class PDFOutlineViewer extends BaseTreeViewer {
         if (items.length > 0) {
           queue.push({
             nesting: currentNesting + 1,
-            items
+            items,
           });
         }
       }
@@ -13567,10 +13468,7 @@ class PDFOutlineViewer extends BaseTreeViewer {
     this._pageNumberToDestHashCapability.resolve(pageNumberToDestHash.size > 0 ? pageNumberToDestHash : null);
     return this._pageNumberToDestHashCapability.promise;
   }
-}
-
-;// ./web/pdf_presentation_mode.js
-
+} // ./web/pdf_presentation_mode.js
 
 const DELAY_BEFORE_HIDING_CONTROLS = 3000;
 const ACTIVE_SELECTOR = "pdfPresentationMode";
@@ -13584,11 +13482,7 @@ class PDFPresentationMode {
   #args = null;
   #fullscreenChangeAC = null;
   #windowAC = null;
-  constructor({
-    container,
-    pdfViewer,
-    eventBus
-  }) {
+  constructor({ container, pdfViewer, eventBus }) {
     this.container = container;
     this.pdfViewer = pdfViewer;
     this.eventBus = eventBus;
@@ -13598,10 +13492,7 @@ class PDFPresentationMode {
     this.touchSwipeState = null;
   }
   async request() {
-    const {
-      container,
-      pdfViewer
-    } = this;
+    const { container, pdfViewer } = this;
     if (this.active || !pdfViewer.pagesCount || !container.requestFullscreen) {
       return false;
     }
@@ -13613,7 +13504,7 @@ class PDFPresentationMode {
       scaleValue: pdfViewer.currentScaleValue,
       scrollMode: pdfViewer.scrollMode,
       spreadMode: null,
-      annotationEditorMode: null
+      annotationEditorMode: null,
     };
     if (pdfViewer.spreadMode !== SpreadMode.NONE && !(pdfViewer.pageViewsReady && pdfViewer.hasEqualPageSizes)) {
       console.warn("Ignoring Spread modes when entering PresentationMode, " + "since the document may contain varying page sizes.");
@@ -13649,7 +13540,7 @@ class PDFPresentationMode {
     if (currentTime > storedTime && currentTime - storedTime < MOUSE_SCROLL_COOLDOWN_TIME) {
       return;
     }
-    if (this.mouseScrollDelta > 0 && delta < 0 || this.mouseScrollDelta < 0 && delta > 0) {
+    if ((this.mouseScrollDelta > 0 && delta < 0) || (this.mouseScrollDelta < 0 && delta > 0)) {
       this.#resetMouseScrollState();
     }
     this.mouseScrollDelta += delta;
@@ -13666,7 +13557,7 @@ class PDFPresentationMode {
     this.#state = state;
     this.eventBus.dispatch("presentationmodechanged", {
       source: this,
-      state
+      state,
     });
   }
   #enter() {
@@ -13681,7 +13572,7 @@ class PDFPresentationMode {
       this.pdfViewer.currentScaleValue = "page-fit";
       if (this.#args.annotationEditorMode !== null) {
         this.pdfViewer.annotationEditorMode = {
-          mode: AnnotationEditorType.NONE
+          mode: AnnotationEditorType.NONE,
         };
       }
     }, 0);
@@ -13704,7 +13595,7 @@ class PDFPresentationMode {
       this.pdfViewer.currentPageNumber = pageNumber;
       if (this.#args.annotationEditorMode !== null) {
         this.pdfViewer.annotationEditorMode = {
-          mode: this.#args.annotationEditorMode
+          mode: this.#args.annotationEditorMode,
         };
       }
       this.#args = null;
@@ -13780,7 +13671,7 @@ class PDFPresentationMode {
           startX: evt.touches[0].pageX,
           startY: evt.touches[0].pageY,
           endX: evt.touches[0].pageX,
-          endY: evt.touches[0].pageY
+          endY: evt.touches[0].pageY,
         };
         break;
       case "touchmove":
@@ -13817,34 +13708,32 @@ class PDFPresentationMode {
       return;
     }
     this.#windowAC = new AbortController();
-    const {
-      signal
-    } = this.#windowAC;
+    const { signal } = this.#windowAC;
     const touchSwipeBind = this.#touchSwipe.bind(this);
     window.addEventListener("mousemove", this.#showControls.bind(this), {
-      signal
+      signal,
     });
     window.addEventListener("mousedown", this.#mouseDown.bind(this), {
-      signal
+      signal,
     });
     window.addEventListener("wheel", this.#mouseWheel.bind(this), {
       passive: false,
-      signal
+      signal,
     });
     window.addEventListener("keydown", this.#resetMouseScrollState.bind(this), {
-      signal
+      signal,
     });
     window.addEventListener("contextmenu", this.#contextMenu.bind(this), {
-      signal
+      signal,
     });
     window.addEventListener("touchstart", touchSwipeBind, {
-      signal
+      signal,
     });
     window.addEventListener("touchmove", touchSwipeBind, {
-      signal
+      signal,
     });
     window.addEventListener("touchend", touchSwipeBind, {
-      signal
+      signal,
     });
   }
   #removeWindowListeners() {
@@ -13856,15 +13745,19 @@ class PDFPresentationMode {
       return;
     }
     this.#fullscreenChangeAC = new AbortController();
-    window.addEventListener("fullscreenchange", () => {
-      if (document.fullscreenElement) {
-        this.#enter();
-      } else {
-        this.#exit();
+    window.addEventListener(
+      "fullscreenchange",
+      () => {
+        if (document.fullscreenElement) {
+          this.#enter();
+        } else {
+          this.#exit();
+        }
+      },
+      {
+        signal: this.#fullscreenChangeAC.signal,
       }
-    }, {
-      signal: this.#fullscreenChangeAC.signal
-    });
+    );
   }
   #removeFullscreenChangeListeners() {
     this.#fullscreenChangeAC?.abort();
@@ -13873,27 +13766,17 @@ class PDFPresentationMode {
 }
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.iterator.every.js
-var es_iterator_every = __webpack_require__(1148);
-;// ./web/xfa_layer_builder.js
-
+var es_iterator_every = __webpack_require__(1148); // ./web/xfa_layer_builder.js
 class XfaLayerBuilder {
   #cancelled = false;
   div = null;
-  constructor({
-    pdfPage,
-    annotationStorage = null,
-    linkService,
-    xfaHtml = null
-  }) {
+  constructor({ pdfPage, annotationStorage = null, linkService, xfaHtml = null }) {
     this.pdfPage = pdfPage;
     this.annotationStorage = annotationStorage;
     this.linkService = linkService;
     this.xfaHtml = xfaHtml;
   }
-  async render({
-    viewport,
-    intent = "display"
-  }) {
+  async render({ viewport, intent = "display" }) {
     let xfaHtml;
     if (intent === "print") {
       xfaHtml = this.xfaHtml;
@@ -13901,20 +13784,20 @@ class XfaLayerBuilder {
       xfaHtml = await this.pdfPage.getXfa();
       if (this.#cancelled || !xfaHtml) {
         return {
-          textDivs: []
+          textDivs: [],
         };
       }
     }
     const hasDiv = !!this.div;
     const params = {
       viewport: viewport.clone({
-        dontFlip: true
+        dontFlip: true,
       }),
-      div: this.div ??= document.createElement("div"),
+      div: (this.div ??= document.createElement("div")),
       xfaHtml,
       annotationStorage: this.annotationStorage,
       linkService: this.linkService,
-      intent
+      intent,
     };
     return hasDiv ? XfaLayer.update(params) : XfaLayer.render(params);
   }
@@ -13927,11 +13810,7 @@ class XfaLayerBuilder {
     }
     this.div.hidden = true;
   }
-}
-
-;// ./web/print_utils.js
-
-
+} // ./web/print_utils.js
 
 class BasePrintServiceFactory {
   static initGlobals(app) {}
@@ -13954,34 +13833,34 @@ function getXfaHtmlForPrinting(printContainer, pdfDocument) {
       pdfPage: null,
       annotationStorage: pdfDocument.annotationStorage,
       linkService,
-      xfaHtml: xfaPage
+      xfaHtml: xfaPage,
     });
     const viewport = XfaLayer.getPageViewport(xfaPage, {
-      scale
+      scale,
     });
     builder.render({
       viewport,
-      intent: "print"
+      intent: "print",
     });
     page.append(builder.div);
   }
-}
-
-;// ./web/pdf_print_service.js
-
-
-
-
-
-
+} // ./web/pdf_print_service.js
 
 let activeService = null;
 let dialog = null;
 let overlayManager = null;
 let viewerApp = {
-  initialized: false
+  initialized: false,
 };
-function renderPage(activeServiceOnEntry, pdfDocument, pageNumber, size, printResolution, optionalContentConfigPromise, printAnnotationStoragePromise) {
+function renderPage(
+  activeServiceOnEntry,
+  pdfDocument,
+  pageNumber,
+  size,
+  printResolution,
+  optionalContentConfigPromise,
+  printAnnotationStoragePromise
+) {
   const scratchCanvas = activeService.scratchCanvas;
   const PRINT_UNITS = printResolution / PixelsPerInch.PDF;
   scratchCanvas.width = Math.floor(size.width * PRINT_UNITS);
@@ -13997,15 +13876,15 @@ function renderPage(activeServiceOnEntry, pdfDocument, pageNumber, size, printRe
       transform: [PRINT_UNITS, 0, 0, PRINT_UNITS, 0, 0],
       viewport: pdfPage.getViewport({
         scale: 1,
-        rotation: size.rotation
+        rotation: size.rotation,
       }),
       intent: "print",
       annotationMode: AnnotationMode.ENABLE_STORAGE,
       optionalContentConfigPromise,
-      printAnnotationStorage
+      printAnnotationStorage,
     };
     const renderTask = pdfPage.render(renderContext);
-    return renderTask.promise.catch(reason => {
+    return renderTask.promise.catch((reason) => {
       if (!(reason instanceof RenderingCancelledException)) {
         console.error(reason);
       }
@@ -14014,19 +13893,13 @@ function renderPage(activeServiceOnEntry, pdfDocument, pageNumber, size, printRe
   });
 }
 class PDFPrintService {
-  constructor({
-    pdfDocument,
-    pagesOverview,
-    printContainer,
-    printResolution,
-    printAnnotationStoragePromise = null
-  }) {
+  constructor({ pdfDocument, pagesOverview, printContainer, printResolution, printAnnotationStoragePromise = null }) {
     this.pdfDocument = pdfDocument;
     this.pagesOverview = pagesOverview;
     this.printContainer = printContainer;
     this._printResolution = printResolution || 150;
     this._optionalContentConfigPromise = pdfDocument.getOptionalContentConfig({
-      intent: "print"
+      intent: "print",
     });
     this._printAnnotationStoragePromise = printAnnotationStoragePromise || Promise.resolve();
     this.currentPage = -1;
@@ -14036,11 +13909,8 @@ class PDFPrintService {
     this.throwIfInactive();
     const body = document.querySelector("body");
     body.setAttribute("data-pdfjsprinting", true);
-    const {
-      width,
-      height
-    } = this.pagesOverview[0];
-    const hasEqualPageSizes = this.pagesOverview.every(size => size.width === width && size.height === height);
+    const { width, height } = this.pagesOverview[0];
+    const hasEqualPageSizes = this.pagesOverview.every((size) => size.width === width && size.height === height);
     if (!hasEqualPageSizes) {
       console.warn("Not all pages have the same size. The printed result may be incorrect!");
     }
@@ -14056,7 +13926,7 @@ class PDFPrintService {
     const body = document.querySelector("body");
     body.removeAttribute("data-pdfjsprinting");
     if (this.pageStyleSheet) {
-      document.adoptedStyleSheets = document.adoptedStyleSheets.filter(styleSheet => styleSheet !== this.pageStyleSheet);
+      document.adoptedStyleSheets = document.adoptedStyleSheets.filter((styleSheet) => styleSheet !== this.pageStyleSheet);
       this.pageStyleSheet = null;
     }
     if (this._blobURLs) {
@@ -14087,16 +13957,26 @@ class PDFPrintService {
       }
       const index = this.currentPage;
       renderProgress(index, pageCount);
-      renderPage(this, this.pdfDocument, index + 1, this.pagesOverview[index], this._printResolution, this._optionalContentConfigPromise, this._printAnnotationStoragePromise).then(this.useRenderedPage.bind(this)).then(function () {
-        renderNextPage(resolve, reject);
-      }, reject);
+      renderPage(
+        this,
+        this.pdfDocument,
+        index + 1,
+        this.pagesOverview[index],
+        this._printResolution,
+        this._optionalContentConfigPromise,
+        this._printAnnotationStoragePromise
+      )
+        .then(this.useRenderedPage.bind(this))
+        .then(function () {
+          renderNextPage(resolve, reject);
+        }, reject);
     };
     return new Promise(renderNextPage);
   }
   useRenderedPage() {
     this.throwIfInactive();
     const img = document.createElement("img");
-    this.scratchCanvas.toBlob(blob => {
+    this.scratchCanvas.toBlob((blob) => {
       const blobURL = URL.createObjectURL(blob);
       img.src = blobURL;
       (this._blobURLs ??= []).push(blobURL);
@@ -14105,11 +13985,7 @@ class PDFPrintService {
     wrapper.className = "printedPage";
     wrapper.append(img);
     this.printContainer.append(wrapper);
-    const {
-      promise,
-      resolve,
-      reject
-    } = Promise.withResolvers();
+    const { promise, resolve, reject } = Promise.withResolvers();
     img.onload = resolve;
     img.onerror = reject;
     promise.catch(() => {});
@@ -14117,7 +13993,7 @@ class PDFPrintService {
   }
   performPrint() {
     this.throwIfInactive();
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         if (!this.active) {
           resolve();
@@ -14158,11 +14034,15 @@ window.print = function () {
       });
     } else {
       const activeServiceOnEntry = activeService;
-      activeService.renderPages().then(() => activeServiceOnEntry.performPrint()).catch(() => {}).then(() => {
-        if (activeServiceOnEntry.active) {
-          abort();
-        }
-      });
+      activeService
+        .renderPages()
+        .then(() => activeServiceOnEntry.performPrint())
+        .catch(() => {})
+        .then(() => {
+          if (activeServiceOnEntry.active) {
+            abort();
+          }
+        });
     }
   }
 };
@@ -14170,7 +14050,7 @@ function dispatchEvent(eventType) {
   const event = new CustomEvent(eventType, {
     bubbles: false,
     cancelable: false,
-    detail: "custom"
+    detail: "custom",
   });
   window.dispatchEvent(event);
 }
@@ -14182,21 +14062,28 @@ function abort() {
 }
 function renderProgress(index, total) {
   dialog ||= document.getElementById("printServiceDialog");
-  const progress = Math.round(100 * index / total);
+  const progress = Math.round((100 * index) / total);
   const progressBar = dialog.querySelector("progress");
   const progressPerc = dialog.querySelector(".relative-progress");
   progressBar.value = progress;
-  progressPerc.setAttribute("data-l10n-args", JSON.stringify({
-    progress
-  }));
+  progressPerc.setAttribute(
+    "data-l10n-args",
+    JSON.stringify({
+      progress,
+    })
+  );
 }
-window.addEventListener("keydown", function (event) {
-  if (event.keyCode === 80 && (event.ctrlKey || event.metaKey) && !event.altKey && (!event.shiftKey || window.chrome || window.opera)) {
-    window.print();
-    event.preventDefault();
-    event.stopImmediatePropagation();
-  }
-}, true);
+window.addEventListener(
+  "keydown",
+  function (event) {
+    if (event.keyCode === 80 && (event.ctrlKey || event.metaKey) && !event.altKey && (!event.shiftKey || window.chrome || window.opera)) {
+      window.print();
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }
+  },
+  true
+);
 if ("onbeforeprint" in window) {
   const stopPropagationIfNeeded = function (event) {
     if (event.detail !== "custom") {
@@ -14231,16 +14118,15 @@ class PDFPrintServiceFactory extends BasePrintServiceFactory {
     if (activeService) {
       throw new Error("The print service is created and active.");
     }
-    return activeService = new PDFPrintService(params);
+    return (activeService = new PDFPrintService(params));
   }
-}
+} // ./web/renderable_view.js
 
-;// ./web/renderable_view.js
 const RenderingStates = {
   INITIAL: 0,
   RUNNING: 1,
   PAUSED: 2,
-  FINISHED: 3
+  FINISHED: 3,
 };
 class RenderableView {
   renderingId = "";
@@ -14255,10 +14141,7 @@ class RenderableView {
   async draw() {
     throw new Error("Not implemented: draw");
   }
-}
-
-;// ./web/pdf_rendering_queue.js
-
+} // ./web/pdf_rendering_queue.js
 
 const CLEANUP_TIMEOUT = 30000;
 class PDFRenderingQueue {
@@ -14271,7 +14154,7 @@ class PDFRenderingQueue {
   printing = false;
   constructor() {
     Object.defineProperty(this, "hasViewer", {
-      value: () => !!this.#pdfViewer
+      value: () => !!this.#pdfViewer,
     });
   }
   setViewer(pdfViewer) {
@@ -14315,9 +14198,7 @@ class PDFRenderingQueue {
     }
     if (!ignoreDetailViews) {
       for (let i = 0; i < numVisible; i++) {
-        const {
-          detailView
-        } = visibleViews[i].view;
+        const { detailView } = visibleViews[i].view;
         if (detailView && !this.isViewFinished(detailView)) {
           return detailView;
         }
@@ -14368,33 +14249,22 @@ class PDFRenderingQueue {
         break;
       case RenderingStates.INITIAL:
         this.#highestPriorityPage = view.renderingId;
-        view.draw().finally(() => {
-          this.renderHighestPriority();
-        }).catch(reason => {
-          if (reason instanceof RenderingCancelledException) {
-            return;
-          }
-          console.error("renderView:", reason);
-        });
+        view
+          .draw()
+          .finally(() => {
+            this.renderHighestPriority();
+          })
+          .catch((reason) => {
+            if (reason instanceof RenderingCancelledException) {
+              return;
+            }
+            console.error("renderView:", reason);
+          });
         break;
     }
     return true;
   }
-}
-
-;// ./web/pdf_scripting_manager.js
-
-
-
-
-
-
-
-
-
-
-
-
+} // ./web/pdf_scripting_manager.js
 
 class PDFScriptingManager {
   #closeCapability = null;
@@ -14409,11 +14279,7 @@ class PDFScriptingManager {
   #ready = false;
   #scripting = null;
   #willPrintCapability = null;
-  constructor({
-    eventBus,
-    externalServices = null,
-    docProperties = null
-  }) {
+  constructor({ eventBus, externalServices = null, docProperties = null }) {
     this.#eventBus = eventBus;
     this.#externalServices = externalServices;
     this.#docProperties = docProperties;
@@ -14429,7 +14295,11 @@ class PDFScriptingManager {
     if (!pdfDocument) {
       return;
     }
-    const [objects, calculationOrder, docActions] = await Promise.all([pdfDocument.getFieldObjects(), pdfDocument.getCalculationOrderIds(), pdfDocument.getJSActions()]);
+    const [objects, calculationOrder, docActions] = await Promise.all([
+      pdfDocument.getFieldObjects(),
+      pdfDocument.getCalculationOrderIds(),
+      pdfDocument.getJSActions(),
+    ]);
     if (!objects && !docActions) {
       await this.#destroyScripting();
       return;
@@ -14440,9 +14310,7 @@ class PDFScriptingManager {
     if (objects) {
       this.#objectIds = new Set();
       for (const fields of objects.values()) {
-        for (const {
-          id
-        } of fields) {
+        for (const { id } of fields) {
           this.#objectIds.add(id);
         }
       }
@@ -14458,45 +14326,60 @@ class PDFScriptingManager {
     this.#eventAC = new AbortController();
     const evtOpts = {
       signal: this.#eventAC.signal,
-      ...internalOpt
+      ...internalOpt,
     };
-    eventBus.on("updatefromsandbox", event => {
-      if (event?.source === window) {
-        this.#updateFromSandbox(event.detail);
-      }
-    }, evtOpts);
-    eventBus.on("dispatcheventinsandbox", event => {
-      this.#scripting?.dispatchEventInSandbox(event.detail);
-    }, evtOpts);
-    eventBus.on("pagechanging", ({
-      pageNumber,
-      previous
-    }) => {
-      if (pageNumber === previous) {
-        return;
-      }
-      this.#dispatchPageClose(previous);
-      this.#dispatchPageOpen(pageNumber);
-    }, evtOpts);
-    eventBus.on("pagerendered", ({
-      pageNumber
-    }) => {
-      if (!this._pageOpenPending.has(pageNumber)) {
-        return;
-      }
-      if (pageNumber !== this.#pdfViewer.currentPageNumber) {
-        return;
-      }
-      this.#dispatchPageOpen(pageNumber);
-    }, evtOpts);
-    eventBus.on("pagesdestroy", async () => {
-      await this.#dispatchPageClose(this.#pdfViewer.currentPageNumber);
-      await this.#scripting?.dispatchEventInSandbox({
-        id: "doc",
-        name: "WillClose"
-      });
-      this.#closeCapability?.resolve();
-    }, evtOpts);
+    eventBus.on(
+      "updatefromsandbox",
+      (event) => {
+        if (event?.source === window) {
+          this.#updateFromSandbox(event.detail);
+        }
+      },
+      evtOpts
+    );
+    eventBus.on(
+      "dispatcheventinsandbox",
+      (event) => {
+        this.#scripting?.dispatchEventInSandbox(event.detail);
+      },
+      evtOpts
+    );
+    eventBus.on(
+      "pagechanging",
+      ({ pageNumber, previous }) => {
+        if (pageNumber === previous) {
+          return;
+        }
+        this.#dispatchPageClose(previous);
+        this.#dispatchPageOpen(pageNumber);
+      },
+      evtOpts
+    );
+    eventBus.on(
+      "pagerendered",
+      ({ pageNumber }) => {
+        if (!this._pageOpenPending.has(pageNumber)) {
+          return;
+        }
+        if (pageNumber !== this.#pdfViewer.currentPageNumber) {
+          return;
+        }
+        this.#dispatchPageOpen(pageNumber);
+      },
+      evtOpts
+    );
+    eventBus.on(
+      "pagesdestroy",
+      async () => {
+        await this.#dispatchPageClose(this.#pdfViewer.currentPageNumber);
+        await this.#scripting?.dispatchEventInSandbox({
+          id: "doc",
+          name: "WillClose",
+        });
+        this.#closeCapability?.resolve();
+      },
+      evtOpts
+    );
     try {
       const docProperties = await this.#docProperties(pdfDocument);
       if (pdfDocument !== this.#pdfDocument) {
@@ -14507,15 +14390,15 @@ class PDFScriptingManager {
         calculationOrder,
         appInfo: {
           platform: navigator.platform,
-          language: navigator.language
+          language: navigator.language,
         },
         docInfo: {
           ...docProperties,
-          actions: docActions
-        }
+          actions: docActions,
+        },
       });
       eventBus.dispatch("sandboxcreated", {
-        source: this
+        source: this,
       });
     } catch (error) {
       console.error("setDocument:", error);
@@ -14524,7 +14407,7 @@ class PDFScriptingManager {
     }
     await this.#scripting?.dispatchEventInSandbox({
       id: "doc",
-      name: "Open"
+      name: "Open",
     });
     await this.#dispatchPageOpen(this.#pdfViewer.currentPageNumber, true);
     Promise.resolve().then(() => {
@@ -14536,13 +14419,13 @@ class PDFScriptingManager {
   async dispatchWillSave() {
     return this.#scripting?.dispatchEventInSandbox({
       id: "doc",
-      name: "WillSave"
+      name: "WillSave",
     });
   }
   async dispatchDidSave() {
     return this.#scripting?.dispatchEventInSandbox({
       id: "doc",
-      name: "DidSave"
+      name: "DidSave",
     });
   }
   async dispatchWillPrint() {
@@ -14554,7 +14437,7 @@ class PDFScriptingManager {
     try {
       await this.#scripting.dispatchEventInSandbox({
         id: "doc",
-        name: "WillPrint"
+        name: "WillPrint",
       });
     } catch (ex) {
       this.#willPrintCapability.resolve();
@@ -14566,7 +14449,7 @@ class PDFScriptingManager {
   async dispatchDidPrint() {
     return this.#scripting?.dispatchEventInSandbox({
       id: "doc",
-      name: "DidPrint"
+      name: "DidPrint",
     });
   }
   get destroyPromise() {
@@ -14584,12 +14467,7 @@ class PDFScriptingManager {
   async #updateFromSandbox(detail) {
     const pdfViewer = this.#pdfViewer;
     const isInPresentationMode = pdfViewer.isInPresentationMode || pdfViewer.isChangingPresentationMode;
-    const {
-      id,
-      siblings,
-      command,
-      value
-    } = detail;
+    const { id, siblings, command, value } = detail;
     if (!id) {
       switch (command) {
         case "clear":
@@ -14610,7 +14488,7 @@ class PDFScriptingManager {
         case "print":
           await pdfViewer.pagesPromise;
           this.#eventBus.dispatch("print", {
-            source: this
+            source: this,
           });
           break;
         case "println":
@@ -14623,7 +14501,7 @@ class PDFScriptingManager {
           break;
         case "SaveAs":
           this.#eventBus.dispatch("download", {
-            source: this
+            source: this,
           });
           break;
         case "FirstPage":
@@ -14667,9 +14545,11 @@ class PDFScriptingManager {
       }
       const element = document.querySelector(`[data-element-id="${elementId}"]`);
       if (element) {
-        element.dispatchEvent(new CustomEvent("updatefromsandbox", {
-          detail
-        }));
+        element.dispatchEvent(
+          new CustomEvent("updatefromsandbox", {
+            detail,
+          })
+        );
       } else {
         this.#pdfDocument?.annotationStorage.setValue(elementId, detail);
       }
@@ -14699,7 +14579,7 @@ class PDFScriptingManager {
         id: "page",
         name: "PageOpen",
         pageNumber,
-        actions
+        actions,
       });
     })();
     visitedPages.set(pageNumber, actionsPromise);
@@ -14725,7 +14605,7 @@ class PDFScriptingManager {
     await this.#scripting?.dispatchEventInSandbox({
       id: "page",
       name: "PageClose",
-      pageNumber
+      pageNumber,
     });
   }
   #initScripting() {
@@ -14743,9 +14623,12 @@ class PDFScriptingManager {
       return;
     }
     if (this.#closeCapability) {
-      await Promise.race([this.#closeCapability.promise, new Promise(resolve => {
-        setTimeout(resolve, 1000);
-      })]).catch(() => {});
+      await Promise.race([
+        this.#closeCapability.promise,
+        new Promise((resolve) => {
+          setTimeout(resolve, 1000);
+        }),
+      ]).catch(() => {});
       this.#closeCapability = null;
     }
     this.#pdfDocument = null;
@@ -14762,9 +14645,8 @@ class PDFScriptingManager {
     this.#ready = false;
     this.#destroyCapability?.resolve();
   }
-}
+} // ./web/pdf_text_extractor.js
 
-;// ./web/pdf_text_extractor.js
 /* unused harmony import specifier */ var pdf_text_extractor_internalOpt;
 
 class PdfTextExtractor {
@@ -14773,23 +14655,29 @@ class PdfTextExtractor {
   #capability = Promise.withResolvers();
   constructor(externalServices, pdfViewer, eventBus) {
     this.#externalServices = externalServices;
-    eventBus.on("pagesinit", () => {
-      this.#capability.resolve(pdfViewer);
-    }, pdf_text_extractor_internalOpt);
-    eventBus.on("pagesdestroy", () => {
-      this.#capability.reject(new Error("pagesdestroy"));
-      this.#textPromise = null;
-      this.#capability = Promise.withResolvers();
-    }, pdf_text_extractor_internalOpt);
-    window.addEventListener("requestTextContent", ({
-      detail
-    }) => {
+    eventBus.on(
+      "pagesinit",
+      () => {
+        this.#capability.resolve(pdfViewer);
+      },
+      pdf_text_extractor_internalOpt
+    );
+    eventBus.on(
+      "pagesdestroy",
+      () => {
+        this.#capability.reject(new Error("pagesdestroy"));
+        this.#textPromise = null;
+        this.#capability = Promise.withResolvers();
+      },
+      pdf_text_extractor_internalOpt
+    );
+    window.addEventListener("requestTextContent", ({ detail }) => {
       this.extractTextContent(detail.requestId);
     });
   }
   async extractTextContent(requestId) {
     if (!this.#textPromise) {
-      const textPromise = this.#textPromise = this.#capability.promise.then(pdfViewer => pdfViewer.getAllText());
+      const textPromise = (this.#textPromise = this.#capability.promise.then((pdfViewer) => pdfViewer.getAllText()));
       textPromise.then(() => {
         setTimeout(() => {
           if (this.#textPromise === textPromise) {
@@ -14800,12 +14688,10 @@ class PdfTextExtractor {
     }
     this.#externalServices.reportText({
       text: await this.#textPromise,
-      requestId
+      requestId,
     });
   }
-}
-
-;// ./web/menu.js
+} // ./web/menu.js
 
 class Menu {
   #triggeringButton;
@@ -14846,32 +14732,32 @@ class Menu {
     this.#triggeringButton.ariaExpanded = "true";
     this.#openMenuAC = new AbortController();
     const signal = AbortSignal.any([this.#menuAC.signal, this.#openMenuAC.signal]);
-    window.addEventListener("pointerdown", ({
-      target
-    }) => {
-      if (!this.#triggeringButton.contains(target) && !menu.contains(target)) {
-        this.#closeMenu();
+    window.addEventListener(
+      "pointerdown",
+      ({ target }) => {
+        if (!this.#triggeringButton.contains(target) && !menu.contains(target)) {
+          this.#closeMenu();
+        }
+      },
+      {
+        signal,
       }
-    }, {
-      signal
-    });
+    );
     const closeMenu = this.#closeMenu.bind(this);
     window.addEventListener("blur", closeMenu, {
-      signal
+      signal,
     });
     menu.addEventListener("focusout", this.#onFocusOutBound, {
-      signal
+      signal,
     });
   }
-  #onFocusOut({
-    relatedTarget
-  }) {
+  #onFocusOut({ relatedTarget }) {
     if (!this.#triggeringButton.contains(relatedTarget) && !this.#menu.contains(relatedTarget)) {
       this.#closeMenu();
     }
   }
   #setUpMenu() {
-    this.#triggeringButton.addEventListener("click", e => {
+    this.#triggeringButton.addEventListener("click", (e) => {
       if (this.#openMenuAC) {
         this.#closeMenu();
         return;
@@ -14879,82 +14765,86 @@ class Menu {
       this.#openMenu();
     });
     this.#triggeringButton.addEventListener("focusout", this.#onFocusOutBound);
-    const {
-      signal
-    } = this.#menuAC;
-    this.#menu.addEventListener("keydown", e => {
-      switch (e.key) {
-        case "Escape":
-          this.#closeMenu();
-          stopEvent(e);
-          break;
-        case "ArrowDown":
-          this.#goToNextItem(e.target, true);
-          stopEvent(e);
-          break;
-        case "ArrowUp":
-          this.#goToNextItem(e.target, false);
-          stopEvent(e);
-          break;
-        case "Home":
-          this.#goToFirstLast(false);
-          stopEvent(e);
-          break;
-        case "End":
-          this.#goToFirstLast(true);
-          stopEvent(e);
-          break;
-        default:
-          const {
-            key
-          } = e;
-          if (!/^\p{L}$/u.test(key)) {
+    const { signal } = this.#menuAC;
+    this.#menu.addEventListener(
+      "keydown",
+      (e) => {
+        switch (e.key) {
+          case "Escape":
+            this.#closeMenu();
+            stopEvent(e);
             break;
-          }
-          const char = key.toLocaleLowerCase();
-          this.#goToNextItem(e.target, true, item => item.textContent.trim().toLowerCase().startsWith(char));
-          stopEvent(e);
-          break;
+          case "ArrowDown":
+            this.#goToNextItem(e.target, true);
+            stopEvent(e);
+            break;
+          case "ArrowUp":
+            this.#goToNextItem(e.target, false);
+            stopEvent(e);
+            break;
+          case "Home":
+            this.#goToFirstLast(false);
+            stopEvent(e);
+            break;
+          case "End":
+            this.#goToFirstLast(true);
+            stopEvent(e);
+            break;
+          default:
+            const { key } = e;
+            if (!/^\p{L}$/u.test(key)) {
+              break;
+            }
+            const char = key.toLocaleLowerCase();
+            this.#goToNextItem(e.target, true, (item) => item.textContent.trim().toLowerCase().startsWith(char));
+            stopEvent(e);
+            break;
+        }
+      },
+      {
+        signal,
+        capture: true,
       }
-    }, {
-      signal,
-      capture: true
-    });
+    );
     this.#menu.addEventListener("contextmenu", noContextMenu, {
-      signal
+      signal,
     });
     this.#menu.addEventListener("click", this.#closeMenu.bind(this), {
       signal,
-      capture: true
+      capture: true,
     });
-    this.#triggeringButton.addEventListener("keydown", e => {
-      switch (e.key) {
-        case " ":
-        case "Enter":
-        case "ArrowDown":
-        case "Home":
-          stopEvent(e);
-          if (!this.#openMenuAC) {
-            this.#openMenu();
-          }
-          this.#goToFirstLast(false);
-          break;
-        case "ArrowUp":
-        case "End":
-          stopEvent(e);
-          if (!this.#openMenuAC) {
-            this.#openMenu();
-          }
-          this.#goToFirstLast(true);
-          break;
-        case "Escape":
-          this.#closeMenu();
-          stopEvent(e);
-          break;
+    this.#triggeringButton.addEventListener(
+      "keydown",
+      (e) => {
+        switch (e.key) {
+          case " ":
+          case "Enter":
+          case "ArrowDown":
+          case "Home":
+            stopEvent(e);
+            if (!this.#openMenuAC) {
+              this.#openMenu();
+            }
+            this.#goToFirstLast(false);
+            break;
+          case "ArrowUp":
+          case "End":
+            stopEvent(e);
+            if (!this.#openMenuAC) {
+              this.#openMenu();
+            }
+            this.#goToFirstLast(true);
+            break;
+          case "Escape":
+            this.#closeMenu();
+            stopEvent(e);
+            break;
+        }
+      },
+      {
+        signal,
       }
-    }, {
-      signal
-    });
+    );
   }
   #goToNextItem(element, forward, check = () => true) {
     const index = this.#lastIndex === -1 ? this.#menuItems.indexOf(element) : this.#lastIndex;
@@ -14970,7 +14860,7 @@ class Menu {
     }
   }
   #goToFirstLast(last = false) {
-    const i = this.#menuItems[last ? "findLastIndex" : "findIndex"](item => !item.disabled && !item.classList.contains("hidden"));
+    const i = this.#menuItems[last ? "findLastIndex" : "findIndex"]((item) => !item.disabled && !item.classList.contains("hidden"));
     if (i >= 0) {
       this.#menuItems[i].focus();
       this.#lastIndex = i;
@@ -14981,12 +14871,7 @@ class Menu {
     this.#menuAC?.abort();
     this.#menuAC = null;
   }
-}
-
-;// ./web/pdf_thumbnail_view.js
-
-
-
+} // ./web/pdf_thumbnail_view.js
 
 const DRAW_UPSCALE_FACTOR = 2;
 const MAX_NUM_SCALING_STEPS = 3;
@@ -14994,7 +14879,7 @@ const THUMBNAIL_WIDTH = 126;
 function getTempCanvas(width, height) {
   const canvas = new OffscreenCanvas(width, height);
   const ctx = canvas.getContext("2d", {
-    alpha: false
+    alpha: false,
   });
   ctx.save();
   ctx.fillStyle = "rgb(255, 255, 255)";
@@ -15015,7 +14900,7 @@ class PDFThumbnailView extends RenderableView {
     maxCanvasPixels,
     maxCanvasDim,
     pageColors,
-    enableSplitMerge = false
+    enableSplitMerge = false,
   }) {
     super();
     this.id = id;
@@ -15033,10 +14918,10 @@ class PDFThumbnailView extends RenderableView {
     this.linkService = linkService;
     this.renderingQueue = renderingQueue;
     this.placeholder = null;
-    const thumbnailContainer = this.div = document.createElement("div");
+    const thumbnailContainer = (this.div = document.createElement("div"));
     thumbnailContainer.className = "thumbnail";
     thumbnailContainer.setAttribute("page-number", id);
-    const imageContainer = this.imageContainer = document.createElement("div");
+    const imageContainer = (this.imageContainer = document.createElement("div"));
     thumbnailContainer.append(imageContainer);
     imageContainer.classList.add("thumbnailImageContainer", "missingThumbnailImage");
     imageContainer.role = "button";
@@ -15045,10 +14930,10 @@ class PDFThumbnailView extends RenderableView {
     imageContainer.setAttribute("page-number", id);
     imageContainer.setAttribute("data-l10n-id", "pdfjs-thumb-page-title1");
     imageContainer.setAttribute("data-l10n-args", this.#getPageL10nArgs(true));
-    const image = this.image = document.createElement("img");
+    const image = (this.image = document.createElement("img"));
     imageContainer.append(image);
     if (enableSplitMerge) {
-      const checkbox = this.checkbox = document.createElement("input");
+      const checkbox = (this.checkbox = document.createElement("input"));
       checkbox.type = "checkbox";
       checkbox.tabIndex = -1;
       checkbox.setAttribute("data-l10n-id", "pdfjs-thumb-page-checkbox1");
@@ -15071,11 +14956,9 @@ class PDFThumbnailView extends RenderableView {
       maxCanvasPixels: this.maxCanvasPixels,
       maxCanvasDim: this.maxCanvasDim,
       pageColors: this.pageColors,
-      enableSplitMerge: !!this.checkbox
+      enableSplitMerge: !!this.checkbox,
     });
-    const {
-      imageContainer
-    } = this;
+    const { imageContainer } = this;
     if (!imageContainer.classList.contains("missingThumbnailImage")) {
       thumbnailView.image.replaceWith(this.image.cloneNode(true));
       thumbnailView.imageContainer.classList.remove("missingThumbnailImage");
@@ -15086,7 +14969,7 @@ class PDFThumbnailView extends RenderableView {
     if (this.pasteButton) {
       return;
     }
-    const pasteButton = this.pasteButton = document.createElement("button");
+    const pasteButton = (this.pasteButton = document.createElement("button"));
     pasteButton.classList.add("thumbnailPasteButton", "viewsManagerButton");
     pasteButton.tabIndex = 0;
     pasteButton.setAttribute("data-l10n-id", "pdfjs-views-manager-paste-button-after");
@@ -15098,7 +14981,7 @@ class PDFThumbnailView extends RenderableView {
       pasteCallback(this.id);
     });
     if (this.id === 1) {
-      const prevPasteButton = this.prevPasteButton = pasteButton.cloneNode(true);
+      const prevPasteButton = (this.prevPasteButton = pasteButton.cloneNode(true));
       prevPasteButton.setAttribute("data-l10n-id", "pdfjs-views-manager-paste-button-before");
       prevPasteButton.addEventListener("click", () => {
         pasteCallback(0);
@@ -15126,13 +15009,10 @@ class PDFThumbnailView extends RenderableView {
     this.setPageLabel(this.pageLabel);
   }
   #updateDims() {
-    const {
-      width,
-      height
-    } = this.viewport;
+    const { width, height } = this.viewport;
     const ratio = width / height;
-    const canvasWidth = this.canvasWidth = THUMBNAIL_WIDTH;
-    const canvasHeight = this.canvasHeight = canvasWidth / ratio | 0;
+    const canvasWidth = (this.canvasWidth = THUMBNAIL_WIDTH);
+    const canvasHeight = (this.canvasHeight = (canvasWidth / ratio) | 0);
     this.scale = canvasWidth / width;
     this.imageContainer.style.height = `${canvasHeight}px`;
   }
@@ -15148,7 +15028,7 @@ class PDFThumbnailView extends RenderableView {
     const totalRotation = (this.rotation + this.pdfPageRotate) % 360;
     this.viewport = pdfPage.getViewport({
       scale: 1,
-      rotation: totalRotation
+      rotation: totalRotation,
     });
     this.reset();
   }
@@ -15156,10 +15036,7 @@ class PDFThumbnailView extends RenderableView {
     this.cancelRendering();
     this.renderingState = RenderingStates.INITIAL;
     this.#updateDims();
-    const {
-      image,
-      imageContainer
-    } = this;
+    const { image, imageContainer } = this;
     const url = image.src;
     if (url) {
       URL.revokeObjectURL(url);
@@ -15174,23 +15051,19 @@ class PDFThumbnailView extends RenderableView {
     this.toggleCurrent(false);
     this.div.remove();
   }
-  update({
-    rotation = null
-  }) {
+  update({ rotation = null }) {
     if (typeof rotation === "number") {
       this.rotation = rotation;
     }
     const totalRotation = (this.rotation + this.pdfPageRotate) % 360;
     this.viewport = this.viewport.clone({
       scale: 1,
-      rotation: totalRotation
+      rotation: totalRotation,
     });
     this.reset();
   }
   toggleCurrent(isCurrent) {
-    const {
-      imageContainer
-    } = this;
+    const { imageContainer } = this;
     if (isCurrent) {
       imageContainer.ariaCurrent = "page";
       imageContainer.tabIndex = 0;
@@ -15218,12 +15091,12 @@ class PDFThumbnailView extends RenderableView {
       height = upscaleFactor * this.canvasHeight;
     outputScale.limitCanvas(width, height, this.maxCanvasPixels, this.maxCanvasDim);
     const canvas = document.createElement("canvas");
-    canvas.width = width * outputScale.sx | 0;
-    canvas.height = height * outputScale.sy | 0;
+    canvas.width = (width * outputScale.sx) | 0;
+    canvas.height = (height * outputScale.sy) | 0;
     const transform = outputScale.scaled ? [outputScale.sx, 0, 0, outputScale.sy, 0, 0] : null;
     return {
       canvas,
-      transform
+      transform,
     };
   }
   async #convertCanvasToImage(canvas) {
@@ -15231,14 +15104,8 @@ class PDFThumbnailView extends RenderableView {
       throw new Error("#convertCanvasToImage: Rendering has not finished.");
     }
     const reducedCanvas = this.#reduceImage(canvas);
-    const {
-      imageContainer,
-      image
-    } = this;
-    const {
-      promise,
-      resolve
-    } = Promise.withResolvers();
+    const { imageContainer, image } = this;
+    const { promise, resolve } = Promise.withResolvers();
     reducedCanvas.toBlob(resolve);
     const blob = await promise;
     image.src = URL.createObjectURL(blob);
@@ -15251,23 +15118,17 @@ class PDFThumbnailView extends RenderableView {
       console.error("Must be in new state before drawing");
       return;
     }
-    const {
-      pageColors,
-      pdfPage
-    } = this;
+    const { pageColors, pdfPage } = this;
     if (!pdfPage) {
       this.renderingState = RenderingStates.FINISHED;
       throw new Error("pdfPage is not loaded");
     }
     this.renderingState = RenderingStates.RUNNING;
-    const {
-      canvas,
-      transform
-    } = this.#getPageDrawContext(DRAW_UPSCALE_FACTOR);
+    const { canvas, transform } = this.#getPageDrawContext(DRAW_UPSCALE_FACTOR);
     const drawViewport = this.viewport.clone({
-      scale: DRAW_UPSCALE_FACTOR * this.scale
+      scale: DRAW_UPSCALE_FACTOR * this.scale,
     });
-    const renderContinueCallback = cont => {
+    const renderContinueCallback = (cont) => {
       if (!this.renderingQueue.isHighestPriority(this)) {
         this.renderingState = RenderingStates.PAUSED;
         this.resume = () => {
@@ -15283,9 +15144,9 @@ class PDFThumbnailView extends RenderableView {
       transform,
       viewport: drawViewport,
       optionalContentConfigPromise: this._optionalContentConfigPromise,
-      pageColors
+      pageColors,
     };
-    const renderTask = this.renderTask = pdfPage.render(renderContext);
+    const renderTask = (this.renderTask = pdfPage.render(renderContext));
     renderTask.onContinue = renderContinueCallback;
     let error = null;
     try {
@@ -15305,7 +15166,7 @@ class PDFThumbnailView extends RenderableView {
     this.eventBus.dispatch("thumbnailrendered", {
       source: this,
       pageNumber: this.id,
-      pdfPage
+      pdfPage,
     });
     if (error) {
       throw error;
@@ -15315,11 +15176,7 @@ class PDFThumbnailView extends RenderableView {
     if (this.renderingState !== RenderingStates.INITIAL) {
       return;
     }
-    const {
-      thumbnailCanvas: canvas,
-      pdfPage,
-      scale
-    } = pageView;
+    const { thumbnailCanvas: canvas, pdfPage, scale } = pageView;
     if (!canvas) {
       return;
     }
@@ -15338,15 +15195,13 @@ class PDFThumbnailView extends RenderableView {
     const outputScale = new OutputScale();
     outputScale.sx = outputScale.sy = 1;
     outputScale.limitCanvas(width, height, this.maxCanvasPixels, this.maxCanvasDim);
-    return [width * outputScale.sx | 0, height * outputScale.sy | 0];
+    return [(width * outputScale.sx) | 0, (height * outputScale.sy) | 0];
   }
   #reduceImage(img) {
-    const {
-      canvas
-    } = this.#getPageDrawContext(1);
+    const { canvas } = this.#getPageDrawContext(1);
     const ctx = canvas.getContext("2d", {
       alpha: false,
-      willReadFrequently: false
+      willReadFrequently: false,
     });
     if (img.width <= 2 * canvas.width) {
       ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
@@ -15370,7 +15225,7 @@ class PDFThumbnailView extends RenderableView {
   #getPageL10nArgs(hasTotal = false) {
     return JSON.stringify({
       page: this.pageLabel ?? this.id,
-      total: hasTotal ? this.linkService.pagesCount : undefined
+      total: hasTotal ? this.linkService.pagesCount : undefined,
     });
   }
   setPageLabel(label) {
@@ -15379,33 +15234,13 @@ class PDFThumbnailView extends RenderableView {
     this.image.setAttribute("data-l10n-args", this.#getPageL10nArgs());
     this.checkbox?.setAttribute("data-l10n-args", this.#getPageL10nArgs());
   }
-}
-
-;// ./web/pdf_thumbnail_viewer.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+} // ./web/pdf_thumbnail_viewer.js
 
 const SCROLL_OPTIONS = {
   behavior: "instant",
   block: "nearest",
   inline: "nearest",
-  container: "nearest"
+  container: "nearest",
 };
 const DRAG_THRESHOLD_IN_PIXELS = 5;
 const PIXELS_TO_SCROLL_WHEN_DRAGGING = 20;
@@ -15472,7 +15307,7 @@ class PDFThumbnailViewer {
     undoBar,
     waitingBar,
     manageMenu,
-    addFileComponent
+    addFileComponent,
   }) {
     this.scrollableContainer = container.parentElement;
     this.container = container;
@@ -15494,14 +15329,7 @@ class PDFThumbnailViewer {
     this.#undoCloseButton = undoBar?.viewsManagerStatusUndoCloseButton || null;
     this.#waitingBar = waitingBar || null;
     if (this.#enableSplitMerge && manageMenu) {
-      const {
-        button: menuButton,
-        menu,
-        copy,
-        cut,
-        delete: del,
-        exportSelected
-      } = manageMenu;
+      const { button: menuButton, menu, copy, cut, delete: del, exportSelected } = manageMenu;
       if (enableNewBadge) {
         const newSpan = document.createElement("span");
         newSpan.setAttribute("data-l10n-id", "pdfjs-new-badge-content");
@@ -15509,12 +15337,16 @@ class PDFThumbnailViewer {
         menuButton.parentElement.before(newSpan);
         this.#newBadge = newSpan;
       }
-      eventBus.on("pagesloaded", () => {
-        menuButton.disabled = false;
-      }, {
-        once: true,
-        ...internalOpt
-      });
+      eventBus.on(
+        "pagesloaded",
+        () => {
+          menuButton.disabled = false;
+        },
+        {
+          once: true,
+          ...internalOpt,
+        }
+      );
       this._manageMenu = new Menu(menu, menuButton, [copy, cut, del, exportSelected]);
       this.#manageExportButton = exportSelected;
       exportSelected.addEventListener("click", this.#saveExtractedPages.bind(this));
@@ -15526,37 +15358,43 @@ class PDFThumbnailViewer {
       cut.addEventListener("click", this.#cutPages.bind(this));
       this.#toggleMenuEntries(false);
       menuButton.disabled = true;
-      eventBus.on("editingaction", ({
-        name
-      }) => {
-        switch (name) {
-          case "copyPage":
-            this.#copyPages();
-            break;
-          case "cutPage":
-            this.#cutPages();
-            break;
-          case "deletePage":
-            this.#deletePages("delete");
-            break;
-          case "savePage":
-            this.#saveExtractedPages();
-            break;
-        }
-      }, internalOpt);
-      this.container.addEventListener("contextmenu", e => {
-        eventBus.dispatch("editingstateschanged", {
-          source: this,
-          details: {
-            thumbnailId: parseInt(e.target.closest(".thumbnailImageContainer")?.parentElement.getAttribute("page-number"), 10) ?? -1,
-            hasSelectedPages: !!this.#selectedPages?.size,
-            canDeletePages: this.#canDelete()
+      eventBus.on(
+        "editingaction",
+        ({ name }) => {
+          switch (name) {
+            case "copyPage":
+              this.#copyPages();
+              break;
+            case "cutPage":
+              this.#cutPages();
+              break;
+            case "deletePage":
+              this.#deletePages("delete");
+              break;
+            case "savePage":
+              this.#saveExtractedPages();
+              break;
           }
-        });
-      }, {
-        signal: abortSignal,
-        passive: true
-      });
+        },
+        internalOpt
+      );
+      this.container.addEventListener(
+        "contextmenu",
+        (e) => {
+          eventBus.dispatch("editingstateschanged", {
+            source: this,
+            details: {
+              thumbnailId: parseInt(e.target.closest(".thumbnailImageContainer")?.parentElement.getAttribute("page-number"), 10) ?? -1,
+              hasSelectedPages: !!this.#selectedPages?.size,
+              canDeletePages: this.#canDelete(),
+            },
+          });
+        },
+        {
+          signal: abortSignal,
+          passive: true,
+        }
+      );
       this.#undoButton?.addEventListener("click", this.#undo.bind(this));
       this.#undoCloseButton?.addEventListener("click", this.#dismissUndo.bind(this, true));
       this.#deselectButton?.addEventListener("click", () => {
@@ -15566,10 +15404,7 @@ class PDFThumbnailViewer {
       });
       this.#deselectButton.classList.toggle("hidden", true);
       if (this.#enableMerge && addFileComponent) {
-        const {
-          picker,
-          button
-        } = addFileComponent;
+        const { picker, button } = addFileComponent;
         picker.addEventListener("change", () => {
           const files = Array.from(picker.files ?? []);
           if (files.length) {
@@ -15614,12 +15449,12 @@ class PDFThumbnailViewer {
         }
         entries.push({
           image: bitmap,
-          insertAfter
+          insertAfter,
         });
       } else {
         entries.push({
           document: await file.bytes(),
-          insertAfter
+          insertAfter,
         });
       }
     }
@@ -15628,36 +15463,44 @@ class PDFThumbnailViewer {
       return;
     }
     const pagesCount = this.#pagesMapper.pagesNumber;
-    const data = this.hasStructuralChanges() ? this.getStructuralChanges() : {
-      pageInfos: [{
-        document: null
-      }],
-      copyLevels: null
-    };
+    const data = this.hasStructuralChanges()
+      ? this.getStructuralChanges()
+      : {
+          pageInfos: [
+            {
+              document: null,
+            },
+          ],
+          copyLevels: null,
+        };
     data.pageInfos.push(...entries);
-    this.eventBus.on("pagesloaded", () => {
-      this.#selectedPages = null;
-      this.#updateMenuEntries();
-      this.#toggleBar("status");
-      const newPagesCount = this.#pagesMapper.pagesNumber;
-      const insertedPagesCount = newPagesCount - pagesCount;
-      for (let i = insertAfter + 1, ii = insertAfter + 1 + insertedPagesCount; i < ii; i++) {
-        this._thumbnails[i].checkbox.checked = true;
-        this.#selectPage(i + 1, true);
+    this.eventBus.on(
+      "pagesloaded",
+      () => {
+        this.#selectedPages = null;
+        this.#updateMenuEntries();
+        this.#toggleBar("status");
+        const newPagesCount = this.#pagesMapper.pagesNumber;
+        const insertedPagesCount = newPagesCount - pagesCount;
+        for (let i = insertAfter + 1, ii = insertAfter + 1 + insertedPagesCount; i < ii; i++) {
+          this._thumbnails[i].checkbox.checked = true;
+          this.#selectPage(i + 1, true);
+        }
+        if (insertedPagesCount) {
+          this.#updateCurrentPage(insertAfter + 2, true);
+        }
+      },
+      {
+        once: true,
+        ...internalOpt,
       }
-      if (insertedPagesCount) {
-        this.#updateCurrentPage(insertAfter + 2, true);
-      }
-    }, {
-      once: true,
-      ...internalOpt
-    });
+    );
     this.#reportTelemetry({
-      action: "merge"
+      action: "merge",
     });
     this.eventBus.dispatch("saveandload", {
       source: this,
-      data
+      data,
     });
   }
   getThumbnail(index) {
@@ -15666,7 +15509,7 @@ class PDFThumbnailViewer {
   #getVisibleThumbs() {
     return getVisibleElements({
       scrollEl: this.scrollableContainer,
-      views: this._thumbnails
+      views: this._thumbnails,
     });
   }
   #resetCurrentThumbnail(newPageNumber) {
@@ -15690,20 +15533,13 @@ class PDFThumbnailViewer {
       this.#resetCurrentThumbnail(pageNumber);
       thumbnailView.toggleCurrent(true);
     }
-    const {
-      first,
-      last,
-      views
-    } = this.#getVisibleThumbs();
+    const { first, last, views } = this.#getVisibleThumbs();
     if (views.length > 0) {
       let shouldScroll = false;
       if (pageNumber <= first.id || pageNumber >= last.id) {
         shouldScroll = true;
       } else {
-        for (const {
-          id,
-          percent
-        } of views) {
+        for (const { id, percent } of views) {
           if (id !== pageNumber) {
             continue;
           }
@@ -15732,7 +15568,7 @@ class PDFThumbnailViewer {
     }
     this._pagesRotation = rotation;
     const updateArgs = {
-      rotation
+      rotation,
     };
     for (const thumbnail of this._thumbnails) {
       thumbnail.update(updateArgs);
@@ -15764,40 +15600,42 @@ class PDFThumbnailViewer {
     this.#pagesMapper = pdfDocument.pagesMapper;
     const firstPagePromise = pdfDocument.getPage(1);
     const optionalContentConfigPromise = pdfDocument.getOptionalContentConfig({
-      intent: "display"
+      intent: "display",
     });
-    firstPagePromise.then(firstPdfPage => {
-      const pagesCount = pdfDocument.numPages;
-      const viewport = firstPdfPage.getViewport({
-        scale: 1
-      });
-      const fragment = document.createDocumentFragment();
-      for (let pageNum = 1; pageNum <= pagesCount; ++pageNum) {
-        const thumbnail = new PDFThumbnailView({
-          container: fragment,
-          eventBus: this.eventBus,
-          id: pageNum,
-          defaultViewport: viewport.clone(),
-          optionalContentConfigPromise,
-          linkService: this.linkService,
-          renderingQueue: this.renderingQueue,
-          maxCanvasPixels: this.maxCanvasPixels,
-          maxCanvasDim: this.maxCanvasDim,
-          pageColors: this.pageColors,
-          enableSplitMerge: this.#enableSplitMerge
+    firstPagePromise
+      .then((firstPdfPage) => {
+        const pagesCount = pdfDocument.numPages;
+        const viewport = firstPdfPage.getViewport({
+          scale: 1,
         });
-        this._thumbnails.push(thumbnail);
-      }
-      this._thumbnails[0]?.setPdfPage(firstPdfPage);
-      const thumbnailView = this._thumbnails[this._currentPageNumber - 1];
-      thumbnailView.toggleCurrent(true);
-      this.container.append(fragment);
-      this.eventBus.dispatch("thumbnailsloaded", {
-        source: this
+        const fragment = document.createDocumentFragment();
+        for (let pageNum = 1; pageNum <= pagesCount; ++pageNum) {
+          const thumbnail = new PDFThumbnailView({
+            container: fragment,
+            eventBus: this.eventBus,
+            id: pageNum,
+            defaultViewport: viewport.clone(),
+            optionalContentConfigPromise,
+            linkService: this.linkService,
+            renderingQueue: this.renderingQueue,
+            maxCanvasPixels: this.maxCanvasPixels,
+            maxCanvasDim: this.maxCanvasDim,
+            pageColors: this.pageColors,
+            enableSplitMerge: this.#enableSplitMerge,
+          });
+          this._thumbnails.push(thumbnail);
+        }
+        this._thumbnails[0]?.setPdfPage(firstPdfPage);
+        const thumbnailView = this._thumbnails[this._currentPageNumber - 1];
+        thumbnailView.toggleCurrent(true);
+        this.container.append(fragment);
+        this.eventBus.dispatch("thumbnailsloaded", {
+          source: this,
+        });
+      })
+      .catch((reason) => {
+        console.error("Unable to initialize thumbnail viewer", reason);
       });
-    }).catch(reason => {
-      console.error("Unable to initialize thumbnail viewer", reason);
-    });
   }
   #cancelRendering() {
     for (const thumbnail of this._thumbnails) {
@@ -15862,12 +15700,9 @@ class PDFThumbnailViewer {
     return this.#pagesMapper?.getPageMappingForSaving() || null;
   }
   static #getScaleFactor(image) {
-    return PDFThumbnailViewer.#draggingScaleFactor ||= parseFloat(getComputedStyle(image).getPropertyValue("--thumbnail-dragging-scale"));
+    return (PDFThumbnailViewer.#draggingScaleFactor ||= parseFloat(getComputedStyle(image).getPropertyValue("--thumbnail-dragging-scale")));
   }
-  static #fitImageDimensions(width, height, {
-    minSide = 0,
-    maxSide
-  }) {
+  static #fitImageDimensions(width, height, { minSide = 0, maxSide }) {
     const longest = Math.max(width, height);
     let scale = 1;
     if (minSide > 0 && longest < minSide) {
@@ -15875,24 +15710,23 @@ class PDFThumbnailViewer {
     } else if (longest > maxSide) {
       scale = maxSide / longest;
     }
-    return scale === 1 ? {
-      width,
-      height
-    } : {
-      width: Math.max(1, Math.round(width * scale)),
-      height: Math.max(1, Math.round(height * scale))
-    };
+    return scale === 1
+      ? {
+          width,
+          height,
+        }
+      : {
+          width: Math.max(1, Math.round(width * scale)),
+          height: Math.max(1, Math.round(height * scale)),
+        };
   }
   static async #fileToImageBitmap(file) {
     const MIN_RASTER_SIDE = 1024;
     const MAX_RASTER_SIDE = 4096;
     if (file.type !== "image/svg+xml") {
       const bitmap = await createImageBitmap(file);
-      const {
-        width,
-        height
-      } = PDFThumbnailViewer.#fitImageDimensions(bitmap.width, bitmap.height, {
-        maxSide: MAX_RASTER_SIDE
+      const { width, height } = PDFThumbnailViewer.#fitImageDimensions(bitmap.width, bitmap.height, {
+        maxSide: MAX_RASTER_SIDE,
       });
       if (width === bitmap.width && height === bitmap.height) {
         return bitmap;
@@ -15908,13 +15742,14 @@ class PDFThumbnailViewer {
       const image = new Image();
       image.src = url;
       await image.decode();
-      const {
-        width,
-        height
-      } = PDFThumbnailViewer.#fitImageDimensions(image.naturalWidth || MIN_RASTER_SIDE, image.naturalHeight || MIN_RASTER_SIDE, {
-        minSide: MIN_RASTER_SIDE,
-        maxSide: MAX_RASTER_SIDE
-      });
+      const { width, height } = PDFThumbnailViewer.#fitImageDimensions(
+        image.naturalWidth || MIN_RASTER_SIDE,
+        image.naturalHeight || MIN_RASTER_SIDE,
+        {
+          minSide: MIN_RASTER_SIDE,
+          maxSide: MAX_RASTER_SIDE,
+        }
+      );
       const canvas = new OffscreenCanvas(width, height);
       const ctx = canvas.getContext("2d");
       ctx.drawImage(image, 0, 0, width, height);
@@ -15927,8 +15762,8 @@ class PDFThumbnailViewer {
     this.#resetCurrentThumbnail(0);
     let newCurrentPageNumber = 0;
     const pagesMapper = this.#pagesMapper;
-    const prevThumbnails = this.#savedThumbnails = this._thumbnails;
-    const newThumbnails = this._thumbnails = [];
+    const prevThumbnails = (this.#savedThumbnails = this._thumbnails);
+    const newThumbnails = (this._thumbnails = []);
     const fragment = document.createDocumentFragment();
     const isCut = this.#isCut;
     for (let i = 1, ii = pagesMapper.pagesNumber; i <= ii; i++) {
@@ -15971,12 +15806,9 @@ class PDFThumbnailViewer {
     }
     for (const selected of this.#selectedPages) {
       const thumbnail = this._thumbnails[selected - 1];
-      const placeholder = thumbnail.placeholder = document.createElement("div");
+      const placeholder = (thumbnail.placeholder = document.createElement("div"));
       placeholder.classList.add("thumbnailImageContainer", "placeholder");
-      const {
-        div,
-        imageContainer
-      } = thumbnail;
+      const { div, imageContainer } = thumbnail;
       div.classList.add("isDragging");
       placeholder.style.height = getComputedStyle(imageContainer).height;
       imageContainer.after(placeholder);
@@ -15989,7 +15821,7 @@ class PDFThumbnailViewer {
         this.#draggedContainer = imageContainer;
         continue;
       }
-      const draggedContainer = this.#draggedContainer = document.createElement("div");
+      const draggedContainer = (this.#draggedContainer = document.createElement("div"));
       draggedContainer.classList.add("draggingThumbnail", "thumbnailImageContainer", "multiple");
       draggedContainer.style.height = getComputedStyle(imageContainer).height;
       imageContainer.replaceWith(draggedContainer);
@@ -16011,11 +15843,7 @@ class PDFThumbnailViewer {
     this.container.classList.remove("isDragging");
     for (const selected of this.#selectedPages) {
       const thumbnail = this._thumbnails[selected - 1];
-      const {
-        div,
-        placeholder,
-        imageContainer
-      } = thumbnail;
+      const { div, placeholder, imageContainer } = thumbnail;
       placeholder.remove();
       imageContainer.classList.remove("draggingThumbnail", "hidden");
       div.classList.remove("isDragging");
@@ -16028,7 +15856,11 @@ class PDFThumbnailViewer {
       draggedContainer.style.translate = "";
     }
     const selectedPages = this.#selectedPages;
-    if (!isNaN(lastDraggedOverIndex) && isDropping && !(selectedPages.size === 1 && (selectedPages.has(lastDraggedOverIndex + 1) || selectedPages.has(lastDraggedOverIndex + 2)))) {
+    if (
+      !isNaN(lastDraggedOverIndex) &&
+      isDropping &&
+      !(selectedPages.size === 1 && (selectedPages.has(lastDraggedOverIndex + 1) || selectedPages.has(lastDraggedOverIndex + 2)))
+    ) {
       this._thumbnails[this._currentPageNumber - 1]?.toggleCurrent(false);
       this._currentPageNumber = -1;
       const newIndex = lastDraggedOverIndex + 1;
@@ -16043,12 +15875,12 @@ class PDFThumbnailViewer {
       this.#toggleMenuEntries(false);
       this.#updateStatus("select");
       this.#reportTelemetry({
-        action: "move"
+        action: "move",
       });
       this.eventBus.dispatch("pagesedited", {
         source: this,
         pagesMapper,
-        type: "move"
+        type: "move",
       });
     }
     if (!isNaN(this.#pageNumberToRemove)) {
@@ -16084,7 +15916,7 @@ class PDFThumbnailViewer {
       this.eventBus.dispatch("pagesedited", {
         source: this,
         pagesMapper: this.#pagesMapper,
-        type: "cancelCopy"
+        type: "cancelCopy",
       });
     }
     this.#isCut = false;
@@ -16108,7 +15940,7 @@ class PDFThumbnailViewer {
       this.eventBus.dispatch("pagesedited", {
         source: this,
         pagesMapper: this.#pagesMapper,
-        type: "cancelDelete"
+        type: "cancelDelete",
       });
     }
   }
@@ -16132,7 +15964,7 @@ class PDFThumbnailViewer {
     this.eventBus.dispatch("pagesedited", {
       source: this,
       pagesMapper: this.#pagesMapper,
-      type: "cleanSavedData"
+      type: "cleanSavedData",
     });
   }
   #canDelete() {
@@ -16184,17 +16016,17 @@ class PDFThumbnailViewer {
       source: this,
       details: {
         type: "pageOrganization",
-        data
-      }
+        data,
+      },
     });
   }
   #saveExtractedPages() {
     this.#reportTelemetry({
-      action: "exportSelected"
+      action: "exportSelected",
     });
     this.eventBus.dispatch("saveextractedpages", {
       source: this,
-      data: this.#pagesMapper.extractPages(this.#selectedPages)
+      data: this.#pagesMapper.extractPages(this.#selectedPages),
     });
     this.#clearSelection();
     this.#toggleMenuEntries(false);
@@ -16204,11 +16036,11 @@ class PDFThumbnailViewer {
     if (!this.#isCut) {
       this.#savedThumbnails = null;
       this.#reportTelemetry({
-        action: "copy"
+        action: "copy",
       });
     }
     this.#updateStatus(this.#isCut ? "cut" : "copy");
-    const pageNumbersToCopy = this.#copiedPageNumbers = Uint32Array.from(this.#selectedPages).sort((a, b) => a - b);
+    const pageNumbersToCopy = (this.#copiedPageNumbers = Uint32Array.from(this.#selectedPages).sort((a, b) => a - b));
     const pagesMapper = this.#pagesMapper;
     pagesMapper.copyPages(pageNumbersToCopy);
     this.#copiedThumbnails = new Map();
@@ -16219,7 +16051,7 @@ class PDFThumbnailViewer {
       source: this,
       pagesMapper,
       pageNumbers: pageNumbersToCopy,
-      type: "copy"
+      type: "copy",
     });
     if (clearSelection) {
       this.#clearSelection();
@@ -16232,7 +16064,7 @@ class PDFThumbnailViewer {
       return;
     }
     this.#reportTelemetry({
-      action: "cut"
+      action: "cut",
     });
     this.#isCut = true;
     this.#copyPages(false);
@@ -16240,7 +16072,7 @@ class PDFThumbnailViewer {
   }
   #pastePages(index) {
     this.#reportTelemetry({
-      action: "paste"
+      action: "paste",
     });
     const pagesMapper = this.#pagesMapper;
     const currentPageNumber = this.#copiedPageNumbers.includes(this._currentPageNumber) ? 0 : this._currentPageNumber;
@@ -16252,7 +16084,7 @@ class PDFThumbnailViewer {
       source: this,
       pagesMapper,
       hasBeenCut: this.#isCut,
-      type: "paste"
+      type: "paste",
     });
     this.#copiedThumbnails = null;
     this.#isCut = false;
@@ -16267,13 +16099,13 @@ class PDFThumbnailViewer {
     const selectedPages = this.#selectedPages;
     if (type === "delete") {
       this.#reportTelemetry({
-        action: "delete"
+        action: "delete",
       });
       this.#updateStatus("delete");
     }
     const pagesMapper = this.#pagesMapper;
     const currentPageNumber = selectedPages.has(this._currentPageNumber) ? 0 : this._currentPageNumber;
-    const pagesToDelete = this.#deletedPageNumbers = Uint32Array.from(selectedPages).sort((a, b) => a - b);
+    const pagesToDelete = (this.#deletedPageNumbers = Uint32Array.from(selectedPages).sort((a, b) => a - b));
     pagesMapper.deletePages(pagesToDelete);
     this.#updateCurrentPage(this.#updateThumbnails(currentPageNumber));
     this.#thumbnailsPositions = null;
@@ -16283,7 +16115,7 @@ class PDFThumbnailViewer {
       source: this,
       pagesMapper,
       pageNumbers: pagesToDelete,
-      type
+      type,
     });
   }
   #updateMenuEntries() {
@@ -16292,7 +16124,11 @@ class PDFThumbnailViewer {
     this.#manageDeleteButton.disabled = this.#manageCutButton.disabled = !this.#canDelete();
   }
   #toggleMenuEntries(enable) {
-    this.#manageExportButton.disabled = this.#manageDeleteButton.disabled = this.#manageCopyButton.disabled = this.#manageCutButton.disabled = !enable;
+    this.#manageExportButton.disabled =
+      this.#manageDeleteButton.disabled =
+      this.#manageCopyButton.disabled =
+      this.#manageCutButton.disabled =
+        !enable;
   }
   #updateStatus(type) {
     if (!this.#statusBar || !this.#undoBar) {
@@ -16300,10 +16136,19 @@ class PDFThumbnailViewer {
     }
     const count = this.#selectedPages?.size || 0;
     if (type === "select") {
-      this.#statusLabel.setAttribute("data-l10n-id", count ? "pdfjs-views-manager-pages-status-action-label" : "pdfjs-views-manager-pages-status-none-action-label");
-      this.#toggleBar("status", "", count ? {
+      this.#statusLabel.setAttribute(
+        "data-l10n-id",
+        count ? "pdfjs-views-manager-pages-status-action-label" : "pdfjs-views-manager-pages-status-none-action-label"
+      );
+      this.#toggleBar(
+        "status",
+        "",
         count
-      } : null);
+          ? {
+              count,
+            }
+          : null
+      );
       return;
     }
     let l10nId;
@@ -16319,10 +16164,13 @@ class PDFThumbnailViewer {
         break;
     }
     this.#toggleBar("undo", l10nId, {
-      count
+      count,
     });
     const isCopy = type === "copy";
-    this.#undoButton.firstElementChild.setAttribute("data-l10n-id", isCopy ? "pdfjs-views-manager-status-done-button-label" : "pdfjs-views-manager-status-undo-button-label");
+    this.#undoButton.firstElementChild.setAttribute(
+      "data-l10n-id",
+      isCopy ? "pdfjs-views-manager-status-done-button-label" : "pdfjs-views-manager-status-undo-button-label"
+    );
     this.#undoCloseButton.classList.toggle("hidden", isCopy);
   }
   #moveDraggedContainer(dx, dy) {
@@ -16341,11 +16189,17 @@ class PDFThumbnailViewer {
     this.#draggedImageOffsetY += dy;
     this.#draggedContainer.style.translate = `${this.#draggedImageOffsetX}px ${this.#draggedImageOffsetY}px`;
     if (this.#draggedImageY + this.#draggedImageHeight > this.#currentScrollBottom) {
-      this.scrollableContainer.scrollTop = Math.min(this.scrollableContainer.scrollTop + PIXELS_TO_SCROLL_WHEN_DRAGGING, this.#scrollableContainerHeight);
+      this.scrollableContainer.scrollTop = Math.min(
+        this.scrollableContainer.scrollTop + PIXELS_TO_SCROLL_WHEN_DRAGGING,
+        this.#scrollableContainerHeight
+      );
     } else if (this.#draggedImageY < this.#currentScrollTop) {
       this.scrollableContainer.scrollTop = Math.max(this.scrollableContainer.scrollTop - PIXELS_TO_SCROLL_WHEN_DRAGGING, 0);
     }
-    const positionData = this.#findClosestThumbnail(this.#draggedImageX + this.#draggedImageWidth / 2, this.#draggedImageY + this.#draggedImageHeight / 2);
+    const positionData = this.#findClosestThumbnail(
+      this.#draggedImageX + this.#draggedImageWidth / 2,
+      this.#draggedImageY + this.#draggedImageHeight / 2
+    );
     this.#positionDragMarker(positionData);
   }
   #positionDragMarker(positionData) {
@@ -16360,10 +16214,7 @@ class PDFThumbnailViewer {
     }
     const [index, space] = positionData;
     const dragMarkerStyle = dragMarker.style;
-    const {
-      bbox,
-      x: xPos
-    } = this.#thumbnailsPositions;
+    const { bbox, x: xPos } = this.#thumbnailsPositions;
     let x, y, width, height;
     if (index < 0) {
       if (xPos.length === 1) {
@@ -16400,15 +16251,8 @@ class PDFThumbnailViewer {
     let lastRightX;
     let firstBottomY;
     for (let i = 0, ii = this._thumbnails.length; i < ii; i++) {
-      const {
-        div
-      } = this._thumbnails[i];
-      const {
-        offsetTop: y,
-        offsetLeft: x,
-        offsetWidth: w,
-        offsetHeight: h
-      } = div;
+      const { div } = this._thumbnails[i];
+      const { offsetTop: y, offsetLeft: x, offsetWidth: w, offsetHeight: h } = div;
       if (w === 0) {
         return;
       }
@@ -16449,26 +16293,23 @@ class PDFThumbnailViewer {
       lastX: positionsLastX,
       space,
       lastSpace: positionsLastX.length ? (positionsLastX.at(-1) - lastRightX) / 2 : space,
-      bbox
+      bbox,
     };
     this.#isOneColumnView = positionsX.length === 1;
-    ({
-      clientWidth: this.#scrollableContainerWidth,
-      scrollHeight: this.#scrollableContainerHeight
-    } = this.scrollableContainer);
+    ({ clientWidth: this.#scrollableContainerWidth, scrollHeight: this.#scrollableContainerHeight } = this.scrollableContainer);
   }
   #addEventListeners() {
-    this.eventBus.on("resize", ({
-      source
-    }) => {
-      if (source.thumbnailsView === this.container) {
-        this.#computeThumbnailsPosition();
-      }
-    }, internalOpt);
-    this.container.addEventListener("keydown", e => {
-      const {
-        target
-      } = e;
+    this.eventBus.on(
+      "resize",
+      ({ source }) => {
+        if (source.thumbnailsView === this.container) {
+          this.#computeThumbnailsPosition();
+        }
+      },
+      internalOpt
+    );
+    this.container.addEventListener("keydown", (e) => {
+      const { target } = e;
       const isCheckbox = target instanceof HTMLInputElement && target.type === "checkbox";
       switch (e.key) {
         case "ArrowLeft":
@@ -16522,10 +16363,8 @@ class PDFThumbnailViewer {
           break;
       }
     });
-    this.container.addEventListener("click", e => {
-      const {
-        target
-      } = e;
+    this.container.addEventListener("click", (e) => {
+      const { target } = e;
       if (target instanceof HTMLInputElement) {
         const pageNumber = parseInt(target.parentElement.getAttribute("page-number"), 10);
         this.#selectPage(pageNumber, target.checked);
@@ -16540,7 +16379,7 @@ class PDFThumbnailViewer {
     if (this.#hasUndoBarVisible) {
       this.#dismissUndo(false);
     }
-    const set = this.#selectedPages ??= new Set();
+    const set = (this.#selectedPages ??= new Set());
     if (checked) {
       set.add(pageNumber);
     } else {
@@ -16553,28 +16392,27 @@ class PDFThumbnailViewer {
     if (!this.#enableSplitMerge) {
       return;
     }
-    this.container.addEventListener("pointerdown", e => {
-      const {
-        target: draggedImage,
-        clientX: clickX,
-        clientY: clickY,
-        pointerId: dragPointerId
-      } = e;
-      if (e.button !== 0 || this.#isInPasteMode || this._thumbnails.length === 1 || !isNaN(this.#lastDraggedOverIndex) || !draggedImage.classList.contains("thumbnailImageContainer")) {
+    this.container.addEventListener("pointerdown", (e) => {
+      const { target: draggedImage, clientX: clickX, clientY: clickY, pointerId: dragPointerId } = e;
+      if (
+        e.button !== 0 ||
+        this.#isInPasteMode ||
+        this._thumbnails.length === 1 ||
+        !isNaN(this.#lastDraggedOverIndex) ||
+        !draggedImage.classList.contains("thumbnailImageContainer")
+      ) {
         return;
       }
       const thumbnail = draggedImage.parentElement;
       const pointerDownAC = new AbortController();
-      const {
-        signal: pointerDownSignal
-      } = pointerDownAC;
+      const { signal: pointerDownSignal } = pointerDownAC;
       let prevDragX = clickX;
       let prevDragY = clickY;
       let prevScrollTop = this.scrollableContainer.scrollTop;
       const scaleFactor = PDFThumbnailViewer.#getScaleFactor(draggedImage);
       this.#draggedImageOffsetY = ((scaleFactor - 1) * e.layerY + draggedImage.offsetTop) / scaleFactor;
       if (this.#isOneColumnView) {
-        this.#draggedImageOffsetX = draggedImage.offsetLeft + (scaleFactor - 1) * 0.5 * draggedImage.offsetWidth / scaleFactor;
+        this.#draggedImageOffsetX = draggedImage.offsetLeft + ((scaleFactor - 1) * 0.5 * draggedImage.offsetWidth) / scaleFactor;
       } else {
         this.#draggedImageOffsetX = ((scaleFactor - 1) * e.layerX + draggedImage.offsetLeft) / scaleFactor;
       }
@@ -16582,101 +16420,113 @@ class PDFThumbnailViewer {
       this.#draggedImageY = thumbnail.offsetTop + this.#draggedImageOffsetY;
       this.#draggedImageWidth = draggedImage.offsetWidth / scaleFactor;
       this.#draggedImageHeight = draggedImage.offsetHeight / scaleFactor;
-      this.container.addEventListener("pointermove", ev => {
-        const {
-          clientX: x,
-          clientY: y,
-          pointerId
-        } = ev;
-        if (isNaN(this.#lastDraggedOverIndex)) {
-          if (pointerId !== dragPointerId || Math.abs(x - clickX) <= DRAG_THRESHOLD_IN_PIXELS && Math.abs(y - clickY) <= DRAG_THRESHOLD_IN_PIXELS) {
-            return;
-          }
-          this.#onStartDragging(thumbnail);
-          const stopDragging = (_e, isDropping = false) => {
-            this.#onStopDragging(isDropping);
-            pointerDownAC.abort();
-          };
-          const {
-            signal
-          } = this.#dragAC;
-          window.addEventListener("touchmove", stopEvent, {
-            passive: false,
-            signal
-          });
-          window.addEventListener("contextmenu", noContextMenu, {
-            signal
-          });
-          this.scrollableContainer.addEventListener("scrollend", () => {
-            const {
-              scrollableContainer: {
-                clientHeight,
-                scrollTop
-              }
-            } = this;
-            this.#currentScrollTop = scrollTop;
-            this.#currentScrollBottom = scrollTop + clientHeight;
-            const dy = scrollTop - prevScrollTop;
-            prevScrollTop = scrollTop;
-            this.#moveDraggedContainer(0, dy);
-          }, {
-            passive: true,
-            signal
-          });
-          window.addEventListener("pointerup", upEv => {
-            if (upEv.pointerId !== dragPointerId) {
+      this.container.addEventListener(
+        "pointermove",
+        (ev) => {
+          const { clientX: x, clientY: y, pointerId } = ev;
+          if (isNaN(this.#lastDraggedOverIndex)) {
+            if (
+              pointerId !== dragPointerId ||
+              (Math.abs(x - clickX) <= DRAG_THRESHOLD_IN_PIXELS && Math.abs(y - clickY) <= DRAG_THRESHOLD_IN_PIXELS)
+            ) {
               return;
             }
-            window.addEventListener("click", stopEvent, {
-              capture: true,
-              once: true,
-              signal
+            this.#onStartDragging(thumbnail);
+            const stopDragging = (_e, isDropping = false) => {
+              this.#onStopDragging(isDropping);
+              pointerDownAC.abort();
+            };
+            const { signal } = this.#dragAC;
+            window.addEventListener("touchmove", stopEvent, {
+              passive: false,
+              signal,
             });
-            stopEvent(upEv);
-            stopDragging(upEv, true);
-          }, {
-            signal
-          });
-          window.addEventListener("blur", stopDragging, {
-            signal
-          });
-          window.addEventListener("pointercancel", stopDragging, {
-            signal
-          });
-          window.addEventListener("wheel", stopEvent, {
-            passive: false,
-            signal
-          });
-          window.addEventListener("keydown", kEv => {
-            if (kEv.key === "Escape" && !isNaN(this.#lastDraggedOverIndex)) {
-              stopDragging(kEv);
-            }
-          }, {
-            signal
-          });
+            window.addEventListener("contextmenu", noContextMenu, {
+              signal,
+            });
+            this.scrollableContainer.addEventListener(
+              "scrollend",
+              () => {
+                const {
+                  scrollableContainer: { clientHeight, scrollTop },
+                } = this;
+                this.#currentScrollTop = scrollTop;
+                this.#currentScrollBottom = scrollTop + clientHeight;
+                const dy = scrollTop - prevScrollTop;
+                prevScrollTop = scrollTop;
+                this.#moveDraggedContainer(0, dy);
+              },
+              {
+                passive: true,
+                signal,
+              }
+            );
+            window.addEventListener(
+              "pointerup",
+              (upEv) => {
+                if (upEv.pointerId !== dragPointerId) {
+                  return;
+                }
+                window.addEventListener("click", stopEvent, {
+                  capture: true,
+                  once: true,
+                  signal,
+                });
+                stopEvent(upEv);
+                stopDragging(upEv, true);
+              },
+              {
+                signal,
+              }
+            );
+            window.addEventListener("blur", stopDragging, {
+              signal,
+            });
+            window.addEventListener("pointercancel", stopDragging, {
+              signal,
+            });
+            window.addEventListener("wheel", stopEvent, {
+              passive: false,
+              signal,
+            });
+            window.addEventListener(
+              "keydown",
+              (kEv) => {
+                if (kEv.key === "Escape" && !isNaN(this.#lastDraggedOverIndex)) {
+                  stopDragging(kEv);
+                }
+              },
+              {
+                signal,
+              }
+            );
+          }
+          const dx = x - prevDragX;
+          const dy = y - prevDragY;
+          prevDragX = x;
+          prevDragY = y;
+          this.#moveDraggedContainer(dx, dy);
+        },
+        {
+          passive: true,
+          signal: pointerDownSignal,
         }
-        const dx = x - prevDragX;
-        const dy = y - prevDragY;
-        prevDragX = x;
-        prevDragY = y;
-        this.#moveDraggedContainer(dx, dy);
-      }, {
-        passive: true,
-        signal: pointerDownSignal
-      });
-      window.addEventListener("pointerup", ({
-        pointerId
-      }) => {
-        if (pointerId !== dragPointerId) {
-          return;
+      );
+      window.addEventListener(
+        "pointerup",
+        ({ pointerId }) => {
+          if (pointerId !== dragPointerId) {
+            return;
+          }
+          pointerDownAC.abort();
+        },
+        {
+          signal: pointerDownSignal,
         }
-        pointerDownAC.abort();
-      }, {
-        signal: pointerDownSignal
-      });
+      );
       window.addEventListener("dragstart", stopEvent, {
         capture: true,
-        signal: pointerDownSignal
+        signal: pointerDownSignal,
       });
     });
   }
@@ -16686,7 +16536,7 @@ class PDFThumbnailViewer {
     }
     const container = this.container;
     const signal = this.#abortSignal;
-    const hasMergeableItem = dataTransfer => {
+    const hasMergeableItem = (dataTransfer) => {
       if (!dataTransfer) {
         return false;
       }
@@ -16697,81 +16547,89 @@ class PDFThumbnailViewer {
       }
       return false;
     };
-    const pointerInContainer = ({
-      clientX,
-      clientY
-    }) => {
-      const {
-        left,
-        right,
-        top,
-        bottom
-      } = container.getBoundingClientRect();
+    const pointerInContainer = ({ clientX, clientY }) => {
+      const { left, right, top, bottom } = container.getBoundingClientRect();
       return clientX >= left && clientX < right && clientY >= top && clientY < bottom;
     };
-    container.addEventListener("dragenter", e => {
-      if (this.#externalDragActive || !isNaN(this.#lastDraggedOverIndex) || !this._thumbnails.length || !hasMergeableItem(e.dataTransfer)) {
-        return;
+    container.addEventListener(
+      "dragenter",
+      (e) => {
+        if (this.#externalDragActive || !isNaN(this.#lastDraggedOverIndex) || !this._thumbnails.length || !hasMergeableItem(e.dataTransfer)) {
+          return;
+        }
+        e.preventDefault();
+        e.stopPropagation();
+        e.dataTransfer.dropEffect = "copy";
+        this.#externalDragActive = true;
+        this.container.classList.add("isDraggingFile");
+        this.#thumbnailsPositions = null;
+        this.#computeThumbnailsPosition();
+        this.#lastDraggedOverIndex = NaN;
+      },
+      {
+        signal,
       }
-      e.preventDefault();
-      e.stopPropagation();
-      e.dataTransfer.dropEffect = "copy";
-      this.#externalDragActive = true;
-      this.container.classList.add("isDraggingFile");
-      this.#thumbnailsPositions = null;
-      this.#computeThumbnailsPosition();
-      this.#lastDraggedOverIndex = NaN;
-    }, {
-      signal
-    });
-    container.addEventListener("dragover", e => {
-      if (!this.#externalDragActive) {
-        return;
-      }
-      e.preventDefault();
-      e.stopPropagation();
-      e.dataTransfer.dropEffect = "copy";
-      if (!this.#thumbnailsPositions) {
-        return;
-      }
-      const rect = container.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const positionData = this.#findClosestThumbnail(x, y);
-      this.#positionDragMarker(positionData);
-    }, {
-      signal
-    });
-    container.addEventListener("dragleave", e => {
-      if (!this.#externalDragActive) {
-        return;
-      }
-      if (e.relatedTarget && container.contains(e.relatedTarget) || pointerInContainer(e)) {
-        return;
-      }
-      this.#endExternalFileDrag();
-    }, {
-      signal
-    });
-    container.addEventListener("drop", e => {
-      if (!this.#externalDragActive) {
-        return;
-      }
-      e.preventDefault();
-      e.stopPropagation();
-      const files = Array.from(e.dataTransfer.files ?? []);
-      if (isNaN(this.#lastDraggedOverIndex) && this.#thumbnailsPositions) {
+    );
+    container.addEventListener(
+      "dragover",
+      (e) => {
+        if (!this.#externalDragActive) {
+          return;
+        }
+        e.preventDefault();
+        e.stopPropagation();
+        e.dataTransfer.dropEffect = "copy";
+        if (!this.#thumbnailsPositions) {
+          return;
+        }
         const rect = container.getBoundingClientRect();
-        this.#findClosestThumbnail(e.clientX - rect.left, e.clientY - rect.top);
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const positionData = this.#findClosestThumbnail(x, y);
+        this.#positionDragMarker(positionData);
+      },
+      {
+        signal,
       }
-      const insertAfter = isNaN(this.#lastDraggedOverIndex) ? -1 : this.#lastDraggedOverIndex;
-      this.#endExternalFileDrag();
-      if (files.length) {
-        this.#mergeFiles(files, insertAfter);
+    );
+    container.addEventListener(
+      "dragleave",
+      (e) => {
+        if (!this.#externalDragActive) {
+          return;
+        }
+        if ((e.relatedTarget && container.contains(e.relatedTarget)) || pointerInContainer(e)) {
+          return;
+        }
+        this.#endExternalFileDrag();
+      },
+      {
+        signal,
       }
-    }, {
-      signal
-    });
+    );
+    container.addEventListener(
+      "drop",
+      (e) => {
+        if (!this.#externalDragActive) {
+          return;
+        }
+        e.preventDefault();
+        e.stopPropagation();
+        const files = Array.from(e.dataTransfer.files ?? []);
+        if (isNaN(this.#lastDraggedOverIndex) && this.#thumbnailsPositions) {
+          const rect = container.getBoundingClientRect();
+          this.#findClosestThumbnail(e.clientX - rect.left, e.clientY - rect.top);
+        }
+        const insertAfter = isNaN(this.#lastDraggedOverIndex) ? -1 : this.#lastDraggedOverIndex;
+        this.#endExternalFileDrag();
+        if (files.length) {
+          this.#mergeFiles(files, insertAfter);
+        }
+      },
+      {
+        signal,
+      }
+    );
   }
   #endExternalFileDrag() {
     this.#externalDragActive = false;
@@ -16807,17 +16665,11 @@ class PDFThumbnailViewer {
       nextThumbnail = this._thumbnails[nextPageNumber - 1];
     } else {
       const currentThumbnail = this._thumbnails[currentPageNumber - 1];
-      const {
-        x: currentX,
-        y: currentY
-      } = currentThumbnail.div.getBoundingClientRect();
+      const { x: currentX, y: currentY } = currentThumbnail.div.getBoundingClientRect();
       let firstWithDifferentY;
       for (let i = currentPageNumber - 1 + increment; i >= 0 && i < this._thumbnails.length; i += increment) {
         const thumbnail = this._thumbnails[i];
-        const {
-          x,
-          y
-        } = thumbnail.div.getBoundingClientRect();
+        const { x, y } = thumbnail.div.getBoundingClientRect();
         if (!firstWithDifferentY && y !== currentY) {
           firstWithDifferentY = thumbnail;
         }
@@ -16841,7 +16693,7 @@ class PDFThumbnailViewer {
       y: positionsY,
       lastX: positionsLastX,
       space: spaceBetweenThumbnails,
-      lastSpace: lastSpaceBetweenThumbnails
+      lastSpace: lastSpaceBetweenThumbnails,
     } = this.#thumbnailsPositions;
     const lastDraggedOverIndex = this.#lastDraggedOverIndex;
     let xPos = lastDraggedOverIndex % positionsX.length;
@@ -16851,7 +16703,7 @@ class PDFThumbnailViewer {
       return null;
     }
     let index;
-    yPos = binarySearchFirstItem(positionsY, cy => y < cy);
+    yPos = binarySearchFirstItem(positionsY, (cy) => y < cy);
     if (this.#isOneColumnView) {
       index = yPos - 1;
     } else {
@@ -16863,7 +16715,7 @@ class PDFThumbnailViewer {
         yPos = dist1 < dist2 ? yPos - 1 : yPos;
       }
       xArray = yPos === positionsY.length - 1 && positionsLastX.length > 0 ? positionsLastX : positionsX;
-      xPos = binarySearchFirstItem(xArray, cx => x < cx) - 1;
+      xPos = binarySearchFirstItem(xArray, (cx) => x < cx) - 1;
       if (yPos < 0) {
         if (xPos <= 0) {
           xPos = -1;
@@ -16879,10 +16731,7 @@ class PDFThumbnailViewer {
     const space = yPos === positionsY.length - 1 && positionsLastX.length > 0 && xPos >= 0 ? lastSpaceBetweenThumbnails : spaceBetweenThumbnails;
     return [index, space];
   }
-}
-
-;// ./web/annotation_editor_layer_builder.js
-
+} // ./web/annotation_editor_layer_builder.js
 
 class AnnotationEditorLayerBuilder {
   #annotationLayer = null;
@@ -16910,10 +16759,7 @@ class AnnotationEditorLayerBuilder {
     this.pageIndex = newPageIndex;
     this.annotationEditorLayer?.updatePageIndex(newPageIndex);
   }
-  async render({
-    viewport,
-    intent = "display"
-  }) {
+  async render({ viewport, intent = "display" }) {
     if (intent !== "display") {
       return;
     }
@@ -16921,16 +16767,16 @@ class AnnotationEditorLayerBuilder {
       return;
     }
     const clonedViewport = viewport.clone({
-      dontFlip: true
+      dontFlip: true,
     });
     if (this.div) {
       this.annotationEditorLayer.update({
-        viewport: clonedViewport
+        viewport: clonedViewport,
       });
       this.show();
       return;
     }
-    const div = this.div = document.createElement("div");
+    const div = (this.div = document.createElement("div"));
     div.className = "annotationEditorLayer";
     div.hidden = true;
     div.dir = this.#uiManager.direction;
@@ -16945,13 +16791,13 @@ class AnnotationEditorLayerBuilder {
       viewport: clonedViewport,
       annotationLayer: this.#annotationLayer,
       textLayer: this.#textLayer,
-      drawLayer: this.#drawLayer
+      drawLayer: this.#drawLayer,
     });
     const parameters = {
       viewport: clonedViewport,
       div,
       annotations: null,
-      intent
+      intent,
     };
     await this.annotationEditorLayer.render(parameters);
     this.show();
@@ -16960,8 +16806,8 @@ class AnnotationEditorLayerBuilder {
     if (this.div) {
       this.annotationEditorLayer.update({
         viewport: viewport.clone({
-          dontFlip: true
-        })
+          dontFlip: true,
+        }),
       });
     }
   }
@@ -16986,14 +16832,7 @@ class AnnotationEditorLayerBuilder {
     this.div.hidden = false;
     this.annotationEditorLayer.pause(false);
   }
-}
-
-;// ./web/annotation_layer_builder.js
-
-
-
-
-
+} // ./web/annotation_layer_builder.js
 
 class AnnotationLayerBuilder {
   #annotations = null;
@@ -17016,7 +16855,7 @@ class AnnotationLayerBuilder {
     annotationCanvasMap = null,
     accessibilityManager = null,
     annotationEditorUIManager = null,
-    onAppend = null
+    onAppend = null,
   }) {
     this.pdfPage = pdfPage;
     this.linkService = linkService;
@@ -17038,12 +16877,7 @@ class AnnotationLayerBuilder {
     this._cancelled = false;
     this._eventBus = linkService.eventBus;
   }
-  async render({
-    viewport,
-    intent = "display",
-    structTreeLayer = null,
-    optionalContentConfigPromise = null
-  }) {
+  async render({ viewport, intent = "display", structTreeLayer = null, optionalContentConfigPromise = null }) {
     if (this.div) {
       const optionalContentConfig = await optionalContentConfigPromise;
       if (this._cancelled || !this.annotationLayer) {
@@ -17051,19 +16885,24 @@ class AnnotationLayerBuilder {
       }
       this.annotationLayer.update({
         viewport: viewport.clone({
-          dontFlip: true
+          dontFlip: true,
         }),
-        optionalContentConfig
+        optionalContentConfig,
       });
       return;
     }
-    const [annotations, hasJSActions, fieldObjects, optionalContentConfig] = await Promise.all([this.pdfPage.getAnnotations({
-      intent
-    }), this._hasJSActionsPromise, this._fieldObjectsPromise, optionalContentConfigPromise]);
+    const [annotations, hasJSActions, fieldObjects, optionalContentConfig] = await Promise.all([
+      this.pdfPage.getAnnotations({
+        intent,
+      }),
+      this._hasJSActionsPromise,
+      this._fieldObjectsPromise,
+      optionalContentConfigPromise,
+    ]);
     if (this._cancelled) {
       return;
     }
-    const div = this.div = document.createElement("div");
+    const div = (this.div = document.createElement("div"));
     div.className = "annotationLayer";
     this.#onAppend?.(div);
     this.#initAnnotationLayer(viewport, structTreeLayer);
@@ -17081,7 +16920,7 @@ class AnnotationLayerBuilder {
       enableScripting: this.enableScripting,
       hasJSActions,
       fieldObjects,
-      optionalContentConfig
+      optionalContentConfig,
     });
     this.#annotations = annotations;
     if (this.linkService.isInPresentationMode) {
@@ -17089,12 +16928,16 @@ class AnnotationLayerBuilder {
     }
     if (!this.#eventAC) {
       this.#eventAC = new AbortController();
-      this._eventBus?.on("presentationmodechanged", evt => {
-        this.#updatePresentationModeState(evt.state);
-      }, {
-        signal: this.#eventAC.signal,
-        ...internalOpt
-      });
+      this._eventBus?.on(
+        "presentationmodechanged",
+        (evt) => {
+          this.#updatePresentationModeState(evt.state);
+        },
+        {
+          signal: this.#eventAC.signal,
+          ...internalOpt,
+        }
+      );
     }
   }
   #initAnnotationLayer(viewport, structTreeLayer) {
@@ -17106,11 +16949,11 @@ class AnnotationLayerBuilder {
       annotationStorage: this.annotationStorage,
       page: this.pdfPage,
       viewport: viewport.clone({
-        dontFlip: true
+        dontFlip: true,
       }),
       structTreeLayer,
       commentManager: this.#commentManager,
-      linkService: this.linkService
+      linkService: this.linkService,
     });
   }
   cancel() {
@@ -17202,7 +17045,7 @@ class AnnotationLayerBuilder {
       }
       return totalArea;
     }
-    return inferredLinks.filter(link => {
+    return inferredLinks.filter((link) => {
       let linkAreaRects;
       for (const annotation of this.#annotations) {
         if (annotation.annotationType !== AnnotationType.LINK) {
@@ -17220,21 +17063,9 @@ class AnnotationLayerBuilder {
       return true;
     });
   }
-}
+} // ./web/autolinker.js
 
-;// ./web/autolinker.js
-
-
-
-
-
-
-function DOMRectToPDF({
-  width,
-  height,
-  left,
-  top
-}, pdfPageView) {
+function DOMRectToPDF({ width, height, left, top }, pdfPageView) {
   if (width === 0 || height === 0) {
     return null;
   }
@@ -17247,7 +17078,7 @@ function calculateLinkPosition(range, pdfPageView) {
   const rangeRects = range.getClientRects();
   if (rangeRects.length === 1) {
     return {
-      rect: DOMRectToPDF(rangeRects[0], pdfPageView)
+      rect: DOMRectToPDF(rangeRects[0], pdfPageView),
     };
   }
   const rect = [Infinity, Infinity, -Infinity, -Infinity];
@@ -17267,7 +17098,7 @@ function calculateLinkPosition(range, pdfPageView) {
   }
   return {
     quadPoints,
-    rect
+    rect,
   };
 }
 function textPosition(container, offset) {
@@ -17292,16 +17123,9 @@ function textPosition(container, offset) {
   } while (currentContainer !== container);
   throw new Error("Offset is bigger than container's contents length.");
 }
-function createLinkAnnotation({
-  url,
-  index,
-  length
-}, pdfPageView, id) {
+function createLinkAnnotation({ url, index, length }, pdfPageView, id) {
   const highlighter = pdfPageView._textHighlighter;
-  const [{
-    begin,
-    end
-  }] = highlighter._convertMatches([index], [length]);
+  const [{ begin, end }] = highlighter._convertMatches([index], [length]);
   const range = new Range();
   range.setStart(...textPosition(highlighter.textDivs[begin.divIdx], begin.offset));
   range.setEnd(...textPosition(highlighter.textDivs[end.divIdx], end.offset));
@@ -17312,7 +17136,7 @@ function createLinkAnnotation({
     annotationType: AnnotationType.LINK,
     rotation: 0,
     ...calculateLinkPosition(range, pdfPageView),
-    borderStyle: null
+    borderStyle: null,
   };
 }
 class Autolinker {
@@ -17320,9 +17144,10 @@ class Autolinker {
   static #regex;
   static #numericTLDRegex;
   static findLinks(text) {
-    this.#regex ??= /\b(?:https?:\/\/|mailto:|www\.)(?:[\S--[\p{P}<>]]|\/|[\S--[\[\]]]+[\S--[\p{P}<>]])+|(?=\p{L})[\S--[@\p{Ps}\p{Pe}<>]]{1,64}@([\S--[[\p{P}--\-]<>]]{1,63}(?:\.[\S--[[\p{P}--\-]<>]]{1,63})+)/gv;
+    this.#regex ??=
+      /\b(?:https?:\/\/|mailto:|www\.)(?:[\S--[\p{P}<>]]|\/|[\S--[\[\]]]+[\S--[\p{P}<>]])+|(?=\p{L})[\S--[@\p{Ps}\p{Pe}<>]]{1,64}@([\S--[[\p{P}--\-]<>]]{1,63}(?:\.[\S--[[\p{P}--\-]<>]]{1,63})+)/gv;
     const [normalizedText, diffs] = normalize(text, {
-      ignoreDashEOL: true
+      ignoreDashEOL: true,
     });
     const matches = normalizedText.matchAll(this.#regex);
     const links = [];
@@ -17343,26 +17168,25 @@ class Autolinker {
       }
       raw ??= url.startsWith("mailto:") ? url : `mailto:${url}`;
       const absoluteURL = createValidAbsoluteUrl(raw, null, {
-        addDefaultProtocol: true
+        addDefaultProtocol: true,
       });
       if (absoluteURL) {
         const [index, length] = getOriginalIndex(diffs, match.index, url.length);
         links.push({
           url: absoluteURL.href,
           index,
-          length
+          length,
         });
       }
     }
     return links;
   }
   static processLinks(pdfPageView) {
-    return this.findLinks(pdfPageView._textHighlighter.textContentItemsStr.join("\n")).map(link => createLinkAnnotation(link, pdfPageView, this.#index++));
+    return this.findLinks(pdfPageView._textHighlighter.textContentItemsStr.join("\n")).map((link) =>
+      createLinkAnnotation(link, pdfPageView, this.#index++)
+    );
   }
-}
-
-;// ./web/base_pdf_page_view.js
-
+} // ./web/base_pdf_page_view.js
 
 class BasePDFPageView extends RenderableView {
   #loadingId = null;
@@ -17427,14 +17251,12 @@ class BasePDFPageView extends RenderableView {
     }
   }
   _createCanvas(onShow, hideUntilComplete = false) {
-    const {
-      pageColors
-    } = this;
+    const { pageColors } = this;
     const hasHCM = !!(pageColors?.background && pageColors?.foreground);
     const prevCanvas = this.canvas;
     const updateOnFirstShow = !prevCanvas && !hasHCM && !hideUntilComplete;
-    let canvas = this.canvas = document.createElement("canvas");
-    this.#showCanvas = isLastShow => {
+    let canvas = (this.canvas = document.createElement("canvas"));
+    this.#showCanvas = (isLastShow) => {
       if (updateOnFirstShow) {
         let tempCanvas = this.#tempCanvas;
         if (!isLastShow && this.minDurationToUpdateCanvas > 0) {
@@ -17449,7 +17271,7 @@ class BasePDFPageView extends RenderableView {
         }
         if (tempCanvas) {
           const ctx = canvas.getContext("2d", {
-            alpha: false
+            alpha: false,
           });
           ctx.drawImage(tempCanvas, 0, 0);
           if (isLastShow) {
@@ -17475,10 +17297,10 @@ class BasePDFPageView extends RenderableView {
     };
     return {
       canvas,
-      prevCanvas
+      prevCanvas,
     };
   }
-  #renderContinueCallback = cont => {
+  #renderContinueCallback = (cont) => {
     this.#showCanvas?.(false);
     if (this.renderingQueue && !this.renderingQueue.isHighestPriority(this)) {
       this.renderingState = RenderingStates.PAUSED;
@@ -17491,9 +17313,7 @@ class BasePDFPageView extends RenderableView {
     cont();
   };
   _resetCanvas() {
-    const {
-      canvas
-    } = this;
+    const { canvas } = this;
     if (!canvas) {
       return;
     }
@@ -17509,9 +17329,9 @@ class BasePDFPageView extends RenderableView {
     }
   }
   async _drawCanvas(options, onCancel, onFinish) {
-    const renderTask = this.renderTask = this.pdfPage.render(options);
+    const renderTask = (this.renderTask = this.pdfPage.render(options));
     renderTask.onContinue = this.#renderContinueCallback;
-    renderTask.onError = error => {
+    renderTask.onError = (error) => {
       if (error instanceof RenderingCancelledException) {
         onCancel();
         this.#renderError = null;
@@ -17545,9 +17365,7 @@ class BasePDFPageView extends RenderableView {
       throw error;
     }
   }
-  cancelRendering({
-    cancelExtraDelay = 0
-  } = {}) {
+  cancelRendering({ cancelExtraDelay = 0 } = {}) {
     if (this.renderTask) {
       this.renderTask.cancel(cancelExtraDelay);
       this.renderTask = null;
@@ -17557,7 +17375,7 @@ class BasePDFPageView extends RenderableView {
   dispatchPageRender() {
     this.eventBus.dispatch("pagerender", {
       source: this,
-      pageNumber: this.id
+      pageNumber: this.id,
     });
   }
   dispatchPageRendered(cssTransform, isDetailView) {
@@ -17567,12 +17385,10 @@ class BasePDFPageView extends RenderableView {
       cssTransform,
       isDetailView,
       timestamp: performance.now(),
-      error: this.#renderError
+      error: this.#renderError,
     });
   }
-}
-
-;// ./web/draw_layer_builder.js
+} // ./web/draw_layer_builder.js
 
 class DrawLayerBuilder {
   #drawLayer = null;
@@ -17582,9 +17398,7 @@ class DrawLayerBuilder {
     this.filterFactory = options.filterFactory || null;
     this.pageColors = options.pageColors || null;
   }
-  async render({
-    intent = "display"
-  }) {
+  async render({ intent = "display" }) {
     if (intent !== "display" || this.#drawLayer || this._cancelled) {
       return;
     }
@@ -17592,7 +17406,7 @@ class DrawLayerBuilder {
       pageIndex: this.pageIndex,
       textLayer: this.textLayer,
       filterFactory: this.filterFactory,
-      pageColors: this.pageColors
+      pageColors: this.pageColors,
     });
   }
   cancel() {
@@ -17606,18 +17420,12 @@ class DrawLayerBuilder {
   getDrawLayer() {
     return this.#drawLayer;
   }
-}
-
-;// ./web/pdf_page_detail_view.js
-
-
+} // ./web/pdf_page_detail_view.js
 
 class PDFPageDetailView extends BasePDFPageView {
   #detailArea = null;
   renderingCancelled = false;
-  constructor({
-    pageView
-  }) {
+  constructor({ pageView }) {
     super(pageView);
     this.pageView = pageView;
     this.renderingId = "detail" + this.id;
@@ -17636,10 +17444,9 @@ class PDFPageDetailView extends BasePDFPageView {
     this.renderingCancelled = false;
     super.renderingState = state;
   }
-  reset({
-    keepCanvas = false
-  } = {}) {
-    const renderingCancelled = this.renderingCancelled || this.renderingState === RenderingStates.RUNNING || this.renderingState === RenderingStates.PAUSED;
+  reset({ keepCanvas = false } = {}) {
+    const renderingCancelled =
+      this.renderingCancelled || this.renderingState === RenderingStates.RUNNING || this.renderingState === RenderingStates.PAUSED;
     this.cancelRendering();
     this.renderingState = RenderingStates.INITIAL;
     this.renderingCancelled = renderingCancelled;
@@ -17658,11 +17465,7 @@ class PDFPageDetailView extends BasePDFPageView {
     if (visibleArea.minX < minDetailX || visibleArea.minY < minDetailY || visibleArea.maxX > maxDetailX || visibleArea.maxY > maxDetailY) {
       return true;
     }
-    const {
-      width: maxWidth,
-      height: maxHeight,
-      scale
-    } = this.pageView.viewport;
+    const { width: maxWidth, height: maxHeight, scale } = this.pageView.viewport;
     if (this.#detailArea.scale !== scale) {
       return true;
     }
@@ -17672,15 +17475,17 @@ class PDFPageDetailView extends BasePDFPageView {
     const paddingBottomSize = maxDetailY - visibleArea.maxY;
     const MOVEMENT_THRESHOLD = 0.5;
     const ratio = (1 + MOVEMENT_THRESHOLD) / MOVEMENT_THRESHOLD;
-    if (minDetailX > 0 && paddingRightSize / paddingLeftSize > ratio || maxDetailX < maxWidth && paddingLeftSize / paddingRightSize > ratio || minDetailY > 0 && paddingBottomSize / paddingTopSize > ratio || maxDetailY < maxHeight && paddingTopSize / paddingBottomSize > ratio) {
+    if (
+      (minDetailX > 0 && paddingRightSize / paddingLeftSize > ratio) ||
+      (maxDetailX < maxWidth && paddingLeftSize / paddingRightSize > ratio) ||
+      (minDetailY > 0 && paddingBottomSize / paddingTopSize > ratio) ||
+      (maxDetailY < maxHeight && paddingTopSize / paddingBottomSize > ratio)
+    ) {
       return true;
     }
     return false;
   }
-  update({
-    visibleArea = null,
-    underlyingViewUpdated = false
-  } = {}) {
+  update({ visibleArea = null, underlyingViewUpdated = false } = {}) {
     if (underlyingViewUpdated) {
       this.cancelRendering();
       this.renderingState = RenderingStates.INITIAL;
@@ -17689,11 +17494,7 @@ class PDFPageDetailView extends BasePDFPageView {
     if (!this.#shouldRenderDifferentArea(visibleArea)) {
       return;
     }
-    const {
-      viewport,
-      maxCanvasPixels,
-      capCanvasAreaFactor
-    } = this.pageView;
+    const { viewport, maxCanvasPixels, capCanvasAreaFactor } = this.pageView;
     const visibleWidth = visibleArea.maxX - visibleArea.minX;
     const visibleHeight = visibleArea.maxY - visibleArea.minY;
     const visiblePixels = visibleWidth * visibleHeight * OutputScale.pixelRatio ** 2;
@@ -17716,10 +17517,10 @@ class PDFPageDetailView extends BasePDFPageView {
       minY,
       width,
       height,
-      scale: viewport.scale
+      scale: viewport.scale,
     };
     this.reset({
-      keepCanvas: true
+      keepCanvas: true,
     });
   }
   _getRenderingContext(canvas, transform) {
@@ -17729,17 +17530,9 @@ class PDFPageDetailView extends BasePDFPageView {
       return baseContext;
     }
     const {
-      viewport: {
-        width: vWidth,
-        height: vHeight
-      }
+      viewport: { width: vWidth, height: vHeight },
     } = this.pageView;
-    const {
-      width: aWidth,
-      height: aHeight,
-      minX: aMinX,
-      minY: aMinY
-    } = this.#detailArea;
+    const { width: aWidth, height: aHeight, minX: aMinX, minY: aMinY } = this.#detailArea;
     const detailMinX = aMinX / vWidth;
     const detailMinY = aMinY / vHeight;
     const detailMaxX = (aMinX + aWidth) / vWidth;
@@ -17750,8 +17543,13 @@ class PDFPageDetailView extends BasePDFPageView {
         if (recordedBBoxes.isEmpty(index)) {
           return false;
         }
-        return recordedBBoxes.minX(index) <= detailMaxX && recordedBBoxes.maxX(index) >= detailMinX && recordedBBoxes.minY(index) <= detailMaxY && recordedBBoxes.maxY(index) >= detailMinY;
-      }
+        return (
+          recordedBBoxes.minX(index) <= detailMaxX &&
+          recordedBBoxes.maxX(index) >= detailMinX &&
+          recordedBBoxes.minY(index) <= detailMaxY &&
+          recordedBBoxes.maxY(index) >= detailMinY
+        );
+      },
     };
   }
   async draw() {
@@ -17763,21 +17561,14 @@ class PDFPageDetailView extends BasePDFPageView {
       console.error("Must be in new state before drawing");
       this.reset();
     }
-    const {
-      div,
-      pdfPage,
-      viewport
-    } = this.pageView;
+    const { div, pdfPage, viewport } = this.pageView;
     if (!pdfPage) {
       this.renderingState = RenderingStates.FINISHED;
       throw new Error("pdfPage is not loaded");
     }
     this.renderingState = RenderingStates.RUNNING;
     const canvasWrapper = this.pageView._ensureCanvasWrapper();
-    const {
-      canvas,
-      prevCanvas
-    } = this._createCanvas(newCanvas => {
+    const { canvas, prevCanvas } = this._createCanvas((newCanvas) => {
       if (canvasWrapper.firstElementChild?.tagName === "CANVAS") {
         canvasWrapper.firstElementChild.after(newCanvas);
       } else {
@@ -17788,51 +17579,33 @@ class PDFPageDetailView extends BasePDFPageView {
     if (this.enableOptimizedPartialRendering) {
       canvas.className = "detailView";
     }
-    const {
-      width,
-      height
-    } = viewport;
+    const { width, height } = viewport;
     const area = this.#detailArea;
-    const {
-      pixelRatio
-    } = OutputScale;
+    const { pixelRatio } = OutputScale;
     const transform = [pixelRatio, 0, 0, pixelRatio, -area.minX * pixelRatio, -area.minY * pixelRatio];
     canvas.width = area.width * pixelRatio;
     canvas.height = area.height * pixelRatio;
-    const {
-      style
-    } = canvas;
-    style.width = `${area.width * 100 / width}%`;
-    style.height = `${area.height * 100 / height}%`;
-    style.top = `${area.minY * 100 / height}%`;
-    style.left = `${area.minX * 100 / width}%`;
-    const renderingPromise = this._drawCanvas(this._getRenderingContext(canvas, transform), () => {
-      this.canvas?.remove();
-      this.canvas = prevCanvas;
-    }, () => {
-      this.pageView._refreshAnnotationLayer();
-      this.dispatchPageRendered(false, true);
-    });
+    const { style } = canvas;
+    style.width = `${(area.width * 100) / width}%`;
+    style.height = `${(area.height * 100) / height}%`;
+    style.top = `${(area.minY * 100) / height}%`;
+    style.left = `${(area.minX * 100) / width}%`;
+    const renderingPromise = this._drawCanvas(
+      this._getRenderingContext(canvas, transform),
+      () => {
+        this.canvas?.remove();
+        this.canvas = prevCanvas;
+      },
+      () => {
+        this.pageView._refreshAnnotationLayer();
+        this.dispatchPageRendered(false, true);
+      }
+    );
     div.setAttribute("data-loaded", true);
     this.dispatchPageRender();
     return renderingPromise;
   }
-}
-
-;// ./web/struct_tree_layer_builder.js
-
-
-
-
-
-
-
-
-
-
-
-
-
+} // ./web/struct_tree_layer_builder.js
 
 const PDF_ROLE_TO_HTML_ROLE = {
   Document: null,
@@ -17878,25 +17651,91 @@ const PDF_ROLE_TO_HTML_ROLE = {
   Caption: "caption",
   Figure: "figure",
   Formula: null,
-  Artifact: null
+  Artifact: null,
 };
 const ARIA_ROLES_WITH_PROHIBITED_NAMES = new Set(["caption", "code", "emphasis", "generic", "none", "paragraph", "strong"]);
-const MathMLElements = new Set(["math", "merror", "mfrac", "mi", "mmultiscripts", "mn", "mo", "mover", "mpadded", "mprescripts", "mroot", "mrow", "ms", "mspace", "msqrt", "mstyle", "msub", "msubsup", "msup", "mtable", "mtd", "mtext", "mtr", "munder", "munderover", "semantics"]);
+const MathMLElements = new Set([
+  "math",
+  "merror",
+  "mfrac",
+  "mi",
+  "mmultiscripts",
+  "mn",
+  "mo",
+  "mover",
+  "mpadded",
+  "mprescripts",
+  "mroot",
+  "mrow",
+  "ms",
+  "mspace",
+  "msqrt",
+  "mstyle",
+  "msub",
+  "msubsup",
+  "msup",
+  "mtable",
+  "mtd",
+  "mtext",
+  "mtr",
+  "munder",
+  "munderover",
+  "semantics",
+]);
 const MathMLNamespace = "http://www.w3.org/1998/Math/MathML";
 class MathMLSanitizer {
   static get sanitizer() {
-    return shadow(this, "sanitizer", FeatureTest.isSanitizerSupported ? new Sanitizer({
-      elements: Array.from(MathMLElements.keys(), name => ({
-        name,
-        namespace: MathMLNamespace
-      })),
-      replaceWithChildrenElements: [{
-        name: "maction",
-        namespace: MathMLNamespace
-      }],
-      attributes: ["dir", "displaystyle", "mathbackground", "mathcolor", "mathsize", "scriptlevel", "encoding", "display", "linethickness", "intent", "arg", "form", "fence", "separator", "lspace", "rspace", "stretchy", "symmetric", "maxsize", "minsize", "largeop", "movablelimits", "width", "height", "depth", "voffset", "accent", "accentunder", "columnspan", "rowspan"],
-      comments: false
-    }) : null);
+    return shadow(
+      this,
+      "sanitizer",
+      FeatureTest.isSanitizerSupported
+        ? new Sanitizer({
+            elements: Array.from(MathMLElements.keys(), (name) => ({
+              name,
+              namespace: MathMLNamespace,
+            })),
+            replaceWithChildrenElements: [
+              {
+                name: "maction",
+                namespace: MathMLNamespace,
+              },
+            ],
+            attributes: [
+              "dir",
+              "displaystyle",
+              "mathbackground",
+              "mathcolor",
+              "mathsize",
+              "scriptlevel",
+              "encoding",
+              "display",
+              "linethickness",
+              "intent",
+              "arg",
+              "form",
+              "fence",
+              "separator",
+              "lspace",
+              "rspace",
+              "stretchy",
+              "symmetric",
+              "maxsize",
+              "minsize",
+              "largeop",
+              "movablelimits",
+              "width",
+              "height",
+              "depth",
+              "voffset",
+              "accent",
+              "accentunder",
+              "columnspan",
+              "rowspan",
+            ],
+            comments: false,
+          })
+        : null
+    );
   }
 }
 const HEADING_PATTERN = /^H(\d+)$/;
@@ -17923,11 +17762,7 @@ class StructTreeLayerBuilder {
     if (this.#treePromise) {
       return this.#treePromise;
     }
-    const {
-      promise,
-      resolve,
-      reject
-    } = Promise.withResolvers();
+    const { promise, resolve, reject } = Promise.withResolvers();
     this.#treePromise = promise;
     try {
       const tree = await this.#promise;
@@ -17942,17 +17777,12 @@ class StructTreeLayerBuilder {
     resolve(this.#treeDom);
     return promise;
   }
-  async getAriaAttributes(annotationId, {
-    enableLinkOwnership = false
-  } = {}) {
+  async getAriaAttributes(annotationId, { enableLinkOwnership = false } = {}) {
     try {
       await this.render();
       const ownership = this.#pendingLinkOwnership.get(annotationId);
       if (ownership && enableLinkOwnership) {
-        const {
-          element,
-          ids
-        } = ownership;
+        const { element, ids } = ownership;
         element.removeAttribute("role");
         if (ids.length > 0) {
           this.#elementAttributes.getOrInsertComputed(annotationId, makeMap).set("aria-owns", ids.join(" "));
@@ -18030,17 +17860,7 @@ class StructTreeLayerBuilder {
     return result;
   }
   #setAttributes(structElement, htmlElement) {
-    const {
-      alt,
-      colSpan,
-      headers,
-      id,
-      lang,
-      rowSpan,
-      short,
-      structId,
-      summary
-    } = structElement;
+    const { alt, colSpan, headers, id, lang, rowSpan, short, structId, summary } = structElement;
     if (alt !== undefined) {
       let added = false;
       const label = removeNullCharacters(alt);
@@ -18090,18 +17910,12 @@ class StructTreeLayerBuilder {
     }
   }
   #addImageInTextLayer(node, element) {
-    const {
-      alt,
-      bbox,
-      children
-    } = node;
+    const { alt, bbox, children } = node;
     const child = children?.[0];
     if (!this.#rawDims || !alt || !bbox || child?.type !== "content") {
       return false;
     }
-    const {
-      id
-    } = child;
+    const { id } = child;
     if (!id) {
       return false;
     }
@@ -18110,15 +17924,9 @@ class StructTreeLayerBuilder {
     (this.#elementsToAddToTextLayer ||= new Map()).set(id, img);
     img.setAttribute("role", "img");
     img.setAttribute("aria-label", removeNullCharacters(alt));
-    const {
-      pageHeight,
-      pageX,
-      pageY
-    } = this.#rawDims;
+    const { pageHeight, pageX, pageY } = this.#rawDims;
     const calc = "calc(var(--total-scale-factor) *";
-    const {
-      style
-    } = img;
+    const { style } = img;
     style.width = `${calc}${bbox[2] - bbox[0]}px)`;
     style.height = `${calc}${bbox[3] - bbox[1]}px)`;
     style.left = `${calc}${bbox[0] - pageX}px)`;
@@ -18181,17 +17989,12 @@ class StructTreeLayerBuilder {
     let element;
     let visitChildren = true;
     if ("role" in node) {
-      const {
-        role
-      } = node;
+      const { role } = node;
       if (MathMLElements.has(role)) {
         element = document.createElementNS(MathMLNamespace, role);
         const ids = [];
         (this.#elementsToStealFromTextLayer ||= []).push(element, ids);
-        for (const {
-          type,
-          id
-        } of node.children || []) {
+        for (const { type, id } of node.children || []) {
           if (type === "content" && id) {
             ids.push(id);
           }
@@ -18230,9 +18033,9 @@ class StructTreeLayerBuilder {
         if (node.mathML && MathMLSanitizer.sanitizer) {
           visitChildren = false;
           element.setHTML(node.mathML, {
-            sanitizer: MathMLSanitizer.sanitizer
+            sanitizer: MathMLSanitizer.sanitizer,
           });
-          this.#collectIds(node, this.#elementsToHideInTextLayer ||= []);
+          this.#collectIds(node, (this.#elementsToHideInTextLayer ||= []));
           delete node.alt;
         }
         if (!node.mathML && node.children.length === 1 && node.children[0].role !== "math") {
@@ -18255,7 +18058,7 @@ class StructTreeLayerBuilder {
       }
     }
     if (node.role === "Link") {
-      const annotations = node.children?.filter(child => child.type === "annotation");
+      const annotations = node.children?.filter((child) => child.type === "annotation");
       if (annotations?.length === 1) {
         const annotation = annotations[0];
         const ids = [];
@@ -18268,20 +18071,13 @@ class StructTreeLayerBuilder {
         }
         this.#pendingLinkOwnership.set(annotation.id, {
           element,
-          ids
+          ids,
         });
       }
     }
     return element;
   }
-}
-
-;// ./web/text_accessibility.js
-
-
-
-
-
+} // ./web/text_accessibility.js
 
 class TextAccessibilityManager {
   #enabled = false;
@@ -18359,9 +18155,7 @@ class TextAccessibilityManager {
     if (!children?.length) {
       return;
     }
-    const {
-      id
-    } = element;
+    const { id } = element;
     const nodeIndex = this.#textNodes.get(id);
     if (nodeIndex === undefined) {
       return;
@@ -18370,7 +18164,10 @@ class TextAccessibilityManager {
     this.#textNodes.delete(id);
     let owns = node.getAttribute("aria-owns");
     if (owns?.includes(id)) {
-      owns = owns.split(" ").filter(x => x !== id).join(" ");
+      owns = owns
+        .split(" ")
+        .filter((x) => x !== id)
+        .join(" ");
       if (owns) {
         node.setAttribute("aria-owns", owns);
       } else {
@@ -18387,9 +18184,7 @@ class TextAccessibilityManager {
     node.removeAttribute("role");
   }
   addPointerInTextLayer(element, isRemovable) {
-    const {
-      id
-    } = element;
+    const { id } = element;
     if (!id) {
       return null;
     }
@@ -18404,7 +18199,7 @@ class TextAccessibilityManager {
     if (!children?.length) {
       return null;
     }
-    const index = binarySearchFirstItem(children, node => TextAccessibilityManager.#compareElementPositions(element, node) < 0);
+    const index = binarySearchFirstItem(children, (node) => TextAccessibilityManager.#compareElementPositions(element, node) < 0);
     const nodeIndex = Math.max(0, index - 1);
     const child = children[nodeIndex];
     this.#addIdToAriaOwns(id, child);
@@ -18418,11 +18213,11 @@ class TextAccessibilityManager {
       container.append(element);
       return id;
     }
-    const children = Array.from(container.childNodes).filter(node => node !== element);
+    const children = Array.from(container.childNodes).filter((node) => node !== element);
     if (children.length === 0) {
       return id;
     }
-    const index = binarySearchFirstItem(children, node => TextAccessibilityManager.#compareElementPositions(element, node) < 0);
+    const index = binarySearchFirstItem(children, (node) => TextAccessibilityManager.#compareElementPositions(element, node) < 0);
     if (index === 0) {
       children[0].before(element);
     } else {
@@ -18430,19 +18225,11 @@ class TextAccessibilityManager {
     }
     return id;
   }
-}
-
-;// ./web/text_highlighter.js
-
-
+} // ./web/text_highlighter.js
 
 class TextHighlighter {
   #eventAC = null;
-  constructor({
-    findController,
-    eventBus,
-    pageIndex
-  }) {
+  constructor({ findController, eventBus, pageIndex }) {
     this.findController = findController;
     this.matches = [];
     this.eventBus = eventBus;
@@ -18465,14 +18252,18 @@ class TextHighlighter {
     this.enabled = true;
     if (!this.#eventAC) {
       this.#eventAC = new AbortController();
-      this.eventBus.on("updatetextlayermatches", evt => {
-        if (evt.pageIndex === this.pageIdx || evt.pageIndex === -1) {
-          this._updateMatches();
+      this.eventBus.on(
+        "updatetextlayermatches",
+        (evt) => {
+          if (evt.pageIndex === this.pageIdx || evt.pageIndex === -1) {
+            this._updateMatches();
+          }
+        },
+        {
+          signal: this.#eventAC.signal,
+          ...internalOpt,
         }
-      }, {
-        signal: this.#eventAC.signal,
-        ...internalOpt
-      });
+      );
     }
     this._updateMatches();
   }
@@ -18489,9 +18280,7 @@ class TextHighlighter {
     if (!matches) {
       return [];
     }
-    const {
-      textContentItemsStr
-    } = this;
+    const { textContentItemsStr } = this;
     let i = 0,
       iIndex = 0;
     const end = textContentItemsStr.length - 1;
@@ -18508,8 +18297,8 @@ class TextHighlighter {
       const match = {
         begin: {
           divIdx: i,
-          offset: matchIdx - iIndex
-        }
+          offset: matchIdx - iIndex,
+        },
       };
       matchIdx += matchesLength[m];
       while (i !== end && matchIdx > iIndex + textContentItemsStr[i].length) {
@@ -18518,7 +18307,7 @@ class TextHighlighter {
       }
       match.end = {
         divIdx: i,
-        offset: matchIdx - iIndex
+        offset: matchIdx - iIndex,
       };
       result.push(match);
     }
@@ -18528,21 +18317,15 @@ class TextHighlighter {
     if (matches.length === 0) {
       return;
     }
-    const {
-      findController,
-      pageIdx
-    } = this;
-    const {
-      textContentItemsStr,
-      textDivs
-    } = this;
+    const { findController, pageIdx } = this;
+    const { textContentItemsStr, textDivs } = this;
     const isSelectedPage = pageIdx === findController.selected.pageIdx;
     const selectedMatchIdx = findController.selected.matchIdx;
     const highlightAll = findController.state.highlightAll;
     let prevEnd = null;
     const infinity = {
       divIdx: -1,
-      offset: undefined
+      offset: undefined,
     };
     function beginText(begin, className) {
       const divIdx = begin.divIdx;
@@ -18617,7 +18400,7 @@ class TextHighlighter {
         findController.scrollMatchIntoView({
           element: selectedSpan,
           pageIndex: pageIdx,
-          matchIndex: selectedMatchIdx
+          matchIndex: selectedMatchIdx,
         });
       }
     }
@@ -18629,15 +18412,8 @@ class TextHighlighter {
     if (!this.enabled && !reset) {
       return;
     }
-    const {
-      findController,
-      matches,
-      pageIdx
-    } = this;
-    const {
-      textContentItemsStr,
-      textDivs
-    } = this;
+    const { findController, matches, pageIdx } = this;
+    const { textContentItemsStr, textDivs } = this;
     let clearedUntilDivIdx = -1;
     for (const match of matches) {
       const begin = Math.max(clearedUntilDivIdx, match.begin.divIdx);
@@ -18656,22 +18432,7 @@ class TextHighlighter {
     this.matches = this._convertMatches(pageMatches, pageMatchesLength);
     this._renderMatches(this.matches);
   }
-}
-
-;// ./web/text_layer_builder.js
-
-
-
-
-
-
-
-
-
-
-
-
-
+} // ./web/text_layer_builder.js
 
 class TextLayerBuilder {
   #abortSignal = null;
@@ -18681,14 +18442,7 @@ class TextLayerBuilder {
   #textLayer = null;
   static #textLayers = new Map();
   static #selectionChangeAC = null;
-  constructor({
-    pdfPage,
-    highlighter = null,
-    accessibilityManager = null,
-    enablePermissions = false,
-    onAppend = null,
-    abortSignal = null
-  }) {
+  constructor({ pdfPage, highlighter = null, accessibilityManager = null, enablePermissions = false, onAppend = null, abortSignal = null }) {
     this.pdfPage = pdfPage;
     this.highlighter = highlighter;
     this.accessibilityManager = accessibilityManager;
@@ -18699,33 +18453,28 @@ class TextLayerBuilder {
     this.div.tabIndex = 0;
     this.div.className = "textLayer";
   }
-  async render({
-    viewport,
-    images,
-    textContentParams = null
-  }) {
+  async render({ viewport, images, textContentParams = null }) {
     if (this.#renderingDone && this.#textLayer) {
       this.#textLayer.update({
         viewport,
-        onBefore: this.hide.bind(this)
+        onBefore: this.hide.bind(this),
       });
       this.show();
       return;
     }
     this.cancel();
     this.#textLayer = new TextLayer({
-      textContentSource: this.pdfPage.streamTextContent(textContentParams || {
-        includeMarkedContent: true,
-        disableNormalization: true
-      }),
+      textContentSource: this.pdfPage.streamTextContent(
+        textContentParams || {
+          includeMarkedContent: true,
+          disableNormalization: true,
+        }
+      ),
       images,
       container: this.div,
-      viewport
+      viewport,
     });
-    const {
-      textDivs,
-      textContentItemsStr
-    } = this.#textLayer;
+    const { textDivs, textContentItemsStr } = this.#textLayer;
     this.highlighter?.setTextMapping(textDivs, textContentItemsStr);
     this.accessibilityManager?.setTextMapping(textDivs);
     await this.#textLayer.render();
@@ -18760,23 +18509,31 @@ class TextLayerBuilder {
     TextLayerBuilder.#removeGlobalSelectionListener(this.div);
   }
   #bindMouse(end) {
-    const {
-      div
-    } = this;
+    const { div } = this;
     const abortSignal = this.#abortSignal;
-    const opts = abortSignal ? {
-      signal: abortSignal
-    } : null;
-    div.addEventListener("mousedown", () => {
-      div.classList.add("selecting");
-    }, opts);
-    div.addEventListener("copy", event => {
-      if (!this.#enablePermissions) {
-        const selection = document.getSelection();
-        event.clipboardData.setData("text/plain", removeNullCharacters(normalizeUnicode(selection.toString())));
-      }
-      stopEvent(event);
-    }, opts);
+    const opts = abortSignal
+      ? {
+          signal: abortSignal,
+        }
+      : null;
+    div.addEventListener(
+      "mousedown",
+      () => {
+        div.classList.add("selecting");
+      },
+      opts
+    );
+    div.addEventListener(
+      "copy",
+      (event) => {
+        if (!this.#enablePermissions) {
+          const selection = document.getSelection();
+          event.clipboardData.setData("text/plain", removeNullCharacters(normalizeUnicode(selection.toString())));
+        }
+        stopEvent(event);
+      },
+      opts
+    );
     TextLayerBuilder.#textLayers.set(div, end);
     TextLayerBuilder.#enableGlobalSelectionListener(abortSignal);
   }
@@ -18800,121 +18557,127 @@ class TextLayerBuilder {
       textLayer.classList.remove("selecting");
     };
     let isPointerDown = false;
-    document.addEventListener("pointerdown", () => {
-      isPointerDown = true;
-    }, {
-      signal
-    });
-    document.addEventListener("pointerup", () => {
-      isPointerDown = false;
-      this.#textLayers.forEach(reset);
-    }, {
-      signal
-    });
-    window.addEventListener("blur", () => {
-      isPointerDown = false;
-      this.#textLayers.forEach(reset);
-    }, {
-      signal
-    });
-    document.addEventListener("keyup", () => {
-      if (!isPointerDown) {
-        this.#textLayers.forEach(reset);
+    document.addEventListener(
+      "pointerdown",
+      () => {
+        isPointerDown = true;
+      },
+      {
+        signal,
       }
-    }, {
-      signal
-    });
+    );
+    document.addEventListener(
+      "pointerup",
+      () => {
+        isPointerDown = false;
+        this.#textLayers.forEach(reset);
+      },
+      {
+        signal,
+      }
+    );
+    window.addEventListener(
+      "blur",
+      () => {
+        isPointerDown = false;
+        this.#textLayers.forEach(reset);
+      },
+      {
+        signal,
+      }
+    );
+    document.addEventListener(
+      "keyup",
+      () => {
+        if (!isPointerDown) {
+          this.#textLayers.forEach(reset);
+        }
+      },
+      {
+        signal,
+      }
+    );
     var isFirefoxOrModernChromium, prevRange;
-    document.addEventListener("selectionchange", () => {
-      const selection = document.getSelection();
-      if (selection.rangeCount === 0) {
-        this.#textLayers.forEach(reset);
-        return;
-      }
-      const activeTextLayers = new Set();
-      for (let i = 0; i < selection.rangeCount; i++) {
-        const range = selection.getRangeAt(i);
-        for (const textLayerDiv of this.#textLayers.keys()) {
-          if (!activeTextLayers.has(textLayerDiv) && range.intersectsNode(textLayerDiv)) {
-            activeTextLayers.add(textLayerDiv);
+    document.addEventListener(
+      "selectionchange",
+      () => {
+        const selection = document.getSelection();
+        if (selection.rangeCount === 0) {
+          this.#textLayers.forEach(reset);
+          return;
+        }
+        const activeTextLayers = new Set();
+        for (let i = 0; i < selection.rangeCount; i++) {
+          const range = selection.getRangeAt(i);
+          for (const textLayerDiv of this.#textLayers.keys()) {
+            if (!activeTextLayers.has(textLayerDiv) && range.intersectsNode(textLayerDiv)) {
+              activeTextLayers.add(textLayerDiv);
+            }
           }
         }
-      }
-      for (const [textLayerDiv, endDiv] of this.#textLayers) {
-        if (activeTextLayers.has(textLayerDiv)) {
-          textLayerDiv.classList.add("selecting");
-        } else {
-          reset(endDiv, textLayerDiv);
-        }
-      }
-      if (isFirefoxOrModernChromium === undefined) {
-        isFirefoxOrModernChromium = getComputedStyle(this.#textLayers.values().next().value).getPropertyValue("-moz-user-select") === "none";
-        if (!isFirefoxOrModernChromium) {
-          const chromiumVersion = navigator.userAgentData ? navigator.userAgentData.brands.find(({
-            brand
-          }) => brand === "Chromium")?.version : /\bChrome\/(\d+)\b/.exec(navigator.userAgent)?.[1];
-          isFirefoxOrModernChromium = !!chromiumVersion && parseInt(chromiumVersion, 10) >= 148;
-        }
-      }
-      if (isFirefoxOrModernChromium) {
-        return;
-      }
-      const range = selection.getRangeAt(0);
-      const modifyStart = prevRange && (range.compareBoundaryPoints(Range.END_TO_END, prevRange) === 0 || range.compareBoundaryPoints(Range.START_TO_END, prevRange) === 0);
-      let anchor = modifyStart ? range.startContainer : range.endContainer;
-      if (anchor.nodeType === Node.TEXT_NODE) {
-        anchor = anchor.parentNode;
-      }
-      if (anchor.classList?.contains("highlight")) {
-        anchor = anchor.parentNode;
-      }
-      if (!modifyStart && range.endOffset === 0) {
-        do {
-          while (!anchor.previousSibling) {
-            anchor = anchor.parentNode;
+        for (const [textLayerDiv, endDiv] of this.#textLayers) {
+          if (activeTextLayers.has(textLayerDiv)) {
+            textLayerDiv.classList.add("selecting");
+          } else {
+            reset(endDiv, textLayerDiv);
           }
-          anchor = anchor.previousSibling;
-        } while (!anchor.childNodes.length);
+        }
+        if (isFirefoxOrModernChromium === undefined) {
+          isFirefoxOrModernChromium = getComputedStyle(this.#textLayers.values().next().value).getPropertyValue("-moz-user-select") === "none";
+          if (!isFirefoxOrModernChromium) {
+            const chromiumVersion = navigator.userAgentData
+              ? navigator.userAgentData.brands.find(({ brand }) => brand === "Chromium")?.version
+              : /\bChrome\/(\d+)\b/.exec(navigator.userAgent)?.[1];
+            isFirefoxOrModernChromium = !!chromiumVersion && parseInt(chromiumVersion, 10) >= 148;
+          }
+        }
+        if (isFirefoxOrModernChromium) {
+          return;
+        }
+        const range = selection.getRangeAt(0);
+        const modifyStart =
+          prevRange &&
+          (range.compareBoundaryPoints(Range.END_TO_END, prevRange) === 0 || range.compareBoundaryPoints(Range.START_TO_END, prevRange) === 0);
+        let anchor = modifyStart ? range.startContainer : range.endContainer;
+        if (anchor.nodeType === Node.TEXT_NODE) {
+          anchor = anchor.parentNode;
+        }
+        if (anchor.classList?.contains("highlight")) {
+          anchor = anchor.parentNode;
+        }
+        if (!modifyStart && range.endOffset === 0) {
+          do {
+            while (!anchor.previousSibling) {
+              anchor = anchor.parentNode;
+            }
+            anchor = anchor.previousSibling;
+          } while (!anchor.childNodes.length);
+        }
+        const parentTextLayer = anchor.parentElement?.closest(".textLayer");
+        const endDiv = this.#textLayers.get(parentTextLayer);
+        if (endDiv) {
+          endDiv.style.width = parentTextLayer.style.width;
+          endDiv.style.height = parentTextLayer.style.height;
+          endDiv.style.userSelect = "text";
+          anchor.parentElement.insertBefore(endDiv, modifyStart ? anchor : anchor.nextSibling);
+        }
+        prevRange = range.cloneRange();
+      },
+      {
+        signal,
       }
-      const parentTextLayer = anchor.parentElement?.closest(".textLayer");
-      const endDiv = this.#textLayers.get(parentTextLayer);
-      if (endDiv) {
-        endDiv.style.width = parentTextLayer.style.width;
-        endDiv.style.height = parentTextLayer.style.height;
-        endDiv.style.userSelect = "text";
-        anchor.parentElement.insertBefore(endDiv, modifyStart ? anchor : anchor.nextSibling);
-      }
-      prevRange = range.cloneRange();
-    }, {
-      signal
-    });
+    );
   }
-}
-
-;// ./web/pdf_page_view.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+} // ./web/pdf_page_view.js
 
 const DEFAULT_LAYER_PROPERTIES = null;
-const LAYERS_ORDER = new Map([["canvasWrapper", 0], ["textLayer", 1], ["annotationLayer", 2], ["annotationEditorLayer", 3], ["xfaLayer", 3]]);
+const LAYERS_ORDER = new Map([
+  ["canvasWrapper", 0],
+  ["textLayer", 1],
+  ["annotationLayer", 2],
+  ["annotationEditorLayer", 3],
+  ["xfaLayer", 3],
+]);
 class PDFPageView extends BasePDFPageView {
   #abortSignal = null;
   #annotationMode = AnnotationMode.ENABLE_FORMS;
@@ -18934,22 +18697,19 @@ class PDFPageView extends BasePDFPageView {
   #useThumbnailCanvas = {
     directDrawing: true,
     initialOptionalContent: true,
-    regularAnnotations: true
+    regularAnnotations: true,
   };
   #layers = [null, null, null, null];
   constructor(options) {
     super(options);
-    const {
-      container,
-      defaultViewport
-    } = options;
+    const { container, defaultViewport } = options;
     this.renderingId = "page" + this.id;
     this.#layerProperties = options.layerProperties || DEFAULT_LAYER_PROPERTIES;
     this.#abortSignal = options.abortSignal || null;
     this.pdfPage = null;
     this.pageLabel = null;
     this.rotation = 0;
-    this.scale = options.scale || (/* inlined export .DEFAULT_SCALE */1);
+    this.scale = options.scale || /* inlined export .DEFAULT_SCALE */ 1;
     this.viewport = defaultViewport;
     this.pdfPageRotate = defaultViewport.rotation;
     this._optionalContentConfigPromise = options.optionalContentConfigPromise || null;
@@ -18979,9 +18739,12 @@ class PDFPageView extends BasePDFPageView {
     div.setAttribute("data-page-number", this.id);
     div.setAttribute("role", "region");
     div.setAttribute("data-l10n-id", "pdfjs-page-landmark");
-    div.setAttribute("data-l10n-args", JSON.stringify({
-      page: this.id
-    }));
+    div.setAttribute(
+      "data-l10n-args",
+      JSON.stringify({
+        page: this.id,
+      })
+    );
     this.div = div;
     this.#setDimensions();
     container?.append(div);
@@ -18990,11 +18753,9 @@ class PDFPageView extends BasePDFPageView {
       if (this.pageColors?.background) {
         container?.style.setProperty("--page-bg-color", this.pageColors.background);
       }
-      const {
-        optionalContentConfigPromise
-      } = options;
+      const { optionalContentConfigPromise } = options;
       if (optionalContentConfigPromise) {
-        optionalContentConfigPromise.then(optionalContentConfig => {
+        optionalContentConfigPromise.then((optionalContentConfig) => {
           if (optionalContentConfigPromise !== this._optionalContentConfigPromise) {
             return;
           }
@@ -19029,7 +18790,7 @@ class PDFPageView extends BasePDFPageView {
       capCanvasAreaFactor: this.capCanvasAreaFactor,
       enableAutoLinking: this.#enableAutoLinking,
       commentManager: this.#commentManager,
-      l10n: this.l10n
+      l10n: this.l10n,
     });
     clone.setPdfPage(this.pdfPage.clone(id - 1));
     return clone;
@@ -19052,10 +18813,7 @@ class PDFPageView extends BasePDFPageView {
     this.div.prepend(div);
   }
   #setDimensions() {
-    const {
-      div,
-      viewport
-    } = this;
+    const { div, viewport } = this;
     if (viewport.userUnit !== this.#userUnit) {
       if (viewport.userUnit !== 1) {
         div.style.setProperty("--user-unit", viewport.userUnit);
@@ -19081,28 +18839,35 @@ class PDFPageView extends BasePDFPageView {
         this.pdfPage.pageNumber = newPageNumber;
       }
       this.setPageLabel(this.pageLabel);
-      const {
-        div
-      } = this;
+      const { div } = this;
       div.setAttribute("data-page-number", newPageNumber);
-      div.setAttribute("data-l10n-args", JSON.stringify({
-        page: newPageNumber
-      }));
+      div.setAttribute(
+        "data-l10n-args",
+        JSON.stringify({
+          page: newPageNumber,
+        })
+      );
       this._textHighlighter.pageIdx = newPageNumber - 1;
     }
     this.#layerProperties.annotationEditorUIManager?.updatePageIndex(oldPageNumber - 1, newPageNumber - 1);
   }
   setPdfPage(pdfPage) {
     if (this._isStandalone && (this.pageColors?.foreground === "CanvasText" || this.pageColors?.background === "Canvas")) {
-      this._container?.style.setProperty("--hcm-highlight-filter", pdfPage.filterFactory.addHighlightHCMFilter("highlight", "CanvasText", "Canvas", "HighlightText", "Highlight"));
-      this._container?.style.setProperty("--hcm-highlight-selected-filter", pdfPage.filterFactory.addHighlightHCMFilter("highlight_selected", "CanvasText", "Canvas", "HighlightText", "Highlight"));
+      this._container?.style.setProperty(
+        "--hcm-highlight-filter",
+        pdfPage.filterFactory.addHighlightHCMFilter("highlight", "CanvasText", "Canvas", "HighlightText", "Highlight")
+      );
+      this._container?.style.setProperty(
+        "--hcm-highlight-selected-filter",
+        pdfPage.filterFactory.addHighlightHCMFilter("highlight_selected", "CanvasText", "Canvas", "HighlightText", "Highlight")
+      );
     }
     this.pdfPage = pdfPage;
     this.pdfPageRotate = pdfPage.rotate;
     const totalRotation = (this.rotation + this.pdfPageRotate) % 360;
     this.viewport = pdfPage.getViewport({
       scale: this.scale * PixelsPerInch.PDF_TO_CSS_UNITS,
-      rotation: totalRotation
+      rotation: totalRotation,
     });
     this.#setDimensions();
     this.reset();
@@ -19123,31 +18888,32 @@ class PDFPageView extends BasePDFPageView {
     return !!this.annotationLayer?.hasEditableAnnotations();
   }
   get _textHighlighter() {
-    return shadow(this, "_textHighlighter", new TextHighlighter({
-      pageIndex: this.id - 1,
-      eventBus: this.eventBus,
-      findController: this.#layerProperties.findController
-    }));
+    return shadow(
+      this,
+      "_textHighlighter",
+      new TextHighlighter({
+        pageIndex: this.id - 1,
+        eventBus: this.eventBus,
+        findController: this.#layerProperties.findController,
+      })
+    );
   }
   #dispatchLayerRendered(name, error) {
     this.eventBus.dispatch(name, {
       source: this,
       pageNumber: this.id,
-      error
+      error,
     });
   }
   async #renderAnnotationLayer(textLayerPromise = null) {
-    const {
-      annotationLayer,
-      textLayer
-    } = this;
+    const { annotationLayer, textLayer } = this;
     let error = null;
     try {
       await this.annotationLayer.render({
         viewport: this.viewport,
         intent: "display",
         structTreeLayer: this.structTreeLayer,
-        optionalContentConfigPromise: this._optionalContentConfigPromise
+        optionalContentConfigPromise: this._optionalContentConfigPromise,
       });
     } catch (ex) {
       console.error("#renderAnnotationLayer:", ex);
@@ -19169,7 +18935,7 @@ class PDFPageView extends BasePDFPageView {
     try {
       await this.annotationEditorLayer.render({
         viewport: this.viewport,
-        intent: "display"
+        intent: "display",
       });
     } catch (ex) {
       console.error("#renderAnnotationEditorLayer:", ex);
@@ -19181,7 +18947,7 @@ class PDFPageView extends BasePDFPageView {
   async #renderDrawLayer() {
     try {
       await this.drawLayer.render({
-        intent: "display"
+        intent: "display",
       });
     } catch (ex) {
       console.error("#renderDrawLayer:", ex);
@@ -19192,7 +18958,7 @@ class PDFPageView extends BasePDFPageView {
     try {
       const result = await this.xfaLayer.render({
         viewport: this.viewport,
-        intent: "display"
+        intent: "display",
       });
       if (result?.textDivs && this._textHighlighter) {
         this.#buildXfaTextContentItems(result.textDivs);
@@ -19214,7 +18980,9 @@ class PDFPageView extends BasePDFPageView {
     try {
       await this.textLayer.render({
         viewport: this.viewport,
-        images: this.imageCoordinates ? new TextLayerImages(this.imagesRightClickMinSize, this.imageCoordinates, this.viewport, () => this.canvas) : null
+        images: this.imageCoordinates
+          ? new TextLayerImages(this.imagesRightClickMinSize, this.imageCoordinates, this.viewport, () => this.canvas)
+          : null,
       });
     } catch (ex) {
       if (ex instanceof AbortException) {
@@ -19271,23 +19039,23 @@ class PDFPageView extends BasePDFPageView {
     keepXfaLayer = false,
     keepTextLayer = false,
     keepCanvasWrapper = false,
-    preserveDetailViewState = false
+    preserveDetailViewState = false,
   } = {}) {
     const keepPdfBugGroups = this.pdfPage?._pdfBug ?? false;
     this.cancelRendering({
       keepAnnotationLayer,
       keepAnnotationEditorLayer,
       keepXfaLayer,
-      keepTextLayer
+      keepTextLayer,
     });
     this.renderingState = RenderingStates.INITIAL;
     const div = this.div;
     const childNodes = div.childNodes,
-      annotationLayerNode = keepAnnotationLayer && this.annotationLayer?.div || null,
-      annotationEditorLayerNode = keepAnnotationEditorLayer && this.annotationEditorLayer?.div || null,
-      xfaLayerNode = keepXfaLayer && this.xfaLayer?.div || null,
-      textLayerNode = keepTextLayer && this.textLayer?.div || null,
-      canvasWrapperNode = keepCanvasWrapper && this.#canvasWrapper || null;
+      annotationLayerNode = (keepAnnotationLayer && this.annotationLayer?.div) || null,
+      annotationEditorLayerNode = (keepAnnotationEditorLayer && this.annotationEditorLayer?.div) || null,
+      xfaLayerNode = (keepXfaLayer && this.xfaLayer?.div) || null,
+      textLayerNode = (keepTextLayer && this.textLayer?.div) || null,
+      canvasWrapperNode = (keepCanvasWrapper && this.#canvasWrapper) || null;
     for (let i = childNodes.length - 1; i >= 0; i--) {
       const node = childNodes[i];
       switch (node) {
@@ -19327,7 +19095,7 @@ class PDFPageView extends BasePDFPageView {
     }
     if (!preserveDetailViewState) {
       this.detailView?.reset({
-        keepCanvas: keepCanvasWrapper
+        keepCanvas: keepCanvasWrapper,
       });
       if (!keepCanvasWrapper) {
         this.detailView = null;
@@ -19344,7 +19112,7 @@ class PDFPageView extends BasePDFPageView {
       keepAnnotationEditorLayer: true,
       keepXfaLayer: true,
       keepTextLayer: true,
-      keepCanvasWrapper: true
+      keepCanvasWrapper: true,
     });
   }
   updateVisibleArea(visibleArea) {
@@ -19353,10 +19121,10 @@ class PDFPageView extends BasePDFPageView {
         this.detailView ??= new PDFPageDetailView({
           pageView: this,
           enableOptimizedPartialRendering: this.enableOptimizedPartialRendering,
-          imagesRightClickMinSize: -1
+          imagesRightClickMinSize: -1,
         });
         this.detailView.update({
-          visibleArea
+          visibleArea,
         });
       } else if (this.detailView) {
         this.detailView.reset();
@@ -19364,19 +19132,14 @@ class PDFPageView extends BasePDFPageView {
       }
     }
   }
-  update({
-    scale = 0,
-    rotation = null,
-    optionalContentConfigPromise = null,
-    drawingDelay = -1
-  }) {
+  update({ scale = 0, rotation = null, optionalContentConfigPromise = null, drawingDelay = -1 }) {
     this.scale = scale || this.scale;
     if (typeof rotation === "number") {
       this.rotation = rotation;
     }
     if (optionalContentConfigPromise instanceof Promise) {
       this._optionalContentConfigPromise = optionalContentConfigPromise;
-      optionalContentConfigPromise.then(optionalContentConfig => {
+      optionalContentConfigPromise.then((optionalContentConfig) => {
         if (optionalContentConfigPromise !== this._optionalContentConfigPromise) {
           return;
         }
@@ -19387,7 +19150,7 @@ class PDFPageView extends BasePDFPageView {
     const totalRotation = (this.rotation + this.pdfPageRotate) % 360;
     this.viewport = this.viewport.clone({
       scale: this.scale * PixelsPerInch.PDF_TO_CSS_UNITS,
-      rotation: totalRotation
+      rotation: totalRotation,
     });
     this.#setDimensions();
     if (this._isStandalone) {
@@ -19404,7 +19167,7 @@ class PDFPageView extends BasePDFPageView {
             keepAnnotationEditorLayer: true,
             keepXfaLayer: true,
             keepTextLayer: true,
-            cancelExtraDelay: drawingDelay
+            cancelExtraDelay: drawingDelay,
           });
           this.renderingState = RenderingStates.FINISHED;
           this.#useThumbnailCanvas.directDrawing = false;
@@ -19414,11 +19177,11 @@ class PDFPageView extends BasePDFPageView {
           redrawAnnotationEditorLayer: true,
           redrawXfaLayer: true,
           redrawTextLayer: !postponeDrawing,
-          hideTextLayer: postponeDrawing
+          hideTextLayer: postponeDrawing,
         });
         if (!postponeDrawing) {
           this.detailView?.update({
-            underlyingViewUpdated: true
+            underlyingViewUpdated: true,
           });
           this.dispatchPageRendered(true, false);
         }
@@ -19433,18 +19196,15 @@ class PDFPageView extends BasePDFPageView {
       keepXfaLayer: true,
       keepTextLayer: true,
       keepCanvasWrapper: true,
-      preserveDetailViewState: true
+      preserveDetailViewState: true,
     });
     this.detailView?.update({
-      underlyingViewUpdated: true
+      underlyingViewUpdated: true,
     });
   }
   #computeScale() {
-    const {
-      width,
-      height
-    } = this.viewport;
-    const outputScale = this.outputScale = new OutputScale();
+    const { width, height } = this.viewport;
+    const outputScale = (this.outputScale = new OutputScale());
     if (this.maxCanvasPixels === 0) {
       const invScale = 1 / this.scale;
       outputScale.sx *= invScale;
@@ -19464,10 +19224,10 @@ class PDFPageView extends BasePDFPageView {
     keepAnnotationEditorLayer = false,
     keepXfaLayer = false,
     keepTextLayer = false,
-    cancelExtraDelay = 0
+    cancelExtraDelay = 0,
   } = {}) {
     super.cancelRendering({
-      cancelExtraDelay
+      cancelExtraDelay,
     });
     if (this.textLayer && (!keepTextLayer || !this.textLayer.div)) {
       this.textLayer.cancel();
@@ -19504,11 +19264,9 @@ class PDFPageView extends BasePDFPageView {
     redrawAnnotationEditorLayer = false,
     redrawXfaLayer = false,
     redrawTextLayer = false,
-    hideTextLayer = false
+    hideTextLayer = false,
   }) {
-    const {
-      canvas
-    } = this;
+    const { canvas } = this;
     if (!canvas) {
       return;
     }
@@ -19516,10 +19274,7 @@ class PDFPageView extends BasePDFPageView {
     if (this.viewport !== originalViewport) {
       const relativeRotation = (360 + this.viewport.rotation - originalViewport.rotation) % 360;
       if (relativeRotation === 90 || relativeRotation === 270) {
-        const {
-          width,
-          height
-        } = this.viewport;
+        const { width, height } = this.viewport;
         const scaleX = height / width;
         const scaleY = width / height;
         canvas.style.transform = `rotate(${relativeRotation}deg) scale(${scaleX},${scaleY})`;
@@ -19577,7 +19332,7 @@ class PDFPageView extends BasePDFPageView {
       pageColors: this.pageColors,
       isEditing: this.#isEditing,
       recordOperations,
-      recordImages
+      recordImages,
     };
   }
   async draw() {
@@ -19585,12 +19340,7 @@ class PDFPageView extends BasePDFPageView {
       console.error("Must be in new state before drawing");
       this.reset();
     }
-    const {
-      div,
-      l10n,
-      pdfPage,
-      viewport
-    } = this;
+    const { div, l10n, pdfPage, viewport } = this;
     if (!pdfPage) {
       this.renderingState = RenderingStates.FINISHED;
       throw new Error("pdfPage is not loaded");
@@ -19604,12 +19354,12 @@ class PDFPageView extends BasePDFPageView {
         highlighter: this._textHighlighter,
         accessibilityManager: this._accessibilityManager,
         enablePermissions: this.#textLayerMode === TextLayerMode.ENABLE_PERMISSIONS,
-        onAppend: textLayerDiv => {
+        onAppend: (textLayerDiv) => {
           this.l10n.pause();
           this.#addLayer(textLayerDiv, "textLayer");
           this.l10n.resume();
         },
-        abortSignal: this.#abortSignal
+        abortSignal: this.#abortSignal,
       });
       if (this.enableSelectionRendering) {
         this.textLayer.div.classList.add("selectionRendering");
@@ -19624,7 +19374,7 @@ class PDFPageView extends BasePDFPageView {
         enableScripting,
         fieldObjectsPromise,
         hasJSActionsPromise,
-        linkService
+        linkService,
       } = this.#layerProperties;
       this._annotationCanvasMap ||= new Map();
       this.annotationLayer = new AnnotationLayerBuilder({
@@ -19642,34 +19392,26 @@ class PDFPageView extends BasePDFPageView {
         accessibilityManager: this._accessibilityManager,
         annotationEditorUIManager,
         commentManager: this.#commentManager,
-        onAppend: annotationLayerDiv => {
+        onAppend: (annotationLayerDiv) => {
           this.#addLayer(annotationLayerDiv, "annotationLayer");
-        }
+        },
       });
     }
-    const {
-      width,
-      height
-    } = viewport;
+    const { width, height } = viewport;
     this.#originalViewport = viewport;
-    const {
-      canvas,
-      prevCanvas
-    } = this._createCanvas(newCanvas => {
+    const { canvas, prevCanvas } = this._createCanvas((newCanvas) => {
       canvasWrapper.prepend(newCanvas);
     });
     canvas.setAttribute("role", "presentation");
     if (!this.outputScale) {
       this.#computeScale();
     }
-    const {
-      outputScale
-    } = this;
+    const { outputScale } = this;
     this.#hasRestrictedScaling = this.#needsRestrictedScaling;
     const sfx = approximateFraction(outputScale.sx);
     const sfy = approximateFraction(outputScale.sy);
-    const canvasWidth = canvas.width = floorToDivide(calcRound(width * outputScale.sx), sfx[0]);
-    const canvasHeight = canvas.height = floorToDivide(calcRound(height * outputScale.sy), sfy[0]);
+    const canvasWidth = (canvas.width = floorToDivide(calcRound(width * outputScale.sx), sfx[0]));
+    const canvasHeight = (canvas.height = floorToDivide(calcRound(height * outputScale.sy), sfy[0]));
     const pageWidth = floorToDivide(calcRound(width), sfx[1]);
     const pageHeight = floorToDivide(calcRound(height), sfy[1]);
     outputScale.sx = canvasWidth / pageWidth;
@@ -19685,13 +19427,17 @@ class PDFPageView extends BasePDFPageView {
     const recordBBoxes = this.enableOptimizedPartialRendering && this.#hasRestrictedScaling && !this.recordedBBoxes;
     const recordImages = this.imagesRightClickMinSize !== -1 && !this.imageCoordinates;
     const transform = outputScale.scaled ? [outputScale.sx, 0, 0, outputScale.sy, 0, 0] : null;
-    const resultPromise = this._drawCanvas(this._getRenderingContext(canvas, transform, recordBBoxes, recordImages), () => {
-      prevCanvas?.remove();
-      this._resetCanvas();
-    }, renderTask => {
-      this.#useThumbnailCanvas.regularAnnotations = !renderTask.separateAnnots;
-      this.dispatchPageRendered(false, false);
-    }).then(async () => {
+    const resultPromise = this._drawCanvas(
+      this._getRenderingContext(canvas, transform, recordBBoxes, recordImages),
+      () => {
+        prevCanvas?.remove();
+        this._resetCanvas();
+      },
+      (renderTask) => {
+        this.#useThumbnailCanvas.regularAnnotations = !renderTask.separateAnnots;
+        this.dispatchPageRendered(false, false);
+      }
+    ).then(async () => {
       if (this.renderingState !== RenderingStates.FINISHED) {
         return;
       }
@@ -19704,13 +19450,11 @@ class PDFPageView extends BasePDFPageView {
         pageIndex: this.id,
         textLayer: this.enableSelectionRendering ? this.textLayer?.div : null,
         filterFactory: this.pdfPage?.filterFactory,
-        pageColors: this.pageColors
+        pageColors: this.pageColors,
       });
       await this.#renderDrawLayer();
       this.drawLayer.setParent(canvasWrapper);
-      const {
-        annotationEditorUIManager
-      } = this.#layerProperties;
+      const { annotationEditorUIManager } = this.#layerProperties;
       if (!annotationEditorUIManager) {
         return;
       }
@@ -19724,23 +19468,20 @@ class PDFPageView extends BasePDFPageView {
           annotationLayer: this.annotationLayer?.annotationLayer,
           textLayer: this.textLayer,
           drawLayer: this.drawLayer.getDrawLayer(),
-          onAppend: annotationEditorLayerDiv => {
+          onAppend: (annotationEditorLayerDiv) => {
             this.#addLayer(annotationEditorLayerDiv, "annotationEditorLayer");
-          }
+          },
         });
         this.#renderAnnotationEditorLayer();
       }
     });
     if (pdfPage.isPureXfa) {
       if (!this.xfaLayer) {
-        const {
-          annotationStorage,
-          linkService
-        } = this.#layerProperties;
+        const { annotationStorage, linkService } = this.#layerProperties;
         this.xfaLayer = new XfaLayerBuilder({
           pdfPage,
           annotationStorage,
-          linkService
+          linkService,
         });
       }
       this.#renderXfaLayer();
@@ -19751,9 +19492,12 @@ class PDFPageView extends BasePDFPageView {
   }
   setPageLabel(label) {
     this.pageLabel = typeof label === "string" ? label : null;
-    this.div.setAttribute("data-l10n-args", JSON.stringify({
-      page: this.pageLabel ?? this.id
-    }));
+    this.div.setAttribute(
+      "data-l10n-args",
+      JSON.stringify({
+        page: this.pageLabel ?? this.id,
+      })
+    );
     if (this.pageLabel !== null) {
       this.div.setAttribute("data-page-label", this.pageLabel);
     } else {
@@ -19761,44 +19505,16 @@ class PDFPageView extends BasePDFPageView {
     }
   }
   get thumbnailCanvas() {
-    const {
-      directDrawing,
-      initialOptionalContent,
-      regularAnnotations
-    } = this.#useThumbnailCanvas;
+    const { directDrawing, initialOptionalContent, regularAnnotations } = this.#useThumbnailCanvas;
     return directDrawing && initialOptionalContent && regularAnnotations ? this.canvas : null;
   }
-}
-
-;// ./web/pdf_viewer.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+} // ./web/pdf_viewer.js
 
 const DEFAULT_CACHE_SIZE = 10;
 const PagesCountLimit = {
   FORCE_SCROLL_MODE_PAGE: 10000,
   FORCE_LAZY_PAGE_INIT: 5000,
-  PAUSE_EAGER_PAGE_INIT: 250
+  PAUSE_EAGER_PAGE_INIT: 250,
 };
 function isValidAnnotationEditorMode(mode) {
   return Object.values(AnnotationEditorType).includes(mode) && mode !== AnnotationEditorType.DISABLE;
@@ -19913,7 +19629,7 @@ class PDFViewer {
     this.#signatureManager = options.signatureManager || null;
     this.#editorUndoBar = options.editorUndoBar || null;
     if (this.findController) {
-      this.findController.onIsPageVisible = pageNumber => this._getVisiblePages().ids.has(pageNumber);
+      this.findController.onIsPageVisible = (pageNumber) => this._getVisiblePages().ids.has(pageNumber);
     }
     this._scriptingManager = options.scriptingManager || null;
     this.#textLayerMode = options.textLayerMode ?? TextLayerMode.ENABLE;
@@ -19948,16 +19664,18 @@ class PDFViewer {
     } else {
       this.renderingQueue = options.renderingQueue;
     }
-    const {
-      abortSignal
-    } = options;
+    const { abortSignal } = options;
     this.#abortSignal = abortSignal || null;
-    abortSignal?.addEventListener("abort", () => {
-      this.#resizeObserver.disconnect();
-      this.#resizeObserver = null;
-    }, {
-      once: true
-    });
+    abortSignal?.addEventListener(
+      "abort",
+      () => {
+        this.#resizeObserver.disconnect();
+        this.#resizeObserver = null;
+      },
+      {
+        once: true,
+      }
+    );
     this.scroll = watchScroll(this.container, this._scrollUpdate.bind(this), abortSignal);
     this.presentationModeState = PresentationModeState.UNKNOWN;
     this._resetView();
@@ -19965,15 +19683,16 @@ class PDFViewer {
       this.viewer.classList.add("removePageBorders");
     }
     this.#updateContainerHeightCss();
-    this.eventBus.on("thumbnailrendered", ({
-      pageNumber,
-      pdfPage
-    }) => {
-      const pageView = this._pages[pageNumber - 1];
-      if (!this.#buffer.has(pageView)) {
-        pdfPage?.cleanup();
-      }
-    }, internalOpt);
+    this.eventBus.on(
+      "thumbnailrendered",
+      ({ pageNumber, pdfPage }) => {
+        const pageView = this._pages[pageNumber - 1];
+        if (!this.#buffer.has(pageView)) {
+          pdfPage?.cleanup();
+        }
+      },
+      internalOpt
+    );
     if (!options.l10n) {
       this.l10n.translate(this.container);
     }
@@ -19991,7 +19710,7 @@ class PDFViewer {
     return new Set(this.#buffer);
   }
   get pageViewsReady() {
-    return this._pages.every(pageView => pageView?.pdfPage);
+    return this._pages.every((pageView) => pageView?.pdfPage);
   }
   clearSelection() {
     const selection = document.getSelection();
@@ -20045,7 +19764,7 @@ class PDFViewer {
       source: this,
       pageNumber: val,
       pageLabel: this._pageLabels?.[val - 1] ?? null,
-      previous
+      previous,
     });
     if (resetCurrentPageView) {
       this.#resetCurrentPageView();
@@ -20074,7 +19793,7 @@ class PDFViewer {
     }
   }
   get currentScale() {
-    return this._currentScale !== (/* inlined export .UNKNOWN_SCALE */0) ? this._currentScale : (/* inlined export .DEFAULT_SCALE */1);
+    return this._currentScale !== /* inlined export .UNKNOWN_SCALE */ 0 ? this._currentScale : /* inlined export .DEFAULT_SCALE */ 1;
   }
   set currentScale(val) {
     if (isNaN(val)) {
@@ -20084,7 +19803,7 @@ class PDFViewer {
       return;
     }
     this.#setScale(val, {
-      noScroll: false
+      noScroll: false,
     });
   }
   get currentScaleValue() {
@@ -20095,7 +19814,7 @@ class PDFViewer {
       return;
     }
     this.#setScale(val, {
-      noScroll: false
+      noScroll: false,
     });
   }
   get pagesRotation() {
@@ -20119,17 +19838,17 @@ class PDFViewer {
     this._pagesRotation = rotation;
     const pageNumber = this._currentPageNumber;
     this.refresh(true, {
-      rotation
+      rotation,
     });
     if (this._currentScaleValue) {
       this.#setScale(this._currentScaleValue, {
-        noScroll: true
+        noScroll: true,
       });
     }
     this.eventBus.dispatch("rotationchanging", {
       source: this,
       pagesRotation: rotation,
-      pageNumber
+      pageNumber,
     });
     if (this.defaultRenderingQueue) {
       this.update();
@@ -20173,21 +19892,21 @@ class PDFViewer {
       },
       get linkService() {
         return self.linkService;
-      }
+      },
     });
   }
   #setPrintingAllowed(isAllowed) {
     this.#printingAllowed = isAllowed;
     this.eventBus.dispatch("printingallowed", {
       source: this,
-      isAllowed
+      isAllowed,
     });
   }
   #initializePermissions(permissions) {
     const params = {
       annotationEditorMode: this.#annotationEditorMode,
       annotationMode: this.#annotationMode,
-      textLayerMode: this.#textLayerMode
+      textLayerMode: this.#textLayerMode,
     };
     if (!permissions) {
       this.#setPrintingAllowed(true);
@@ -20200,7 +19919,11 @@ class PDFViewer {
     if (!permissions.has(PermissionFlag.MODIFY_CONTENTS)) {
       params.annotationEditorMode = AnnotationEditorType.DISABLE;
     }
-    if (!permissions.has(PermissionFlag.MODIFY_ANNOTATIONS) && !permissions.has(PermissionFlag.FILL_INTERACTIVE_FORMS) && this.#annotationMode === AnnotationMode.ENABLE_FORMS) {
+    if (
+      !permissions.has(PermissionFlag.MODIFY_ANNOTATIONS) &&
+      !permissions.has(PermissionFlag.FILL_INTERACTIVE_FORMS) &&
+      this.#annotationMode === AnnotationMode.ENABLE_FORMS
+    ) {
       params.annotationMode = AnnotationMode.ENABLE;
     }
     return params;
@@ -20211,13 +19934,17 @@ class PDFViewer {
     }
     const hiddenCapability = Promise.withResolvers(),
       ac = new AbortController();
-    document.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === "hidden") {
-        hiddenCapability.resolve();
+    document.addEventListener(
+      "visibilitychange",
+      () => {
+        if (document.visibilityState === "hidden") {
+          hiddenCapability.resolve();
+        }
+      },
+      {
+        signal: AbortSignal.any([signal, ac.signal]),
       }
-    }, {
-      signal: AbortSignal.any([signal, ac.signal])
-    });
+    );
     await Promise.race([this._onePageRenderedCapability.promise, hiddenCapability.promise]);
     ac.abort();
   }
@@ -20230,9 +19957,7 @@ class PDFViewer {
       }
       buffer.length = 0;
       const page = await this.pdfDocument.getPage(pageNum);
-      const {
-        items
-      } = await page.getTextContent();
+      const { items } = await page.getTextContent();
       for (const item of items) {
         if (item.str) {
           buffer.push(item.str);
@@ -20247,47 +19972,49 @@ class PDFViewer {
   }
   #copyCallback(textLayerMode, event) {
     const selection = document.getSelection();
-    const {
-      focusNode,
-      anchorNode
-    } = selection;
+    const { focusNode, anchorNode } = selection;
     if (anchorNode && focusNode && selection.containsNode(this.#hiddenCopyElement)) {
       if (this.#copyAllInProgress || textLayerMode === TextLayerMode.ENABLE_PERMISSIONS) {
         stopEvent(event);
         return;
       }
       this.#copyAllInProgress = true;
-      const {
-        classList
-      } = this.viewer;
+      const { classList } = this.viewer;
       classList.add("copyAll");
       const keydownAC = new AbortController(),
         interruptAC = new AbortController();
-      window.addEventListener("keydown", ev => {
-        if (ev.key === "Escape") {
-          interruptAC.abort();
+      window.addEventListener(
+        "keydown",
+        (ev) => {
+          if (ev.key === "Escape") {
+            interruptAC.abort();
+          }
+        },
+        {
+          signal: keydownAC.signal,
         }
-      }, {
-        signal: keydownAC.signal
-      });
-      this.getAllText(interruptAC.signal).then(async text => {
-        if (text !== null) {
-          await navigator.clipboard.writeText(text);
-        }
-      }).catch(reason => {
-        console.warn(`Something goes wrong when extracting the text: ${reason.message}`);
-      }).finally(() => {
-        this.#copyAllInProgress = false;
-        keydownAC.abort();
-        classList.remove("copyAll");
-      });
+      );
+      this.getAllText(interruptAC.signal)
+        .then(async (text) => {
+          if (text !== null) {
+            await navigator.clipboard.writeText(text);
+          }
+        })
+        .catch((reason) => {
+          console.warn(`Something goes wrong when extracting the text: ${reason.message}`);
+        })
+        .finally(() => {
+          this.#copyAllInProgress = false;
+          keydownAC.abort();
+          classList.remove("copyAll");
+        });
       stopEvent(event);
     }
   }
   setDocument(pdfDocument) {
     if (this.pdfDocument) {
       this.eventBus.dispatch("pagesdestroy", {
-        source: this
+        source: this,
       });
       this._cancelRendering();
       this._resetView();
@@ -20305,37 +20032,34 @@ class PDFViewer {
     const pagesCount = pdfDocument.numPages;
     const firstPagePromise = pdfDocument.getPage(1);
     const optionalContentConfigPromise = pdfDocument.getOptionalContentConfig({
-      intent: "display"
+      intent: "display",
     });
     const permissionsPromise = this.#enablePermissions ? pdfDocument.getPermissions() : Promise.resolve();
-    const {
-      eventBus,
-      pageColors,
-      viewer
-    } = this;
+    const { eventBus, pageColors, viewer } = this;
     this.#eventAC = new AbortController();
-    const {
-      signal
-    } = this.#eventAC;
+    const { signal } = this.#eventAC;
     const evtOpts = {
       signal,
-      ...internalOpt
+      ...internalOpt,
     };
     if (pagesCount > PagesCountLimit.FORCE_SCROLL_MODE_PAGE) {
       console.warn("Forcing PAGE-scrolling for performance reasons, given the length of the document.");
-      const mode = this._scrollMode = ScrollMode.PAGE;
+      const mode = (this._scrollMode = ScrollMode.PAGE);
       eventBus.dispatch("scrollmodechanged", {
         source: this,
-        mode
+        mode,
       });
     }
-    this._pagesCapability.promise.then(() => {
-      eventBus.dispatch("pagesloaded", {
-        source: this,
-        pagesCount
-      });
-    }, () => {});
-    const onBeforeDraw = evt => {
+    this._pagesCapability.promise.then(
+      () => {
+        eventBus.dispatch("pagesloaded", {
+          source: this,
+          pagesCount,
+        });
+      },
+      () => {}
+    );
+    const onBeforeDraw = (evt) => {
       const pageView = this._pages[evt.pageNumber - 1];
       if (!pageView) {
         return;
@@ -20343,178 +20067,199 @@ class PDFViewer {
       this.#buffer.push(pageView);
     };
     eventBus.on("pagerender", onBeforeDraw, evtOpts);
-    const onAfterDraw = evt => {
+    const onAfterDraw = (evt) => {
       if (evt.cssTransform || evt.isDetailView) {
         return;
       }
       this._onePageRenderedCapability.resolve({
-        timestamp: evt.timestamp
+        timestamp: evt.timestamp,
       });
       eventBus.off("pagerendered", onAfterDraw);
     };
     eventBus.on("pagerendered", onAfterDraw, evtOpts);
-    Promise.all([firstPagePromise, permissionsPromise]).then(([firstPdfPage, permissions]) => {
-      if (pdfDocument !== this.pdfDocument) {
-        return;
-      }
-      this._firstPageCapability.resolve(firstPdfPage);
-      this._optionalContentConfigPromise = optionalContentConfigPromise;
-      const {
-        annotationEditorMode,
-        annotationMode,
-        textLayerMode
-      } = this.#initializePermissions(permissions);
-      if (textLayerMode !== TextLayerMode.DISABLE) {
-        const element = this.#hiddenCopyElement = document.createElement("div");
-        element.id = "hiddenCopyElement";
-        element.style.cssText = "position:absolute;top:0;left:0;width:0;height:0;display:none";
-        viewer.before(element);
-      }
-      if (annotationEditorMode !== AnnotationEditorType.DISABLE) {
-        const mode = annotationEditorMode;
-        if (pdfDocument.isPureXfa) {
-          console.warn("Warning: XFA-editing is not implemented.");
-        } else if (isValidAnnotationEditorMode(mode)) {
-          this.#annotationEditorUIManager = new AnnotationEditorUIManager(this.container, viewer, this.#viewerAlert, this.#altTextManager, this.#commentManager, this.#signatureManager, eventBus, pdfDocument, pageColors, this.#annotationEditorHighlightColors, this.#enableHighlightFloatingButton, this.#enableUpdatedAddImage, this.#enableNewAltTextWhenAddingImage, this.#mlManager, this.#editorUndoBar, this.#supportsPinchToZoom);
-          eventBus.dispatch("annotationeditoruimanager", {
-            source: this,
-            uiManager: this.#annotationEditorUIManager
-          });
-          if (mode !== AnnotationEditorType.NONE) {
-            this.#preloadEditingData(mode);
-            this.#annotationEditorUIManager.updateMode(mode);
-          }
-        } else {
-          console.error(`Invalid AnnotationEditor mode: ${mode}`);
+    Promise.all([firstPagePromise, permissionsPromise])
+      .then(([firstPdfPage, permissions]) => {
+        if (pdfDocument !== this.pdfDocument) {
+          return;
         }
-      }
-      const viewerElement = this._scrollMode === ScrollMode.PAGE ? null : viewer;
-      const scale = this.currentScale;
-      const viewport = firstPdfPage.getViewport({
-        scale: scale * PixelsPerInch.PDF_TO_CSS_UNITS
-      });
-      viewer.style.setProperty("--scale-factor", viewport.scale);
-      if (pageColors?.background) {
-        viewer.style.setProperty("--page-bg-color", pageColors.background);
-      }
-      if (pageColors?.foreground === "CanvasText" || pageColors?.background === "Canvas") {
-        viewer.style.setProperty("--hcm-highlight-filter", pdfDocument.filterFactory.addHighlightHCMFilter("highlight", "CanvasText", "Canvas", "HighlightText", "Highlight"));
-        viewer.style.setProperty("--hcm-highlight-selected-filter", pdfDocument.filterFactory.addHighlightHCMFilter("highlight_selected", "CanvasText", "Canvas", "HighlightText", "ButtonText"));
-      }
-      for (let pageNum = 1; pageNum <= pagesCount; ++pageNum) {
-        const pageView = new PDFPageView({
-          container: viewerElement,
-          eventBus,
-          id: pageNum,
-          scale,
-          defaultViewport: viewport.clone(),
-          optionalContentConfigPromise,
-          renderingQueue: this.renderingQueue,
-          textLayerMode,
-          annotationMode,
-          imageResourcesPath: this.imageResourcesPath,
-          maxCanvasPixels: this.maxCanvasPixels,
-          maxCanvasDim: this.maxCanvasDim,
-          capCanvasAreaFactor: this.capCanvasAreaFactor,
-          enableDetailCanvas: this.enableDetailCanvas,
-          enableOptimizedPartialRendering: this.enableOptimizedPartialRendering,
-          enableSelectionRendering: this.enableSelectionRendering,
-          imagesRightClickMinSize: this.imagesRightClickMinSize,
-          pageColors,
-          l10n: this.l10n,
-          layerProperties: this._layerProperties,
-          enableAutoLinking: this.#enableAutoLinking,
-          minDurationToUpdateCanvas: this.#minDurationToUpdateCanvas,
-          commentManager: this.#commentManager,
-          abortSignal: this.#abortSignal
+        this._firstPageCapability.resolve(firstPdfPage);
+        this._optionalContentConfigPromise = optionalContentConfigPromise;
+        const { annotationEditorMode, annotationMode, textLayerMode } = this.#initializePermissions(permissions);
+        if (textLayerMode !== TextLayerMode.DISABLE) {
+          const element = (this.#hiddenCopyElement = document.createElement("div"));
+          element.id = "hiddenCopyElement";
+          element.style.cssText = "position:absolute;top:0;left:0;width:0;height:0;display:none";
+          viewer.before(element);
+        }
+        if (annotationEditorMode !== AnnotationEditorType.DISABLE) {
+          const mode = annotationEditorMode;
+          if (pdfDocument.isPureXfa) {
+            console.warn("Warning: XFA-editing is not implemented.");
+          } else if (isValidAnnotationEditorMode(mode)) {
+            this.#annotationEditorUIManager = new AnnotationEditorUIManager(
+              this.container,
+              viewer,
+              this.#viewerAlert,
+              this.#altTextManager,
+              this.#commentManager,
+              this.#signatureManager,
+              eventBus,
+              pdfDocument,
+              pageColors,
+              this.#annotationEditorHighlightColors,
+              this.#enableHighlightFloatingButton,
+              this.#enableUpdatedAddImage,
+              this.#enableNewAltTextWhenAddingImage,
+              this.#mlManager,
+              this.#editorUndoBar,
+              this.#supportsPinchToZoom
+            );
+            eventBus.dispatch("annotationeditoruimanager", {
+              source: this,
+              uiManager: this.#annotationEditorUIManager,
+            });
+            if (mode !== AnnotationEditorType.NONE) {
+              this.#preloadEditingData(mode);
+              this.#annotationEditorUIManager.updateMode(mode);
+            }
+          } else {
+            console.error(`Invalid AnnotationEditor mode: ${mode}`);
+          }
+        }
+        const viewerElement = this._scrollMode === ScrollMode.PAGE ? null : viewer;
+        const scale = this.currentScale;
+        const viewport = firstPdfPage.getViewport({
+          scale: scale * PixelsPerInch.PDF_TO_CSS_UNITS,
         });
-        this._pages.push(pageView);
-      }
-      this._pages[0]?.setPdfPage(firstPdfPage);
-      if (this._scrollMode === ScrollMode.PAGE) {
-        this.#ensurePageViewVisible();
-      } else if (this._spreadMode !== SpreadMode.NONE) {
-        this._updateSpreadMode();
-      }
-      eventBus.on("annotationeditorlayerrendered", evt => {
-        if (this.#annotationEditorUIManager) {
-          eventBus.dispatch("annotationeditormodechanged", {
-            source: this,
-            mode: this.#annotationEditorMode
+        viewer.style.setProperty("--scale-factor", viewport.scale);
+        if (pageColors?.background) {
+          viewer.style.setProperty("--page-bg-color", pageColors.background);
+        }
+        if (pageColors?.foreground === "CanvasText" || pageColors?.background === "Canvas") {
+          viewer.style.setProperty(
+            "--hcm-highlight-filter",
+            pdfDocument.filterFactory.addHighlightHCMFilter("highlight", "CanvasText", "Canvas", "HighlightText", "Highlight")
+          );
+          viewer.style.setProperty(
+            "--hcm-highlight-selected-filter",
+            pdfDocument.filterFactory.addHighlightHCMFilter("highlight_selected", "CanvasText", "Canvas", "HighlightText", "ButtonText")
+          );
+        }
+        for (let pageNum = 1; pageNum <= pagesCount; ++pageNum) {
+          const pageView = new PDFPageView({
+            container: viewerElement,
+            eventBus,
+            id: pageNum,
+            scale,
+            defaultViewport: viewport.clone(),
+            optionalContentConfigPromise,
+            renderingQueue: this.renderingQueue,
+            textLayerMode,
+            annotationMode,
+            imageResourcesPath: this.imageResourcesPath,
+            maxCanvasPixels: this.maxCanvasPixels,
+            maxCanvasDim: this.maxCanvasDim,
+            capCanvasAreaFactor: this.capCanvasAreaFactor,
+            enableDetailCanvas: this.enableDetailCanvas,
+            enableOptimizedPartialRendering: this.enableOptimizedPartialRendering,
+            enableSelectionRendering: this.enableSelectionRendering,
+            imagesRightClickMinSize: this.imagesRightClickMinSize,
+            pageColors,
+            l10n: this.l10n,
+            layerProperties: this._layerProperties,
+            enableAutoLinking: this.#enableAutoLinking,
+            minDurationToUpdateCanvas: this.#minDurationToUpdateCanvas,
+            commentManager: this.#commentManager,
+            abortSignal: this.#abortSignal,
           });
+          this._pages.push(pageView);
         }
-      }, {
-        once: true,
-        signal,
-        ...internalOpt
-      });
-      this.#onePageRenderedOrForceFetch(signal).then(async () => {
-        if (pdfDocument !== this.pdfDocument) {
-          return;
+        this._pages[0]?.setPdfPage(firstPdfPage);
+        if (this._scrollMode === ScrollMode.PAGE) {
+          this.#ensurePageViewVisible();
+        } else if (this._spreadMode !== SpreadMode.NONE) {
+          this._updateSpreadMode();
         }
-        this.findController?.setDocument(pdfDocument);
-        this._scriptingManager?.setDocument(pdfDocument);
-        if (this.#hiddenCopyElement) {
-          document.addEventListener("copy", this.#copyCallback.bind(this, textLayerMode), {
-            signal
-          });
-        }
-        if (pdfDocument.loadingParams.disableAutoFetch || pagesCount > PagesCountLimit.FORCE_LAZY_PAGE_INIT) {
-          this._pagesCapability.resolve();
-          return;
-        }
-        let getPagesLeft = pagesCount - 1;
-        if (getPagesLeft <= 0) {
-          this._pagesCapability.resolve();
-          return;
-        }
-        for (let pageNum = 2; pageNum <= pagesCount; ++pageNum) {
-          const promise = pdfDocument.getPage(pageNum).then(pdfPage => {
-            const pageView = this._pages[pageNum - 1];
-            if (!pageView.pdfPage) {
-              pageView.setPdfPage(pdfPage);
+        eventBus.on(
+          "annotationeditorlayerrendered",
+          (evt) => {
+            if (this.#annotationEditorUIManager) {
+              eventBus.dispatch("annotationeditormodechanged", {
+                source: this,
+                mode: this.#annotationEditorMode,
+              });
             }
-            if (--getPagesLeft === 0) {
-              this._pagesCapability.resolve();
-            }
-          }, reason => {
-            console.error(`Unable to get page ${pageNum} to initialize viewer`, reason);
-            if (--getPagesLeft === 0) {
-              this._pagesCapability.resolve();
-            }
-          });
-          if (pageNum % PagesCountLimit.PAUSE_EAGER_PAGE_INIT === 0) {
-            await promise;
+          },
+          {
+            once: true,
+            signal,
+            ...internalOpt,
           }
+        );
+        this.#onePageRenderedOrForceFetch(signal).then(async () => {
+          if (pdfDocument !== this.pdfDocument) {
+            return;
+          }
+          this.findController?.setDocument(pdfDocument);
+          this._scriptingManager?.setDocument(pdfDocument);
+          if (this.#hiddenCopyElement) {
+            document.addEventListener("copy", this.#copyCallback.bind(this, textLayerMode), {
+              signal,
+            });
+          }
+          if (pdfDocument.loadingParams.disableAutoFetch || pagesCount > PagesCountLimit.FORCE_LAZY_PAGE_INIT) {
+            this._pagesCapability.resolve();
+            return;
+          }
+          let getPagesLeft = pagesCount - 1;
+          if (getPagesLeft <= 0) {
+            this._pagesCapability.resolve();
+            return;
+          }
+          for (let pageNum = 2; pageNum <= pagesCount; ++pageNum) {
+            const promise = pdfDocument.getPage(pageNum).then(
+              (pdfPage) => {
+                const pageView = this._pages[pageNum - 1];
+                if (!pageView.pdfPage) {
+                  pageView.setPdfPage(pdfPage);
+                }
+                if (--getPagesLeft === 0) {
+                  this._pagesCapability.resolve();
+                }
+              },
+              (reason) => {
+                console.error(`Unable to get page ${pageNum} to initialize viewer`, reason);
+                if (--getPagesLeft === 0) {
+                  this._pagesCapability.resolve();
+                }
+              }
+            );
+            if (pageNum % PagesCountLimit.PAUSE_EAGER_PAGE_INIT === 0) {
+              await promise;
+            }
+          }
+        });
+        eventBus.dispatch("pagesinit", {
+          source: this,
+        });
+        pdfDocument.getMetadata().then(({ info }) => {
+          if (pdfDocument !== this.pdfDocument) {
+            return;
+          }
+          if (info.Language) {
+            viewer.lang = info.Language;
+          }
+        });
+        if (this.defaultRenderingQueue) {
+          this.update();
         }
+      })
+      .catch((reason) => {
+        console.error("Unable to initialize viewer", reason);
+        this._pagesCapability.reject(reason);
       });
-      eventBus.dispatch("pagesinit", {
-        source: this
-      });
-      pdfDocument.getMetadata().then(({
-        info
-      }) => {
-        if (pdfDocument !== this.pdfDocument) {
-          return;
-        }
-        if (info.Language) {
-          viewer.lang = info.Language;
-        }
-      });
-      if (this.defaultRenderingQueue) {
-        this.update();
-      }
-    }).catch(reason => {
-      console.error("Unable to initialize viewer", reason);
-      this._pagesCapability.reject(reason);
-    });
   }
-  onPagesEdited({
-    pagesMapper,
-    type,
-    hasBeenCut,
-    pageNumbers
-  }) {
+  onPagesEdited({ pagesMapper, type, hasBeenCut, pageNumbers }) {
     if (type === "copy") {
       this.#copiedPageViews = new Map();
       for (const pageNum of pageNumbers) {
@@ -20566,7 +20311,7 @@ class PDFViewer {
     }
     this._currentPageNumber = 0;
     const prevPages = this._pages;
-    const newPages = this._pages = [];
+    const newPages = (this._pages = []);
     this.#annotationEditorUIManager?.startUpdatePages();
     for (let i = 1, ii = pagesMapper.pagesNumber; i <= ii; i++) {
       const prevPageNumber = pagesMapper.getPrevPageNumber(i);
@@ -20592,9 +20337,7 @@ class PDFViewer {
     const viewerElement = this._scrollMode === ScrollMode.PAGE ? null : this.viewer;
     if (viewerElement) {
       const fragment = document.createDocumentFragment();
-      for (const {
-        div
-      } of newPages) {
+      for (const { div } of newPages) {
         fragment.append(div);
       }
       viewerElement.replaceChildren(fragment);
@@ -20622,7 +20365,7 @@ class PDFViewer {
   _resetView() {
     this._pages = [];
     this._currentPageNumber = 1;
-    this._currentScale = (/* inlined export .UNKNOWN_SCALE */0);
+    this._currentScale = /* inlined export .UNKNOWN_SCALE */ 0;
     this._currentScaleValue = null;
     this._pageLabels = null;
     this.#buffer = new PDFPageViewBuffer(DEFAULT_CACHE_SIZE);
@@ -20638,7 +20381,7 @@ class PDFViewer {
     this.#scrollModePageState = {
       previousPageNumber: 1,
       scrollDown: true,
-      pages: []
+      pages: [],
     };
     this.#eventAC?.abort();
     this.#eventAC = null;
@@ -20709,10 +20452,7 @@ class PDFViewer {
     this.update();
   }
   #scrollIntoView(pageView, pageSpot = null) {
-    const {
-      div,
-      id
-    } = pageView;
+    const { div, id } = pageView;
     if (this._currentPageNumber !== id) {
       this._setCurrentPageNumber(id);
     }
@@ -20723,14 +20463,11 @@ class PDFViewer {
     if (!pageSpot && !this.isInPresentationMode) {
       const left = div.offsetLeft + div.clientLeft,
         right = left + div.clientWidth;
-      const {
-        scrollLeft,
-        clientWidth
-      } = this.container;
+      const { scrollLeft, clientWidth } = this.container;
       if (this._scrollMode === ScrollMode.HORIZONTAL || left < scrollLeft || right > scrollLeft + clientWidth) {
         pageSpot = {
           left: 0,
-          top: 0
+          top: 0,
         };
       }
     }
@@ -20743,14 +20480,9 @@ class PDFViewer {
     return newScale === this._currentScale || Math.abs(newScale - this._currentScale) < 1e-15;
   }
   panBy(dx, dy) {
-    const {
-      container
-    } = this;
+    const { container } = this;
     const position = this.#panPosition;
-    const {
-      scrollLeft,
-      scrollTop
-    } = container;
+    const { scrollLeft, scrollTop } = container;
     const left = (Math.abs(scrollLeft - position[0]) < 1 ? position[0] : scrollLeft) - dx;
     const top = (Math.abs(scrollTop - position[1]) < 1 ? position[1] : scrollTop) - dy;
     position[0] = left;
@@ -20763,20 +20495,12 @@ class PDFViewer {
     if (!this.#staleLocation) {
       return;
     }
-    const {
-      first
-    } = this._getVisiblePages();
+    const { first } = this._getVisiblePages();
     if (first) {
       this._updateLocation(first);
     }
   }
-  #setScaleUpdatePages(newScale, newValue, {
-    noScroll = false,
-    preset = false,
-    drawingDelay = -1,
-    origin = null,
-    pan = null
-  }) {
+  #setScaleUpdatePages(newScale, newValue, { noScroll = false, preset = false, drawingDelay = -1, origin = null, pan = null }) {
     this._currentScaleValue = newValue.toString();
     if (this.#isSameScale(newScale)) {
       if (pan && !noScroll) {
@@ -20786,7 +20510,7 @@ class PDFViewer {
         this.eventBus.dispatch("scalechanging", {
           source: this,
           scale: newScale,
-          presetValue: newValue
+          presetValue: newValue,
         });
       }
       return;
@@ -20796,7 +20520,7 @@ class PDFViewer {
     const postponeDrawing = drawingDelay >= 0 && drawingDelay < 1000;
     this.refresh(true, {
       scale: newScale,
-      drawingDelay: postponeDrawing ? drawingDelay : -1
+      drawingDelay: postponeDrawing ? drawingDelay : -1,
     });
     if (postponeDrawing) {
       this.#scaleTimeoutId = setTimeout(() => {
@@ -20812,14 +20536,20 @@ class PDFViewer {
         dest;
       if (this._location && !(this.isInPresentationMode || this.isChangingPresentationMode)) {
         page = this._location.pageNumber;
-        dest = [null, {
-          name: "XYZ"
-        }, this._location.left, this._location.top, null];
+        dest = [
+          null,
+          {
+            name: "XYZ",
+          },
+          this._location.left,
+          this._location.top,
+          null,
+        ];
       }
       this.scrollPageIntoView({
         pageNumber: page,
         destArray: dest,
-        allowNegativeOffset: true
+        allowNegativeOffset: true,
       });
       let dx = pan?.[0] ?? 0,
         dy = pan?.[1] ?? 0;
@@ -20836,7 +20566,7 @@ class PDFViewer {
     this.eventBus.dispatch("scalechanging", {
       source: this,
       scale: newScale,
-      presetValue: preset ? newValue : undefined
+      presetValue: preset ? newValue : undefined,
     });
     if (this.defaultRenderingQueue) {
       this.update();
@@ -20855,8 +20585,8 @@ class PDFViewer {
       if (!currentPage) {
         return;
       }
-      let hPadding = (/* inlined export .SCROLLBAR_PADDING */40),
-        vPadding = (/* inlined export .VERTICAL_PADDING */5);
+      let hPadding = /* inlined export .SCROLLBAR_PADDING */ 40,
+        vPadding = /* inlined export .VERTICAL_PADDING */ 5;
       if (this.isInPresentationMode) {
         hPadding = vPadding = 4;
         if (this._spreadMode !== SpreadMode.NONE) {
@@ -20867,8 +20597,8 @@ class PDFViewer {
       } else if (this._scrollMode === ScrollMode.HORIZONTAL) {
         [hPadding, vPadding] = [vPadding, hPadding];
       }
-      const pageWidthScale = (this.container.clientWidth - hPadding) / currentPage.width * currentPage.scale / this.#pageWidthScaleFactor;
-      const pageHeightScale = (this.container.clientHeight - vPadding) / currentPage.height * currentPage.scale;
+      const pageWidthScale = (((this.container.clientWidth - hPadding) / currentPage.width) * currentPage.scale) / this.#pageWidthScaleFactor;
+      const pageHeightScale = ((this.container.clientHeight - vPadding) / currentPage.height) * currentPage.scale;
       switch (value) {
         case "page-actual":
           scale = 1;
@@ -20884,7 +20614,7 @@ class PDFViewer {
           break;
         case "auto":
           const horizontalScale = isPortraitOrientation(currentPage) ? pageWidthScale : Math.min(pageHeightScale, pageWidthScale);
-          scale = Math.min((/* inlined export .MAX_AUTO_SCALE */1.25), horizontalScale);
+          scale = Math.min(/* inlined export .MAX_AUTO_SCALE */ 1.25, horizontalScale);
           break;
         default:
           console.error(`#setScale: "${value}" is an unknown zoom value.`);
@@ -20898,7 +20628,7 @@ class PDFViewer {
     const pageView = this._pages[this._currentPageNumber - 1];
     if (this.isInPresentationMode) {
       this.#setScale(this._currentScaleValue, {
-        noScroll: true
+        noScroll: true,
       });
     }
     this.#scrollIntoView(pageView);
@@ -20913,13 +20643,7 @@ class PDFViewer {
     }
     return i + 1;
   }
-  scrollPageIntoView({
-    pageNumber,
-    destArray = null,
-    allowNegativeOffset = false,
-    ignoreDestinationZoom = false,
-    center = null
-  }) {
+  scrollPageIntoView({ pageNumber, destArray = null, allowNegativeOffset = false, ignoreDestinationZoom = false, center = null }) {
     if (!this.pdfDocument) {
       return;
     }
@@ -20977,8 +20701,8 @@ class PDFViewer {
         y = destArray[3];
         width = destArray[4] - x;
         height = destArray[5] - y;
-        let hPadding = (/* inlined export .SCROLLBAR_PADDING */40),
-          vPadding = (/* inlined export .VERTICAL_PADDING */5);
+        let hPadding = /* inlined export .SCROLLBAR_PADDING */ 40,
+          vPadding = /* inlined export .VERTICAL_PADDING */ 5;
         if (this.removePageBorders) {
           hPadding = vPadding = 0;
         }
@@ -20993,8 +20717,8 @@ class PDFViewer {
     if (!ignoreDestinationZoom) {
       if (scale && scale !== this._currentScale) {
         this.currentScaleValue = scale;
-      } else if (this._currentScale === (/* inlined export .UNKNOWN_SCALE */0)) {
-        this.currentScaleValue = (/* inlined export .DEFAULT_SCALE_VALUE */"auto");
+      } else if (this._currentScale === /* inlined export .UNKNOWN_SCALE */ 0) {
+        this.currentScaleValue = /* inlined export .DEFAULT_SCALE_VALUE */ "auto";
       }
     }
     if (scale === "page-fit" && !destArray[4]) {
@@ -21017,7 +20741,7 @@ class PDFViewer {
     }
     this.#scrollIntoView(pageView, {
       left,
-      top
+      top,
     });
   }
   _updateLocation(firstPage) {
@@ -21040,7 +20764,7 @@ class PDFViewer {
       top,
       left,
       rotation: this._pagesRotation,
-      pdfOpenParams
+      pdfOpenParams,
     };
   }
   update() {
@@ -21052,10 +20776,7 @@ class PDFViewer {
     }
     const newCacheSize = Math.max(DEFAULT_CACHE_SIZE, 2 * numVisiblePages + 1);
     this.#buffer.resize(newCacheSize, visible.ids);
-    for (const {
-      view,
-      visibleArea
-    } of visiblePages) {
+    for (const { view, visibleArea } of visiblePages) {
       view.updateVisibleArea(visibleArea);
     }
     for (const view of this.#buffer) {
@@ -21080,20 +20801,15 @@ class PDFViewer {
     this._updateLocation(visible.first);
     this.eventBus.dispatch("updateviewarea", {
       source: this,
-      location: this._location
+      location: this._location,
     });
   }
   #switchToEditAnnotationMode() {
     const visible = this._getVisiblePages();
     const pagesToRefresh = [];
-    const {
-      ids,
-      views
-    } = visible;
+    const { ids, views } = visible;
     for (const page of views) {
-      const {
-        view
-      } = page;
+      const { view } = page;
       if (!view.hasEditableAnnotations()) {
         ids.delete(view.id);
         continue;
@@ -21107,7 +20823,7 @@ class PDFViewer {
       first: pagesToRefresh[0],
       last: pagesToRefresh.at(-1),
       views: pagesToRefresh,
-      ids
+      ids,
     });
     return ids;
   }
@@ -21141,7 +20857,7 @@ class PDFViewer {
       views,
       sortByVisibility: true,
       horizontal,
-      rtl
+      rtl,
     });
   }
   cleanup() {
@@ -21189,7 +20905,8 @@ class PDFViewer {
     const visiblePages = currentlyVisiblePages || this._getVisiblePages();
     const scrollAhead = this.#getScrollAhead(visiblePages);
     const preRenderExtra = this._spreadMode !== SpreadMode.NONE && this._scrollMode !== ScrollMode.HORIZONTAL;
-    const ignoreDetailViews = this.#scaleTimeoutId !== null || this.#scrollTimeoutId !== null && visiblePages.views.some(page => page.detailView?.renderingCancelled);
+    const ignoreDetailViews =
+      this.#scaleTimeoutId !== null || (this.#scrollTimeoutId !== null && visiblePages.views.some((page) => page.detailView?.renderingCancelled));
     const pageView = this.renderingQueue.getHighestPriority(visiblePages, this._pages, scrollAhead, preRenderExtra, ignoreDetailViews);
     if (pageView) {
       this.#ensurePdfPageLoaded(pageView).then(() => {
@@ -21211,9 +20928,9 @@ class PDFViewer {
   }
   getPagesOverview() {
     let initialOrientation;
-    return this._pages.map(pageView => {
+    return this._pages.map((pageView) => {
       const viewport = pageView.pdfPage.getViewport({
-        scale: 1
+        scale: 1,
       });
       const orientation = isPortraitOrientation(viewport);
       if (initialOrientation === undefined) {
@@ -21222,13 +20939,13 @@ class PDFViewer {
         return {
           width: viewport.height,
           height: viewport.width,
-          rotation: (viewport.rotation - 90) % 360
+          rotation: (viewport.rotation - 90) % 360,
         };
       }
       return {
         width: viewport.width,
         height: viewport.height,
-        rotation: viewport.rotation
+        rotation: viewport.rotation,
       };
     });
   }
@@ -21239,7 +20956,7 @@ class PDFViewer {
     if (!this._optionalContentConfigPromise) {
       console.error("optionalContentConfigPromise: Not initialized yet.");
       return this.pdfDocument.getOptionalContentConfig({
-        intent: "display"
+        intent: "display",
       });
     }
     return this._optionalContentConfigPromise;
@@ -21256,11 +20973,11 @@ class PDFViewer {
     }
     this._optionalContentConfigPromise = promise;
     this.refresh(false, {
-      optionalContentConfigPromise: promise
+      optionalContentConfigPromise: promise,
     });
     this.eventBus.dispatch("optionalcontentconfigchanged", {
       source: this,
-      promise
+      promise,
     });
   }
   get scrollMode() {
@@ -21281,7 +20998,7 @@ class PDFViewer {
     this._scrollMode = mode;
     this.eventBus.dispatch("scrollmodechanged", {
       source: this,
-      mode
+      mode,
     });
     this._updateScrollMode(this._currentPageNumber);
   }
@@ -21300,7 +21017,7 @@ class PDFViewer {
     }
     if (this._currentScaleValue && isNaN(this._currentScaleValue)) {
       this.#setScale(this._currentScaleValue, {
-        noScroll: true
+        noScroll: true,
       });
     }
     this._setCurrentPageNumber(pageNumber, true);
@@ -21320,7 +21037,7 @@ class PDFViewer {
     this._spreadMode = mode;
     this.eventBus.dispatch("spreadmodechanged", {
       source: this,
-      mode
+      mode,
     });
     this._updateSpreadMode(this._currentPageNumber);
   }
@@ -21359,7 +21076,7 @@ class PDFViewer {
     }
     if (this._currentScaleValue && isNaN(this._currentScaleValue)) {
       this.#setScale(this._currentScaleValue, {
-        noScroll: true
+        noScroll: true,
       });
     }
     this._setCurrentPageNumber(pageNumber, true);
@@ -21367,99 +21084,83 @@ class PDFViewer {
   }
   #getPageAdvance(currentPageNumber, previous = false) {
     switch (this._scrollMode) {
-      case ScrollMode.WRAPPED:
-        {
-          const {
-              views
-            } = this._getVisiblePages(),
-            pageLayout = new Map();
-          for (const {
-            id,
-            y,
-            percent,
-            widthPercent
-          } of views) {
-            if (percent === 0 || widthPercent < 100) {
-              continue;
-            }
-            pageLayout.getOrInsertComputed(y, makeArr).push(id);
+      case ScrollMode.WRAPPED: {
+        const { views } = this._getVisiblePages(),
+          pageLayout = new Map();
+        for (const { id, y, percent, widthPercent } of views) {
+          if (percent === 0 || widthPercent < 100) {
+            continue;
           }
-          for (const yArray of pageLayout.values()) {
-            const currentIndex = yArray.indexOf(currentPageNumber);
-            if (currentIndex === -1) {
-              continue;
-            }
-            const numPages = yArray.length;
-            if (numPages === 1) {
-              break;
-            }
-            if (previous) {
-              for (let i = currentIndex - 1, ii = 0; i >= ii; i--) {
-                const currentId = yArray[i],
-                  expectedId = yArray[i + 1] - 1;
-                if (currentId < expectedId) {
-                  return currentPageNumber - expectedId;
-                }
-              }
-            } else {
-              for (let i = currentIndex + 1, ii = numPages; i < ii; i++) {
-                const currentId = yArray[i],
-                  expectedId = yArray[i - 1] + 1;
-                if (currentId > expectedId) {
-                  return expectedId - currentPageNumber;
-                }
-              }
-            }
-            if (previous) {
-              const firstId = yArray[0];
-              if (firstId < currentPageNumber) {
-                return currentPageNumber - firstId + 1;
-              }
-            } else {
-              const lastId = yArray[numPages - 1];
-              if (lastId > currentPageNumber) {
-                return lastId - currentPageNumber + 1;
-              }
-            }
+          pageLayout.getOrInsertComputed(y, makeArr).push(id);
+        }
+        for (const yArray of pageLayout.values()) {
+          const currentIndex = yArray.indexOf(currentPageNumber);
+          if (currentIndex === -1) {
+            continue;
+          }
+          const numPages = yArray.length;
+          if (numPages === 1) {
             break;
           }
+          if (previous) {
+            for (let i = currentIndex - 1, ii = 0; i >= ii; i--) {
+              const currentId = yArray[i],
+                expectedId = yArray[i + 1] - 1;
+              if (currentId < expectedId) {
+                return currentPageNumber - expectedId;
+              }
+            }
+          } else {
+            for (let i = currentIndex + 1, ii = numPages; i < ii; i++) {
+              const currentId = yArray[i],
+                expectedId = yArray[i - 1] + 1;
+              if (currentId > expectedId) {
+                return expectedId - currentPageNumber;
+              }
+            }
+          }
+          if (previous) {
+            const firstId = yArray[0];
+            if (firstId < currentPageNumber) {
+              return currentPageNumber - firstId + 1;
+            }
+          } else {
+            const lastId = yArray[numPages - 1];
+            if (lastId > currentPageNumber) {
+              return lastId - currentPageNumber + 1;
+            }
+          }
           break;
         }
-      case ScrollMode.HORIZONTAL:
-        {
-          break;
-        }
+        break;
+      }
+      case ScrollMode.HORIZONTAL: {
+        break;
+      }
       case ScrollMode.PAGE:
-      case ScrollMode.VERTICAL:
-        {
-          if (this._spreadMode === SpreadMode.NONE) {
-            break;
+      case ScrollMode.VERTICAL: {
+        if (this._spreadMode === SpreadMode.NONE) {
+          break;
+        }
+        const parity = this._spreadMode - 1;
+        if (previous && currentPageNumber % 2 !== parity) {
+          break;
+        } else if (!previous && currentPageNumber % 2 === parity) {
+          break;
+        }
+        const { views } = this._getVisiblePages(),
+          expectedId = previous ? currentPageNumber - 1 : currentPageNumber + 1;
+        for (const { id, percent, widthPercent } of views) {
+          if (id !== expectedId) {
+            continue;
           }
-          const parity = this._spreadMode - 1;
-          if (previous && currentPageNumber % 2 !== parity) {
-            break;
-          } else if (!previous && currentPageNumber % 2 === parity) {
-            break;
-          }
-          const {
-              views
-            } = this._getVisiblePages(),
-            expectedId = previous ? currentPageNumber - 1 : currentPageNumber + 1;
-          for (const {
-            id,
-            percent,
-            widthPercent
-          } of views) {
-            if (id !== expectedId) {
-              continue;
-            }
-            if (percent > 0 && widthPercent === 100) {
-              return 2;
-            }
-            break;
+          if (percent > 0 && widthPercent === 100) {
+            return 2;
           }
           break;
         }
+        break;
+      }
     }
     return 1;
   }
@@ -21482,13 +21183,7 @@ class PDFViewer {
     this.currentPageNumber = Math.max(currentPageNumber - advance, 1);
     return true;
   }
-  updateScale({
-    drawingDelay,
-    scaleFactor = null,
-    steps = null,
-    origin,
-    pan = null
-  }) {
+  updateScale({ drawingDelay, scaleFactor = null, steps = null, origin, pan = null }) {
     if (steps === null && scaleFactor === null) {
       throw new Error("Invalid updateScale options: either `steps` or `scaleFactor` must be provided.");
     }
@@ -21499,31 +21194,31 @@ class PDFViewer {
     if (scaleFactor > 0 && scaleFactor !== 1) {
       newScale = Math.round(newScale * scaleFactor * 100) / 100;
     } else if (steps) {
-      const delta = steps > 0 ? (/* inlined export .DEFAULT_SCALE_DELTA */1.1) : 1 / (/* inlined export .DEFAULT_SCALE_DELTA */1.1);
+      const delta = steps > 0 ? /* inlined export .DEFAULT_SCALE_DELTA */ 1.1 : 1 / /* inlined export .DEFAULT_SCALE_DELTA */ 1.1;
       const round = steps > 0 ? Math.ceil : Math.floor;
       steps = Math.abs(steps);
       do {
         newScale = round((newScale * delta).toFixed(2) * 10) / 10;
       } while (--steps > 0);
     }
-    newScale = MathClamp(newScale, (/* inlined export .MIN_SCALE */0.1), (/* inlined export .MAX_SCALE */25));
+    newScale = MathClamp(newScale, /* inlined export .MIN_SCALE */ 0.1, /* inlined export .MAX_SCALE */ 25);
     this.#setScale(newScale, {
       noScroll: false,
       drawingDelay,
       origin,
-      pan
+      pan,
     });
   }
   increaseScale(options = {}) {
     this.updateScale({
       ...options,
-      steps: options.steps ?? 1
+      steps: options.steps ?? 1,
     });
   }
   decreaseScale(options = {}) {
     this.updateScale({
       ...options,
-      steps: -(options.steps ?? 1)
+      steps: -(options.steps ?? 1),
     });
   }
   #updateContainerHeightCss(height = this.container.clientHeight) {
@@ -21542,7 +21237,7 @@ class PDFViewer {
     }
   }
   get containerTopLeft() {
-    return this.#containerTopLeft ||= [this.container.offsetTop, this.container.offsetLeft];
+    return (this.#containerTopLeft ||= [this.container.offsetTop, this.container.offsetLeft]);
   }
   #cleanupTimeouts() {
     if (this.#scaleTimeoutId !== null) {
@@ -21575,13 +21270,7 @@ class PDFViewer {
   get annotationEditorMode() {
     return this.#annotationEditorUIManager ? this.#annotationEditorMode : AnnotationEditorType.DISABLE;
   }
-  set annotationEditorMode({
-    mode,
-    editId = null,
-    isFromKeyboard = false,
-    mustEnterInEditMode = false,
-    editComment = false
-  }) {
+  set annotationEditorMode({ mode, editId = null, isFromKeyboard = false, mustEnterInEditMode = false, editComment = false }) {
     if (!this.#annotationEditorUIManager) {
       throw new Error(`The AnnotationEditor is not enabled.`);
     }
@@ -21595,10 +21284,7 @@ class PDFViewer {
       return;
     }
     this.#preloadEditingData(mode);
-    const {
-      eventBus,
-      pdfDocument
-    } = this;
+    const { eventBus, pdfDocument } = this;
     const updater = async () => {
       this.#cleanupSwitchAnnotationEditorMode();
       this.#annotationEditorMode = mode;
@@ -21608,7 +21294,7 @@ class PDFViewer {
       }
       eventBus.dispatch("annotationeditormodechanged", {
         source: this,
-        mode
+        mode,
       });
     };
     if (mode === AnnotationEditorType.NONE || this.#annotationEditorMode === AnnotationEditorType.NONE) {
@@ -21625,17 +21311,19 @@ class PDFViewer {
         this.#cleanupSwitchAnnotationEditorMode();
         this.#switchAnnotationEditorModeAC = new AbortController();
         const signal = AbortSignal.any([this.#eventAC.signal, this.#switchAnnotationEditorModeAC.signal]);
-        eventBus.on("pagerendered", ({
-          pageNumber
-        }) => {
-          idsToRefresh.delete(pageNumber);
-          if (idsToRefresh.size === 0) {
-            this.#switchAnnotationEditorModeTimeoutId = setTimeout(updater, 0);
+        eventBus.on(
+          "pagerendered",
+          ({ pageNumber }) => {
+            idsToRefresh.delete(pageNumber);
+            if (idsToRefresh.size === 0) {
+              this.#switchAnnotationEditorModeTimeoutId = setTimeout(updater, 0);
+            }
+          },
+          {
+            signal,
+            ...internalOpt,
           }
-        }, {
-          signal,
-          ...internalOpt
-        });
+        );
         return;
       }
     }
@@ -21653,125 +21341,140 @@ class PDFViewer {
       this.update();
     }
   }
-}
-
-;// ./web/secondary_toolbar.js
-
-
-
+} // ./web/secondary_toolbar.js
 
 class SecondaryToolbar {
   #opts;
   constructor(options, eventBus) {
     this.#opts = options;
-    const buttons = [{
-      element: options.presentationModeButton,
-      eventName: "presentationmode",
-      close: true
-    }, {
-      element: options.printButton,
-      eventName: "print",
-      close: true
-    }, {
-      element: options.downloadButton,
-      eventName: "download",
-      close: true
-    }, {
-      element: options.viewBookmarkButton,
-      eventName: null,
-      close: true
-    }, {
-      element: options.firstPageButton,
-      eventName: "firstpage",
-      close: true
-    }, {
-      element: options.lastPageButton,
-      eventName: "lastpage",
-      close: true
-    }, {
-      element: options.pageRotateCwButton,
-      eventName: "rotatecw",
-      close: false
-    }, {
-      element: options.pageRotateCcwButton,
-      eventName: "rotateccw",
-      close: false
-    }, {
-      element: options.cursorSelectToolButton,
-      eventName: "switchcursortool",
-      eventDetails: {
-        tool: CursorTool.SELECT
+    const buttons = [
+      {
+        element: options.presentationModeButton,
+        eventName: "presentationmode",
+        close: true,
       },
-      close: true
-    }, {
-      element: options.cursorHandToolButton,
-      eventName: "switchcursortool",
-      eventDetails: {
-        tool: CursorTool.HAND
+      {
+        element: options.printButton,
+        eventName: "print",
+        close: true,
       },
-      close: true
-    }, {
-      element: options.scrollPageButton,
-      eventName: "switchscrollmode",
-      eventDetails: {
-        mode: ScrollMode.PAGE
+      {
+        element: options.downloadButton,
+        eventName: "download",
+        close: true,
       },
-      close: true
-    }, {
-      element: options.scrollVerticalButton,
-      eventName: "switchscrollmode",
-      eventDetails: {
-        mode: ScrollMode.VERTICAL
+      {
+        element: options.viewBookmarkButton,
+        eventName: null,
+        close: true,
       },
-      close: true
-    }, {
-      element: options.scrollHorizontalButton,
-      eventName: "switchscrollmode",
-      eventDetails: {
-        mode: ScrollMode.HORIZONTAL
+      {
+        element: options.firstPageButton,
+        eventName: "firstpage",
+        close: true,
       },
-      close: true
-    }, {
-      element: options.scrollWrappedButton,
-      eventName: "switchscrollmode",
-      eventDetails: {
-        mode: ScrollMode.WRAPPED
+      {
+        element: options.lastPageButton,
+        eventName: "lastpage",
+        close: true,
       },
-      close: true
-    }, {
-      element: options.spreadNoneButton,
-      eventName: "switchspreadmode",
-      eventDetails: {
-        mode: SpreadMode.NONE
+      {
+        element: options.pageRotateCwButton,
+        eventName: "rotatecw",
+        close: false,
       },
-      close: true
-    }, {
-      element: options.spreadOddButton,
-      eventName: "switchspreadmode",
-      eventDetails: {
-        mode: SpreadMode.ODD
+      {
+        element: options.pageRotateCcwButton,
+        eventName: "rotateccw",
+        close: false,
       },
-      close: true
-    }, {
-      element: options.spreadEvenButton,
-      eventName: "switchspreadmode",
-      eventDetails: {
-        mode: SpreadMode.EVEN
+      {
+        element: options.cursorSelectToolButton,
+        eventName: "switchcursortool",
+        eventDetails: {
+          tool: CursorTool.SELECT,
+        },
+        close: true,
       },
-      close: true
-    }, {
-      element: options.imageAltTextSettingsButton,
-      eventName: "imagealttextsettings",
-      close: true
-    }, {
-      element: options.documentPropertiesButton,
-      eventName: "documentproperties",
-      close: true
-    }];
+      {
+        element: options.cursorHandToolButton,
+        eventName: "switchcursortool",
+        eventDetails: {
+          tool: CursorTool.HAND,
+        },
+        close: true,
+      },
+      {
+        element: options.scrollPageButton,
+        eventName: "switchscrollmode",
+        eventDetails: {
+          mode: ScrollMode.PAGE,
+        },
+        close: true,
+      },
+      {
+        element: options.scrollVerticalButton,
+        eventName: "switchscrollmode",
+        eventDetails: {
+          mode: ScrollMode.VERTICAL,
+        },
+        close: true,
+      },
+      {
+        element: options.scrollHorizontalButton,
+        eventName: "switchscrollmode",
+        eventDetails: {
+          mode: ScrollMode.HORIZONTAL,
+        },
+        close: true,
+      },
+      {
+        element: options.scrollWrappedButton,
+        eventName: "switchscrollmode",
+        eventDetails: {
+          mode: ScrollMode.WRAPPED,
+        },
+        close: true,
+      },
+      {
+        element: options.spreadNoneButton,
+        eventName: "switchspreadmode",
+        eventDetails: {
+          mode: SpreadMode.NONE,
+        },
+        close: true,
+      },
+      {
+        element: options.spreadOddButton,
+        eventName: "switchspreadmode",
+        eventDetails: {
+          mode: SpreadMode.ODD,
+        },
+        close: true,
+      },
+      {
+        element: options.spreadEvenButton,
+        eventName: "switchspreadmode",
+        eventDetails: {
+          mode: SpreadMode.EVEN,
+        },
+        close: true,
+      },
+      {
+        element: options.imageAltTextSettingsButton,
+        eventName: "imagealttextsettings",
+        close: true,
+      },
+      {
+        element: options.documentPropertiesButton,
+        eventName: "documentproperties",
+        close: true,
+      },
+    ];
     buttons.push({
       element: options.openFileButton,
       eventName: "openfile",
-      close: true
+      close: true,
     });
     this.eventBus = eventBus;
     this.opened = false;
@@ -21795,46 +21498,32 @@ class SecondaryToolbar {
     this.#updateUIState();
     this.eventBus.dispatch("switchcursortool", {
       source: this,
-      reset: true
+      reset: true,
     });
     this.#scrollModeChanged({
-      mode: ScrollMode.VERTICAL
+      mode: ScrollMode.VERTICAL,
     });
     this.#spreadModeChanged({
-      mode: SpreadMode.NONE
+      mode: SpreadMode.NONE,
     });
   }
   #updateUIState() {
-    const {
-      firstPageButton,
-      lastPageButton,
-      pageRotateCwButton,
-      pageRotateCcwButton
-    } = this.#opts;
+    const { firstPageButton, lastPageButton, pageRotateCwButton, pageRotateCcwButton } = this.#opts;
     firstPageButton.disabled = this.pageNumber <= 1;
     lastPageButton.disabled = this.pageNumber >= this.pagesCount;
     pageRotateCwButton.disabled = this.pagesCount === 0;
     pageRotateCcwButton.disabled = this.pagesCount === 0;
   }
   #bindListeners(buttons) {
-    const {
-      eventBus
-    } = this;
-    const {
-      toggleButton
-    } = this.#opts;
+    const { eventBus } = this;
+    const { toggleButton } = this.#opts;
     toggleButton.addEventListener("click", this.toggle.bind(this));
-    for (const {
-      element,
-      eventName,
-      close,
-      eventDetails
-    } of buttons) {
-      element.addEventListener("click", evt => {
+    for (const { element, eventName, close, eventDetails } of buttons) {
+      element.addEventListener("click", (evt) => {
         if (eventName !== null) {
           eventBus.dispatch(eventName, {
             source: this,
-            ...eventDetails
+            ...eventDetails,
           });
         }
         if (close) {
@@ -21845,9 +21534,9 @@ class SecondaryToolbar {
           details: {
             type: "buttons",
             data: {
-              id: element.id
-            }
-          }
+              id: element.id,
+            },
+          },
         });
       });
     }
@@ -21855,22 +21544,14 @@ class SecondaryToolbar {
     eventBus.on("scrollmodechanged", this.#scrollModeChanged.bind(this), internalOpt);
     eventBus.on("spreadmodechanged", this.#spreadModeChanged.bind(this), internalOpt);
   }
-  #cursorToolChanged({
-    tool,
-    disabled
-  }) {
-    const {
-      cursorSelectToolButton,
-      cursorHandToolButton
-    } = this.#opts;
+  #cursorToolChanged({ tool, disabled }) {
+    const { cursorSelectToolButton, cursorHandToolButton } = this.#opts;
     toggleCheckedBtn(cursorSelectToolButton, tool === CursorTool.SELECT);
     toggleCheckedBtn(cursorHandToolButton, tool === CursorTool.HAND);
     cursorSelectToolButton.disabled = disabled;
     cursorHandToolButton.disabled = disabled;
   }
-  #scrollModeChanged({
-    mode
-  }) {
+  #scrollModeChanged({ mode }) {
     const {
       scrollPageButton,
       scrollVerticalButton,
@@ -21878,7 +21559,7 @@ class SecondaryToolbar {
       scrollWrappedButton,
       spreadNoneButton,
       spreadOddButton,
-      spreadEvenButton
+      spreadEvenButton,
     } = this.#opts;
     toggleCheckedBtn(scrollPageButton, mode === ScrollMode.PAGE);
     toggleCheckedBtn(scrollVerticalButton, mode === ScrollMode.VERTICAL);
@@ -21894,14 +21575,8 @@ class SecondaryToolbar {
     spreadOddButton.disabled = isHorizontal;
     spreadEvenButton.disabled = isHorizontal;
   }
-  #spreadModeChanged({
-    mode
-  }) {
-    const {
-      spreadNoneButton,
-      spreadOddButton,
-      spreadEvenButton
-    } = this.#opts;
+  #spreadModeChanged({ mode }) {
+    const { spreadNoneButton, spreadOddButton, spreadEvenButton } = this.#opts;
     toggleCheckedBtn(spreadNoneButton, mode === SpreadMode.NONE);
     toggleCheckedBtn(spreadOddButton, mode === SpreadMode.ODD);
     toggleCheckedBtn(spreadEvenButton, mode === SpreadMode.EVEN);
@@ -21911,10 +21586,7 @@ class SecondaryToolbar {
       return;
     }
     this.opened = true;
-    const {
-      toggleButton,
-      toolbar
-    } = this.#opts;
+    const { toggleButton, toolbar } = this.#opts;
     toggleExpandedBtn(toggleButton, true, toolbar);
   }
   close() {
@@ -21922,10 +21594,7 @@ class SecondaryToolbar {
       return;
     }
     this.opened = false;
-    const {
-      toggleButton,
-      toolbar
-    } = this.#opts;
+    const { toggleButton, toolbar } = this.#opts;
     toggleExpandedBtn(toggleButton, false, toolbar);
   }
   toggle() {
@@ -21935,17 +21604,7 @@ class SecondaryToolbar {
       this.open();
     }
   }
-}
-
-;// ./web/signature_manager.js
-
-
-
-
-
-
-
-
+} // ./web/signature_manager.js
 
 const DEFAULT_HEIGHT_IN_PAGE = 40;
 class SignatureManager {
@@ -21989,31 +21648,39 @@ class SignatureManager {
   #signatureStorage;
   #uiManager = null;
   static #l10nDescription = null;
-  constructor({
-    dialog,
-    panels,
-    typeButton,
-    typeInput,
-    drawButton,
-    drawPlaceholder,
-    drawSVG,
-    drawThickness,
-    imageButton,
-    imageSVG,
-    imagePlaceholder,
-    imagePicker,
-    imagePickerLink,
-    description,
-    clearButton,
-    cancelButton,
-    addButton,
-    errorCloseButton,
-    errorBar,
-    errorTitle,
-    errorDescription,
-    saveCheckbox,
-    saveContainer
-  }, editSignatureElements, addSignatureToolbarButton, overlayManager, l10n, signatureStorage, eventBus) {
+  constructor(
+    {
+      dialog,
+      panels,
+      typeButton,
+      typeInput,
+      drawButton,
+      drawPlaceholder,
+      drawSVG,
+      drawThickness,
+      imageButton,
+      imageSVG,
+      imagePlaceholder,
+      imagePicker,
+      imagePickerLink,
+      description,
+      clearButton,
+      cancelButton,
+      addButton,
+      errorCloseButton,
+      errorBar,
+      errorTitle,
+      errorDescription,
+      saveCheckbox,
+      saveContainer,
+    },
+    editSignatureElements,
+    addSignatureToolbarButton,
+    overlayManager,
+    l10n,
+    signatureStorage,
+    eventBus
+  ) {
     this.#addButton = addButton;
     this.#clearButton = clearButton;
     this.#clearDescription = description.lastElementChild;
@@ -22043,58 +21710,76 @@ class SignatureManager {
       errorUploadTitle: "pdfjs-editor-add-signature-image-upload-error-title",
       errorUploadDescription: "pdfjs-editor-add-signature-image-upload-error-description",
       errorNoDataTitle: "pdfjs-editor-add-signature-image-no-data-error-title",
-      errorNoDataDescription: "pdfjs-editor-add-signature-image-no-data-error-description"
+      errorNoDataDescription: "pdfjs-editor-add-signature-image-no-data-error-description",
     });
     dialog.addEventListener("close", this.#close.bind(this));
-    dialog.addEventListener("contextmenu", e => {
-      const {
-        target
-      } = e;
+    dialog.addEventListener("contextmenu", (e) => {
+      const { target } = e;
       if (target !== this.#typeInput && target !== this.#description) {
         e.preventDefault();
       }
     });
-    dialog.addEventListener("drop", e => {
+    dialog.addEventListener("drop", (e) => {
       stopEvent(e);
     });
     cancelButton.addEventListener("click", this.#cancel.bind(this));
     addButton.addEventListener("click", this.#add.bind(this));
-    clearButton.addEventListener("click", () => {
-      this.#reportTelemetry({
-        type: "signature",
-        action: "pdfjs.signature.clear",
-        data: {
-          type: this.#currentTab
-        }
-      });
-      this.#initTab(null);
-    }, {
-      passive: true
-    });
-    this.#description.addEventListener("input", () => {
-      this.#clearDescription.disabled = this.#description.value === "";
-    }, {
-      passive: true
-    });
-    this.#clearDescription.addEventListener("click", () => {
-      this.#description.value = "";
-      this.#clearDescription.disabled = true;
-    }, {
-      passive: true
-    });
-    errorCloseButton.addEventListener("click", () => {
-      errorBar.hidden = true;
-    }, {
-      passive: true
-    });
+    clearButton.addEventListener(
+      "click",
+      () => {
+        this.#reportTelemetry({
+          type: "signature",
+          action: "pdfjs.signature.clear",
+          data: {
+            type: this.#currentTab,
+          },
+        });
+        this.#initTab(null);
+      },
+      {
+        passive: true,
+      }
+    );
+    this.#description.addEventListener(
+      "input",
+      () => {
+        this.#clearDescription.disabled = this.#description.value === "";
+      },
+      {
+        passive: true,
+      }
+    );
+    this.#clearDescription.addEventListener(
+      "click",
+      () => {
+        this.#description.value = "";
+        this.#clearDescription.disabled = true;
+      },
+      {
+        passive: true,
+      }
+    );
+    errorCloseButton.addEventListener(
+      "click",
+      () => {
+        errorBar.hidden = true;
+      },
+      {
+        passive: true,
+      }
+    );
     this.#initTabButtons(typeButton, drawButton, imageButton, panels);
     imagePicker.accept = SupportedImageMimeTypes.join(",");
     eventBus.on("storedsignatureschanged", this.#signaturesChanged.bind(this), internalOpt);
     overlayManager.register(dialog);
   }
   #initTabButtons(typeButton, drawButton, imageButton, panels) {
-    const buttons = this.#tabButtons = new Map([["type", typeButton], ["draw", drawButton], ["image", imageButton]]);
-    const tabCallback = e => {
+    const buttons = (this.#tabButtons = new Map([
+      ["type", typeButton],
+      ["draw", drawButton],
+      ["image", imageButton],
+    ]));
+    const tabCallback = (e) => {
       for (const [name, button] of buttons) {
         if (button === e.target) {
           button.setAttribute("aria-selected", true);
@@ -22111,18 +21796,20 @@ class SignatureManager {
     for (let i = 0, ii = buttonsArray.length; i < ii; i++) {
       const button = buttonsArray[i];
       button.addEventListener("click", tabCallback, {
-        passive: true
+        passive: true,
       });
-      button.addEventListener("keydown", ({
-        key
-      }) => {
-        if (key !== "ArrowLeft" && key !== "ArrowRight") {
-          return;
+      button.addEventListener(
+        "keydown",
+        ({ key }) => {
+          if (key !== "ArrowLeft" && key !== "ArrowRight") {
+            return;
+          }
+          buttonsArray[i + (key === "ArrowLeft" ? -1 : 1)]?.focus();
+        },
+        {
+          passive: true,
         }
-        buttonsArray[i + (key === "ArrowLeft" ? -1 : 1)]?.focus();
-      }, {
-        passive: true
-      });
+      );
     }
   }
   #resetCommon() {
@@ -22196,57 +21883,51 @@ class SignatureManager {
       this.#resetTab("type");
     }
     this.#disableButtons(this.#typeInput.value);
-    const {
-      signal
-    } = this.#currentTabAC;
+    const { signal } = this.#currentTabAC;
     const options = {
       passive: true,
-      signal
+      signal,
     };
-    this.#typeInput.addEventListener("input", () => {
-      const {
-        value
-      } = this.#typeInput;
-      if (!this.#hasDescriptionChanged) {
-        this.#tabsToAltText.get("type").default = this.#description.value = value;
-        this.#clearDescription.disabled = value === "";
-      }
-      this.#disableButtons(value);
-    }, options);
-    this.#description.addEventListener("input", () => {
-      this.#hasDescriptionChanged = this.#typeInput.value !== this.#description.value;
-    }, options);
+    this.#typeInput.addEventListener(
+      "input",
+      () => {
+        const { value } = this.#typeInput;
+        if (!this.#hasDescriptionChanged) {
+          this.#tabsToAltText.get("type").default = this.#description.value = value;
+          this.#clearDescription.disabled = value === "";
+        }
+        this.#disableButtons(value);
+      },
+      options
+    );
+    this.#description.addEventListener(
+      "input",
+      () => {
+        this.#hasDescriptionChanged = this.#typeInput.value !== this.#description.value;
+      },
+      options
+    );
   }
   #initDrawTab(reset) {
     if (reset) {
       this.#resetTab("draw");
     }
     this.#disableButtons(this.#drawPath);
-    const {
-      signal
-    } = this.#currentTabAC;
+    const { signal } = this.#currentTabAC;
     const options = {
-      signal
+      signal,
     };
     let currentPointerId = NaN;
-    const drawCallback = e => {
-      const {
-        pointerId
-      } = e;
+    const drawCallback = (e) => {
+      const { pointerId } = e;
       if (!isNaN(currentPointerId) && currentPointerId !== pointerId) {
         return;
       }
       currentPointerId = pointerId;
       e.preventDefault();
       this.#drawSVG.setPointerCapture(pointerId);
-      const {
-        width: drawWidth,
-        height: drawHeight
-      } = this.#drawSVG.getBoundingClientRect();
-      let {
-        offsetX,
-        offsetY
-      } = e;
+      const { width: drawWidth, height: drawHeight } = this.#drawSVG.getBoundingClientRect();
+      let { offsetX, offsetY } = e;
       offsetX = Math.round(offsetX);
       offsetY = Math.round(offsetY);
       if (e.target === this.#drawPlaceholder) {
@@ -22257,17 +21938,17 @@ class SignatureManager {
           width: drawWidth,
           height: drawHeight,
           thickness: parseInt(this.#drawThickness.value, 10),
-          curves: []
+          curves: [],
         };
         this.#disableButtons(true);
         const svgFactory = new DOMSVGFactory();
-        const path = this.#drawPath = svgFactory.createElement("path");
+        const path = (this.#drawPath = svgFactory.createElement("path"));
         path.setAttribute("stroke-width", this.#drawThickness.value);
         this.#drawSVG.append(path);
         this.#drawSVG.addEventListener("pointerdown", drawCallback, options);
         this.#drawPlaceholder.removeEventListener("pointerdown", drawCallback);
         if (this.#description.value === "") {
-          this.#l10n.get(SignatureManager.#l10nDescription.signature).then(description => {
+          this.#l10n.get(SignatureManager.#l10nDescription.signature).then((description) => {
             this.#tabsToAltText.get("draw").default = description;
             this.#description.value ||= description;
             this.#clearDescription.disabled = this.#description.value === "";
@@ -22276,71 +21957,79 @@ class SignatureManager {
       }
       this.#drawPoints = [offsetX, offsetY];
       this.#drawCurves.curves.push({
-        points: this.#drawPoints
+        points: this.#drawPoints,
       });
       this.#drawPathString += `M ${offsetX} ${offsetY}`;
       this.#drawPath.setAttribute("d", this.#drawPathString);
       const finishDrawAC = new AbortController();
       const listenerDrawOptions = {
-        signal: AbortSignal.any([signal, finishDrawAC.signal])
+        signal: AbortSignal.any([signal, finishDrawAC.signal]),
       };
       this.#drawSVG.addEventListener("contextmenu", noContextMenu, listenerDrawOptions);
-      this.#drawSVG.addEventListener("pointermove", evt => {
-        evt.preventDefault();
-        let {
-          offsetX: x,
-          offsetY: y
-        } = evt;
-        x = Math.round(x);
-        y = Math.round(y);
-        const drawPoints = this.#drawPoints;
-        if (x < 0 || y < 0 || x > drawWidth || y > drawHeight || x === drawPoints.at(-2) && y === drawPoints.at(-1)) {
-          return;
-        }
-        if (drawPoints.length >= 4) {
-          const [x1, y1, x2, y2] = drawPoints.slice(-4);
-          this.#drawPathString += `C${(x1 + 5 * x2) / 6} ${(y1 + 5 * y2) / 6} ${(5 * x2 + x) / 6} ${(5 * y2 + y) / 6} ${(x2 + x) / 2} ${(y2 + y) / 2}`;
-        } else {
-          this.#drawPathString += `L${x} ${y}`;
-        }
-        drawPoints.push(x, y);
-        this.#drawPath.setAttribute("d", this.#drawPathString);
-      }, listenerDrawOptions);
-      this.#drawSVG.addEventListener("pointerup", evt => {
-        const {
-          pointerId: pId
-        } = evt;
-        if (!isNaN(currentPointerId) && currentPointerId !== pId) {
-          return;
-        }
-        currentPointerId = NaN;
-        evt.preventDefault();
-        this.#drawSVG.releasePointerCapture(pId);
-        finishDrawAC.abort();
-        if (this.#drawPoints.length === 2) {
-          this.#drawPathString += `L${this.#drawPoints[0]} ${this.#drawPoints[1]}`;
+      this.#drawSVG.addEventListener(
+        "pointermove",
+        (evt) => {
+          evt.preventDefault();
+          let { offsetX: x, offsetY: y } = evt;
+          x = Math.round(x);
+          y = Math.round(y);
+          const drawPoints = this.#drawPoints;
+          if (x < 0 || y < 0 || x > drawWidth || y > drawHeight || (x === drawPoints.at(-2) && y === drawPoints.at(-1))) {
+            return;
+          }
+          if (drawPoints.length >= 4) {
+            const [x1, y1, x2, y2] = drawPoints.slice(-4);
+            this.#drawPathString += `C${(x1 + 5 * x2) / 6} ${(y1 + 5 * y2) / 6} ${(5 * x2 + x) / 6} ${(5 * y2 + y) / 6} ${(x2 + x) / 2} ${(y2 + y) / 2}`;
+          } else {
+            this.#drawPathString += `L${x} ${y}`;
+          }
+          drawPoints.push(x, y);
           this.#drawPath.setAttribute("d", this.#drawPathString);
-        }
-      }, listenerDrawOptions);
+        },
+        listenerDrawOptions
+      );
+      this.#drawSVG.addEventListener(
+        "pointerup",
+        (evt) => {
+          const { pointerId: pId } = evt;
+          if (!isNaN(currentPointerId) && currentPointerId !== pId) {
+            return;
+          }
+          currentPointerId = NaN;
+          evt.preventDefault();
+          this.#drawSVG.releasePointerCapture(pId);
+          finishDrawAC.abort();
+          if (this.#drawPoints.length === 2) {
+            this.#drawPathString += `L${this.#drawPoints[0]} ${this.#drawPoints[1]}`;
+            this.#drawPath.setAttribute("d", this.#drawPathString);
+          }
+        },
+        listenerDrawOptions
+      );
     };
     if (this.#drawCurves) {
       this.#drawSVG.addEventListener("pointerdown", drawCallback, options);
     } else {
       this.#drawPlaceholder.addEventListener("pointerdown", drawCallback, options);
     }
-    this.#drawThickness.addEventListener("input", () => {
-      const {
-        value: thickness
-      } = this.#drawThickness;
-      this.#drawThickness.setAttribute("data-l10n-args", JSON.stringify({
-        thickness
-      }));
-      if (!this.#drawCurves) {
-        return;
-      }
-      this.#drawPath.setAttribute("stroke-width", thickness);
-      this.#drawCurves.thickness = thickness;
-    }, options);
+    this.#drawThickness.addEventListener(
+      "input",
+      () => {
+        const { value: thickness } = this.#drawThickness;
+        this.#drawThickness.setAttribute(
+          "data-l10n-args",
+          JSON.stringify({
+            thickness,
+          })
+        );
+        if (!this.#drawCurves) {
+          return;
+        }
+        this.#drawPath.setAttribute("stroke-width", thickness);
+        this.#drawCurves.thickness = thickness;
+      },
+      options
+    );
   }
   #showError(type) {
     this.#errorTitle.setAttribute("data-l10n-id", SignatureManager.#l10nDescription[`error${type}Title`]);
@@ -22352,74 +22041,88 @@ class SignatureManager {
       this.#resetTab("image");
     }
     this.#disableButtons(this.#imagePath);
-    const {
-      signal
-    } = this.#currentTabAC;
+    const { signal } = this.#currentTabAC;
     const options = {
-      signal
+      signal,
     };
     const passiveOptions = {
       passive: true,
-      signal
+      signal,
     };
-    this.#imagePickerLink.addEventListener("keydown", e => {
-      const {
-        key
-      } = e;
-      if (key === "Enter" || key === " ") {
-        stopEvent(e);
-        this.#imagePicker.click();
-      }
-    }, options);
-    this.#imagePicker.addEventListener("click", () => {
-      this.#dialog.classList.toggle("waiting", true);
-    }, passiveOptions);
-    this.#imagePicker.addEventListener("change", async () => {
-      const file = this.#imagePicker.files?.[0];
-      if (!file || !SupportedImageMimeTypes.includes(file.type)) {
-        this.#showError("Upload");
+    this.#imagePickerLink.addEventListener(
+      "keydown",
+      (e) => {
+        const { key } = e;
+        if (key === "Enter" || key === " ") {
+          stopEvent(e);
+          this.#imagePicker.click();
+        }
+      },
+      options
+    );
+    this.#imagePicker.addEventListener(
+      "click",
+      () => {
+        this.#dialog.classList.toggle("waiting", true);
+      },
+      passiveOptions
+    );
+    this.#imagePicker.addEventListener(
+      "change",
+      async () => {
+        const file = this.#imagePicker.files?.[0];
+        if (!file || !SupportedImageMimeTypes.includes(file.type)) {
+          this.#showError("Upload");
+          this.#dialog.classList.toggle("waiting", false);
+          return;
+        }
+        await this.#extractSignature(file);
+      },
+      passiveOptions
+    );
+    this.#imagePicker.addEventListener(
+      "cancel",
+      () => {
         this.#dialog.classList.toggle("waiting", false);
-        return;
-      }
-      await this.#extractSignature(file);
-    }, passiveOptions);
-    this.#imagePicker.addEventListener("cancel", () => {
-      this.#dialog.classList.toggle("waiting", false);
-    }, passiveOptions);
-    this.#imagePlaceholder.addEventListener("dragover", e => {
-      const {
-        dataTransfer
-      } = e;
-      for (const {
-        type
-      } of dataTransfer.items) {
-        if (!SupportedImageMimeTypes.includes(type)) {
-          continue;
+      },
+      passiveOptions
+    );
+    this.#imagePlaceholder.addEventListener(
+      "dragover",
+      (e) => {
+        const { dataTransfer } = e;
+        for (const { type } of dataTransfer.items) {
+          if (!SupportedImageMimeTypes.includes(type)) {
+            continue;
+          }
+          dataTransfer.dropEffect = dataTransfer.effectAllowed === "copy" ? "copy" : "move";
+          stopEvent(e);
+          return;
         }
-        dataTransfer.dropEffect = dataTransfer.effectAllowed === "copy" ? "copy" : "move";
+        dataTransfer.dropEffect = "none";
+      },
+      options
+    );
+    this.#imagePlaceholder.addEventListener(
+      "drop",
+      (e) => {
+        const {
+          dataTransfer: { files },
+        } = e;
+        if (!files?.length) {
+          return;
+        }
+        for (const file of files) {
+          if (SupportedImageMimeTypes.includes(file.type)) {
+            this.#extractSignature(file);
+            break;
+          }
+        }
         stopEvent(e);
-        return;
-      }
-      dataTransfer.dropEffect = "none";
-    }, options);
-    this.#imagePlaceholder.addEventListener("drop", e => {
-      const {
-        dataTransfer: {
-          files
-        }
-      } = e;
-      if (!files?.length) {
-        return;
-      }
-      for (const file of files) {
-        if (SupportedImageMimeTypes.includes(file.type)) {
-          this.#extractSignature(file);
-          break;
-        }
-      }
-      stopEvent(e);
-      this.#dialog.classList.toggle("waiting", true);
-    }, options);
+        this.#dialog.classList.toggle("waiting", true);
+      },
+      options
+    );
   }
   async #extractSignature(file) {
     let data;
@@ -22433,19 +22136,17 @@ class SignatureManager {
       this.#dialog.classList.toggle("waiting", false);
       return;
     }
-    const lineData = this.#extractedSignatureData = this.#currentEditor.getFromImage(data.bitmap);
+    const lineData = (this.#extractedSignatureData = this.#currentEditor.getFromImage(data.bitmap));
     if (!lineData) {
       this.#showError("NoData");
       this.#dialog.classList.toggle("waiting", false);
       return;
     }
-    const {
-      outline
-    } = lineData;
+    const { outline } = lineData;
     this.#imagePlaceholder.hidden = true;
     this.#disableButtons(true);
     const svgFactory = new DOMSVGFactory();
-    const path = this.#imagePath = svgFactory.createElement("path");
+    const path = (this.#imagePath = svgFactory.createElement("path"));
     this.#imageSVG.setAttribute("viewBox", outline.viewBox);
     this.#imageSVG.setAttribute("preserveAspectRatio", "xMidYMid meet");
     this.#imageSVG.append(path);
@@ -22461,10 +22162,7 @@ class SignatureManager {
     return this.#currentEditor.getFromText(this.#typeInput.value, window.getComputedStyle(this.#typeInput));
   }
   #getOutlineForDraw() {
-    const {
-      width,
-      height
-    } = this.#drawSVG.getBoundingClientRect();
+    const { width, height } = this.#drawSVG.getBoundingClientRect();
     return this.#currentEditor.getDrawnSignature(this.#drawCurves, width, height);
   }
   #reportTelemetry(data) {
@@ -22472,39 +22170,31 @@ class SignatureManager {
       source: this,
       details: {
         type: "editing",
-        data
-      }
+        data,
+      },
     });
   }
   #addToolbarButton(signatureData, uuid, description) {
-    const {
-      curves,
-      areContours,
-      thickness,
-      width,
-      height
-    } = signatureData;
+    const { curves, areContours, thickness, width, height } = signatureData;
     const maxDim = Math.max(width, height);
     const outlineData = SignatureExtractor.processDrawnLines({
       lines: {
         curves,
         thickness,
         width,
-        height
+        height,
       },
       pageWidth: maxDim,
       pageHeight: maxDim,
       rotation: 0,
       innerMargin: 0,
       mustSmooth: false,
-      areContours
+      areContours,
     });
     if (!outlineData) {
       return;
     }
-    const {
-      outline
-    } = outlineData;
+    const { outline } = outlineData;
     const svgFactory = new DOMSVGFactory();
     const div = document.createElement("div");
     const button = document.createElement("button");
@@ -22518,15 +22208,15 @@ class SignatureManager {
               curves,
               thickness,
               width,
-              height
+              height,
             },
             mustSmooth: false,
             areContours,
             description,
             uuid,
-            heightInPage: DEFAULT_HEIGHT_IN_PAGE
-          }
-        }
+            heightInPage: DEFAULT_HEIGHT_IN_PAGE,
+          },
+        },
       });
     });
     div.append(button);
@@ -22540,9 +22230,12 @@ class SignatureManager {
     button.type = "button";
     span.textContent = description;
     button.setAttribute("data-l10n-id", "pdfjs-editor-add-saved-signature-button");
-    button.setAttribute("data-l10n-args", JSON.stringify({
-      description
-    }));
+    button.setAttribute(
+      "data-l10n-args",
+      JSON.stringify({
+        description,
+      })
+    );
     button.tabIndex = 0;
     const path = svgFactory.createElement("path");
     svg.append(path);
@@ -22565,8 +22258,8 @@ class SignatureManager {
           type: "signature",
           action: "pdfjs.signature.delete_saved",
           data: {
-            savedCount: await this.#signatureStorage.size()
-          }
+            savedCount: await this.#signatureStorage.size(),
+          },
         });
       }
     });
@@ -22587,13 +22280,16 @@ class SignatureManager {
     return this.open(params);
   }
   async loadSignatures(reload = false) {
-    if (!this.#addSignatureToolbarButton || !reload && this.#addSignatureToolbarButton.previousElementSibling || !this.#signatureStorage) {
+    if (!this.#addSignatureToolbarButton || (!reload && this.#addSignatureToolbarButton.previousElementSibling) || !this.#signatureStorage) {
       return;
     }
     if (!this.#loadSignaturesPromise) {
-      this.#loadSignaturesPromise = this.#signatureStorage.getAll().then(async signatures => [signatures, await Promise.all(Array.from(signatures.values(), ({
-        signatureData
-      }) => SignatureExtractor.decompressSignature(signatureData)))]);
+      this.#loadSignaturesPromise = this.#signatureStorage
+        .getAll()
+        .then(async (signatures) => [
+          signatures,
+          await Promise.all(Array.from(signatures.values(), ({ signatureData }) => SignatureExtractor.decompressSignature(signatureData))),
+        ]);
       if (!reload) {
         return;
       }
@@ -22601,15 +22297,13 @@ class SignatureManager {
     const [signatures, signaturesData] = await this.#loadSignaturesPromise;
     this.#loadSignaturesPromise = null;
     let i = 0;
-    for (const [uuid, {
-      description
-    }] of signatures) {
+    for (const [uuid, { description }] of signatures) {
       const data = signaturesData[i++];
       if (!data) {
         continue;
       }
-      data.curves = data.outlines.map(points => ({
-        points
+      data.curves = data.outlines.map((points) => ({
+        points,
       }));
       delete data.outlines;
       this.#addToolbarButton(data, uuid, description);
@@ -22625,25 +22319,31 @@ class SignatureManager {
     const span = document.createElement("span");
     button.append(span);
     span.setAttribute("data-l10n-id", "pdfjs-editor-add-signature-edit-button-label");
-    button.addEventListener("click", () => {
-      this.#editDescriptionDialog.open(editor);
-    }, {
-      passive: true
-    });
+    button.addEventListener(
+      "click",
+      () => {
+        this.#editDescriptionDialog.open(editor);
+      },
+      {
+        passive: true,
+      }
+    );
     return button;
   }
-  async open({
-    uiManager,
-    editor
-  }) {
-    this.#tabsToAltText ||= new Map(this.#tabButtons.keys().map(name => [name, {
-      value: "",
-      default: ""
-    }]));
+  async open({ uiManager, editor }) {
+    this.#tabsToAltText ||= new Map(
+      this.#tabButtons.keys().map((name) => [
+        name,
+        {
+          value: "",
+          default: "",
+        },
+      ])
+    );
     this.#uiManager = uiManager;
     this.#currentEditor = editor;
     this.#uiManager.removeEditListeners();
-    const isStorageFull = this.#isStorageFull = await this.#signatureStorage.isFull();
+    const isStorageFull = (this.#isStorageFull = await this.#signatureStorage.isFull());
     this.#saveContainer.classList.toggle("fullStorage", isStorageFull);
     this.#saveCheckbox.checked = !isStorageFull;
     await this.#overlayManager.open(this.#dialog);
@@ -22691,34 +22391,32 @@ class SignatureManager {
     let uuid = null;
     const description = this.#description.value;
     if (this.#saveCheckbox.checked) {
-      const {
-        newCurves,
-        areContours,
-        thickness,
-        width,
-        height
-      } = data;
+      const { newCurves, areContours, thickness, width, height } = data;
       const signatureData = await SignatureExtractor.compressSignature({
         outlines: newCurves,
         areContours,
         thickness,
         width,
-        height
+        height,
       });
       uuid = await this.#signatureStorage.create({
         description,
-        signatureData
+        signatureData,
       });
       if (uuid) {
-        this.#addToolbarButton({
-          curves: newCurves.map(points => ({
-            points
-          })),
-          areContours,
-          thickness,
-          width,
-          height
-        }, uuid, description);
+        this.#addToolbarButton(
+          {
+            curves: newCurves.map((points) => ({
+              points,
+            })),
+            areContours,
+            thickness,
+            width,
+            height,
+          },
+          uuid,
+          description
+        );
       } else {
         console.warn("SignatureManager.add: cannot save the signature.");
       }
@@ -22731,8 +22429,8 @@ class SignatureManager {
         type,
         saved: !!uuid,
         savedCount: await this.#signatureStorage.size(),
-        descriptionChanged: description !== altText.default
-      }
+        descriptionChanged: description !== altText.default,
+      },
     });
     this.#currentEditor.addSignature(data, DEFAULT_HEIGHT_IN_PAGE, this.#description.value, uuid);
     this.#finish();
@@ -22750,19 +22448,13 @@ class EditDescriptionDialog {
   #overlayManager;
   #signatureSVG;
   #uiManager;
-  constructor({
-    dialog,
-    description,
-    cancelButton,
-    updateButton,
-    editSignatureView
-  }, overlayManager) {
-    const descriptionInput = this.#description = description.firstElementChild;
+  constructor({ dialog, description, cancelButton, updateButton, editSignatureView }, overlayManager) {
+    const descriptionInput = (this.#description = description.firstElementChild);
     this.#signatureSVG = editSignatureView;
     this.#dialog = dialog;
     this.#overlayManager = overlayManager;
     dialog.addEventListener("close", this.#close.bind(this));
-    dialog.addEventListener("contextmenu", e => {
+    dialog.addEventListener("contextmenu", (e) => {
       if (e.target !== this.#description) {
         e.preventDefault();
       }
@@ -22775,16 +22467,18 @@ class EditDescriptionDialog {
       clearDescription.disabled = true;
       updateButton.disabled = this.#previousDescription === "";
     });
-    descriptionInput.addEventListener("input", () => {
-      const {
-        value
-      } = descriptionInput;
-      clearDescription.disabled = value === "";
-      updateButton.disabled = value === this.#previousDescription;
-      editSignatureView.setAttribute("aria-label", value);
-    }, {
-      passive: true
-    });
+    descriptionInput.addEventListener(
+      "input",
+      () => {
+        const { value } = descriptionInput;
+        clearDescription.disabled = value === "";
+        updateButton.disabled = value === this.#previousDescription;
+        editSignatureView.setAttribute("aria-label", value);
+      },
+      {
+        passive: true,
+      }
+    );
     overlayManager.register(dialog);
   }
   async open(editor) {
@@ -22793,10 +22487,7 @@ class EditDescriptionDialog {
     this.#previousDescription = this.#description.value = editor.description;
     this.#description.dispatchEvent(new Event("input"));
     this.#uiManager.removeEditListeners();
-    const {
-      areContours,
-      outline
-    } = editor.getSignaturePreview();
+    const { areContours, outline } = editor.getSignaturePreview();
     const svgFactory = new DOMSVGFactory();
     const path = svgFactory.createElement("path");
     this.#signatureSVG.append(path);
@@ -22811,8 +22502,8 @@ class EditDescriptionDialog {
     this.#currentEditor._reportTelemetry({
       action: "pdfjs.signature.edit_description",
       data: {
-        hasBeenChanged: true
-      }
+        hasBeenChanged: true,
+      },
     });
     this.#currentEditor.description = this.#description.value;
     this.#finish();
@@ -22821,8 +22512,8 @@ class EditDescriptionDialog {
     this.#currentEditor._reportTelemetry({
       action: "pdfjs.signature.edit_description",
       data: {
-        hasBeenChanged: false
-      }
+        hasBeenChanged: false,
+      },
     });
     this.#finish();
   }
@@ -22835,21 +22526,7 @@ class EditDescriptionDialog {
     this.#currentEditor = null;
     this.#signatureSVG.firstElementChild.remove();
   }
-}
-
-;// ./web/digital_signature_properties_manager.js
-
-
-
-
-
-
-
-
-
-
-
-
+} // ./web/digital_signature_properties_manager.js
 
 const STATUS_ROW_VERIFIED = "pdfjs-digital-signature-properties-status-verified";
 const STATUS_ROW_INVALID = "pdfjs-digital-signature-properties-status-invalid";
@@ -22859,73 +22536,75 @@ const STATUS_INFO = {
     priority: 0,
     severity: "verified",
     bannerId: "pdfjs-digital-signature-properties-banner-verified",
-    statusId: STATUS_ROW_VERIFIED
+    statusId: STATUS_ROW_VERIFIED,
   },
   unknown: {
     priority: 1,
     severity: "error",
     bannerId: "pdfjs-digital-signature-properties-banner-unknown",
-    statusId: STATUS_ROW_UNKNOWN
+    statusId: STATUS_ROW_UNKNOWN,
   },
   untrusted: {
     priority: 2,
     severity: "warn",
     bannerId: "pdfjs-digital-signature-properties-banner-untrusted",
-    statusId: STATUS_ROW_VERIFIED
+    statusId: STATUS_ROW_VERIFIED,
   },
   expired: {
     priority: 3,
     severity: "warn",
     bannerId: "pdfjs-digital-signature-properties-banner-expired",
-    statusId: STATUS_ROW_VERIFIED
+    statusId: STATUS_ROW_VERIFIED,
   },
   revoked: {
     priority: 4,
     severity: "error",
     bannerId: "pdfjs-digital-signature-properties-banner-revoked",
-    statusId: STATUS_ROW_VERIFIED
+    statusId: STATUS_ROW_VERIFIED,
   },
   invalid: {
     priority: 5,
     severity: "error",
     bannerId: "pdfjs-digital-signature-properties-banner-invalid",
-    statusId: STATUS_ROW_INVALID
-  }
+    statusId: STATUS_ROW_INVALID,
+  },
 };
 const CERT_L10N_IDS = {
   trusted: "pdfjs-digital-signature-properties-certificate-trusted",
   unknown: "pdfjs-digital-signature-properties-certificate-unknown",
   untrusted: "pdfjs-digital-signature-properties-certificate-untrusted",
   expired: "pdfjs-digital-signature-properties-certificate-expired",
-  revoked: "pdfjs-digital-signature-properties-certificate-revoked"
+  revoked: "pdfjs-digital-signature-properties-certificate-revoked",
 };
 const CERT_EXPIRED_WITH_DATE_L10N_ID = "pdfjs-digital-signature-properties-certificate-expired-with-date";
 function untrustedCertLabel(errorCode, issuerCN) {
   const code = (errorCode || "").toUpperCase();
-  const args = issuerCN ? {
-    issuer: issuerCN
-  } : null;
+  const args = issuerCN
+    ? {
+        issuer: issuerCN,
+      }
+    : null;
   if (code.includes("UNKNOWN_ISSUER") && args) {
     return {
       id: "pdfjs-digital-signature-properties-certificate-untrusted-unknown-issuer",
-      args
+      args,
     };
   }
   if (code.includes("SELF_SIGNED") && args) {
     return {
       id: "pdfjs-digital-signature-properties-certificate-untrusted-self-signed",
-      args
+      args,
     };
   }
   if (code.includes("UNTRUSTED_ISSUER") && args) {
     return {
       id: "pdfjs-digital-signature-properties-certificate-untrusted-untrusted-issuer",
-      args
+      args,
     };
   }
   return {
     id: "pdfjs-digital-signature-properties-certificate-untrusted",
-    args: null
+    args: null,
   };
 }
 function expirationDateForCert(cert) {
@@ -22957,11 +22636,7 @@ class SignaturePropertiesManager {
   #isLoading = false;
   #needsRender = false;
   #pdfDocument = null;
-  constructor({
-    appConfig,
-    verifier,
-    eventBus
-  }) {
+  constructor({ appConfig, verifier, eventBus }) {
     this.#appConfig = appConfig;
     this.#verifier = verifier;
     this.#eventBus = eventBus;
@@ -23028,7 +22703,7 @@ class SignaturePropertiesManager {
         message: null,
         certificate: null,
         documentModifiedAfterSigning: !sig.coversWholeDocument,
-        modificationsAfterSignature: sig.modificationsAfterSignature
+        modificationsAfterSignature: sig.modificationsAfterSignature,
       });
     }
     this.#render();
@@ -23068,10 +22743,10 @@ class SignaturePropertiesManager {
     this.#isOpen = true;
     this.#eventBus?.dispatch("switchannotationeditormode", {
       source: this,
-      mode: AnnotationEditorType.NONE
+      mode: AnnotationEditorType.NONE,
     });
     this.#eventBus?.dispatch("findbarclose", {
-      source: this
+      source: this,
     });
     this.#appConfig.signaturePropertiesPanel.classList.remove("hidden");
     this.#appConfig.signaturePropertiesButton.setAttribute("aria-expanded", "true");
@@ -23098,7 +22773,7 @@ class SignaturePropertiesManager {
       return {
         worst: "unknown",
         severity: "error",
-        count: 0
+        count: 0,
       };
     }
     const worst = this.#worst;
@@ -23111,7 +22786,7 @@ class SignaturePropertiesManager {
     return {
       worst,
       severity: STATUS_INFO[worst].severity,
-      count
+      count,
     };
   }
   #render() {
@@ -23128,18 +22803,17 @@ class SignaturePropertiesManager {
       list.replaceChildren();
       return;
     }
-    const {
-      worst,
-      severity,
-      count
-    } = this.#bannerState;
+    const { worst, severity, count } = this.#bannerState;
     banner.replaceChildren();
     banner.hidden = false;
     banner.className = `sigBanner ${severity}`;
     banner.setAttribute("data-l10n-id", STATUS_INFO[worst].bannerId);
-    banner.setAttribute("data-l10n-args", JSON.stringify({
-      count
-    }));
+    banner.setAttribute(
+      "data-l10n-args",
+      JSON.stringify({
+        count,
+      })
+    );
     const byParent = new Map();
     const topLevel = [];
     for (const sig of this.#signatures) {
@@ -23180,9 +22854,12 @@ class SignaturePropertiesManager {
       const reason = document.createElement("div");
       reason.className = "detail";
       reason.setAttribute("data-l10n-id", "pdfjs-digital-signature-properties-reason");
-      reason.setAttribute("data-l10n-args", JSON.stringify({
-        reason: result.message
-      }));
+      reason.setAttribute(
+        "data-l10n-args",
+        JSON.stringify({
+          reason: result.message,
+        })
+      );
       li.append(reason);
     }
     const cert = result.certificate;
@@ -23213,14 +22890,14 @@ class SignaturePropertiesManager {
       let l10nArgs = null;
       if (cert?.issuerCN && certKind === "trusted") {
         l10nArgs = {
-          issuer: cert.issuerCN
+          issuer: cert.issuerCN,
         };
       } else if (certKind === "expired") {
         const date = expirationDateForCert(cert);
         if (date) {
           l10nId = CERT_EXPIRED_WITH_DATE_L10N_ID;
           l10nArgs = {
-            dateObj: date.valueOf()
+            dateObj: date.valueOf(),
           };
         }
       } else if (certKind === "untrusted") {
@@ -23252,9 +22929,12 @@ class SignaturePropertiesManager {
       const ts = document.createElement("div");
       ts.className = "detail";
       ts.setAttribute("data-l10n-id", "pdfjs-digital-signature-properties-timestamp");
-      ts.setAttribute("data-l10n-args", JSON.stringify({
-        dateObj: signingDate.valueOf()
-      }));
+      ts.setAttribute(
+        "data-l10n-args",
+        JSON.stringify({
+          dateObj: signingDate.valueOf(),
+        })
+      );
       li.append(ts);
     }
     if (cert && typeof this.#verifier?.viewCertificate === "function") {
@@ -23262,7 +22942,7 @@ class SignaturePropertiesManager {
       viewCert.className = "viewCert";
       viewCert.type = "button";
       viewCert.setAttribute("data-l10n-id", "pdfjs-digital-signature-properties-view-certificate");
-      viewCert.addEventListener("click", e => {
+      viewCert.addEventListener("click", (e) => {
         e.stopPropagation();
         this.#verifier.viewCertificate(cert);
       });
@@ -23280,9 +22960,12 @@ class SignaturePropertiesManager {
         details.open = true;
         const summary = document.createElement("summary");
         summary.setAttribute("data-l10n-id", "pdfjs-digital-signature-properties-sub-signatures");
-        summary.setAttribute("data-l10n-args", JSON.stringify({
-          count: this.#countDescendants(sig.id, byParent)
-        }));
+        summary.setAttribute(
+          "data-l10n-args",
+          JSON.stringify({
+            count: this.#countDescendants(sig.id, byParent),
+          })
+        );
         details.append(summary);
         details.append(subList);
         li.append(details);
@@ -23320,7 +23003,7 @@ class SignaturePropertiesManager {
       }
       result = await this.#verifier.verify({
         ...signature,
-        ...bytes
+        ...bytes,
       });
     } catch (ex) {
       console.warn("signature verify failed:", ex);
@@ -23330,7 +23013,7 @@ class SignaturePropertiesManager {
         message: ex?.message ?? null,
         certificate: null,
         documentModifiedAfterSigning: !signature.coversWholeDocument,
-        modificationsAfterSignature: signature.modificationsAfterSignature
+        modificationsAfterSignature: signature.modificationsAfterSignature,
       };
     }
     this.#pendingVerify.delete(signature.id);
@@ -23365,12 +23048,7 @@ class SignaturePropertiesManager {
         button.classList.add("state-verified");
     }
   }
-}
-
-;// ./web/toolbar.js
-
-
-
+} // ./web/toolbar.js
 
 class Toolbar {
   #colorPicker = null;
@@ -23378,106 +23056,105 @@ class Toolbar {
   constructor(options, eventBus, toolbarDensity = 0) {
     this.#opts = options;
     this.eventBus = eventBus;
-    const buttons = [{
-      element: options.previous,
-      eventName: "previouspage"
-    }, {
-      element: options.next,
-      eventName: "nextpage"
-    }, {
-      element: options.zoomIn,
-      eventName: "zoomin"
-    }, {
-      element: options.zoomOut,
-      eventName: "zoomout"
-    }, {
-      element: options.print,
-      eventName: "print"
-    }, {
-      element: options.download,
-      eventName: "download"
-    }, {
-      element: options.editorCommentButton,
-      eventName: "switchannotationeditormode",
-      eventDetails: {
-        get mode() {
-          const {
-            classList
-          } = options.editorCommentButton;
-          return classList.contains("toggled") ? AnnotationEditorType.NONE : AnnotationEditorType.POPUP;
-        }
-      }
-    }, {
-      element: options.editorFreeTextButton,
-      eventName: "switchannotationeditormode",
-      eventDetails: {
-        get mode() {
-          const {
-            classList
-          } = options.editorFreeTextButton;
-          return classList.contains("toggled") ? AnnotationEditorType.NONE : AnnotationEditorType.FREETEXT;
-        }
-      }
-    }, {
-      element: options.editorHighlightButton,
-      eventName: "switchannotationeditormode",
-      eventDetails: {
-        get mode() {
-          const {
-            classList
-          } = options.editorHighlightButton;
-          return classList.contains("toggled") ? AnnotationEditorType.NONE : AnnotationEditorType.HIGHLIGHT;
-        }
-      }
-    }, {
-      element: options.editorInkButton,
-      eventName: "switchannotationeditormode",
-      eventDetails: {
-        get mode() {
-          const {
-            classList
-          } = options.editorInkButton;
-          return classList.contains("toggled") ? AnnotationEditorType.NONE : AnnotationEditorType.INK;
-        }
-      }
-    }, {
-      element: options.editorStampButton,
-      eventName: "switchannotationeditormode",
-      eventDetails: {
-        get mode() {
-          const {
-            classList
-          } = options.editorStampButton;
-          return classList.contains("toggled") ? AnnotationEditorType.NONE : AnnotationEditorType.STAMP;
-        }
+    const buttons = [
+      {
+        element: options.previous,
+        eventName: "previouspage",
       },
-      telemetry: {
-        type: "editing",
-        data: {
-          action: "pdfjs.image.icon_click"
-        }
-      }
-    }, {
-      element: options.editorSignatureButton,
-      eventName: "switchannotationeditormode",
-      eventDetails: {
-        get mode() {
-          const {
-            classList
-          } = options.editorSignatureButton;
-          return classList.contains("toggled") ? AnnotationEditorType.NONE : AnnotationEditorType.SIGNATURE;
-        }
-      }
-    }];
+      {
+        element: options.next,
+        eventName: "nextpage",
+      },
+      {
+        element: options.zoomIn,
+        eventName: "zoomin",
+      },
+      {
+        element: options.zoomOut,
+        eventName: "zoomout",
+      },
+      {
+        element: options.print,
+        eventName: "print",
+      },
+      {
+        element: options.download,
+        eventName: "download",
+      },
+      {
+        element: options.editorCommentButton,
+        eventName: "switchannotationeditormode",
+        eventDetails: {
+          get mode() {
+            const { classList } = options.editorCommentButton;
+            return classList.contains("toggled") ? AnnotationEditorType.NONE : AnnotationEditorType.POPUP;
+          },
+        },
+      },
+      {
+        element: options.editorFreeTextButton,
+        eventName: "switchannotationeditormode",
+        eventDetails: {
+          get mode() {
+            const { classList } = options.editorFreeTextButton;
+            return classList.contains("toggled") ? AnnotationEditorType.NONE : AnnotationEditorType.FREETEXT;
+          },
+        },
+      },
+      {
+        element: options.editorHighlightButton,
+        eventName: "switchannotationeditormode",
+        eventDetails: {
+          get mode() {
+            const { classList } = options.editorHighlightButton;
+            return classList.contains("toggled") ? AnnotationEditorType.NONE : AnnotationEditorType.HIGHLIGHT;
+          },
+        },
+      },
+      {
+        element: options.editorInkButton,
+        eventName: "switchannotationeditormode",
+        eventDetails: {
+          get mode() {
+            const { classList } = options.editorInkButton;
+            return classList.contains("toggled") ? AnnotationEditorType.NONE : AnnotationEditorType.INK;
+          },
+        },
+      },
+      {
+        element: options.editorStampButton,
+        eventName: "switchannotationeditormode",
+        eventDetails: {
+          get mode() {
+            const { classList } = options.editorStampButton;
+            return classList.contains("toggled") ? AnnotationEditorType.NONE : AnnotationEditorType.STAMP;
+          },
+        },
+        telemetry: {
+          type: "editing",
+          data: {
+            action: "pdfjs.image.icon_click",
+          },
+        },
+      },
+      {
+        element: options.editorSignatureButton,
+        eventName: "switchannotationeditormode",
+        eventDetails: {
+          get mode() {
+            const { classList } = options.editorSignatureButton;
+            return classList.contains("toggled") ? AnnotationEditorType.NONE : AnnotationEditorType.SIGNATURE;
+          },
+        },
+      },
+    ];
     this.#bindListeners(buttons);
     this.#updateToolbarDensity({
-      value: toolbarDensity
+      value: toolbarDensity,
     });
     this.reset();
   }
-  #updateToolbarDensity({
-    value
-  }) {
+  #updateToolbarDensity({ value }) {
     let name = "normal";
     switch (value) {
       case 1:
@@ -23510,43 +23187,31 @@ class Toolbar {
     this.pageLabel = null;
     this.hasPageLabels = false;
     this.pagesCount = 0;
-    this.pageScaleValue = (/* inlined export .DEFAULT_SCALE_VALUE */"auto");
-    this.pageScale = (/* inlined export .DEFAULT_SCALE */1);
+    this.pageScaleValue = /* inlined export .DEFAULT_SCALE_VALUE */ "auto";
+    this.pageScale = /* inlined export .DEFAULT_SCALE */ 1;
     this.#updateUIState(true);
     this.updateLoadingIndicatorState();
     this.#editorModeChanged({
-      mode: AnnotationEditorType.DISABLE
+      mode: AnnotationEditorType.DISABLE,
     });
   }
   #bindListeners(buttons) {
-    const {
-      eventBus
-    } = this;
-    const {
-      editorHighlightColorPicker,
-      editorHighlightButton,
-      pageNumber,
-      scaleSelect
-    } = this.#opts;
+    const { eventBus } = this;
+    const { editorHighlightColorPicker, editorHighlightButton, pageNumber, scaleSelect } = this.#opts;
     const self = this;
-    for (const {
-      element,
-      eventName,
-      eventDetails,
-      telemetry
-    } of buttons) {
-      element.addEventListener("click", evt => {
+    for (const { element, eventName, eventDetails, telemetry } of buttons) {
+      element.addEventListener("click", (evt) => {
         if (eventName !== null) {
           eventBus.dispatch(eventName, {
             source: this,
             ...eventDetails,
-            isFromKeyboard: evt.detail === 0
+            isFromKeyboard: evt.detail === 0,
           });
         }
         if (telemetry) {
           eventBus.dispatch("reporttelemetry", {
             source: this,
-            details: telemetry
+            details: telemetry,
           });
         }
       });
@@ -23557,65 +23222,69 @@ class Toolbar {
     pageNumber.addEventListener("change", function () {
       eventBus.dispatch("pagenumberchanged", {
         source: self,
-        value: this.value
+        value: this.value,
       });
     });
-    eventBus.on("pagesedited", ({
-      pagesMapper
-    }) => {
-      const pagesCount = pagesMapper.pagesNumber;
-      if (pagesCount !== this.pagesCount) {
-        this.setPagesCount(pagesCount, this.hasPageLabels);
-      }
-    }, internalOpt);
+    eventBus.on(
+      "pagesedited",
+      ({ pagesMapper }) => {
+        const pagesCount = pagesMapper.pagesNumber;
+        if (pagesCount !== this.pagesCount) {
+          this.setPagesCount(pagesCount, this.hasPageLabels);
+        }
+      },
+      internalOpt
+    );
     scaleSelect.addEventListener("change", function () {
       if (this.value === "custom") {
         return;
       }
       eventBus.dispatch("scalechanged", {
         source: self,
-        value: this.value
+        value: this.value,
       });
     });
-    scaleSelect.addEventListener("click", function ({
-      target
-    }) {
+    scaleSelect.addEventListener("click", function ({ target }) {
       if (this.value === self.pageScaleValue && target.tagName.toUpperCase() === "OPTION") {
         this.blur();
       }
     });
     scaleSelect.oncontextmenu = noContextMenu;
     eventBus.on("annotationeditormodechanged", this.#editorModeChanged.bind(this), internalOpt);
-    eventBus.on("showannotationeditorui", ({
-      mode
-    }) => {
-      switch (mode) {
-        case AnnotationEditorType.HIGHLIGHT:
-          editorHighlightButton.click();
-          break;
-      }
-    }, internalOpt);
+    eventBus.on(
+      "showannotationeditorui",
+      ({ mode }) => {
+        switch (mode) {
+          case AnnotationEditorType.HIGHLIGHT:
+            editorHighlightButton.click();
+            break;
+        }
+      },
+      internalOpt
+    );
     eventBus.on("toolbardensity", this.#updateToolbarDensity.bind(this), internalOpt);
     if (editorHighlightColorPicker) {
-      eventBus.on("annotationeditoruimanager", ({
-        uiManager
-      }) => {
-        const cp = this.#colorPicker = new ColorPicker({
-          uiManager
-        });
-        uiManager.setMainHighlightColorPicker(cp);
-        editorHighlightColorPicker.append(cp.renderMainDropdown());
-      }, internalOpt);
-      eventBus.on("mainhighlightcolorpickerupdatecolor", ({
-        value
-      }) => {
-        this.#colorPicker?.update(value);
-      }, internalOpt);
+      eventBus.on(
+        "annotationeditoruimanager",
+        ({ uiManager }) => {
+          const cp = (this.#colorPicker = new ColorPicker({
+            uiManager,
+          }));
+          uiManager.setMainHighlightColorPicker(cp);
+          editorHighlightColorPicker.append(cp.renderMainDropdown());
+        },
+        internalOpt
+      );
+      eventBus.on(
+        "mainhighlightcolorpickerupdatecolor",
+        ({ value }) => {
+          this.#colorPicker?.update(value);
+        },
+        internalOpt
+      );
     }
   }
-  #editorModeChanged({
-    mode
-  }) {
+  #editorModeChanged({ mode }) {
     const {
       editorCommentButton,
       editorCommentParamsToolbar,
@@ -23628,7 +23297,7 @@ class Toolbar {
       editorStampButton,
       editorStampParamsToolbar,
       editorSignatureButton,
-      editorSignatureParamsToolbar
+      editorSignatureParamsToolbar,
     } = this.#opts;
     toggleExpandedBtn(editorCommentButton, mode === AnnotationEditorType.POPUP, editorCommentParamsToolbar);
     toggleExpandedBtn(editorFreeTextButton, mode === AnnotationEditorType.FREETEXT, editorFreeTextParamsToolbar);
@@ -23636,15 +23305,16 @@ class Toolbar {
     toggleExpandedBtn(editorInkButton, mode === AnnotationEditorType.INK, editorInkParamsToolbar);
     toggleExpandedBtn(editorStampButton, mode === AnnotationEditorType.STAMP, editorStampParamsToolbar);
     toggleExpandedBtn(editorSignatureButton, mode === AnnotationEditorType.SIGNATURE, editorSignatureParamsToolbar);
-    editorCommentButton.disabled = editorFreeTextButton.disabled = editorHighlightButton.disabled = editorInkButton.disabled = editorStampButton.disabled = editorSignatureButton.disabled = mode === AnnotationEditorType.DISABLE;
+    editorCommentButton.disabled =
+      editorFreeTextButton.disabled =
+      editorHighlightButton.disabled =
+      editorInkButton.disabled =
+      editorStampButton.disabled =
+      editorSignatureButton.disabled =
+        mode === AnnotationEditorType.DISABLE;
   }
   #updateUIState(resetNumPages = false) {
-    const {
-      pageNumber,
-      pagesCount,
-      pageScaleValue,
-      pageScale
-    } = this;
+    const { pageNumber, pagesCount, pageScaleValue, pageScale } = this;
     const opts = this.#opts;
     if (resetNumPages) {
       if (this.hasPageLabels) {
@@ -23653,25 +23323,31 @@ class Toolbar {
       } else {
         opts.pageNumber.type = "number";
         opts.numPages.setAttribute("data-l10n-id", "pdfjs-of-pages");
-        opts.numPages.setAttribute("data-l10n-args", JSON.stringify({
-          pagesCount
-        }));
+        opts.numPages.setAttribute(
+          "data-l10n-args",
+          JSON.stringify({
+            pagesCount,
+          })
+        );
       }
       opts.pageNumber.max = pagesCount;
     }
     if (this.hasPageLabels) {
       opts.pageNumber.value = this.pageLabel;
-      opts.numPages.setAttribute("data-l10n-args", JSON.stringify({
-        pageNumber,
-        pagesCount
-      }));
+      opts.numPages.setAttribute(
+        "data-l10n-args",
+        JSON.stringify({
+          pageNumber,
+          pagesCount,
+        })
+      );
     } else {
       opts.pageNumber.value = pageNumber;
     }
     opts.previous.disabled = pageNumber <= 1;
     opts.next.disabled = pageNumber >= pagesCount;
-    opts.zoomOut.disabled = pageScale <= (/* inlined export .MIN_SCALE */0.1);
-    opts.zoomIn.disabled = pageScale >= (/* inlined export .MAX_SCALE */25);
+    opts.zoomOut.disabled = pageScale <= /* inlined export .MIN_SCALE */ 0.1;
+    opts.zoomIn.disabled = pageScale >= /* inlined export .MAX_SCALE */ 25;
     let predefinedValueFound = false;
     for (const option of opts.scaleSelect.options) {
       if (option.value !== pageScaleValue) {
@@ -23683,27 +23359,24 @@ class Toolbar {
     }
     if (!predefinedValueFound) {
       opts.customScaleOption.selected = true;
-      opts.customScaleOption.setAttribute("data-l10n-args", JSON.stringify({
-        scale: Math.round(pageScale * 10000) / 100
-      }));
+      opts.customScaleOption.setAttribute(
+        "data-l10n-args",
+        JSON.stringify({
+          scale: Math.round(pageScale * 10000) / 100,
+        })
+      );
     }
   }
   updateLoadingIndicatorState(loading = false) {
-    const {
-      pageNumber
-    } = this.#opts;
+    const { pageNumber } = this.#opts;
     pageNumber.classList.toggle("loading", loading);
   }
-}
-
-;// ./web/view_history.js
-
-
+} // ./web/view_history.js
 
 const DEFAULT_VIEW_HISTORY_CACHE_SIZE = 20;
 class ViewHistory {
   constructor(fingerprint, cacheSize = DEFAULT_VIEW_HISTORY_CACHE_SIZE) {
-    this._initializedPromise = this._readFromStorage().then(databaseStr => {
+    this._initializedPromise = this._readFromStorage().then((databaseStr) => {
       const database = JSON.parse(databaseStr || "{}");
       let index = -1;
       if (!Array.isArray(database.files)) {
@@ -23712,12 +23385,13 @@ class ViewHistory {
         while (database.files.length >= cacheSize) {
           database.files.shift();
         }
-        index = database.files.findIndex(branch => branch.fingerprint === fingerprint);
+        index = database.files.findIndex((branch) => branch.fingerprint === fingerprint);
       }
       if (index === -1) {
-        index = database.files.push({
-          fingerprint
-        }) - 1;
+        index =
+          database.files.push({
+            fingerprint,
+          }) - 1;
       }
       this.file = database.files[index];
       this.database = database;
@@ -23756,12 +23430,7 @@ class ViewHistory {
     }
     return values;
   }
-}
-
-;// ./web/views_manager.js
-
-
-
+} // ./web/views_manager.js
 
 const SIDEBAR_WIDTH_VAR = "--viewsManager-width";
 const SIDEBAR_RESIZING_CLASS = "viewsManagerResizing";
@@ -23783,26 +23452,29 @@ class ViewsManager extends Sidebar {
       outlinesView,
       attachmentsView,
       layersView,
-      viewsManagerAddFile: {
-        button: viewsManagerAddFileButton
-      },
+      viewsManagerAddFile: { button: viewsManagerAddFileButton },
       viewsManagerCurrentOutlineButton,
       viewsManagerSelectorButton,
       viewsManagerSelectorOptions,
       viewsManagerHeaderLabel,
-      viewsManagerStatus
+      viewsManagerStatus,
     },
     eventBus,
     l10n,
     enableMerge = false,
     enableSplitMerge = false,
-    globalAbortSignal
+    globalAbortSignal,
   }) {
-    super({
-      sidebar: sidebarContainer,
-      resizer,
-      toggleButton
-    }, l10n.getDirection() === "ltr", false, globalAbortSignal);
+    super(
+      {
+        sidebar: sidebarContainer,
+        resizer,
+        toggleButton,
+      },
+      l10n.getDirection() === "ltr",
+      false,
+      globalAbortSignal
+    );
     this.isOpen = false;
     this.active = SidebarView.THUMBS;
     this.isInitialViewSet = false;
@@ -23841,7 +23513,7 @@ class ViewsManager extends Sidebar {
       attachmentsTitle: "pdfjs-views-manager-attachments-title",
       layersTitle: "pdfjs-views-manager-layers-title1",
       notificationButton: "pdfjs-toggle-views-manager-notification-button",
-      toggleButton: "pdfjs-toggle-views-manager-button1"
+      toggleButton: "pdfjs-toggle-views-manager-button1",
     });
     this.#addEventListeners();
   }
@@ -23945,7 +23617,7 @@ class ViewsManager extends Sidebar {
     } else {
       this.outerContainer.classList.add("viewsManagerOpen");
       this.eventBus.dispatch("resize", {
-        source: this
+        source: this,
       });
     }
     if (this.active === SidebarView.THUMBS) {
@@ -23984,7 +23656,7 @@ class ViewsManager extends Sidebar {
     }
     this.eventBus.dispatch("sidebarviewchanged", {
       source: this,
-      view: this.visibleView
+      view: this.visibleView,
     });
   }
   #showUINotification() {
@@ -24002,30 +23674,27 @@ class ViewsManager extends Sidebar {
     }
   }
   #addEventListeners() {
-    const {
-      eventBus,
-      outerContainer
-    } = this;
+    const { eventBus, outerContainer } = this;
     if (this.#hasAnimations) {
-      this.sidebarContainer.addEventListener("transitionend", evt => {
+      this.sidebarContainer.addEventListener("transitionend", (evt) => {
         if (evt.target === this.sidebarContainer) {
           outerContainer.classList.remove("viewsManagerMoving");
           eventBus.dispatch("resize", {
-            source: this
+            source: this,
           });
         }
       });
     }
-    this.viewsManagerHeaderLabel.addEventListener("dblclick", e => {
+    this.viewsManagerHeaderLabel.addEventListener("dblclick", (e) => {
       if (this.active === SidebarView.OUTLINE) {
         eventBus.dispatch("toggleoutlinetree", {
-          source: this
+          source: this,
         });
         return;
       }
       if (this.active === SidebarView.LAYERS) {
         eventBus.dispatch("resetlayers", {
-          source: this
+          source: this,
         });
       }
     });
@@ -24043,7 +23712,7 @@ class ViewsManager extends Sidebar {
     });
     this.viewsManagerCurrentOutlineButton.addEventListener("click", () => {
       eventBus.dispatch("currentoutlineitem", {
-        source: this
+        source: this,
       });
     });
     const onTreeLoaded = (count, button, view) => {
@@ -24054,105 +23723,68 @@ class ViewsManager extends Sidebar {
         this.switchView(SidebarView.THUMBS);
       }
     };
-    eventBus.on("outlineloaded", evt => {
-      onTreeLoaded(evt.outlineCount, this.outlineButton, SidebarView.OUTLINE);
-      evt.currentOutlineItemPromise.then(enabled => {
-        if (!this.isInitialViewSet) {
-          return;
+    eventBus.on(
+      "outlineloaded",
+      (evt) => {
+        onTreeLoaded(evt.outlineCount, this.outlineButton, SidebarView.OUTLINE);
+        evt.currentOutlineItemPromise.then((enabled) => {
+          if (!this.isInitialViewSet) {
+            return;
+          }
+          this.viewsManagerCurrentOutlineButton.disabled = !enabled;
+        });
+      },
+      internalOpt
+    );
+    eventBus.on(
+      "attachmentsloaded",
+      (evt) => {
+        onTreeLoaded(evt.attachmentsCount, this.attachmentsButton, SidebarView.ATTACHMENTS);
+      },
+      internalOpt
+    );
+    eventBus.on(
+      "layersloaded",
+      (evt) => {
+        onTreeLoaded(evt.layersCount, this.layersButton, SidebarView.LAYERS);
+      },
+      internalOpt
+    );
+    eventBus.on(
+      "presentationmodechanged",
+      (evt) => {
+        if (evt.state === PresentationModeState.NORMAL && this.visibleView === SidebarView.THUMBS) {
+          this.onUpdateThumbnails();
         }
-        this.viewsManagerCurrentOutlineButton.disabled = !enabled;
-      });
-    }, internalOpt);
-    eventBus.on("attachmentsloaded", evt => {
-      onTreeLoaded(evt.attachmentsCount, this.attachmentsButton, SidebarView.ATTACHMENTS);
-    }, internalOpt);
-    eventBus.on("layersloaded", evt => {
-      onTreeLoaded(evt.layersCount, this.layersButton, SidebarView.LAYERS);
-    }, internalOpt);
-    eventBus.on("presentationmodechanged", evt => {
-      if (evt.state === PresentationModeState.NORMAL && this.visibleView === SidebarView.THUMBS) {
-        this.onUpdateThumbnails();
-      }
-    }, internalOpt);
+      },
+      internalOpt
+    );
   }
   onStartResizing() {
     this.outerContainer.classList.add(SIDEBAR_RESIZING_CLASS);
   }
   onStopResizing() {
     this.eventBus.dispatch("resize", {
-      source: this
+      source: this,
     });
     this.outerContainer.classList.remove(SIDEBAR_RESIZING_CLASS);
   }
   onResizing(newWidth) {
     docStyle.setProperty(SIDEBAR_WIDTH_VAR, `${newWidth}px`);
   }
-}
-
-;// ./web/app.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+} // ./web/app.js
 
 const FORCE_PAGES_LOADED_TIMEOUT = 10000;
 const ViewOnLoad = {
   UNKNOWN: -1,
   PREVIOUS: 0,
-  INITIAL: 1
+  INITIAL: 1,
 };
 const PDFViewerApplication = {
   initialBookmark: document.location.hash.substring(1),
   _initializedCapability: {
     ...Promise.withResolvers(),
-    settled: false
+    settled: false,
   },
   appConfig: null,
   pdfDocument: null,
@@ -24250,30 +23882,27 @@ const PDFViewerApplication = {
     if (!hash) {
       return;
     }
-    const {
-        mainContainer,
-        viewerContainer
-      } = this.appConfig,
+    const { mainContainer, viewerContainer } = this.appConfig,
       params = parseQueryString(hash);
     const loadPDFBug = async () => {
       if (this._PDFBug) {
         return;
       }
-      const {
-        PDFBug
-      } = await import(
-      /*webpackIgnore: true*/
-      /*@vite-ignore*/
-      AppOptions.get("debuggerSrc"));
+      const { PDFBug } = await import(
+        /*webpackIgnore: true*/
+        /*@vite-ignore*/
+        AppOptions.get("debuggerSrc")
+      );
       this._PDFBug = PDFBug;
     };
     if (params.get("disableworker") === "true") {
       try {
         GlobalWorkerOptions.workerSrc ||= AppOptions.get("workerSrc");
         await import(
-        /*webpackIgnore: true*/
-        /*@vite-ignore*/
-        PDFWorker.workerSrc);
+          /*webpackIgnore: true*/
+          /*@vite-ignore*/
+          PDFWorker.workerSrc
+        );
         AppOptions.set("workerPort", null);
       } catch (ex) {
         console.error("_parseHashParams:", ex);
@@ -24307,7 +23936,7 @@ const PDFViewerApplication = {
       }
       const debugOpts = {
         pdfBug: true,
-        fontExtraProperties: true
+        fontExtraProperties: true,
       };
       if (globalThis.StepperManager?.enabled) {
         debugOpts.minDurationToUpdateCanvas = 0;
@@ -24316,16 +23945,16 @@ const PDFViewerApplication = {
     }
     if (params.has("locale")) {
       AppOptions.set("localeProperties", {
-        lang: params.get("locale")
+        lang: params.get("locale"),
       });
     }
     const opts = {
-      disableAutoFetch: x => x === "true",
-      disableFontFace: x => x === "true",
-      disableHistory: x => x === "true",
-      disableRange: x => x === "true",
-      disableStream: x => x === "true",
-      verbosity: x => x | 0
+      disableAutoFetch: (x) => x === "true",
+      disableFontFace: (x) => x === "true",
+      disableHistory: (x) => x === "true",
+      disableRange: (x) => x === "true",
+      disableStream: (x) => x === "true",
+      verbosity: (x) => x | 0,
     };
     for (const name in opts) {
       const check = opts[name],
@@ -24336,51 +23965,48 @@ const PDFViewerApplication = {
     }
   },
   async _initializeViewerComponents() {
-    const {
-      appConfig,
-      externalServices,
-      l10n,
-      mlManager
-    } = this;
+    const { appConfig, externalServices, l10n, mlManager } = this;
     const abortSignal = this._globalAbortController.signal;
     const eventBus = new EventBus();
     this.eventBus = AppOptions.eventBus = eventBus;
     mlManager?.setEventBus(eventBus, abortSignal);
-    const overlayManager = this.overlayManager = new OverlayManager();
-    const renderingQueue = this.pdfRenderingQueue = new PDFRenderingQueue();
+    const overlayManager = (this.overlayManager = new OverlayManager());
+    const renderingQueue = (this.pdfRenderingQueue = new PDFRenderingQueue());
     renderingQueue.onIdle = this._cleanup.bind(this);
-    const linkService = this.pdfLinkService = new PDFLinkService({
+    const linkService = (this.pdfLinkService = new PDFLinkService({
       eventBus,
       externalLinkTarget: AppOptions.get("externalLinkTarget"),
       externalLinkRel: AppOptions.get("externalLinkRel"),
-      ignoreDestinationZoom: AppOptions.get("ignoreDestinationZoom")
-    });
+      ignoreDestinationZoom: AppOptions.get("ignoreDestinationZoom"),
+    }));
     const supportsDownloading = AppOptions.get("supportsDownloading");
-    const downloadManager = this.downloadManager = supportsDownloading ? new DownloadManager() : null;
+    const downloadManager = (this.downloadManager = supportsDownloading ? new DownloadManager() : null);
     if (appConfig.secondaryToolbar?.downloadButton) {
       appConfig.secondaryToolbar.downloadButton.hidden = !supportsDownloading;
     }
     if (appConfig.toolbar?.download) {
       appConfig.toolbar.download.hidden = !supportsDownloading;
     }
-    const findController = this.findController = new PDFFindController({
+    const findController = (this.findController = new PDFFindController({
       linkService,
       eventBus,
-      updateMatchesCountOnProgress: true
-    });
-    const pdfScriptingManager = this.pdfScriptingManager = new PDFScriptingManager({
+      updateMatchesCountOnProgress: true,
+    }));
+    const pdfScriptingManager = (this.pdfScriptingManager = new PDFScriptingManager({
       eventBus,
       externalServices,
-      docProperties: this._scriptingDocProperties.bind(this)
-    });
+      docProperties: this._scriptingDocProperties.bind(this),
+    }));
     const container = appConfig.mainContainer,
       viewer = appConfig.viewerContainer;
     const annotationEditorMode = AppOptions.get("annotationEditorMode");
     const hasForcedColors = AppOptions.get("forcePageColors") || window.matchMedia("(forced-colors: active)").matches;
-    const pageColors = hasForcedColors ? {
-      background: AppOptions.get("pageColorsBackground"),
-      foreground: AppOptions.get("pageColorsForeground")
-    } : null;
+    const pageColors = hasForcedColors
+      ? {
+          background: AppOptions.get("pageColorsBackground"),
+          foreground: AppOptions.get("pageColorsForeground"),
+        }
+      : null;
     const enableMerge = AppOptions.get("enableMerge");
     const enableSplitMerge = AppOptions.get("enableSplitMerge");
     let altTextManager;
@@ -24392,21 +24018,44 @@ const PDFViewerApplication = {
     if (appConfig.editorUndoBar) {
       this.editorUndoBar = new EditorUndoBar(appConfig.editorUndoBar, eventBus);
     }
-    const signatureManager = AppOptions.get("enableSignatureEditor") && appConfig.addSignatureDialog ? new SignatureManager(appConfig.addSignatureDialog, appConfig.editSignatureDialog, appConfig.annotationEditorParams?.editorSignatureAddSignature || null, overlayManager, l10n, externalServices.createSignatureStorage(eventBus, abortSignal), eventBus) : null;
-    const commentManager = AppOptions.get("enableComment") && appConfig.editCommentDialog ? new CommentManager(appConfig.editCommentDialog, {
-      learnMoreUrl: AppOptions.get("commentLearnMoreUrl"),
-      sidebar: appConfig.annotationEditorParams?.editorCommentsSidebar || null,
-      sidebarResizer: appConfig.annotationEditorParams?.editorCommentsSidebarResizer || null,
-      commentsList: appConfig.annotationEditorParams?.editorCommentsSidebarList || null,
-      commentCount: appConfig.annotationEditorParams?.editorCommentsSidebarCount || null,
-      sidebarTitle: appConfig.annotationEditorParams?.editorCommentsSidebarTitle || null,
-      closeButton: appConfig.annotationEditorParams?.editorCommentsSidebarCloseButton || null,
-      commentToolbarButton: appConfig.toolbar?.editorCommentButton || null
-    }, eventBus, linkService, overlayManager, l10n.getDirection() === "ltr", hasForcedColors, abortSignal) : null;
+    const signatureManager =
+      AppOptions.get("enableSignatureEditor") && appConfig.addSignatureDialog
+        ? new SignatureManager(
+            appConfig.addSignatureDialog,
+            appConfig.editSignatureDialog,
+            appConfig.annotationEditorParams?.editorSignatureAddSignature || null,
+            overlayManager,
+            l10n,
+            externalServices.createSignatureStorage(eventBus, abortSignal),
+            eventBus
+          )
+        : null;
+    const commentManager =
+      AppOptions.get("enableComment") && appConfig.editCommentDialog
+        ? new CommentManager(
+            appConfig.editCommentDialog,
+            {
+              learnMoreUrl: AppOptions.get("commentLearnMoreUrl"),
+              sidebar: appConfig.annotationEditorParams?.editorCommentsSidebar || null,
+              sidebarResizer: appConfig.annotationEditorParams?.editorCommentsSidebarResizer || null,
+              commentsList: appConfig.annotationEditorParams?.editorCommentsSidebarList || null,
+              commentCount: appConfig.annotationEditorParams?.editorCommentsSidebarCount || null,
+              sidebarTitle: appConfig.annotationEditorParams?.editorCommentsSidebarTitle || null,
+              closeButton: appConfig.annotationEditorParams?.editorCommentsSidebarCloseButton || null,
+              commentToolbarButton: appConfig.toolbar?.editorCommentButton || null,
+            },
+            eventBus,
+            linkService,
+            overlayManager,
+            l10n.getDirection() === "ltr",
+            hasForcedColors,
+            abortSignal
+          )
+        : null;
     const maxCanvasPixels = AppOptions.get("maxCanvasPixels"),
       maxCanvasDim = AppOptions.get("maxCanvasDim"),
       capCanvasAreaFactor = AppOptions.get("capCanvasAreaFactor");
-    const pdfViewer = this.pdfViewer = new PDFViewer({
+    const pdfViewer = (this.pdfViewer = new PDFViewer({
       container,
       viewer,
       viewerAlert: appConfig.viewerAlert,
@@ -24443,15 +24092,13 @@ const PDFViewerApplication = {
       abortSignal,
       supportsPinchToZoom: this.supportsPinchToZoom,
       enableAutoLinking: AppOptions.get("enableAutoLinking"),
-      minDurationToUpdateCanvas: AppOptions.get("minDurationToUpdateCanvas")
-    });
+      minDurationToUpdateCanvas: AppOptions.get("minDurationToUpdateCanvas"),
+    }));
     renderingQueue.setViewer(pdfViewer);
     linkService.setViewer(pdfViewer);
     pdfScriptingManager.setViewer(pdfViewer);
     if (appConfig.viewsManager?.thumbnailsView) {
-      const {
-        viewsManager
-      } = appConfig;
+      const { viewsManager } = appConfig;
       this.pdfThumbnailViewer = new PDFThumbnailViewer({
         container: viewsManager.thumbnailsView,
         eventBus,
@@ -24468,14 +24115,14 @@ const PDFViewerApplication = {
         undoBar: viewsManager.viewsManagerUndoBar,
         manageMenu: viewsManager.manageMenu,
         waitingBar: viewsManager.viewsManagerWaitingBar,
-        addFileComponent: viewsManager.viewsManagerAddFile
+        addFileComponent: viewsManager.viewsManagerAddFile,
       });
       renderingQueue.setThumbnailViewer(this.pdfThumbnailViewer);
     }
     if (!this.isViewerEmbedded && !AppOptions.get("disableHistory")) {
       this.pdfHistory = new PDFHistory({
         linkService,
-        eventBus
+        eventBus,
       });
       linkService.setHistory(this.pdfHistory);
     }
@@ -24503,13 +24150,20 @@ const PDFViewerApplication = {
       this.imageAltTextSettings = new ImageAltTextSettings(appConfig.altTextSettingsDialog, overlayManager, eventBus, mlManager);
     }
     if (appConfig.documentProperties) {
-      this.pdfDocumentProperties = new PDFDocumentProperties(appConfig.documentProperties, overlayManager, eventBus, l10n, () => this._docFilename, () => this._docTitle);
+      this.pdfDocumentProperties = new PDFDocumentProperties(
+        appConfig.documentProperties,
+        overlayManager,
+        eventBus,
+        l10n,
+        () => this._docFilename,
+        () => this._docTitle
+      );
     }
     if (appConfig.secondaryToolbar?.cursorHandToolButton) {
       this.pdfCursorTools = new PDFCursorTools({
         container,
         eventBus,
-        cursorToolOnLoad: AppOptions.get("cursorToolOnLoad")
+        cursorToolOnLoad: AppOptions.get("cursorToolOnLoad"),
       });
     }
     if (appConfig.toolbar) {
@@ -24526,7 +24180,7 @@ const PDFViewerApplication = {
       this.pdfPresentationMode = new PDFPresentationMode({
         container,
         pdfViewer,
-        eventBus
+        eventBus,
       });
     }
     if (appConfig.passwordOverlay) {
@@ -24538,7 +24192,7 @@ const PDFViewerApplication = {
         eventBus,
         l10n,
         linkService,
-        downloadManager
+        downloadManager,
       });
     }
     if (appConfig.viewsManager?.attachmentsView) {
@@ -24547,14 +24201,14 @@ const PDFViewerApplication = {
         eventBus,
         l10n,
         downloadManager,
-        linkService
+        linkService,
       });
     }
     if (appConfig.viewsManager?.layersView) {
       this.pdfLayerViewer = new PDFLayerViewer({
         container: appConfig.viewsManager.layersView,
         eventBus,
-        l10n
+        l10n,
       });
     }
     if (appConfig.viewsManager) {
@@ -24564,7 +24218,7 @@ const PDFViewerApplication = {
         l10n,
         enableMerge,
         enableSplitMerge,
-        globalAbortSignal: abortSignal
+        globalAbortSignal: abortSignal,
       });
       this.viewsManager.onToggled = this.forceRendering.bind(this);
       this.viewsManager.onUpdateThumbnails = () => {
@@ -24579,32 +24233,27 @@ const PDFViewerApplication = {
   },
   async run(config) {
     await this.initialize(config);
-    const {
-      appConfig,
-      eventBus
-    } = this;
+    const { appConfig, eventBus } = this;
     let file;
     const queryString = document.location.search.substring(1);
     const params = parseQueryString(queryString);
     file = params.get("file") ?? AppOptions.get("defaultUrl");
     file = URL.parse(file)?.href ?? file.replaceAll("#", "%23");
     validateFileURL(file);
-    const fileInput = this._openFileInput = document.createElement("input");
+    const fileInput = (this._openFileInput = document.createElement("input"));
     fileInput.id = "fileInput";
     fileInput.hidden = true;
     fileInput.type = "file";
     fileInput.value = null;
     document.body.append(fileInput);
     fileInput.addEventListener("change", function (evt) {
-      const {
-        files
-      } = evt.target;
+      const { files } = evt.target;
       if (!files?.length) {
         return;
       }
       eventBus.dispatch("fileinputchange", {
         source: this,
-        fileInput: evt.target
+        fileInput: evt.target,
       });
     });
     appConfig.mainContainer.addEventListener("dragover", function (evt) {
@@ -24623,25 +24272,23 @@ const PDFViewerApplication = {
       stopEvent(evt);
       eventBus.dispatch("fileinputchange", {
         source: this,
-        fileInput: evt.dataTransfer
+        fileInput: evt.dataTransfer,
       });
     });
     if (!AppOptions.get("supportsDocumentFonts")) {
       AppOptions.set("disableFontFace", true);
-      this.l10n.get("pdfjs-web-fonts-disabled").then(msg => {
+      this.l10n.get("pdfjs-web-fonts-disabled").then((msg) => {
         console.warn(msg);
       });
     }
-    const togglePrintingButtons = visible => {
+    const togglePrintingButtons = (visible) => {
       appConfig.toolbar?.print?.classList.toggle("hidden", !visible);
       appConfig.secondaryToolbar?.printButton.classList.toggle("hidden", !visible);
     };
     if (!this.supportsPrinting) {
       togglePrintingButtons(false);
     } else {
-      eventBus.on("printingallowed", ({
-        isAllowed
-      }) => togglePrintingButtons(isAllowed), internalOpt);
+      eventBus.on("printingallowed", ({ isAllowed }) => togglePrintingButtons(isAllowed), internalOpt);
     }
     if (!this.supportsFullscreen) {
       appConfig.secondaryToolbar?.presentationModeButton.classList.add("hidden");
@@ -24651,7 +24298,7 @@ const PDFViewerApplication = {
     }
     if (file) {
       this.open({
-        url: file
+        url: file,
       });
     } else {
       this._hideViewBookmark();
@@ -24675,7 +24322,7 @@ const PDFViewerApplication = {
       steps,
       scaleFactor,
       origin,
-      pan
+      pan,
     });
   },
   zoomIn() {
@@ -24688,7 +24335,7 @@ const PDFViewerApplication = {
     if (this.pdfViewer.isInPresentationMode) {
       return;
     }
-    this.pdfViewer.currentScaleValue = (/* inlined export .DEFAULT_SCALE_VALUE */"auto");
+    this.pdfViewer.currentScaleValue = /* inlined export .DEFAULT_SCALE_VALUE */ "auto";
   },
   touchPinchCallback(origin, prevDistance, distance, panX, panY) {
     const pan = [panX, panY];
@@ -24702,9 +24349,7 @@ const PDFViewerApplication = {
     }
   },
   touchPanCallback(dx, dy) {
-    const {
-      pdfViewer
-    } = this;
+    const { pdfViewer } = this;
     if (!this.pdfDocument || pdfViewer.isInPresentationMode) {
       return;
     }
@@ -24750,7 +24395,12 @@ const PDFViewerApplication = {
     return AppOptions.get("supportsCaretBrowsingMode");
   },
   moveCaret(isUp, select) {
-    this._caretBrowsing ||= new CaretBrowsingMode(this._globalAbortController.signal, this.appConfig.mainContainer, this.appConfig.viewerContainer, this.appConfig.toolbar?.container);
+    this._caretBrowsing ||= new CaretBrowsingMode(
+      this._globalAbortController.signal,
+      this.appConfig.mainContainer,
+      this.appConfig.viewerContainer,
+      this.appConfig.toolbar?.container
+    );
     this._caretBrowsing.moveCaret(isUp, select);
   },
   setTitleUsingUrl(url = "", downloadUrl = null) {
@@ -24782,10 +24432,7 @@ const PDFViewerApplication = {
     return this._contentDispositionFilename || getPdfFilenameFromUrl(this.url);
   },
   get _docTitle() {
-    const {
-      documentInfo,
-      metadata
-    } = this;
+    const { documentInfo, metadata } = this;
     const title = metadata?.get("dc:title");
     if (title) {
       if (title !== "Untitled" && !/[\uFFF0-\uFFFF]/.test(title)) {
@@ -24795,9 +24442,7 @@ const PDFViewerApplication = {
     return documentInfo.Title;
   },
   _hideViewBookmark() {
-    const {
-      secondaryToolbar
-    } = this.appConfig;
+    const { secondaryToolbar } = this.appConfig;
     secondaryToolbar?.viewBookmarkButton.classList.add("hidden");
     if (secondaryToolbar?.presentationModeButton.classList.contains("hidden")) {
       document.getElementById("viewBookmarkSeparator")?.classList.add("hidden");
@@ -24864,7 +24509,7 @@ const PDFViewerApplication = {
     const apiParams = AppOptions.getAll(OptionKind.API);
     const loadingTask = getDocument({
       ...apiParams,
-      ...args
+      ...args,
     });
     this.pdfLoadingTask = loadingTask;
     loadingTask.onPassword = (updateCallback, reason) => {
@@ -24875,28 +24520,31 @@ const PDFViewerApplication = {
       this.passwordPrompt.setUpdateCallback(updateCallback, reason);
       this.passwordPrompt.open();
     };
-    loadingTask.onProgress = evt => this.progress(evt.percent);
-    return loadingTask.promise.then(pdfDocument => {
-      this.load(pdfDocument);
-    }, reason => {
-      if (loadingTask !== this.pdfLoadingTask) {
-        return undefined;
+    loadingTask.onProgress = (evt) => this.progress(evt.percent);
+    return loadingTask.promise.then(
+      (pdfDocument) => {
+        this.load(pdfDocument);
+      },
+      (reason) => {
+        if (loadingTask !== this.pdfLoadingTask) {
+          return undefined;
+        }
+        if (this.loadingBar) {
+          this.loadingBar.percent ||= 0;
+        }
+        let key = "pdfjs-loading-error";
+        if (reason instanceof InvalidPDFException) {
+          key = "pdfjs-invalid-file-error";
+        } else if (reason instanceof ResponseException) {
+          key = reason.missing ? "pdfjs-missing-file-error" : "pdfjs-unexpected-response-error";
+        }
+        return this._documentError(key, {
+          message: reason.message,
+        }).then(() => {
+          throw reason;
+        });
       }
-      if (this.loadingBar) {
-        this.loadingBar.percent ||= 0;
-      }
-      let key = "pdfjs-loading-error";
-      if (reason instanceof InvalidPDFException) {
-        key = "pdfjs-invalid-file-error";
-      } else if (reason instanceof ResponseException) {
-        key = reason.missing ? "pdfjs-missing-file-error" : "pdfjs-unexpected-response-error";
-      }
-      return this._documentError(key, {
-        message: reason.message
-      }).then(() => {
-        throw reason;
-      });
-    });
+    );
   },
   async download() {
     if (!this.downloadManager) {
@@ -24933,8 +24581,8 @@ const PDFViewerApplication = {
         type: "editing",
         data: {
           type: "save",
-          stats: editorStats
-        }
+          stats: editorStats,
+        },
       });
     }
   },
@@ -24943,19 +24591,17 @@ const PDFViewerApplication = {
       return;
     }
     this.pdfViewer._layerProperties.annotationEditorUIManager?.endCurrentEditing();
-    const {
-      classList
-    } = this.appConfig.appContainer;
+    const { classList } = this.appConfig.appContainer;
     classList.add("wait");
     if (this.pdfThumbnailViewer?.hasStructuralChanges()) {
       this.externalServices.reportTelemetry({
         type: "pageOrganization",
         data: {
-          action: "save"
-        }
+          action: "save",
+        },
       });
       await this.onSavePages({
-        data: this.pdfThumbnailViewer.getStructuralChanges()
+        data: this.pdfThumbnailViewer.getStructuralChanges(),
       });
     } else {
       await (this.pdfDocument?.annotationStorage.size > 0 ? this.save() : this.download());
@@ -24970,7 +24616,7 @@ const PDFViewerApplication = {
     this.eventBus.dispatch("documenterror", {
       source: this,
       message,
-      reason: moreInfo?.message ?? null
+      reason: moreInfo?.message ?? null,
     });
   },
   async _otherError(key, moreInfo = null) {
@@ -25003,24 +24649,24 @@ const PDFViewerApplication = {
   },
   load(pdfDocument) {
     this.pdfDocument = pdfDocument;
-    this._printPermissionPromise = new Promise(resolve => {
-      this.eventBus.on("printingallowed", ({
-        isAllowed
-      }) => {
-        resolve(isAllowed);
-      }, {
-        once: true,
-        ...internalOpt
-      });
+    this._printPermissionPromise = new Promise((resolve) => {
+      this.eventBus.on(
+        "printingallowed",
+        ({ isAllowed }) => {
+          resolve(isAllowed);
+        },
+        {
+          once: true,
+          ...internalOpt,
+        }
+      );
     });
-    pdfDocument.getDownloadInfo().then(({
-      length
-    }) => {
+    pdfDocument.getDownloadInfo().then(({ length }) => {
       this._contentLength = length;
       this.loadingBar?.hide();
       firstPagePromise.then(() => {
         this.eventBus.dispatch("documentloaded", {
-          source: this
+          source: this,
         });
       });
     });
@@ -25033,128 +24679,135 @@ const PDFViewerApplication = {
     this.pdfDocumentProperties?.setDocument(pdfDocument);
     const pdfViewer = this.pdfViewer;
     pdfViewer.setDocument(pdfDocument);
-    const {
-      firstPagePromise,
-      onePageRendered,
-      pagesPromise
-    } = pdfViewer;
+    const { firstPagePromise, onePageRendered, pagesPromise } = pdfViewer;
     this.pdfThumbnailViewer?.setDocument(pdfDocument);
-    const storedPromise = (this.store = new ViewHistory(pdfDocument.fingerprints[0])).getMultiple({
-      page: null,
-      zoom: (/* inlined export .DEFAULT_SCALE_VALUE */"auto"),
-      scrollLeft: "0",
-      scrollTop: "0",
-      rotation: null,
-      sidebarView: SidebarView.UNKNOWN,
-      scrollMode: ScrollMode.UNKNOWN,
-      spreadMode: SpreadMode.UNKNOWN
-    }).catch(() => {});
-    firstPagePromise.then(pdfPage => {
+    const storedPromise = (this.store = new ViewHistory(pdfDocument.fingerprints[0]))
+      .getMultiple({
+        page: null,
+        zoom: /* inlined export .DEFAULT_SCALE_VALUE */ "auto",
+        scrollLeft: "0",
+        scrollTop: "0",
+        rotation: null,
+        sidebarView: SidebarView.UNKNOWN,
+        scrollMode: ScrollMode.UNKNOWN,
+        spreadMode: SpreadMode.UNKNOWN,
+      })
+      .catch(() => {});
+    firstPagePromise.then((pdfPage) => {
       this.loadingBar?.setWidth(this.appConfig.viewerContainer);
       this._initializeAnnotationStorageCallbacks(pdfDocument);
-      Promise.all([animationStarted, storedPromise, pageLayoutPromise, pageModePromise, openActionPromise]).then(async ([timeStamp, stored, pageLayout, pageMode, openAction]) => {
-        const viewOnLoad = AppOptions.get("viewOnLoad");
-        this._initializePdfHistory({
-          fingerprint: pdfDocument.fingerprints[0],
-          viewOnLoad,
-          initialDest: openAction?.get("dest")
-        });
-        const initialBookmark = this.initialBookmark;
-        const zoom = AppOptions.get("defaultZoomValue");
-        let hash = zoom ? `zoom=${zoom}` : null;
-        let rotation = null;
-        let sidebarView = AppOptions.get("sidebarViewOnLoad");
-        let scrollMode = AppOptions.get("scrollModeOnLoad");
-        let spreadMode = AppOptions.get("spreadModeOnLoad");
-        if (stored?.page && viewOnLoad !== ViewOnLoad.INITIAL) {
-          hash = `page=${stored.page}&zoom=${zoom || stored.zoom},` + `${stored.scrollLeft},${stored.scrollTop}`;
-          rotation = parseInt(stored.rotation, 10);
-          if (sidebarView === SidebarView.UNKNOWN) {
-            sidebarView = stored.sidebarView | 0;
+      Promise.all([animationStarted, storedPromise, pageLayoutPromise, pageModePromise, openActionPromise])
+        .then(async ([timeStamp, stored, pageLayout, pageMode, openAction]) => {
+          const viewOnLoad = AppOptions.get("viewOnLoad");
+          this._initializePdfHistory({
+            fingerprint: pdfDocument.fingerprints[0],
+            viewOnLoad,
+            initialDest: openAction?.get("dest"),
+          });
+          const initialBookmark = this.initialBookmark;
+          const zoom = AppOptions.get("defaultZoomValue");
+          let hash = zoom ? `zoom=${zoom}` : null;
+          let rotation = null;
+          let sidebarView = AppOptions.get("sidebarViewOnLoad");
+          let scrollMode = AppOptions.get("scrollModeOnLoad");
+          let spreadMode = AppOptions.get("spreadModeOnLoad");
+          if (stored?.page && viewOnLoad !== ViewOnLoad.INITIAL) {
+            hash = `page=${stored.page}&zoom=${zoom || stored.zoom},` + `${stored.scrollLeft},${stored.scrollTop}`;
+            rotation = parseInt(stored.rotation, 10);
+            if (sidebarView === SidebarView.UNKNOWN) {
+              sidebarView = stored.sidebarView | 0;
+            }
+            if (scrollMode === ScrollMode.UNKNOWN) {
+              scrollMode = stored.scrollMode | 0;
+            }
+            if (spreadMode === SpreadMode.UNKNOWN) {
+              spreadMode = stored.spreadMode | 0;
+            }
           }
-          if (scrollMode === ScrollMode.UNKNOWN) {
-            scrollMode = stored.scrollMode | 0;
+          if (pageMode && sidebarView === SidebarView.UNKNOWN) {
+            sidebarView = apiPageModeToSidebarView(pageMode);
           }
-          if (spreadMode === SpreadMode.UNKNOWN) {
-            spreadMode = stored.spreadMode | 0;
+          if (pageLayout && scrollMode === ScrollMode.UNKNOWN && spreadMode === SpreadMode.UNKNOWN) {
+            const modes = apiPageLayoutToViewerModes(pageLayout);
+            spreadMode = modes.spreadMode;
           }
-        }
-        if (pageMode && sidebarView === SidebarView.UNKNOWN) {
-          sidebarView = apiPageModeToSidebarView(pageMode);
-        }
-        if (pageLayout && scrollMode === ScrollMode.UNKNOWN && spreadMode === SpreadMode.UNKNOWN) {
-          const modes = apiPageLayoutToViewerModes(pageLayout);
-          spreadMode = modes.spreadMode;
-        }
-        this.setInitialView(hash, {
-          rotation,
-          sidebarView,
-          scrollMode,
-          spreadMode
+          this.setInitialView(hash, {
+            rotation,
+            sidebarView,
+            scrollMode,
+            spreadMode,
+          });
+          this.eventBus.dispatch("documentinit", {
+            source: this,
+          });
+          await Promise.race([
+            pagesPromise,
+            new Promise((resolve) => {
+              setTimeout(resolve, FORCE_PAGES_LOADED_TIMEOUT);
+            }),
+          ]);
+          if (!initialBookmark && !hash) {
+            return;
+          }
+          if (pdfViewer.hasEqualPageSizes) {
+            return;
+          }
+          this.initialBookmark = initialBookmark;
+          pdfViewer.currentScaleValue = pdfViewer.currentScaleValue;
+          this.setInitialView(hash);
+        })
+        .catch(() => {
+          this.setInitialView();
+        })
+        .then(function () {
+          pdfViewer.update();
         });
-        this.eventBus.dispatch("documentinit", {
-          source: this
-        });
-        await Promise.race([pagesPromise, new Promise(resolve => {
-          setTimeout(resolve, FORCE_PAGES_LOADED_TIMEOUT);
-        })]);
-        if (!initialBookmark && !hash) {
-          return;
-        }
-        if (pdfViewer.hasEqualPageSizes) {
-          return;
-        }
-        this.initialBookmark = initialBookmark;
-        pdfViewer.currentScaleValue = pdfViewer.currentScaleValue;
-        this.setInitialView(hash);
-      }).catch(() => {
-        this.setInitialView();
-      }).then(function () {
-        pdfViewer.update();
-      });
     });
-    pagesPromise.then(() => {
-      this._unblockDocumentLoadEvent();
-      this._initializeAutoPrint(pdfDocument, openActionPromise);
-    }, reason => {
-      this._documentError("pdfjs-loading-error", {
-        message: reason.message
-      });
-    });
-    onePageRendered.then(data => {
+    pagesPromise.then(
+      () => {
+        this._unblockDocumentLoadEvent();
+        this._initializeAutoPrint(pdfDocument, openActionPromise);
+      },
+      (reason) => {
+        this._documentError("pdfjs-loading-error", {
+          message: reason.message,
+        });
+      }
+    );
+    onePageRendered.then((data) => {
       this.externalServices.reportTelemetry({
         type: "pageInfo",
-        timestamp: data.timestamp
+        timestamp: data.timestamp,
       });
       if (this.pdfOutlineViewer) {
-        pdfDocument.getOutline().then(outline => {
+        pdfDocument.getOutline().then((outline) => {
           if (pdfDocument !== this.pdfDocument) {
             return;
           }
           this.pdfOutlineViewer.render({
             outline,
-            pdfDocument
+            pdfDocument,
           });
         });
       }
       if (this.pdfAttachmentViewer) {
-        pdfDocument.getAttachments().then(attachments => {
+        pdfDocument.getAttachments().then((attachments) => {
           if (pdfDocument !== this.pdfDocument) {
             return;
           }
           this.pdfAttachmentViewer.render({
-            attachments
+            attachments,
           });
         });
       }
       if (this.pdfLayerViewer) {
-        pdfViewer.optionalContentConfigPromise.then(optionalContentConfig => {
+        pdfViewer.optionalContentConfigPromise.then((optionalContentConfig) => {
           if (pdfDocument !== this.pdfDocument) {
             return;
           }
           this.pdfLayerViewer.render({
             optionalContentConfig,
-            pdfDocument
+            pdfDocument,
           });
         });
       }
@@ -25164,10 +24817,10 @@ const PDFViewerApplication = {
   },
   async _scriptingDocProperties(pdfDocument) {
     if (!this.documentInfo) {
-      await new Promise(resolve => {
+      await new Promise((resolve) => {
         this.eventBus.on("metadataloaded", resolve, {
           once: true,
-          ...internalOpt
+          ...internalOpt,
         });
       });
       if (pdfDocument !== this.pdfDocument) {
@@ -25175,10 +24828,10 @@ const PDFViewerApplication = {
       }
     }
     if (!this._contentLength) {
-      await new Promise(resolve => {
+      await new Promise((resolve) => {
         this.eventBus.on("documentloaded", resolve, {
           once: true,
-          ...internalOpt
+          ...internalOpt,
         });
       });
       if (pdfDocument !== this.pdfDocument) {
@@ -25193,7 +24846,7 @@ const PDFViewerApplication = {
       metadata: this.metadata?.getRaw(),
       authors: this.metadata?.get("dc:creator"),
       numPages: this.pagesCount,
-      URL: this.url
+      URL: this.url,
     };
   },
   async _initializeAutoPrint(pdfDocument, openActionPromise) {
@@ -25216,7 +24869,7 @@ const PDFViewerApplication = {
           case "DidPrint":
             continue;
         }
-        triggerAutoPrint = actions.some(js => AutoPrintRegExp.test(js));
+        triggerAutoPrint = actions.some((js) => AutoPrintRegExp.test(js));
       }
     }
     if (triggerAutoPrint) {
@@ -25224,25 +24877,24 @@ const PDFViewerApplication = {
     }
   },
   async _initializeMetadata(pdfDocument) {
-    const {
-      info,
-      metadata,
-      contentDispositionFilename,
-      contentLength,
-      hasStructTree
-    } = await pdfDocument.getMetadata();
+    const { info, metadata, contentDispositionFilename, contentLength, hasStructTree } = await pdfDocument.getMetadata();
     if (pdfDocument !== this.pdfDocument) {
       return;
     }
     this.externalServices.reportTelemetry({
       type: "taggedPDF",
-      data: hasStructTree
+      data: hasStructTree,
     });
     this.documentInfo = info;
     this.metadata = metadata;
     this._contentDispositionFilename ??= contentDispositionFilename;
     this._contentLength ??= contentLength;
-    console.log(`PDF ${pdfDocument.fingerprints[0]} [${info.PDFFormatVersion} ` + `${(metadata?.get("pdf:producer") || info.Producer || "-").trim()} / ` + `${(metadata?.get("xmp:creatortool") || info.Creator || "-").trim()}` + `] (PDF.js: ${version || "?"} [${build || "?"}])`);
+    console.log(
+      `PDF ${pdfDocument.fingerprints[0]} [${info.PDFFormatVersion} ` +
+        `${(metadata?.get("pdf:producer") || info.Producer || "-").trim()} / ` +
+        `${(metadata?.get("xmp:creatortool") || info.Creator || "-").trim()}` +
+        `] (PDF.js: ${version || "?"} [${build || "?"}])`
+    );
     const pdfTitle = this._docTitle;
     if (pdfTitle) {
       this.setTitle(`${pdfTitle} - ${this._contentDispositionFilename || this._title}`);
@@ -25265,7 +24917,7 @@ const PDFViewerApplication = {
       }
     }
     this.eventBus.dispatch("metadataloaded", {
-      source: this
+      source: this,
     });
   },
   _maybeInitSignatureProperties(pdfDocument) {
@@ -25282,7 +24934,7 @@ const PDFViewerApplication = {
     this.signaturePropertiesManager ??= new SignaturePropertiesManager({
       appConfig: this.appConfig.toolbar,
       verifier,
-      eventBus: this.eventBus
+      eventBus: this.eventBus,
     });
     this.signaturePropertiesManager.setDocument(pdfDocument);
     return true;
@@ -25311,28 +24963,20 @@ const PDFViewerApplication = {
     if (standardLabels >= numLabels || emptyLabels >= numLabels) {
       return;
     }
-    const {
-      pdfViewer,
-      pdfThumbnailViewer,
-      toolbar
-    } = this;
+    const { pdfViewer, pdfThumbnailViewer, toolbar } = this;
     pdfViewer.setPageLabels(labels);
     pdfThumbnailViewer?.setPageLabels(labels);
     toolbar?.setPagesCount(numLabels, true);
     toolbar?.setPageNumber(pdfViewer.currentPageNumber, pdfViewer.currentPageLabel);
   },
-  _initializePdfHistory({
-    fingerprint,
-    viewOnLoad,
-    initialDest = null
-  }) {
+  _initializePdfHistory({ fingerprint, viewOnLoad, initialDest = null }) {
     if (!this.pdfHistory) {
       return;
     }
     this.pdfHistory.initialize({
       fingerprint,
       resetHistory: viewOnLoad === ViewOnLoad.INITIAL || !!this._mergedDocumentNeedsSaving,
-      updateUrl: AppOptions.get("historyUpdateUrl")
+      updateUrl: AppOptions.get("historyUpdateUrl"),
     });
     if (this.pdfHistory.initialBookmark) {
       this.initialBookmark = this.pdfHistory.initialBookmark;
@@ -25342,38 +24986,33 @@ const PDFViewerApplication = {
       this.initialBookmark = JSON.stringify(initialDest);
       this.pdfHistory.push({
         explicitDest: initialDest,
-        pageNumber: null
+        pageNumber: null,
       });
     }
   },
   _hasChanges() {
-    return this.pdfDocument?.annotationStorage.size > 0 || this.pdfThumbnailViewer?.hasStructuralChanges() || this._mergedDocumentNeedsSaving === true;
+    return (
+      this.pdfDocument?.annotationStorage.size > 0 || this.pdfThumbnailViewer?.hasStructuralChanges() || this._mergedDocumentNeedsSaving === true
+    );
   },
   _initializeAnnotationStorageCallbacks(pdfDocument) {
     if (pdfDocument !== this.pdfDocument) {
       return;
     }
-    const {
-      annotationStorage
-    } = pdfDocument;
+    const { annotationStorage } = pdfDocument;
     annotationStorage.onSetModified = () => {
       this._annotationStorageModified = true;
     };
     annotationStorage.onResetModified = () => {
       delete this._annotationStorageModified;
     };
-    annotationStorage.onAnnotationEditor = typeStr => {
+    annotationStorage.onAnnotationEditor = (typeStr) => {
       this._hasAnnotationEditors = !!typeStr;
       this.setTitle();
     };
   },
-  setInitialView(storedHash, {
-    rotation,
-    sidebarView,
-    scrollMode,
-    spreadMode
-  } = {}) {
-    const setRotation = angle => {
+  setInitialView(storedHash, { rotation, sidebarView, scrollMode, spreadMode } = {}) {
+    const setRotation = (angle) => {
       if (isValidRotation(angle)) {
         this.pdfViewer.pagesRotation = angle;
       }
@@ -25400,7 +25039,7 @@ const PDFViewerApplication = {
     }
     this.toolbar?.setPageNumber(this.pdfViewer.currentPageNumber, this.pdfViewer.currentPageLabel);
     this.secondaryToolbar?.setPageNumber(this.pdfViewer.currentPageNumber);
-    this.pdfViewer.currentScaleValue ||= (/* inlined export .DEFAULT_SCALE_VALUE */"auto");
+    this.pdfViewer.currentScaleValue ||= /* inlined export .DEFAULT_SCALE_VALUE */ "auto";
   },
   _cleanup() {
     if (!this.pdfDocument) {
@@ -25416,7 +25055,10 @@ const PDFViewerApplication = {
     this.pdfRenderingQueue.renderHighestPriority();
   },
   beforePrint() {
-    this._printAnnotationStoragePromise = this.pdfScriptingManager.dispatchWillPrint().catch(() => {}).then(() => this.pdfDocument?.annotationStorage.print);
+    this._printAnnotationStoragePromise = this.pdfScriptingManager
+      .dispatchWillPrint()
+      .catch(() => {})
+      .then(() => this.pdfDocument?.annotationStorage.print);
     if (this.printService) {
       return;
     }
@@ -25425,7 +25067,7 @@ const PDFViewerApplication = {
       return;
     }
     if (!this.pdfViewer.pageViewsReady) {
-      this.l10n.get("pdfjs-printing-not-ready").then(msg => {
+      this.l10n.get("pdfjs-printing-not-ready").then((msg) => {
         window.alert(msg);
       });
       return;
@@ -25435,7 +25077,7 @@ const PDFViewerApplication = {
       pagesOverview: this.pdfViewer.getPagesOverview(),
       printContainer: this.appConfig.printContainer,
       printResolution: AppOptions.get("printResolution"),
-      printAnnotationStoragePromise: this._printAnnotationStoragePromise
+      printAnnotationStoragePromise: this._printAnnotationStoragePromise,
     });
     this.forceRendering();
     this.setTitle();
@@ -25445,8 +25087,8 @@ const PDFViewerApplication = {
         type: "editing",
         data: {
           type: "print",
-          stats: this.pdfDocument?.annotationStorage.editorStats
-        }
+          stats: this.pdfDocument?.annotationStorage.editorStats,
+        },
       });
     }
   },
@@ -25480,18 +25122,12 @@ const PDFViewerApplication = {
     if (this._eventBusAC) {
       return;
     }
-    const ac = this._eventBusAC = new AbortController();
+    const ac = (this._eventBusAC = new AbortController());
     const opts = {
       signal: ac.signal,
-      ...internalOpt
+      ...internalOpt,
     };
-    const {
-      eventBus,
-      externalServices,
-      pdfDocumentProperties,
-      pdfViewer,
-      preferences
-    } = this;
+    const { eventBus, externalServices, pdfDocumentProperties, pdfViewer, preferences } = this;
     eventBus.on("resize", onResize.bind(this), opts);
     eventBus.on("hashchange", onHashchange.bind(this), opts);
     eventBus.on("beforeprint", this.beforePrint.bind(this), opts);
@@ -25505,26 +25141,26 @@ const PDFViewerApplication = {
     eventBus.on("sidebarviewchanged", onSidebarViewChanged.bind(this), opts);
     eventBus.on("pagemode", onPageMode.bind(this), opts);
     eventBus.on("namedaction", onNamedAction.bind(this), opts);
-    eventBus.on("presentationmodechanged", evt => pdfViewer.presentationModeState = evt.state, opts);
+    eventBus.on("presentationmodechanged", (evt) => (pdfViewer.presentationModeState = evt.state), opts);
     eventBus.on("presentationmode", this.requestPresentationMode.bind(this), opts);
-    eventBus.on("switchannotationeditormode", evt => pdfViewer.annotationEditorMode = evt, opts);
+    eventBus.on("switchannotationeditormode", (evt) => (pdfViewer.annotationEditorMode = evt), opts);
     eventBus.on("print", this.triggerPrinting.bind(this), opts);
     eventBus.on("download", this.downloadOrSave.bind(this), opts);
-    eventBus.on("firstpage", () => this.page = 1, opts);
-    eventBus.on("lastpage", () => this.page = this.pagesCount, opts);
+    eventBus.on("firstpage", () => (this.page = 1), opts);
+    eventBus.on("lastpage", () => (this.page = this.pagesCount), opts);
     eventBus.on("nextpage", () => pdfViewer.nextPage(), opts);
     eventBus.on("previouspage", () => pdfViewer.previousPage(), opts);
     eventBus.on("zoomin", this.zoomIn.bind(this), opts);
     eventBus.on("zoomout", this.zoomOut.bind(this), opts);
     eventBus.on("zoomreset", this.zoomReset.bind(this), opts);
     eventBus.on("pagenumberchanged", onPageNumberChanged.bind(this), opts);
-    eventBus.on("scalechanged", evt => pdfViewer.currentScaleValue = evt.value, opts);
+    eventBus.on("scalechanged", (evt) => (pdfViewer.currentScaleValue = evt.value), opts);
     eventBus.on("rotatecw", this.rotatePages.bind(this, 90), opts);
     eventBus.on("rotateccw", this.rotatePages.bind(this, -90), opts);
-    eventBus.on("optionalcontentconfig", evt => pdfViewer.optionalContentConfigPromise = evt.promise, opts);
-    eventBus.on("switchscrollmode", evt => pdfViewer.scrollMode = evt.mode, opts);
+    eventBus.on("optionalcontentconfig", (evt) => (pdfViewer.optionalContentConfigPromise = evt.promise), opts);
+    eventBus.on("switchscrollmode", (evt) => (pdfViewer.scrollMode = evt.mode), opts);
     eventBus.on("scrollmodechanged", onViewerModesChanged.bind(this, "scrollMode"), opts);
-    eventBus.on("switchspreadmode", evt => pdfViewer.spreadMode = evt.mode, opts);
+    eventBus.on("switchspreadmode", (evt) => (pdfViewer.spreadMode = evt.mode), opts);
     eventBus.on("spreadmodechanged", onViewerModesChanged.bind(this, "spreadMode"), opts);
     eventBus.on("imagealttextsettings", onImageAltTextSettings.bind(this), opts);
     eventBus.on("documentproperties", () => pdfDocumentProperties?.open(), opts);
@@ -25544,13 +25180,9 @@ const PDFViewerApplication = {
     this._windowAC = new AbortController();
     const {
       eventBus,
-      appConfig: {
-        mainContainer
-      },
+      appConfig: { mainContainer },
       pdfViewer,
-      _windowAC: {
-        signal
-      }
+      _windowAC: { signal },
     } = this;
     this._touchManager = new TouchManager({
       container: window,
@@ -25559,7 +25191,7 @@ const PDFViewerApplication = {
       onPinching: this.touchPinchCallback.bind(this),
       onPinchEnd: this.touchPinchEndCallback.bind(this),
       onPanning: this.touchPanCallback.bind(this),
-      signal
+      signal,
     });
     function addWindowResolutionChange(evt = null) {
       if (evt) {
@@ -25568,70 +25200,87 @@ const PDFViewerApplication = {
       const mediaQueryList = window.matchMedia(`(resolution: ${OutputScale.pixelRatio}dppx)`);
       mediaQueryList.addEventListener("change", addWindowResolutionChange, {
         once: true,
-        signal
+        signal,
       });
     }
     addWindowResolutionChange();
     window.addEventListener("wheel", onWheel.bind(this), {
       passive: false,
-      signal
+      signal,
     });
     window.addEventListener("click", onClick.bind(this), {
-      signal
+      signal,
     });
     window.addEventListener("keydown", onKeyDown.bind(this), {
-      signal
+      signal,
     });
     window.addEventListener("keyup", onKeyUp.bind(this), {
-      signal
+      signal,
     });
-    window.addEventListener("resize", () => eventBus.dispatch("resize", {
-      source: window
-    }), {
-      signal
-    });
-    window.addEventListener("hashchange", () => {
-      eventBus.dispatch("hashchange", {
-        source: window,
-        hash: document.location.hash.substring(1)
-      });
-    }, {
-      signal
-    });
-    window.addEventListener("beforeprint", () => eventBus.dispatch("beforeprint", {
-      source: window
-    }), {
-      signal
-    });
-    window.addEventListener("afterprint", () => eventBus.dispatch("afterprint", {
-      source: window
-    }), {
-      signal
-    });
-    window.addEventListener("updatefromsandbox", evt => {
-      eventBus.dispatch("updatefromsandbox", {
-        source: window,
-        detail: evt.detail
-      });
-    }, {
-      signal
-    });
+    window.addEventListener(
+      "resize",
+      () =>
+        eventBus.dispatch("resize", {
+          source: window,
+        }),
+      {
+        signal,
+      }
+    );
+    window.addEventListener(
+      "hashchange",
+      () => {
+        eventBus.dispatch("hashchange", {
+          source: window,
+          hash: document.location.hash.substring(1),
+        });
+      },
+      {
+        signal,
+      }
+    );
+    window.addEventListener(
+      "beforeprint",
+      () =>
+        eventBus.dispatch("beforeprint", {
+          source: window,
+        }),
+      {
+        signal,
+      }
+    );
+    window.addEventListener(
+      "afterprint",
+      () =>
+        eventBus.dispatch("afterprint", {
+          source: window,
+        }),
+      {
+        signal,
+      }
+    );
+    window.addEventListener(
+      "updatefromsandbox",
+      (evt) => {
+        eventBus.dispatch("updatefromsandbox", {
+          source: window,
+          detail: evt.detail,
+        });
+      },
+      {
+        signal,
+      }
+    );
     window.addEventListener("beforeunload", onBeforeUnload.bind(this), {
-      signal
+      signal,
     });
     if (!("onscrollend" in document.documentElement)) {
       return;
     }
-    ({
-      scrollTop: this._lastScrollTop,
-      scrollLeft: this._lastScrollLeft
-    } = mainContainer);
+    ({ scrollTop: this._lastScrollTop, scrollLeft: this._lastScrollLeft } = mainContainer);
     let scrollendTimeoutID, scrollAbortController;
     const scrollend = () => {
-      ({
-        scrollTop: this._lastScrollTop,
-        scrollLeft: this._lastScrollLeft
-      } = mainContainer);
+      ({ scrollTop: this._lastScrollTop, scrollLeft: this._lastScrollLeft } = mainContainer);
       clearTimeout(scrollendTimeoutID);
       if (this._isScrolling) {
         scrollAbortController.abort();
@@ -25650,10 +25299,10 @@ const PDFViewerApplication = {
         scrollAbortController = new AbortController();
         const abortSignal = AbortSignal.any([scrollAbortController.signal, signal]);
         mainContainer.addEventListener("scrollend", scrollend, {
-          signal: abortSignal
+          signal: abortSignal,
         });
         mainContainer.addEventListener("blur", scrollend, {
-          signal: abortSignal
+          signal: abortSignal,
         });
         this._isScrolling = true;
       }
@@ -25662,7 +25311,7 @@ const PDFViewerApplication = {
     };
     mainContainer.addEventListener("scroll", scroll, {
       passive: true,
-      signal
+      signal,
     });
   },
   unbindEvents() {
@@ -25685,12 +25334,7 @@ const PDFViewerApplication = {
   onPagesEdited(data) {
     this.pdfViewer.onPagesEdited(data);
   },
-  async onSavePages({
-    data: {
-      pageInfos,
-      copyLevels
-    }
-  }) {
+  async onSavePages({ data: { pageInfos, copyLevels } }) {
     if (!this.downloadManager) {
       return;
     }
@@ -25704,12 +25348,7 @@ const PDFViewerApplication = {
     }
     this.downloadManager.download(modifiedPdfBytes, this._downloadUrl, this._docFilename);
   },
-  async onSaveAndLoad({
-    data: {
-      pageInfos,
-      copyLevels
-    }
-  }) {
+  async onSaveAndLoad({ data: { pageInfos, copyLevels } }) {
     if (!this.pdfDocument) {
       return;
     }
@@ -25721,11 +25360,11 @@ const PDFViewerApplication = {
     this._mergedDocumentNeedsSaving = true;
     this.open({
       data: modifiedPdfBytes,
-      filename: this._docFilename
+      filename: this._docFilename,
     });
   },
   _accumulateTicks(ticks, prop) {
-    if (this[prop] > 0 && ticks < 0 || this[prop] < 0 && ticks > 0) {
+    if ((this[prop] > 0 && ticks < 0) || (this[prop] < 0 && ticks > 0)) {
       this[prop] = 0;
     }
     this[prop] += ticks;
@@ -25737,7 +25376,7 @@ const PDFViewerApplication = {
     if (factor === 1) {
       return 1;
     }
-    const target = MathClamp(previousScale * factor * this[prop], (/* inlined export .MIN_SCALE */0.1), (/* inlined export .MAX_SCALE */25));
+    const target = MathClamp(previousScale * factor * this[prop], /* inlined export .MIN_SCALE */ 0.1, /* inlined export .MAX_SCALE */ 25);
     const newScale = Math.round(target * 100) / 100;
     this[prop] = target / newScale;
     return newScale / previousScale;
@@ -25748,7 +25387,7 @@ const PDFViewerApplication = {
   },
   get scriptingReady() {
     return this.pdfScriptingManager.ready;
-  }
+  },
 };
 initCom(PDFViewerApplication);
 PDFPrintServiceFactory.initGlobals(PDFViewerApplication);
@@ -25768,7 +25407,7 @@ PDFPrintServiceFactory.initGlobals(PDFViewerApplication);
     }
     const ex = new Error("file origin does not match viewer's");
     PDFViewerApplication._documentError("pdfjs-loading-error", {
-      message: ex.message
+      message: ex.message,
     });
     throw ex;
   };
@@ -25779,25 +25418,19 @@ PDFPrintServiceFactory.initGlobals(PDFViewerApplication);
     const file = evt.fileInput.files[0];
     this.open({
       url: URL.createObjectURL(file),
-      originalUrl: encodeURIComponent(file.name)
+      originalUrl: encodeURIComponent(file.name),
     });
   };
   var onOpenFile = function (evt) {
     this._openFileInput?.click();
   };
 }
-function onPageRender({
-  pageNumber
-}) {
+function onPageRender({ pageNumber }) {
   if (pageNumber === this.page) {
     this.toolbar?.updateLoadingIndicatorState(true);
   }
 }
-function onPageRendered({
-  pageNumber,
-  isDetailView,
-  error
-}) {
+function onPageRendered({ pageNumber, isDetailView, error }) {
   if (pageNumber === this.page) {
     this.toolbar?.updateLoadingIndicatorState(false);
   }
@@ -25812,9 +25445,7 @@ function onPageRendered({
     this._otherError("pdfjs-rendering-error", error);
   }
 }
-function onPageMode({
-  mode
-}) {
+function onPageMode({ mode }) {
   let view;
   switch (mode) {
     case "thumbs":
@@ -25857,25 +25488,23 @@ function onNamedAction(evt) {
       break;
   }
 }
-function onSidebarViewChanged({
-  view
-}) {
+function onSidebarViewChanged({ view }) {
   this.pdfRenderingQueue.isThumbnailViewEnabled = view === SidebarView.THUMBS;
   if (this.isInitialViewSet) {
     this.store?.set("sidebarView", view).catch(() => {});
   }
 }
-function onUpdateViewarea({
-  location
-}) {
+function onUpdateViewarea({ location }) {
   if (this.isInitialViewSet) {
-    this.store?.setMultiple({
-      page: location.pageNumber,
-      zoom: location.scale,
-      scrollLeft: location.left,
-      scrollTop: location.top,
-      rotation: location.rotation
-    }).catch(() => {});
+    this.store
+      ?.setMultiple({
+        page: location.pageNumber,
+        zoom: location.scale,
+        scrollLeft: location.left,
+        scrollTop: location.top,
+        rotation: location.rotation,
+      })
+      .catch(() => {});
   }
   if (this.appConfig.secondaryToolbar) {
     this.appConfig.secondaryToolbar.viewBookmarkButton.href = this.pdfLinkService.getAnchorUrl(location.pdfOpenParams);
@@ -25887,11 +25516,7 @@ function onViewerModesChanged(name, evt) {
   }
 }
 function onResize() {
-  const {
-    pdfDocument,
-    pdfViewer,
-    pdfRenderingQueue
-  } = this;
+  const { pdfDocument, pdfViewer, pdfRenderingQueue } = this;
   if (pdfRenderingQueue.printing && window.matchMedia("print").matches) {
     return;
   }
@@ -25916,9 +25541,7 @@ function onHashchange(evt) {
   }
 }
 function onPageNumberChanged(evt) {
-  const {
-    pdfViewer
-  } = this;
+  const { pdfViewer } = this;
   if (evt.value !== "") {
     this.pdfLinkService.goToPage(evt.value);
   }
@@ -25929,7 +25552,7 @@ function onPageNumberChanged(evt) {
 function onImageAltTextSettings() {
   this.imageAltTextSettings?.open({
     enableGuessAltText: AppOptions.get("enableGuessAltText"),
-    enableNewAltTextWhenAddingImage: AppOptions.get("enableNewAltTextWhenAddingImage")
+    enableNewAltTextWhenAddingImage: AppOptions.get("enableNewAltTextWhenAddingImage"),
   });
 }
 function onFindFromUrlHash(evt) {
@@ -25941,32 +25564,24 @@ function onFindFromUrlHash(evt) {
     entireWord: false,
     highlightAll: true,
     findPrevious: false,
-    matchDiacritics: true
+    matchDiacritics: true,
   });
 }
-function onUpdateFindMatchesCount({
-  matchesCount
-}) {
+function onUpdateFindMatchesCount({ matchesCount }) {
   if (this.supportsIntegratedFind) {
     this.externalServices.updateFindMatchesCount(matchesCount);
   } else {
     this.findBar?.updateResultsCount(matchesCount);
   }
 }
-function onUpdateFindControlState({
-  state,
-  previous,
-  entireWord,
-  matchesCount,
-  rawQuery
-}) {
+function onUpdateFindControlState({ state, previous, entireWord, matchesCount, rawQuery }) {
   if (this.supportsIntegratedFind) {
     this.externalServices.updateFindControlState({
       result: state,
       findPrevious: previous,
       entireWord,
       matchesCount,
-      rawQuery
+      rawQuery,
     });
   } else {
     this.findBar?.updateUIState(state, previous, matchesCount);
@@ -25983,10 +25598,7 @@ function onRotationChanging(evt) {
   this.forceRendering();
   this.pdfViewer.currentPageNumber = evt.pageNumber;
 }
-function onPageChanging({
-  pageNumber,
-  pageLabel
-}) {
+function onPageChanging({ pageNumber, pageLabel }) {
   this.toolbar?.setPageNumber(pageNumber, pageLabel);
   this.secondaryToolbar?.setPageNumber(pageNumber);
   if (this.viewsManager?.visibleView === SidebarView.THUMBS) {
@@ -25996,21 +25608,22 @@ function onPageChanging({
   this.toolbar?.updateLoadingIndicatorState(currentPage?.renderingState === RenderingStates.RUNNING);
 }
 function onWheel(evt) {
-  const {
-    pdfViewer,
-    supportsMouseWheelZoomCtrlKey,
-    supportsMouseWheelZoomMetaKey,
-    supportsPinchToZoom
-  } = this;
+  const { pdfViewer, supportsMouseWheelZoomCtrlKey, supportsMouseWheelZoomMetaKey, supportsPinchToZoom } = this;
   if (pdfViewer.isInPresentationMode) {
     return;
   }
   const deltaMode = evt.deltaMode;
   let scaleFactor = Math.exp(-evt.deltaY / 100);
   const isBuiltInMac = false;
-  const isPinchToZoom = evt.ctrlKey && !this._isCtrlKeyDown && deltaMode === WheelEvent.DOM_DELTA_PIXEL && evt.deltaX === 0 && (Math.abs(scaleFactor - 1) < 0.05 || isBuiltInMac) && evt.deltaZ === 0;
+  const isPinchToZoom =
+    evt.ctrlKey &&
+    !this._isCtrlKeyDown &&
+    deltaMode === WheelEvent.DOM_DELTA_PIXEL &&
+    evt.deltaX === 0 &&
+    (Math.abs(scaleFactor - 1) < 0.05 || isBuiltInMac) &&
+    evt.deltaZ === 0;
   const origin = [evt.clientX, evt.clientY];
-  if (isPinchToZoom || evt.ctrlKey && supportsMouseWheelZoomCtrlKey || evt.metaKey && supportsMouseWheelZoomMetaKey) {
+  if (isPinchToZoom || (evt.ctrlKey && supportsMouseWheelZoomCtrlKey) || (evt.metaKey && supportsMouseWheelZoomMetaKey)) {
     evt.preventDefault();
     if (this._isScrolling || document.visibilityState === "hidden" || this.overlayManager.active) {
       return;
@@ -26031,17 +25644,15 @@ function onWheel(evt) {
     }
   }
 }
-function closeSecondaryToolbar({
-  target
-}) {
+function closeSecondaryToolbar({ target }) {
   if (!this.secondaryToolbar?.isOpen) {
     return;
   }
-  const {
-    toolbar,
-    secondaryToolbar
-  } = this.appConfig;
-  if (this.pdfViewer.containsElement(target) || toolbar?.container.contains(target) && !secondaryToolbar?.toolbar.contains(target) && !secondaryToolbar?.toggleButton.contains(target)) {
+  const { toolbar, secondaryToolbar } = this.appConfig;
+  if (
+    this.pdfViewer.containsElement(target) ||
+    (toolbar?.container.contains(target) && !secondaryToolbar?.toolbar.contains(target) && !secondaryToolbar?.toggleButton.contains(target))
+  ) {
     this.secondaryToolbar.close();
   }
 }
@@ -26053,9 +25664,7 @@ function closeEditorUndoBar(evt) {
     this.editorUndoBar.hide();
   }
 }
-function closeSignatureProperties({
-  target
-}) {
+function closeSignatureProperties({ target }) {
   if (this.signaturePropertiesManager?.shouldCloseOnClick(target)) {
     this.signaturePropertiesManager.close();
   }
@@ -26080,16 +25689,18 @@ function onKeyUp(evt) {
 }
 function onKeyDown(evt) {
   this._isCtrlKeyDown = evt.key === "Control";
-  if (this.editorUndoBar?.isOpen && evt.keyCode !== 9 && evt.keyCode !== 16 && !((evt.keyCode === 13 || evt.keyCode === 32) && getActiveOrFocusedElement() === this.appConfig.editorUndoBar.undoButton)) {
+  if (
+    this.editorUndoBar?.isOpen &&
+    evt.keyCode !== 9 &&
+    evt.keyCode !== 16 &&
+    !((evt.keyCode === 13 || evt.keyCode === 32) && getActiveOrFocusedElement() === this.appConfig.editorUndoBar.undoButton)
+  ) {
     this.editorUndoBar.hide();
   }
   if (this.overlayManager.active) {
     return;
   }
-  const {
-    eventBus,
-    pdfViewer
-  } = this;
+  const { eventBus, pdfViewer } = this;
   const isViewerInPresentationMode = pdfViewer.isInPresentationMode;
   let handled = false,
     ensureViewerFocused = false;
@@ -26104,18 +25715,16 @@ function onKeyDown(evt) {
         break;
       case 71:
         if (!this.supportsIntegratedFind) {
-          const {
-            state
-          } = this.findController;
+          const { state } = this.findController;
           if (state) {
             const newState = {
               source: window,
               type: "again",
-              findPrevious: cmd === 5 || cmd === 12
+              findPrevious: cmd === 5 || cmd === 12,
             };
             eventBus.dispatch("find", {
               ...state,
-              ...newState
+              ...newState,
             });
           }
           handled = true;
@@ -26163,14 +25772,14 @@ function onKeyDown(evt) {
     switch (evt.keyCode) {
       case 83:
         eventBus.dispatch("download", {
-          source: window
+          source: window,
         });
         handled = true;
         break;
       case 79:
         {
           eventBus.dispatch("openfile", {
-            source: window
+            source: window,
           });
           handled = true;
         }
@@ -26185,8 +25794,8 @@ function onKeyDown(evt) {
         this.externalServices.reportTelemetry({
           type: "buttons",
           data: {
-            id: "presentationModeKeyboard"
-          }
+            id: "presentationModeKeyboard",
+          },
         });
         break;
       case 71:
@@ -26206,7 +25815,13 @@ function onKeyDown(evt) {
   }
   const curElement = getActiveOrFocusedElement();
   const curElementTagName = curElement?.tagName.toUpperCase();
-  if (curElementTagName === "INPUT" || curElementTagName === "TEXTAREA" || curElementTagName === "SELECT" || curElementTagName === "BUTTON" && evt.keyCode === 32 || curElement?.isContentEditable) {
+  if (
+    curElementTagName === "INPUT" ||
+    curElementTagName === "TEXTAREA" ||
+    curElementTagName === "SELECT" ||
+    (curElementTagName === "BUTTON" && evt.keyCode === 32) ||
+    curElement?.isContentEditable
+  ) {
     if (evt.keyCode !== 27) {
       return;
     }
@@ -26346,7 +25961,7 @@ function onKeyDown(evt) {
     }
   }
   if (!handled && !isViewerInPresentationMode) {
-    if (evt.keyCode >= 33 && evt.keyCode <= 40 || evt.keyCode === 32 && curElementTagName !== "BUTTON") {
+    if ((evt.keyCode >= 33 && evt.keyCode <= 40) || (evt.keyCode === 32 && curElementTagName !== "BUTTON")) {
       ensureViewerFocused = true;
     }
   }
@@ -26356,19 +25971,13 @@ function onKeyDown(evt) {
   if (handled) {
     evt.preventDefault();
   }
-}
-
-;// ./web/viewer.js
-
-
-
-
+} // ./web/viewer.js
 
 const AppConstants = {
   LinkTarget: LinkTarget,
   RenderingStates: RenderingStates,
   ScrollMode: ScrollMode,
-  SpreadMode: SpreadMode
+  SpreadMode: SpreadMode,
 };
 window.PDFViewerApplication = PDFViewerApplication;
 window.PDFViewerApplicationConstants = AppConstants;
@@ -26410,7 +26019,7 @@ function getViewerConfiguration() {
       signaturePropertiesBanner: document.getElementById("signaturePropertiesBanner"),
       signaturePropertiesList: document.getElementById("signaturePropertiesList"),
       signaturePropertiesSeparator: document.getElementById("signaturePropertiesSeparator"),
-      download: document.getElementById("downloadButton")
+      download: document.getElementById("downloadButton"),
     },
     secondaryToolbar: {
       toolbar: document.getElementById("secondaryToolbar"),
@@ -26435,7 +26044,7 @@ function getViewerConfiguration() {
       spreadEvenButton: document.getElementById("spreadEven"),
       imageAltTextSettingsButton: document.getElementById("imageAltTextSettings"),
       imageAltTextSettingsSeparator: document.getElementById("imageAltTextSettingsSeparator"),
-      documentPropertiesButton: document.getElementById("documentProperties")
+      documentPropertiesButton: document.getElementById("documentProperties"),
     },
     viewsManager: {
       outerContainer: document.getElementById("outerContainer"),
@@ -26454,7 +26063,7 @@ function getViewerConfiguration() {
       layersView: document.getElementById("layersView"),
       viewsManagerAddFile: {
         button: document.getElementById("viewsManagerAddFileButton"),
-        picker: document.getElementById("viewsManagerAddFilePicker")
+        picker: document.getElementById("viewsManagerAddFilePicker"),
       },
       viewsManagerCurrentOutlineButton: document.getElementById("viewsManagerCurrentOutlineButton"),
       viewsManagerHeaderLabel: document.getElementById("viewsManagerHeaderLabel"),
@@ -26462,18 +26071,18 @@ function getViewerConfiguration() {
       viewsManagerStatusBar: {
         viewsManagerStatusAction: document.getElementById("viewsManagerStatusAction"),
         viewsManagerStatusActionDeselectButton: document.getElementById("viewsManagerStatusActionDeselectButton"),
-        viewsManagerStatusActionLabel: document.getElementById("viewsManagerStatusActionLabel")
+        viewsManagerStatusActionLabel: document.getElementById("viewsManagerStatusActionLabel"),
       },
       viewsManagerUndoBar: {
         viewsManagerStatusUndo: document.getElementById("viewsManagerStatusUndo"),
         viewsManagerStatusUndoLabel: document.getElementById("viewsManagerStatusUndoLabel"),
         viewsManagerStatusUndoButton: document.getElementById("viewsManagerStatusUndoButton"),
-        viewsManagerStatusUndoCloseButton: document.getElementById("viewsManagerStatusUndoCloseButton")
+        viewsManagerStatusUndoCloseButton: document.getElementById("viewsManagerStatusUndoCloseButton"),
       },
       viewsManagerWaitingBar: {
         container: document.getElementById("viewsManagerStatusWaiting"),
         closeButton: document.getElementById("viewsManagerStatusWaitingCloseButton"),
-        label: document.getElementById("viewsManagerStatusWaitingLabel")
+        label: document.getElementById("viewsManagerStatusWaitingLabel"),
       },
       manageMenu: {
         button: document.getElementById("viewsManagerStatusActionButton"),
@@ -26481,8 +26090,8 @@ function getViewerConfiguration() {
         copy: document.getElementById("viewsManagerStatusActionCopy"),
         cut: document.getElementById("viewsManagerStatusActionCut"),
         delete: document.getElementById("viewsManagerStatusActionDelete"),
-        exportSelected: document.getElementById("viewsManagerStatusActionExport")
-      }
+        exportSelected: document.getElementById("viewsManagerStatusActionExport"),
+      },
     },
     findBar: {
       bar: document.getElementById("findbar"),
@@ -26495,14 +26104,14 @@ function getViewerConfiguration() {
       findMsg: document.getElementById("findMsg"),
       findResultsCount: document.getElementById("findResultsCount"),
       findPreviousButton: document.getElementById("findPreviousButton"),
-      findNextButton: document.getElementById("findNextButton")
+      findNextButton: document.getElementById("findNextButton"),
     },
     passwordOverlay: {
       dialog: document.getElementById("passwordDialog"),
       label: document.getElementById("passwordText"),
       input: document.getElementById("password"),
       submitButton: document.getElementById("passwordSubmit"),
-      cancelButton: document.getElementById("passwordCancel")
+      cancelButton: document.getElementById("passwordCancel"),
     },
     documentProperties: {
       dialog: document.getElementById("documentPropertiesDialog"),
@@ -26521,8 +26130,8 @@ function getViewerConfiguration() {
         version: document.getElementById("versionField"),
         pageCount: document.getElementById("pageCountField"),
         pageSize: document.getElementById("pageSizeField"),
-        linearized: document.getElementById("linearizedField")
-      }
+        linearized: document.getElementById("linearizedField"),
+      },
     },
     altTextDialog: {
       dialog: document.getElementById("altTextDialog"),
@@ -26530,7 +26139,7 @@ function getViewerConfiguration() {
       optionDecorative: document.getElementById("decorativeButton"),
       textarea: document.getElementById("descriptionTextarea"),
       cancelButton: document.getElementById("altTextCancel"),
-      saveButton: document.getElementById("altTextSave")
+      saveButton: document.getElementById("altTextSave"),
     },
     newAltTextDialog: {
       dialog: document.getElementById("newAltTextDialog"),
@@ -26548,7 +26157,7 @@ function getViewerConfiguration() {
       errorCloseButton: document.getElementById("newAltTextCloseButton"),
       cancelButton: document.getElementById("newAltTextCancel"),
       notNowButton: document.getElementById("newAltTextNotNow"),
-      saveButton: document.getElementById("newAltTextSave")
+      saveButton: document.getElementById("newAltTextSave"),
     },
     altTextSettingsDialog: {
       dialog: document.getElementById("altTextSettingsDialog"),
@@ -26556,7 +26165,7 @@ function getViewerConfiguration() {
       learnMore: document.getElementById("altTextSettingsLearnMore"),
       showAltTextDialogButton: document.getElementById("showAltTextDialogButton"),
       altTextSettingsCloseButton: document.getElementById("altTextSettingsCloseButton"),
-      closeButton: document.getElementById("altTextSettingsCloseButton")
+      closeButton: document.getElementById("altTextSettingsCloseButton"),
     },
     addSignatureDialog: {
       dialog: document.getElementById("addSignatureDialog"),
@@ -26581,14 +26190,14 @@ function getViewerConfiguration() {
       errorDescription: document.getElementById("addSignatureErrorDescription"),
       errorCloseButton: document.getElementById("addSignatureErrorCloseButton"),
       cancelButton: document.getElementById("addSignatureCancelButton"),
-      addButton: document.getElementById("addSignatureAddButton")
+      addButton: document.getElementById("addSignatureAddButton"),
     },
     editSignatureDialog: {
       dialog: document.getElementById("editSignatureDescriptionDialog"),
       description: document.getElementById("editSignatureDescription"),
       editSignatureView: document.getElementById("editSignatureView"),
       cancelButton: document.getElementById("editSignatureCancelButton"),
-      updateButton: document.getElementById("editSignatureUpdateButton")
+      updateButton: document.getElementById("editSignatureUpdateButton"),
     },
     annotationEditorParams: {
       editorCommentsSidebar: document.getElementById("editorCommentsSidebar"),
@@ -26605,14 +26214,14 @@ function getViewerConfiguration() {
       editorStampAddImage: document.getElementById("editorStampAddImage"),
       editorSignatureAddSignature: document.getElementById("editorSignatureAddSignature"),
       editorFreeHighlightThickness: document.getElementById("editorFreeHighlightThickness"),
-      editorHighlightShowAll: document.getElementById("editorHighlightShowAll")
+      editorHighlightShowAll: document.getElementById("editorHighlightShowAll"),
     },
     printContainer: document.getElementById("printContainer"),
     editorUndoBar: {
       container: document.getElementById("editorUndoBar"),
       message: document.getElementById("editorUndoBarMessage"),
       undoButton: document.getElementById("editorUndoBarUndoButton"),
-      closeButton: document.getElementById("editorUndoBarCloseButton")
+      closeButton: document.getElementById("editorUndoBarCloseButton"),
     },
     ...{},
     editCommentDialog: {
@@ -26621,8 +26230,8 @@ function getViewerConfiguration() {
       title: document.getElementById("commentManagerTitle"),
       textInput: document.getElementById("commentManagerTextInput"),
       cancelButton: document.getElementById("commentManagerCancelButton"),
-      saveButton: document.getElementById("commentManagerSaveButton")
-    }
+      saveButton: document.getElementById("commentManagerSaveButton"),
+    },
   };
 }
 function webViewerLoad() {
@@ -26631,8 +26240,8 @@ function webViewerLoad() {
     bubbles: true,
     cancelable: true,
     detail: {
-      source: window
-    }
+      source: window,
+    },
   });
   try {
     parent.document.dispatchEvent(event);
